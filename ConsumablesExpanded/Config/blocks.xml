@@ -1,0 +1,48 @@
+<Dementive>
+    
+	<set xpath="/blocks/block[@name='plantedSnowberry1']">
+	    <property name="Extends" value="cropsGrowingMaster" param1="CustomIcon"/>
+	    <property name="CreativeMode" value="Player"/>
+	    <property name="Texture" value="350"/>
+	    <property name="PlantGrowing.Next" value="plantedSnowberry2"/>
+	    <property name="Group" value="Food/Cooking"/>
+		<property name="Tags" value="seedSkill"/>
+		<property name="UnlockedBy" value="craftingSeeds"/>
+		<property name="SortOrder1" value="B963"/>
+	    <property name="SortOrder2" value="0000"/>
+	    <drop event="Destroy" name="plantedSnowberry1" count="1"/>
+	    <property name="CustomIcon" value="plantedSnowberry3Harvest"/>
+	</set>
+	
+    <set xpath="/blocks/block[@name='plantedSnowberry3Harvest']">
+	    <property name="Extends" value="cropsHarvestableMaster"/>
+	    <property name="Texture" value="568"/>
+		<property name="CropsGrown.BonusHarvestDivisor" value="8"/>
+		<property name="SortOrder1" value="B963"/>
+	    <property name="SortOrder2" value="0002"/>
+		<drop event="Harvest" name="foodCropSnowberry" count="1" tag="wildCropsHarvest"/>
+		<drop event="Harvest" name="foodCropSnowberry" prob="0.5" count="1" tag="bonusCropHarvest"/>
+	</set>
+	
+	<set xpath="/blocks/block[@name='plantedSnowberry3HarvestPlayer']">
+	    <property name="Extends" value="plantedSnowberry3Harvest"/>
+	    <property name="DescriptionKey" value="plantedSnowberry3HarvestDesc"/>
+	    <property name="CustomIcon" value="plantedSnowberry1"/>
+	    <property name="CreativeMode" value="None"/>
+        <drop event="Harvest" name="foodCropSnowberry" count="2" tag="cropHarvest"/>
+		<drop event="Harvest" name="foodCropSnowberry" prob="0.5" count="1" tag="bonusCropHarvest"/>
+		<drop event="Destroy" name="plantedSnowberry1" count="1" prob="0.5"/>
+		<!-- <property name="DowngradeBlock" value="plantedSnowberry1"/> -->
+		<property name="SortOrder1" value="B963"/>
+	    <property name="SortOrder2" value="0003"/>
+    </set>
+	
+	<append xpath="/blocks/block[@name='plantedSnowberry3Harvest']">
+		<property name="Class" value="CropsGrown"/>
+	</append>
+	
+	<append xpath="/blocks/block[@name='plantedSnowberry3HarvestPlayer']">
+		<property name="Class" value="CropsGrown"/>
+	</append>
+	
+</Dementive>

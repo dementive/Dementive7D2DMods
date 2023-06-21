@@ -1,0 +1,75 @@
+<Dementive>
+
+	<!-- Foods -->
+	<!-- 
+		Options: 
+		groupFoodCommon
+		groupFoodPileCommon
+		groupFoodUncommon
+		groupFoodRare
+	-->
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupFoodRare']">
+		<item name="DementiveCoffeeCake"/>
+		<item name="DementiveCornGrits"/>
+		<item name="DementiveMashPotato"/>
+		<item name="DementiveMeatPie"/>
+		<item name="DementiveMushroomPie"/>
+		<item name="DementiveYuccaPie"/>
+		<item name="DementiveSnowberryPie"/>
+	</append>
+
+	<!-- Drinks -->
+
+	<!-- 
+		Options: 
+		groupDrinksUncommon
+		groupDrinksRare
+	-->
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupDrinksUncommon']">
+		<item name="DementiveBerryTea"/>
+		<item name="DementiveBlueberryJam"/>
+		<item name="DementiveBlueberrySoda"/>
+		<item name="DementiveAcornCoffee"/>
+		<item name="DementivePineTea"/>
+		<item name="DementiveSnowberryGin"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupDrinksRare']">
+		<item name="DementiveFruitPunchMegaCrush"/>
+		<item name="DementiveGrapeMegaCrush"/>
+		<item name="DementiveGreenAppleMegaCrush"/>
+		<item name="DementiveGrapeDrink"/>
+		<item name="DementiveGlowingGreenJuice"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='airdropdrink']">
+		<item name="DementiveBerryTea"/>
+		<item name="DementiveBlueberryJam"/>
+		<item name="DementiveBlueberrySoda"/>
+		<item name="DementiveFruitPunchMegaCrush"/>
+		<item name="DementiveGrapeMegaCrush"/>
+		<item name="DementiveGreenAppleMegaCrush"/>
+		<item name="DementiveGrapeDrink"/>
+		<item name="DementiveGlowingGreenJuice"/>
+		<item name="DementiveAcornCoffee"/>
+		<item name="DementivePineTea"/>
+		<item name="DementiveSnowberryGin"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='twitch_drink']">
+		<item name="DementiveBerryTea"/>
+		<item name="DementiveBlueberryJam"/>
+		<item name="DementiveBlueberrySoda"/>
+		<item name="DementiveFruitPunchMegaCrush"/>
+		<item name="DementiveGrapeMegaCrush"/>
+		<item name="DementiveGreenAppleMegaCrush"/>
+		<item name="DementiveGrapeDrink"/>
+		<item name="DementiveGlowingGreenJuice"/>
+		<item name="DementiveAcornCoffee"/>
+		<item name="DementivePineTea"/>
+		<item name="DementiveSnowberryGin"/>
+	</append>
+
+</Dementive>

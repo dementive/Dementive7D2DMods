@@ -1,0 +1,61 @@
+<Dementive>
+	
+	<!-- Foods -->
+
+	<!-- 
+		Options:
+		cannedfood
+		foodCandy
+		foodSupplies
+		preparedFood
+	-->
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='foodSupplies']">
+		<item name="foodCropSnowberry" count="10,20"/>
+	</append>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='preparedFood']">
+		<item name="DementiveCoffeeCake" count="1,2"/>
+		<item name="DementiveCornGrits" count="1,2"/>
+		<item name="DementiveFriedEgg" count="3,5"/>
+		<item name="DementiveOmlet" count="2,3"/>
+		<item name="DementiveMashPotato" count="1,2"/>
+		<item name="DementiveMushroomPie" count="1,2"/>
+		<item name="DementiveYuccaPie" count="1,2"/>
+		<item name="DementiveSnowberryPie" count="1,2"/>
+	</append>
+
+	<!-- Drinks -->
+
+	<!--
+		Options:
+		groupDrinks
+		groupDrinksSpecial
+	-->
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='groupDrinks']">
+		<item name="DementiveBerryTea" count="1,2"/>
+		<item name="DementiveBlueberryJam" count="1,2"/>
+		<item name="DementiveBlueberrySoda" count="1,2"/>
+		<item name="DementiveAcornCoffee" count="1,2"/>
+		<item name="DementivePineTea" count="1,2"/>
+		<item name="DementiveSnowberryGin" count="1,2"/>
+	</append>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='groupDrinksSpecial']">
+		<item name="DementiveFruitPunchMegaCrush" count="1,2"/>
+		<item name="DementiveGrapeMegaCrush" count="1,2"/>
+		<item name="DementiveGreenAppleMegaCrush" count="1,2"/>
+		<item name="DementiveGrapeDrink" count="1,2"/>
+		<item name="DementiveGlowingGreenJuice" count="1,2"/>
+	</append>
+
+	<!-- Drugs -->
+
+	<!--
+		Options:
+		rareMedicine
+		medicine
+	-->
+
+</Dementive>

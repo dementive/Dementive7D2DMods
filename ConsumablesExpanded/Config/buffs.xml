@@ -1,0 +1,65 @@
+<Dementive>
+
+	<append xpath="/buffs">
+		<buff name="buffDementiveBerryTea" name_key="buffDementiveBerryTea" description_key="buffDementiveBerryTeaDesc" icon="ui_game_symbol_stomach">
+			<stack_type value="replace"/>
+			<duration value="0"/>
+			<display_value value=".buffDementiveBerryTeaDisplay"/>
+			<display_value_format value="time"/>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$buffDementiveBerryTeaDuration" operation="subtract" value="@$MetabolismDuration"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffDementiveBerryTeaDisplay" operation="set" value="@$buffDementiveBerryTeaDuration"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffDementiveBerryTeaDisplay" operation="divide" value="@$MetabolismDuration"/>
+			</effect_group>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveBerryTea">
+					<requirement name="CVarCompare" cvar="$buffDementiveBerryTeaDuration" operation="LTE" value="0"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".buffDementiveBerryTeaDisplay" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$buffDementiveBerryTeaDuration" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$buffDementiveBerryTeaEffectDisplay" operation="set" value="-15"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$buffDementiveBerryTeaEffectDisplay" operation="set" value="0"/>
+			</effect_group>
+
+			<effect_group>
+				<passive_effect name="FoodLossPerStaminaPointGained" operation="perc_add" value="-.15"/>
+				<passive_effect name="WaterLossPerStaminaPointGained" operation="perc_add" value="-.15"/>
+			</effect_group>
+		</buff>
+
+	    <buff name="buffDrugHerbalPainkillers" name_key="buffDrugHerbalPainkillersName" description_key="buffDrugHerbalPainkillersDesc" icon="ui_game_symbol_pills">
+		    <stack_type value="replace"/><duration value="0"/>
+		    <display_value value=".buffDrugHerbalPainkillersDisplay"/><display_value_format value="time"/>
+		    <effect_group>
+			    <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$buffDrugHerbalPainkillersDuration" operation="subtract" value="@$MetabolismDuration"/>
+			    <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffDrugHerbalPainkillersDisplay" operation="set" value="@$buffDrugHerbalPainkillersDuration"/>
+			    <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffDrugHerbalPainkillersDisplay" operation="divide" value="@$MetabolismDuration"/>
+		    </effect_group>
+		    <effect_group>
+			    <triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDrugHerbalPainkillers">
+				    <requirement name="CVarCompare" cvar="$buffDrugHerbalPainkillersDuration" operation="LTE" value="0"/>
+			    </triggered_effect>
+			    <triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".buffDrugHerbalPainkillersDisplay" operation="set" value="0"/>
+			    <triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$buffDrugHerbalPainkillersDuration" operation="set" value="0"/>
+			    <triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$buffDrugHerbalPainkillersHealed" operation="set" value="0"/>
+		    </effect_group>
+
+		    <effect_group>
+			    <requirement name="!HasBuff" buff="buffInjuryConcussion"/>
+			    <requirement name="CVarCompare" cvar="$buffDrugHerbalPainkillersHealed" operation="Equals" value="0"/>
+				    <triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="20"/>
+				    <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$buffDrugHerbalPainkillersHealed" operation="set" value="1"/>
+		    </effect_group>
+
+		    <effect_group>
+			    <passive_effect name="HealthLoss" operation="perc_add" value="-.1"/>
+			    <passive_effect name="WaterChangeOT" operation="base_subtract" value="0.109"/>
+			    <passive_effect name="BuffResistance" operation="base_add" value=".5" tags="buffInjuryStunned01CHTrigger,buffInjuryStunned00,buffInjuryStunned01,buffInjuryStunned01Shotgun,buffInjuryStunned02,buffInjuryStunned02Shotgun,buffInjuryStunned03,buffInjuryStunned03Shotgun"/>
+		    </effect_group>
+	    </buff>
+
+	</append>
+	
+</Dementive> 

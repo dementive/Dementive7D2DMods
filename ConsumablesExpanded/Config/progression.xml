@@ -1,0 +1,68 @@
+<Dementive>
+	
+	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingFood']">
+		<display_entry icon="DementiveBerryTea,DementiveAcornCoffee,DementivePineTea" name_key="foodT1-3" has_quality="false" unlock_level="6" >
+			<unlock_entry item="DementiveBerryTea" unlock_tier="3" />
+			<unlock_entry item="DementiveAcornCoffee" unlock_tier="3" />
+			<unlock_entry item="DementivePineTea" unlock_tier="3" />
+		</display_entry>
+
+		<display_entry icon="DementiveCornGrits,DementiveMashPotato" name_key="foodT1-4" has_quality="false" unlock_level="22" >
+			<unlock_entry item="DementiveCornGrits" unlock_tier="4" />
+			<unlock_entry item="DementiveMashPotato" unlock_tier="4" />
+		</display_entry>
+
+		<display_entry icon="DementiveBlueberryJam,DementiveBlueberrySoda,DementiveCoffeeCake,DementiveMushroomPie,DementiveYuccaPie,DementiveSnowberryGin,DementiveSnowberryPie" name_key="foodT1-4" has_quality="false" unlock_level="27" >
+			<unlock_entry item="DementiveBlueberryJam" unlock_tier="4" />
+			<unlock_entry item="DementiveBlueberrySoda" unlock_tier="4" />
+			<unlock_entry item="DementiveCoffeeCake" unlock_tier="4" />
+			<unlock_entry item="DementiveMushroomPie" unlock_tier="4" />
+			<unlock_entry item="DementiveYuccaPie" unlock_tier="4" />
+			<unlock_entry item="DementiveSnowberryGin" unlock_tier="4" />
+			<unlock_entry item="DementiveSnowberryPie" unlock_tier="4" />
+		</display_entry>
+
+		<display_entry icon="DementiveMeatPie" name_key="foodT1-4" has_quality="false" unlock_level="70" >
+			<unlock_entry item="DementiveMeatPie" unlock_tier="2" />
+		</display_entry>
+
+		<effect_group>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="6,100" value="1" tags="DementiveBerryTea"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="6,100" value="1" tags="DementiveAcornCoffee"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="6,100" value="1" tags="DementivePineTea"/>
+
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="22,100" value="1" tags="DementiveCornGrits"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="22,100" value="1" tags="DementiveMashPotato"/>
+
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveBlueberryJam"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveBlueberrySoda"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveCoffeeCake"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveMushroomPie"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveYuccaPie"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveYuccaPie"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveSnowberryPie"/>
+
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="70,100" value="1" tags="DementiveMeatPie"/>
+		</effect_group>	
+
+	</append>
+
+    <append xpath="/progression/crafting_skills/crafting_skill[@name='craftingSeeds']">
+	    <display_entry icon="plantedSnowberry1" name_key="seedsT1-2" has_quality="false" unlock_level="4" >
+			<unlock_entry item="plantedSnowberry1" unlock_tier="2" />
+		</display_entry>
+	    <effect_group>
+	        <passive_effect name="RecipeTagUnlocked" operation="base_set" level="4,100" value="1" tags="plantedSnowberry1"/>
+		</effect_group>	
+	</append>
+	
+	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingMedical']">
+	    <display_entry icon="drugHerbalPainkillers" name_key="medicalT1-2" has_quality="false" unlock_level="10" >
+			<unlock_entry item="drugHerbalPainkillers" unlock_tier="2" />
+		</display_entry>
+	    <effect_group>
+	        <passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="drugHerbalPainkillers"/>
+		</effect_group>	
+	</append>
+
+</Dementive>

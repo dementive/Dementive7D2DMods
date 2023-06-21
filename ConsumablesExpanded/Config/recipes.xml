@@ -1,0 +1,128 @@
+<Dementive>
+
+<append xpath="/recipes">
+	
+	<!-- Foods -->
+
+	<recipe name="DementiveSnowberryPie" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+		<ingredient name="foodCropSnowberry" count="10"/>
+		<ingredient name="foodCropPotato" count="3"/>
+		<ingredient name="resourceAnimalFat" count="3"/>
+		<ingredient name="foodEgg" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveYuccaPie" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+		<ingredient name="foodCropYuccaFruit" count="10"/>
+		<ingredient name="foodCropPotato" count="3"/>
+		<ingredient name="resourceAnimalFat" count="3"/>
+		<ingredient name="foodEgg" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveMushroomPie" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+		<ingredient name="foodCropMushrooms" count="10"/>
+		<ingredient name="foodCropPotato" count="3"/>
+		<ingredient name="resourceAnimalFat" count="3"/>
+		<ingredient name="foodEgg" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveMeatPie" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+		<ingredient name="foodGrilledMeat" count="5"/>
+		<ingredient name="resourceAnimalFat" count="3"/>
+		<ingredient name="foodCanChicken" count="1"/>
+		<ingredient name="foodCanLamb" count="1"/>
+		<ingredient name="foodCanBeef" count="1"/>
+		<ingredient name="foodEgg" count="1"/>
+		<effect_group>
+			<passive_effect name="CraftingIngredientCount" level="1,3" operation="base_add" value="-1,-2" tags="resourceAnimalFat"/>
+		</effect_group>
+	</recipe>
+
+	<recipe name="DementiveMashPotato" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+		<ingredient name="foodCropPotato" count="5"/>
+		<ingredient name="resourceAnimalFat" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveOmlet" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+		<ingredient name="foodEgg" count="3"/>
+		<ingredient name="resourceAnimalFat" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveFriedEgg" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef">
+		<ingredient name="foodEgg" count="1"/>
+		<ingredient name="resourceAnimalFat" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveCornGrits" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+		<ingredient name="foodCropCorn" count="5"/>
+		<ingredient name="foodCropPotato" count="2"/>
+		<ingredient name="foodCornMeal" count="2"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveCoffeeCake" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+		<ingredient name="resourceCropCoffeeBeans" count="5"/>
+		<ingredient name="foodCornMeal" count="2"/>
+		<ingredient name="resourceAnimalFat" count="1"/>
+		<ingredient name="foodShamSandwich" count="1"/>
+		<effect_group>
+			<passive_effect name="CraftingIngredientCount" level="1,3" operation="base_add" value="-1,-2" tags="resourceAnimalFat"/>
+		</effect_group>
+	</recipe>
+
+	<!-- Drinks -->
+
+	<recipe name="DementiveAcornCoffee" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+		<ingredient name="treePlantedOak1m" count="2"/>
+		<ingredient name="resourceCropCoffeeBeans" count="1"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+	</recipe>
+
+	<recipe name="DementivePineTea" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+		<ingredient name="treePlantedMountainPine1m" count="5"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveBerryTea" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+		<ingredient name="foodCropBlueberries" count="5"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveBlueberryJam" count="1" tags="perkMasterChef,learnable">
+		<ingredient name="foodCropBlueberries" count="10"/>
+		<ingredient name="foodCropYuccaFruit" count="5"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+		<effect_group>
+			<passive_effect name="CraftingIngredientCount" level="1,3" operation="base_add" value="-1,-2" tags="foodCropYuccaFruit,foodCropBlueberries"/>
+		</effect_group>
+	</recipe>
+
+	<recipe name="DementiveBlueberrySoda" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+		<ingredient name="foodCropBlueberries" count="10"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+		<ingredient name="foodEgg" count="1"/>
+		<ingredient name="foodCornMeal" count="1"/>
+		<ingredient name="resourceAcid" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveSnowberryGin" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable">
+		<ingredient name="foodCropSnowberry" count="10"/>
+		<ingredient name="resourceSnowBall" count="2"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+	</recipe>
+
+		
+    <recipe name="plantedSnowberry1" count="1" craft_time="1" tags="learnable">
+        <ingredient name="foodCropSnowberry" count="2"/>
+    </recipe>
+	
+	<recipe name="drugHerbalPainkillers" count="1" craft_area="chemistryStation" tags="learnable,chemStationCrafting">
+        <ingredient name="drinkJarBoiledWater" count="1"/>
+        <ingredient name="foodCropSnowberry" count="2"/>
+		<ingredient name="resourceCropAloeLeaf" count="2"/>
+		<ingredient name="resourceCropGoldenrodPlant" count="2"/>
+        <ingredient name="resourceCropChrysanthemumPlant" count="2"/>
+    </recipe>
+
+</append>
+
+</Dementive>

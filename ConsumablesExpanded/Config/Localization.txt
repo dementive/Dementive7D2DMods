@@ -1,0 +1,49 @@
+Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,latam,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese,spanish
+DementiveBerryTea,items,Food,,,Blueberry Tea
+DementiveBerryTeaDesc,items,Food,,,"A glorious Blueberry tea known far and wide by tea consumers of all kinds, providing excellent rehydration and reducing food drain so that exertion does not make you hungry and thirsty as quickly."
+buffDementiveBerryTea,buffs,Buff,,,Efficient Digestion
+buffDementiveBerryTeaDesc,buffs,Buff,,,Exertion will not make you hungry and thirsty as quickly when drinking this glorious blue drink.\n\nFood and water cost of regenerating\nstamina {cvar($buffDementiveBerryTeaEffectDisplay:0.0)}%
+DementiveBlueberryJam,items,Food,,,Blueberry Jam
+DementiveBlueberryJamDesc,items,Food,,,"This blueberry jam doesn't only taste good and smell strange but it will also help get you out of a jam by keeping you warm in cold environments."
+DementiveBlueberrySoda,items,Food,,,Blueberry Soda
+DementiveBlueberrySodaDesc,items,Food,,,"A sweet jar of homemade blueberry soda that tastes great but always leaves you with a strange burning sensation in the chest...at least it provides excellent hydration."
+DementiveCoffeeCake,items,Food,,,Coffee Cake
+DementiveCoffeeCakeDesc,items,Food,,,"Delicious and powerful this spongy cake will keeps your stamina up and helps you stay warm for a limited time."
+DementiveCornGrits,items,Food,,,Corn Grits
+DementiveCornGritsDesc,items,Food,,,"A big pot of mush...what could be better?"
+DementiveFriedEgg,items,Food,,,Fried Egg
+DementiveFriedEggDesc,items,Food,,,"A great way to start the day!"
+DementiveOmlet,items,Food,,,Omelette
+DementiveOmletDesc,items,Food,,,"The single greatest conglomeration of eggs known to man now lies in your hands."
+DementiveFruitPunchMegaCrush,items,Food,,,Fruit Punch Mega Crush
+DementiveFruitPunchMegaCrushDesc,items,Food,,,"Crush your enemies and your thirst with Fruit Punch Mega Crush! It's got electrolytes and a new blood red color!"
+DementiveGrapeMegaCrush,items,Food,,,Grape Mega Crush
+DementiveGrapeMegaCrushDesc,items,Food,,,"Crush your enemies and your thirst with Grape Mega Crush! It's got electrolytes and strange particles floating in it!"
+DementiveGreenAppleMegaCrush,items,Food,,,Green Apple Mega Crush
+DementiveGreenAppleMegaCrushDesc,items,Food,,,"Crush your enemies and your thirst with Green Apple Mega Crush! It's got electrolytes, glows green, and is most likely not radioactive!"
+DementiveGrapeDrink,items,Food,,,Grape Drink
+DementiveGrapeDrinkDesc,items,Food,,,"This glorious drink derived from the declicate grape is also known by the name of 'Thirst Quencher'."
+DementiveGlowingGreenJuice,items,Food,,,Glowing Green Juice
+DementiveGlowingGreenJuiceDesc,items,Food,,,"This mysterious glowing green juice holds great power but no one knows what it really is or where it came from."
+DementiveMashPotato,items,Food,,,Mashed Potatoes
+DementiveMashPotatoDesc,items,Food,,,"This grey goop is...allegedly mashed potatoes, it certainly looks like nothing but potatoes but the smell suggests otherwise."
+DementiveMeatPie,items,Food,,,Meat Pie
+DementiveMeatPieDesc,items,Food,,,"The meatiest substance around, this meat pie will keep you going for days."
+DementiveMushroomPie,items,Food,,,Mushroom Pie
+DementiveMushroomPieDesc,items,Food,,,"Somehow, someway this mushroom pie is very tasty even though it looks and smells like dirt and mold."
+DementiveYuccaPie,items,Food,,,Yucca Pie
+DementiveYuccaPieDesc,items,Food,,,"This pie made from Yucca fruit glows green and tastes great!"
+DementiveAcornCoffee,items,Food,,,Acorn Coffee
+DementiveAcornCoffeeDesc,items,Food,,,"A great tasting coffee made by grinding acorns into the coffee grounds, will keep you warm and give lots of energy!"
+DementivePineTea,items,Food,,,Pine Tea
+DementivePineTeaDesc,items,Food,,,"Tea made with pine sap from...pine trees, tastes great and will keep you hydrated!"
+foodCropSnowberry,items,item,,,Snowberry
+SnowberryDesc,items,item,,,Years ago the snowberry was used as a painkiller along with other plants. Now that the apocalypse has come it is a very precious resource.
+drugHerbalPainkillers,items,item,,,Herbal Painkillers
+HerbalPainkillersDesc,items,item,,,Herbal Painkillers help you shrug off stunning blows and give you a quick boost of health. Like all chems they make you little thirsty. Unlocked by craftingMedical level 10.
+buffDrugHerbalPainkillersName,buffs,buff,,,Herbal Painkillers
+buffDrugHerbalPainkillersDesc,buffs,buff,,,You took painkillers. Stuns will affect you less now.
+DementiveSnowberryGin,items,Food,,,Snowberry Gin
+DementiveSnowberryGinDesc,items,Food,,,"This icy drink made of snowberries will have you feeling really chill, tastes great, and will keep you hydrated."
+DementiveSnowberryPie,items,Food,,,Snowberry Pie
+DementiveSnowberryPieDesc,items,Food,,,"This chilling pie will have you feeling better in no time!"
