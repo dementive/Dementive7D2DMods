@@ -11,7 +11,9 @@ These are some other mods that go good with my mods for a full vanilla experienc
 
 • Zombies Plus - https://7daystodiemods.com/server-side-zombies-plus/
 
-• AOO Vehicles for A21 - https://www.nexusmods.com/7daystodie/mods/2935
+• Bdub's Vehicles - https://www.nexusmods.com/7daystodie/mods/342
+
+• Shotgun pack - https://7daystodiemods.com/shotgun-pack/
 
 • Add more zombie mods here
 
