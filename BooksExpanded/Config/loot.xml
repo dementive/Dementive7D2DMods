@@ -1,0 +1,338 @@
+<Dementive>
+
+	<append xpath="/lootprobtemplates">
+		<lootprobtemplate name="DementiveRareBooks">
+			<loot level="1,999999" prob=".1"/>
+		</lootprobtemplate>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='perkBooks']">
+		<item name="DementivebookArtOfMiningLuckyStrike" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookAutoWeaponsDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookBarBrawling1BasicMoves" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookBatterUpBigHits" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookEnforcerDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookFiremansAlmanacHeat" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookHuntingJournalBears" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookLuckyLooterDukes" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookNeedleAndThreadWinterWear" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookNightStalkerStealthDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookPistolPeteTakeAim" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookRangersArrowRecovery" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookShotgunMessiahDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookSniperDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookSpearHunter1Damage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookTechJunkie1Damage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookTheGreatHeistSafes" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookUrbanCombatLanding" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookWasteTreasuresHoney" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='twitch_perkBooks']">
+		<item name="DementivebookArtOfMiningLuckyStrike" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookAutoWeaponsDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookBarBrawling1BasicMoves" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookBatterUpBigHits" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookEnforcerDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookFiremansAlmanacHeat" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookHuntingJournalBears" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookLuckyLooterDukes" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookNeedleAndThreadWinterWear" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookNightStalkerStealthDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookPistolPeteTakeAim" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookRangersArrowRecovery" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookShotgunMessiahDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookSniperDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookSpearHunter1Damage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookTechJunkie1Damage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookTheGreatHeistSafes" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookUrbanCombatLanding" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookWasteTreasuresHoney" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupMilitaryBooks']">
+		<item name="DementivebookAutoWeaponsDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookPistolPeteTakeAim" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookShotgunMessiahDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookSniperDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookUrbanCombatLanding" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupFireTruck02']">
+		<item name="DementivebookFiremansAlmanacHeat" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='skillMagazines']">
+		<item name="DementivearmorSkillMagazine" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookBigHitters" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookBowHunters" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookElectricalTraps" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookExplosiveMagazine" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookFuriousFists" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookGetHammered" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookHandgunMagazine" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookHandyLand" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookHomeCookingWeekly" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookKnifeGuy" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookMedicalJournal" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookRifleWorld" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookScrapping4Fun" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookSharpSticks" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookShotgunWeekly" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookTacticalWarfare" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupQuestRewardSkillMagazinesAll01']">
+		<item name="DementivearmorSkillMagazine" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookBigHitters" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookBowHunters" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookElectricalTraps" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookExplosiveMagazine" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookFuriousFists" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookGetHammered" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookHandgunMagazine" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookHandyLand" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookHomeCookingWeekly" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookKnifeGuy" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookMedicalJournal" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookRifleWorld" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookScrapping4Fun" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookSharpSticks" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookShotgunWeekly" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookTacticalWarfare" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='weaponSkillMagazinesOnly']">
+		<item name="DementivebookBigHitters" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookBowHunters" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookExplosiveMagazine" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookFuriousFists" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookHandgunMagazine" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookKnifeGuy" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookRifleWorld" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookSharpSticks" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookShotgunWeekly" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookShotgunWeekly" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookTacticalWarfare" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupSafeBooks']">
+		<item name="DementivebookLuckyLooterDukes" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookNightStalkerStealthDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookTheGreatHeistSafes" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupPassNGas01']">
+		<item name="DementivebookHandyLand" loot_prob_template="veryLow"/>
+		<item name="DementivebookScrapping4Fun" loot_prob_template="veryLow"/>
+		<item name="DementivebookToolsDigest" loot_prob_template="veryLow"/>
+		<item name="DementivebookVehicleAdventures" loot_prob_template="veryLow"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupPassNGas03']">
+		<item name="DementivebookHandyLand" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookScrapping4Fun" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookToolsDigest" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupElectricalDevices']">
+		<item name="DementivebookElectricalTraps" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookWiring101" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupMoPowerShelves']">
+		<item name="DementivebookElectricalTraps" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookWiring101" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupMoPower01']">
+		<item name="DementivebookElectricalTraps" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookWiring101" loot_prob_template="DementiveRareBooks"/>
+	</append>
+	
+	<append xpath="/lootcontainers/lootgroup[@name='groupMoPower02']">
+		<item name="DementivebookElectricalTraps" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookWiring101" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupMoPower04']">
+		<item name="DementivebookElectricalTraps" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookTechPlanet" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookWiring101" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='survivalMedical']">
+		<item name="DementivebookMedicalJournal" loot_prob_template="veryLow"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupSavageCountryBooks']">
+		<item name="DementivearmorSkillMagazine" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookBatterUpBigHits" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookBigHitters" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookBowHunters" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookHuntingJournalBears" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookKnifeGuy" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookRangersArrowRecovery" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookSharpSticks" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookSpearHunter1Damage" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupSavageCountryCrate01']">
+		<item name="DementivearmorSkillMagazine" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookBigHitters" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookBowHunters" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookKnifeGuy" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookSharpSticks" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupWorkingStiffsBooks']">
+		<item name="DementivebookArtOfMiningLuckyStrike" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookFiremansAlmanacHeat" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookGetHammered" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookHandyLand" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookScrapping4Fun" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookToolsDigest" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookWasteTreasuresHoney" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupWorkingStiffs01']">
+		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookGetHammered" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookHandyLand" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookScrapping4Fun" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookToolsDigest" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupShotgunMessiahBooks']">
+		<item name="DementivebookAutoWeaponsDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookEnforcerDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookExplosiveMagazine" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookHandgunMagazine" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookPistolPeteTakeAim" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookRifleWorld" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookShotgunMessiahDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookShotgunWeekly" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookSniperDamage" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookTacticalWarfare" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookUrbanCombatLanding" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupShotgunMessiahCrate02']">
+		<item name="DementivebookExplosiveMagazine" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookHandgunMagazine" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookRifleWorld" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookShotgunWeekly" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookTacticalWarfare" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupPopNPillsBooks']">
+		<item name="DementivebookBarBrawling1BasicMoves" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookFuriousFists" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookMedicalJournal" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupPopNPillsCrate02']">
+		<item name="DementivebookFuriousFists" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookMedicalJournal" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupLootChestBonusItems']">
+		<item name="DementivebookBatterUpBigHits" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookHandyLand" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookScrapping4Fun" loot_prob_template="DementiveRareBooks"/>
+		<item name="DementivebookToolsDigest" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupShamwayCrate02']">
+		<item name="DementivebookHomeCookingWeekly" loot_prob_template="veryLow"/>
+		<item name="DementivebookSouthernFarming" loot_prob_template="veryLow"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupBuriedSuppliesT1_03']">
+		<item name="DementivebookHomeCookingWeekly" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupHiddenStash02']">
+		<item name="DementivebookBatterUpBigHits" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='twitch_Home_Run_Books']">
+		<item name="DementivebookBatterUpBigHits" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupConstructionCrate02']">
+		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupAirDrop03']">
+		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupWorkbenchLoot04']">
+		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupForge']">
+		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupCementMixerLoot']">
+		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupChemistryStationLoot03']">
+		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupDewCollectorLoot01']">
+		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupDewCollectorLoot02']">
+		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupFoodPileLarge']">
+		<item name="DementivebookHomeCookingWeekly" loot_prob_template="veryLow"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupMedicalPileLarge']">
+		<item name="DementivebookMedicalJournal" loot_prob_template="veryLow"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupShamwayCrate02']">
+		<item name="DementivebookSouthernFarming" loot_prob_template="veryLow"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupTechJunkieBooks']">
+		<item name="DementivebookTechJunkie1Damage" loot_prob_template="veryLow"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupBotSchematics']">
+		<item name="DementivebookTechJunkie1Damage" loot_prob_template="veryLow"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupStunBaton']">
+		<item name="DementivebookTechJunkie1Damage" loot_prob_template="veryLow"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupMoPower02']">
+		<item name="DementivebookTechJunkie1Damage" loot_prob_template="veryLow"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='schematicsVehiclesT1']">
+		<item name="DementivebookVehicleAdventures" loot_prob_template="veryLow"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='schematicsVehiclesT2']">
+		<item name="DementivebookVehicleAdventures" loot_prob_template="veryLow"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupFarmTruck02']">
+		<item name="DementivebookVehicleAdventures" loot_prob_template="veryLow"/>
+	</append>
+
+</Dementive>

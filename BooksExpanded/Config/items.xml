@@ -1,0 +1,1585 @@
+<Dementive>
+
+	<!-- Special books that are very rare and give 2 perks and more XP instead of only 1 perk. -->
+
+	<append xpath="/items">
+
+		<!-- TODO - Go through and sprinkle in special effects to some books onSelfPrimaryActionEnd -->
+
+		<item name="DementivearmorSkillMagazine">
+			<property name="Extends" value="armorSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookArmoredUp"/>
+			
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingArmor" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookBigHitters">
+			<property name="Extends" value="clubsSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookBigHitters"/>
+			
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingClubs" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookBowHunters">
+			<property name="Extends" value="bowsSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookBowHunters"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingBows" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookElectricalTraps">
+			<property name="Extends" value="trapsSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookElectricalTraps"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookExplosiveMagazine">
+			<property name="Extends" value="explosivesSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookExplosiveMagazine"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingExplosives" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookForgeAhead">
+			<property name="Extends" value="knucklesSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookForgeAhead"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingKnuckles" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookFuriousFists">
+			<property name="Extends" value="workstationSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookFuriousFists"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingWorkstations" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookGetHammered">
+			<property name="Extends" value="sledgehammersSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookGetHammered"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSledgehammers" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookHandgunMagazine">
+			<property name="Extends" value="handgunsSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookHandgunMagazine"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingHandguns" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+
+		<item name="DementivebookHandyLand">
+			<property name="Extends" value="repairToolsSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookHandyLand"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingRepairTools" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookHomeCookingWeekly">
+			<property name="Extends" value="foodSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookHomeCookingWeekly"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingFood" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookKnifeGuy">
+			<property name="Extends" value="bladesSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookKnifeGuy"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingBlades" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookMedicalJournal">
+			<property name="Extends" value="medicalSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookMedicalJournal"/>
+			
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingMedical" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookRifleWorld">
+			<property name="Extends" value="riflesSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookRifleWorld"/>
+			
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingRifles" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookScrapping4Fun">
+			<property name="Extends" value="bookScrapping4Fun"/>
+			<property name="CustomIcon" value="DementivebookScrapping4Fun"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSalvageTools" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookSharpSticks">
+			<property name="Extends" value="spearsSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookSharpSticks"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSpears" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookShotgunWeekly">
+			<property name="Extends" value="shotgunsSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookShotgunWeekly"/>
+			
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingShotguns" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookSouthernFarming">
+			<property name="Extends" value="seedSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookSouthernFarming"/>
+			
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSeeds" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookTacticalWarfare">
+			<property name="Extends" value="machineGunsSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookTacticalWarfare"/>
+			
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingMachineGuns" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookTechPlanet">
+			<property name="Extends" value="roboticsSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookTechPlanet"/>
+			
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingRobotics" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookToolsDigest">
+			<property name="Extends" value="harvestingToolsSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookToolsDigest"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingHarvestingTools" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookVehicleAdventures">
+			<property name="Extends" value="vehiclesSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookVehicleAdventures"/>
+			
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingVehicles" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookWiring101">
+			<property name="Extends" value="electricianSkillMagazine"/>
+			<property name="CustomIcon" value="DementivebookWiring101"/>
+			
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingElectrician" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<!-- Perk Books -->
+		<!-- For perk books all tiers of progression need to be copied into the effect -->
+		<!-- This sucks for mod maintainablity but it is the best way to integrate the new super books into the existing progression system. -->
+
+		<item name="DementivebookArtOfMiningLuckyStrike">
+			<property name="Extends" value="bookArtOfMiningLuckyStrike"/>
+			<property name="CustomIcon" value="DementivebookArtOfMiningLuckyStrike"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkArtOfMiningLuckyStrike" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningLuckyStrike" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningDiamondTools" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillArtOfMining" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillArtOfMining" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkArtOfMiningDiamondTools" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningDiamondTools" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningCoffee" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillArtOfMining" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillArtOfMining" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkArtOfMiningCoffee" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningCoffee" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningBlackStrap" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillArtOfMining" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillArtOfMining" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkArtOfMiningBlackStrap" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningBlackStrap" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningPallets" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillArtOfMining" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillArtOfMining" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkArtOfMiningPallets" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningPallets" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningAvalanche" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillArtOfMining" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillArtOfMining" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkArtOfMiningAvalanche" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningAvalanche" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningDamage" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillArtOfMining" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillArtOfMining" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkArtOfMiningDamage" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningDamage" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillArtOfMining" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillArtOfMining" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookAutoWeaponsDamage">
+			<property name="Extends" value="bookAutoWeaponsDamage"/>
+			<property name="CustomIcon" value="DementivebookAutoWeaponsDamage"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkAutoWeaponsDamage" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsDamage" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsUncontrolledBurst" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillAutoWeapons" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillAutoWeapons" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkAutoWeaponsUncontrolledBurst" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsUncontrolledBurst" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsMaintenance" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillAutoWeapons" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillAutoWeapons" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkAutoWeaponsMaintenance" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsMaintenance" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsDrumMag" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillAutoWeapons" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillAutoWeapons" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkAutoWeaponsDrumMag" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsDrumMag" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsRecoil" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillAutoWeapons" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillAutoWeapons" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkAutoWeaponsRecoil" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsRecoil" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsRagdoll" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillAutoWeapons" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillAutoWeapons" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkAutoWeaponsRagdoll" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsRagdoll" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsMachineGuns" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillAutoWeapons" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillAutoWeapons" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkAutoWeaponsMachineGuns" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsMachineGuns" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillAutoWeapons" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillAutoWeapons" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>			
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookBarBrawling1BasicMoves">
+			<property name="Extends" value="bookBarBrawling1BasicMoves"/>
+			<property name="CustomIcon" value="DementivebookBarBrawling1BasicMoves"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkBarBrawling1BasicMoves" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling1BasicMoves" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling2DropABomb" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillBarBrawling" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillBarBrawling" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkBarBrawling2DropABomb" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling2DropABomb" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling3KillerInstinct" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillBarBrawling" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillBarBrawling" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkBarBrawling3KillerInstinct" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling3KillerInstinct" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling4FinishingMoves" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillBarBrawling" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillBarBrawling" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkBarBrawling4FinishingMoves" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling4FinishingMoves" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling5AdrenalineHealing" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillBarBrawling" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillBarBrawling" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkBarBrawling5AdrenalineHealing" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling5AdrenalineHealing" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling6RageMode" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillBarBrawling" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillBarBrawling" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkBarBrawling6RageMode" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling6RageMode" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling7BoozedUp" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillBarBrawling" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillBarBrawling" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkBarBrawling7BoozedUp" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling7BoozedUp" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillBarBrawling" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillBarBrawling" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookBatterUpBigHits">
+			<property name="Extends" value="bookBatterUpBigHits"/>
+			<property name="CustomIcon" value="DementivebookBatterUpBigHits"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkBatterUpBigHits" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpBigHits" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpStealingBases" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillBatterUp" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillBatterUp" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkBatterUpStealingBases" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpStealingBases" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpSlowPitch" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillBatterUp" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillBatterUp" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkBatterUpSlowPitch" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpSlowPitch" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpKnockdown" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillBatterUp" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillBatterUp" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkBatterUpKnockdown" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpKnockdown" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpMaintenance" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillBatterUp" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillBatterUp" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkBatterUpMaintenance" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpMaintenance" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpFoulBalls" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillBatterUp" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillBatterUp" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkBatterUpFoulBalls" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpFoulBalls" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpMetalChain" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillBatterUp" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillBatterUp" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkBatterUpMetalChain" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpMetalChain" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillBatterUp" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillBatterUp" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookEnforcerDamage">
+			<property name="Extends" value="bookEnforcerDamage"/>
+			<property name="CustomIcon" value="DementivebookEnforcerDamage"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkEnforcerDamage" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerDamage" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerApparel" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillEnforcer" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillEnforcer" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkEnforcerApparel" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerApparel" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerPunks" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillEnforcer" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillEnforcer" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkEnforcerPunks" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerPunks" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerIntimidation" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillEnforcer" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillEnforcer" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkEnforcerIntimidation" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerIntimidation" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerAPAmmo" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillEnforcer" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillEnforcer" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkEnforcerAPAmmo" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerAPAmmo" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerHPAmmo" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillEnforcer" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillEnforcer" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkEnforcerHPAmmo" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerHPAmmo" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerCriminalPursuit" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillEnforcer" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillEnforcer" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkEnforcerCriminalPursuit" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerCriminalPursuit" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillEnforcer" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillEnforcer" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookFiremansAlmanacHeat">
+			<property name="Extends" value="bookFiremansAlmanacHeat"/>
+			<property name="CustomIcon" value="DementivebookFiremansAlmanacHeat"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkFiremansAlmanacHeat" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacHeat" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacAxes" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillFiremansAlmanac" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillFiremansAlmanac" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkFiremansAlmanacAxes" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacAxes" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacSpeed" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillFiremansAlmanac" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillFiremansAlmanac" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkFiremansAlmanacSpeed" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacSpeed" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacMolotov" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillFiremansAlmanac" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillFiremansAlmanac" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkFiremansAlmanacMolotov" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacMolotov" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacPrevention" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillFiremansAlmanac" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillFiremansAlmanac" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkFiremansAlmanacPrevention" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacPrevention" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacHarvest" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillFiremansAlmanac" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillFiremansAlmanac" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkFiremansAlmanacHarvest" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacHarvest" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacEquipment" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillFiremansAlmanac" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillFiremansAlmanac" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkFiremansAlmanacEquipment" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacEquipment" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillFiremansAlmanac" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillFiremansAlmanac" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookHuntingJournalBears">
+			<property name="Extends" value="bookHuntingJournalBears"/>
+			<property name="CustomIcon" value="DementivebookHuntingJournalBears"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkHuntingJournalBears" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalBears" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalWolves" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillHuntingJournal" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillHuntingJournal" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkHuntingJournalWolves" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalWolves" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalCoyotes" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillHuntingJournal" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillHuntingJournal" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkHuntingJournalCoyotes" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalCoyotes" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalMountainLions" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillHuntingJournal" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillHuntingJournal" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkHuntingJournalMountainLions" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalMountainLions" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalDeer" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillHuntingJournal" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillHuntingJournal" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkHuntingJournalDeer" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalDeer" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalVultures" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillHuntingJournal" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillHuntingJournal" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkHuntingJournalVultures" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalVultures" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalSelfDefense" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillHuntingJournal" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillHuntingJournal" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkHuntingJournalSelfDefense" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalSelfDefense" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillHuntingJournal" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillHuntingJournal" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookLuckyLooterDukes">
+			<property name="Extends" value="bookLuckyLooterDukes"/>
+			<property name="CustomIcon" value="DementivebookLuckyLooterDukes"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkLuckyLooterDukes" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterDukes" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterAmmunition" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillLuckyLooter" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillLuckyLooter" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkLuckyLooterAmmunition" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterAmmunition" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterBrass" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillLuckyLooter" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillLuckyLooter" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkLuckyLooterBrass" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterBrass" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterLead" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillLuckyLooter" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillLuckyLooter" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkLuckyLooterLead" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterLead" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterBooks" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillLuckyLooter" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillLuckyLooter" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkLuckyLooterBooks" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterBooks" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterFood" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillLuckyLooter" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillLuckyLooter" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkLuckyLooterFood" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterFood" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterMedical" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillLuckyLooter" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillLuckyLooter" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkLuckyLooterMedical" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterMedical" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillLuckyLooter" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillLuckyLooter" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookNeedleAndThreadWinterWear">
+			<property name="Extends" value="bookNeedleAndThreadWinterWear"/>
+			<property name="CustomIcon" value="DementivebookNeedleAndThreadWinterWear"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkNeedleAndThreadWinterWear" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadWinterWear" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadLegwear" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkNeedleAndThreadLegwear" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadLegwear" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadFootwear" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkNeedleAndThreadFootwear" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadFootwear" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadDesertWear" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkNeedleAndThreadDesertWear" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadDesertWear" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadDusters" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkNeedleAndThreadDusters" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadDusters" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadPufferCoats" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkNeedleAndThreadPufferCoats" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadPufferCoats" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadPockets" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkNeedleAndThreadPockets" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadPockets" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookNightStalkerStealthDamage">
+			<property name="Extends" value="bookNightStalkerStealthDamage"/>
+			<property name="CustomIcon" value="DementivebookNightStalkerStealthDamage"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkNightStalkerStealthDamage" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerStealthDamage" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerSilentNight" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillNightStalker" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillNightStalker" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkNightStalkerSilentNight" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerSilentNight" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerBlades" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillNightStalker" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillNightStalker" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkNightStalkerBlades" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerBlades" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerThiefAdrenaline" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillNightStalker" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillNightStalker" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkNightStalkerThiefAdrenaline" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerThiefAdrenaline" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerArchery" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillNightStalker" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillNightStalker" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkNightStalkerArchery" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerArchery" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerTwilightThief" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillNightStalker" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillNightStalker" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkNightStalkerTwilightThief" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerTwilightThief" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerSlumberParty" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillNightStalker" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillNightStalker" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkNightStalkerSlumberParty" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerSlumberParty" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillNightStalker" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillNightStalker" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookPistolPeteTakeAim">
+			<property name="Extends" value="bookPistolPeteTakeAim"/>
+			<property name="CustomIcon" value="DementivebookPistolPeteTakeAim"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkPistolPeteTakeAim" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteTakeAim" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteSwissKnees" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillPistolPete" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillPistolPete" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkPistolPeteSwissKnees" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteSwissKnees" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteSteadyHand" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillPistolPete" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillPistolPete" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkPistolPeteSteadyHand" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteSteadyHand" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteMaintenance" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillPistolPete" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillPistolPete" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkPistolPeteMaintenance" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteMaintenance" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteHPAmmo" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillPistolPete" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillPistolPete" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkPistolPeteHPAmmo" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteHPAmmo" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteAPAmmo" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillPistolPete" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillPistolPete" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkPistolPeteAPAmmo" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteAPAmmo" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteDamage" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillPistolPete" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillPistolPete" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkPistolPeteDamage" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteDamage" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillPistolPete" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillPistolPete" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookRangersArrowRecovery">
+			<property name="Extends" value="bookRangersArrowRecovery"/>
+			<property name="CustomIcon" value="DementivebookRangersArrowRecovery"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkRangersArrowRecovery" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersArrowRecovery" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersExplodingBolts" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillArchery" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillArchery" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkRangersExplodingBolts" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersExplodingBolts" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersCripplingShot" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillArchery" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillArchery" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkRangersCripplingShot" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersCripplingShot" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersAPAmmo" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillArchery" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillArchery" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkRangersAPAmmo" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersAPAmmo" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersFlamingArrows" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillArchery" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillArchery" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkRangersFlamingArrows" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersFlamingArrows" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersForestGuide" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillArchery" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillArchery" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkRangersForestGuide" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersForestGuide" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersKnockdown" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillArchery" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillArchery" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkRangersKnockdown" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersKnockdown" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillArchery" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillArchery" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookShotgunMessiahDamage">
+			<property name="Extends" value="bookShotgunMessiahDamage"/>
+			<property name="CustomIcon" value="DementivebookShotgunMessiahDamage"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkShotgunMessiahDamage" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahDamage" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahBreachingSlugs" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillShotguns" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillShotguns" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkShotgunMessiahBreachingSlugs" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahBreachingSlugs" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahLimbShot" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillShotguns" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillShotguns" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkShotgunMessiahLimbShot" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahLimbShot" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahSlugs" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillShotguns" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillShotguns" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkShotgunMessiahSlugs" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahSlugs" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahMaintenance" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillShotguns" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillShotguns" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkShotgunMessiahMaintenance" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahMaintenance" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahMagazine" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillShotguns" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillShotguns" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkShotgunMessiahMagazine" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahMagazine" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahPartyStarter" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillShotguns" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillShotguns" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkShotgunMessiahPartyStarter" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahPartyStarter" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillShotguns" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillShotguns" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookSniperDamage">
+			<property name="Extends" value="bookSniperDamage"/>
+			<property name="CustomIcon" value="DementivebookSniperDamage"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkSniperDamage" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperDamage" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperCripplingShot" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillSniper" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillSniper" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkSniperCripplingShot" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperCripplingShot" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperHeadShot" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillSniper" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillSniper" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkSniperHeadShot" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperHeadShot" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperReload" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillSniper" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillSniper" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkSniperReload" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperReload" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperControlledBreathing" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillSniper" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillSniper" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkSniperControlledBreathing" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperControlledBreathing" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperAPAmmo" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillSniper" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillSniper" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkSniperAPAmmo" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperAPAmmo" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperHPAmmo" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillSniper" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillSniper" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkSniperHPAmmo" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperHPAmmo" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillSniper" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillSniper" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookSniperDamage">
+			<property name="Extends" value="bookSniperDamage"/>
+			<property name="CustomIcon" value="DementivebookSniperDamage"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkSpearHunter1Damage" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter1Damage" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter2Maintenance" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillSpearHunter" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillSpearHunter" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkSpearHunter2Maintenance" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter2Maintenance" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter3Bleed" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillSpearHunter" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillSpearHunter" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkSpearHunter3Bleed" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter3Bleed" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter4KillMove" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillSpearHunter" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillSpearHunter" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkSpearHunter4KillMove" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter4KillMove" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter5RapidStrike" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillSpearHunter" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillSpearHunter" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkSpearHunter5RapidStrike" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter5RapidStrike" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter6PenetratingShaft" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillSpearHunter" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillSpearHunter" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkSpearHunter6PenetratingShaft" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter6PenetratingShaft" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter7QuickStrike" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillSpearHunter" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillSpearHunter" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkSpearHunter7QuickStrike" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter7QuickStrike" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillSpearHunter" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillSpearHunter" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookTechJunkie1Damage">
+			<property name="Extends" value="bookTechJunkie1Damage"/>
+			<property name="CustomIcon" value="DementivebookTechJunkie1Damage"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkTechJunkie1Damage" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie1Damage" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie2Maintenance" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillTechJunkie" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillTechJunkie" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkTechJunkie2Maintenance" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie2Maintenance" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie3APAmmo" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillTechJunkie" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillTechJunkie" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkTechJunkie3APAmmo" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie3APAmmo" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie4Shells" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillTechJunkie" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillTechJunkie" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkTechJunkie4Shells" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie4Shells" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie5Repulsor" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillTechJunkie" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillTechJunkie" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkTechJunkie5Repulsor" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie5Repulsor" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie6BatonCharge" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillTechJunkie" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillTechJunkie" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkTechJunkie6BatonCharge" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie6BatonCharge" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie7Hydraulics" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillTechJunkie" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillTechJunkie" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkTechJunkie7Hydraulics" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie7Hydraulics" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie8Complete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillTechJunkie" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillTechJunkie" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookTheGreatHeistSafes">
+			<property name="Extends" value="bookGreatHeistSafes"/>
+			<property name="CustomIcon" value="DementivebookTheGreatHeistSafes"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkGreatHeistSafes" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistSafes" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistGems" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillGreatHeist" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillGreatHeist" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkGreatHeistGems" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistGems" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistGoldRush" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillGreatHeist" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillGreatHeist" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkGreatHeistGoldRush" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistGoldRush" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistClaimed" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillGreatHeist" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillGreatHeist" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkGreatHeistClaimed" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistClaimed" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistAdrenalineFall" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillGreatHeist" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillGreatHeist" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkGreatHeistAdrenalineFall" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistAdrenalineFall" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistSprintSneak" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillGreatHeist" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillGreatHeist" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkGreatHeistSprintSneak" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistSprintSneak" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistMotionDetection" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillGreatHeist" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillGreatHeist" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkGreatHeistMotionDetection" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistMotionDetection" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillGreatHeist" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillGreatHeist" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookUrbanCombatLanding">
+			<property name="Extends" value="bookUrbanCombatLanding"/>
+			<property name="CustomIcon" value="DementivebookUrbanCombatLanding"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkUrbanCombatLanding" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatLanding" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatCigar" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillUrbanCombat" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillUrbanCombat" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkUrbanCombatCigar" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatCigar" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatSneaking" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillUrbanCombat" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillUrbanCombat" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkUrbanCombatSneaking" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatSneaking" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatJumping" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillUrbanCombat" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillUrbanCombat" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkUrbanCombatJumping" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatJumping" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatLandMines" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillUrbanCombat" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillUrbanCombat" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkUrbanCombatLandMines" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatLandMines" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatAdrenalineRush" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillUrbanCombat" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillUrbanCombat" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkUrbanCombatAdrenalineRush" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatAdrenalineRush" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatRoomClearing" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillUrbanCombat" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillUrbanCombat" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkUrbanCombatRoomClearing" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatRoomClearing" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillUrbanCombat" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillUrbanCombat" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivebookWasteTreasuresHoney">
+			<property name="Extends" value="bookWasteTreasuresHoney"/>
+			<property name="CustomIcon" value="DementivebookWasteTreasuresHoney"/>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkWasteTreasuresHoney" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresHoney" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresCoffins" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillWasteTreasures" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillWasteTreasures" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkWasteTreasuresCoffins" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresCoffins" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresAcid" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillWasteTreasures" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillWasteTreasures" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkWasteTreasuresAcid" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresAcid" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresWater" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillWasteTreasures" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillWasteTreasures" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkWasteTreasuresWater" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresWater" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresDoors" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillWasteTreasures" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillWasteTreasures" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkWasteTreasuresDoors" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresDoors" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresCloth" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillWasteTreasures" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillWasteTreasures" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkWasteTreasuresCloth" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresCloth" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresSinks" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillWasteTreasures" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillWasteTreasures" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="ProgressionLevel" progression_name="perkWasteTreasuresSinks" operation="Equals" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresSinks" level="-1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresComplete" level="-1">
+					<requirement name="PerksUnlocked" skill_name="skillWasteTreasures" operation="GTE" value="7"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
+					<requirement name="PerksUnlocked" skill_name="skillWasteTreasures" operation="GTE" value="7"/></triggered_effect>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+			</effect_group>
+		</item>
+
+	</append>
+
+	<append xpath="/item[@name='questRewardT4BookBundle']/property[@class='Action0']/property[@name='Random_item']/@value">
+		,DementivearmorSkillMagazine,DementivebookArtOfMiningLuckyStrike,DementivebookAutoWeaponsDamage,DementivebookBarBrawling1BasicMoves,DementivebookBatterUpBigHits,DementivebookBigHitters,DementivebookEnforcerDamage,DementivebookFiremansAlmanacHeat,DementivebookHuntingJournalBears,DementivebookNeedleAndThreadWinterWear,DementivebookNightStalkerStealthDamage,DementivebookPistolPeteTakeAim,DementivebookRangersArrowRecovery,DementivebookShotgunMessiahDamage,DementivebookSniperDamage,DementivebookSniperDamage,DementivebookTechJunkie1Damage,DementivebookTheGreatHeistSafes,DementivebookUrbanCombatLanding,DementivebookWasteTreasuresHoney
+	</append>
+
+	<append xpath="/item[@name='questRewardT5BookBundle']/property[@class='Action0']/property[@name='Random_item']/@value">
+		,DementivearmorSkillMagazine,DementivebookArtOfMiningLuckyStrike,DementivebookAutoWeaponsDamage,DementivebookBarBrawling1BasicMoves,DementivebookBatterUpBigHits,DementivebookBigHitters,DementivebookEnforcerDamage,DementivebookFiremansAlmanacHeat,DementivebookHuntingJournalBears,DementivebookNeedleAndThreadWinterWear,DementivebookNightStalkerStealthDamage,DementivebookPistolPeteTakeAim,DementivebookRangersArrowRecovery,DementivebookShotgunMessiahDamage,DementivebookSniperDamage,DementivebookSniperDamage,DementivebookTechJunkie1Damage,DementivebookTheGreatHeistSafes,DementivebookUrbanCombatLanding,DementivebookWasteTreasuresHoney
+	</append>
+
+</Dementive>
