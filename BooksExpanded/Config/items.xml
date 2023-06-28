@@ -9,6 +9,7 @@
 		<item name="DementivearmorSkillMagazine">
 			<property name="Extends" value="armorSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookArmoredUp"/>
+			<property name="EconomicValue" value="200"/>
 			
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingArmor" level="2"/>
@@ -19,6 +20,7 @@
 		<item name="DementivebookBigHitters">
 			<property name="Extends" value="clubsSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookBigHitters"/>
+			<property name="EconomicValue" value="200"/>
 			
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingClubs" level="2"/>
@@ -29,6 +31,7 @@
 		<item name="DementivebookBowHunters">
 			<property name="Extends" value="bowsSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookBowHunters"/>
+			<property name="EconomicValue" value="200"/>
 
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingBows" level="2"/>
@@ -39,6 +42,7 @@
 		<item name="DementivebookElectricalTraps">
 			<property name="Extends" value="trapsSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookElectricalTraps"/>
+			<property name="EconomicValue" value="200"/>
 
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="2"/>
@@ -49,6 +53,7 @@
 		<item name="DementivebookExplosiveMagazine">
 			<property name="Extends" value="explosivesSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookExplosiveMagazine"/>
+			<property name="EconomicValue" value="200"/>
 
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingExplosives" level="2"/>
@@ -59,6 +64,7 @@
 		<item name="DementivebookForgeAhead">
 			<property name="Extends" value="knucklesSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookForgeAhead"/>
+			<property name="EconomicValue" value="200"/>
 
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingKnuckles" level="2"/>
@@ -69,6 +75,7 @@
 		<item name="DementivebookFuriousFists">
 			<property name="Extends" value="workstationSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookFuriousFists"/>
+			<property name="EconomicValue" value="200"/>
 
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingWorkstations" level="2"/>
@@ -79,6 +86,7 @@
 		<item name="DementivebookGetHammered">
 			<property name="Extends" value="sledgehammersSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookGetHammered"/>
+			<property name="EconomicValue" value="200"/>
 
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSledgehammers" level="2"/>
@@ -89,6 +97,7 @@
 		<item name="DementivebookHandgunMagazine">
 			<property name="Extends" value="handgunsSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookHandgunMagazine"/>
+			<property name="EconomicValue" value="200"/>
 
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingHandguns" level="2"/>
@@ -100,6 +109,7 @@
 		<item name="DementivebookHandyLand">
 			<property name="Extends" value="repairToolsSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookHandyLand"/>
+			<property name="EconomicValue" value="200"/>
 
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingRepairTools" level="2"/>
@@ -110,6 +120,7 @@
 		<item name="DementivebookHomeCookingWeekly">
 			<property name="Extends" value="foodSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookHomeCookingWeekly"/>
+			<property name="EconomicValue" value="200"/>
 
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingFood" level="2"/>
@@ -120,6 +131,7 @@
 		<item name="DementivebookKnifeGuy">
 			<property name="Extends" value="bladesSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookKnifeGuy"/>
+			<property name="EconomicValue" value="200"/>
 
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingBlades" level="2"/>
@@ -130,6 +142,7 @@
 		<item name="DementivebookMedicalJournal">
 			<property name="Extends" value="medicalSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookMedicalJournal"/>
+			<property name="EconomicValue" value="200"/>
 			
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingMedical" level="2"/>
@@ -140,6 +153,7 @@
 		<item name="DementivebookRifleWorld">
 			<property name="Extends" value="riflesSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookRifleWorld"/>
+			<property name="EconomicValue" value="200"/>
 			
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingRifles" level="2"/>
@@ -148,8 +162,9 @@
 		</item>
 
 		<item name="DementivebookScrapping4Fun">
-			<property name="Extends" value="bookScrapping4Fun"/>
+			<property name="Extends" value="salvageToolsSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookScrapping4Fun"/>
+			<property name="EconomicValue" value="200"/>
 
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSalvageTools" level="2"/>
@@ -160,6 +175,7 @@
 		<item name="DementivebookSharpSticks">
 			<property name="Extends" value="spearsSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookSharpSticks"/>
+			<property name="EconomicValue" value="200"/>
 
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSpears" level="2"/>
@@ -170,6 +186,7 @@
 		<item name="DementivebookShotgunWeekly">
 			<property name="Extends" value="shotgunsSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookShotgunWeekly"/>
+			<property name="EconomicValue" value="200"/>
 			
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingShotguns" level="2"/>
@@ -180,6 +197,7 @@
 		<item name="DementivebookSouthernFarming">
 			<property name="Extends" value="seedSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookSouthernFarming"/>
+			<property name="EconomicValue" value="200"/>
 			
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSeeds" level="2"/>
@@ -190,6 +208,7 @@
 		<item name="DementivebookTacticalWarfare">
 			<property name="Extends" value="machineGunsSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookTacticalWarfare"/>
+			<property name="EconomicValue" value="200"/>
 			
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingMachineGuns" level="2"/>
@@ -200,6 +219,7 @@
 		<item name="DementivebookTechPlanet">
 			<property name="Extends" value="roboticsSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookTechPlanet"/>
+			<property name="EconomicValue" value="200"/>
 			
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingRobotics" level="2"/>
@@ -210,6 +230,7 @@
 		<item name="DementivebookToolsDigest">
 			<property name="Extends" value="harvestingToolsSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookToolsDigest"/>
+			<property name="EconomicValue" value="200"/>
 
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingHarvestingTools" level="2"/>
@@ -220,6 +241,7 @@
 		<item name="DementivebookVehicleAdventures">
 			<property name="Extends" value="vehiclesSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookVehicleAdventures"/>
+			<property name="EconomicValue" value="200"/>
 			
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingVehicles" level="2"/>
@@ -230,6 +252,7 @@
 		<item name="DementivebookWiring101">
 			<property name="Extends" value="electricianSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookWiring101"/>
+			<property name="EconomicValue" value="200"/>
 			
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingElectrician" level="2"/>
@@ -244,6 +267,7 @@
 		<item name="DementivebookArtOfMiningLuckyStrike">
 			<property name="Extends" value="bookArtOfMiningLuckyStrike"/>
 			<property name="CustomIcon" value="DementivebookArtOfMiningLuckyStrike"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkArtOfMiningLuckyStrike" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkArtOfMiningLuckyStrike" level="-1"/>
@@ -315,6 +339,7 @@
 		<item name="DementivebookAutoWeaponsDamage">
 			<property name="Extends" value="bookAutoWeaponsDamage"/>
 			<property name="CustomIcon" value="DementivebookAutoWeaponsDamage"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkAutoWeaponsDamage" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkAutoWeaponsDamage" level="-1"/>
@@ -385,6 +410,7 @@
 		<item name="DementivebookBarBrawling1BasicMoves">
 			<property name="Extends" value="bookBarBrawling1BasicMoves"/>
 			<property name="CustomIcon" value="DementivebookBarBrawling1BasicMoves"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkBarBrawling1BasicMoves" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBarBrawling1BasicMoves" level="-1"/>
@@ -455,6 +481,7 @@
 		<item name="DementivebookBatterUpBigHits">
 			<property name="Extends" value="bookBatterUpBigHits"/>
 			<property name="CustomIcon" value="DementivebookBatterUpBigHits"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkBatterUpBigHits" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkBatterUpBigHits" level="-1"/>
@@ -525,6 +552,7 @@
 		<item name="DementivebookEnforcerDamage">
 			<property name="Extends" value="bookEnforcerDamage"/>
 			<property name="CustomIcon" value="DementivebookEnforcerDamage"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkEnforcerDamage" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkEnforcerDamage" level="-1"/>
@@ -595,6 +623,7 @@
 		<item name="DementivebookFiremansAlmanacHeat">
 			<property name="Extends" value="bookFiremansAlmanacHeat"/>
 			<property name="CustomIcon" value="DementivebookFiremansAlmanacHeat"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkFiremansAlmanacHeat" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkFiremansAlmanacHeat" level="-1"/>
@@ -665,6 +694,7 @@
 		<item name="DementivebookHuntingJournalBears">
 			<property name="Extends" value="bookHuntingJournalBears"/>
 			<property name="CustomIcon" value="DementivebookHuntingJournalBears"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkHuntingJournalBears" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkHuntingJournalBears" level="-1"/>
@@ -735,6 +765,7 @@
 		<item name="DementivebookLuckyLooterDukes">
 			<property name="Extends" value="bookLuckyLooterDukes"/>
 			<property name="CustomIcon" value="DementivebookLuckyLooterDukes"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkLuckyLooterDukes" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkLuckyLooterDukes" level="-1"/>
@@ -805,6 +836,7 @@
 		<item name="DementivebookNeedleAndThreadWinterWear">
 			<property name="Extends" value="bookNeedleAndThreadWinterWear"/>
 			<property name="CustomIcon" value="DementivebookNeedleAndThreadWinterWear"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkNeedleAndThreadWinterWear" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadWinterWear" level="-1"/>
@@ -875,6 +907,7 @@
 		<item name="DementivebookNightStalkerStealthDamage">
 			<property name="Extends" value="bookNightStalkerStealthDamage"/>
 			<property name="CustomIcon" value="DementivebookNightStalkerStealthDamage"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkNightStalkerStealthDamage" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNightStalkerStealthDamage" level="-1"/>
@@ -945,6 +978,7 @@
 		<item name="DementivebookPistolPeteTakeAim">
 			<property name="Extends" value="bookPistolPeteTakeAim"/>
 			<property name="CustomIcon" value="DementivebookPistolPeteTakeAim"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkPistolPeteTakeAim" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkPistolPeteTakeAim" level="-1"/>
@@ -1015,6 +1049,7 @@
 		<item name="DementivebookRangersArrowRecovery">
 			<property name="Extends" value="bookRangersArrowRecovery"/>
 			<property name="CustomIcon" value="DementivebookRangersArrowRecovery"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkRangersArrowRecovery" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkRangersArrowRecovery" level="-1"/>
@@ -1085,6 +1120,7 @@
 		<item name="DementivebookShotgunMessiahDamage">
 			<property name="Extends" value="bookShotgunMessiahDamage"/>
 			<property name="CustomIcon" value="DementivebookShotgunMessiahDamage"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkShotgunMessiahDamage" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkShotgunMessiahDamage" level="-1"/>
@@ -1155,6 +1191,7 @@
 		<item name="DementivebookSniperDamage">
 			<property name="Extends" value="bookSniperDamage"/>
 			<property name="CustomIcon" value="DementivebookSniperDamage"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkSniperDamage" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSniperDamage" level="-1"/>
@@ -1222,9 +1259,10 @@
 			</effect_group>
 		</item>
 
-		<item name="DementivebookSniperDamage">
+		<item name="DementivebookSpearHunter1Damage">
 			<property name="Extends" value="bookSniperDamage"/>
-			<property name="CustomIcon" value="DementivebookSniperDamage"/>
+			<property name="CustomIcon" value="DementivebookSpearHunter1Damage"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkSpearHunter1Damage" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkSpearHunter1Damage" level="-1"/>
@@ -1295,6 +1333,7 @@
 		<item name="DementivebookTechJunkie1Damage">
 			<property name="Extends" value="bookTechJunkie1Damage"/>
 			<property name="CustomIcon" value="DementivebookTechJunkie1Damage"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkTechJunkie1Damage" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkTechJunkie1Damage" level="-1"/>
@@ -1365,6 +1404,7 @@
 		<item name="DementivebookTheGreatHeistSafes">
 			<property name="Extends" value="bookGreatHeistSafes"/>
 			<property name="CustomIcon" value="DementivebookTheGreatHeistSafes"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkGreatHeistSafes" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkGreatHeistSafes" level="-1"/>
@@ -1435,6 +1475,7 @@
 		<item name="DementivebookUrbanCombatLanding">
 			<property name="Extends" value="bookUrbanCombatLanding"/>
 			<property name="CustomIcon" value="DementivebookUrbanCombatLanding"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkUrbanCombatLanding" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkUrbanCombatLanding" level="-1"/>
@@ -1505,6 +1546,7 @@
 		<item name="DementivebookWasteTreasuresHoney">
 			<property name="Extends" value="bookWasteTreasuresHoney"/>
 			<property name="CustomIcon" value="DementivebookWasteTreasuresHoney"/>
+			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">
 				<requirement name="ProgressionLevel" progression_name="perkWasteTreasuresHoney" operation="Equals" value="0"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkWasteTreasuresHoney" level="-1"/>
@@ -1574,12 +1616,13 @@
 
 	</append>
 
-	<append xpath="/item[@name='questRewardT4BookBundle']/property[@class='Action0']/property[@name='Random_item']/@value">
+
+<!-- 	<append xpath="/item[@name='questRewardT4BookBundle']/property[@class='Action0']/property[@name='Random_item']/@value">
 		,DementivearmorSkillMagazine,DementivebookArtOfMiningLuckyStrike,DementivebookAutoWeaponsDamage,DementivebookBarBrawling1BasicMoves,DementivebookBatterUpBigHits,DementivebookBigHitters,DementivebookEnforcerDamage,DementivebookFiremansAlmanacHeat,DementivebookHuntingJournalBears,DementivebookNeedleAndThreadWinterWear,DementivebookNightStalkerStealthDamage,DementivebookPistolPeteTakeAim,DementivebookRangersArrowRecovery,DementivebookShotgunMessiahDamage,DementivebookSniperDamage,DementivebookSniperDamage,DementivebookTechJunkie1Damage,DementivebookTheGreatHeistSafes,DementivebookUrbanCombatLanding,DementivebookWasteTreasuresHoney
 	</append>
 
 	<append xpath="/item[@name='questRewardT5BookBundle']/property[@class='Action0']/property[@name='Random_item']/@value">
 		,DementivearmorSkillMagazine,DementivebookArtOfMiningLuckyStrike,DementivebookAutoWeaponsDamage,DementivebookBarBrawling1BasicMoves,DementivebookBatterUpBigHits,DementivebookBigHitters,DementivebookEnforcerDamage,DementivebookFiremansAlmanacHeat,DementivebookHuntingJournalBears,DementivebookNeedleAndThreadWinterWear,DementivebookNightStalkerStealthDamage,DementivebookPistolPeteTakeAim,DementivebookRangersArrowRecovery,DementivebookShotgunMessiahDamage,DementivebookSniperDamage,DementivebookSniperDamage,DementivebookTechJunkie1Damage,DementivebookTheGreatHeistSafes,DementivebookUrbanCombatLanding,DementivebookWasteTreasuresHoney
-	</append>
+	</append> -->
 
 </Dementive>

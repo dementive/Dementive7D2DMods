@@ -1,0 +1,42 @@
+Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,latam,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese,spanish
+DementivearmorSkillMagazine,items,perk book,,,Super Armored Up
+DementivebookBigHitters,items,perk book,,,Super Big Hitter
+DementivebookBowHunters,items,perk book,,,Super Bow Hunter
+DementivebookElectricalTraps,items,perk book,,,Super Electric Traps
+DementivebookExplosiveMagazine,items,perk book,,,Super Explosives
+DementivebookForgeAhead,items,perk book,,,Super Forging
+DementivebookFuriousFists,items,perk book,,,Super Fists
+DementivebookGetHammered,items,perk book,,,Super Hammered
+DementivebookHandgunMagazine,items,perk book,,,Super Handgun
+DementivebookHandyLand,items,perk book,,,Super Handy Land
+DementivebookHomeCookingWeekly,items,perk book,,,Super Cook
+DementivebookKnifeGuy,items,perk book,,,Super Knife Guy
+DementivebookMedicalJournal,items,perk book,,,Super Medical Journal
+DementivebookRifleWorld,items,perk book,,,Super Rifle World
+DementivebookScrapping4Fun,items,perk book,,,Super Scrapping
+DementivebookSharpSticks,items,perk book,,,Super Sharp Sticks
+DementivebookShotgunWeekly,items,perk book,,,Super Shotgun Weekly
+DementivebookSouthernFarming,items,perk book,,,Super Southern Farming
+DementivebookTacticalWarfare,items,perk book,,,Super Tactical Warfare
+DementivebookTechPlanet,items,perk book,,,Super Tech Plantet
+DementivebookToolsDigest,items,perk book,,,Super Tools
+DementivebookVehicleAdventures,items,perk book,,,Super Vehicle Adventures
+DementivebookWiring101,items,perk book,,,Super Wiring 101
+DementivebookArtOfMiningLuckyStrike,items,perk book,,,Super Art of Mining
+DementivebookAutoWeaponsDamage,items,perk book,,,Super Auto Weapons
+DementivebookBarBrawling1BasicMoves,items,perk book,,,Super Bar Brawling
+DementivebookBatterUpBigHits,items,perk book,,,Super Batter Up
+DementivebookEnforcerDamage,items,perk book,,,Super Enforcer
+DementivebookFiremansAlmanacHeat,items,perk book,,,Super Fireman's Almanac
+DementivebookHuntingJournalBears,items,perk book,,,Super Bear Hunting Journal
+DementivebookLuckyLooterDukes,items,perk book,,,Super Lucky Looter
+DementivebookNightStalkerStealthDamage,items,perk book,,,Super Night Stalker
+DementivebookPistolPeteTakeAim,items,perk book,,,Super Pistol Pete
+DementivebookRangersArrowRecovery,items,perk book,,,Super Rangers Recovery
+DementivebookShotgunMessiahDamage,items,perk book,,,Super Shotgun Messiah
+DementivebookSniperDamage,items,perk book,,,Super Sniper
+DementivebookSpearHunter1Damage,items,perk book,,,Super Spear Hunter
+DementivebookTechJunkie1Damage,items,perk book,,,Super Tech Junkie
+DementivebookTheGreatHeistSafes,items,perk book,,,Super Great Heist
+DementivebookUrbanCombatLanding,items,perk book,,,Super Urban Combat
+DementivebookWasteTreasuresHoney,items,perk book,,,Super Wasteland Treasures

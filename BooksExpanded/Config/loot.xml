@@ -1,6 +1,6 @@
 <Dementive>
 
-	<append xpath="/lootprobtemplates">
+	<append xpath="/lootcontainers/lootprobtemplates">
 		<lootprobtemplate name="DementiveRareBooks">
 			<loot level="1,999999" prob=".1"/>
 		</lootprobtemplate>
