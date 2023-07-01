@@ -1,0 +1,3 @@
+Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,latam,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese,spanish
+DementiveHughsGlock,items,Gun,,,Hugh's Special Glock
+DementiveHughsGlockDesc,items,Gun,,,Hugh's special glock that he modified with his own hands way back in the day, he somehow lost it long ago...but here it is in perfect condition ready for killing.

@@ -1,0 +1,17 @@
+<Dementive>
+
+	<append xpath="/lootcontainers/lootprobtemplates">
+		<lootprobtemplate name="DementiveRareWeapons">
+			<loot level="1,999999" prob=".001"/>  <!-- 1 / 1000 -->
+		</lootprobtemplate>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupQuestWeaponsRangedT3']">
+		<item name="DementiveHughsGlock" loot_prob_template="DementiveRareWeapons"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupMilitaryFootlocker02']">
+		<item name="DementiveHughsGlock" loot_prob_template="DementiveRareWeapons"/>
+	</append>
+
+</Dementive>

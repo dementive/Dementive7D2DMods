@@ -1,0 +1,44 @@
+<Dementive>
+
+	<append xpath="/item_modifiers/item_modifier[@name='modGunSoundSuppressorSilencer']">
+		<item_property_overrides name="DementiveHughsGlock">
+			<property name="Sound_start" value="pistol_s_fire"/>
+			<property name="BarrelOffset" value="0,-.006,.127"/>
+			<property name="BarrelScale" value="1,1,1"/>
+		</item_property_overrides>
+	</append>
+
+	<append xpath="/item_modifiers/item_modifier[@name='modGunLaserSight']">
+		<item_property_overrides name="DementiveHughsGlock">
+			<property name="SideOffset" value="0,.0148,.0479"/>
+			<property name="SideScale" value="1,1,1"/>
+		</item_property_overrides>
+	</append>
+
+	<append xpath="/item_modifiers/item_modifier[@name='modGunFlashlight']">
+		<item_property_overrides name="DementiveHughsGlock">
+			<property name="SideOffset" value="0,.0198,.0475"/>
+			<property name="SideScale" value=".75,.75,.75"/>
+		</item_property_overrides>
+	</append>
+
+	<append xpath="/item_modifiers/item_modifier[@name='modGunScopeSmall']">
+		<item_property_overrides name="DementiveHughsGlock">
+			<property name="ScopeOffset" value="0,.074,.078"/>
+			<property name="ScopeScale" value="1,1,1"/>
+			<property name="ScopeCameraOffset" value="0,-.0225,0"/>
+			<property name="zoomTriggerEffectPullDualsense" value="Pistol Trigger"/>
+			<property name="zoomTriggerEffectShootDualsense" value="PistolZoom2"/>
+			<property name="zoomTriggerEffectPullXb" value="PistolZoom"/>
+		</item_property_overrides>
+	</append>
+
+	<append xpath="/item_modifiers/item_modifier[@name='modGunReflexSight']">
+		<item_property_overrides name="DementiveHughsGlock">
+			<property name="ScopeOffset" value="0,.072,.11"/>
+			<property name="ScopeScale" value=".7,.7,.7"/>
+			<property name="ScopeCameraOffset" value="0,-.013,-.2"/>
+		</item_property_overrides>
+	</append>
+
+</Dementive>
