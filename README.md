@@ -4,6 +4,10 @@
 
 • Books Expanded - Mod that adds 20+ more foods, drinks and other consumables. All additions are in the same style as the base game and will fit seemlessly alongside all of the existing consumables in the game, no out of place icons or unbalanced buffs. All candy icons have been retextured to look more interesting as well. No other food mods should be needed with this enabled.
 
+• Weapons Expanded - WIP
+
+• Prefabs Expanded - WIP
+
 • ZMX Color Schemes - Several color schemes for ZMX UI.
 
 # Items
@@ -35,6 +39,10 @@ These are some other mods that go good with my mods for a full vanilla experienc
 
 • ZZtong POI's - https://www.nexusmods.com/7daystodie/mods/1434
 
+• Oakraven - https://7daystodiemods.com/oakraven-collection/
+
+• Boating mod https://www.nexusmods.com/7daystodie/mods/1015
+
 • Add more zombie mods here
 
 • Add more vehicle mods here
@@ -60,3 +68,4 @@ These are some other mods that go good with my mods for a full vanilla experienc
 
 • https://7daystodiemods.com/preppocalypse/
 
+• District Zero - https://www.nexusmods.com/7daystodie/mods/3174
