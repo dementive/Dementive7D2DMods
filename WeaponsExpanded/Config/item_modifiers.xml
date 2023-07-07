@@ -1,5 +1,40 @@
 <Dementive>
 
+	<!-- Melee Mods -->
+	<append xpath="/item_modifiers/item_modifier[@name='modMeleeClubBurningShaft']">
+		<item_property_overrides name="DementivemeleeToolAxeT1IronFireaxe">
+			<property name="FlameEffect" value="ItemModEffects/mod_fireaxe_flamePrefab"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivemeleeToolAxeT2SteelAxe">
+			<property name="FlameEffect" value="ItemModEffects/mod_steel_axe_flamePrefab"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivemeleeWpnClubT3SteelClub">
+			<property name="FlameEffect" value="ItemModEffects/mod_club_flamePrefab"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivemeleeWpnSpearT3SteelSpear">
+			<property name="FlameEffect" value="ItemModEffects/mod_spear_steel_flamePrefab"/>
+		</item_property_overrides>
+	</append>
+
+	<append xpath="/item_modifiers/item_modifier[@name='modMeleeClubBarbedWire']">
+		<item_property_overrides name="DementivemeleeWpnClubT3SteelClub">
+			<property name="Meshfile" value="@:Other/Items/Weapons/Melee/ClubIron/clubIronBarbPrefab.prefab"/>
+		</item_property_overrides>
+	</append>
+
+	<append xpath="/item_modifiers/item_modifier[@name='modMeleeClubMetalSpikes']">
+		<item_property_overrides name="DementivemeleeWpnClubT3SteelClub">
+			<property name="Meshfile" value="@:Other/Items/Weapons/Melee/ClubIron/clubIronSpikePrefab.prefab"/>
+		</item_property_overrides>
+	</append>
+
+	<append xpath="/item_modifiers/item_modifier[@name='modMeleeClubMetalChain']">
+		<item_property_overrides name="DementivemeleeWpnClubT3SteelClub">
+			<property name="Meshfile" value="@:Other/Items/Weapons/Melee/ClubIron/clubIronChainPrefab.prefab"/>
+		</item_property_overrides>
+	</append>
+
+	<!-- Ranged Mods -->
 	<append xpath="/item_modifiers/item_modifier[@name='modGunSoundSuppressorSilencer']">
 		<item_property_overrides name="DementiveHughsGlock">
 			<property name="Sound_start" value="pistol_s_fire"/>
@@ -49,6 +84,27 @@
 			<property name="BarrelOffset" value="0,-.009,.551"/>
 			<property name="BarrelScale" value="1,1,1"/>
 		</item_property_overrides>
+		<item_property_overrides name="DementivegunRifleT2LeverActionRifle">
+			<property name="Sound_start" value="sniperrifle_s_fire"/>
+			<property name="Sound_loop" value="sniperrifle_s_fire"/>
+			<property name="BarrelOffset" value="0,-.02,.2182"/>
+			<property name="BarrelScale" value=".88,.88,.88"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivegunRifleT3SniperRifle">
+			<property name="Sound_start" value="sniperrifle_s_fire"/>
+			<property name="Sound_loop" value="sniperrifle_s_fire"/>
+			<property name="BarrelOffset" value="0,-.02,.2182"/>
+			<property name="BarrelScale" value=".88,.88,.88"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivegunShotgunT1DoubleBarrel">
+			<property name="Sound_start" value="pump_shotgun_s_fire"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivegunShotgunT3AutoShotgun">
+			<property name="Sound_start" value="pump_shotgun_s_fire"/>
+			<property name="Sound_loop" value="pump_shotgun_s_fire"/>
+			<property name="BarrelOffset" value="0,-.0322,.4516"/>
+			<property name="BarrelScale" value="1.1,1.1,1.5"/>
+		</item_property_overrides>
 	</append>
 
 	<append xpath="/item_modifiers/item_modifier[@name='modGunLaserSight']">
@@ -81,6 +137,14 @@
 			<property name="SideRotation" value="0,0,-90"/>
 			<property name="SideScale" value="1,1,1"/>
 		</item_property_overrides>
+		<item_property_overrides name="DementivegunRifleT2LeverActionRifle">
+			<property name="SideOffset" value="0,.003,.1674"/>
+			<property name="SideScale" value="1,1,1"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivegunShotgunT1DoubleBarrel">
+			<property name="SideOffset" value="0,-.055,.07"/>
+			<property name="SideScale" value=".4,.4,.4"/>
+		</item_property_overrides>
 	</append>
 
 	<append xpath="/item_modifiers/item_modifier[@name='modGunFlashlight']">
@@ -112,6 +176,14 @@
 		<item_property_overrides name="DementivegunRifleT1HuntingRifle">
 			<property name="SideOffset" value="0,.0061,.2455"/>
 			<property name="SideScale" value="1,1,1"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivegunRifleT2LeverActionRifle">
+			<property name="SideOffset" value="0,-.0025,.175"/>
+			<property name="SideScale" value="1.12,1.12,1.12"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivegunShotgunT1DoubleBarrel">
+			<property name="SideOffset" value="0,-.03,.066"/>
+			<property name="SideScale" value=".4,.4,.4"/>
 		</item_property_overrides>
 	</append>
 
@@ -170,6 +242,14 @@
 			<property name="zoomTriggerEffectShootDualsense" value="PistolZoom2"/>
 			<property name="zoomTriggerEffectPullXb" value="PistolZoom"/>
 		</item_property_overrides>
+		<item_property_overrides name="DementivegunRifleT2LeverActionRifle">
+			<property name="ScopeOffset" value="0,.0736,-.1497"/>
+			<property name="ScopeScale" value=".9,.9,.9"/>
+			<property name="ScopeCameraOffset" value="0,0,0"/>
+			<property name="zoomTriggerEffectPullDualsense" value="Pistol Trigger"/>
+			<property name="zoomTriggerEffectShootDualsense" value="PistolZoom2"/>
+			<property name="zoomTriggerEffectPullXb" value="PistolZoom"/>
+		</item_property_overrides>
 	</append>
 	
 	<append xpath="/item_modifiers/item_modifier[@name='modGunScopeMedium']">
@@ -192,6 +272,11 @@
 			<property name="ScopeOffset" value="-.0018,.075,.015"/>
 			<property name="ScopeScale" value="1,1,1"/>
 			<property name="ScopeCameraOffset" value="0,-.0238,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivegunRifleT2LeverActionRifle">
+			<property name="ScopeOffset" value="-.0018,.07,-.10"/>
+			<property name="ScopeScale" value="1.6,1.6,1.6"/>
+			<property name="ScopeCameraOffset" value="0,0,0"/>
 		</item_property_overrides>
 	</append>
 
@@ -218,6 +303,14 @@
 			<property name="ScopeOffset" value="-.0006,0,.14"/>
 			<property name="ScopeScale" value="1.2,1.2,1.2"/>
 			<property name="ScopeCameraOffset" value="0,-.022,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivegunRifleT2LeverActionRifle">
+			<property name="ScopeOffset" value="0,0,0"/>
+			<property name="ScopeScale" value="1,1,1"/>
+			<property name="ScopeCameraOffset" value="0,0,0"/>
+			<property name="zoomTriggerEffectPullDualsense" value="Pistol Trigger"/>
+			<property name="zoomTriggerEffectShootDualsense" value="PistolZoom2"/>
+			<property name="zoomTriggerEffectPullXb" value="PistolZoom"/>
 		</item_property_overrides>
 	</append>
 	
@@ -257,6 +350,22 @@
 			<property name="ScopeOffset" value="-.0006,.06,.08"/>
 			<property name="ScopeScale" value=".7,.7,.7"/>
 			<property name="ScopeCameraOffset" value="0,-.012,-.07"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivegunRifleT2LeverActionRifle">
+			<property name="ScopeOffset" value="0,.073,-.13"/>
+			<property name="ScopeScale" value=".7,.7,.7"/>
+			<property name="ScopeCameraOffset" value="-0.0011,-0.014,-.025"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivegunRifleT3SniperRifle">
+			<property name="ScopeCameraOffset" value="0,-.0055,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivegunShotgunT1DoubleBarrel">
+			<property name="ScopeOffset" value="0,.0816,.2104"/>
+			<property name="ScopeScale" value=".25,.3,.3"/>
+			<property name="ScopeCameraOffset" value="-.0004,-.034,0"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivegunShotgunT3AutoShotgun">
+			<property name="ScopeCameraOffset" value=".00095,-.019,.10"/>
 		</item_property_overrides>
 	</append>
 
