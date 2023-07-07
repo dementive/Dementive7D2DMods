@@ -6,8 +6,6 @@
 
 • Weapons Expanded - WIP
 
-• Prefabs Expanded - WIP
-
 • ZMX Color Schemes - Several color schemes for ZMX UI.
 
 # Items
@@ -57,8 +55,6 @@ These are some other mods that go good with my mods for a full vanilla experienc
 • Dangerous Cities - https://7daystodiemods.com/dangerous-cities/
 
 • Always open traders - https://7daystodiemods.com/always-open-traders/
-
-• Traders and quests reset everyday - https://www.nexusmods.com/7daystodie/mods/3064
 
 • Performance Tweaks - https://www.nexusmods.com/7daystodie/mods/1796
 
