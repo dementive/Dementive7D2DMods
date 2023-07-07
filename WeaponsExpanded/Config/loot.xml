@@ -8,10 +8,30 @@
 
 	<append xpath="/lootcontainers/lootgroup[@name='groupQuestWeaponsRangedT3']">
 		<item name="DementiveHughsGlock" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementiveDesertRedeemer" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunHandgunT2Magnum44" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunHandgunT3SMG5" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunMGT1AK47" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunMGT2TacticalAR" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunMGT3M60" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunRifleT1HuntingRifle" loot_prob_template="DementiveRareWeapons"/>
 	</append>
 
 	<append xpath="/lootcontainers/lootgroup[@name='groupMilitaryFootlocker02']">
 		<item name="DementiveHughsGlock" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunHandgunT2Magnum44" loot_prob_template="DementiveRareWeapons"/>
 	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupInfestedT5MeleeRanged']">
+		<item name="DementiveHughsGlock" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementiveDesertRedeemer" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunHandgunT2Magnum44" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunHandgunT3SMG5" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunMGT1AK47" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunMGT2TacticalAR" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunMGT3M60" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunRifleT1HuntingRifle" loot_prob_template="DementiveRareWeapons"/>
+	</append>
+
 
 </Dementive>

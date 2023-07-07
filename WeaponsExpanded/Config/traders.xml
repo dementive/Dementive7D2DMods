@@ -1,6 +1,14 @@
 <Dementive>
+
 	<append xpath="/traders/trader_item_groups/trader_item_group[@name='groupRangedAll']">
-		<item name="DementiveHughsGlock" count="1,2" prob="0.001"/>
+		<item name="DementiveHughsGlock" quality="3,5" prob="0.001"/>
+		<item name="DementiveDesertRedeemer" quality="3,5" prob="0.001"/>
+		<item name="DementivegunHandgunT2Magnum44" quality="3,5" prob="0.001"/>
+		<item name="DementivegunHandgunT3SMG5" quality="3,5" prob="0.001"/>
+		<item name="DementivegunMGT1AK47" quality="3,5" prob="0.001"/>
+		<item name="DementivegunMGT2TacticalAR" quality="3,5" prob="0.001"/>
+		<item name="DementivegunMGT3M60" quality="3,5" prob="0.001"/>
+		<item name="DementivegunRifleT1HuntingRifle" quality="3,5" prob="0.001"/>
 	</append>
 	
 </Dementive>
