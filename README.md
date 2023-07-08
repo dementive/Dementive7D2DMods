@@ -7,7 +7,7 @@
 • Weapons Expanded - Mod that adds 21 very rare weapons that can only be looted or bought from traders. All weapons are based on base game icons so there will be no out of place icons, or unbalanced buffs. New Weapons Include:
 1. Hugh's Special Glock
 2. Desert Redeemer
-3. Golden Revolver
+3. Joe's Golden Magnum
 4. Marc's MP5
 5. Red Army AK-47
 6. Lieutenant Dan's Zombie Slayer

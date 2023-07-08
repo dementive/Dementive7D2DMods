@@ -118,7 +118,7 @@
 			</effect_group>
 		</item>
 
-		<!-- Golden Revolver -->
+		<!-- Joe's Golden Magnum -->
 		<item name="DementivegunHandgunT2Magnum44">
 			<property name="Extends" value="gunHandgunT1Pistol"/>
 			<property name="CustomIcon" value="DementivegunHandgunT2Magnum44"/>
