@@ -1,0 +1,43 @@
+Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,latam,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese,spanish
+DementiveHughsGlock,items,Gun,,,Hugh's Special Glock
+DementiveHughsGlockDesc,items,Gun,,,Hugh's special glock that he modified with his own hands way back in the day, he somehow lost it long ago...but here it is in perfect condition ready for killing.
+DementiveDesertRedeemer,items,Gun,,,Desert Redeemer
+DementiveDesertRedeemerDesc,items,Gun,,,This gas-operated, semi-automatic pistol is sure to have zombies wishing they had gone vegan when they see you strapped with one of these.
+DementivegunHandgunT2Magnum44,items,Gun,,,Joe's Golden Magnum
+DementivegunHandgunT2Magnum44Desc,items,Gun,,,This gold-plated magnum bears an engraving with the name 'Joe' on it, nothing else seems to remain of Joe but not doubt Joe would want countless zombies to be killed with his magnum in his name.
+DementivegunHandgunT3SMG5,items,Gun,,,Marc's MP5
+DementivegunHandgunT3SMG5Desc,items,Gun,,,Marc's custom homemade MP5, he made it at the beginning of the Zombie Apocalypse. Unfortunately Marc didn't make it...he got eaten only a few days after putting the final touches on his MP5.
+DementivegunMGT1AK47,items,Gun,,,Red Army AK-47
+DementivegunMGT1AK47Desc,items,Gun,,,This old AK-47 commissioned for the Soviet Union's Red Army special forces has somehow made it's way all the way to Arizona. It seems to have belonged to a man named Private Nikola and some...interesting modifications have been made to make it a serious killing machine.
+DementivegunMGT2TacticalAR,items,Gun,,,Dan's Zombie Slayer
+DementivegunMGT2TacticalARDesc,items,Gun,,,Dan's custom made assault rifle, he made this in his garage before the zombies came and never even got the chance to kill any zombies with it because he was eaten whole by a zombie bear.
+DementivegunMGT3M60,items,Gun,,,Manny's Meat Grinder
+DementivegunMGT3M60Desc,items,Gun,,,Manny's custom made M60 machine gun designed for one reason and one reason only...to mow down the enemies of Manny.
+DementivegunRifleT1HuntingRifle,items,Gun,,,Winchester Model 70
+DementivegunRifleT1HuntingRifleDesc,items,Gun,,,The classic bolt-action that all others aspire to be, one shot of this will rip through just about anything.
+DementivegunRifleT2LeverActionRifle,items,Gun,,,Ron's Rifle
+DementivegunRifleT2LeverActionRifleDesc,items,Gun,,,Ron made this lever action rifle with his bare hands to be as deadly as possible.
+DementivegunRifleT3SniperRifle,items,Gun,,,Jen's Special Sniper
+DementivegunRifleT3SniperRifleDesc,items,Gun,,,Jen cooked up this sniper in her garage one night when there were a whole lotta zombies coming to eat her...the zombies did not make it.
+DementivegunShotgunT1DoubleBarrel,items,Gun,,,Peacekeeper Shotgun
+DementivegunShotgunT1DoubleBarrelDesc,items,Gun,,,This shotgun is sure to keep the peace...if anything disturbs your peace it can be restored with only 1 pull of the trigger.
+DementivegunShotgunT3AutoShotgun,items,Gun,,,Bob's Super Shotgun
+DementivegunShotgunT3AutoShotgunDesc,items,Gun,,,Trader Bob's homemade shotgun with a fire rate faster than a coyote!
+DementivemeleeToolAxeT1IronFireaxe,items,Tool,,,Infested Fire axe
+DementivemeleeToolAxeT1IronFireaxeDesc,items,Tool,,,This is a normal looking fire axe...if you ignore the glowing green bits that somehow make it stronger.
+DementivemeleeToolAxeT2SteelAxe,items,Tool,,,Barbarian's Battle Axe
+DementivemeleeToolAxeT2SteelAxeDesc,items,Tool,,,An axe made for a true barbarian, perfect for cutting down enemies of all sizes.
+DementivemeleeToolAxeT3Chainsaw,items,Tool,,,Rekt's Chainsaw
+DementivemeleeToolAxeT3ChainsawDesc,items,Tool,,,Trader Rekt originally made this chainsaw to cut down trees but he soon found that it had many other uses...
+DementivemeleeWpnBatonT2StunBaton,items,Melee,,,Lightning Rod
+DementivemeleeWpnBatonT2StunBatonDesc,items,Melee,,,Someone found a way to modify the stun baton to emit 5x the normal power, some say each strike feels like lightning.
+DementivemeleeWpnClubT3SteelClub,items,Melee,,,Joel's Retribution
+DementivemeleeWpnClubT3SteelClubDesc,items,Melee,,,This handy club got Joel through some hard times with it's superior wacking ability.
+DementivemeleeWpnKnucklesT3SteelKnuckles,items,Melee,,,Golden Knuckles
+DementivemeleeWpnKnucklesT3SteelKnucklesDesc,items,Melee,,,It doesn't seem very practical but these golden knuckles are suprisingly effective at beating enemies to a pulp!
+DementivemeleeWpnSledgeT3SteelSledgehammer,items,Melee,,,Legendary War Hammer
+DementivemeleeWpnSledgeT3SteelSledgehammerDesc,items,Melee,,,This massive hammer will destroy anything it comes it comes across with no remorse.
+DementivemeleeWpnSpearT3SteelSpear,items,Melee,,,Sam's Stabbing Stick
+DementivemeleeWpnSpearT3SteelSpearDesc,items,Melee,,,Some dude named Sam put his name on this totally badass spear...sweet!
+DementivegunShotgunT2PumpShotgun,items,Gun,,,Super Pump
+DementivegunShotgunT2PumpShotgunDesc,items,Gun,,,This pump shotgun will give your enemies something to remember...for the last few seconds of their life.

@@ -62,7 +62,7 @@
 		</item>
 
 		<item name="DementivebookForgeAhead">
-			<property name="Extends" value="knucklesSkillMagazine"/>
+			<property name="Extends" value="workstationSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookForgeAhead"/>
 			<property name="EconomicValue" value="200"/>
 
@@ -73,7 +73,7 @@
 		</item>
 
 		<item name="DementivebookFuriousFists">
-			<property name="Extends" value="workstationSkillMagazine"/>
+			<property name="Extends" value="knucklesSkillMagazine"/>
 			<property name="CustomIcon" value="DementivebookFuriousFists"/>
 			<property name="EconomicValue" value="200"/>
 

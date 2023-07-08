@@ -1,0 +1,71 @@
+<Dementive>
+
+	<append xpath="/lootcontainers/lootprobtemplates">
+		<lootprobtemplate name="DementiveRareWeapons">
+			<loot level="1,999999" prob=".001"/>  <!-- 1 / 1000 -->
+		</lootprobtemplate>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupQuestWeaponsRangedT3']">
+		<item name="DementiveHughsGlock" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementiveDesertRedeemer" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunHandgunT2Magnum44" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunHandgunT3SMG5" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunMGT1AK47" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunMGT2TacticalAR" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunMGT3M60" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunRifleT1HuntingRifle" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunRifleT2LeverActionRifle" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunRifleT3SniperRifle" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunShotgunT1DoubleBarrel" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunShotgunT3AutoShotgun" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunShotgunT2PumpShotgun" loot_prob_template="DementiveRareWeapons"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupInfestedT5MeleeRanged']">
+		<item name="DementiveHughsGlock" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementiveDesertRedeemer" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunHandgunT2Magnum44" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunHandgunT3SMG5" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunMGT1AK47" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunMGT2TacticalAR" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunMGT3M60" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunRifleT1HuntingRifle" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunRifleT2LeverActionRifle" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunRifleT3SniperRifle" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunShotgunT1DoubleBarrel" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunShotgunT3AutoShotgun" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunShotgunT2PumpShotgun" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivemeleeToolAxeT1IronFireaxe" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivemeleeToolAxeT2SteelAxe" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivemeleeToolAxeT3Chainsaw" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivemeleeWpnBatonT2StunBaton" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivemeleeWpnClubT3SteelClub" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivemeleeWpnKnucklesT3SteelKnuckles" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivemeleeWpnSledgeT3SteelSledgehammer" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivemeleeWpnSpearT3SteelSpear" loot_prob_template="DementiveRareWeapons"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupMilitaryFootlocker02']">
+		<item name="DementiveHughsGlock" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunHandgunT2Magnum44" loot_prob_template="DementiveRareWeapons"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupFireTruck03']">
+		<item name="DementivemeleeToolAxeT1IronFireaxe" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivemeleeToolAxeT2SteelAxe" loot_prob_template="DementiveRareWeapons"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupToolsT3']">
+		<item name="DementivemeleeToolAxeT1IronFireaxe" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivemeleeToolAxeT2SteelAxe" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivemeleeToolAxeT3Chainsaw" loot_prob_template="DementiveRareWeapons"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupQuestToolsT3']">
+		<item name="DementivemeleeToolAxeT1IronFireaxe" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivemeleeToolAxeT2SteelAxe" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivemeleeToolAxeT3Chainsaw" loot_prob_template="DementiveRareWeapons"/>
+	</append>
+
+</Dementive>

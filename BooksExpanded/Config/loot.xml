@@ -2,7 +2,7 @@
 
 	<append xpath="/lootcontainers/lootprobtemplates">
 		<lootprobtemplate name="DementiveRareBooks">
-			<loot level="1,999999" prob=".1"/>
+			<loot level="1,999999" prob=".075"/>
 		</lootprobtemplate>
 	</append>
 
@@ -263,38 +263,6 @@
 		<item name="DementivebookBatterUpBigHits" loot_prob_template="DementiveRareBooks"/>
 	</append>
 
-	<append xpath="/lootcontainers/lootgroup[@name='groupConstructionCrate02']">
-		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
-	</append>
-
-	<append xpath="/lootcontainers/lootgroup[@name='groupAirDrop03']">
-		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
-	</append>
-
-	<append xpath="/lootcontainers/lootgroup[@name='groupWorkbenchLoot04']">
-		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
-	</append>
-
-	<append xpath="/lootcontainers/lootgroup[@name='groupForge']">
-		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
-	</append>
-
-	<append xpath="/lootcontainers/lootgroup[@name='groupCementMixerLoot']">
-		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
-	</append>
-
-	<append xpath="/lootcontainers/lootgroup[@name='groupChemistryStationLoot03']">
-		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
-	</append>
-
-	<append xpath="/lootcontainers/lootgroup[@name='groupDewCollectorLoot01']">
-		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
-	</append>
-
-	<append xpath="/lootcontainers/lootgroup[@name='groupDewCollectorLoot02']">
-		<item name="DementivebookForgeAhead" loot_prob_template="DementiveRareBooks"/>
-	</append>
-
 	<append xpath="/lootcontainers/lootgroup[@name='groupFoodPileLarge']">
 		<item name="DementivebookHomeCookingWeekly" loot_prob_template="veryLow"/>
 	</append>
@@ -321,10 +289,6 @@
 
 	<append xpath="/lootcontainers/lootgroup[@name='groupMoPower02']">
 		<item name="DementivebookTechJunkie1Damage" loot_prob_template="veryLow"/>
-	</append>
-
-	<append xpath="/lootcontainers/lootgroup[@name='schematicsVehiclesT1']">
-		<item name="DementivebookVehicleAdventures" loot_prob_template="veryLow"/>
 	</append>
 
 	<append xpath="/lootcontainers/lootgroup[@name='schematicsVehiclesT2']">

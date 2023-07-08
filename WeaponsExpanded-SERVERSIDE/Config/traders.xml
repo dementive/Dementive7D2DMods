@@ -1,0 +1,33 @@
+<Dementive>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='groupRangedAll']">
+		<item name="DementiveHughsGlock" quality="3,5" prob="0.001"/>
+		<item name="DementiveDesertRedeemer" quality="3,5" prob="0.001"/>
+		<item name="DementivegunHandgunT2Magnum44" quality="3,5" prob="0.001"/>
+		<item name="DementivegunHandgunT3SMG5" quality="3,5" prob="0.001"/>
+		<item name="DementivegunMGT1AK47" quality="3,5" prob="0.001"/>
+		<item name="DementivegunMGT2TacticalAR" quality="3,5" prob="0.001"/>
+		<item name="DementivegunMGT3M60" quality="3,5" prob="0.001"/>
+		<item name="DementivegunRifleT1HuntingRifle" quality="3,5" prob="0.001"/>
+		<item name="DementivegunRifleT2LeverActionRifle" quality="3,5" prob="0.001"/>
+		<item name="DementivegunRifleT3SniperRifle" quality="3,5" prob="0.001"/>
+		<item name="DementivegunShotgunT1DoubleBarrel" quality="3,5" prob="0.001"/>
+		<item name="DementivegunShotgunT3AutoShotgun" quality="3,5" prob="0.001"/>
+		<item name="DementivegunShotgunT2PumpShotgun" quality="3,5" prob="0.001"/>
+	</append>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='rareTools']">
+		<item name="DementivemeleeToolAxeT1IronFireaxe" quality="3,5" prob="0.001"/>
+		<item name="DementivemeleeToolAxeT2SteelAxe" quality="3,5" prob="0.001"/>
+		<item name="DementivemeleeToolAxeT3Chainsaw" quality="3,5" prob="0.001"/>
+	</append>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='groupMeleeAll']">
+		<item name="DementivemeleeWpnBatonT2StunBaton" quality="3,5" prob="0.001"/>
+		<item name="DementivemeleeWpnClubT3SteelClub" quality="3,5" prob="0.001"/>
+		<item name="DementivemeleeWpnKnucklesT3SteelKnuckles" quality="3,5" prob="0.001"/>
+		<item name="DementivemeleeWpnSledgeT3SteelSledgehammer" quality="3,5" prob="0.001"/>
+		<item name="DementivemeleeWpnSpearT3SteelSpear" quality="3,5" prob="0.001"/>
+	</append>
+	
+</Dementive>
