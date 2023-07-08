@@ -19,6 +19,7 @@
 		<item name="DementivegunRifleT3SniperRifle" loot_prob_template="DementiveRareWeapons"/>
 		<item name="DementivegunShotgunT1DoubleBarrel" loot_prob_template="DementiveRareWeapons"/>
 		<item name="DementivegunShotgunT3AutoShotgun" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunShotgunT2PumpShotgun" loot_prob_template="DementiveRareWeapons"/>
 	</append>
 
 	<append xpath="/lootcontainers/lootgroup[@name='groupInfestedT5MeleeRanged']">
@@ -34,6 +35,7 @@
 		<item name="DementivegunRifleT3SniperRifle" loot_prob_template="DementiveRareWeapons"/>
 		<item name="DementivegunShotgunT1DoubleBarrel" loot_prob_template="DementiveRareWeapons"/>
 		<item name="DementivegunShotgunT3AutoShotgun" loot_prob_template="DementiveRareWeapons"/>
+		<item name="DementivegunShotgunT2PumpShotgun" loot_prob_template="DementiveRareWeapons"/>
 		<item name="DementivemeleeToolAxeT1IronFireaxe" loot_prob_template="DementiveRareWeapons"/>
 		<item name="DementivemeleeToolAxeT2SteelAxe" loot_prob_template="DementiveRareWeapons"/>
 		<item name="DementivemeleeToolAxeT3Chainsaw" loot_prob_template="DementiveRareWeapons"/>

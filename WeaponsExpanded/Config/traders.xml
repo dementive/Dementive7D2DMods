@@ -13,6 +13,7 @@
 		<item name="DementivegunRifleT3SniperRifle" quality="3,5" prob="0.001"/>
 		<item name="DementivegunShotgunT1DoubleBarrel" quality="3,5" prob="0.001"/>
 		<item name="DementivegunShotgunT3AutoShotgun" quality="3,5" prob="0.001"/>
+		<item name="DementivegunShotgunT2PumpShotgun" quality="3,5" prob="0.001"/>
 	</append>
 
 	<append xpath="/traders/trader_item_groups/trader_item_group[@name='rareTools']">

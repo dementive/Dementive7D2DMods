@@ -105,6 +105,11 @@
 			<property name="BarrelOffset" value="0,-.0322,.4516"/>
 			<property name="BarrelScale" value="1.1,1.1,1.5"/>
 		</item_property_overrides>
+		<item_property_overrides name="DementivegunShotgunT2PumpShotgun">
+			<property name="Sound_start" value="pump_shotgun_s_fire"/>
+			<property name="BarrelOffset" value="0,-.0322,.4516"/>
+			<property name="BarrelScale" value="1.1,1.1,1.5"/>
+		</item_property_overrides>
 	</append>
 
 	<append xpath="/item_modifiers/item_modifier[@name='modGunLaserSight']">
@@ -145,6 +150,10 @@
 			<property name="SideOffset" value="0,-.055,.07"/>
 			<property name="SideScale" value=".4,.4,.4"/>
 		</item_property_overrides>
+		<item_property_overrides name="DementivegunShotgunT2PumpShotgun">
+			<property name="SideOffset" value="0,0,.41"/>
+			<property name="SideScale" value="1.12,1.12,1.12"/>
+		</item_property_overrides>
 	</append>
 
 	<append xpath="/item_modifiers/item_modifier[@name='modGunFlashlight']">
@@ -184,6 +193,10 @@
 		<item_property_overrides name="DementivegunShotgunT1DoubleBarrel">
 			<property name="SideOffset" value="0,-.03,.066"/>
 			<property name="SideScale" value=".4,.4,.4"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivegunShotgunT2PumpShotgun">
+			<property name="SideOffset" value="0,0,.41"/>
+			<property name="SideScale" value="1.12,1.12,1.12"/>
 		</item_property_overrides>
 	</append>
 
@@ -246,6 +259,12 @@
 			<property name="ScopeOffset" value="0,.0736,-.1497"/>
 			<property name="ScopeScale" value=".9,.9,.9"/>
 			<property name="ScopeCameraOffset" value="0,0,0"/>
+			<property name="zoomTriggerEffectPullDualsense" value="Pistol Trigger"/>
+			<property name="zoomTriggerEffectShootDualsense" value="PistolZoom2"/>
+			<property name="zoomTriggerEffectPullXb" value="PistolZoom"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivegunShotgunT2PumpShotgun">
+			<property name="ScopeOffset" value="0,.056,.013"/>
 			<property name="zoomTriggerEffectPullDualsense" value="Pistol Trigger"/>
 			<property name="zoomTriggerEffectShootDualsense" value="PistolZoom2"/>
 			<property name="zoomTriggerEffectPullXb" value="PistolZoom"/>
@@ -366,6 +385,11 @@
 		</item_property_overrides>
 		<item_property_overrides name="DementivegunShotgunT3AutoShotgun">
 			<property name="ScopeCameraOffset" value=".00095,-.019,.10"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivegunShotgunT2PumpShotgun">
+			<property name="ScopeOffset" value="0,.056,.05"/>
+			<property name="ScopeScale" value=".7,.7,.7"/>
+			<property name="ScopeCameraOffset" value="0,-.0255,0"/>
 		</item_property_overrides>
 	</append>
 

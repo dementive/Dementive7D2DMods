@@ -39,3 +39,5 @@ DementivemeleeWpnSledgeT3SteelSledgehammer,items,Melee,,,Legendary War Hammer
 DementivemeleeWpnSledgeT3SteelSledgehammerDesc,items,Melee,,,This massive hammer will destroy anything it comes it comes across with no remorse.
 DementivemeleeWpnSpearT3SteelSpear,items,Melee,,,Sam's Stabbing Stick
 DementivemeleeWpnSpearT3SteelSpearDesc,items,Melee,,,Some dude named Sam put his name on this totally badass spear...sweet!
+DementivegunShotgunT2PumpShotgun,items,Gun,,,Super Pump
+DementivegunShotgunT2PumpShotgunDesc,items,Gun,,,This pump shotgun will give your enemies something to remember...for the last few seconds of their life.
