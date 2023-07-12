@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\QuestsExpanded\\QuestsExpanded.csproj",
+      "projectUniqueName": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\Dementive7D2DMods\\QuestsExpanded\\src\\QuestsExpanded.csproj",
       "projectName": "QuestsExpanded",
-      "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\QuestsExpanded\\QuestsExpanded.csproj",
+      "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\Dementive7D2DMods\\QuestsExpanded\\src\\QuestsExpanded.csproj",
       "packagesPath": "C:\\Users\\demen\\.nuget\\packages\\",
-      "outputPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\QuestsExpanded\\obj\\",
+      "outputPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\7 Days To Die\\Mods\\Dementive7D2DMods\\QuestsExpanded\\src\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\demen\\AppData\\Roaming\\NuGet\\NuGet.Config",
