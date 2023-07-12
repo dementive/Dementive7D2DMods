@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xml>
-	<Name value="QuestsResetEveryDay" />
-	<DisplayName value="Quests Reset Everyday" />
+	<Name value="QuestsExpanded" />
+	<DisplayName value="Quests Expanded" />
 	<Version value="1.0" />
-	<Description value="Trader quests and loot will reset everyday." />
+	<Description value="More quests in the same style as the base game." />
 	<Author value="Dementive" />
 	<Website value="" />
 </xml>

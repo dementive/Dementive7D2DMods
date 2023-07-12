@@ -35,6 +35,7 @@
 	<!-- Testing Quests -->
 	<insertBefore xpath='/quests/quest_list[1]'>
 		<quest id="sphereii_gotoPoiTest">
+			<property name="group_name_key" value="score goto test"/>
 			<property name="name_key" value="quest_tier1_fetch" />
 			<property name="subtitle_key" value="quest_fetch_subtitle" />
 			<property name="description_key" value="quest_fetch_description" />
@@ -111,6 +112,7 @@
 	      The POIs that meet these criteria will be homes in residential districts of cities or towns. -->
 	   
 		<quest id="score_tier1_clear_residence">
+			<property name="group_name_key" value="score clear test"/>
 			<property name="name_key" value="Clear Residence" />
 			<property name="subtitle_key" value="Clear a residence" />
 			<property name="description_key" value="Clear all the zombies in the residence." />
@@ -204,10 +206,12 @@
 		</quest>
 	</insertBefore>
 
-	<!-- Defense Quests -->
+	<!-- Clear and Defend Quests -->
+	<!-- TODO - add a tier 6 defense quest -->
 	<insertAfter xpath="/quests/quest[@id='tier2_buried_supplies']" >
 
 		<quest id="tier1_dementiveDefenseQuests">
+			<property name="group_name_key" value="challenge_dementiveDefenseQuests_Group"/>
 			<property name="name_key" value="challenge_dementiveDefenseQuests_Name"/>
 			<property name="subtitle_key" value="challenge_dementiveDefenseQuests_SubtitleKey"/>
 			<property name="description_key" value="challenge_dementiveDefenseQuests_Desc"/>
@@ -218,55 +222,92 @@
 			<property name="difficulty" value="easy"/>
 			<property name="difficulty_tier" value="1"/>
 			<property name="login_rally_reset" value="true"/>
-			
+			<property name="reward_choices_count" value="5" />
+			<property name="statement_key" value="challenge_dementive_DefenseQuests_statement"/>
+			<property name="response_key" value="challenge_dementive_DefenseQuests_response"/>
 			<property name="completiontype" value="TurnIn"/>
-			<property name="completion_key" value="challenge_dementiveDefenseQuests_Completion"/>
+			<property name="completion_key" value="quest_clear_completion"/>
+			<property name="extra_tags" value="" param1="extra_tags" />
+			<property name="shareable" value="true"/>
 
 			<objective type="RandomPOIGoto">
 				<property name="phase" value="1"/>
-				<property name="biome_filter_type" value="ExcludeBiome" />
-				<property name="biome_filter" value="wasteland" />
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
 				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="-1" param1="poi_tier" />
 			</objective>
-			
+
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally" />
 			</objective>
-			
-			<action type="SpawnEnemy" id="zombieBoe,zombieFemaleFat,zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieDarlene,zombieMarlene,zombieYo,zombieSteve,zombieBusinessMan" value="5-7" phase="3"/>
-			<objective type="ObjectiveEntityKill" value="4" phase="3"/>
+
+			<objective type="ClearSleepers">
+				<property name="phase" value="3"/>
+				<property name="nav_object" value="sleeper_volume"/>
+			</objective>
+
 			<objective type="POIStayWithin">
 				<property name="phase" value="3"/>
 				<property name="radius" value="25"/>
 			</objective>
-			
-			<action type="SpawnEnemy" id="zombieBoe,zombieFemaleFat,zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer" value="5-7" phase="4"/>
+
+			<action type="SpawnEnemy" id="zombieBoe,zombieFemaleFat,zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieDarlene,zombieMarlene,zombieYo,zombieSteve,zombieBusinessMan" value="5-7" phase="4"/>
 			<objective type="ObjectiveEntityKill" value="4" phase="4"/>
 			<objective type="POIStayWithin">
 				<property name="phase" value="4"/>
 				<property name="radius" value="25"/>
 			</objective>
 			
-			<action type="SpawnEnemy" id="zombieFatHawaiian" value="1" phase="5"/>
-			<action type="SpawnEnemy" id="zombieFemaleFat" value="1" phase="5"/>
-			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="4-6" phase="5"/>
-			<objective type="ObjectiveEntityKill" value="6" phase="5"/>
+			<action type="SpawnEnemy" id="zombieBoe,zombieFemaleFat,zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer" value="5-7" phase="5"/>
+			<objective type="ObjectiveEntityKill" value="4" phase="5"/>
 			<objective type="POIStayWithin">
 				<property name="phase" value="5"/>
 				<property name="radius" value="25"/>
 			</objective>
 			
+			<action type="SpawnEnemy" id="zombieFatHawaiian" value="1" phase="6"/>
+			<action type="SpawnEnemy" id="zombieFemaleFat" value="1" phase="6"/>
+			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="4-6" phase="6"/>
+			<objective type="ObjectiveEntityKill" value="6" phase="6"/>
 			<objective type="POIStayWithin">
-				<property name="phase" value="6"/>
+				<property name="phase" value="7"/>
 				<property name="radius" value="25"/>
 			</objective>
-			
+
+			<action type="UnlockPOI" >
+				<property name="phase" value="8"/>
+			</action>
+
+			<objective type="ReturnToNPC">
+				<property name="phase" value="8"/>
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+
 			<objective type="InteractWithNPC">
-				<property name="phase" value="7"/>
+				<property name="phase" value="8"/>
 			</objective>
 			
-			<reward type="Item" id="casinoCoin" value="800"/>
+			<reward type="Item" id="casinoCoin" value="2000"/>
+			
+			<reward type="LootItem" id="groupQuestBicycle" ischosen="true" isfixed="true" value="2"/>
+			<reward type="Item" id="resourceWaterFilter" ischosen="true" isfixed="true" value="2"/>
+			<reward type="LootItem" id="groupQuestcasinoCoinT1" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestHelmetLightSchematic" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestForge" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestFarmPlotsT1" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestAmmoCraftingBundle" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestT0Firearms" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestT0LightArmor" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestT0HeavyArmor" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestWoodShapes" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestWrench" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestT2Food" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestT1Books" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestT1Traps" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestT1MeleeMods" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestT1RangedMods" ischosen="true" value="2"/>
 
 		</quest>
 		
@@ -278,58 +319,93 @@
 			<property name="repeatable" value="true"/>
 			<property name="category_key" value="challenge"/>
 			<property name="offer_key" value="challenge_dementiveDefenseQuests_Offer"/>
+			<property name="statement_key" value="challenge_dementive_DefenseQuests_statement"/>
+			<property name="response_key" value="challenge_dementive_DefenseQuests_response"/>
 			<property name="difficulty" value="easy"/>
 			<property name="difficulty_tier" value="1"/>
 			<property name="login_rally_reset" value="true"/>
-			
+			<property name="reward_choices_count" value="5" />
 			<property name="completiontype" value="TurnIn"/>
-			<property name="completion_key" value="challenge_dementiveDefenseQuests_Completion"/>
+			<property name="completion_key" value="quest_clear_completion"/>
+			<property name="extra_tags" value="" param1="extra_tags" />
+			<property name="shareable" value="true"/>
 
 			<objective type="RandomPOIGoto">
 				<property name="phase" value="1"/>
-				<property name="biome_filter_type" value="ExcludeBiome" />
-				<property name="biome_filter" value="wasteland" />
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
 				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="-1" param1="poi_tier" />
 			</objective>
-			
+
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally" />
 			</objective>
-			
-			<action type="SpawnEnemy" id="zombieBoe,zombieFemaleFat,zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieDarlene,zombieMarlene,zombieYo,zombieSteve,zombieBusinessMan" value="5-7" phase="3"/>
-			<objective type="ObjectiveEntityKill" value="4" phase="3"/>
+
+			<objective type="ClearSleepers">
+				<property name="phase" value="3"/>
+				<property name="nav_object" value="sleeper_volume"/>
+			</objective>
+
 			<objective type="POIStayWithin">
 				<property name="phase" value="3"/>
 				<property name="radius" value="25"/>
 			</objective>
-			
-			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="5-7" phase="4"/>
+
+			<action type="SpawnEnemy" id="zombieBoe,zombieFemaleFat,zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieDarlene,zombieMarlene,zombieYo,zombieSteve,zombieBusinessMan" value="5-7" phase="4"/>
 			<objective type="ObjectiveEntityKill" value="4" phase="4"/>
 			<objective type="POIStayWithin">
 				<property name="phase" value="4"/>
 				<property name="radius" value="25"/>
 			</objective>
 			
-			<action type="SpawnEnemy" id="zombieBiker" value="1" phase="5"/>
-			<action type="SpawnEnemy" id="zombieSoldier" value="1" phase="5"/>
-			<action type="SpawnEnemy" id="zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieDarlene,zombieBurnt,zombieNurse,zombieFatHawaiian" value="4-6" phase="5"/>
-			<objective type="ObjectiveEntityKill" value="6" phase="5"/>
+			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="5-7" phase="5"/>
+			<objective type="ObjectiveEntityKill" value="4" phase="5"/>
 			<objective type="POIStayWithin">
 				<property name="phase" value="5"/>
 				<property name="radius" value="25"/>
 			</objective>
 			
+			<action type="SpawnEnemy" id="zombieBiker" value="1" phase="6"/>
+			<action type="SpawnEnemy" id="zombieSoldier" value="1" phase="6"/>
+			<action type="SpawnEnemy" id="zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieDarlene,zombieBurnt,zombieNurse,zombieFatHawaiian" value="4-6" phase="5"/>
+			<objective type="ObjectiveEntityKill" value="6" phase="6"/>
 			<objective type="POIStayWithin">
 				<property name="phase" value="6"/>
 				<property name="radius" value="25"/>
 			</objective>
 			
+			<action type="UnlockPOI" >
+				<property name="phase" value="7"/>
+			</action>
+
+			<objective type="ReturnToNPC">
+				<property name="phase" value="7"/>
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+
 			<objective type="InteractWithNPC">
 				<property name="phase" value="7"/>
 			</objective>
 			
-			<reward type="Item" id="casinoCoin" value="1000"/>
+			<reward type="Item" id="casinoCoin" value="2000"/>
+			<reward type="LootItem" id="groupQuestMinibikeParts" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestcasinoCoinT2" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestMiningHelmet" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestFarmPlotsT2" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestT1Firearms" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestWorkbench" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestNailgun" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestT0LightArmorBonus" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestT0HeavyArmorBonus" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestT2Traps" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestForgedIron" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestLockPicks" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestT3Food" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestCobblestoneShapes" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestT2MeleeMods" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestT2RangedMods" ischosen="true" value="3"/>
 
 		</quest>
 		
@@ -341,60 +417,93 @@
 			<property name="repeatable" value="true"/>
 			<property name="category_key" value="challenge"/>
 			<property name="offer_key" value="challenge_dementiveDefenseQuestsFerals_Offer"/>
+			<property name="statement_key" value="challenge_dementive_DefenseQuests_statement"/>
+			<property name="response_key" value="challenge_dementive_DefenseQuests_response"/>
 			<property name="difficulty" value="medium"/>
 			<property name="difficulty_tier" value="2"/>
 			<property name="login_rally_reset" value="true"/>
-			
+			<property name="reward_choices_count" value="5" />
 			<property name="completiontype" value="TurnIn"/>
-			<property name="completion_key" value="challenge_dementiveDefenseQuests_Completion"/>
+			<property name="completion_key" value="quest_clear_completion"/>
+			<property name="extra_tags" value="" param1="extra_tags" />
+			<property name="shareable" value="true"/>
 
 			<objective type="RandomPOIGoto">
 				<property name="phase" value="1"/>
-				<property name="biome_filter_type" value="ExcludeBiome" />
-				<property name="biome_filter" value="wasteland" />
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
 				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="-1" param1="poi_tier" />
 			</objective>
-			
+
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally" />
 			</objective>
-			
-			<action type="SpawnEnemy" id="zombieBoe,zombieFemaleFat,zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieDarlene,zombieMarlene,zombieYo,zombieSteve,zombieBusinessMan" value="4-6" phase="3"/>
-			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2-3" phase="3"/>
-			<objective type="ObjectiveEntityKill" value="5" phase="3"/>
+
+			<objective type="ClearSleepers">
+				<property name="phase" value="3"/>
+				<property name="nav_object" value="sleeper_volume"/>
+			</objective>
+
 			<objective type="POIStayWithin">
 				<property name="phase" value="3"/>
 				<property name="radius" value="25"/>
 			</objective>
 			
-			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="5-7" phase="4"/>
-			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2-4" phase="4"/>
-			<objective type="ObjectiveEntityKill" value="6" phase="4"/>
+			<action type="SpawnEnemy" id="zombieBoe,zombieFemaleFat,zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieDarlene,zombieMarlene,zombieYo,zombieSteve,zombieBusinessMan" value="4-6" phase="4"/>
+			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2-3" phase="4"/>
+			<objective type="ObjectiveEntityKill" value="5" phase="4"/>
 			<objective type="POIStayWithin">
 				<property name="phase" value="4"/>
 				<property name="radius" value="25"/>
 			</objective>
 			
-			<action type="SpawnEnemy" id="zombieSpider,zombieFatCop,zombieFatCopFeral,animalZombieDog" value="1" phase="5"/>
-			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="2-3" phase="5"/>
-			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2-3" phase="5"/>
-			<objective type="ObjectiveEntityKill" value="5" phase="5"/>
+			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="5-7" phase="5"/>
+			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2-4" phase="5"/>
+			<objective type="ObjectiveEntityKill" value="6" phase="5"/>
 			<objective type="POIStayWithin">
 				<property name="phase" value="5"/>
 				<property name="radius" value="25"/>
 			</objective>
 			
+			<action type="SpawnEnemy" id="zombieSpider,zombieFatCop,zombieFatCopFeral,animalZombieDog" value="1" phase="6"/>
+			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="2-3" phase="6"/>
+			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2-3" phase="6"/>
+			<objective type="ObjectiveEntityKill" value="5" phase="7"/>
 			<objective type="POIStayWithin">
-				<property name="phase" value="6"/>
+				<property name="phase" value="7"/>
 				<property name="radius" value="25"/>
 			</objective>
 			
+			<action type="UnlockPOI" >
+				<property name="phase" value="8"/>
+			</action>
+
+			<objective type="ReturnToNPC">
+				<property name="phase" value="8"/>
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+
 			<objective type="InteractWithNPC">
-				<property name="phase" value="7"/>
+				<property name="phase" value="8"/>
 			</objective>
 			
-			<reward type="Item" id="casinoCoin" value="1500"/>
+			<reward type="Item" id="casinoCoin" value="2000"/>
+			<reward type="LootItem" id="groupQuestMotorcycleParts" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestcasinoCoinT3" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestNightVisionGoggles" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestFarmPlotsT3" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestT1LightArmor" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestT1HeavyArmor" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestDartTrap" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestSecuritySystem" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestGeneratorBank" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestT2Firearms" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestTimedCharges" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestChemistryStation" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestT3MeleeMods" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestT3RangedMods" ischosen="true" value="4"/>
 
 		</quest>
 		
@@ -406,58 +515,90 @@
 			<property name="repeatable" value="true"/>
 			<property name="category_key" value="challenge"/>
 			<property name="offer_key" value="challenge_dementiveDefenseQuestsFerals_Offer"/>
+			<property name="statement_key" value="challenge_dementive_DefenseQuests_statement"/>
+			<property name="response_key" value="challenge_dementive_DefenseQuests_response"/>
 			<property name="difficulty" value="hard"/>
 			<property name="difficulty_tier" value="2"/>
 			<property name="login_rally_reset" value="true"/>
-			
+			<property name="reward_choices_count" value="5" />
 			<property name="completiontype" value="TurnIn"/>
-			<property name="completion_key" value="challenge_dementiveDefenseQuests_Completion"/>
+			<property name="completion_key" value="quest_clear_completion"/>
+			<property name="extra_tags" value="" param1="extra_tags" />
+			<property name="shareable" value="true"/>
 
 			<objective type="RandomPOIGoto">
 				<property name="phase" value="1"/>
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
 				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="-1" param1="poi_tier" />
 			</objective>
-			
+
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally" />
 			</objective>
-			
-			<action type="SpawnEnemy" id="zombieBoe,zombieFemaleFat,zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieDarlene,zombieMarlene,zombieYo,zombieSteve,zombieBusinessMan" value="2-3" phase="3"/>
-			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="3-4" phase="3"/>
-			<objective type="ObjectiveEntityKill" value="5" phase="3"/>
+
+			<objective type="ClearSleepers">
+				<property name="phase" value="3"/>
+				<property name="nav_object" value="sleeper_volume"/>
+			</objective>
+
 			<objective type="POIStayWithin">
 				<property name="phase" value="3"/>
 				<property name="radius" value="25"/>
 			</objective>
 			
-			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="3" phase="4"/>
-			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="3" phase="4"/>
+			<action type="SpawnEnemy" id="zombieBoe,zombieFemaleFat,zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieDarlene,zombieMarlene,zombieYo,zombieSteve,zombieBusinessMan" value="2-3" phase="4"/>
+			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="3-4" phase="4"/>
 			<objective type="ObjectiveEntityKill" value="5" phase="4"/>
 			<objective type="POIStayWithin">
 				<property name="phase" value="4"/>
 				<property name="radius" value="25"/>
 			</objective>
 			
-			<action type="SpawnEnemy" id="zombieWightFeral,zombieBikerFeral,zombieSoldierFeral,zombieSpiderFeral,zombieFatCopFeral" value="2" phase="5"/>
-			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="2-3" phase="5"/>
-			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2" phase="5"/>
-			<objective type="ObjectiveEntityKill" value="6" phase="5"/>
+			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="3" phase="5"/>
+			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="3" phase="5"/>
+			<objective type="ObjectiveEntityKill" value="5" phase="5"/>
 			<objective type="POIStayWithin">
 				<property name="phase" value="5"/>
 				<property name="radius" value="25"/>
 			</objective>
 			
+			<action type="SpawnEnemy" id="zombieWightFeral,zombieBikerFeral,zombieSoldierFeral,zombieSpiderFeral,zombieFatCopFeral" value="2" phase="5"/>
+			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="2-3" phase="6"/>
+			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2" phase="6"/>
+			<objective type="ObjectiveEntityKill" value="6" phase="6"/>
 			<objective type="POIStayWithin">
 				<property name="phase" value="6"/>
 				<property name="radius" value="25"/>
 			</objective>
 			
+			<action type="UnlockPOI" >
+				<property name="phase" value="7"/>
+			</action>
+
+			<objective type="ReturnToNPC">
+				<property name="phase" value="7"/>
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+
 			<objective type="InteractWithNPC">
 				<property name="phase" value="7"/>
 			</objective>
 			
-			<reward type="Item" id="casinoCoin" value="3000"/>
+			<reward type="Item" id="casinoCoin" value="2000"/>
+			<reward type="LootItem" id="groupQuest4x4Parts" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestcasinoCoinT4" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestBatteryBank" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestT2LightArmor" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestT2HeavyArmor" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestT3Firearms" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestConcreteShapes" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestBladeTrap" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestT4Food" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestT3MeleeMods" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestT3RangedMods" ischosen="true" value="5"/>
 
 		</quest>
 		
@@ -469,61 +610,100 @@
 			<property name="repeatable" value="true"/>
 			<property name="category_key" value="challenge"/>
 			<property name="offer_key" value="challenge_dementiveDefenseQuestsRads_Offer"/>
+			<property name="statement_key" value="challenge_dementive_DefenseQuests_statement"/>
+			<property name="response_key" value="challenge_dementive_DefenseQuests_response"/>
 			<property name="difficulty" value="hard"/>
 			<property name="difficulty_tier" value="2"/>
 			<property name="login_rally_reset" value="true"/>
-			
+			<property name="reward_choices_count" value="5" />
 			<property name="completiontype" value="TurnIn"/>
-			<property name="completion_key" value="challenge_dementiveDefenseQuests_Completion"/>
+			<property name="completion_key" value="quest_clear_completion"/>
+			<property name="extra_tags" value="" param1="extra_tags" />
+			<property name="shareable" value="true"/>
 
 			<objective type="RandomPOIGoto">
 				<property name="phase" value="1"/>
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
 				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="-1" param1="poi_tier" />
 			</objective>
-			
+
 			<objective type="RallyPoint">
 				<property name="phase" value="2"/>
 				<property name="nav_object" value="rally" />
 			</objective>
-			
-			<action type="SpawnEnemy" id="zombieBoe,zombieFemaleFat,zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieDarlene,zombieMarlene,zombieYo,zombieSteve,zombieBusinessMan" value="2-4" phase="3"/>
-			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="3" phase="3"/>
-			<action type="SpawnEnemy" id="zombieOldTimerRadiated,zombieCheerleaderRadiated,zombieSkateboarderRadiated,zombieMarleneRadiated,zombieSteveRadiated,zombieYoRadiated,zombieDarleneRadiated,zombieLabRadiated,zombieArleneRadiated,zombieMoeRadiated,zombieJanitorRadiated,zombieFemaleFatRadiated,zombieJoeRadiated,zombieBoeRadiated" value="1" phase="3"/>
-			<objective type="ObjectiveEntityKill" value="6" phase="3"/>
+
+			<objective type="ClearSleepers">
+				<property name="phase" value="3"/>
+				<property name="nav_object" value="sleeper_volume"/>
+			</objective>
+
 			<objective type="POIStayWithin">
 				<property name="phase" value="3"/>
 				<property name="radius" value="25"/>
 			</objective>
 			
-			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="2-4" phase="4"/>
-			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2-3" phase="4"/>
-			<action type="SpawnEnemy" id="zombieOldTimerRadiated,zombieCheerleaderRadiated,zombieSkateboarderRadiated,zombieMarleneRadiated,zombieSteveRadiated,zombieYoRadiated,zombieDarleneRadiated,zombieLabRadiated,zombieArleneRadiated,zombieMoeRadiated,zombieJanitorRadiated,zombieFemaleFatRadiated,zombieJoeRadiated,zombieBoeRadiated" value="2" phase="4"/>
+			<action type="SpawnEnemy" id="zombieBoe,zombieFemaleFat,zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieDarlene,zombieMarlene,zombieYo,zombieSteve,zombieBusinessMan" value="2-4" phase="4"/>
+			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="3" phase="4"/>
+			<action type="SpawnEnemy" id="zombieOldTimerRadiated,zombieCheerleaderRadiated,zombieSkateboarderRadiated,zombieMarleneRadiated,zombieSteveRadiated,zombieYoRadiated,zombieDarleneRadiated,zombieLabRadiated,zombieArleneRadiated,zombieMoeRadiated,zombieJanitorRadiated,zombieFemaleFatRadiated,zombieJoeRadiated,zombieBoeRadiated" value="1" phase="4"/>
 			<objective type="ObjectiveEntityKill" value="6" phase="4"/>
 			<objective type="POIStayWithin">
 				<property name="phase" value="4"/>
 				<property name="radius" value="25"/>
 			</objective>
 			
-			<action type="SpawnEnemy" id="zombieWightRadiated,zombieBikerRadiated,zombieFatCopRadiated,zombieSpiderRadiated,zombieSoldierRadiated,zombieDemolition" value="4" phase="5"/>
-			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="1-3" phase="5"/>
-			<action type="SpawnEnemy" id="zombieOldTimerRadiated,zombieCheerleaderRadiated,zombieSkateboarderRadiated,zombieMarleneRadiated,zombieSteveRadiated,zombieYoRadiated,zombieDarleneRadiated,zombieLabRadiated,zombieArleneRadiated,zombieMoeRadiated,zombieJanitorRadiated,zombieFemaleFatRadiated,zombieJoeRadiated,zombieBoeRadiated" value="4" phase="5"/>
-			<objective type="ObjectiveEntityKill" value="7" phase="5"/>
+			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="2-4" phase="5"/>
+			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2-3" phase="5"/>
+			<action type="SpawnEnemy" id="zombieOldTimerRadiated,zombieCheerleaderRadiated,zombieSkateboarderRadiated,zombieMarleneRadiated,zombieSteveRadiated,zombieYoRadiated,zombieDarleneRadiated,zombieLabRadiated,zombieArleneRadiated,zombieMoeRadiated,zombieJanitorRadiated,zombieFemaleFatRadiated,zombieJoeRadiated,zombieBoeRadiated" value="2" phase="5"/>
+			<objective type="ObjectiveEntityKill" value="6" phase="5"/>
 			<objective type="POIStayWithin">
 				<property name="phase" value="5"/>
 				<property name="radius" value="25"/>
 			</objective>
 			
-			<action type="SpawnEnemy" id="zombieWightRadiated,zombieBikerRadiated,zombieFatCopRadiated,zombieSpiderRadiated,zombieSoldierRadiated,zombieDemolition" value="3" phase="6"/>
+			<action type="SpawnEnemy" id="zombieWightRadiated,zombieBikerRadiated,zombieFatCopRadiated,zombieSpiderRadiated,zombieSoldierRadiated,zombieDemolition" value="4" phase="6"/>
+			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="1-3" phase="6"/>
+			<action type="SpawnEnemy" id="zombieOldTimerRadiated,zombieCheerleaderRadiated,zombieSkateboarderRadiated,zombieMarleneRadiated,zombieSteveRadiated,zombieYoRadiated,zombieDarleneRadiated,zombieLabRadiated,zombieArleneRadiated,zombieMoeRadiated,zombieJanitorRadiated,zombieFemaleFatRadiated,zombieJoeRadiated,zombieBoeRadiated" value="4" phase="6"/>
+			<objective type="ObjectiveEntityKill" value="7" phase="6"/>
 			<objective type="POIStayWithin">
 				<property name="phase" value="6"/>
 				<property name="radius" value="25"/>
 			</objective>
 			
-			<objective type="InteractWithNPC">
+			<action type="SpawnEnemy" id="zombieWightRadiated,zombieBikerRadiated,zombieFatCopRadiated,zombieSpiderRadiated,zombieSoldierRadiated,zombieDemolition" value="3" phase="7"/>
+			<objective type="POIStayWithin">
 				<property name="phase" value="7"/>
+				<property name="radius" value="25"/>
 			</objective>
 			
-			<reward type="Item" id="casinoCoin" value="4500"/>
+			<action type="UnlockPOI" >
+				<property name="phase" value="8"/>
+			</action>
+
+			<objective type="ReturnToNPC">
+				<property name="phase" value="8"/>
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+
+			<objective type="InteractWithNPC">
+				<property name="phase" value="8"/>
+			</objective>
+			
+			<reward type="Item" id="casinoCoin" value="2000"/>
+			<reward type="LootItem" id="groupQuestGyrocopterParts" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestcasinoCoinT5" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestSolarBank" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestT2LightArmorBonus" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestT2HeavyArmorBonus" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestShotgunTurret" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestAutoTurret" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestForgedSteel" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestT3LegendaryFirearms" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestSteelShapes" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestT3MeleeMods" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestT3RangedMods" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestAmmoCraftingBundle" ischosen="true" value="6"/>
 
 		</quest>
 		
@@ -531,7 +711,12 @@
 
 	<!-- Lootable Quests -->
 	<!-- TODO - Make items that that are based on the treasure map items that let these quests looted  -->
-<!-- 	<insertAfter xpath="/quests/quest[@id='treasure_taylor']" >
+	<!-- 	These also need to be added to quest_items
+	<quest_items max_count="100">
+		<quest_item id="1" name="questWhiteRiverSupplies" description_key="questSuppliesGroupDesc" icon="questWhiteRiverSupplies" icon_color="255,255,255"/>
+		<quest_item id="2" name="questCassadoreSupplies" description_key="questSuppliesGroupDesc" icon="questCassadoreSupplies" icon_color="255,255,255"/>
+	</quest_items> -->
+	<!-- 	<insertAfter xpath="/quests/quest[@id='treasure_taylor']" >
 
 
 
@@ -542,6 +727,13 @@
 		<quest id="score_tier1_clear_residence" />
 	</insertAfter> -->
 
+	<!-- Tag-specific Quests -->
+
+
+	<!-- POI-specific Quests -->
+
+
+	<!-- Trader Quest List -->
 	<append xpath="/quests/quest_list[@id='trader_quests']">
 		<quest id="sphereii_gotoPoiTest" />
 		<quest id="score_tier1_clear_residence" />

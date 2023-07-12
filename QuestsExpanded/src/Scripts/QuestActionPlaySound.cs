@@ -1,9 +1,10 @@
-﻿public class QuestActionPlaySoundSDX : QuestActionShowTip
+﻿// <action type="QuestActionPlaySoundDEM" value="Sounds/Step/crawlerstepcloth1"/>
+
+public class QuestActionPlaySoundDEM : QuestActionShowTip
 {
     public override void SetupAction()
     {
     }
-
 
     public override void PerformAction(Quest action)
     {
@@ -11,19 +12,12 @@
         if (OwnerQuest.OwnerJournal.OwnerPlayer != null)
             myEntity = OwnerQuest.OwnerJournal.OwnerPlayer;
 
-        if (myEntity != null)
-        {
-            myEntity.PlayOneShot(ID, true);
-            var buff = BuffManager.GetBuff(Value);
-            if (buff != null)
-                if (!myEntity.Buffs.HasBuff(Value))
-                    myEntity.Buffs.AddBuff(Value);
-        }
+        myEntity?.PlayOneShot(Value, true);
     }
 
     public override BaseQuestAction Clone()
     {
-        var questActionPlaySound = new QuestActionPlaySoundSDX();
+        var questActionPlaySound = new QuestActionPlaySoundDEM();
         CopyValues(questActionPlaySound);
         return questActionPlaySound;
     }
