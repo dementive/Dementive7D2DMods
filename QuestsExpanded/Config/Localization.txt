@@ -1,0 +1,9 @@
+Key,Source,Context,English
+
+challenge_dementiveDefenseQuests_Name,quests,Quests,"Distress Call"
+challenge_dementiveDefenseQuests_SubtitleKey,quests,Quests,"Defend Location"
+challenge_dementiveDefenseQuests_Desc,quests,Quests,"You've received a distress call from another survivor.  Head to their location and help defend them."
+challenge_dementiveDefenseQuests_Offer,quests,Quests,"*ksshhht* Is anyone out there?  This is Citizen *kshtssst* -rlene.  Help, we're be- *shvvvt* -nvaded.  Please, w-*scrrrrrssh* -ocated at *ksshtsshhhtt*. Hurry!\n\nSounds like their transmitter is going out.  You didn't catch their location, but you should be able to triangulate on the signal.  What are you waiting for?"
+challenge_dementiveDefenseQuestsFerals_Offer,quests,Quests,"Hello, White River Defense?  This is Citiz- *kshtssst* -oe.  We are under attack!  Please, send help to *scrrrrrssh* near the old *ksshtsshhhtt*. Oh, God!  They're runn- *brzzrz* being swarmed by ferals!  Hel-*zzzzt*\n\nSounds like their transmitter is going out.  You didn't catch their location, but you should be able to triangulate on the signal.  What are you waiting for?"
+challenge_dementiveDefenseQuestsRads_Offer,quests,Quests,"*ksshhht* Calling all White River Defense Forces.  Code Red!  This is Elder B- *kshtssst*  We have fera- *shvvvt* -dioactive zombies assaulting our position.  All units respond to *scrrrrrssh* behind the *ksshtsshhhtt*.  We can't hold out much longer!\n\nSounds like their transmitter is going out.  You didn't catch their location, but you should be able to triangulate on the signal.  What are you waiting for?"
+challenge_dementiveDefenseQuests_Completion,quests,Quests,"Yeah, I heard from the others that you really made the difference there.  Here's a small token of White River's appreciation."
