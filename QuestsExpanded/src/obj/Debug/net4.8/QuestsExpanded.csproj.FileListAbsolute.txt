@@ -1,0 +1,9 @@
+C:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\QuestsExpanded\bin\Debug\net4.8\QuestsExpanded.dll
+C:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\QuestsExpanded\bin\Debug\net4.8\QuestsExpanded.pdb
+C:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\QuestsExpanded\obj\Debug\net4.8\QuestsExpanded.csproj.AssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\QuestsExpanded\obj\Debug\net4.8\QuestsExpanded.GeneratedMSBuildEditorConfig.editorconfig
+C:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\QuestsExpanded\obj\Debug\net4.8\QuestsExpanded.AssemblyInfoInputs.cache
+C:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\QuestsExpanded\obj\Debug\net4.8\QuestsExpanded.AssemblyInfo.cs
+C:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\QuestsExpanded\obj\Debug\net4.8\QuestsExpanded.csproj.CoreCompileInputs.cache
+C:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\QuestsExpanded\obj\Debug\net4.8\QuestsExpanded.dll
+C:\Program Files (x86)\Steam\steamapps\common\7 Days To Die\Mods\QuestsExpanded\obj\Debug\net4.8\QuestsExpanded.pdb
