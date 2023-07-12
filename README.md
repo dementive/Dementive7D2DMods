@@ -27,7 +27,7 @@
 20. Sam's Stabbing Stick
 21. Super Pump
 
-• ZMX Color Schemes - Several color schemes for ZMX UI.
+• Quests Expanded - WIP rework of quests
 
 # Items
 
