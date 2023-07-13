@@ -19,7 +19,7 @@
 
 Tier 2 POI quest groups:
 	
-	• farm_04,barn_03,rural_outdoor_wedding_01,farm_01,farm_14,farm_07,barn_02,farm_08,farm_11,farm_10,farm_03
+	• farm_04,barn_03,farm_01,farm_14,farm_07,barn_02,farm_08,farm_11,farm_10,farm_03
 
 	• store_electronics_02,store_bakery_01,store_autoparts_01,body_shop_01,store_hardware_01,store_book_01,store_grocery_01,post_office_01
 
@@ -30,7 +30,7 @@ Tier 2 POI quest groups:
 Tier 3 POI quest groups:
 	
 
-	• 	Military Outposts - army_barracks_01,army_camp_04,bombshelter_02,ranger_station_07,ranger_station_01
+	• Military Outposts - army_barracks_01,army_camp_04,bombshelter_02,ranger_station_07,ranger_station_01
 
 	• warehouse_08,warehouse_05,warehouse_02
 

@@ -214,23 +214,17 @@
 				<property name="phase" value="7"/>
 			</objective>
 			
-			<reward type="Item" id="casinoCoin" value="2000"/>
-			<reward type="LootItem" id="groupQuestMinibikeParts" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestcasinoCoinT2" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestMiningHelmet" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestFarmPlotsT2" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestT1Firearms" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestWorkbench" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestNailgun" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestT0LightArmorBonus" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestT0HeavyArmorBonus" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestT2Traps" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestForgedIron" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestLockPicks" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestT3Food" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestCobblestoneShapes" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestT2MeleeMods" ischosen="true" value="3"/>
-			<reward type="LootItem" id="groupQuestT2RangedMods" ischosen="true" value="3"/>
+			<reward type="Exp" value="5060"/>
+			<reward type="Item" id="casinoCoin" value="1400"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 
 		</quest>
 		
@@ -314,21 +308,17 @@
 				<property name="phase" value="8"/>
 			</objective>
 			
+			<reward type="Exp" value="6750"/>
 			<reward type="Item" id="casinoCoin" value="2000"/>
-			<reward type="LootItem" id="groupQuestMotorcycleParts" ischosen="true" value="4"/>
-			<reward type="LootItem" id="groupQuestcasinoCoinT3" ischosen="true" value="4"/>
-			<reward type="LootItem" id="groupQuestNightVisionGoggles" ischosen="true" value="4"/>
-			<reward type="LootItem" id="groupQuestFarmPlotsT3" ischosen="true" value="4"/>
-			<reward type="LootItem" id="groupQuestT1LightArmor" ischosen="true" value="4"/>
-			<reward type="LootItem" id="groupQuestT1HeavyArmor" ischosen="true" value="4"/>
-			<reward type="LootItem" id="groupQuestDartTrap" ischosen="true" value="4"/>
-			<reward type="LootItem" id="groupQuestSecuritySystem" ischosen="true" value="4"/>
-			<reward type="LootItem" id="groupQuestGeneratorBank" ischosen="true" value="4"/>
-			<reward type="LootItem" id="groupQuestT2Firearms" ischosen="true" value="4"/>
-			<reward type="LootItem" id="groupQuestTimedCharges" ischosen="true" value="4"/>
-			<reward type="LootItem" id="groupQuestChemistryStation" ischosen="true" value="4"/>
-			<reward type="LootItem" id="groupQuestT3MeleeMods" ischosen="true" value="4"/>
-			<reward type="LootItem" id="groupQuestT3RangedMods" ischosen="true" value="4"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>s
 
 		</quest>
 		
@@ -412,18 +402,17 @@
 				<property name="phase" value="7"/>
 			</objective>
 			
-			<reward type="Item" id="casinoCoin" value="2000"/>
-			<reward type="LootItem" id="groupQuest4x4Parts" ischosen="true" value="5"/>
-			<reward type="LootItem" id="groupQuestcasinoCoinT4" ischosen="true" value="5"/>
-			<reward type="LootItem" id="groupQuestBatteryBank" ischosen="true" value="5"/>
-			<reward type="LootItem" id="groupQuestT2LightArmor" ischosen="true" value="5"/>
-			<reward type="LootItem" id="groupQuestT2HeavyArmor" ischosen="true" value="5"/>
-			<reward type="LootItem" id="groupQuestT3Firearms" ischosen="true" value="5"/>
-			<reward type="LootItem" id="groupQuestConcreteShapes" ischosen="true" value="5"/>
-			<reward type="LootItem" id="groupQuestBladeTrap" ischosen="true" value="5"/>
-			<reward type="LootItem" id="groupQuestT4Food" ischosen="true" value="5"/>
-			<reward type="LootItem" id="groupQuestT3MeleeMods" ischosen="true" value="5"/>
-			<reward type="LootItem" id="groupQuestT3RangedMods" ischosen="true" value="5"/>
+			<reward type="Exp" value="8400"/>
+			<reward type="Item" id="casinoCoin" value="2300"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 
 		</quest>
 		
@@ -515,20 +504,119 @@
 				<property name="phase" value="8"/>
 			</objective>
 			
-			<reward type="Item" id="casinoCoin" value="2000"/>
-			<reward type="LootItem" id="groupQuestGyrocopterParts" ischosen="true" value="6"/>
-			<reward type="LootItem" id="groupQuestcasinoCoinT5" ischosen="true" value="6"/>
-			<reward type="LootItem" id="groupQuestSolarBank" ischosen="true" value="6"/>
-			<reward type="LootItem" id="groupQuestT2LightArmorBonus" ischosen="true" value="6"/>
-			<reward type="LootItem" id="groupQuestT2HeavyArmorBonus" ischosen="true" value="6"/>
-			<reward type="LootItem" id="groupQuestShotgunTurret" ischosen="true" value="6"/>
-			<reward type="LootItem" id="groupQuestAutoTurret" ischosen="true" value="6"/>
-			<reward type="LootItem" id="groupQuestForgedSteel" ischosen="true" value="6"/>
-			<reward type="LootItem" id="groupQuestT3LegendaryFirearms" ischosen="true" value="6"/>
-			<reward type="LootItem" id="groupQuestSteelShapes" ischosen="true" value="6"/>
-			<reward type="LootItem" id="groupQuestT3MeleeMods" ischosen="true" value="6"/>
-			<reward type="LootItem" id="groupQuestT3RangedMods" ischosen="true" value="6"/>
-			<reward type="LootItem" id="groupQuestAmmoCraftingBundle" ischosen="true" value="6"/>
+			<reward type="Exp" value="16900"/>
+			<reward type="Item" id="casinoCoin" value="4600"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+
+		</quest>
+
+		<quest id="tier6_dementiveDefenseQuests">
+			<property name="name_key" value="challenge_dementiveDefenseQuests_Name"/>
+			<property name="subtitle_key" value="challenge_dementiveDefenseQuests_SubtitleKey"/>
+			<property name="description_key" value="challenge_dementiveDefenseQuests_Desc"/>
+			<property name="icon" value="ui_game_symbol_quest"/>
+			<property name="repeatable" value="true"/>
+			<property name="category_key" value="challenge"/>
+			<property name="offer_key" value="challenge_dementiveDefenseQuestsRads_Offer"/>
+			<property name="statement_key" value="challenge_dementive_DefenseQuests_statement"/>
+			<property name="response_key" value="challenge_dementive_DefenseQuests_response"/>
+			<property name="difficulty" value="hard"/>
+			<property name="difficulty_tier" value="6"/>
+			<property name="login_rally_reset" value="true"/>
+			<property name="reward_choices_count" value="5" />
+			<property name="completiontype" value="TurnIn"/>
+			<property name="completion_key" value="quest_clear_completion"/>
+			<property name="extra_tags" value="" param1="extra_tags" />
+			<property name="shareable" value="true"/>
+
+			<objective type="RandomPOIGoto">
+				<property name="phase" value="1"/>
+				<property name="biome_filter_type" value="SameBiome" param1="biome_filter_type" />
+				<property name="biome_filter" value="burnt_forest" param1="biome_filter" />
+				<property name="nav_object" value="quest" />
+				<property name="poi_tier" value="-1" param1="poi_tier" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+			</objective>
+
+			<objective type="ClearSleepers">
+				<property name="phase" value="3"/>
+				<property name="nav_object" value="sleeper_volume"/>
+			</objective>
+
+			<objective type="POIStayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="25"/>
+			</objective>
+			
+			<action type="SpawnEnemy" id="zombieBoe,zombieFemaleFat,zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieDarlene,zombieMarlene,zombieYo,zombieSteve,zombieBusinessMan" value="2-5" phase="4"/>
+			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="4" phase="4"/>
+			<action type="SpawnEnemy" id="zombieOldTimerRadiated,zombieCheerleaderRadiated,zombieSkateboarderRadiated,zombieMarleneRadiated,zombieSteveRadiated,zombieYoRadiated,zombieDarleneRadiated,zombieLabRadiated,zombieArleneRadiated,zombieMoeRadiated,zombieJanitorRadiated,zombieFemaleFatRadiated,zombieJoeRadiated,zombieBoeRadiated" value="2" phase="4"/>
+			<objective type="ObjectiveEntityKill" value="6" phase="4"/>
+			<objective type="POIStayWithin">
+				<property name="phase" value="4"/>
+				<property name="radius" value="25"/>
+			</objective>
+			
+			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="2-6" phase="5"/>
+			<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2-4" phase="5"/>
+			<action type="SpawnEnemy" id="zombieOldTimerRadiated,zombieCheerleaderRadiated,zombieSkateboarderRadiated,zombieMarleneRadiated,zombieSteveRadiated,zombieYoRadiated,zombieDarleneRadiated,zombieLabRadiated,zombieArleneRadiated,zombieMoeRadiated,zombieJanitorRadiated,zombieFemaleFatRadiated,zombieJoeRadiated,zombieBoeRadiated" value="4" phase="5"/>
+			<objective type="ObjectiveEntityKill" value="6" phase="5"/>
+			<objective type="POIStayWithin">
+				<property name="phase" value="5"/>
+				<property name="radius" value="25"/>
+			</objective>
+			
+			<action type="SpawnEnemy" id="zombieWightRadiated,zombieBikerRadiated,zombieFatCopRadiated,zombieSpiderRadiated,zombieSoldierRadiated,zombieDemolition" value="5" phase="6"/>
+			<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="1-5" phase="6"/>
+			<action type="SpawnEnemy" id="zombieOldTimerRadiated,zombieCheerleaderRadiated,zombieSkateboarderRadiated,zombieMarleneRadiated,zombieSteveRadiated,zombieYoRadiated,zombieDarleneRadiated,zombieLabRadiated,zombieArleneRadiated,zombieMoeRadiated,zombieJanitorRadiated,zombieFemaleFatRadiated,zombieJoeRadiated,zombieBoeRadiated" value="4" phase="6"/>
+			<objective type="ObjectiveEntityKill" value="7" phase="6"/>
+			<objective type="POIStayWithin">
+				<property name="phase" value="6"/>
+				<property name="radius" value="25"/>
+			</objective>
+			
+			<action type="SpawnEnemy" id="zombieWightRadiated,zombieBikerRadiated,zombieFatCopRadiated,zombieSpiderRadiated,zombieSoldierRadiated,zombieDemolition" value="4" phase="7"/>
+			<objective type="POIStayWithin">
+				<property name="phase" value="7"/>
+				<property name="radius" value="25"/>
+			</objective>
+			
+			<action type="UnlockPOI" >
+				<property name="phase" value="8"/>
+			</action>
+
+			<objective type="ReturnToNPC">
+				<property name="phase" value="8"/>
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+
+			<objective type="InteractWithNPC">
+				<property name="phase" value="8"/>
+			</objective>
+			
+			<reward type="Exp" value="27000"/>
+			<reward type="Item" id="casinoCoin" value="8000"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 
 		</quest>
 		
@@ -536,20 +624,9 @@
 
 	<!-- Lootable Quests -->
 	<!-- TODO - Make items that that are based on the treasure map items that let these quests looted  -->
-	<!-- 	These also need to be added to quest_items
-	<quest_items max_count="100">
-		<quest_item id="1" name="questWhiteRiverSupplies" description_key="questSuppliesGroupDesc" icon="questWhiteRiverSupplies" icon_color="255,255,255"/>
-		<quest_item id="2" name="questCassadoreSupplies" description_key="questSuppliesGroupDesc" icon="questCassadoreSupplies" icon_color="255,255,255"/>
-	</quest_items> -->
-	<!-- 	<insertAfter xpath="/quests/quest[@id='treasure_taylor']" >
-
-
-
-	</insertAfter> -->
-	<!-- Uncomment to add test quests to trader quest list -->
-	<!-- 	<insertAfter xpath="//quest_list[@id='trader_quests']/quest[@id='tier1_clear']">
-		<quest id="sphereii_gotoPoiTest" />
-		<quest id="score_tier1_clear_residence" />
+	<!-- 	These also need to be added to quest_items -->
+	
+	<!-- <insertAfter xpath="/quests/quest[@id='treasure_taylor']" >
 	</insertAfter> -->
 
 	<!-- Tag-specific Quests -->
@@ -694,16 +771,17 @@
 	<!-- Trader Quest List -->
 	<append xpath="/quests/quest_list[@id='trader_quests']">
 		<!-- Clear and Defend generic quests -->
-		<quest id="tier1_dementiveDefenseQuests"/>
+		<!-- <quest id="tier1_dementiveDefenseQuests"/> -->
 		<quest id="tier2_dementiveDefenseQuests"/>
 		<quest id="tier3_dementiveDefenseQuests"/>
 		<quest id="tier4_dementiveDefenseQuests"/>
 		<quest id="tier5_dementiveDefenseQuests"/>
+		<quest id="tier6_dementiveDefenseQuests"/>
 
-		<!-- Store POI Quests -->
+		<!-- Tag Group Quests -->
 		<quest id="clear_tier_1_store"/>
 
-		<!-- Urban Tag Quests -->
+		<!-- POI Group Quests -->
 		<quest id="clear_tier_1_urban"/>
 	</append>
 

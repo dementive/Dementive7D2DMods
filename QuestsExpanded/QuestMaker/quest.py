@@ -7,7 +7,7 @@ def make_quest(
 	quest = f"<quest id=\"{quest_id}\">\n"
 	quest += f"{properties}{objectives}{rewards}"
 	quest += "\n</quest>\n"
-	return quest
+	return (quest_id, quest)
 
 class QuestList(list):
 	def write(self):
@@ -15,4 +15,10 @@ class QuestList(list):
 			file.write("")
 		with open("quests.xml", "a") as file:
 			for i in self:
-				file.write(i)
+				file.write(i[1])
+		with open("quest_ids.txt", "w") as file:
+			file.write("")
+		with open("quest_ids.txt", "a") as file:
+			for i in self:
+				file.write(i[0])
+				file.write("\n")
