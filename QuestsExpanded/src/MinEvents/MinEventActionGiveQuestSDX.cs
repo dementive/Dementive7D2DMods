@@ -6,7 +6,7 @@ public class MinEventActionGiveQuestSDX : MinEventActionRemoveBuff
     private string strQuest = "";
 
     // This loops through all the targets, giving each target the quest. 
-    //  <triggered_effect trigger="onSelfBuffStart" action="GiveQuestSDX, SCore" target="self" quest="myNewQuest" />
+    //  <triggered_effect trigger="onSelfBuffStart" action="GiveQuestSDX, WeaponsExpanded" target="self" quest="myNewQuest" />
     public override void Execute(MinEventParams _params)
     {
         for (var j = 0; j < targets.Count; j++)

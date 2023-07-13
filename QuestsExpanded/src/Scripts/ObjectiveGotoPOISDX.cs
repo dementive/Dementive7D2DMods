@@ -6,6 +6,7 @@ using Random = System.Random;
  * 	<objective type="GotoPOISDX, QuestsExpanded" value="500-800" phase="1">
 			<property name="completion_distance" value="50" />
             <property name="PrefabName" value="prefabName" />
+            <property name="PrefabNames" value="prefabName,prefabName2" />
 		</objective>
 */
 internal class ObjectiveGotoPOISDX : ObjectiveRandomPOIGoto

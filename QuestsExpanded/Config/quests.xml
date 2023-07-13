@@ -1,5 +1,9 @@
 <config>
 
+	<!-- TODO - Write guide that explains all the properties of <quest>, <objective>, <action>, and <reward> here -->
+
+
+
 	<!-- Replacement for starting quest chain, takes you straight to the trader -->
 	<append xpath="/quests">	
 		<quest id="quest_visit_trader">
@@ -32,7 +36,8 @@
 		</quest>
 	</append>
 
-	<!-- Testing Quests -->
+	<!-- Example Quests -->
+	<!-- These are not used and should not be used, these quests are script examples. -->
 	<insertBefore xpath='/quests/quest_list[1]'>
 		<quest id="sphereii_gotoPoiTest">
 			<property name="group_name_key" value="score goto test"/>
@@ -207,7 +212,6 @@
 	</insertBefore>
 
 	<!-- Clear and Defend Quests -->
-	<!-- TODO - add a tier 6 defense quest -->
 	<insertAfter xpath="/quests/quest[@id='tier2_buried_supplies']" >
 
 		<quest id="tier1_dementiveDefenseQuests">
@@ -729,21 +733,157 @@
 
 	<!-- Tag-specific Quests -->
 
+	<insertAfter xpath="/quests/quest[@id='tier2_buried_supplies']" >
+		<quest id="clear_tier_1_urban">
+			<property name="name_key" value="quest_tier1_clear" param1="name"/>
+			<property name="subtitle_key" value="quest_clear_subtitle"/>
+			<property name="description_key" value="quest_clear_description"/>
+			<property name="icon" value="ui_game_symbol_quest"/>
+			<property name="repeatable" value="true"/>
+			<property name="category_key" value="quest"/>
+			<property name="offer_key" value="quest_tier1_clear_offer" param1="offer"/>
+			<property name="difficulty" value="medium"/>
+			<property name="difficulty_tier" value="1" param1="difficulty"/>
+			<property name="statement_key" value="quest_clear_statement"/>
+			<property name="response_key" value="quest_clear_response"/>
+			<property name="login_rally_reset" value="true"/>
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="" param1="extra_tags" />
+			<property name="shareable" value="true"/>
+			<property name="completiontype" value="TurnIn"/>
+			<property name="completion_key" value="quest_clear_completion"/>
+
+			<reward type="Exp" value="3000"/>
+			<reward type="Item" id="casinoCoin" value="800"/>
+
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+			<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+			<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+
+			<objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+				<property name="phase" value="1" />
+				<property name="nav_object" value="quest" />
+
+				<!-- Include POIs only if they have any of these tags -->
+				<property name="include_tags" value="downtown,industrial" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally" />
+			</objective>
+
+			<objective type="ClearSleepers">
+				<property name="phase" value="3"/>
+				<property name="nav_object" value="sleeper_volume"/>
+			</objective>
+
+			<objective type="POIStayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="25"/>
+			</objective>
+
+			<action type="UnlockPOI" >
+				<property name="phase" value="4"/>
+			</action>
+
+			<objective type="ReturnToNPC">
+				<property name="phase" value="4"/>
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+
+			<objective type="InteractWithNPC">
+				<property name="phase" value="4"/>
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+		</quest>
+	</insertAfter>
 
 	<!-- POI-specific Quests -->
+	<insertAfter xpath="/quests/quest[@id='tier2_buried_supplies']" >
+		<quest id="clear_tier_1_store" >
 
+			<property name="name_key" value="quest_tier1_clear" param1="name"/>
+			<property name="subtitle_key" value="quest_clear_subtitle"/>
+			<property name="description_key" value="quest_clear_description"/>
+			<property name="icon" value="ui_game_symbol_quest"/>
+			<property name="repeatable" value="true"/>
+			<property name="category_key" value="quest"/>
+			<property name="offer_key" value="quest_tier1_clear_offer" param1="offer"/>
+			<property name="difficulty" value="medium"/>
+			<property name="difficulty_tier" value="1" param1="difficulty"/>
+			<property name="statement_key" value="quest_clear_statement"/>
+			<property name="response_key" value="quest_clear_response"/>
+			<property name="login_rally_reset" value="true"/>
+			<property name="reward_choices_count" value="5" />
+			<property name="extra_tags" value="" param1="extra_tags" />
+			<property name="shareable" value="true"/>
+			<property name="completiontype" value="TurnIn"/>
+			<property name="completion_key" value="quest_clear_completion"/>
+
+			<reward type="Exp" value="3000"/>
+			<reward type="Item" id="casinoCoin" value="800"/>
+
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+			<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+			<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+
+			<objective type="GotoPOISDX, QuestsExpanded">
+				<property name="phase" value="1" />
+				<property name="nav_object" value="quest" />
+
+				<!-- Search for "<property name="DifficultyTier" value="1" to find tier1 prefabs -->
+				<property name="PrefabNames" value="store_autoparts_01,store_bakery_01,store_book_01,store_clothing_01,store_grocery_01,store_gun_01,store_hardware_01,store_laundry_01,store_pharmacy_01" />
+			</objective>
+
+			<objective type="RallyPoint">
+				<property name="phase" value="2" />
+				<property name="nav_object" value="rally" />
+			</objective>
+
+			<objective type="FetchFromContainer">
+				<property name="phase" value="3" />
+				<property name="quest_item_ID" value="1" />
+				<property name="item_count" value="1" />
+				<property name="default_container" value="cntFetchQuestSatchel" />
+				<property name="nav_object" value="fetch_container" />
+			</objective>
+
+			<objective type="POIStayWithin">
+				<property name="phase" value="3" />
+				<property name="radius" value="25" />
+			</objective>
+
+			<objective type="ReturnToNPC">
+				<property name="phase" value="4" />
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+
+			<objective type="InteractWithNPC">
+				<property name="phase" value="4" />
+				<property name="nav_object" value="return_to_trader" />
+			</objective>
+		</quest>
+	</insertAfter>
 
 	<!-- Trader Quest List -->
 	<append xpath="/quests/quest_list[@id='trader_quests']">
-		<quest id="sphereii_gotoPoiTest" />
-		<quest id="score_tier1_clear_residence" />
-
+		<!-- Clear and Defend generic quests -->
 		<quest id="tier1_dementiveDefenseQuests"/>
 		<quest id="tier2_dementiveDefenseQuests"/>
 		<quest id="tier3_dementiveDefenseQuests"/>
 		<quest id="tier4_dementiveDefenseQuests"/>
 		<quest id="tier5_dementiveDefenseQuests"/>
 
+		<!-- Store POI Quests -->
+		<quest id="clear_tier_1_store"/>
+
+		<!-- Urban Tag Quests -->
+		<quest id="clear_tier_1_urban"/>
 	</append>
 
 </config>

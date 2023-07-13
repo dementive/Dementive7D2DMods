@@ -12,7 +12,7 @@ using UnityEngine;
 /// </summary>
 /// <example>
 /// <code>
-/// &lt;objective type="RandomTaggedPOIGotoSDX, SCore">
+/// &lt;objective type="RandomTaggedPOIGotoSDX, WeaponsExpanded">
 ///     &lt;!-- Standard objective properties not listed... -->
 ///     &lt;property name="include_tags" value="downtown,industrial"/>
 ///     &lt;property name="exclude_tags" value="rural,wilderness"/>
