@@ -31,10 +31,7 @@ class Objectives:
 	<objective type="InteractWithNPC">
 		<property name="phase" value="4"/>
 		<property name="nav_object" value="return_to_trader" />
-	</objective>
-    	"""[
-            3:
-        ]
+	</objective>"""[3:]
 
         self.objective_clear_ending = """xml
 	<objective type="RallyPoint">
@@ -64,10 +61,7 @@ class Objectives:
 	<objective type="InteractWithNPC">
 		<property name="phase" value="4"/>
 		<property name="nav_object" value="return_to_trader" />
-	</objective>
-    	"""[
-            3:
-        ]
+	</objective>"""[3:]
 
         self.objective_fetch_and_clear_ending = """xml
 		<objective type="RallyPoint">
@@ -105,7 +99,4 @@ class Objectives:
 		<objective type="InteractWithNPC">
 			<property name="phase" value="4"/>
 			<property name="nav_object" value="return_to_trader" />
-		</objective>
-    	"""[
-            3:
-        ]
+		</objective>"""[3:]

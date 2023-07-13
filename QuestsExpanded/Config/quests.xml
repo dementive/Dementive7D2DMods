@@ -1,9 +1,5 @@
 <config>
 
-	<!-- TODO - Write guide that explains all the properties of <quest>, <objective>, <action>, and <reward> here -->
-
-
-
 	<!-- Replacement for starting quest chain, takes you straight to the trader -->
 	<append xpath="/quests">	
 		<quest id="quest_visit_trader">
@@ -60,7 +56,7 @@
 			<objective type="GotoPOISDX, QuestsExpanded" value="10-6000" phase="1">
 				<property name="completion_distance" value="50" />
 				<property name="phase" value="1" />
-				<property name="PrefabName" value="store_gun_01,store_gun_02" />
+				<property name="PrefabNames" value="store_gun_01,store_gun_02" />
 				<property name="nav_object" value="quest" />
 			</objective>
 
@@ -424,7 +420,7 @@
 			<property name="statement_key" value="challenge_dementive_DefenseQuests_statement"/>
 			<property name="response_key" value="challenge_dementive_DefenseQuests_response"/>
 			<property name="difficulty" value="medium"/>
-			<property name="difficulty_tier" value="2"/>
+			<property name="difficulty_tier" value="3"/>
 			<property name="login_rally_reset" value="true"/>
 			<property name="reward_choices_count" value="5" />
 			<property name="completiontype" value="TurnIn"/>
@@ -522,7 +518,7 @@
 			<property name="statement_key" value="challenge_dementive_DefenseQuests_statement"/>
 			<property name="response_key" value="challenge_dementive_DefenseQuests_response"/>
 			<property name="difficulty" value="hard"/>
-			<property name="difficulty_tier" value="2"/>
+			<property name="difficulty_tier" value="4"/>
 			<property name="login_rally_reset" value="true"/>
 			<property name="reward_choices_count" value="5" />
 			<property name="completiontype" value="TurnIn"/>
@@ -617,7 +613,7 @@
 			<property name="statement_key" value="challenge_dementive_DefenseQuests_statement"/>
 			<property name="response_key" value="challenge_dementive_DefenseQuests_response"/>
 			<property name="difficulty" value="hard"/>
-			<property name="difficulty_tier" value="2"/>
+			<property name="difficulty_tier" value="5"/>
 			<property name="login_rally_reset" value="true"/>
 			<property name="reward_choices_count" value="5" />
 			<property name="completiontype" value="TurnIn"/>

@@ -1,13 +1,18 @@
-class Quest:
-	"""7D2D Quest Template class"""
+def make_quest(
+	quest_id,
+	properties="",
+	objectives="",
+	rewards=""
+):
+	quest = f"<quest id=\"{quest_id}\">\n"
+	quest += f"{properties}{objectives}{rewards}"
+	quest += "\n</quest>\n"
+	return quest
 
-	def __init__(
-		self,
-		quest_id,
-		properties="",
-		objectives="",
-		rewards="",
-	):
-		self.quest = f"<quest id=\"{quest_id}\">\n"
-		self.quest += f"{properties}{objectives}{rewards}"
-		self.quest += "\n</quest>"
+class QuestList(list):
+	def write(self):
+		with open("quests.xml", "w") as file:
+			file.write("")
+		with open("quests.xml", "a") as file:
+			for i in self:
+				file.write(i)

@@ -1,0 +1,2132 @@
+<quest id="tier1_urban_clear">
+    <property name="group_name_key" value="tier1_urban_clear_group_name">
+    <property name="name_key" value="tier1_urban_clear_quest_name">
+    <property name="subtitle_key" value="tier1_urban_clear_subtitle">
+    <property name="description_key" value="tier1_urban_clear_description">
+    <property name="category_key" value="tier1_urban_clear_category">
+    <property name="offer_key" value="tier1_urban_clear_offer">
+    <property name="statement_key" value="tier1_urban_clear_statement">
+    <property name="response_key" value="tier1_urban_clear_response">
+    <property name="completion_key" value="tier1_urban_clear_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="include_tags" value="downtown, commercial, industrial" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="ClearSleepers">
+		<property name="phase" value="3"/>
+		<property name="nav_object" value="sleeper_volume"/>
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="3000"/>
+	<reward type="Item" id="casinoCoin" value="800"/>
+
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+	
+</quest>
+<quest id="tier1_urban_fetch">
+    <property name="group_name_key" value="tier1_urban_fetch_group_name">
+    <property name="name_key" value="tier1_urban_fetch_quest_name">
+    <property name="subtitle_key" value="tier1_urban_fetch_subtitle">
+    <property name="description_key" value="tier1_urban_fetch_description">
+    <property name="category_key" value="tier1_urban_fetch_category">
+    <property name="offer_key" value="tier1_urban_fetch_offer">
+    <property name="statement_key" value="tier1_urban_fetch_statement">
+    <property name="response_key" value="tier1_urban_fetch_response">
+    <property name="completion_key" value="tier1_urban_fetch_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="include_tags" value="downtown, commercial, industrial" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="FetchFromContainer">
+		<property name="phase" value="3"/>
+		<property name="quest_item_ID" value="1"/>
+		<property name="item_count" value="1"/>
+		<property name="default_container" value="cntFetchQuestSatchel"/>
+		<property name="nav_object" value="fetch_container" />
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="2500"/>
+	<reward type="Item" id="casinoCoin" value="330"/>
+	
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+		
+</quest>
+<quest id="tier2_urban_clear">
+    <property name="group_name_key" value="tier2_urban_clear_group_name">
+    <property name="name_key" value="tier2_urban_clear_quest_name">
+    <property name="subtitle_key" value="tier2_urban_clear_subtitle">
+    <property name="description_key" value="tier2_urban_clear_description">
+    <property name="category_key" value="tier2_urban_clear_category">
+    <property name="offer_key" value="tier2_urban_clear_offer">
+    <property name="statement_key" value="tier2_urban_clear_statement">
+    <property name="response_key" value="tier2_urban_clear_response">
+    <property name="completion_key" value="tier2_urban_clear_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="2">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="include_tags" value="downtown, commercial, industrial" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="ClearSleepers">
+		<property name="phase" value="3"/>
+		<property name="nav_object" value="sleeper_volume"/>
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="4500"/>
+	<reward type="Item" id="casinoCoin" value="1350"/>
+
+	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+</quest>
+<quest id="tier2_urban_fetch">
+    <property name="group_name_key" value="tier2_urban_fetch_group_name">
+    <property name="name_key" value="tier2_urban_fetch_quest_name">
+    <property name="subtitle_key" value="tier2_urban_fetch_subtitle">
+    <property name="description_key" value="tier2_urban_fetch_description">
+    <property name="category_key" value="tier2_urban_fetch_category">
+    <property name="offer_key" value="tier2_urban_fetch_offer">
+    <property name="statement_key" value="tier2_urban_fetch_statement">
+    <property name="response_key" value="tier2_urban_fetch_response">
+    <property name="completion_key" value="tier2_urban_fetch_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="2">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="include_tags" value="downtown, commercial, industrial" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="FetchFromContainer">
+		<property name="phase" value="3"/>
+		<property name="quest_item_ID" value="1"/>
+		<property name="item_count" value="1"/>
+		<property name="default_container" value="cntFetchQuestSatchel"/>
+		<property name="nav_object" value="fetch_container" />
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="3750"/>
+	<reward type="Item" id="casinoCoin" value="560"/>
+
+	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+</quest>
+<quest id="tier3_urban_clear">
+    <property name="group_name_key" value="tier3_urban_clear_group_name">
+    <property name="name_key" value="tier3_urban_clear_quest_name">
+    <property name="subtitle_key" value="tier3_urban_clear_subtitle">
+    <property name="description_key" value="tier3_urban_clear_description">
+    <property name="category_key" value="tier3_urban_clear_category">
+    <property name="offer_key" value="tier3_urban_clear_offer">
+    <property name="statement_key" value="tier3_urban_clear_statement">
+    <property name="response_key" value="tier3_urban_clear_response">
+    <property name="completion_key" value="tier3_urban_clear_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="3">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="include_tags" value="downtown, commercial, industrial" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="ClearSleepers">
+		<property name="phase" value="3"/>
+		<property name="nav_object" value="sleeper_volume"/>
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="6000"/>
+	<reward type="Item" id="casinoCoin" value="1800"/>
+
+	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+</quest>
+<quest id="tier3_urban_fetch">
+    <property name="group_name_key" value="tier3_urban_fetch_group_name">
+    <property name="name_key" value="tier3_urban_fetch_quest_name">
+    <property name="subtitle_key" value="tier3_urban_fetch_subtitle">
+    <property name="description_key" value="tier3_urban_fetch_description">
+    <property name="category_key" value="tier3_urban_fetch_category">
+    <property name="offer_key" value="tier3_urban_fetch_offer">
+    <property name="statement_key" value="tier3_urban_fetch_statement">
+    <property name="response_key" value="tier3_urban_fetch_response">
+    <property name="completion_key" value="tier3_urban_fetch_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="3">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="include_tags" value="downtown, commercial, industrial" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="FetchFromContainer">
+		<property name="phase" value="3"/>
+		<property name="quest_item_ID" value="1"/>
+		<property name="item_count" value="1"/>
+		<property name="default_container" value="cntFetchQuestSatchel"/>
+		<property name="nav_object" value="fetch_container" />
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="5000"/>
+	<reward type="Item" id="casinoCoin" value="800"/>
+
+	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+</quest>
+<quest id="tier4_urban_clear">
+    <property name="group_name_key" value="tier4_urban_clear_group_name">
+    <property name="name_key" value="tier4_urban_clear_quest_name">
+    <property name="subtitle_key" value="tier4_urban_clear_subtitle">
+    <property name="description_key" value="tier4_urban_clear_description">
+    <property name="category_key" value="tier4_urban_clear_category">
+    <property name="offer_key" value="tier4_urban_clear_offer">
+    <property name="statement_key" value="tier4_urban_clear_statement">
+    <property name="response_key" value="tier4_urban_clear_response">
+    <property name="completion_key" value="tier4_urban_clear_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="4">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="include_tags" value="downtown, commercial, industrial" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="ClearSleepers">
+		<property name="phase" value="3"/>
+		<property name="nav_object" value="sleeper_volume"/>
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="7500"/>
+	<reward type="Item" id="casinoCoin" value="2040"/>
+
+	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+</quest>
+<quest id="tier4_urban_fetch">
+    <property name="group_name_key" value="tier4_urban_fetch_group_name">
+    <property name="name_key" value="tier4_urban_fetch_quest_name">
+    <property name="subtitle_key" value="tier4_urban_fetch_subtitle">
+    <property name="description_key" value="tier4_urban_fetch_description">
+    <property name="category_key" value="tier4_urban_fetch_category">
+    <property name="offer_key" value="tier4_urban_fetch_offer">
+    <property name="statement_key" value="tier4_urban_fetch_statement">
+    <property name="response_key" value="tier4_urban_fetch_response">
+    <property name="completion_key" value="tier4_urban_fetch_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="4">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="include_tags" value="downtown, commercial, industrial" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="FetchFromContainer">
+		<property name="phase" value="3"/>
+		<property name="quest_item_ID" value="1"/>
+		<property name="item_count" value="1"/>
+		<property name="default_container" value="cntFetchQuestSatchel"/>
+		<property name="nav_object" value="fetch_container" />
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="6250"/>
+	<reward type="Item" id="casinoCoin" value="1020"/>
+
+	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+</quest>
+<quest id="tier1_rural_clear">
+    <property name="group_name_key" value="tier1_rural_clear_group_name">
+    <property name="name_key" value="tier1_rural_clear_quest_name">
+    <property name="subtitle_key" value="tier1_rural_clear_subtitle">
+    <property name="description_key" value="tier1_rural_clear_description">
+    <property name="category_key" value="tier1_rural_clear_category">
+    <property name="offer_key" value="tier1_rural_clear_offer">
+    <property name="statement_key" value="tier1_rural_clear_statement">
+    <property name="response_key" value="tier1_rural_clear_response">
+    <property name="completion_key" value="tier1_rural_clear_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="include_tags" value="countrytown, countryresidential, rural" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="ClearSleepers">
+		<property name="phase" value="3"/>
+		<property name="nav_object" value="sleeper_volume"/>
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="3000"/>
+	<reward type="Item" id="casinoCoin" value="800"/>
+
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+	
+</quest>
+<quest id="tier1_rural_fetch">
+    <property name="group_name_key" value="tier1_rural_fetch_group_name">
+    <property name="name_key" value="tier1_rural_fetch_quest_name">
+    <property name="subtitle_key" value="tier1_rural_fetch_subtitle">
+    <property name="description_key" value="tier1_rural_fetch_description">
+    <property name="category_key" value="tier1_rural_fetch_category">
+    <property name="offer_key" value="tier1_rural_fetch_offer">
+    <property name="statement_key" value="tier1_rural_fetch_statement">
+    <property name="response_key" value="tier1_rural_fetch_response">
+    <property name="completion_key" value="tier1_rural_fetch_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="include_tags" value="countrytown, countryresidential, rural" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="FetchFromContainer">
+		<property name="phase" value="3"/>
+		<property name="quest_item_ID" value="1"/>
+		<property name="item_count" value="1"/>
+		<property name="default_container" value="cntFetchQuestSatchel"/>
+		<property name="nav_object" value="fetch_container" />
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="2500"/>
+	<reward type="Item" id="casinoCoin" value="330"/>
+	
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+		
+</quest>
+<quest id="tier2_rural_clear">
+    <property name="group_name_key" value="tier2_rural_clear_group_name">
+    <property name="name_key" value="tier2_rural_clear_quest_name">
+    <property name="subtitle_key" value="tier2_rural_clear_subtitle">
+    <property name="description_key" value="tier2_rural_clear_description">
+    <property name="category_key" value="tier2_rural_clear_category">
+    <property name="offer_key" value="tier2_rural_clear_offer">
+    <property name="statement_key" value="tier2_rural_clear_statement">
+    <property name="response_key" value="tier2_rural_clear_response">
+    <property name="completion_key" value="tier2_rural_clear_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="2">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="include_tags" value="countrytown, countryresidential, rural" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="ClearSleepers">
+		<property name="phase" value="3"/>
+		<property name="nav_object" value="sleeper_volume"/>
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="4500"/>
+	<reward type="Item" id="casinoCoin" value="1350"/>
+
+	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+</quest>
+<quest id="tier2_rural_fetch">
+    <property name="group_name_key" value="tier2_rural_fetch_group_name">
+    <property name="name_key" value="tier2_rural_fetch_quest_name">
+    <property name="subtitle_key" value="tier2_rural_fetch_subtitle">
+    <property name="description_key" value="tier2_rural_fetch_description">
+    <property name="category_key" value="tier2_rural_fetch_category">
+    <property name="offer_key" value="tier2_rural_fetch_offer">
+    <property name="statement_key" value="tier2_rural_fetch_statement">
+    <property name="response_key" value="tier2_rural_fetch_response">
+    <property name="completion_key" value="tier2_rural_fetch_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="2">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="include_tags" value="countrytown, countryresidential, rural" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="FetchFromContainer">
+		<property name="phase" value="3"/>
+		<property name="quest_item_ID" value="1"/>
+		<property name="item_count" value="1"/>
+		<property name="default_container" value="cntFetchQuestSatchel"/>
+		<property name="nav_object" value="fetch_container" />
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="3750"/>
+	<reward type="Item" id="casinoCoin" value="560"/>
+
+	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+</quest>
+<quest id="tier3_rural_clear">
+    <property name="group_name_key" value="tier3_rural_clear_group_name">
+    <property name="name_key" value="tier3_rural_clear_quest_name">
+    <property name="subtitle_key" value="tier3_rural_clear_subtitle">
+    <property name="description_key" value="tier3_rural_clear_description">
+    <property name="category_key" value="tier3_rural_clear_category">
+    <property name="offer_key" value="tier3_rural_clear_offer">
+    <property name="statement_key" value="tier3_rural_clear_statement">
+    <property name="response_key" value="tier3_rural_clear_response">
+    <property name="completion_key" value="tier3_rural_clear_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="3">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="include_tags" value="countrytown, countryresidential, rural" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="ClearSleepers">
+		<property name="phase" value="3"/>
+		<property name="nav_object" value="sleeper_volume"/>
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="6000"/>
+	<reward type="Item" id="casinoCoin" value="1800"/>
+
+	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+</quest>
+<quest id="tier3_rural_fetch">
+    <property name="group_name_key" value="tier3_rural_fetch_group_name">
+    <property name="name_key" value="tier3_rural_fetch_quest_name">
+    <property name="subtitle_key" value="tier3_rural_fetch_subtitle">
+    <property name="description_key" value="tier3_rural_fetch_description">
+    <property name="category_key" value="tier3_rural_fetch_category">
+    <property name="offer_key" value="tier3_rural_fetch_offer">
+    <property name="statement_key" value="tier3_rural_fetch_statement">
+    <property name="response_key" value="tier3_rural_fetch_response">
+    <property name="completion_key" value="tier3_rural_fetch_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="3">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="include_tags" value="countrytown, countryresidential, rural" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="FetchFromContainer">
+		<property name="phase" value="3"/>
+		<property name="quest_item_ID" value="1"/>
+		<property name="item_count" value="1"/>
+		<property name="default_container" value="cntFetchQuestSatchel"/>
+		<property name="nav_object" value="fetch_container" />
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="5000"/>
+	<reward type="Item" id="casinoCoin" value="800"/>
+
+	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+</quest>
+<quest id="tier4_rural_clear">
+    <property name="group_name_key" value="tier4_rural_clear_group_name">
+    <property name="name_key" value="tier4_rural_clear_quest_name">
+    <property name="subtitle_key" value="tier4_rural_clear_subtitle">
+    <property name="description_key" value="tier4_rural_clear_description">
+    <property name="category_key" value="tier4_rural_clear_category">
+    <property name="offer_key" value="tier4_rural_clear_offer">
+    <property name="statement_key" value="tier4_rural_clear_statement">
+    <property name="response_key" value="tier4_rural_clear_response">
+    <property name="completion_key" value="tier4_rural_clear_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="4">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="include_tags" value="countrytown, countryresidential, rural" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="ClearSleepers">
+		<property name="phase" value="3"/>
+		<property name="nav_object" value="sleeper_volume"/>
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="7500"/>
+	<reward type="Item" id="casinoCoin" value="2040"/>
+
+	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+</quest>
+<quest id="tier4_rural_fetch">
+    <property name="group_name_key" value="tier4_rural_fetch_group_name">
+    <property name="name_key" value="tier4_rural_fetch_quest_name">
+    <property name="subtitle_key" value="tier4_rural_fetch_subtitle">
+    <property name="description_key" value="tier4_rural_fetch_description">
+    <property name="category_key" value="tier4_rural_fetch_category">
+    <property name="offer_key" value="tier4_rural_fetch_offer">
+    <property name="statement_key" value="tier4_rural_fetch_statement">
+    <property name="response_key" value="tier4_rural_fetch_response">
+    <property name="completion_key" value="tier4_rural_fetch_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="4">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="include_tags" value="countrytown, countryresidential, rural" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="FetchFromContainer">
+		<property name="phase" value="3"/>
+		<property name="quest_item_ID" value="1"/>
+		<property name="item_count" value="1"/>
+		<property name="default_container" value="cntFetchQuestSatchel"/>
+		<property name="nav_object" value="fetch_container" />
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="6250"/>
+	<reward type="Item" id="casinoCoin" value="1020"/>
+
+	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		
+</quest>
+<quest id="tier1_cabin_clear">
+    <property name="group_name_key" value="tier1_cabin_clear_group_name">
+    <property name="name_key" value="tier1_cabin_clear_quest_name">
+    <property name="subtitle_key" value="tier1_cabin_clear_subtitle">
+    <property name="description_key" value="tier1_cabin_clear_description">
+    <property name="category_key" value="tier1_cabin_clear_category">
+    <property name="offer_key" value="tier1_cabin_clear_offer">
+    <property name="statement_key" value="tier1_cabin_clear_statement">
+    <property name="response_key" value="tier1_cabin_clear_response">
+    <property name="completion_key" value="tier1_cabin_clear_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="GotoPOISDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="PrefabNames" value="cabin_01,cabin_06,cabin_09,cabin_11,cabin_07,cabin_05,cabin_08,cabin_14,cabin_02,cabin_12,cabin_15,cabin_10,cabin_04,cabin_16" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="ClearSleepers">
+		<property name="phase" value="3"/>
+		<property name="nav_object" value="sleeper_volume"/>
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="3000"/>
+	<reward type="Item" id="casinoCoin" value="800"/>
+
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+	
+</quest>
+<quest id="tier1_cabin_fetch">
+    <property name="group_name_key" value="tier1_cabin_fetch_group_name">
+    <property name="name_key" value="tier1_cabin_fetch_quest_name">
+    <property name="subtitle_key" value="tier1_cabin_fetch_subtitle">
+    <property name="description_key" value="tier1_cabin_fetch_description">
+    <property name="category_key" value="tier1_cabin_fetch_category">
+    <property name="offer_key" value="tier1_cabin_fetch_offer">
+    <property name="statement_key" value="tier1_cabin_fetch_statement">
+    <property name="response_key" value="tier1_cabin_fetch_response">
+    <property name="completion_key" value="tier1_cabin_fetch_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="GotoPOISDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="PrefabNames" value="cabin_01,cabin_06,cabin_09,cabin_11,cabin_07,cabin_05,cabin_08,cabin_14,cabin_02,cabin_12,cabin_15,cabin_10,cabin_04,cabin_16" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="FetchFromContainer">
+		<property name="phase" value="3"/>
+		<property name="quest_item_ID" value="1"/>
+		<property name="item_count" value="1"/>
+		<property name="default_container" value="cntFetchQuestSatchel"/>
+		<property name="nav_object" value="fetch_container" />
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="2500"/>
+	<reward type="Item" id="casinoCoin" value="330"/>
+	
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+		
+</quest>
+<quest id="tier1_survivor_site_clear">
+    <property name="group_name_key" value="tier1_survivor_site_clear_group_name">
+    <property name="name_key" value="tier1_survivor_site_clear_quest_name">
+    <property name="subtitle_key" value="tier1_survivor_site_clear_subtitle">
+    <property name="description_key" value="tier1_survivor_site_clear_description">
+    <property name="category_key" value="tier1_survivor_site_clear_category">
+    <property name="offer_key" value="tier1_survivor_site_clear_offer">
+    <property name="statement_key" value="tier1_survivor_site_clear_statement">
+    <property name="response_key" value="tier1_survivor_site_clear_response">
+    <property name="completion_key" value="tier1_survivor_site_clear_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="GotoPOISDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="PrefabNames" value="survivor_site_02,survivor_site_05,survivor_site_06,survivor_site_08,survivor_site_03,survivor_site_09,survivor_site_01,survivor_site_10,survivor_site_11,survivor_site_07" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="ClearSleepers">
+		<property name="phase" value="3"/>
+		<property name="nav_object" value="sleeper_volume"/>
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="3000"/>
+	<reward type="Item" id="casinoCoin" value="800"/>
+
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+	
+</quest>
+<quest id="tier1_survivor_site_fetch">
+    <property name="group_name_key" value="tier1_survivor_site_fetch_group_name">
+    <property name="name_key" value="tier1_survivor_site_fetch_quest_name">
+    <property name="subtitle_key" value="tier1_survivor_site_fetch_subtitle">
+    <property name="description_key" value="tier1_survivor_site_fetch_description">
+    <property name="category_key" value="tier1_survivor_site_fetch_category">
+    <property name="offer_key" value="tier1_survivor_site_fetch_offer">
+    <property name="statement_key" value="tier1_survivor_site_fetch_statement">
+    <property name="response_key" value="tier1_survivor_site_fetch_response">
+    <property name="completion_key" value="tier1_survivor_site_fetch_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="GotoPOISDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="PrefabNames" value="survivor_site_02,survivor_site_05,survivor_site_06,survivor_site_08,survivor_site_03,survivor_site_09,survivor_site_01,survivor_site_10,survivor_site_11,survivor_site_07" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="FetchFromContainer">
+		<property name="phase" value="3"/>
+		<property name="quest_item_ID" value="1"/>
+		<property name="item_count" value="1"/>
+		<property name="default_container" value="cntFetchQuestSatchel"/>
+		<property name="nav_object" value="fetch_container" />
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="2500"/>
+	<reward type="Item" id="casinoCoin" value="330"/>
+	
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+		
+</quest>
+<quest id="tier1_fast_food_clear">
+    <property name="group_name_key" value="tier1_fast_food_clear_group_name">
+    <property name="name_key" value="tier1_fast_food_clear_quest_name">
+    <property name="subtitle_key" value="tier1_fast_food_clear_subtitle">
+    <property name="description_key" value="tier1_fast_food_clear_description">
+    <property name="category_key" value="tier1_fast_food_clear_category">
+    <property name="offer_key" value="tier1_fast_food_clear_offer">
+    <property name="statement_key" value="tier1_fast_food_clear_statement">
+    <property name="response_key" value="tier1_fast_food_clear_response">
+    <property name="completion_key" value="tier1_fast_food_clear_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="GotoPOISDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="PrefabNames" value="fastfood_03,fastfood_02,fastfood_01,fastfood_05" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="ClearSleepers">
+		<property name="phase" value="3"/>
+		<property name="nav_object" value="sleeper_volume"/>
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="3000"/>
+	<reward type="Item" id="casinoCoin" value="800"/>
+
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+	
+</quest>
+<quest id="tier1_fast_food_fetch">
+    <property name="group_name_key" value="tier1_fast_food_fetch_group_name">
+    <property name="name_key" value="tier1_fast_food_fetch_quest_name">
+    <property name="subtitle_key" value="tier1_fast_food_fetch_subtitle">
+    <property name="description_key" value="tier1_fast_food_fetch_description">
+    <property name="category_key" value="tier1_fast_food_fetch_category">
+    <property name="offer_key" value="tier1_fast_food_fetch_offer">
+    <property name="statement_key" value="tier1_fast_food_fetch_statement">
+    <property name="response_key" value="tier1_fast_food_fetch_response">
+    <property name="completion_key" value="tier1_fast_food_fetch_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="GotoPOISDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="PrefabNames" value="fastfood_03,fastfood_02,fastfood_01,fastfood_05" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="FetchFromContainer">
+		<property name="phase" value="3"/>
+		<property name="quest_item_ID" value="1"/>
+		<property name="item_count" value="1"/>
+		<property name="default_container" value="cntFetchQuestSatchel"/>
+		<property name="nav_object" value="fetch_container" />
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="2500"/>
+	<reward type="Item" id="casinoCoin" value="330"/>
+	
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+		
+</quest>
+<quest id="tier1_caves_clear">
+    <property name="group_name_key" value="tier1_caves_clear_group_name">
+    <property name="name_key" value="tier1_caves_clear_quest_name">
+    <property name="subtitle_key" value="tier1_caves_clear_subtitle">
+    <property name="description_key" value="tier1_caves_clear_description">
+    <property name="category_key" value="tier1_caves_clear_category">
+    <property name="offer_key" value="tier1_caves_clear_offer">
+    <property name="statement_key" value="tier1_caves_clear_statement">
+    <property name="response_key" value="tier1_caves_clear_response">
+    <property name="completion_key" value="tier1_caves_clear_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="GotoPOISDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="PrefabNames" value="cave_05,cave_01,cave_04,cave_03,cave_02" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="ClearSleepers">
+		<property name="phase" value="3"/>
+		<property name="nav_object" value="sleeper_volume"/>
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="3000"/>
+	<reward type="Item" id="casinoCoin" value="800"/>
+
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+	
+</quest>
+<quest id="tier1_caves_fetch">
+    <property name="group_name_key" value="tier1_caves_fetch_group_name">
+    <property name="name_key" value="tier1_caves_fetch_quest_name">
+    <property name="subtitle_key" value="tier1_caves_fetch_subtitle">
+    <property name="description_key" value="tier1_caves_fetch_description">
+    <property name="category_key" value="tier1_caves_fetch_category">
+    <property name="offer_key" value="tier1_caves_fetch_offer">
+    <property name="statement_key" value="tier1_caves_fetch_statement">
+    <property name="response_key" value="tier1_caves_fetch_response">
+    <property name="completion_key" value="tier1_caves_fetch_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="GotoPOISDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="PrefabNames" value="cave_05,cave_01,cave_04,cave_03,cave_02" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="FetchFromContainer">
+		<property name="phase" value="3"/>
+		<property name="quest_item_ID" value="1"/>
+		<property name="item_count" value="1"/>
+		<property name="default_container" value="cntFetchQuestSatchel"/>
+		<property name="nav_object" value="fetch_container" />
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="2500"/>
+	<reward type="Item" id="casinoCoin" value="330"/>
+	
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+		
+</quest>
+<quest id="tier1_store_clear">
+    <property name="group_name_key" value="tier1_store_clear_group_name">
+    <property name="name_key" value="tier1_store_clear_quest_name">
+    <property name="subtitle_key" value="tier1_store_clear_subtitle">
+    <property name="description_key" value="tier1_store_clear_description">
+    <property name="category_key" value="tier1_store_clear_category">
+    <property name="offer_key" value="tier1_store_clear_offer">
+    <property name="statement_key" value="tier1_store_clear_statement">
+    <property name="response_key" value="tier1_store_clear_response">
+    <property name="completion_key" value="tier1_store_clear_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="GotoPOISDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="PrefabNames" value="store_electronics_01,store_grocery_05,store_grocery_04,store_grocery_06,store_laundry_01,store_pharmacy_01" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="ClearSleepers">
+		<property name="phase" value="3"/>
+		<property name="nav_object" value="sleeper_volume"/>
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="3000"/>
+	<reward type="Item" id="casinoCoin" value="800"/>
+
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+	
+</quest>
+<quest id="tier1_store_fetch">
+    <property name="group_name_key" value="tier1_store_fetch_group_name">
+    <property name="name_key" value="tier1_store_fetch_quest_name">
+    <property name="subtitle_key" value="tier1_store_fetch_subtitle">
+    <property name="description_key" value="tier1_store_fetch_description">
+    <property name="category_key" value="tier1_store_fetch_category">
+    <property name="offer_key" value="tier1_store_fetch_offer">
+    <property name="statement_key" value="tier1_store_fetch_statement">
+    <property name="response_key" value="tier1_store_fetch_response">
+    <property name="completion_key" value="tier1_store_fetch_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="GotoPOISDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="PrefabNames" value="store_electronics_01,store_grocery_05,store_grocery_04,store_grocery_06,store_laundry_01,store_pharmacy_01" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="FetchFromContainer">
+		<property name="phase" value="3"/>
+		<property name="quest_item_ID" value="1"/>
+		<property name="item_count" value="1"/>
+		<property name="default_container" value="cntFetchQuestSatchel"/>
+		<property name="nav_object" value="fetch_container" />
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="2500"/>
+	<reward type="Item" id="casinoCoin" value="330"/>
+	
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+		
+</quest>
+<quest id="tier1_gas_station_clear">
+    <property name="group_name_key" value="tier1_gas_station_clear_group_name">
+    <property name="name_key" value="tier1_gas_station_clear_quest_name">
+    <property name="subtitle_key" value="tier1_gas_station_clear_subtitle">
+    <property name="description_key" value="tier1_gas_station_clear_description">
+    <property name="category_key" value="tier1_gas_station_clear_category">
+    <property name="offer_key" value="tier1_gas_station_clear_offer">
+    <property name="statement_key" value="tier1_gas_station_clear_statement">
+    <property name="response_key" value="tier1_gas_station_clear_response">
+    <property name="completion_key" value="tier1_gas_station_clear_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="GotoPOISDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="PrefabNames" value="gas_station_11,gas_station_04,gas_station_08,gas_station_10,gas_station_01,gas_station_09,fastfood_04,gas_station_03,gas_station_02,gas_station_07" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="ClearSleepers">
+		<property name="phase" value="3"/>
+		<property name="nav_object" value="sleeper_volume"/>
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="3000"/>
+	<reward type="Item" id="casinoCoin" value="800"/>
+
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+	
+</quest>
+<quest id="tier1_gas_station_fetch">
+    <property name="group_name_key" value="tier1_gas_station_fetch_group_name">
+    <property name="name_key" value="tier1_gas_station_fetch_quest_name">
+    <property name="subtitle_key" value="tier1_gas_station_fetch_subtitle">
+    <property name="description_key" value="tier1_gas_station_fetch_description">
+    <property name="category_key" value="tier1_gas_station_fetch_category">
+    <property name="offer_key" value="tier1_gas_station_fetch_offer">
+    <property name="statement_key" value="tier1_gas_station_fetch_statement">
+    <property name="response_key" value="tier1_gas_station_fetch_response">
+    <property name="completion_key" value="tier1_gas_station_fetch_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="GotoPOISDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="PrefabNames" value="gas_station_11,gas_station_04,gas_station_08,gas_station_10,gas_station_01,gas_station_09,fastfood_04,gas_station_03,gas_station_02,gas_station_07" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="FetchFromContainer">
+		<property name="phase" value="3"/>
+		<property name="quest_item_ID" value="1"/>
+		<property name="item_count" value="1"/>
+		<property name="default_container" value="cntFetchQuestSatchel"/>
+		<property name="nav_object" value="fetch_container" />
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="2500"/>
+	<reward type="Item" id="casinoCoin" value="330"/>
+	
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+		
+</quest>
+<quest id="tier1_diner_clear">
+    <property name="group_name_key" value="tier1_diner_clear_group_name">
+    <property name="name_key" value="tier1_diner_clear_quest_name">
+    <property name="subtitle_key" value="tier1_diner_clear_subtitle">
+    <property name="description_key" value="tier1_diner_clear_description">
+    <property name="category_key" value="tier1_diner_clear_category">
+    <property name="offer_key" value="tier1_diner_clear_offer">
+    <property name="statement_key" value="tier1_diner_clear_statement">
+    <property name="response_key" value="tier1_diner_clear_response">
+    <property name="completion_key" value="tier1_diner_clear_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="GotoPOISDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="PrefabNames" value="diner_01,diner_02,diner_03,diner_04" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="ClearSleepers">
+		<property name="phase" value="3"/>
+		<property name="nav_object" value="sleeper_volume"/>
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="3000"/>
+	<reward type="Item" id="casinoCoin" value="800"/>
+
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+	
+</quest>
+<quest id="tier1_diner_fetch">
+    <property name="group_name_key" value="tier1_diner_fetch_group_name">
+    <property name="name_key" value="tier1_diner_fetch_quest_name">
+    <property name="subtitle_key" value="tier1_diner_fetch_subtitle">
+    <property name="description_key" value="tier1_diner_fetch_description">
+    <property name="category_key" value="tier1_diner_fetch_category">
+    <property name="offer_key" value="tier1_diner_fetch_offer">
+    <property name="statement_key" value="tier1_diner_fetch_statement">
+    <property name="response_key" value="tier1_diner_fetch_response">
+    <property name="completion_key" value="tier1_diner_fetch_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="GotoPOISDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="PrefabNames" value="diner_01,diner_02,diner_03,diner_04" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="FetchFromContainer">
+		<property name="phase" value="3"/>
+		<property name="quest_item_ID" value="1"/>
+		<property name="item_count" value="1"/>
+		<property name="default_container" value="cntFetchQuestSatchel"/>
+		<property name="nav_object" value="fetch_container" />
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="2500"/>
+	<reward type="Item" id="casinoCoin" value="330"/>
+	
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+		
+</quest>
+<quest id="tier1_ranger_station_clear">
+    <property name="group_name_key" value="tier1_ranger_station_clear_group_name">
+    <property name="name_key" value="tier1_ranger_station_clear_quest_name">
+    <property name="subtitle_key" value="tier1_ranger_station_clear_subtitle">
+    <property name="description_key" value="tier1_ranger_station_clear_description">
+    <property name="category_key" value="tier1_ranger_station_clear_category">
+    <property name="offer_key" value="tier1_ranger_station_clear_offer">
+    <property name="statement_key" value="tier1_ranger_station_clear_statement">
+    <property name="response_key" value="tier1_ranger_station_clear_response">
+    <property name="completion_key" value="tier1_ranger_station_clear_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="GotoPOISDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="PrefabNames" value="ranger_station_02,ranger_station_03,ranger_station_04,ranger_station_05" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="ClearSleepers">
+		<property name="phase" value="3"/>
+		<property name="nav_object" value="sleeper_volume"/>
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="3000"/>
+	<reward type="Item" id="casinoCoin" value="800"/>
+
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+	
+</quest>
+<quest id="tier1_ranger_station_fetch">
+    <property name="group_name_key" value="tier1_ranger_station_fetch_group_name">
+    <property name="name_key" value="tier1_ranger_station_fetch_quest_name">
+    <property name="subtitle_key" value="tier1_ranger_station_fetch_subtitle">
+    <property name="description_key" value="tier1_ranger_station_fetch_description">
+    <property name="category_key" value="tier1_ranger_station_fetch_category">
+    <property name="offer_key" value="tier1_ranger_station_fetch_offer">
+    <property name="statement_key" value="tier1_ranger_station_fetch_statement">
+    <property name="response_key" value="tier1_ranger_station_fetch_response">
+    <property name="completion_key" value="tier1_ranger_station_fetch_completion">
+    <property name="icon" value="ui_game_symbol_quest">
+    <property name="difficulty" value="medium">
+    <property name="difficulty_tier" value="1">
+    <property name="login_rally_reset" value="true">
+    <property name="reward_choices_count" value="5">
+    <property name="shareable" value="true">
+    <property name="repeatable" value="true">
+    <property name="completiontype" value="TurnIn">
+    
+    
+    <objective type="GotoPOISDX, QuestsExpanded">
+        <property name="phase" value="1" />
+        <property name="nav_object" value="quest" />
+        <property name="PrefabNames" value="ranger_station_02,ranger_station_03,ranger_station_04,ranger_station_05" />
+    </objective>
+    
+	<objective type="RallyPoint">
+		<property name="phase" value="2"/>
+		<property name="nav_object" value="rally" />
+	</objective>
+
+	<objective type="FetchFromContainer">
+		<property name="phase" value="3"/>
+		<property name="quest_item_ID" value="1"/>
+		<property name="item_count" value="1"/>
+		<property name="default_container" value="cntFetchQuestSatchel"/>
+		<property name="nav_object" value="fetch_container" />
+	</objective>
+
+	<objective type="POIStayWithin">
+		<property name="phase" value="3"/>
+		<property name="radius" value="25"/>
+	</objective>
+
+	<action type="UnlockPOI" >
+		<property name="phase" value="4"/>
+	</action>
+
+	<objective type="ReturnToNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+
+	<objective type="InteractWithNPC">
+		<property name="phase" value="4"/>
+		<property name="nav_object" value="return_to_trader" />
+	</objective>
+	<reward type="Exp" value="2500"/>
+	<reward type="Item" id="casinoCoin" value="330"/>
+	
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+		
+</quest>
