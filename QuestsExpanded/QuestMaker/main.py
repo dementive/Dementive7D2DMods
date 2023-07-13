@@ -13,6 +13,7 @@ property_object = Properties()
 urban = True
 rural = True
 tier_1_pois = True
+tier_2_pois = True
 
 if urban:
     current_tier = 1
@@ -771,6 +772,8 @@ if tier_1_pois:
     rewards = Rewards().tier1_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
+if tier_2_pois:
+    pass
 
 quest_list.write()
 property_object.write()

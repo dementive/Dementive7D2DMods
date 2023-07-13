@@ -1,4 +1,4 @@
-﻿Tier 1 POI's with quests:
+﻿Tier 1 POI quest groups:
 
 	• cabin_01 | cabin_06 | cabin_09 | cabin_11 | cabin_07 | cabin_05 | cabin_08 | cabin_14 | cabin_02 | cabin_12 | cabin_15 | cabin_10 | cabin_04 | cabin_16
 
@@ -15,3 +15,43 @@
 	• diner_01,diner_02,diner_03,diner_04
 
 	• ranger_station_02,ranger_station_03,ranger_station_04,ranger_station_05
+
+
+Tier 2 POI quest groups:
+	
+	• farm_04,barn_03,rural_outdoor_wedding_01,farm_01,farm_14,farm_07,barn_02,farm_08,farm_11,farm_10,farm_03
+
+	• store_electronics_02,store_bakery_01,store_autoparts_01,body_shop_01,store_hardware_01,store_book_01,store_grocery_01,post_office_01
+
+	• cabin_18,cabin_13,cabin_03,cabin_17
+
+	• office_03,office_02,office_04
+
+Tier 3 POI quest groups:
+	
+
+	• 	Military Outposts - army_barracks_01,army_camp_04,bombshelter_02,ranger_station_07,ranger_station_01
+
+	• warehouse_08,warehouse_05,warehouse_02
+
+	• farm_05,farm_02,farm_13,farm_15
+
+	• motel_04,apartments_03,motel_03
+
+	• store_grocery_03,store_discount_01,store_clothing_02,store_pharmacy_02,store_book_02,store_clothing_01,store_hardware_02
+
+
+Tier 4 POI quest groups:
+
+	• army_camp_02,army_camp_03,army_camp_05,army_camp_01
+
+	• skyscraper_04,city_center_01,downtown_strip_12,downtown_strip_11,downtown_strip_01,downtown_strip_02,downtown_strip_03,downtown_strip_04,downtown_building_02,downtown_strip_05,downtown_strip_07
+
+	• store_hardware_03,store_grocery_02,store_gun_01,store_gun_02
+
+
+Tier 5 POI quest groups:
+
+	• skyscraper_01,skyscraper_02,skyscraper_03
+
+	• factory_01,factory_02,factory_03

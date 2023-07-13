@@ -161,3 +161,73 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
 	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 		"""[3:]
+
+		self.tier2_fetch_and_clear_rewards = """xml
+	<reward type="Exp" value="5060"/>
+	<reward type="Item" id="casinoCoin" value="1400"/>
+
+	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="2"/>
+	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		"""[3:]
+
+		self.tier3_fetch_and_clear_rewards = """xml
+	<reward type="Exp" value="6750"/>
+	<reward type="Item" id="casinoCoin" value="2000"/>
+
+	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="3"/>
+	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		"""[3:]
+
+		self.tier4_fetch_and_clear_rewards = """xml
+	<reward type="Exp" value="8400"/>
+	<reward type="Item" id="casinoCoin" value="2300"/>
+
+	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="4"/>
+	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		"""[3:]
+
+		self.tier5_fetch_and_clear_rewards = """xml
+	<reward type="Exp" value="16900"/>
+	<reward type="Item" id="casinoCoin" value="4600"/>
+
+	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="5"/>
+	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="5"/>
+	<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="5"/>
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="5"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="5"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="5"/>
+	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		"""[3:]
+
+		self.tier6_fetch_and_clear_rewards = """xml
+	<reward type="Exp" value="27000"/>
+	<reward type="Item" id="casinoCoin" value="8000"/>
+
+	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="6"/>
+	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="6"/>
+	<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="6"/>
+	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="6"/>
+	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="6"/>
+	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="6"/>
+	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		"""[3:]
