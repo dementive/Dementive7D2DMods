@@ -41,6 +41,7 @@
 
 • Decoration Stuff - https://7daystodiemods.com/sams-deco-stuff/
 
+• UBBI - https://www.nexusmods.com/7daystodie/mods/1242
 
 # Other Alpha 21 Mods
 
@@ -62,6 +63,10 @@ These are some other mods that go good with my mods for a full vanilla experienc
 
 • Boating mod https://www.nexusmods.com/7daystodie/mods/1015
 
+• 5.56 Weapon Pack - https://7daystodiemods.com/5-56-gun-pack/
+
+• Pant's Weapon Pack - https://www.nexusmods.com/7daystodie/mods/3285/?tab=images
+
 • Add more zombie mods here
 
 • Add more vehicle mods here
@@ -79,7 +84,9 @@ These are some other mods that go good with my mods for a full vanilla experienc
 
 • Performance Tweaks - https://www.nexusmods.com/7daystodie/mods/1796
 
+• Quest Area Timer - https://www.nexusmods.com/7daystodie/mods/1912
 
+• Torch (performance improvements) - https://www.nexusmods.com/7daystodie/mods/3287/
 
 # A21 Overhauls
 
