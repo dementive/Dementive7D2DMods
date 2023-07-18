@@ -8,6 +8,40 @@
 
 • Quests Expanded - WIP rework of quests. Not done yet.
 
+# Other Alpha 21 Mods
+
+These are some other mods that go good with my mods for a full vanilla experience
+
+• ZMX UI - https://www.nexusmods.com/7daystodie/mods/22
+
+• Zombies Plus - https://7daystodiemods.com/server-side-zombies-plus/
+
+• Bdub's Vehicles - https://www.nexusmods.com/7daystodie/mods/342
+
+• Trader Lore - https://7daystodiemods.com/trader-lore/
+
+• ZZtong POI's - https://www.nexusmods.com/7daystodie/mods/1434
+
+• Oakraven - https://7daystodiemods.com/oakraven-collection/
+
+• Boating mod https://www.nexusmods.com/7daystodie/mods/1015
+
+• Add more zombie mods here
+
+• Add more vehicle mods here
+
+• Add more weapon mods here
+
+• Add more POI mods here
+
+# Weapons
+
+• Shotgun pack - https://7daystodiemods.com/shotgun-pack/
+
+• 5.56 Weapon Pack - https://7daystodiemods.com/5-56-gun-pack/
+
+• Pant's Weapon Pack - https://www.nexusmods.com/7daystodie/mods/3285/?tab=images
+
 # Items
 
 • Unique Relics - https://7daystodiemods.com/unique-relics/
@@ -21,38 +55,6 @@
 • Decoration Stuff - https://7daystodiemods.com/sams-deco-stuff/
 
 • UBBI - https://www.nexusmods.com/7daystodie/mods/1242
-
-# Other Alpha 21 Mods
-
-These are some other mods that go good with my mods for a full vanilla experience
-
-• ZMX UI - https://www.nexusmods.com/7daystodie/mods/22
-
-• Zombies Plus - https://7daystodiemods.com/server-side-zombies-plus/
-
-• Bdub's Vehicles - https://www.nexusmods.com/7daystodie/mods/342
-
-• Shotgun pack - https://7daystodiemods.com/shotgun-pack/
-
-• Trader Lore - https://7daystodiemods.com/trader-lore/
-
-• ZZtong POI's - https://www.nexusmods.com/7daystodie/mods/1434
-
-• Oakraven - https://7daystodiemods.com/oakraven-collection/
-
-• Boating mod https://www.nexusmods.com/7daystodie/mods/1015
-
-• 5.56 Weapon Pack - https://7daystodiemods.com/5-56-gun-pack/
-
-• Pant's Weapon Pack - https://www.nexusmods.com/7daystodie/mods/3285/?tab=images
-
-• Add more zombie mods here
-
-• Add more vehicle mods here
-
-• Add more weapon mods here
-
-• Add more POI mods here
 
 
 # Tweaks
