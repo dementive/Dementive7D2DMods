@@ -632,6 +632,7 @@
 
 	<insertAfter xpath="/quests/quest[@id='tier2_buried_supplies']" >
 		<quest id="tier1_urban_clear">
+
 		    
 		    <property name="name_key" value="tier1_urban_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier1_urban_clear_subtitle"/>
@@ -696,6 +697,7 @@
 			
 		</quest>
 		<quest id="tier1_urban_fetch">
+
 		    
 		    <property name="name_key" value="tier1_urban_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier1_urban_fetch_subtitle"/>
@@ -763,6 +765,7 @@
 				
 		</quest>
 		<quest id="tier2_urban_clear">
+
 		    
 		    <property name="name_key" value="tier2_urban_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier2_urban_clear_subtitle"/>
@@ -830,6 +833,7 @@
 				
 		</quest>
 		<quest id="tier2_urban_fetch">
+
 		    
 		    <property name="name_key" value="tier2_urban_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier2_urban_fetch_subtitle"/>
@@ -900,6 +904,7 @@
 				
 		</quest>
 		<quest id="tier3_urban_clear">
+
 		    
 		    <property name="name_key" value="tier3_urban_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier3_urban_clear_subtitle"/>
@@ -967,6 +972,7 @@
 				
 		</quest>
 		<quest id="tier3_urban_fetch">
+
 		    
 		    <property name="name_key" value="tier3_urban_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier3_urban_fetch_subtitle"/>
@@ -1037,6 +1043,7 @@
 				
 		</quest>
 		<quest id="tier4_urban_clear">
+
 		    
 		    <property name="name_key" value="tier4_urban_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier4_urban_clear_subtitle"/>
@@ -1104,6 +1111,7 @@
 				
 		</quest>
 		<quest id="tier4_urban_fetch">
+
 		    
 		    <property name="name_key" value="tier4_urban_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier4_urban_fetch_subtitle"/>
@@ -1174,6 +1182,7 @@
 				
 		</quest>
 		<quest id="tier1_rural_clear">
+
 		    
 		    <property name="name_key" value="tier1_rural_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier1_rural_clear_subtitle"/>
@@ -1238,6 +1247,7 @@
 			
 		</quest>
 		<quest id="tier1_rural_fetch">
+
 		    
 		    <property name="name_key" value="tier1_rural_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier1_rural_fetch_subtitle"/>
@@ -1305,6 +1315,7 @@
 				
 		</quest>
 		<quest id="tier2_rural_clear">
+
 		    
 		    <property name="name_key" value="tier2_rural_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier2_rural_clear_subtitle"/>
@@ -1372,6 +1383,7 @@
 				
 		</quest>
 		<quest id="tier2_rural_fetch">
+
 		    
 		    <property name="name_key" value="tier2_rural_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier2_rural_fetch_subtitle"/>
@@ -1442,6 +1454,7 @@
 				
 		</quest>
 		<quest id="tier3_rural_clear">
+
 		    
 		    <property name="name_key" value="tier3_rural_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier3_rural_clear_subtitle"/>
@@ -1509,6 +1522,7 @@
 				
 		</quest>
 		<quest id="tier3_rural_fetch">
+
 		    
 		    <property name="name_key" value="tier3_rural_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier3_rural_fetch_subtitle"/>
@@ -1579,6 +1593,7 @@
 				
 		</quest>
 		<quest id="tier4_rural_clear">
+
 		    
 		    <property name="name_key" value="tier4_rural_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier4_rural_clear_subtitle"/>
@@ -1646,6 +1661,7 @@
 				
 		</quest>
 		<quest id="tier4_rural_fetch">
+
 		    
 		    <property name="name_key" value="tier4_rural_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier4_rural_fetch_subtitle"/>
@@ -1716,6 +1732,7 @@
 				
 		</quest>
 		<quest id="tier1_cabin_clear">
+
 		    
 		    <property name="name_key" value="tier1_cabin_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier1_cabin_clear_subtitle"/>
@@ -1780,6 +1797,7 @@
 			
 		</quest>
 		<quest id="tier1_cabin_fetch">
+
 		    
 		    <property name="name_key" value="tier1_cabin_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier1_cabin_fetch_subtitle"/>
@@ -1847,6 +1865,7 @@
 				
 		</quest>
 		<quest id="tier1_survivor_site_clear">
+
 		    
 		    <property name="name_key" value="tier1_survivor_site_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier1_survivor_site_clear_subtitle"/>
@@ -1911,6 +1930,7 @@
 			
 		</quest>
 		<quest id="tier1_survivor_site_fetch">
+
 		    
 		    <property name="name_key" value="tier1_survivor_site_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier1_survivor_site_fetch_subtitle"/>
@@ -1978,6 +1998,7 @@
 				
 		</quest>
 		<quest id="tier1_fast_food_clear">
+
 		    
 		    <property name="name_key" value="tier1_fast_food_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier1_fast_food_clear_subtitle"/>
@@ -2042,6 +2063,7 @@
 			
 		</quest>
 		<quest id="tier1_fast_food_fetch">
+
 		    
 		    <property name="name_key" value="tier1_fast_food_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier1_fast_food_fetch_subtitle"/>
@@ -2109,6 +2131,7 @@
 				
 		</quest>
 		<quest id="tier1_caves_clear">
+
 		    
 		    <property name="name_key" value="tier1_caves_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier1_caves_clear_subtitle"/>
@@ -2173,6 +2196,7 @@
 			
 		</quest>
 		<quest id="tier1_caves_fetch">
+
 		    
 		    <property name="name_key" value="tier1_caves_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier1_caves_fetch_subtitle"/>
@@ -2240,6 +2264,7 @@
 				
 		</quest>
 		<quest id="tier1_store_clear">
+
 		    
 		    <property name="name_key" value="tier1_store_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier1_store_clear_subtitle"/>
@@ -2304,6 +2329,7 @@
 			
 		</quest>
 		<quest id="tier1_store_fetch">
+
 		    
 		    <property name="name_key" value="tier1_store_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier1_store_fetch_subtitle"/>
@@ -2371,6 +2397,7 @@
 				
 		</quest>
 		<quest id="tier1_gas_station_clear">
+
 		    
 		    <property name="name_key" value="tier1_gas_station_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier1_gas_station_clear_subtitle"/>
@@ -2435,6 +2462,7 @@
 			
 		</quest>
 		<quest id="tier1_gas_station_fetch">
+
 		    
 		    <property name="name_key" value="tier1_gas_station_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier1_gas_station_fetch_subtitle"/>
@@ -2502,6 +2530,7 @@
 				
 		</quest>
 		<quest id="tier1_diner_clear">
+
 		    
 		    <property name="name_key" value="tier1_diner_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier1_diner_clear_subtitle"/>
@@ -2566,6 +2595,7 @@
 			
 		</quest>
 		<quest id="tier1_diner_fetch">
+
 		    
 		    <property name="name_key" value="tier1_diner_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier1_diner_fetch_subtitle"/>
@@ -2633,6 +2663,7 @@
 				
 		</quest>
 		<quest id="tier1_ranger_station_clear">
+
 		    
 		    <property name="name_key" value="tier1_ranger_station_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier1_ranger_station_clear_subtitle"/>
@@ -2697,6 +2728,7 @@
 			
 		</quest>
 		<quest id="tier1_ranger_station_fetch">
+
 		    
 		    <property name="name_key" value="tier1_ranger_station_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier1_ranger_station_fetch_subtitle"/>
@@ -2764,6 +2796,7 @@
 				
 		</quest>
 		<quest id="tier2_farm_clear">
+
 		    
 		    <property name="name_key" value="tier2_farm_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier2_farm_clear_subtitle"/>
@@ -2831,6 +2864,7 @@
 				
 		</quest>
 		<quest id="tier2_farm_fetch">
+
 		    
 		    <property name="name_key" value="tier2_farm_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier2_farm_fetch_subtitle"/>
@@ -2901,6 +2935,7 @@
 				
 		</quest>
 		<quest id="tier2_farm_fetch_and_clear">
+
 		    
 		    <property name="name_key" value="tier2_farm_fetch_and_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier2_farm_fetch_and_clear_subtitle"/>
@@ -2976,6 +3011,7 @@
 				
 		</quest>
 		<quest id="tier2_farm_clear_and_defend">
+
 		    
 		    <property name="name_key" value="tier2_farm_clear_and_defend_quest_name"/>
 		    <property name="subtitle_key" value="tier2_farm_clear_and_defend_subtitle"/>
@@ -3065,6 +3101,7 @@
 				
 		</quest>
 		<quest id="tier2_store_clear">
+
 		    
 		    <property name="name_key" value="tier2_store_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier2_store_clear_subtitle"/>
@@ -3132,6 +3169,7 @@
 				
 		</quest>
 		<quest id="tier2_store_fetch">
+
 		    
 		    <property name="name_key" value="tier2_store_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier2_store_fetch_subtitle"/>
@@ -3202,6 +3240,7 @@
 				
 		</quest>
 		<quest id="tier2_store_fetch_and_clear">
+
 		    
 		    <property name="name_key" value="tier2_store_fetch_and_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier2_store_fetch_and_clear_subtitle"/>
@@ -3277,6 +3316,7 @@
 				
 		</quest>
 		<quest id="tier2_store_clear_and_defend">
+
 		    
 		    <property name="name_key" value="tier2_store_clear_and_defend_quest_name"/>
 		    <property name="subtitle_key" value="tier2_store_clear_and_defend_subtitle"/>
@@ -3366,6 +3406,7 @@
 				
 		</quest>
 		<quest id="tier2_cabin_clear">
+
 		    
 		    <property name="name_key" value="tier2_cabin_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier2_cabin_clear_subtitle"/>
@@ -3433,6 +3474,7 @@
 				
 		</quest>
 		<quest id="tier2_cabin_fetch">
+
 		    
 		    <property name="name_key" value="tier2_cabin_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier2_cabin_fetch_subtitle"/>
@@ -3503,6 +3545,7 @@
 				
 		</quest>
 		<quest id="tier2_cabin_fetch_and_clear">
+
 		    
 		    <property name="name_key" value="tier2_cabin_fetch_and_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier2_cabin_fetch_and_clear_subtitle"/>
@@ -3578,6 +3621,7 @@
 				
 		</quest>
 		<quest id="tier2_cabin_clear_and_defend">
+
 		    
 		    <property name="name_key" value="tier2_cabin_clear_and_defend_quest_name"/>
 		    <property name="subtitle_key" value="tier2_cabin_clear_and_defend_subtitle"/>
@@ -3667,6 +3711,7 @@
 				
 		</quest>
 		<quest id="tier2_office_clear">
+
 		    
 		    <property name="name_key" value="tier2_office_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier2_office_clear_subtitle"/>
@@ -3734,6 +3779,7 @@
 				
 		</quest>
 		<quest id="tier2_office_fetch">
+
 		    
 		    <property name="name_key" value="tier2_office_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier2_office_fetch_subtitle"/>
@@ -3804,6 +3850,7 @@
 				
 		</quest>
 		<quest id="tier2_office_fetch_and_clear">
+
 		    
 		    <property name="name_key" value="tier2_office_fetch_and_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier2_office_fetch_and_clear_subtitle"/>
@@ -3879,6 +3926,7 @@
 				
 		</quest>
 		<quest id="tier2_office_clear_and_defend">
+
 		    
 		    <property name="name_key" value="tier2_office_clear_and_defend_quest_name"/>
 		    <property name="subtitle_key" value="tier2_office_clear_and_defend_subtitle"/>
@@ -3968,6 +4016,7 @@
 				
 		</quest>
 		<quest id="tier3_military_outpost_clear">
+
 		    
 		    <property name="name_key" value="tier3_military_outpost_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier3_military_outpost_clear_subtitle"/>
@@ -4035,6 +4084,7 @@
 				
 		</quest>
 		<quest id="tier3_military_outpost_fetch">
+
 		    
 		    <property name="name_key" value="tier3_military_outpost_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier3_military_outpost_fetch_subtitle"/>
@@ -4105,6 +4155,7 @@
 				
 		</quest>
 		<quest id="tier3_military_outpost_fetch_and_clear">
+
 		    
 		    <property name="name_key" value="tier3_military_outpost_fetch_and_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier3_military_outpost_fetch_and_clear_subtitle"/>
@@ -4180,6 +4231,7 @@
 				
 		</quest>
 		<quest id="tier3_military_outpost_clear_and_defend">
+
 		    
 		    <property name="name_key" value="tier3_military_outpost_clear_and_defend_quest_name"/>
 		    <property name="subtitle_key" value="tier3_military_outpost_clear_and_defend_subtitle"/>
@@ -4272,6 +4324,7 @@
 				
 		</quest>
 		<quest id="tier3_warehouse_clear">
+
 		    
 		    <property name="name_key" value="tier3_warehouse_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier3_warehouse_clear_subtitle"/>
@@ -4339,6 +4392,7 @@
 				
 		</quest>
 		<quest id="tier3_warehouse_fetch">
+
 		    
 		    <property name="name_key" value="tier3_warehouse_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier3_warehouse_fetch_subtitle"/>
@@ -4409,6 +4463,7 @@
 				
 		</quest>
 		<quest id="tier3_warehouse_fetch_and_clear">
+
 		    
 		    <property name="name_key" value="tier3_warehouse_fetch_and_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier3_warehouse_fetch_and_clear_subtitle"/>
@@ -4484,6 +4539,7 @@
 				
 		</quest>
 		<quest id="tier3_warehouse_clear_and_defend">
+
 		    
 		    <property name="name_key" value="tier3_warehouse_clear_and_defend_quest_name"/>
 		    <property name="subtitle_key" value="tier3_warehouse_clear_and_defend_subtitle"/>
@@ -4576,6 +4632,7 @@
 				
 		</quest>
 		<quest id="tier3_farm_clear">
+
 		    
 		    <property name="name_key" value="tier3_farm_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier3_farm_clear_subtitle"/>
@@ -4643,6 +4700,7 @@
 				
 		</quest>
 		<quest id="tier3_farm_fetch">
+
 		    
 		    <property name="name_key" value="tier3_farm_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier3_farm_fetch_subtitle"/>
@@ -4713,6 +4771,7 @@
 				
 		</quest>
 		<quest id="tier3_farm_fetch_and_clear">
+
 		    
 		    <property name="name_key" value="tier3_farm_fetch_and_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier3_farm_fetch_and_clear_subtitle"/>
@@ -4788,6 +4847,7 @@
 				
 		</quest>
 		<quest id="tier3_farm_clear_and_defend">
+
 		    
 		    <property name="name_key" value="tier3_farm_clear_and_defend_quest_name"/>
 		    <property name="subtitle_key" value="tier3_farm_clear_and_defend_subtitle"/>
@@ -4880,6 +4940,7 @@
 				
 		</quest>
 		<quest id="tier3_apartments_clear">
+
 		    
 		    <property name="name_key" value="tier3_apartments_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier3_apartments_clear_subtitle"/>
@@ -4947,6 +5008,7 @@
 				
 		</quest>
 		<quest id="tier3_apartments_fetch">
+
 		    
 		    <property name="name_key" value="tier3_apartments_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier3_apartments_fetch_subtitle"/>
@@ -5017,6 +5079,7 @@
 				
 		</quest>
 		<quest id="tier3_apartments_fetch_and_clear">
+
 		    
 		    <property name="name_key" value="tier3_apartments_fetch_and_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier3_apartments_fetch_and_clear_subtitle"/>
@@ -5092,6 +5155,7 @@
 				
 		</quest>
 		<quest id="tier3_apartments_clear_and_defend">
+
 		    
 		    <property name="name_key" value="tier3_apartments_clear_and_defend_quest_name"/>
 		    <property name="subtitle_key" value="tier3_apartments_clear_and_defend_subtitle"/>
@@ -5184,6 +5248,7 @@
 				
 		</quest>
 		<quest id="tier3_store_clear">
+
 		    
 		    <property name="name_key" value="tier3_store_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier3_store_clear_subtitle"/>
@@ -5251,6 +5316,7 @@
 				
 		</quest>
 		<quest id="tier3_store_fetch">
+
 		    
 		    <property name="name_key" value="tier3_store_fetch_quest_name"/>
 		    <property name="subtitle_key" value="tier3_store_fetch_subtitle"/>
@@ -5321,6 +5387,7 @@
 				
 		</quest>
 		<quest id="tier3_store_fetch_and_clear">
+
 		    
 		    <property name="name_key" value="tier3_store_fetch_and_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier3_store_fetch_and_clear_subtitle"/>
@@ -5396,6 +5463,7 @@
 				
 		</quest>
 		<quest id="tier3_store_clear_and_defend">
+
 		    
 		    <property name="name_key" value="tier3_store_clear_and_defend_quest_name"/>
 		    <property name="subtitle_key" value="tier3_store_clear_and_defend_subtitle"/>
@@ -5488,6 +5556,7 @@
 				
 		</quest>
 		<quest id="tier4_military_outpost_fetch_and_clear">
+
 		    
 		    <property name="name_key" value="tier4_military_outpost_fetch_and_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier4_military_outpost_fetch_and_clear_subtitle"/>
@@ -5563,6 +5632,7 @@
 				
 		</quest>
 		<quest id="tier4_military_outpost_clear_and_defend">
+
 		    
 		    <property name="name_key" value="tier4_military_outpost_clear_and_defend_quest_name"/>
 		    <property name="subtitle_key" value="tier4_military_outpost_clear_and_defend_subtitle"/>
@@ -5655,6 +5725,7 @@
 				
 		</quest>
 		<quest id="tier4_city_building_fetch_and_clear">
+
 		    
 		    <property name="name_key" value="tier4_city_building_fetch_and_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier4_city_building_fetch_and_clear_subtitle"/>
@@ -5730,6 +5801,7 @@
 				
 		</quest>
 		<quest id="tier4_city_building_clear_and_defend">
+
 		    
 		    <property name="name_key" value="tier4_city_building_clear_and_defend_quest_name"/>
 		    <property name="subtitle_key" value="tier4_city_building_clear_and_defend_subtitle"/>
@@ -5822,6 +5894,7 @@
 				
 		</quest>
 		<quest id="tier4_store_fetch_and_clear">
+
 		    
 		    <property name="name_key" value="tier4_store_fetch_and_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier4_store_fetch_and_clear_subtitle"/>
@@ -5897,6 +5970,7 @@
 				
 		</quest>
 		<quest id="tier4_store_clear_and_defend">
+
 		    
 		    <property name="name_key" value="tier4_store_clear_and_defend_quest_name"/>
 		    <property name="subtitle_key" value="tier4_store_clear_and_defend_subtitle"/>
@@ -5989,6 +6063,7 @@
 				
 		</quest>
 		<quest id="tier5_skyscraper_fetch_and_clear">
+
 		    
 		    <property name="name_key" value="tier5_skyscraper_fetch_and_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier5_skyscraper_fetch_and_clear_subtitle"/>
@@ -6064,6 +6139,7 @@
 				
 		</quest>
 		<quest id="tier5_skyscraper_clear_and_defend">
+
 		    
 		    <property name="name_key" value="tier5_skyscraper_clear_and_defend_quest_name"/>
 		    <property name="subtitle_key" value="tier5_skyscraper_clear_and_defend_subtitle"/>
@@ -6164,6 +6240,7 @@
 				
 		</quest>
 		<quest id="tier5_factory_fetch_and_clear">
+
 		    
 		    <property name="name_key" value="tier5_factory_fetch_and_clear_quest_name"/>
 		    <property name="subtitle_key" value="tier5_factory_fetch_and_clear_subtitle"/>
@@ -6239,6 +6316,7 @@
 				
 		</quest>
 		<quest id="tier5_factory_clear_and_defend">
+
 		    
 		    <property name="name_key" value="tier5_factory_clear_and_defend_quest_name"/>
 		    <property name="subtitle_key" value="tier5_factory_clear_and_defend_subtitle"/>

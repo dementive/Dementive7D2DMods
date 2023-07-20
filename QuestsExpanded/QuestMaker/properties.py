@@ -1,7 +1,7 @@
 from jinja2 import Template
 
 properties_template = Template(
-    """xml
+    """
     {% if group_name_key != "" %}<property name="group_name_key" value="{{group_name_key}}"/>{% endif %}
     {% if name_key != "" %}<property name="name_key" value="{{name_key}}"/>{% endif %}
     {% if subtitle_key != "" %}<property name="subtitle_key" value="{{subtitle_key}}"/>{% endif %}
@@ -89,7 +89,7 @@ class Properties:
             spawn_multiplier=spawn_multiplier,
             gamestage_mod=gamestage_mod,
             gamestage_bonus=gamestage_bonus,
-        )[4:]
+        )
 
         loc_keys = [group_name_key, name_key, subtitle_key, description_key, category_key, offer_key, statement_key, response_key, completion_key]
         self.localization_keys.append(loc_keys)

@@ -1,6 +1,6 @@
 class Objectives:
-	def __init__(self):
-		self.objective_fetch_ending = """xml
+    def __init__(self):
+        self.objective_fetch_ending = """
 	<objective type="RallyPoint">
 		<property name="phase" value="2"/>
 		<property name="nav_object" value="rally" />
@@ -31,9 +31,9 @@ class Objectives:
 	<objective type="InteractWithNPC">
 		<property name="phase" value="4"/>
 		<property name="nav_object" value="return_to_trader" />
-	</objective>"""[3:]
+	</objective>"""
 
-		self.objective_clear_ending = """xml
+        self.objective_clear_ending = """
 	<objective type="RallyPoint">
 		<property name="phase" value="2"/>
 		<property name="nav_object" value="rally" />
@@ -61,9 +61,9 @@ class Objectives:
 	<objective type="InteractWithNPC">
 		<property name="phase" value="4"/>
 		<property name="nav_object" value="return_to_trader" />
-	</objective>"""[3:]
+	</objective>"""
 
-		self.objective_fetch_and_clear_ending = """xml
+        self.objective_fetch_and_clear_ending = """
 	<objective type="RallyPoint">
 		<property name="phase" value="2"/>
 		<property name="nav_object" value="rally" />
@@ -99,9 +99,9 @@ class Objectives:
 	<objective type="InteractWithNPC">
 		<property name="phase" value="4"/>
 		<property name="nav_object" value="return_to_trader" />
-	</objective>"""[3:]
+	</objective>"""
 
-		self.objective_tier2_clear_and_defend_ending = """xml
+        self.objective_tier2_clear_and_defend_ending = """
 	<objective type="RallyPoint">
 		<property name="phase" value="2"/>
 		<property name="nav_object" value="rally" />
@@ -151,10 +151,9 @@ class Objectives:
 
 	<objective type="InteractWithNPC">
 		<property name="phase" value="7"/>
-	</objective>"""[3:]
+	</objective>"""
 
-
-		self.objective_tier3_clear_and_defend_ending = """xml
+        self.objective_tier3_clear_and_defend_ending = """
 	<objective type="RallyPoint">
 		<property name="phase" value="2"/>
 		<property name="nav_object" value="rally" />
@@ -207,9 +206,9 @@ class Objectives:
 	<objective type="InteractWithNPC">
 		<property name="phase" value="8"/>
 	</objective>
-	"""[3:]
+	"""
 
-		self.objective_tier4_clear_and_defend_ending = """xml
+        self.objective_tier4_clear_and_defend_ending = """
 	<objective type="RallyPoint">
 		<property name="phase" value="2"/>
 		<property name="nav_object" value="rally" />
@@ -262,9 +261,9 @@ class Objectives:
 	<objective type="InteractWithNPC">
 		<property name="phase" value="7"/>
 	</objective>
-	"""[3:]
+	"""
 
-		self.objective_tier5_clear_and_defend_ending = """xml
+        self.objective_tier5_clear_and_defend_ending = """
 	<objective type="RallyPoint">
 		<property name="phase" value="2"/>
 		<property name="nav_object" value="rally" />
@@ -325,4 +324,4 @@ class Objectives:
 	<objective type="InteractWithNPC">
 		<property name="phase" value="8"/>
 	</objective>
-	"""[3:]
+	"""

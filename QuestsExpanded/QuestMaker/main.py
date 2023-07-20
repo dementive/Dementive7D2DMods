@@ -31,13 +31,13 @@ if urban:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="include_tags" value="downtown, commercial, industrial" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier1_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -52,13 +52,13 @@ if urban:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="include_tags" value="downtown, commercial, industrial" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier1_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -74,13 +74,13 @@ if urban:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="include_tags" value="downtown, commercial, industrial" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier2_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -95,13 +95,13 @@ if urban:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="include_tags" value="downtown, commercial, industrial" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier2_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -117,13 +117,13 @@ if urban:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="include_tags" value="downtown, commercial, industrial" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier3_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -138,13 +138,13 @@ if urban:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="include_tags" value="downtown, commercial, industrial" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier3_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -160,13 +160,13 @@ if urban:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="include_tags" value="downtown, commercial, industrial" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier4_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -181,13 +181,13 @@ if urban:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="include_tags" value="downtown, commercial, industrial" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier4_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -204,13 +204,13 @@ if rural:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="include_tags" value="countrytown, countryresidential, rural" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier1_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -225,13 +225,13 @@ if rural:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="include_tags" value="countrytown, countryresidential, rural" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier1_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -247,13 +247,13 @@ if rural:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="include_tags" value="countrytown, countryresidential, rural" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier2_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -268,13 +268,13 @@ if rural:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="include_tags" value="countrytown, countryresidential, rural" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier2_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -290,13 +290,13 @@ if rural:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="include_tags" value="countrytown, countryresidential, rural" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier3_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -311,13 +311,13 @@ if rural:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="include_tags" value="countrytown, countryresidential, rural" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier3_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -333,13 +333,13 @@ if rural:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="include_tags" value="countrytown, countryresidential, rural" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier4_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -354,13 +354,13 @@ if rural:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="include_tags" value="countrytown, countryresidential, rural" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier4_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -379,13 +379,13 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="cabin_01,cabin_06,cabin_09,cabin_11,cabin_07,cabin_05,cabin_08,cabin_14,cabin_02,cabin_12,cabin_15,cabin_10,cabin_04,cabin_16" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier1_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -400,13 +400,13 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="cabin_01,cabin_06,cabin_09,cabin_11,cabin_07,cabin_05,cabin_08,cabin_14,cabin_02,cabin_12,cabin_15,cabin_10,cabin_04,cabin_16" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier1_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -422,13 +422,13 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="survivor_site_02,survivor_site_05,survivor_site_06,survivor_site_08,survivor_site_03,survivor_site_09,survivor_site_01,survivor_site_10,survivor_site_11,survivor_site_07" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier1_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -443,13 +443,13 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="survivor_site_02,survivor_site_05,survivor_site_06,survivor_site_08,survivor_site_03,survivor_site_09,survivor_site_01,survivor_site_10,survivor_site_11,survivor_site_07" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier1_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -465,13 +465,13 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="fastfood_03,fastfood_02,fastfood_01,fastfood_05" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier1_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -486,13 +486,13 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="fastfood_03,fastfood_02,fastfood_01,fastfood_05" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier1_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -508,13 +508,13 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="cave_05,cave_01,cave_04,cave_03,cave_02" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier1_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -529,13 +529,13 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="cave_05,cave_01,cave_04,cave_03,cave_02" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier1_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -551,13 +551,13 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="store_electronics_01,store_grocery_05,store_grocery_04,store_grocery_06,store_laundry_01,store_pharmacy_01" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier1_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -572,13 +572,13 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="store_electronics_01,store_grocery_05,store_grocery_04,store_grocery_06,store_laundry_01,store_pharmacy_01" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier1_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -594,13 +594,13 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="gas_station_11,gas_station_04,gas_station_08,gas_station_10,gas_station_01,gas_station_09,fastfood_04,gas_station_03,gas_station_02,gas_station_07" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier1_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -615,13 +615,13 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="gas_station_11,gas_station_04,gas_station_08,gas_station_10,gas_station_01,gas_station_09,fastfood_04,gas_station_03,gas_station_02,gas_station_07" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier1_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -637,13 +637,13 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="diner_01,diner_02,diner_03,diner_04" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier1_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -658,13 +658,13 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="diner_01,diner_02,diner_03,diner_04" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier1_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -680,13 +680,13 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="ranger_station_02,ranger_station_03,ranger_station_04,ranger_station_05" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier1_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -701,13 +701,13 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """xml
+    objectives = """
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="ranger_station_02,ranger_station_03,ranger_station_04,ranger_station_05" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier1_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -729,13 +729,13 @@ if tier_2_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier2_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -750,13 +750,13 @@ if tier_2_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier2_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -771,13 +771,13 @@ if tier_2_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_and_clear_ending
+    """ + Objectives().objective_fetch_and_clear_ending
     rewards = Rewards().tier2_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -792,13 +792,13 @@ if tier_2_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_tier2_clear_and_defend_ending
+    """ + Objectives().objective_tier2_clear_and_defend_ending
     rewards = Rewards().tier2_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -817,13 +817,13 @@ if tier_2_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier2_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -838,13 +838,13 @@ if tier_2_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier2_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -859,13 +859,13 @@ if tier_2_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_and_clear_ending
+    """ + Objectives().objective_fetch_and_clear_ending
     rewards = Rewards().tier2_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -880,13 +880,13 @@ if tier_2_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_tier2_clear_and_defend_ending
+    """ + Objectives().objective_tier2_clear_and_defend_ending
     rewards = Rewards().tier2_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -905,13 +905,13 @@ if tier_2_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier2_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -926,13 +926,13 @@ if tier_2_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier2_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -947,13 +947,13 @@ if tier_2_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_and_clear_ending
+    """ + Objectives().objective_fetch_and_clear_ending
     rewards = Rewards().tier2_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -968,13 +968,13 @@ if tier_2_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_tier2_clear_and_defend_ending
+    """ + Objectives().objective_tier2_clear_and_defend_ending
     rewards = Rewards().tier2_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -993,13 +993,13 @@ if tier_2_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier2_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1014,13 +1014,13 @@ if tier_2_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier2_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1035,13 +1035,13 @@ if tier_2_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_and_clear_ending
+    """ + Objectives().objective_fetch_and_clear_ending
     rewards = Rewards().tier2_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1056,13 +1056,13 @@ if tier_2_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_tier2_clear_and_defend_ending
+    """ + Objectives().objective_tier2_clear_and_defend_ending
     rewards = Rewards().tier2_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1084,13 +1084,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier3_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1105,13 +1105,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier3_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1126,13 +1126,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_and_clear_ending
+    """ + Objectives().objective_fetch_and_clear_ending
     rewards = Rewards().tier3_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1147,13 +1147,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_tier3_clear_and_defend_ending
+    """ + Objectives().objective_tier3_clear_and_defend_ending
     rewards = Rewards().tier3_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1172,13 +1172,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier3_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1193,13 +1193,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier3_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1214,13 +1214,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_and_clear_ending
+    """ + Objectives().objective_fetch_and_clear_ending
     rewards = Rewards().tier3_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1235,13 +1235,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_tier3_clear_and_defend_ending
+    """ + Objectives().objective_tier3_clear_and_defend_ending
     rewards = Rewards().tier3_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1260,13 +1260,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier3_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1281,13 +1281,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier3_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1302,13 +1302,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_and_clear_ending
+    """ + Objectives().objective_fetch_and_clear_ending
     rewards = Rewards().tier3_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1323,13 +1323,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_tier3_clear_and_defend_ending
+    """ + Objectives().objective_tier3_clear_and_defend_ending
     rewards = Rewards().tier3_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1348,13 +1348,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier3_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1369,13 +1369,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier3_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1390,13 +1390,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_and_clear_ending
+    """ + Objectives().objective_fetch_and_clear_ending
     rewards = Rewards().tier3_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1411,13 +1411,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_tier3_clear_and_defend_ending
+    """ + Objectives().objective_tier3_clear_and_defend_ending
     rewards = Rewards().tier3_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1437,13 +1437,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_clear_ending
+    """ + Objectives().objective_clear_ending
     rewards = Rewards().tier3_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1458,13 +1458,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_ending
+    """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier3_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1479,13 +1479,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_and_clear_ending
+    """ + Objectives().objective_fetch_and_clear_ending
     rewards = Rewards().tier3_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1500,13 +1500,13 @@ if tier_3_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_tier3_clear_and_defend_ending
+    """ + Objectives().objective_tier3_clear_and_defend_ending
     rewards = Rewards().tier3_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1528,13 +1528,13 @@ if tier_4_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_and_clear_ending
+    """ + Objectives().objective_fetch_and_clear_ending
     rewards = Rewards().tier4_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1549,13 +1549,13 @@ if tier_4_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_tier4_clear_and_defend_ending
+    """ + Objectives().objective_tier4_clear_and_defend_ending
     rewards = Rewards().tier4_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1574,13 +1574,13 @@ if tier_4_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_and_clear_ending
+    """ + Objectives().objective_fetch_and_clear_ending
     rewards = Rewards().tier4_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1595,13 +1595,13 @@ if tier_4_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_tier4_clear_and_defend_ending
+    """ + Objectives().objective_tier4_clear_and_defend_ending
     rewards = Rewards().tier4_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1620,13 +1620,13 @@ if tier_4_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_and_clear_ending
+    """ + Objectives().objective_fetch_and_clear_ending
     rewards = Rewards().tier4_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1641,13 +1641,13 @@ if tier_4_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_tier4_clear_and_defend_ending
+    """ + Objectives().objective_tier4_clear_and_defend_ending
     rewards = Rewards().tier4_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1669,13 +1669,13 @@ if tier_5_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_and_clear_ending
+    """ + Objectives().objective_fetch_and_clear_ending
     rewards = Rewards().tier6_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1690,13 +1690,13 @@ if tier_5_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_tier5_clear_and_defend_ending
+    """ + Objectives().objective_tier5_clear_and_defend_ending
     rewards = Rewards().tier6_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1715,13 +1715,13 @@ if tier_5_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_fetch_and_clear_ending
+    """ + Objectives().objective_fetch_and_clear_ending
     rewards = Rewards().tier6_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
@@ -1736,13 +1736,13 @@ if tier_5_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = f"""xml
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
         <property name="PrefabNames" value="{poi_objectives}" />
     </objective>
-    """[3:] + Objectives().objective_tier5_clear_and_defend_ending
+    """ + Objectives().objective_tier5_clear_and_defend_ending
     rewards = Rewards().tier6_fetch_and_clear_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 

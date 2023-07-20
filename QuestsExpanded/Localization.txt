@@ -1,19 +1,19 @@
-Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate 
+﻿Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate 
 
 tier1_urban_clear_quest_name,quests,Quests,,,Tier 1 Urban Clear
 tier1_urban_clear_subtitle,quests,Quests,,,Clear the Area
-tier1_urban_clear_description,quests,Quests,,,Head into the city and find [DECEA3]{poi.name}[-] then clear out those flesh eating walking meat sacks. Be careful we don't want to lose another White River citizen...
-tier1_urban_clear_offer,quests,Quests,,,Time to see if you have what it takes to be a part of White River Runners. Some of our guys at [DECEA3]{poi.name}[-] ran into some zombies im going to need you clear out those zombies and see if our guys are still holding out.
+tier1_urban_clear_description,quests,Quests,,,"Head into the city and find [DECEA3]{poi.name}[-] then clear out those flesh eating walking meat sacks. Be careful we don't want to lose another White River citizen..."
+tier1_urban_clear_offer,quests,Quests,,,"Time to see if you have what it takes to be a part of White River Runners. Some of our guys at [DECEA3]{poi.name}[-] ran into some zombies im going to need you clear out those zombies and see if our guys are still holding out."
 tier1_urban_clear_statement,Quest,Quest Info,,,Head into the city and clear out those zombies.
-tier1_urban_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
-tier1_urban_clear_completion,quests,Quests,,,I almost can't believe my eyes. You really managed to pull through in a pinch. Thanks for killing all those zombies. Here's what I owe ya.
+tier1_urban_clear_response,Quest,Quest Info,,,Urban Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_urban_clear_completion,quests,Quests,,,"I almost can't believe my eyes. You really managed to pull through in a pinch. Thanks for killing all those zombies. Here's what I owe ya."
 
 tier1_urban_fetch_quest_name,quests,Quests,,,Tier 1 Urban Fetch
 tier1_urban_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
-tier1_urban_fetch_description,quests,Quests,,,Head into the city and go to [DECEA3]{poi.name}[-] there you will be a shipment with a White River marking on the side. Grab it. Be careful we don't know what's in there.
-tier1_urban_fetch_offer,quests,Quests,,,John, one of our White River special ops, had to stash his shipment at [DECEA3]{poi.name}[-]. Go retrieve the shipment and return it.
+tier1_urban_fetch_description,quests,Quests,,,"Head into the city and go to [DECEA3]{poi.name}[-] there you will be a shipment with a White River marking on the side. Grab it. Be careful we don't know what's in there."
+tier1_urban_fetch_offer,quests,Quests,,,"John, one of our White River special ops, had to stash his shipment at [DECEA3]{poi.name}[-]. Go retrieve the shipment and return it."
 tier1_urban_fetch_statement,Quest,Quest Info,,,Bring back the shipment before John comes for my head.
-tier1_urban_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_urban_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{shipment with a White .distance} {poi.direction}[-])
 tier1_urban_fetch_completion,quests,Quests,,,Oh! It's you again, figured you'd be zombie chow by now. Not sure how you got out of that one but thanks for retrieving those supplies. Here's what I owe ya.
 
 tier2_urban_clear_quest_name,quests,Quests,,,Tier 2 Urban Clear
@@ -21,7 +21,7 @@ tier2_urban_clear_subtitle,quests,Quests,,,Clear the Area
 tier2_urban_clear_description,quests,Quests,,,
 tier2_urban_clear_offer,quests,Quests,,,
 tier2_urban_clear_statement,Quest,Quest Info,,,
-tier2_urban_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_urban_clear_response,Quest,Quest Info,,,Urban Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_urban_clear_completion,quests,Quests,,,
 
 tier2_urban_fetch_quest_name,quests,Quests,,,Tier 2 Urban Fetch
@@ -29,7 +29,7 @@ tier2_urban_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier2_urban_fetch_description,quests,Quests,,,
 tier2_urban_fetch_offer,quests,Quests,,,
 tier2_urban_fetch_statement,Quest,Quest Info,,,
-tier2_urban_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_urban_fetch_response,Quest,Quest Info,,,Urban Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_urban_fetch_completion,quests,Quests,,,
 
 tier3_urban_clear_quest_name,quests,Quests,,,Tier 3 Urban Clear
@@ -37,7 +37,7 @@ tier3_urban_clear_subtitle,quests,Quests,,,Clear the Area
 tier3_urban_clear_description,quests,Quests,,,
 tier3_urban_clear_offer,quests,Quests,,,
 tier3_urban_clear_statement,Quest,Quest Info,,,
-tier3_urban_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_urban_clear_response,Quest,Quest Info,,,Urban Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_urban_clear_completion,quests,Quests,,,
 
 tier3_urban_fetch_quest_name,quests,Quests,,,Tier 3 Urban Fetch
@@ -45,7 +45,7 @@ tier3_urban_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier3_urban_fetch_description,quests,Quests,,,
 tier3_urban_fetch_offer,quests,Quests,,,
 tier3_urban_fetch_statement,Quest,Quest Info,,,
-tier3_urban_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_urban_fetch_response,Quest,Quest Info,,,Urban Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_urban_fetch_completion,quests,Quests,,,
 
 tier4_urban_clear_quest_name,quests,Quests,,,Tier 4 Urban Clear
@@ -53,7 +53,7 @@ tier4_urban_clear_subtitle,quests,Quests,,,Clear the Area
 tier4_urban_clear_description,quests,Quests,,,
 tier4_urban_clear_offer,quests,Quests,,,
 tier4_urban_clear_statement,Quest,Quest Info,,,
-tier4_urban_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_urban_clear_response,Quest,Quest Info,,,Urban Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier4_urban_clear_completion,quests,Quests,,,
 
 tier4_urban_fetch_quest_name,quests,Quests,,,Tier 4 Urban Fetch
@@ -61,7 +61,7 @@ tier4_urban_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier4_urban_fetch_description,quests,Quests,,,
 tier4_urban_fetch_offer,quests,Quests,,,
 tier4_urban_fetch_statement,Quest,Quest Info,,,
-tier4_urban_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_urban_fetch_response,Quest,Quest Info,,,Urban Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier4_urban_fetch_completion,quests,Quests,,,
 
 tier1_rural_clear_quest_name,quests,Quests,,,Tier 1 Rural Clear
@@ -69,7 +69,7 @@ tier1_rural_clear_subtitle,quests,Quests,,,Clear the Area
 tier1_rural_clear_description,quests,Quests,,,
 tier1_rural_clear_offer,quests,Quests,,,
 tier1_rural_clear_statement,Quest,Quest Info,,,
-tier1_rural_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_rural_clear_response,Quest,Quest Info,,,Rural Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_rural_clear_completion,quests,Quests,,,
 
 tier1_rural_fetch_quest_name,quests,Quests,,,Tier 1 Rural Fetch
@@ -77,7 +77,7 @@ tier1_rural_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier1_rural_fetch_description,quests,Quests,,,
 tier1_rural_fetch_offer,quests,Quests,,,
 tier1_rural_fetch_statement,Quest,Quest Info,,,
-tier1_rural_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_rural_fetch_response,Quest,Quest Info,,,Rural Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_rural_fetch_completion,quests,Quests,,,
 
 tier2_rural_clear_quest_name,quests,Quests,,,Tier 2 Rural Clear
@@ -85,7 +85,7 @@ tier2_rural_clear_subtitle,quests,Quests,,,Clear the Area
 tier2_rural_clear_description,quests,Quests,,,
 tier2_rural_clear_offer,quests,Quests,,,
 tier2_rural_clear_statement,Quest,Quest Info,,,
-tier2_rural_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_rural_clear_response,Quest,Quest Info,,,Rural Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_rural_clear_completion,quests,Quests,,,
 
 tier2_rural_fetch_quest_name,quests,Quests,,,Tier 2 Rural Fetch
@@ -93,7 +93,7 @@ tier2_rural_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier2_rural_fetch_description,quests,Quests,,,
 tier2_rural_fetch_offer,quests,Quests,,,
 tier2_rural_fetch_statement,Quest,Quest Info,,,
-tier2_rural_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_rural_fetch_response,Quest,Quest Info,,,Rural Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_rural_fetch_completion,quests,Quests,,,
 
 tier3_rural_clear_quest_name,quests,Quests,,,Tier 3 Rural Clear
@@ -101,7 +101,7 @@ tier3_rural_clear_subtitle,quests,Quests,,,Clear the Area
 tier3_rural_clear_description,quests,Quests,,,
 tier3_rural_clear_offer,quests,Quests,,,
 tier3_rural_clear_statement,Quest,Quest Info,,,
-tier3_rural_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_rural_clear_response,Quest,Quest Info,,,Rural Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_rural_clear_completion,quests,Quests,,,
 
 tier3_rural_fetch_quest_name,quests,Quests,,,Tier 3 Rural Fetch
@@ -109,7 +109,7 @@ tier3_rural_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier3_rural_fetch_description,quests,Quests,,,
 tier3_rural_fetch_offer,quests,Quests,,,
 tier3_rural_fetch_statement,Quest,Quest Info,,,
-tier3_rural_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_rural_fetch_response,Quest,Quest Info,,,Rural Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_rural_fetch_completion,quests,Quests,,,
 
 tier4_rural_clear_quest_name,quests,Quests,,,Tier 4 Rural Clear
@@ -117,7 +117,7 @@ tier4_rural_clear_subtitle,quests,Quests,,,Clear the Area
 tier4_rural_clear_description,quests,Quests,,,
 tier4_rural_clear_offer,quests,Quests,,,
 tier4_rural_clear_statement,Quest,Quest Info,,,
-tier4_rural_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_rural_clear_response,Quest,Quest Info,,,Rural Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier4_rural_clear_completion,quests,Quests,,,
 
 tier4_rural_fetch_quest_name,quests,Quests,,,Tier 4 Rural Fetch
@@ -125,7 +125,7 @@ tier4_rural_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier4_rural_fetch_description,quests,Quests,,,
 tier4_rural_fetch_offer,quests,Quests,,,
 tier4_rural_fetch_statement,Quest,Quest Info,,,
-tier4_rural_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_rural_fetch_response,Quest,Quest Info,,,Rural Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier4_rural_fetch_completion,quests,Quests,,,
 
 tier1_cabin_clear_quest_name,quests,Quests,,,Tier 1 Cabin Clear
@@ -133,7 +133,7 @@ tier1_cabin_clear_subtitle,quests,Quests,,,Clear the Area
 tier1_cabin_clear_description,quests,Quests,,,
 tier1_cabin_clear_offer,quests,Quests,,,
 tier1_cabin_clear_statement,Quest,Quest Info,,,
-tier1_cabin_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_cabin_clear_response,Quest,Quest Info,,,Cabin Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_cabin_clear_completion,quests,Quests,,,
 
 tier1_cabin_fetch_quest_name,quests,Quests,,,Tier 1 Cabin Fetch
@@ -141,7 +141,7 @@ tier1_cabin_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier1_cabin_fetch_description,quests,Quests,,,
 tier1_cabin_fetch_offer,quests,Quests,,,
 tier1_cabin_fetch_statement,Quest,Quest Info,,,
-tier1_cabin_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_cabin_fetch_response,Quest,Quest Info,,,Cabin Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_cabin_fetch_completion,quests,Quests,,,
 
 tier1_survivor_site_clear_quest_name,quests,Quests,,,Tier 1 Survivor Site Clear
@@ -149,7 +149,7 @@ tier1_survivor_site_clear_subtitle,quests,Quests,,,Clear the Area
 tier1_survivor_site_clear_description,quests,Quests,,,
 tier1_survivor_site_clear_offer,quests,Quests,,,
 tier1_survivor_site_clear_statement,Quest,Quest Info,,,
-tier1_survivor_site_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_survivor_site_clear_response,Quest,Quest Info,,,Survivor Site Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_survivor_site_clear_completion,quests,Quests,,,
 
 tier1_survivor_site_fetch_quest_name,quests,Quests,,,Tier 1 Survivor Site Fetch
@@ -157,7 +157,7 @@ tier1_survivor_site_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier1_survivor_site_fetch_description,quests,Quests,,,
 tier1_survivor_site_fetch_offer,quests,Quests,,,
 tier1_survivor_site_fetch_statement,Quest,Quest Info,,,
-tier1_survivor_site_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_survivor_site_fetch_response,Quest,Quest Info,,,Survivor Site Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_survivor_site_fetch_completion,quests,Quests,,,
 
 tier1_fast_food_clear_quest_name,quests,Quests,,,Tier 1 Fast Food Clear
@@ -165,7 +165,7 @@ tier1_fast_food_clear_subtitle,quests,Quests,,,Clear the Area
 tier1_fast_food_clear_description,quests,Quests,,,
 tier1_fast_food_clear_offer,quests,Quests,,,
 tier1_fast_food_clear_statement,Quest,Quest Info,,,
-tier1_fast_food_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_fast_food_clear_response,Quest,Quest Info,,,Fast Food Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_fast_food_clear_completion,quests,Quests,,,
 
 tier1_fast_food_fetch_quest_name,quests,Quests,,,Tier 1 Fast Food Fetch
@@ -173,7 +173,7 @@ tier1_fast_food_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier1_fast_food_fetch_description,quests,Quests,,,
 tier1_fast_food_fetch_offer,quests,Quests,,,
 tier1_fast_food_fetch_statement,Quest,Quest Info,,,
-tier1_fast_food_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_fast_food_fetch_response,Quest,Quest Info,,,Fast Food Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_fast_food_fetch_completion,quests,Quests,,,
 
 tier1_caves_clear_quest_name,quests,Quests,,,Tier 1 Cave Clear
@@ -181,7 +181,7 @@ tier1_caves_clear_subtitle,quests,Quests,,,Clear the Area
 tier1_caves_clear_description,quests,Quests,,,
 tier1_caves_clear_offer,quests,Quests,,,
 tier1_caves_clear_statement,Quest,Quest Info,,,
-tier1_caves_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_caves_clear_response,Quest,Quest Info,,,Cave Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_caves_clear_completion,quests,Quests,,,
 
 tier1_caves_fetch_quest_name,quests,Quests,,,Tier 1 Cave Fetch
@@ -189,7 +189,7 @@ tier1_caves_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier1_caves_fetch_description,quests,Quests,,,
 tier1_caves_fetch_offer,quests,Quests,,,
 tier1_caves_fetch_statement,Quest,Quest Info,,,
-tier1_caves_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_caves_fetch_response,Quest,Quest Info,,,Cave Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_caves_fetch_completion,quests,Quests,,,
 
 tier1_store_clear_quest_name,quests,Quests,,,Tier 1 Store Clear
@@ -197,7 +197,7 @@ tier1_store_clear_subtitle,quests,Quests,,,Clear the Area
 tier1_store_clear_description,quests,Quests,,,
 tier1_store_clear_offer,quests,Quests,,,
 tier1_store_clear_statement,Quest,Quest Info,,,
-tier1_store_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_store_clear_response,Quest,Quest Info,,,Store Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_store_clear_completion,quests,Quests,,,
 
 tier1_store_fetch_quest_name,quests,Quests,,,Tier 1 Store Fetch
@@ -205,7 +205,7 @@ tier1_store_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier1_store_fetch_description,quests,Quests,,,
 tier1_store_fetch_offer,quests,Quests,,,
 tier1_store_fetch_statement,Quest,Quest Info,,,
-tier1_store_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_store_fetch_response,Quest,Quest Info,,,Store Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_store_fetch_completion,quests,Quests,,,
 
 tier1_gas_station_clear_quest_name,quests,Quests,,,Tier 1 Gas Station Clear
@@ -213,7 +213,7 @@ tier1_gas_station_clear_subtitle,quests,Quests,,,Clear the Area
 tier1_gas_station_clear_description,quests,Quests,,,
 tier1_gas_station_clear_offer,quests,Quests,,,
 tier1_gas_station_clear_statement,Quest,Quest Info,,,
-tier1_gas_station_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_gas_station_clear_response,Quest,Quest Info,,,Gas Station Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_gas_station_clear_completion,quests,Quests,,,
 
 tier1_gas_station_fetch_quest_name,quests,Quests,,,Tier 1 Gas Station Fetch
@@ -221,7 +221,7 @@ tier1_gas_station_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier1_gas_station_fetch_description,quests,Quests,,,
 tier1_gas_station_fetch_offer,quests,Quests,,,
 tier1_gas_station_fetch_statement,Quest,Quest Info,,,
-tier1_gas_station_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_gas_station_fetch_response,Quest,Quest Info,,,Gas Station Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_gas_station_fetch_completion,quests,Quests,,,
 
 tier1_diner_clear_quest_name,quests,Quests,,,Tier 1 Diner Clear
@@ -229,7 +229,7 @@ tier1_diner_clear_subtitle,quests,Quests,,,Clear the Area
 tier1_diner_clear_description,quests,Quests,,,
 tier1_diner_clear_offer,quests,Quests,,,
 tier1_diner_clear_statement,Quest,Quest Info,,,
-tier1_diner_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_diner_clear_response,Quest,Quest Info,,,Diner Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_diner_clear_completion,quests,Quests,,,
 
 tier1_diner_fetch_quest_name,quests,Quests,,,Tier 1 Diner Fetch
@@ -237,7 +237,7 @@ tier1_diner_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier1_diner_fetch_description,quests,Quests,,,
 tier1_diner_fetch_offer,quests,Quests,,,
 tier1_diner_fetch_statement,Quest,Quest Info,,,
-tier1_diner_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_diner_fetch_response,Quest,Quest Info,,,Diner Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_diner_fetch_completion,quests,Quests,,,
 
 tier1_ranger_station_clear_quest_name,quests,Quests,,,Tier 1 Ranger Station Clear
@@ -245,7 +245,7 @@ tier1_ranger_station_clear_subtitle,quests,Quests,,,Clear the Area
 tier1_ranger_station_clear_description,quests,Quests,,,
 tier1_ranger_station_clear_offer,quests,Quests,,,
 tier1_ranger_station_clear_statement,Quest,Quest Info,,,
-tier1_ranger_station_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_ranger_station_clear_response,Quest,Quest Info,,,Ranger Station Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_ranger_station_clear_completion,quests,Quests,,,
 
 tier1_ranger_station_fetch_quest_name,quests,Quests,,,Tier 1 Ranger Station Fetch
@@ -253,7 +253,7 @@ tier1_ranger_station_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier1_ranger_station_fetch_description,quests,Quests,,,
 tier1_ranger_station_fetch_offer,quests,Quests,,,
 tier1_ranger_station_fetch_statement,Quest,Quest Info,,,
-tier1_ranger_station_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_ranger_station_fetch_response,Quest,Quest Info,,,Ranger Station Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_ranger_station_fetch_completion,quests,Quests,,,
 
 tier2_farm_clear_quest_name,quests,Quests,,,Tier 2 Farm Clear
@@ -261,7 +261,7 @@ tier2_farm_clear_subtitle,quests,Quests,,,Clear the Area
 tier2_farm_clear_description,quests,Quests,,,
 tier2_farm_clear_offer,quests,Quests,,,
 tier2_farm_clear_statement,Quest,Quest Info,,,
-tier2_farm_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_farm_clear_response,Quest,Quest Info,,,Farm Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_farm_clear_completion,quests,Quests,,,
 
 tier2_farm_fetch_quest_name,quests,Quests,,,Tier 2 Farm Fetch
@@ -269,7 +269,7 @@ tier2_farm_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier2_farm_fetch_description,quests,Quests,,,
 tier2_farm_fetch_offer,quests,Quests,,,
 tier2_farm_fetch_statement,Quest,Quest Info,,,
-tier2_farm_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_farm_fetch_response,Quest,Quest Info,,,Farm Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_farm_fetch_completion,quests,Quests,,,
 
 tier2_farm_fetch_and_clear_quest_name,quests,Quests,,,Tier 2 Farm Fetch and Clear
@@ -277,7 +277,7 @@ tier2_farm_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supp
 tier2_farm_fetch_and_clear_description,quests,Quests,,,
 tier2_farm_fetch_and_clear_offer,quests,Quests,,,
 tier2_farm_fetch_and_clear_statement,Quest,Quest Info,,,
-tier2_farm_fetch_and_clear_response,Quest,Quest Info,,,Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_farm_fetch_and_clear_response,Quest,Quest Info,,,Farm Fetch / Clearear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_farm_fetch_and_clear_completion,quests,Quests,,,
 
 tier2_farm_clear_and_defend_quest_name,quests,Quests,,,Tier 2 Farm Clear and Defend
@@ -285,7 +285,7 @@ tier2_farm_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
 tier2_farm_clear_and_defend_description,quests,Quests,,,
 tier2_farm_clear_and_defend_offer,quests,Quests,,,
 tier2_farm_clear_and_defend_statement,Quest,Quest Info,,,
-tier2_farm_clear_and_defend_response,Quest,Quest Info,,,Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_farm_clear_and_defend_response,Quest,Quest Info,,,Farm Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_farm_clear_and_defend_completion,quests,Quests,,,
 
 tier2_store_clear_quest_name,quests,Quests,,,Tier 2 Store Clear
@@ -293,7 +293,7 @@ tier2_store_clear_subtitle,quests,Quests,,,Clear the Area
 tier2_store_clear_description,quests,Quests,,,
 tier2_store_clear_offer,quests,Quests,,,
 tier2_store_clear_statement,Quest,Quest Info,,,
-tier2_store_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_store_clear_response,Quest,Quest Info,,,Store Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_store_clear_completion,quests,Quests,,,
 
 tier2_store_fetch_quest_name,quests,Quests,,,Tier 2 Store Fetch
@@ -301,7 +301,7 @@ tier2_store_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier2_store_fetch_description,quests,Quests,,,
 tier2_store_fetch_offer,quests,Quests,,,
 tier2_store_fetch_statement,Quest,Quest Info,,,
-tier2_store_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_store_fetch_response,Quest,Quest Info,,,Store Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_store_fetch_completion,quests,Quests,,,
 
 tier2_store_fetch_and_clear_quest_name,quests,Quests,,,Tier 2 Store Fetch and Clear
@@ -309,7 +309,7 @@ tier2_store_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Sup
 tier2_store_fetch_and_clear_description,quests,Quests,,,
 tier2_store_fetch_and_clear_offer,quests,Quests,,,
 tier2_store_fetch_and_clear_statement,Quest,Quest Info,,,
-tier2_store_fetch_and_clear_response,Quest,Quest Info,,,Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_store_fetch_and_clear_response,Quest,Quest Info,,,Store Fetch / Clearar ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_store_fetch_and_clear_completion,quests,Quests,,,
 
 tier2_store_clear_and_defend_quest_name,quests,Quests,,,Tier 2 Store Clear and Defend
@@ -317,7 +317,7 @@ tier2_store_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
 tier2_store_clear_and_defend_description,quests,Quests,,,
 tier2_store_clear_and_defend_offer,quests,Quests,,,
 tier2_store_clear_and_defend_statement,Quest,Quest Info,,,
-tier2_store_clear_and_defend_response,Quest,Quest Info,,,Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_store_clear_and_defend_response,Quest,Quest Info,,,Store Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_store_clear_and_defend_completion,quests,Quests,,,
 
 tier2_cabin_clear_quest_name,quests,Quests,,,Tier 2 Cabin Clear
@@ -325,7 +325,7 @@ tier2_cabin_clear_subtitle,quests,Quests,,,Clear the Area
 tier2_cabin_clear_description,quests,Quests,,,
 tier2_cabin_clear_offer,quests,Quests,,,
 tier2_cabin_clear_statement,Quest,Quest Info,,,
-tier2_cabin_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_cabin_clear_response,Quest,Quest Info,,,Cabin Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_cabin_clear_completion,quests,Quests,,,
 
 tier2_cabin_fetch_quest_name,quests,Quests,,,Tier 2 Cabin Fetch
@@ -333,7 +333,7 @@ tier2_cabin_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier2_cabin_fetch_description,quests,Quests,,,
 tier2_cabin_fetch_offer,quests,Quests,,,
 tier2_cabin_fetch_statement,Quest,Quest Info,,,
-tier2_cabin_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_cabin_fetch_response,Quest,Quest Info,,,Cabin Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_cabin_fetch_completion,quests,Quests,,,
 
 tier2_cabin_fetch_and_clear_quest_name,quests,Quests,,,Tier 2 Cabin Fetch and Clear
@@ -341,7 +341,7 @@ tier2_cabin_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Sup
 tier2_cabin_fetch_and_clear_description,quests,Quests,,,
 tier2_cabin_fetch_and_clear_offer,quests,Quests,,,
 tier2_cabin_fetch_and_clear_statement,Quest,Quest Info,,,
-tier2_cabin_fetch_and_clear_response,Quest,Quest Info,,,Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_cabin_fetch_and_clear_response,Quest,Quest Info,,,Cabin Fetch / Clearar ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_cabin_fetch_and_clear_completion,quests,Quests,,,
 
 tier2_cabin_clear_and_defend_quest_name,quests,Quests,,,Tier 2 Cabin Clear and Defend
@@ -349,7 +349,7 @@ tier2_cabin_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
 tier2_cabin_clear_and_defend_description,quests,Quests,,,
 tier2_cabin_clear_and_defend_offer,quests,Quests,,,
 tier2_cabin_clear_and_defend_statement,Quest,Quest Info,,,
-tier2_cabin_clear_and_defend_response,Quest,Quest Info,,,Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_cabin_clear_and_defend_response,Quest,Quest Info,,,Cabin Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_cabin_clear_and_defend_completion,quests,Quests,,,
 
 tier2_office_clear_quest_name,quests,Quests,,,Tier 2 Office Clear
@@ -357,7 +357,7 @@ tier2_office_clear_subtitle,quests,Quests,,,Clear the Area
 tier2_office_clear_description,quests,Quests,,,
 tier2_office_clear_offer,quests,Quests,,,
 tier2_office_clear_statement,Quest,Quest Info,,,
-tier2_office_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_office_clear_response,Quest,Quest Info,,,Office Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_office_clear_completion,quests,Quests,,,
 
 tier2_office_fetch_quest_name,quests,Quests,,,Tier 2 Office Fetch
@@ -365,7 +365,7 @@ tier2_office_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier2_office_fetch_description,quests,Quests,,,
 tier2_office_fetch_offer,quests,Quests,,,
 tier2_office_fetch_statement,Quest,Quest Info,,,
-tier2_office_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_office_fetch_response,Quest,Quest Info,,,Office Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_office_fetch_completion,quests,Quests,,,
 
 tier2_office_fetch_and_clear_quest_name,quests,Quests,,,Tier 2 Office Fetch and Clear
@@ -373,7 +373,7 @@ tier2_office_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Su
 tier2_office_fetch_and_clear_description,quests,Quests,,,
 tier2_office_fetch_and_clear_offer,quests,Quests,,,
 tier2_office_fetch_and_clear_statement,Quest,Quest Info,,,
-tier2_office_fetch_and_clear_response,Quest,Quest Info,,,Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_office_fetch_and_clear_response,Quest,Quest Info,,,Office Fetch / Clearr ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_office_fetch_and_clear_completion,quests,Quests,,,
 
 tier2_office_clear_and_defend_quest_name,quests,Quests,,,Tier 2 Office Clear and Defend
@@ -381,7 +381,7 @@ tier2_office_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
 tier2_office_clear_and_defend_description,quests,Quests,,,
 tier2_office_clear_and_defend_offer,quests,Quests,,,
 tier2_office_clear_and_defend_statement,Quest,Quest Info,,,
-tier2_office_clear_and_defend_response,Quest,Quest Info,,,Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_office_clear_and_defend_response,Quest,Quest Info,,,Office Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_office_clear_and_defend_completion,quests,Quests,,,
 
 tier3_military_outpost_clear_quest_name,quests,Quests,,,Tier 3 Military Outpost Clear
@@ -389,7 +389,7 @@ tier3_military_outpost_clear_subtitle,quests,Quests,,,Clear the Area
 tier3_military_outpost_clear_description,quests,Quests,,,
 tier3_military_outpost_clear_offer,quests,Quests,,,
 tier3_military_outpost_clear_statement,Quest,Quest Info,,,
-tier3_military_outpost_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_military_outpost_clear_response,Quest,Quest Info,,,Military Outpost Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_military_outpost_clear_completion,quests,Quests,,,
 
 tier3_military_outpost_fetch_quest_name,quests,Quests,,,Tier 3 Military Outpost Clear
@@ -397,7 +397,7 @@ tier3_military_outpost_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier3_military_outpost_fetch_description,quests,Quests,,,
 tier3_military_outpost_fetch_offer,quests,Quests,,,
 tier3_military_outpost_fetch_statement,Quest,Quest Info,,,
-tier3_military_outpost_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_military_outpost_fetch_response,Quest,Quest Info,,,Military Outpost Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_military_outpost_fetch_completion,quests,Quests,,,
 
 tier3_military_outpost_fetch_and_clear_quest_name,quests,Quests,,,Tier 3 Military Outpost Fetch and Clear
@@ -405,7 +405,7 @@ tier3_military_outpost_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and R
 tier3_military_outpost_fetch_and_clear_description,quests,Quests,,,
 tier3_military_outpost_fetch_and_clear_offer,quests,Quests,,,
 tier3_military_outpost_fetch_and_clear_statement,Quest,Quest Info,,,
-tier3_military_outpost_fetch_and_clear_response,Quest,Quest Info,,,Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_military_outpost_fetch_and_clear_response,Quest,Quest Info,,,Military Outpost Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_military_outpost_fetch_and_clear_completion,quests,Quests,,,
 
 tier3_military_outpost_clear_and_defend_quest_name,quests,Quests,,,Tier 3 Military Outpost Clear and Defend
@@ -413,7 +413,7 @@ tier3_military_outpost_clear_and_defend_subtitle,quests,Quests,,,Clear and Defen
 tier3_military_outpost_clear_and_defend_description,quests,Quests,,,
 tier3_military_outpost_clear_and_defend_offer,quests,Quests,,,
 tier3_military_outpost_clear_and_defend_statement,Quest,Quest Info,,,
-tier3_military_outpost_clear_and_defend_response,Quest,Quest Info,,,Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_military_outpost_clear_and_defend_response,Quest,Quest Info,,,Military Outpost Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_military_outpost_clear_and_defend_completion,quests,Quests,,,
 
 tier3_warehouse_clear_quest_name,quests,Quests,,,Tier 3 Warehouse Clear
@@ -421,7 +421,7 @@ tier3_warehouse_clear_subtitle,quests,Quests,,,Clear the Area
 tier3_warehouse_clear_description,quests,Quests,,,
 tier3_warehouse_clear_offer,quests,Quests,,,
 tier3_warehouse_clear_statement,Quest,Quest Info,,,
-tier3_warehouse_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_warehouse_clear_response,Quest,Quest Info,,,Warehouse Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_warehouse_clear_completion,quests,Quests,,,
 
 tier3_warehouse_fetch_quest_name,quests,Quests,,,Tier 3 Warehouse Fetch
@@ -429,15 +429,15 @@ tier3_warehouse_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier3_warehouse_fetch_description,quests,Quests,,,
 tier3_warehouse_fetch_offer,quests,Quests,,,
 tier3_warehouse_fetch_statement,Quest,Quest Info,,,
-tier3_warehouse_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_warehouse_fetch_response,Quest,Quest Info,,,Warehouse Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_warehouse_fetch_completion,quests,Quests,,,
 
-tier3_warehouse_fetch_and_clear_quest_name,quests,Quests,,,Tier 3 Warehouse Fetch and Clear
+tier3_warehouse_fetch_and_clear_quest_name,quests,Quests,,,Warehouse Fetch and Clear
 tier3_warehouse_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
 tier3_warehouse_fetch_and_clear_description,quests,Quests,,,
 tier3_warehouse_fetch_and_clear_offer,quests,Quests,,,
 tier3_warehouse_fetch_and_clear_statement,Quest,Quest Info,,,
-tier3_warehouse_fetch_and_clear_response,Quest,Quest Info,,,Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_warehouse_fetch_and_clear_response,Quest,Quest Info,,,Warehouse Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_warehouse_fetch_and_clear_completion,quests,Quests,,,
 
 tier3_warehouse_clear_and_defend_quest_name,quests,Quests,,,Tier 3 Warehouse Clear and Defend
@@ -445,7 +445,7 @@ tier3_warehouse_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the A
 tier3_warehouse_clear_and_defend_description,quests,Quests,,,
 tier3_warehouse_clear_and_defend_offer,quests,Quests,,,
 tier3_warehouse_clear_and_defend_statement,Quest,Quest Info,,,
-tier3_warehouse_clear_and_defend_response,Quest,Quest Info,,,Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_warehouse_clear_and_defend_response,Quest,Quest Info,,,Warehouse Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_warehouse_clear_and_defend_completion,quests,Quests,,,
 
 tier3_farm_clear_quest_name,quests,Quests,,,Tier 3 Farm Clear
@@ -453,7 +453,7 @@ tier3_farm_clear_subtitle,quests,Quests,,,Clear the Area
 tier3_farm_clear_description,quests,Quests,,,
 tier3_farm_clear_offer,quests,Quests,,,
 tier3_farm_clear_statement,Quest,Quest Info,,,
-tier3_farm_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_farm_clear_response,Quest,Quest Info,,,Farm Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_farm_clear_completion,quests,Quests,,,
 
 tier3_farm_fetch_quest_name,quests,Quests,,,Tier 3 Farm Fetch
@@ -461,7 +461,7 @@ tier3_farm_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier3_farm_fetch_description,quests,Quests,,,
 tier3_farm_fetch_offer,quests,Quests,,,
 tier3_farm_fetch_statement,Quest,Quest Info,,,
-tier3_farm_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_farm_fetch_response,Quest,Quest Info,,,Farm Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_farm_fetch_completion,quests,Quests,,,
 
 tier3_farm_fetch_and_clear_quest_name,quests,Quests,,,Tier 3 Farm Fetch and Clear
@@ -469,7 +469,7 @@ tier3_farm_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supp
 tier3_farm_fetch_and_clear_description,quests,Quests,,,
 tier3_farm_fetch_and_clear_offer,quests,Quests,,,
 tier3_farm_fetch_and_clear_statement,Quest,Quest Info,,,
-tier3_farm_fetch_and_clear_response,Quest,Quest Info,,,Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_farm_fetch_and_clear_response,Quest,Quest Info,,,Farm Fetch / Clearear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_farm_fetch_and_clear_completion,quests,Quests,,,
 
 tier3_farm_clear_and_defend_quest_name,quests,Quests,,,Tier 3 Farm Clear and Defend
@@ -477,7 +477,7 @@ tier3_farm_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
 tier3_farm_clear_and_defend_description,quests,Quests,,,
 tier3_farm_clear_and_defend_offer,quests,Quests,,,
 tier3_farm_clear_and_defend_statement,Quest,Quest Info,,,
-tier3_farm_clear_and_defend_response,Quest,Quest Info,,,Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_farm_clear_and_defend_response,Quest,Quest Info,,,Farm Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_farm_clear_and_defend_completion,quests,Quests,,,
 
 tier3_apartments_clear_quest_name,quests,Quests,,,Tier 3 Apartment Clear
@@ -485,7 +485,7 @@ tier3_apartments_clear_subtitle,quests,Quests,,,Clear the Area
 tier3_apartments_clear_description,quests,Quests,,,
 tier3_apartments_clear_offer,quests,Quests,,,
 tier3_apartments_clear_statement,Quest,Quest Info,,,
-tier3_apartments_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_apartments_clear_response,Quest,Quest Info,,,Apartment Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_apartments_clear_completion,quests,Quests,,,
 
 tier3_apartments_fetch_quest_name,quests,Quests,,,Tier 3 Apartment Fetch
@@ -493,7 +493,7 @@ tier3_apartments_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier3_apartments_fetch_description,quests,Quests,,,
 tier3_apartments_fetch_offer,quests,Quests,,,
 tier3_apartments_fetch_statement,Quest,Quest Info,,,
-tier3_apartments_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_apartments_fetch_response,Quest,Quest Info,,,Apartment Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_apartments_fetch_completion,quests,Quests,,,
 
 tier3_apartments_fetch_and_clear_quest_name,quests,Quests,,,Tier 3 Apartment Fetch and Clear
@@ -501,7 +501,7 @@ tier3_apartments_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retriev
 tier3_apartments_fetch_and_clear_description,quests,Quests,,,
 tier3_apartments_fetch_and_clear_offer,quests,Quests,,,
 tier3_apartments_fetch_and_clear_statement,Quest,Quest Info,,,
-tier3_apartments_fetch_and_clear_response,Quest,Quest Info,,,Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_apartments_fetch_and_clear_response,Quest,Quest Info,,,Apartment Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_apartments_fetch_and_clear_completion,quests,Quests,,,
 
 tier3_apartments_clear_and_defend_quest_name,quests,Quests,,,Tier 3 Apartment Clear and Defend
@@ -509,7 +509,7 @@ tier3_apartments_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the 
 tier3_apartments_clear_and_defend_description,quests,Quests,,,
 tier3_apartments_clear_and_defend_offer,quests,Quests,,,
 tier3_apartments_clear_and_defend_statement,Quest,Quest Info,,,
-tier3_apartments_clear_and_defend_response,Quest,Quest Info,,,Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_apartments_clear_and_defend_response,Quest,Quest Info,,,Apartment Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_apartments_clear_and_defend_completion,quests,Quests,,,
 
 tier3_store_clear_quest_name,quests,Quests,,,Tier 3 Store Clear
@@ -517,7 +517,7 @@ tier3_store_clear_subtitle,quests,Quests,,,Clear the Area
 tier3_store_clear_description,quests,Quests,,,
 tier3_store_clear_offer,quests,Quests,,,
 tier3_store_clear_statement,Quest,Quest Info,,,
-tier3_store_clear_response,Quest,Quest Info,,,Clear Zombies ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_store_clear_response,Quest,Quest Info,,,Store Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_store_clear_completion,quests,Quests,,,
 
 tier3_store_fetch_quest_name,quests,Quests,,,Tier 3 Store Fetch
@@ -525,7 +525,7 @@ tier3_store_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier3_store_fetch_description,quests,Quests,,,
 tier3_store_fetch_offer,quests,Quests,,,
 tier3_store_fetch_statement,Quest,Quest Info,,,
-tier3_store_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_store_fetch_response,Quest,Quest Info,,,Store Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_store_fetch_completion,quests,Quests,,,
 
 tier3_store_fetch_and_clear_quest_name,quests,Quests,,,Tier 3 Store Fetch and Clear
@@ -533,7 +533,7 @@ tier3_store_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Sup
 tier3_store_fetch_and_clear_description,quests,Quests,,,
 tier3_store_fetch_and_clear_offer,quests,Quests,,,
 tier3_store_fetch_and_clear_statement,Quest,Quest Info,,,
-tier3_store_fetch_and_clear_response,Quest,Quest Info,,,Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_store_fetch_and_clear_response,Quest,Quest Info,,,Store Fetch / Clearar ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_store_fetch_and_clear_completion,quests,Quests,,,
 
 tier3_store_clear_and_defend_quest_name,quests,Quests,,,Tier 3 Store Clear and Defend
@@ -541,7 +541,7 @@ tier3_store_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
 tier3_store_clear_and_defend_description,quests,Quests,,,
 tier3_store_clear_and_defend_offer,quests,Quests,,,
 tier3_store_clear_and_defend_statement,Quest,Quest Info,,,
-tier3_store_clear_and_defend_response,Quest,Quest Info,,,Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_store_clear_and_defend_response,Quest,Quest Info,,,Store Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_store_clear_and_defend_completion,quests,Quests,,,
 
 tier4_military_outpost_fetch_and_clear_quest_name,quests,Quests,,,Tier 4 Military Outpost Fetch and Clear
@@ -549,7 +549,7 @@ tier4_military_outpost_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and R
 tier4_military_outpost_fetch_and_clear_description,quests,Quests,,,
 tier4_military_outpost_fetch_and_clear_offer,quests,Quests,,,
 tier4_military_outpost_fetch_and_clear_statement,Quest,Quest Info,,,
-tier4_military_outpost_fetch_and_clear_response,Quest,Quest Info,,,Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_military_outpost_fetch_and_clear_response,Quest,Quest Info,,,Military Outpost Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier4_military_outpost_fetch_and_clear_completion,quests,Quests,,,
 
 tier4_military_outpost_clear_and_defend_quest_name,quests,Quests,,,Tier 4 Military Outpost Clear and Defend
@@ -557,7 +557,7 @@ tier4_military_outpost_clear_and_defend_subtitle,quests,Quests,,,Clear and Defen
 tier4_military_outpost_clear_and_defend_description,quests,Quests,,,
 tier4_military_outpost_clear_and_defend_offer,quests,Quests,,,
 tier4_military_outpost_clear_and_defend_statement,Quest,Quest Info,,,
-tier4_military_outpost_clear_and_defend_response,Quest,Quest Info,,,Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_military_outpost_clear_and_defend_response,Quest,Quest Info,,,Military Outpost Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
 tier4_military_outpost_clear_and_defend_completion,quests,Quests,,,
 
 tier4_city_building_fetch_and_clear_quest_name,quests,Quests,,,Tier 4 City Building Fetch and Clear
@@ -565,7 +565,7 @@ tier4_city_building_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retr
 tier4_city_building_fetch_and_clear_description,quests,Quests,,,
 tier4_city_building_fetch_and_clear_offer,quests,Quests,,,
 tier4_city_building_fetch_and_clear_statement,Quest,Quest Info,,,
-tier4_city_building_fetch_and_clear_response,Quest,Quest Info,,,Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_city_building_fetch_and_clear_response,Quest,Quest Info,,,City Building Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier4_city_building_fetch_and_clear_completion,quests,Quests,,,
 
 tier4_city_building_clear_and_defend_quest_name,quests,Quests,,,Tier 4 City Building Clear and Defend
@@ -573,7 +573,7 @@ tier4_city_building_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend t
 tier4_city_building_clear_and_defend_description,quests,Quests,,,
 tier4_city_building_clear_and_defend_offer,quests,Quests,,,
 tier4_city_building_clear_and_defend_statement,Quest,Quest Info,,,
-tier4_city_building_clear_and_defend_response,Quest,Quest Info,,,Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_city_building_clear_and_defend_response,Quest,Quest Info,,,City Building Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
 tier4_city_building_clear_and_defend_completion,quests,Quests,,,
 
 tier4_store_fetch_and_clear_quest_name,quests,Quests,,,Tier 4 Store Fetch and Clear
@@ -581,7 +581,7 @@ tier4_store_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Sup
 tier4_store_fetch_and_clear_description,quests,Quests,,,
 tier4_store_fetch_and_clear_offer,quests,Quests,,,
 tier4_store_fetch_and_clear_statement,Quest,Quest Info,,,
-tier4_store_fetch_and_clear_response,Quest,Quest Info,,,Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_store_fetch_and_clear_response,Quest,Quest Info,,,Store Fetch / Clearar ([DECEA3]{poi.distance} {poi.direction}[-])
 tier4_store_fetch_and_clear_completion,quests,Quests,,,
 
 tier4_store_clear_and_defend_quest_name,quests,Quests,,,Tier 4 Store Clear and Defend
@@ -589,7 +589,7 @@ tier4_store_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
 tier4_store_clear_and_defend_description,quests,Quests,,,
 tier4_store_clear_and_defend_offer,quests,Quests,,,
 tier4_store_clear_and_defend_statement,Quest,Quest Info,,,
-tier4_store_clear_and_defend_response,Quest,Quest Info,,,Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_store_clear_and_defend_response,Quest,Quest Info,,,Store Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
 tier4_store_clear_and_defend_completion,quests,Quests,,,
 
 tier5_skyscraper_fetch_and_clear_quest_name,quests,Quests,,,Tier 5 Skyscraper Fetch and Clear
@@ -597,7 +597,7 @@ tier5_skyscraper_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retriev
 tier5_skyscraper_fetch_and_clear_description,quests,Quests,,,
 tier5_skyscraper_fetch_and_clear_offer,quests,Quests,,,
 tier5_skyscraper_fetch_and_clear_statement,Quest,Quest Info,,,
-tier5_skyscraper_fetch_and_clear_response,Quest,Quest Info,,,Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier5_skyscraper_fetch_and_clear_response,Quest,Quest Info,,,Skyscraper Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier5_skyscraper_fetch_and_clear_completion,quests,Quests,,,
 
 tier5_skyscraper_clear_and_defend_quest_name,quests,Quests,,,Tier 5 Skyscraper Clear and Defend
@@ -605,7 +605,7 @@ tier5_skyscraper_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the 
 tier5_skyscraper_clear_and_defend_description,quests,Quests,,,
 tier5_skyscraper_clear_and_defend_offer,quests,Quests,,,
 tier5_skyscraper_clear_and_defend_statement,Quest,Quest Info,,,
-tier5_skyscraper_clear_and_defend_response,Quest,Quest Info,,,Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier5_skyscraper_clear_and_defend_response,Quest,Quest Info,,,Skyscraper Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
 tier5_skyscraper_clear_and_defend_completion,quests,Quests,,,
 
 tier5_factory_fetch_and_clear_quest_name,quests,Quests,,,Tier 5 Skyscraper Fetch and Clear
@@ -613,7 +613,7 @@ tier5_factory_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve S
 tier5_factory_fetch_and_clear_description,quests,Quests,,,
 tier5_factory_fetch_and_clear_offer,quests,Quests,,,
 tier5_factory_fetch_and_clear_statement,Quest,Quest Info,,,
-tier5_factory_fetch_and_clear_response,Quest,Quest Info,,,Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier5_factory_fetch_and_clear_response,Quest,Quest Info,,,Skyscraper Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier5_factory_fetch_and_clear_completion,quests,Quests,,,
 
 tier5_factory_clear_and_defend_quest_name,quests,Quests,,,Tier 5 Factory Clear and Defend
@@ -621,5 +621,5 @@ tier5_factory_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Are
 tier5_factory_clear_and_defend_description,quests,Quests,,,
 tier5_factory_clear_and_defend_offer,quests,Quests,,,
 tier5_factory_clear_and_defend_statement,Quest,Quest Info,,,
-tier5_factory_clear_and_defend_response,Quest,Quest Info,,,Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier5_factory_clear_and_defend_response,Quest,Quest Info,,,Factory Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
 tier5_factory_clear_and_defend_completion,quests,Quests,,,
