@@ -2,25 +2,25 @@ from jinja2 import Template
 
 properties_template = Template(
     """xml
-    {% if group_name_key != "" %}<property name="group_name_key" value="{{group_name_key}}">{% endif %}
-    {% if name_key != "" %}<property name="name_key" value="{{name_key}}">{% endif %}
-    {% if subtitle_key != "" %}<property name="subtitle_key" value="{{subtitle_key}}">{% endif %}
-    {% if description_key != "" %}<property name="description_key" value="{{description_key}}">{% endif %}
-    {% if category_key != "" %}<property name="category_key" value="{{category_key}}">{% endif %}
-    {% if offer_key != "" %}<property name="offer_key" value="{{offer_key}}">{% endif %}
-    {% if statement_key != "" %}<property name="statement_key" value="{{statement_key}}">{% endif %}
-    {% if response_key != "" %}<property name="response_key" value="{{response_key}}">{% endif %}
-    {% if completion_key != "" %}<property name="completion_key" value="{{completion_key}}">{% endif %}
-    {% if icon != "" %}<property name="icon" value="{{icon}}">{% endif %}
-    {% if difficulty != "" %}<property name="difficulty" value="{{difficulty}}">{% endif %}
-    {% if difficulty_tier != "" %}<property name="difficulty_tier" value="{{difficulty_tier}}">{% endif %}
-    {% if login_rally_reset != "" %}<property name="login_rally_reset" value="{{login_rally_reset}}">{% endif %}
-    {% if reward_choices_count != "" %}<property name="reward_choices_count" value="{{reward_choices_count}}">{% endif %}
-    {% if shareable != "" %}<property name="shareable" value="{{shareable}}">{% endif %}
-    {% if repeatable != "" %}<property name="repeatable" value="{{repeatable}}">{% endif %}
-    {% if completiontype != "" %}<property name="completiontype" value="{{completiontype}}">{% endif %}
-    {% if extra_tags != "" %}<property name="extra_tags" value="{{extra_tags}}">{% endif %}{% if spawn_multiplier != "" %}<property name="spawn_multiplier" value="{{spawn_multiplier}}">{% endif %}
-    {% if gamestage_mod != "" %}<property name="gamestage_mod" value="{{gamestage_mod}}">{% endif %}{% if gamestage_bonus != "" %}<property name="gamestage_bonus" value="{{gamestage_bonus}}">{% endif %}""")
+    {% if group_name_key != "" %}<property name="group_name_key" value="{{group_name_key}}"/>{% endif %}
+    {% if name_key != "" %}<property name="name_key" value="{{name_key}}"/>{% endif %}
+    {% if subtitle_key != "" %}<property name="subtitle_key" value="{{subtitle_key}}"/>{% endif %}
+    {% if description_key != "" %}<property name="description_key" value="{{description_key}}"/>{% endif %}
+    {% if offer_key != "" %}<property name="offer_key" value="{{offer_key}}"/>{% endif %}
+    {% if statement_key != "" %}<property name="statement_key" value="{{statement_key}}"/>{% endif %}
+    {% if response_key != "" %}<property name="response_key" value="{{response_key}}"/>{% endif %}
+    {% if completion_key != "" %}<property name="completion_key" value="{{completion_key}}"/>{% endif %}
+    {% if category_key != "" %}<property name="category_key" value="{{category_key}}"/>{% endif %}
+    {% if icon != "" %}<property name="icon" value="{{icon}}"/>{% endif %}
+    {% if difficulty != "" %}<property name="difficulty" value="{{difficulty}}"/>{% endif %}
+    {% if difficulty_tier != "" %}<property name="difficulty_tier" value="{{difficulty_tier}}"/>{% endif %}
+    {% if login_rally_reset != "" %}<property name="login_rally_reset" value="{{login_rally_reset}}"/>{% endif %}
+    {% if reward_choices_count != "" %}<property name="reward_choices_count" value="{{reward_choices_count}}"/>{% endif %}
+    {% if shareable != "" %}<property name="shareable" value="{{shareable}}"/>{% endif %}
+    {% if repeatable != "" %}<property name="repeatable" value="{{repeatable}}"/>{% endif %}
+    {% if completiontype != "" %}<property name="completiontype" value="{{completiontype}}"/>{% endif %}
+    {% if extra_tags != "" %}<property name="extra_tags" value="{{extra_tags}}"/>{% endif %}{% if spawn_multiplier != "" %}<property name="spawn_multiplier" value="{{spawn_multiplier}}"/>{% endif %}
+    {% if gamestage_mod != "" %}<property name="gamestage_mod" value="{{gamestage_mod}}"/>{% endif %}{% if gamestage_bonus != "" %}<property name="gamestage_bonus" value="{{gamestage_bonus}}"/>{% endif %}""")
 
 class Properties:
 
@@ -34,6 +34,8 @@ class Properties:
             for i in self.localization_keys:
                 file.write("\n")
                 for j in i:
+                    if not j:
+                        continue
                     file.write(j)
                     if any(substring in j for substring in ("_group", "_statement", "_response")):
                         file.write(",Quest,Quest Info,,,")
@@ -47,7 +49,7 @@ class Properties:
         name_key="",
         subtitle_key="",
         description_key="",
-        category_key="",
+        category_key="quest",
         offer_key="",
         statement_key="",
         response_key="",

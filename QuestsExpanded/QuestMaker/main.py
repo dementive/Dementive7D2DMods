@@ -22,11 +22,9 @@ if urban:
     current_tier = 1
     quest_id = f"tier{current_tier}_urban_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -45,11 +43,9 @@ if urban:
 
     quest_id = f"tier{current_tier}_urban_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -69,11 +65,9 @@ if urban:
     current_tier = 2
     quest_id = f"tier{current_tier}_urban_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -92,11 +86,9 @@ if urban:
 
     quest_id = f"tier{current_tier}_urban_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -116,11 +108,9 @@ if urban:
     current_tier = 3
     quest_id = f"tier{current_tier}_urban_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -139,11 +129,9 @@ if urban:
 
     quest_id = f"tier{current_tier}_urban_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -163,11 +151,9 @@ if urban:
     current_tier = 4
     quest_id = f"tier{current_tier}_urban_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -186,11 +172,9 @@ if urban:
 
     quest_id = f"tier{current_tier}_urban_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -211,11 +195,9 @@ if rural:
     current_tier = 1
     quest_id = f"tier{current_tier}_rural_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -234,11 +216,9 @@ if rural:
 
     quest_id = f"tier{current_tier}_rural_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -258,11 +238,9 @@ if rural:
     current_tier = 2
     quest_id = f"tier{current_tier}_rural_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -281,11 +259,9 @@ if rural:
 
     quest_id = f"tier{current_tier}_rural_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -305,11 +281,9 @@ if rural:
     current_tier = 3
     quest_id = f"tier{current_tier}_rural_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -328,11 +302,9 @@ if rural:
 
     quest_id = f"tier{current_tier}_rural_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -352,11 +324,9 @@ if rural:
     current_tier = 4
     quest_id = f"tier{current_tier}_rural_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -375,11 +345,9 @@ if rural:
 
     quest_id = f"tier{current_tier}_rural_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -402,11 +370,9 @@ if tier_1_pois:
     # Cabins
     quest_id = f"tier{current_tier}_cabin_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -425,11 +391,9 @@ if tier_1_pois:
 
     quest_id = f"tier{current_tier}_cabin_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -449,11 +413,9 @@ if tier_1_pois:
     # Survivor Sites
     quest_id = f"tier{current_tier}_survivor_site_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -472,11 +434,9 @@ if tier_1_pois:
 
     quest_id = f"tier{current_tier}_survivor_site_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -496,11 +456,9 @@ if tier_1_pois:
     # Fast Food
     quest_id = f"tier{current_tier}_fast_food_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -519,11 +477,9 @@ if tier_1_pois:
 
     quest_id = f"tier{current_tier}_fast_food_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -543,11 +499,9 @@ if tier_1_pois:
     # Caves
     quest_id = f"tier{current_tier}_caves_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -566,11 +520,9 @@ if tier_1_pois:
 
     quest_id = f"tier{current_tier}_caves_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -590,11 +542,9 @@ if tier_1_pois:
     # Stores
     quest_id = f"tier{current_tier}_store_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -613,11 +563,9 @@ if tier_1_pois:
 
     quest_id = f"tier{current_tier}_store_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -637,11 +585,9 @@ if tier_1_pois:
     # Gas Station
     quest_id = f"tier{current_tier}_gas_station_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -660,11 +606,9 @@ if tier_1_pois:
 
     quest_id = f"tier{current_tier}_gas_station_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -684,11 +628,9 @@ if tier_1_pois:
     # Diner
     quest_id = f"tier{current_tier}_diner_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -707,11 +649,9 @@ if tier_1_pois:
 
     quest_id = f"tier{current_tier}_diner_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -731,11 +671,9 @@ if tier_1_pois:
     # Ranger Station
     quest_id = f"tier{current_tier}_ranger_station_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -754,11 +692,9 @@ if tier_1_pois:
 
     quest_id = f"tier{current_tier}_ranger_station_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -784,11 +720,9 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -807,11 +741,9 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -830,11 +762,9 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -853,11 +783,9 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -880,11 +808,9 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -903,11 +829,9 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -926,11 +850,9 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -949,11 +871,9 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -976,11 +896,9 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -999,11 +917,9 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1022,11 +938,9 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1045,11 +959,9 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1072,11 +984,9 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1095,11 +1005,9 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1118,11 +1026,9 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1141,11 +1047,9 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1171,11 +1075,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1194,11 +1096,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1217,11 +1117,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1240,11 +1138,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1267,11 +1163,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1290,11 +1184,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1313,11 +1205,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1336,11 +1226,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1363,11 +1251,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1386,11 +1272,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1409,11 +1293,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1432,11 +1314,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1459,11 +1339,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1482,11 +1360,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1505,11 +1381,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1528,11 +1402,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1556,11 +1428,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1579,11 +1449,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1602,11 +1470,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1625,11 +1491,9 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1655,11 +1519,9 @@ if tier_4_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1678,11 +1540,9 @@ if tier_4_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1705,11 +1565,9 @@ if tier_4_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1728,11 +1586,9 @@ if tier_4_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1755,11 +1611,9 @@ if tier_4_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1778,11 +1632,9 @@ if tier_4_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1808,11 +1660,9 @@ if tier_5_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1831,11 +1681,9 @@ if tier_5_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1858,11 +1706,9 @@ if tier_5_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
@@ -1881,11 +1727,9 @@ if tier_5_pois:
 
     quest_id = f"tier{current_tier}_{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        group_name_key=f"{quest_id}_group_name",
         name_key=f"{quest_id}_quest_name",
         subtitle_key=f"{quest_id}_subtitle",
         description_key=f"{quest_id}_description",
-        category_key=f"{quest_id}_category",
         offer_key=f"{quest_id}_offer",
         statement_key=f"{quest_id}_statement",
         response_key=f"{quest_id}_response",
