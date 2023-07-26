@@ -19,9 +19,11 @@ properties_template = Template(
     {% if shareable != "" %}<property name="shareable" value="{{shareable}}"/>{% endif %}
     {% if repeatable != "" %}<property name="repeatable" value="{{repeatable}}"/>{% endif %}
     {% if completiontype != "" %}<property name="completiontype" value="{{completiontype}}"/>{% endif %}
-    {% if extra_tags != "" %}<property name="extra_tags" value="{{extra_tags}}"/>{% endif %}{% if spawn_multiplier != "" %}<property name="spawn_multiplier" value="{{spawn_multiplier}}"/>{% endif %}
-    {% if gamestage_mod != "" %}<property name="gamestage_mod" value="{{gamestage_mod}}"/>{% endif %}{% if gamestage_bonus != "" %}<property name="gamestage_bonus" value="{{gamestage_bonus}}"/>{% endif %}""")
-
+    {% if infested_quest %}<property name="extra_tags" value="infested"/>
+    <property name="spawn_multiplier" value="2"/>
+    <property name="gamestage_mod" value=".6"/>
+    <property name="gamestage_bonus" value="30"/>{% endif %}""")
+    
 class Properties:
 
     def __init__(self):
@@ -59,13 +61,10 @@ class Properties:
         difficulty_tier="",
         login_rally_reset="true",
         reward_choices_count="5",
-        extra_tags="",
         shareable="true",
         repeatable="true",
         completiontype="TurnIn",
-        spawn_multiplier="",
-        gamestage_mod="",
-        gamestage_bonus="",
+        infested_quest=False
     ):
         properties = properties_template.render(
             group_name_key=group_name_key,
@@ -82,13 +81,10 @@ class Properties:
             difficulty_tier=difficulty_tier,
             login_rally_reset=login_rally_reset,
             reward_choices_count=reward_choices_count,
-            extra_tags=extra_tags,
             shareable=shareable,
             repeatable=repeatable,
             completiontype=completiontype,
-            spawn_multiplier=spawn_multiplier,
-            gamestage_mod=gamestage_mod,
-            gamestage_bonus=gamestage_bonus,
+            infested_quest=infested_quest
         )
 
         loc_keys = [group_name_key, name_key, subtitle_key, description_key, category_key, offer_key, statement_key, response_key, completion_key]
