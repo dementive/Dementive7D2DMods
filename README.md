@@ -18,8 +18,6 @@ These are some other mods that go good with my mods for a full vanilla experienc
 
 • Bdub's Vehicles - https://www.nexusmods.com/7daystodie/mods/342
 
-• Trader Lore - https://7daystodiemods.com/trader-lore/
-
 • ZZtong POI's - https://www.nexusmods.com/7daystodie/mods/1434
 
 • Oakraven - https://7daystodiemods.com/oakraven-collection/
@@ -27,6 +25,8 @@ These are some other mods that go good with my mods for a full vanilla experienc
 • Boating mod https://www.nexusmods.com/7daystodie/mods/1015
 
 • Guppy's Zombies - https://7daystodiemods.com/guppys-zombies/
+
+• Skyrim Lockpicking - https://7daystodiemods.com/skyrim-style-lockpicking-minigame/
 
 • Add more zombie mods here
 
@@ -66,13 +66,17 @@ These are some other mods that go good with my mods for a full vanilla experienc
 
 • Super Power - https://www.nexusmods.com/7daystodie/mods/3367
 
+• Craftable Vanilla Doors - https://7daystodiemods.com/keules-craftable-vanilla-doors/
+
+• Craftable Barb Wire - https://7daystodiemods.com/hip63s-craftable-concertina-wire-barbed-wire-spindle-a21/
+
+• Turrents by Furious Angel - https://7daystodiemods.com/turrets-by-furious-angel/
+
 # Tweaks
 
 • Dangerous Cities - https://7daystodiemods.com/dangerous-cities/
 
 • Always open traders - https://7daystodiemods.com/always-open-traders/
-
-• Performance Tweaks - https://www.nexusmods.com/7daystodie/mods/1796
 
 • Quest Area Timer - https://www.nexusmods.com/7daystodie/mods/1912
 
@@ -85,3 +89,5 @@ These are some other mods that go good with my mods for a full vanilla experienc
 • Preppocalypse - https://7daystodiemods.com/preppocalypse/
 
 • District Zero - https://www.nexusmods.com/7daystodie/mods/3174
+
+• Ravenhearst - https://7daystodiemods.com/ravenhearst-mod/
