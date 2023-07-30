@@ -26,6 +26,8 @@ These are some other mods that go good with my mods for a full vanilla experienc
 
 • Boating mod https://www.nexusmods.com/7daystodie/mods/1015
 
+• Guppy's Zombies - https://7daystodiemods.com/guppys-zombies/
+
 • Add more zombie mods here
 
 • Add more vehicle mods here
@@ -42,6 +44,10 @@ These are some other mods that go good with my mods for a full vanilla experienc
 
 • Pant's Weapon Pack - https://www.nexusmods.com/7daystodie/mods/3285/?tab=images
 
+• Zuhma's WW2 weapons - https://www.nexusmods.com/7daystodie/mods/3327
+
+• War3zuk's HD Katanas - https://www.nexusmods.com/7daystodie/mods/3398
+
 # Items
 
 • Unique Relics - https://7daystodiemods.com/unique-relics/
@@ -56,6 +62,9 @@ These are some other mods that go good with my mods for a full vanilla experienc
 
 • UBBI - https://www.nexusmods.com/7daystodie/mods/1242
 
+• Dk's Weed And Extracts - https://www.nexusmods.com/7daystodie/mods/3385?tab=description
+
+• Super Power - https://www.nexusmods.com/7daystodie/mods/3367
 
 # Tweaks
 
@@ -69,8 +78,10 @@ These are some other mods that go good with my mods for a full vanilla experienc
 
 • Torch (performance improvements) - https://www.nexusmods.com/7daystodie/mods/3287/
 
+• Reset Quests - https://7daystodiemods.com/reset-quests/
+
 # A21 Overhauls
 
-• https://7daystodiemods.com/preppocalypse/
+• Preppocalypse - https://7daystodiemods.com/preppocalypse/
 
 • District Zero - https://www.nexusmods.com/7daystodie/mods/3174
