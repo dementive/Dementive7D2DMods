@@ -6,7 +6,7 @@
 
 • Weapons Expanded
 
-• Quests Expanded - WIP rework of quests. Not done yet.
+• Quests Expanded
 
 # Other Alpha 21 Mods
 

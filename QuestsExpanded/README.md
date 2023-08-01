@@ -4,4 +4,4 @@
 
 2. Trader quests will reset 2 days instead of every 3 days
 
-3. Adds more quests (TODO)
+3. Adds 150+ quests

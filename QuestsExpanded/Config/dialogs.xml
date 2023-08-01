@@ -1,5 +1,0 @@
-<beans>
-	<append xpath="/dialogs/dialog[@id='trader']/statement[@id='start']" >
-		<response_entry id="resetquests" />
-	</append>
-</beans>
