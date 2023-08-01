@@ -20,7 +20,7 @@ tier1_urban_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier1_urban_fetch_description,quests,Quests,,,"Head into the city and go to [DECEA3]{poi.name}[-][-] there you will be a shipment with a White River marking on the side. Grab it. Be careful we don't know what's in there."
 tier1_urban_fetch_offer,quests,Quests,,,"John, one of our White River special ops, had to stash his shipment at [DECEA3]{poi.name}[-][-]. Go retrieve the shipment and return it."
 tier1_urban_fetch_statement,Quest,Quest Info,,,Bring back the shipment before John comes for my head.
-tier1_urban_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{shipment with a White .distance} {poi.direction}[-])
+tier1_urban_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_urban_fetch_completion,quests,Quests,,,"Oh! It's you again, figured you'd be zombie chow by now. Not sure how you got out of that one but thanks for retrieving those supplies. Here's what I owe ya."
 tier2_urban_clear_quest_name,quests,Quests,,,Tier 2 Urban Clear
 tier2_urban_clear_subtitle,quests,Quests,,,Clear the Area
