@@ -26,8 +26,6 @@ This is all there is to go off of...not much.
 
 # New "lore" from QuestsExpanded
 
-Base Game Characters:
-
 Noah White - White River founder
 
 Duke - White River Leader (Ruler?Overlord?)
@@ -38,9 +36,13 @@ Jen - Trader, female.
 Joel - Trader, OG cool guy.
 Rekt - Trader, asshole farmer.
 
-If you write about any new White River characters put them here so a coherant "story" can be built.
 
-John - White River special ops guy. Possibly former CIA member. Zombie killing machine.
+LORE ADDITIONS
+John - White River special ops guy. Possibly former CIA member. Zombie killing machine
+
+Black Creek Bandits - a group of raiders from the Black Creek Township that is on the other side of the White River Settlement. 
+Project Grey - a top secret zombie vaccination program that scientists from the White River Settlement and Black Creek Township worked on together, a subproject of D.U.K.E.
+Department of Ultra-Kinetic Electrochemistry (D.U.K.E.) - a dark money program that worked on creating zombie supersoldiers before being shut down by the government. John, the Special OPS guy, was in charge
 
 # Localizaion Examples from the base game
 

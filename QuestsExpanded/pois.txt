@@ -1,10 +1,10 @@
 ﻿Tier 1 POI quest groups:
 
-	• cabin_01 | cabin_06 | cabin_09 | cabin_11 | cabin_07 | cabin_05 | cabin_08 | cabin_14 | cabin_02 | cabin_12 | cabin_15 | cabin_10 | cabin_04 | cabin_16
+	• cabin_01, cabin_06, cabin_09, cabin_11, cabin_07, cabin_05, cabin_08, cabin_14, cabin_02, cabin_12, cabin_15, cabin_10, cabin_04, cabin_16
 
-	• survivor_site_02 | survivor_site_05 | survivor_site_06 | survivor_site_08 | survivor_site_03 | survivor_site_09 | survivor_site_01 | survivor_site_10 | survivor_site_11 | survivor_site_07 | 
+	• survivor_site_02, survivor_site_05, survivor_site_06, survivor_site_08, survivor_site_03, survivor_site_09, survivor_site_01, survivor_site_10, survivor_site_11, survivor_site_07
 
-	• fastfood_03,fastfood_02,fastfood_01,fastfood_05 | 
+	• fastfood_03,fastfood_02,fastfood_01,fastfood_05
 
 	• cave_05,cave_01,cave_04,cave_03,cave_02
 

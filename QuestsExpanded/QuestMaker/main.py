@@ -10,8 +10,8 @@ from quest import QuestList, make_quest
 quest_list = QuestList()
 property_object = Properties()
 
-urban = False
-rural = False
+urban = True
+rural = True
 tier_1_pois = False
 tier_2_pois = True
 tier_3_pois = True
@@ -71,13 +71,13 @@ if urban:
     current_tier = 2
     quest_id = f"tier{current_tier}_{infested_string}urban_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -93,13 +93,13 @@ if urban:
 
     quest_id = f"tier{current_tier}_{infested_string}urban_fetch"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -116,13 +116,13 @@ if urban:
     current_tier = 3
     quest_id = f"tier{current_tier}_{infested_string}urban_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -138,13 +138,13 @@ if urban:
 
     quest_id = f"tier{current_tier}_{infested_string}urban_fetch"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -161,13 +161,13 @@ if urban:
     current_tier = 4
     quest_id = f"tier{current_tier}_{infested_string}urban_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -183,13 +183,13 @@ if urban:
 
     quest_id = f"tier{current_tier}_{infested_string}urban_fetch"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -251,13 +251,13 @@ if rural:
     current_tier = 2
     quest_id = f"tier{current_tier}_{infested_string}rural_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -273,13 +273,13 @@ if rural:
 
     quest_id = f"tier{current_tier}_{infested_string}rural_fetch"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -296,13 +296,13 @@ if rural:
     current_tier = 3
     quest_id = f"tier{current_tier}_{infested_string}rural_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -318,13 +318,13 @@ if rural:
 
     quest_id = f"tier{current_tier}_{infested_string}rural_fetch"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -341,13 +341,13 @@ if rural:
     current_tier = 4
     quest_id = f"tier{current_tier}_{infested_string}rural_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -363,13 +363,13 @@ if rural:
 
     quest_id = f"tier{current_tier}_{infested_string}rural_fetch"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -739,13 +739,13 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -761,13 +761,13 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -783,13 +783,13 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -805,13 +805,13 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -831,13 +831,13 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -853,13 +853,13 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -875,13 +875,13 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -897,13 +897,13 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -923,13 +923,13 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -945,13 +945,13 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -967,13 +967,13 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -989,13 +989,13 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1015,13 +1015,13 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1037,13 +1037,13 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1059,13 +1059,13 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1081,13 +1081,13 @@ if tier_2_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1110,13 +1110,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1132,13 +1132,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1154,13 +1154,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1176,13 +1176,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1202,13 +1202,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1224,13 +1224,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1246,13 +1246,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1268,13 +1268,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1294,13 +1294,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1316,13 +1316,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1338,13 +1338,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1360,13 +1360,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1386,13 +1386,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1408,13 +1408,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1430,13 +1430,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1452,13 +1452,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1479,13 +1479,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1501,13 +1501,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1523,13 +1523,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1545,13 +1545,13 @@ if tier_3_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1574,13 +1574,13 @@ if tier_4_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1596,13 +1596,13 @@ if tier_4_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1622,13 +1622,13 @@ if tier_4_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1644,13 +1644,13 @@ if tier_4_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1670,13 +1670,13 @@ if tier_4_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1692,13 +1692,13 @@ if tier_4_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1721,13 +1721,13 @@ if tier_5_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1743,13 +1743,13 @@ if tier_5_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1769,13 +1769,13 @@ if tier_5_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
@@ -1791,13 +1791,13 @@ if tier_5_pois:
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear_and_defend"
     properties = property_object.properties(
-        name_key=f"{quest_id}_{infested_string}quest_name",
-        subtitle_key=f"{quest_id}_{infested_string}subtitle",
-        description_key=f"{quest_id}_{infested_string}description",
-        offer_key=f"{quest_id}_{infested_string}offer",
-        statement_key=f"{quest_id}_{infested_string}statement",
-        response_key=f"{quest_id}_{infested_string}response",
-        completion_key=f"{quest_id}_{infested_string}completion",
+        name_key=f"{quest_id}_quest_name",
+        subtitle_key=f"{quest_id}_subtitle",
+        description_key=f"{quest_id}_description",
+        offer_key=f"{quest_id}_offer",
+        statement_key=f"{quest_id}_statement",
+        response_key=f"{quest_id}_response",
+        completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
         infested_quest=infested_quest,
     )
