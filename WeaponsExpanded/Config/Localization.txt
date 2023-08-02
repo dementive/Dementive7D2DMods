@@ -47,7 +47,7 @@ DementivemeleeWpnBladeHellHound,items,Melee,,,Hell Hound
 DementivemeleeWpnBladeHellHoundDesc,items,Melee,,,Fetch me their souls!
 DementivegunRocketFinale,items,Gun,,,The Finale
 DementivegunRocketFinaleDesc,items,Gun,,,Go out in glory.
-DementivegunBotBff,items,Gun,,,"Killer Bot"
+DementivegunBotBff,items,Gun,,,"Killer Drone"
 DementivegunBotBffDesc,items,Gun,,,Not leaving your side.
 DementivemeleeBotPapaSledge,items,Melee,,,Papa Sledge
 DementivemeleeBotPapaSledgeDesc,items,Melee,,,Take another step sweetheart.
