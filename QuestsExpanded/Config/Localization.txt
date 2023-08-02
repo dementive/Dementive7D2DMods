@@ -20,7 +20,7 @@ tier1_urban_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
 tier1_urban_fetch_description,quests,Quests,,,"Head into the city and go to [DECEA3]{poi.name}[-][-] there you will be a shipment with a White River marking on the side. Grab it. Be careful we don't know what's in there."
 tier1_urban_fetch_offer,quests,Quests,,,"John, one of our White River special ops, had to stash his shipment at [DECEA3]{poi.name}[-][-]. Go retrieve the shipment and return it."
 tier1_urban_fetch_statement,Quest,Quest Info,,,Bring back the shipment before John comes for my head.
-tier1_urban_fetch_response,Quest,Quest Info,,,Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_urban_fetch_response,Quest,Quest Info,,,Urban Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
 tier1_urban_fetch_completion,quests,Quests,,,"Oh! It's you again, figured you'd be zombie chow by now. Not sure how you got out of that one but thanks for retrieving those supplies. Here's what I owe ya."
 tier2_urban_clear_quest_name,quests,Quests,,,Tier 2 Urban Clear
 tier2_urban_clear_subtitle,quests,Quests,,,Clear the Area
@@ -251,7 +251,7 @@ tier2_farm_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supp
 tier2_farm_fetch_and_clear_description,quests,Quests,,,"There are some raiders calling themselves the 'Black Creek Bandits' that are searching around the farm near [DECEA3]{poi.name}[-] for a schematic that Duke wants. 
 tier2_farm_fetch_and_clear_offer,quests,Quests,,,"Got a big one for ya today, but it's dangerous. Duke's heard about a Rocket Launcher Schematic that's been hidden at a farm, but the problem is, so have the Black Creek Bandits - those troublemakers have crossed over from their side of the mountain and are poking around the White River Settlement. If you can take 'em out and bring back the schematic, you'll be a very rich individual...but that's if you make it back."
 tier2_farm_fetch_and_clear_statement,Quest,Quest Info,,,"Go to the farm that is at [DECEA3]{poi.name}[-], kill all of the Black Creek Bandits, and bring back the Rocket Launcher Schematic."
-tier2_farm_fetch_and_clear_response,Quest,Quest Info,,,Farm Fetch / Clearear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_farm_fetch_and_clear_response,Quest,Quest Info,,,Farm Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_farm_fetch_and_clear_completion,quests,Quests,,,"I-I can't believe it. I'm used to you pulling off the impossible by now, but never in a million years did I expect you'd be able to do this! And you've got the schematic Duke wants? You're going to make him broke at this rate, but believe me, he'll be grinnin' from ear to ear. Here's your payment - thanks again."
 tier2_farm_clear_and_defend_quest_name,quests,Quests,,,Tier 2 Farm Clear and Defend
 tier2_farm_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
@@ -335,7 +335,7 @@ tier2_office_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Su
 tier2_office_fetch_and_clear_description,quests,Quests,,,"There is a commercial area with an office nearby - head to [DECEA3]{poi.name}[-], take out the enemies there, and bring back the Plant Fiber Pants."
 tier2_office_fetch_and_clear_offer,quests,Quests,,,"Hey bro, can you do something for me? This probably sounds absurd to someone who doesn't understand fashion, but there are a pair of Plant Fiber Plants that I would really like you to pick up for me - I am going out on a date with Jen later and I want to impress her. I'll pay you if you can hurry!"
 tier2_office_fetch_and_clear_statement,Quest,Quest Info,,,"Head to the office at [DECEA3]{poi.name}[-], kill the enemies inside, and bring back the Plant Fiber Pants."
-tier2_office_fetch_and_clear_response,Quest,Quest Info,,,Office Fetch / Clearr ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_office_fetch_and_clear_response,Quest,Quest Info,,,Office Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_office_fetch_and_clear_completion,quests,Quests,,,"Thank goodness you're back, because I was starting to freak out. Do you think she will dig these? I am starting to second guess myself now...oh well. Here's your dough, and now if you'll excuse me, I have some clothes to try on." 
 tier2_office_clear_and_defend_quest_name,quests,Quests,,,Tier 2 Office Clear and Defend
 tier2_office_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
@@ -419,7 +419,7 @@ tier3_farm_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supp
 tier3_farm_fetch_and_clear_description,quests,Quests,,,"Head to the farm that is out by [DECEA3]{poi.name}[-], kill all of the bad guys, and bring back the food supplies for a reward."
 tier3_farm_fetch_and_clear_offer,quests,Quests,,,"This might sound like it's not worth your time, but I will pay you just the same for a finished job. I am in desperate need of some fresh food supplies, and the only place that I know has the goods for sure is this farm. The problem, naturally, is that it's filled with zombies and I can't take them on myself. Clear them out for me and bring back some food and I'll pay you for your time."
 tier3_farm_fetch_and_clear_statement,Quest,Quest Info,,,"Travel to the farm near [DECEA3]{poi.name}[-], eliminate any threats in the region, and search for the food that the trader wants."
-tier3_farm_fetch_and_clear_response,Quest,Quest Info,,,Farm Fetch / Clearear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_farm_fetch_and_clear_response,Quest,Quest Info,,,Farm Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_farm_fetch_and_clear_completion,quests,Quests,,,"A round of applause for the baddest cat to ever step foot inside the White River Settlement! What would we honestly do without you...and you've got what I sent you to get; nice. Here's your payment - take it with my thanks."
 tier3_farm_clear_and_defend_quest_name,quests,Quests,,,Tier 3 Farm Clear and Defend
 tier3_farm_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
@@ -657,7 +657,7 @@ tier2_infested_farm_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retr
 tier2_infested_farm_fetch_and_clear_description,quests,Quests,,,"There are some raiders calling themselves the 'Black Creek Bandits' that are searching around the farm near [DECEA3]{poi.name}[-] for a schematic that Duke wants. 
 tier2_infested_farm_fetch_and_clear_offer,quests,Quests,,,"Got a big one for ya today, but it's dangerous. Duke's heard about a Rocket Launcher Schematic that's been hidden at a farm, but the problem is, so have the Black Creek Bandits - those troublemakers have crossed over from their side of the mountain and are poking around the White River Settlement. If you can take 'em out and bring back the schematic, you'll be a very rich individual...but that's if you make it back."
 tier2_infested_farm_fetch_and_clear_statement,Quest,Quest Info,,,"Go to the farm that is at [DECEA3]{poi.name}[-], kill all of the Black Creek Bandits, and bring back the Rocket Launcher Schematic."
-tier2_infested_farm_fetch_and_clear_response,Quest,Quest Info,,,Farm Fetch / Clearear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_farm_fetch_and_clear_response,Quest,Quest Info,,,Farm Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_infested_farm_fetch_and_clear_completion,quests,Quests,,,"I-I can't believe it. I'm used to you pulling off the impossible by now, but never in a million years did I expect you'd be able to do this! And you've got the schematic Duke wants? You're going to make him broke at this rate, but believe me, he'll be grinnin' from ear to ear. Here's your payment - thanks again."
 tier2_infested_farm_clear_and_defend_quest_name,quests,Quests,,,Tier 2 Farm Clear and Defend
 tier2_infested_farm_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
@@ -741,7 +741,7 @@ tier2_infested_office_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Re
 tier2_infested_office_fetch_and_clear_description,quests,Quests,,,"There is a commercial area with an office nearby - head to [DECEA3]{poi.name}[-], take out the enemies there, and bring back the Plant Fiber Pants."
 tier2_infested_office_fetch_and_clear_offer,quests,Quests,,,"Hey bro, can you do something for me? This probably sounds absurd to someone who doesn't understand fashion, but there are a pair of Plant Fiber Plants that I would really like you to pick up for me - I am going out on a date with Jen later and I want to impress her. I'll pay you if you can hurry!"
 tier2_infested_office_fetch_and_clear_statement,Quest,Quest Info,,,"Head to the office at [DECEA3]{poi.name}[-], kill the enemies inside, and bring back the Plant Fiber Pants."
-tier2_infested_office_fetch_and_clear_response,Quest,Quest Info,,,Office Fetch / Clearr ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_office_fetch_and_clear_response,Quest,Quest Info,,,Office Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier2_infested_office_fetch_and_clear_completion,quests,Quests,,,"Thank goodness you're back, because I was starting to freak out. Do you think she will dig these? I am starting to second guess myself now...oh well. Here's your dough, and now if you'll excuse me, I have some clothes to try on." 
 tier2_infested_office_clear_and_defend_quest_name,quests,Quests,,,Tier 2 Office Clear and Defend
 tier2_infested_office_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
@@ -825,7 +825,7 @@ tier3_infested_farm_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retr
 tier3_infested_farm_fetch_and_clear_description,quests,Quests,,,"Head to the farm that is out by [DECEA3]{poi.name}[-], kill all of the bad guys, and bring back the food supplies for a reward."
 tier3_infested_farm_fetch_and_clear_offer,quests,Quests,,,"This might sound like it's not worth your time, but I will pay you just the same for a finished job. I am in desperate need of some fresh food supplies, and the only place that I know has the goods for sure is this farm. The problem, naturally, is that it's filled with zombies and I can't take them on myself. Clear them out for me and bring back some food and I'll pay you for your time."
 tier3_infested_farm_fetch_and_clear_statement,Quest,Quest Info,,,"Travel to the farm near [DECEA3]{poi.name}[-], eliminate any threats in the region, and search for the food that the trader wants."
-tier3_infested_farm_fetch_and_clear_response,Quest,Quest Info,,,Farm Fetch / Clearear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_farm_fetch_and_clear_response,Quest,Quest Info,,,Farm Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
 tier3_infested_farm_fetch_and_clear_completion,quests,Quests,,,"A round of applause for the baddest cat to ever step foot inside the White River Settlement! What would we honestly do without you...and you've got what I sent you to get; nice. Here's your payment - take it with my thanks."
 tier3_infested_farm_clear_and_defend_quest_name,quests,Quests,,,Tier 3 Farm Clear and Defend
 tier3_infested_farm_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
