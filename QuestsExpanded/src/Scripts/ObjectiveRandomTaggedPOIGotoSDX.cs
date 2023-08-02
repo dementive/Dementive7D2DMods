@@ -210,7 +210,7 @@ public class ObjectiveRandomTaggedPOIGotoSDX : ObjectiveRandomPOIGoto
         else
         {
             SingletonMonoBehaviour<ConnectionManager>.Instance.SendToServer(
-                NetPackageManager.GetPackage<NetPackageRandomTaggedPOIGotoSDX>().Setup(
+                NetPackageManager.GetPackage<NetPackageRandomTaggedPOIGotoDEM>().Setup(
                     questOwner.entityId,
                     OwnerQuest.QuestTags,
                     OwnerQuest.QuestCode,
