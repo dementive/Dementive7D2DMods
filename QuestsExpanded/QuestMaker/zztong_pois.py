@@ -1,0 +1,28 @@
+class ZZTongPois:
+	def __init__(self):
+		self.t1_stores = ""
+		self.t1_cabins = ""
+		self.t1_caves = ""
+		self.t1_stations = ""
+		self.t2_farm = ""
+		self.t2_store = ""
+		self.t3_farm = ""
+		self.t3_store = ""
+		self.t4_army = ""
+		self.t4_downtown = ""
+		self.t4_store = ""
+		self.t5_skyscraper = ""
+
+	def make_quests(self):
+		self.t1_stores = ",zztong_car_wash_01,zztong_pharmacy_01,zztong_store_xs_01,zztong_store_xs_02,zztong_store_xs_04,zztong_store_xs_05,zztong_store_xs_07,zztong_store_xs_08,zztong_store_xs_09,zztong_store_xs_11,zztong_store_xs_12,zztong_store_xs_13,zztong_store_xs_15"
+		self.t1_cabins = ",zztong_cabin_fort_01"
+		self.t1_caves = ",zztong_cave_01"
+		self.t1_stations = ",zztong_cabin_fort_01,zztong_tfp_ranger_station_01"
+		self.t2_farm = ",zztong_farm_01,zztong_farm_03,zztong_farm_07"
+		self.t2_store = ",zztong_rebirth_01,zztong_restaurant_01,zztong_store_s_02,zztong_store_xs_03,zztong_store_xs_06,zztong_store_xs_10,zztong_strip_mall_01"
+		self.t3_farm = ",zztong_farm_08"
+		self.t3_store = ",zztong_store_s_01,zztong_store_xs_14,zztong_strip_mall_02"
+		self.t4_army = ",zztong_ntt_hq_01"
+		self.t4_downtown = ",zztong_apartment_01,zztong_apartment_02,zztong_apartment_03"
+		self.t4_store = ",zztong_warehouse_02"
+		self.t5_skyscraper = ",zztong_office_building_03,zztong_skyscraper_01,zztong_tfp_skyscraper_02"

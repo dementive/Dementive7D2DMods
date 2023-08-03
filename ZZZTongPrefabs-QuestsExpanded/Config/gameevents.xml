@@ -1,0 +1,22 @@
+<config>
+	<remove xpath="/gameevents/action_sequence[@name='game_first_spawn']"/>
+
+	<append xpath="/gameevents">	
+	<action_sequence name="game_first_spawn">
+		<property name="allow_user_trigger" value="false" />
+		<property name="action_type" value="Game" />
+		
+		<action class="Delay">
+			<property name="time" value="4.5" />
+		</action>
+
+		<action class="AddQuest">
+			<property name="quest" value="quest_visit_trader" />
+			<property name="phase" value="3" />
+		</action>
+
+	</action_sequence>
+	</append>
+
+
+</config>

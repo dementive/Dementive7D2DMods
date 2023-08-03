@@ -1,0 +1,962 @@
+﻿Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate
+challenge_dementiveDefenseQuests_Name,quests,Quests,,,"Distress Call"
+challenge_dementiveDefenseQuests_SubtitleKey,quests,,,Quests,"Clear and Defend"
+challenge_dementiveDefenseQuests_Desc,quests,Quests,,,"You've received a distress call from another survivor.  Head to their location and help defend them."
+challenge_dementiveDefenseQuests_Offer,quests,Quests,,,"*ksshhht* Is anyone out there?  This is Citizen *kshtssst* -rlene.  Help, we're be- *shvvvt* -nvaded.  Please, w-*scrrrrrssh* -ocated at *ksshtsshhhtt*. Hurry!\n\nSounds like their transmitter is going out.  You didn't catch their location, but you should be able to triangulate on the signal.  What are you waiting for?"
+challenge_dementiveDefenseQuestsFerals_Offer,quests,Quests,,,"Hello, White River Defense?  This is Citiz- *kshtssst* -oe.  We are under attack!  Please, send help to *scrrrrrssh* near the old *ksshtsshhhtt*. Oh, God!  They're runn- *brzzrz* being swarmed by ferals!  Hel-*zzzzt*\n\nSounds like their transmitter is going out.  You didn't catch their location, but you should be able to triangulate on the signal.  What are you waiting for?"
+challenge_dementiveDefenseQuestsRads_Offer,quests,Quests,,,"*ksshhht* Calling all White River Defense Forces.  Code Red!  This is Elder B- *kshtssst*  We have fera- *shvvvt* -dioactive zombies assaulting our position.  All units respond to *scrrrrrssh* behind the *ksshtsshhhtt*.  We can't hold out much longer!\n\nSounds like their transmitter is going out.  You didn't catch their location, but you should be able to triangulate on the signal.  What are you waiting for?"
+challenge_dementiveDefenseQuests_Completion,quests,Quests,,,"Yeah, I heard from the others that you really made the difference there.  Here's a small token of White River's appreciation."
+challenge_dementive_DefenseQuests_statement,Quest,Quest Info,,,Clear and Defend the Point of Interest
+challenge_dementive_DefenseQuests_response,Quest,Quest Info,,,Clear and Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_urban_clear_quest_name,quests,Quests,,,Tier 1 Urban Clear
+tier1_urban_clear_subtitle,quests,Quests,,,Clear the Area
+tier1_urban_clear_description,quests,Quests,,,"Head into the city and find [DECEA3]{poi.name}[-][-] then clear out those flesh eating walking meat sacks. Be careful we don't want to lose another White River citizen..."
+tier1_urban_clear_offer,quests,Quests,,,"Time to see if you have what it takes to be a part of White River Runners. Some of our guys at [DECEA3]{poi.name}[-][-] ran into some zombies im going to need you clear out those zombies and see if our guys are still holding out."
+tier1_urban_clear_statement,Quest,Quest Info,,,Head into the city and clear out those zombies.
+tier1_urban_clear_response,Quest,Quest Info,,,Urban Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_urban_clear_completion,quests,Quests,,,"I almost can't believe my eyes. You really managed to pull through in a pinch. Thanks for killing all those zombies. Here's what I owe ya."
+tier1_urban_fetch_quest_name,quests,Quests,,,Tier 1 Urban Fetch
+tier1_urban_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier1_urban_fetch_description,quests,Quests,,,"Head into the city and go to [DECEA3]{poi.name}[-][-] there you will be a shipment with a White River marking on the side. Grab it. Be careful we don't know what's in there."
+tier1_urban_fetch_offer,quests,Quests,,,"John, one of our White River special ops, had to stash his shipment at [DECEA3]{poi.name}[-][-]. Go retrieve the shipment and return it."
+tier1_urban_fetch_statement,Quest,Quest Info,,,Bring back the shipment before John comes for my head.
+tier1_urban_fetch_response,Quest,Quest Info,,,Urban Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_urban_fetch_completion,quests,Quests,,,"Oh! It's you again, figured you'd be zombie chow by now. Not sure how you got out of that one but thanks for retrieving those supplies. Here's what I owe ya."
+tier2_urban_clear_quest_name,quests,Quests,,,Tier 2 Urban Clear
+tier2_urban_clear_subtitle,quests,Quests,,,Clear the Area
+tier2_urban_clear_description,quests,Quests,,,"Go into the city and locate [DECEA3]{poi.name}[-] then take care of the zombie problem, but keep an eye out for the missing book."
+tier2_urban_clear_offer,quests,Quests,,,"Have you ever heard of a place called [DECEA3]{poi.name}[-]? Some real bad stuff went down there involving Duke, and that was before the zombies came in. Guess where I need you to clear out? There's a book I'm looking for..."
+tier2_urban_clear_statement,Quest,Quest Info,,,Take care of the zombies and look for the missing book. 
+tier2_urban_clear_response,Quest,Quest Info,,,Urban Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_urban_clear_completion,quests,Quests,,,"Well, I'll be a monkey's uncle - you're alive! Unless you're a ghost or a zombie, but you don't look like either. And you have my book! Let me get you some money."
+tier2_urban_fetch_quest_name,quests,Quests,,,Tier 2 Urban Fetch
+tier2_urban_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier2_urban_fetch_description,quests,Quests,,,"There's a missing shipment that someone is looking for - it was last seen near [DECEA3]{poi.name}[-]."
+tier2_urban_fetch_offer,quests,Quests,,,"Ugh, not you again. Well, maybe it's a good thing you are here - I need help with something. I was expecting a shipment of goods 'bout a week ago, but the courier never arrived. Will you go to [DECEA3]{poi.name}[-] and see what's what?"
+tier2_urban_fetch_statement,Quest,Quest Info,,,Go to [DECEA3]{poi.name}[-] and look for the missing shipment.
+tier2_urban_fetch_response,Quest,Quest Info,,,Urban Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_urban_fetch_completion,quests,Quests,,,"Hot diggity damn, you're back and just in time! Stock was running low here. I guess I owe you a little something, hmm? Hold on, I'll be right back."
+tier3_urban_clear_quest_name,quests,Quests,,,Tier 3 Urban Clear
+tier3_urban_clear_subtitle,quests,Quests,,,Clear the Area
+tier3_urban_clear_description,quests,Quests,,,"Although [DECEA3]{poi.name}[-] was abandoned by humans long ago, there are zombies there we need to clear."
+tier3_urban_clear_offer,quests,Quests,,,"Hey stranger, fancy seeing you 'round these parts. Are you available for a job? I would pay top dollar to see [DECEA3]{poi.name}[-] cleared of zombies. You know the rate I'm willing to pay, so have fun hunting."
+tier3_urban_clear_statement,Quest,Quest Info,,,"Head into the city, find [DECEA3]{poi.name}[-], and eliminate the zombies."
+tier3_urban_clear_response,Quest,Quest Info,,,Urban Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_urban_clear_completion,quests,Quests,,,"You're back, and right on time, too...didn't even break a sweat, did ya? I know I can always count on you...here's what was promised."
+tier3_urban_fetch_quest_name,quests,Quests,,,Tier 3 Urban Fetch
+tier3_urban_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier3_urban_fetch_description,quests,Quests,,,"There are supplies at [DECEA3]{poi.name}[-] that we need ASAP."
+tier3_urban_fetch_offer,quests,Quests,,,"Do you believe in miracles? Because I am in need of one, and you walking through the door seems like no coincidence. I need some supplies at [DECEA3]{poi.name}[-] or else the good people of the White River Settlement will suffer, and nobody wants that."
+tier3_urban_fetch_statement,Quest,Quest Info,,,Locate [DECEA3]{poi.name}[-] and retrieve the supplies that the trader is looking for.
+tier3_urban_fetch_response,Quest,Quest Info,,,Urban Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_urban_fetch_completion,quests,Quests,,,"Good night in the morning! You're back already? I figured you'd be at least a few more hours. Nevermind that...it looks like you have what I asked for; nice work. How does some cold, hard cash sound?"
+tier4_urban_clear_quest_name,quests,Quests,,,Tier 4 Urban Clear
+tier4_urban_clear_subtitle,quests,Quests,,,Clear the Area
+tier4_urban_clear_description,quests,Quests,,,"Locate [DECEA3]{poi.name}[-] and take care of the bandit problem."
+tier4_urban_clear_offer,quests,Quests,,,"Hey there cowboy; long time no see. You got a few minutes and want something to do? A buncha dirtbags are holed up near [DECEA3]{poi.name}[-] and have been giving me grief...think you can take care of them for me?"
+tier4_urban_clear_statement,Quest,Quest Info,,,Go to the bandit hideout near [DECEA3]{poi.name}[-] and clear out the raiders.
+tier4_urban_clear_response,Quest,Quest Info,,,Urban Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_urban_clear_completion,quests,Quests,,,"If you isn't a sight for sore eyes, and none the worse for wear, it seems. And about that payment...you prefer the money that folds and not the money that jingles, I've heard."
+tier4_urban_fetch_quest_name,quests,Quests,,,Tier 4 Urban Fetch
+tier4_urban_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier4_urban_fetch_description,quests,Quests,,,"Go into [DECEA3]{poi.name}[-] and look for the medical supplies that a sick child needs."
+tier4_urban_fetch_offer,quests,Quests,,,"What's up hoss! Always glad to see your shadow darken my door. Can I trouble you for a spell? We got a sick kid at the White River Settlement and there are antibiotics in [DECEA3]{poi.name}[-] that could be mighty useful. Don't worry, though, this isn't some charity case - top dollar if you make it back."
+tier4_urban_fetch_statement,Quest,Quest Info,,,Locate the medical supplies in [DECEA3]{poi.name}[-] and bring them back for a reward.
+tier4_urban_fetch_response,Quest,Quest Info,,,Urban Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_urban_fetch_completion,quests,Quests,,,"Thank God you're back - poor kiddo took a turn for the worse, so those meds are going to save her life. How does it feel to be a hero? The grateful parents left this wad of dough for you."
+tier1_rural_clear_quest_name,quests,Quests,,,Tier 1 Rural Clear
+tier1_rural_clear_subtitle,quests,Quests,,,Clear the Area
+tier1_rural_clear_description,quests,Quests,,,"Zombies living near [DECEA3]{poi.name}[-] need to be cleared out."
+tier1_rural_clear_offer,quests,Quests,,,"Glad to see you, my friend. You busy at the moment? There's a little infestation problem that's making life difficult for some rural folk, and they'd like to see the woods zombie-free. How does cash sound?"
+tier1_rural_clear_statement,Quest,Quest Info,,,Head to [DECEA3]{poi.name}[-] in the woods and finish off the zombies.
+tier1_rural_clear_response,Quest,Quest Info,,,Rural Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_rural_clear_completion,quests,Quests,,,"Very happy to see you again, and in one piece, too. Yeah, I've already heard about what you've done - people can't contain their joy, and word travels fast. Here's what I owe you, so thanks again."
+tier1_rural_fetch_quest_name,quests,Quests,,,Tier 1 Rural Fetch
+tier1_rural_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier1_rural_fetch_description,quests,Quests,,,"There are some blueprints near [DECEA3]{poi.name}[-] that a trader needs."
+tier1_rural_fetch_offer,quests,Quests,,,"I've got a special job for you today if you've got the sack for it. You ever hear of Duke? Course you have. Well, rumor has it that some personal belongings of his - some valuable blueprints - were lost, and he asked me to hire my top guy for the job. You in?"
+tier1_rural_fetch_statement,Quest,Quest Info,,,Go to [DECEA3]{poi.name}[-] and bring back the blueprints that Duke wants.
+tier1_rural_fetch_response,Quest,Quest Info,,,Rural Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_rural_fetch_completion,quests,Quests,,,"And here you are, right on time. And you've got the blueprints! Man, Duke is going to be thrilled once he hears about what you've done. I'll put in a good word for you with the boss man; not that you'll need it. Expect more gigs in the future!"
+tier2_rural_clear_quest_name,quests,Quests,,,Tier 2 Rural Clear
+tier2_rural_clear_subtitle,quests,Quests,,,Clear the Area
+tier2_rural_clear_description,quests,Quests,,,"Some mutated zombies near [DECEA3]{poi.name}[-] need to be exterminated. The seem to be infected with a virus that is making them act crazy..."
+tier2_rural_clear_offer,quests,Quests,,,"Thank goodness you walked in! We have a major crisis on our hands that needs dealing with. There's some sorta mutation spreading around the zombies, makes 'em real aggressive-like, and we gotta nip this little flu in the bud or else! Take 'em all out and come back here when you're done."
+tier2_rural_clear_statement,Quest,Quest Info,,,Go to [DECEA3]{poi.name}[-] and kill off the mutated zombies.
+tier2_rural_clear_response,Quest,Quest Info,,,Rural Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_rural_clear_completion,quests,Quests,,,"It's a good thing you took care of them sick zombies when you did, because if it had gotten any worse, I don't know what we would have done. Here is what I owe ya - fingers crossed I won't be hiring you for the same kinda job any time soon."
+tier2_rural_fetch_quest_name,quests,Quests,,,Tier 2 Rural Fetch
+tier2_rural_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier2_rural_fetch_description,quests,Quests,,,"Head out towards [DECEA3]{poi.name}[-] and bring back missing supplies or else the shop might go out of business."
+tier2_rural_fetch_offer,quests,Quests,,,"Just who I was looking for - you psychic or something? A really important shipment I was waiting on hasn't arrived, and I think it got lost in the wilderness. I need it, or else I might go bust - can you help?"
+tier2_rural_fetch_statement,Quest,Quest Info,,,Locate [DECEA3]{poi.name}[-] and bring back the supplies to the store.
+tier2_rural_fetch_response,Quest,Quest Info,,,Rural Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_rural_fetch_completion,quests,Quests,,,"You have no idea how much this means to me...I really owe you one, cowboy. Here is what I promised and a little extra on top as a thank you. See you sometime soon, I hope?"
+tier3_rural_clear_quest_name,quests,Quests,,,Tier 3 Rural Clear
+tier3_rural_clear_subtitle,quests,Quests,,,Clear the Area
+tier3_rural_clear_description,quests,Quests,,,"There's an abandoned logging site near [DECEA3]{poi.name}[-] that some lumberjack zombies have taken over?!"
+tier3_rural_clear_offer,quests,Quests,,,"Bro! You're here, just in the nick of time. Zombies have taken over a section of the forest and are attacking anyone that heads near the woods - can you take 'em out before things get worse? You know what I'll pay you when you're done."
+tier3_rural_clear_statement,Quest,Quest Info,,,Head towards [DECEA3]{poi.name}[-] and kill every zombie that you can find.
+tier3_rural_clear_response,Quest,Quest Info,,,Rural Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_rural_clear_completion,quests,Quests,,,"Welcome back, kind stranger! I can see that you've taken care of what I asked you to - atta boy! And in record time, it looks like...here, take this money and try not to spend it all in one place, unless it's here."
+tier3_rural_fetch_quest_name,quests,Quests,,,Tier 3 Rural Fetch
+tier3_rural_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier3_rural_fetch_description,quests,Quests,,,"Go to the wooded site near [DECEA3]{poi.name}[-] and find the missing magazines."
+tier3_rural_fetch_offer,quests,Quests,,,"Blah...today's a bad day. I, uh, have some really special magazines that I keep in the woods, but I haven't been able to find them. Do you mind grabbing them for me? Just don't go looking through them - I'll be able to tell."
+tier3_rural_fetch_statement,Quest,Quest Info,,,Find the place near [DECEA3]{poi.name}[-] where the magazines are and bring them back.
+tier3_rural_fetch_response,Quest,Quest Info,,,Rural Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_rural_fetch_completion,quests,Quests,,,"You're back! I was starting to get worried, but maybe you're more competent than you look. Nevermind all of that - here's some money; now give me my magazines. Hey, you bent one of the edges! Grrr..."
+tier4_rural_clear_quest_name,quests,Quests,,,Tier 4 Rural Clear
+tier4_rural_clear_subtitle,quests,Quests,,,Clear the Area
+tier4_rural_clear_description,quests,Quests,,,"We have been asked to go to [DECEA3]{poi.name}[-] and take care of any hostiles that we encounter."
+tier4_rural_clear_offer,quests,Quests,,,"Hey there chief, what's cracking? You gotta minute to rap with me? I need some help with some aggros that are holed up in the woods - bastards keep taking potshots at my store and I'm getting tired of running for cover. I'll pay you for a job well done."
+tier4_rural_clear_statement,Quest,Quest Info,,,Find the bandit hideout near [DECEA3]{poi.name}[-] and take care of business.
+tier4_rural_clear_response,Quest,Quest Info,,,Rural Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_rural_clear_completion,quests,Quests,,,"I'm happy to see you've returned, my friend - doesn't seem like you had any problem with the bad guys either. Here's what I owe ya - stop by again sometime and we'll crack open a brew together."
+tier4_rural_fetch_quest_name,quests,Quests,,,Tier 4 Rural Fetch
+tier4_rural_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier4_rural_fetch_description,quests,Quests,,,"Travel deep into the woods, out near [DECEA3]{poi.name}[-], and bring back the supplies that are needed."
+tier4_rural_fetch_offer,quests,Quests,,,"Good day to you, my famous friend. Yeah, I said famous! Everyone know's you as a do-gooder around here, and speaking of which, I have a job for you. Can you bring back a missing shipment? My buddy was being chased by zombies and ditched a crate in the woods that I need."
+tier4_rural_fetch_statement,Quest,Quest Info,,,Go to [DECEA3]{poi.name}[-] and keep your eyes peeled for the missing supplies.
+tier4_rural_fetch_response,Quest,Quest Info,,,Rural Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_rural_fetch_completion,quests,Quests,,,"Bro, if you aren't a sight for sore eyes...and with the crate! My man. Shoulda hired you from the very beginning. Here, take this money and my thanks, and I'll see you soon, I hope."
+tier1_cabin_clear_quest_name,quests,Quests,,,Tier 1 Cabin Clear
+tier1_cabin_clear_subtitle,quests,Quests,,,Clear the Area
+tier1_cabin_clear_description,quests,Quests,,,"There is a cabin that has been infested with zombies, and a trader has asked us to take care of the problem."
+tier1_cabin_clear_offer,quests,Quests,,,"Whaddaya know, my favorite person just walked through the door. Do you mind helping me with a personal problem? I have a little cabin that I use for a getaway, but it's been taken over by zombies. I'd pay top dollar to have my little retreat back..."
+tier1_cabin_clear_statement,Quest,Quest Info,,,"Go to [DECEA3]{poi.name}[-], search for the cabin, and eliminate the zombies."
+tier1_cabin_clear_response,Quest,Quest Info,,,Cabin Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_cabin_clear_completion,quests,Quests,,,"I am so grateful that you did this for me - you have no idea. Thank you, and here, take this money - it's the least I can do."
+tier1_cabin_fetch_quest_name,quests,Quests,,,Tier 1 Cabin Fetch
+tier1_cabin_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier1_cabin_fetch_description,quests,Quests,,,"Duke has a cabin out near [DECEA3]{poi.name}[-] that has some important documents stored inside - we need to bring them back."
+tier1_cabin_fetch_offer,quests,Quests,,,"Hey partner, welcome. Duke's got a job ready, asked for you personally. There's a cabin out in the woods he uses as a storage site, and he needs some paperwork brought back - think you can handle it? He always pays above and beyond for this kind of work."
+tier1_cabin_fetch_statement,Quest,Quest Info,,,Find the cabin that is around [DECEA3]{poi.name}[-] and bring back the documents inside.
+tier1_cabin_fetch_response,Quest,Quest Info,,,Cabin Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_cabin_fetch_completion,quests,Quests,,,"Always pleasant to see you, especially when you're bringing me something that I asked you to fetch. Duke is going to be mighty thankful for what you've done - take this money and his personal thanks."
+tier1_survivor_site_clear_quest_name,quests,Quests,,,Tier 1 Survivor Site Clear
+tier1_survivor_site_clear_subtitle,quests,Quests,,,Clear the Area
+tier1_survivor_site_clear_description,quests,Quests,,,"Out near [DECEA3]{poi.name}[-], there is a survivor site that has a zombie problem - we gotta take care of it as soon as we can."
+tier1_survivor_site_clear_offer,quests,Quests,,,"I am glad to see you, and let me tell you why - I keep getting frantic messages from up the way, saying that they are being attacked and need reinforcements or else! Can you get up there and be of assistance? They'll pay!"
+tier1_survivor_site_clear_statement,Quest,Quest Info,,,Venture towards [DECEA3]{poi.name}[-] and eliminate all of the menacing zombies that are attacking the locals.
+tier1_survivor_site_clear_response,Quest,Quest Info,,,Survivor Site Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_survivor_site_clear_completion,quests,Quests,,,"You've made a lot of people happy with what you've done today - they give you their gratitude but they owe you their lives. Here's some money as a thank you gesture - hats off to you, pal."
+tier1_survivor_site_fetch_quest_name,quests,Quests,,,Tier 1 Survivor Site Fetch
+tier1_survivor_site_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier1_survivor_site_fetch_description,quests,Quests,,,"If you head out towards [DECEA3]{poi.name}[-], you will find some abandoned rubbish that a trader looking for." 
+tier1_survivor_site_fetch_offer,quests,Quests,,,"You ever hear the saying that one man's trash is another man's treasure? Well, in my case it's true - there's some sentimental junk that I misplaced, but I'd be willing to pay a little something if you brought it back to me - deal?"
+tier1_survivor_site_fetch_statement,Quest,Quest Info,,,Go out to [DECEA3]{poi.name}[-] and search for the abandoned rubbish.
+tier1_survivor_site_fetch_response,Quest,Quest Info,,,Survivor Site Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_survivor_site_fetch_completion,quests,Quests,,,"Hmm, you again? Why are you bothering me? Oh, that's right...I hired you. And you have my stuff! Hopefully you didn't poke through it or mess it up in any way. Here, take some money and please leave me with my things."
+tier1_fast_food_clear_quest_name,quests,Quests,,,Tier 1 Fast Food Clear
+tier1_fast_food_clear_subtitle,quests,Quests,,,Clear the Area
+tier1_fast_food_clear_description,quests,Quests,,,"Go to the fast food restaurant that is by [DECEA3]{poi.name}[-] and finish off the zombies that are in the area."
+tier1_fast_food_clear_offer,quests,Quests,,,"You won't believe this, but it seems that like zombies that used to be burger flippers in a past life are still headed to their stores - old habits die hard, I guess. Problem is that they're making themselves into a nuisance - come back once they're hamburger and I'll pay you."
+tier1_fast_food_clear_statement,Quest,Quest Info,,,"Travel to [DECEA3]{poi.name}[-], find the fast food joint, and kill off the zombie workers."
+tier1_fast_food_clear_response,Quest,Quest Info,,,Fast Food Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_fast_food_clear_completion,quests,Quests,,,"I've heard that you took out the fry jockeys and other miscreants that were at the fast food place - that's what I call service! And now, for the toy that comes with your kid's meal....here's a bunch of cash." 
+tier1_fast_food_fetch_quest_name,quests,Quests,,,Tier 1 Fast Food Fetch
+tier1_fast_food_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier1_fast_food_fetch_description,quests,Quests,,,"Head into the abandoned fast food place near [DECEA3]{poi.name}[-] and bring back the Tungsten Trophy."
+tier1_fast_food_fetch_offer,quests,Quests,,,"You remember White River Burger, where they made those little sliders with bacon and barbecue sauce? I could put a hurting on a bag of those back in the day, with farts strong enough to knock out a moose. There's a trophy there that I'd like to have for my shop - can you get it for me? I'll tell you why later." 
+tier1_fast_food_fetch_statement,Quest,Quest Info,,,Go to the fast food place near [DECEA3]{poi.name}[-] and look for the Tungsten Trophy.
+tier1_fast_food_fetch_response,Quest,Quest Info,,,Fast Food Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_fast_food_fetch_completion,quests,Quests,,,"You got my trophy! Look at the plaque - 'White River Little League All-Stars', I was the captain. This brings back a lot of good memories for me. This is a priceless gift, so here's some monetary compensation - you've made my day."
+tier1_caves_clear_quest_name,quests,Quests,,,Tier 1 Cave Clear
+tier1_caves_clear_subtitle,quests,Quests,,,Clear the Area
+tier1_caves_clear_description,quests,Quests,,,"Find the cave that is near [DECEA3]{poi.name}[-] and kill all of the zombies that are inside."
+tier1_caves_clear_offer,quests,Quests,,,"You ever been spelunking before? Because there's a cave that has a zombie problem, and I'd be mighty tickled if you went in there and smoked 'em all out. I'll see you when you're finished - try not to get lost, ok?" 
+tier1_caves_clear_statement,Quest,Quest Info,,,Go into the caves that are by [DECEA3]{poi.name}[-] and finish off the zombies that live there.
+tier1_caves_clear_response,Quest,Quest Info,,,Cave Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_caves_clear_completion,quests,Quests,,,"I am glad to see you back! Last guy I hired to go down into the caves never returned...wonder what happened. Looks like I've got a debt to settle with you, though - here's what I owe ya."
+tier1_caves_fetch_quest_name,quests,Quests,,,Tier 1 Cave Fetch
+tier1_caves_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier1_caves_fetch_description,quests,Quests,,,"There is a special mining helmet inside the caves near [DECEA3]{poi.name}[-] that we will need to find."
+tier1_caves_fetch_offer,quests,Quests,,,"This might seem a little silly, but there's a special mining helmet that belonged to my Pa that I lost in a cave like a dummy - a zombie was chasing me and I accidentally dropped it while running. Can you find it for me? I'll pay you for it, of course."
+tier1_caves_fetch_statement,Quest,Quest Info,,,Find the mining helmet that belonged to the trader's dad in the cave at [DECEA3]{poi.name}[-].
+tier1_caves_fetch_response,Quest,Quest Info,,,Cave Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_caves_fetch_completion,quests,Quests,,,"I could cry right now, seeing you walking in here with Daddy's helmet. He spent his life in the coal mines and there's no way I was going to leave his helmet in a cave - spent long enough underground. Thanks, friend - here's money for your troubles."
+tier1_store_clear_quest_name,quests,Quests,,,Tier 1 Store Clear
+tier1_store_clear_subtitle,quests,Quests,,,Clear the Area
+tier1_store_clear_description,quests,Quests,,,"Go into the store that is at [DECEA3]{poi.name}[-] and kill off anything that is inside - we can't allow the zombies to use the abandoned grocery as a home."
+tier1_store_clear_offer,quests,Quests,,,"There's an old grocery store that is stocked full of zombies - seems like those turds are using it as a base. Can you go in there and let them know they're all fired? Pink slips or rockets; your call, although HR prefers total extermination."
+tier1_store_clear_statement,Quest,Quest Info,,,Find the store that is close to [DECEA3]{poi.name}[-] and finish off the zombies that are lurking inside.
+tier1_store_clear_response,Quest,Quest Info,,,Store Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_store_clear_completion,quests,Quests,,,"Well done, my friend, well done. I'll be sure to mention your excellent work in your annual performance review - haha, I'm just messing. Here, take the cash and my thanks."
+tier1_store_fetch_quest_name,quests,Quests,,,Tier 1 Store Fetch
+tier1_store_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier1_store_fetch_description,quests,Quests,,,"Find the abandoned store that is our near [DECEA3]{poi.name}[-] and bring back the First Aid Kit Schematic."
+tier1_store_fetch_offer,quests,Quests,,,"I've got an important job for you, so I hope that you're free at the moment. There's a schematic that I'd love to get my hands on, but I can't leave the shop - can you fetch it for me? I will absolutely give you some cash for a job well done."
+tier1_store_fetch_statement,Quest,Quest Info,,,Head towards [DECEA3]{poi.name}[-] and look for the First Aid Kit Schematic.
+tier1_store_fetch_response,Quest,Quest Info,,,Store Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_store_fetch_completion,quests,Quests,,,"This is going to be a game changer for cuts and scratches - thanks a bundle for helping a brother out. Hold on a sec while I get what I owe you; here you go. Come back soon, as you know I will always have a job for you eventually."
+tier1_gas_station_clear_quest_name,quests,Quests,,,Tier 1 Gas Station Clear
+tier1_gas_station_clear_subtitle,quests,Quests,,,Clear the Area
+tier1_gas_station_clear_description,quests,Quests,,,"There are stories of zombies that are causing a ruckus near [DECEA3]{poi.name}[-], where there's an old gas station. We can make some cash taking them out."
+tier1_gas_station_clear_offer,quests,Quests,,,"There's a gas station nearby that has become a hotspot for zombie attacks - always something shady going on in the White River Settlement. Think you can do us all a solid and take care of the cockroaches for us?"
+tier1_gas_station_clear_statement,Quest,Quest Info,,,Find the gas station that is close to [DECEA3]{poi.name}[-] and kill all of the zombies that live in the area.
+tier1_gas_station_clear_response,Quest,Quest Info,,,Gas Station Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_gas_station_clear_completion,quests,Quests,,,"Thanks to you, we aren't going to have to worry about zombies pumping their own gas for a long time - sounds like a disaster in the making, doesn't it? Here, let me gitcha some dough. Thanks again hoss."
+tier1_gas_station_fetch_quest_name,quests,Quests,,,Tier 1 Gas Station Fetch
+tier1_gas_station_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier1_gas_station_fetch_description,quests,Quests,,,"There are some things that a trader could use that are in the gas station at [DECEA3]{poi.name}[-]."
+tier1_gas_station_fetch_offer,quests,Quests,,,"Hey there stranger, it's been a hot minute - you got a cool second you could spare? I need my tools that I left in a gas station just down the road, and you're always reliable and prompt - can I hire your services for a few hours?"
+tier1_gas_station_fetch_statement,Quest,Quest Info,,,Travel to the gas station near [DECEA3]{poi.name}[-] and look for a wrench.
+tier1_gas_station_fetch_response,Quest,Quest Info,,,Gas Station Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_gas_station_fetch_completion,quests,Quests,,,"You've come through yet again - I could get used to this sort of thing. I've got what I promised you right here, so thank you once again for bringing this to me."
+tier1_diner_clear_quest_name,quests,Quests,,,Tier 1 Diner Clear
+tier1_diner_clear_subtitle,quests,Quests,,,Clear the Area
+tier1_diner_clear_description,quests,Quests,,,"Travel to the diner that is close to [DECEA3]{poi.name}[-] and kill anything that is inside."
+tier1_diner_clear_offer,quests,Quests,,,"You ever been to the diner up the street, used to have killin' cheesecake and a so-so shrimp cocktail? Well, I hear there's something bad going on there now, and it's not the Monday Meatloaf - zombies? Raiders? Mutant bears? Heck if I know - I just have a bounty ready for whoever gets the job done."
+tier1_diner_clear_statement,Quest,Quest Info,,,Visit the diner at [DECEA3]{poi.name}[-] and take care of the hostiles that are inside.
+tier1_diner_clear_response,Quest,Quest Info,,,Diner Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_diner_clear_completion,quests,Quests,,,"Looks like you've been busy. Let me guess, the Special of the Day was lead bullets, served piping hot? Limitless refills? You savage. Thanks again and don't be a stranger."
+tier1_diner_fetch_quest_name,quests,Quests,,,Tier 1 Diner Fetch
+tier1_diner_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier1_diner_fetch_description,quests,Quests,,,"Go to the diner that is near [DECEA3]{poi.name}[-] and get a Can of Salmon for a reward."
+tier1_diner_fetch_offer,quests,Quests,,,"Hey, you busy? Got me a hankering for some salmon cakes, and the only place I know that used to have tinned fish was this diner - why don't you poke around and see if there's anything left there? I've got money."
+tier1_diner_fetch_statement,Quest,Quest Info,,,"Visit the diner at [DECEA3]{poi.name}[-] and find a Can of Salmon."
+tier1_diner_fetch_response,Quest,Quest Info,,,Diner Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_diner_fetch_completion,quests,Quests,,,"I can already smell the fish cakes...what's that? No, I'm sorry - you can't stay for dinner. Here, take the money and let me enjoy my grub in peace? Oh yeah, thanks, I guess."
+tier1_ranger_station_clear_quest_name,quests,Quests,,,Tier 1 Ranger Station Clear
+tier1_ranger_station_clear_subtitle,quests,Quests,,,Clear the Area
+tier1_ranger_station_clear_description,quests,Quests,,,"There's an old observation outpost that rangers used to a long time ago, but unfortunately there are too many zombies there - go to [DECEA3]{poi.name}[-] and fix this mistake."
+tier1_ranger_station_clear_offer,quests,Quests,,,"Do you mind doing something that's a little dangerous? There are a bunch of baddies that are hiding out near this ranger station - maybe they live there or just use it as a base, I dunno. But you can tell me all about it after you clear it out - I'll pay."
+tier1_ranger_station_clear_statement,Quest,Quest Info,,,Head to the ranger station at [DECEA3]{poi.name}[-] and kill off the zombies there.
+tier1_ranger_station_clear_response,Quest,Quest Info,,,Ranger Station Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_ranger_station_clear_completion,quests,Quests,,,"So you actually did it - huh. Maybe you should've been a Ranger, or maybe you were and I just didn't know it - none of that matters now, I guess. Sorry, didn't mean to get all philosophical on you...here's the bread I promised."
+tier1_ranger_station_fetch_quest_name,quests,Quests,,,Tier 1 Ranger Station Fetch
+tier1_ranger_station_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier1_ranger_station_fetch_description,quests,Quests,,,"Go to [DECEA3]{poi.name}[-], find the ranger station there, and look for the special vitamins." 
+tier1_ranger_station_fetch_offer,quests,Quests,,,"You got a few minutes and looking to make a buck? There are some specialty vitamins that I sure could use, and the ranger station up the way has my favorite brand. I'm sorry to be so picky, but do you mind grabbing 'em for me? I've got a bit of money to give to you if you find some - look for Powdered Hostile Walrus Blubber."
+tier1_ranger_station_fetch_statement,Quest,Quest Info,,,There is a ranger station by [DECEA3]{poi.name}[-] that has some specialty vitamins.
+tier1_ranger_station_fetch_response,Quest,Quest Info,,,Ranger Station Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier1_ranger_station_fetch_completion,quests,Quests,,,"Oh my goodness! You're back, and you have my supplements! Thank you so much - I haven't had a good poop in almost a month, but my guts started rumbling as soon as you walked into the door. Here, take the money and if you'll excuse me...I'm going to be a while."
+tier2_farm_clear_quest_name,quests,Quests,,,Tier 2 Farm Clear
+tier2_farm_clear_subtitle,quests,Quests,,,Clear the Area
+tier2_farm_clear_description,quests,Quests,,,"Travel out to the yucca farm at [DECEA3]{poi.name}[-] that has a weeds problem - go take out the zombies that infest the region."
+tier2_farm_clear_offer,quests,Quests,,,"Thank goodness you're here - I've got a problem that only you can fix. You got a green thumb? Because I'm gonna need you to go to a farm and harvest me some zombies - they've taken over and I haven't had fresh yucca in a long time, and I'm picky when it comes to juice. Think you got what it takes?"
+tier2_farm_clear_statement,Quest,Quest Info,,,Go out to the farm that is at [DECEA3]{poi.name}[-] and kill all the mobs.
+tier2_farm_clear_response,Quest,Quest Info,,,Farm Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_farm_clear_completion,quests,Quests,,,"Good to see ya, partner. I can guess by the all of the blood splatter and zombie guts on ya that you've been busy. Farm's good? Nice, then here's what I owe ya. Talk soon!"
+tier2_farm_fetch_quest_name,quests,Quests,,,Tier 2 Farm Fetch
+tier2_farm_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier2_farm_fetch_description,quests,Quests,,,"We need to go out by the farm close to [DECEA3]{poi.name}[-] and bring back the small engine for a reward."
+tier2_farm_fetch_offer,quests,Quests,,,"Bro! Perfect timing, as usual - you busy? There's a small engine up at the farm that I could use around here - no sense in leaving it sitting around unused, when there's so much work to be done. Come back as soon as you have it so I can get to work - my tractor is broken."
+tier2_farm_fetch_statement,Quest,Quest Info,,,There is a small engine at the farm near [DECEA3]{poi.name}[-] that we need to fetch.
+tier2_farm_fetch_response,Quest,Quest Info,,,Farm Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_farm_fetch_completion,quests,Quests,,,"You're back just in the nick of time - I was getting so desperate that I was thinking about paying Rekt to borrow his. My back thanks ya, because I'm going to be able to sit down while this puppy does the heavy lifting. Sit tight while I get you what's rightfully yours."
+tier2_farm_fetch_and_clear_quest_name,quests,Quests,,,Tier 2 Farm Fetch and Clear
+tier2_farm_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier2_farm_fetch_and_clear_description,quests,Quests,,,"There are some raiders calling themselves the 'Black Creek Bandits' that are searching around the farm near [DECEA3]{poi.name}[-] for a schematic that Duke wants. 
+tier2_farm_fetch_and_clear_offer,quests,Quests,,,"Got a big one for ya today, but it's dangerous. Duke's heard about a Rocket Launcher Schematic that's been hidden at a farm, but the problem is, so have the Black Creek Bandits - those troublemakers have crossed over from their side of the mountain and are poking around the White River Settlement. If you can take 'em out and bring back the schematic, you'll be a very rich individual...but that's if you make it back."
+tier2_farm_fetch_and_clear_statement,Quest,Quest Info,,,"Go to the farm that is at [DECEA3]{poi.name}[-], kill all of the Black Creek Bandits, and bring back the Rocket Launcher Schematic."
+tier2_farm_fetch_and_clear_response,Quest,Quest Info,,,Farm Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_farm_fetch_and_clear_completion,quests,Quests,,,"I-I can't believe it. I'm used to you pulling off the impossible by now, but never in a million years did I expect you'd be able to do this! And you've got the schematic Duke wants? You're going to make him broke at this rate, but believe me, he'll be grinnin' from ear to ear. Here's your payment - thanks again."
+tier2_farm_clear_and_defend_quest_name,quests,Quests,,,Tier 2 Farm Clear and Defend
+tier2_farm_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier2_farm_clear_and_defend_description,quests,Quests,,,"We've got something bad going on - the Black Creek Bandits are trying to move in on our turf, and unless we drive them out of [DECEA3]{poi.name}[-], we might lose everything!"
+tier2_farm_clear_and_defend_offer,quests,Quests,,,"Thank goodness you're here! The Black Creek Bandits are trying to seize a farm as a base of operations, and unless someone is able to take 'em out, the White River Settlement could be under invasion! You'd be a hero if you come to our rescue, and you know what they say about heroes; they get paid handsomely for saving the day! Be careful, though, because you'll have to kill any reinforcements. Best of luck!"
+tier2_farm_clear_and_defend_statement,Quest,Quest Info,,,"Venture to the farm that is near [DECEA3]{poi.name}[-], kill the Black Creek Bandits, and hold off any reinforcements."
+tier2_farm_clear_and_defend_response,Quest,Quest Info,,,Farm Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_farm_clear_and_defend_completion,quests,Quests,,,"I can't believe you're alive! We could hear the explosions and gunfire all the way down here - but you did it! After the ass whoopings you handed out, I doubt that we will ever see the Black Creek Bandits around here ever again. That was crazy, man, for real! You're such a badass...let me get your reward."
+tier2_store_clear_quest_name,quests,Quests,,,Tier 2 Store Clear
+tier2_store_clear_subtitle,quests,Quests,,,Clear the Area
+tier2_store_clear_description,quests,Quests,,,"There is a liquor store near [DECEA3]{poi.name}[-] that has become filled with alcoholic zombies - not good. Take them all out for a reward."
+tier2_store_clear_offer,quests,Quests,,,"Hrrmph. You look like someone who spends a lot of time at the liquor store, so next time you're there, do you mind taking care of the drunk zombies that are hanging around? Bad for business. I'll give you a little something, but since the liquor store is on your way, don't expect too much..."
+tier2_store_clear_statement,Quest,Quest Info,,,"Travel to the liquor store at [DECEA3]{poi.name}[-] and kill all of the zombies."
+tier2_store_clear_response,Quest,Quest Info,,,Store Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_store_clear_completion,quests,Quests,,,"You're back already, and you're standing up straight and walking a straight line - surprised you didn't help yourself to the merchandise, you reprobate. Ah well, a deal's a deal - here's your loot, now why don't you scoot?"
+tier2_store_fetch_quest_name,quests,Quests,,,Tier 2 Store Fetch
+tier2_store_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier2_store_fetch_description,quests,Quests,,,"Go to the commercial center at [DECEA3]{poi.name}[-] find the thrift store, and grab yjr shirt for a reward."
+tier2_store_fetch_offer,quests,Quests,,,"Do you mind helping me with something a little silly? There's a vintage shirt that I'm really digging on, but I didn't grab it the last time I was there, like a total dummy. Would you get it for me? I can't stop thinking about it, and I'm afraid it's going to be gone the next time I'm there. I'm willing to pay you for your time."
+tier2_store_fetch_statement,Quest,Quest Info,,,Find the shirt at [DECEA3]{poi.name}[-] and bring it back to the shop for a reward.
+tier2_store_fetch_response,Quest,Quest Info,,,Store Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_store_fetch_completion,quests,Quests,,,"Ooh, ooh! You have it, thank goodness! I was certain that someone had snagged it at the last minute, and all of this would have been a waste of time. You've made my day yet again, so thank you very much, kind stranger - here's something for you, and there's plenty more where that came from."
+tier2_store_fetch_and_clear_quest_name,quests,Quests,,,Tier 2 Store Fetch and Clear
+tier2_store_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier2_store_fetch_and_clear_description,quests,Quests,,,"Travel to the store near [DECEA3]{poi.name}[-] and find the potato seeds and bring them back for a reward."
+tier2_store_fetch_and_clear_offer,quests,Quests,,,"I'm in a pickle - the White River Settlement Food Festival is right around the corner, and I was hoping to make my Cajun Fries but my potato crop failed! I know where some potato seeds are, but I can't get them myself - are you willing to help me? This is a big deal for me, so I will pay you for your time."
+tier2_store_fetch_and_clear_statement,Quest,Quest Info,,,"Head to the stores near [DECEA3]{poi.name}[-] and search for potato seeds to bring back."
+tier2_store_fetch_and_clear_response,Quest,Quest Info,,,Store Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_store_fetch_and_clear_completion,quests,Quests,,,"You're back! And that can only mean you've done what I've asked you to, so thank you so much. Thanks to you, I'm going to win first place at the Food Festival - no judge can resist my Spicy-Sweet Cajun Fries. Let me get you your reward - sit tight."
+tier2_store_clear_and_defend_quest_name,quests,Quests,,,Tier 2 Store Clear and Defend
+tier2_store_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier2_store_clear_and_defend_description,quests,Quests,,,"Head towards the store that out near [DECEA3]{poi.name}[-], kill all the baddies, and defend it against a second wave, and you'll get a reward."
+tier2_store_clear_and_defend_offer,quests,Quests,,,"I got an easy job for ya, but it's a little dangerous - nothing you won't be able to handle if you keep your head in the game. There are some raiders in a store nearby that are really pissing me off, and I'd like to see their brains splattered against the walls. Here's where it gets tricky; once you show up at the base blasting away, they'll send out an emergency signal that will call for reinforcements - you're gonna have to defend the store once you clear it." 
+tier2_store_clear_and_defend_statement,Quest,Quest Info,,,"Visit the store at [DECEA3]{poi.name}[-], kill the raiders inside, and defend against the second wave that will soon arrive."
+tier2_store_clear_and_defend_response,Quest,Quest Info,,,Store Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_store_clear_and_defend_completion,quests,Quests,,,"Ladies and gentlemen, a round of applause for the bad mammerjammer that just walked through the door. You really took care of business, didn't you? My problem has been solved, so for that I am in your debt - here is something good as a thank you."
+tier2_cabin_clear_quest_name,quests,Quests,,,Tier 2 Cabin Clear
+tier2_cabin_clear_subtitle,quests,Quests,,,Clear the Area
+tier2_cabin_clear_description,quests,Quests,,,"A trader wants to go on a vacation, but he can't because his cabin out by [DECEA3]{poi.name}[-] is infested with zombies - will anyone help him out for a reward?"
+tier2_cabin_clear_offer,quests,Quests,,,"I know why you're here, and I am already grateful - I haven't been on a trip in months and I am sick and tired of seeing the same faces at work all of the time, no offense. Please, let me know when you've killed the zombies at my cabin so I can get away for a couple of days! You know how bitchy I get when I'm overworked - I need a vacation bad."
+tier2_cabin_clear_statement,Quest,Quest Info,,,Go to the cabin out by [DECEA3]{poi.name}[-] and take care of the zombies.
+tier2_cabin_clear_response,Quest,Quest Info,,,Cabin Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_cabin_clear_completion,quests,Quests,,,"I am so happy to see you, happier than I've ever been. Thank you so much for clearing out the zombie issue that I was dealing with. Once I get your bill squared away, I have a few more things to take care of, but my mind is already in vacation mode. Thanks again!"
+tier2_cabin_fetch_quest_name,quests,Quests,,,Tier 2 Cabin Fetch
+tier2_cabin_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier2_cabin_fetch_description,quests,Quests,,,"There is a cabin close to [DECEA3]{poi.name}[-] that has a Minibike Chassis that a trader will pay you for."
+tier2_cabin_fetch_offer,quests,Quests,,,"You know, I'm actually glad to see you; I promise not to be a dick today if you help me. I'm trying to restore a dirtbike but the frame is all screwed up, but I've got a Minibike Chassis out in my cabin that I could use. Could you get it for me? I'll pay you and even say thanks for once, haha. Yes, that's how desperate I am!"
+tier2_cabin_fetch_statement,Quest,Quest Info,,,Go to the cabin that is out near [DECEA3]{poi.name}[-] and bring back the goods for a reward.
+tier2_cabin_fetch_response,Quest,Quest Info,,,Cabin Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_cabin_fetch_completion,quests,Quests,,,"My man! I was starting to get worried that you wouldn't be able to find it. Thank you so much - let me get you some dough. I can't promise I'll be in a good mood tomorrow, but you did a lot to cheer me up just now, so thanks again."
+tier2_cabin_fetch_and_clear_quest_name,quests,Quests,,,Tier 2 Cabin Fetch and Clear
+tier2_cabin_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier2_cabin_fetch_and_clear_description,quests,Quests,,,"If we can head to the cabin out near [DECEA3]{poi.name}[-] and kill all of the raiders that are living there, there will be a nice reward offered as a bounty."
+tier2_cabin_fetch_and_clear_offer,quests,Quests,,,"Do you mind if I bug you with a 'fetch and clear' quest? There are some real bad dudes that are shacked up in my cabin and they aren't leaving, and I'm tired of asking nicely. If you could evict my lousy tenants, I'd be happy to pay you for your services. And one more thing; keep your eyes peeled for my Leather Duster - I love that jacket and want to make sure it's still there. Deal?" 
+tier2_cabin_fetch_and_clear_statement,Quest,Quest Info,,,"Go to [DECEA3]{poi.name}[-], kill all of the raiders, and look for the Leather Duster while you're at it."
+tier2_cabin_fetch_and_clear_response,Quest,Quest Info,,,Cabin Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_cabin_fetch_and_clear_completion,quests,Quests,,,"Welcome back - I never had any doubt you'd return. And it looks like you have my jacket, and it's in excellent condition - not a bullet hole to be seen in it. Fantastic. Thanks again, old friend - let me get your reward."
+tier2_cabin_clear_and_defend_quest_name,quests,Quests,,,Tier 2 Cabin Clear and Defend
+tier2_cabin_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier2_cabin_clear_and_defend_description,quests,Quests,,,"You can win ONE(1) free stay at a cabin near [DECEA3]{poi.name}[-] if you are able to clear out the zombies and defend it against any attacks - inquire at a trader for details."
+tier2_cabin_clear_and_defend_offer,quests,Quests,,,"Meh, it's you. And you're here for the contest...of course you are. Well, the terms have changed; no more free night, but I'll pay you to take care of my zombie problem. It's kind of tough to enjoy a good night's rest in the country when you have zombies pounding against your door, ya know? Come back when you're done, but be advised that you'll have to defend the cabin once you've cleared it...what can I say? I'm a popular guy."
+tier2_cabin_clear_and_defend_statement,Quest,Quest Info,,,"Travel to the cabin at [DECEA3]{poi.name}[-], kill the zombies there, and hold off any second waves that might attack."
+tier2_cabin_clear_and_defend_response,Quest,Quest Info,,,Cabin Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_cabin_clear_and_defend_completion,quests,Quests,,,"Well well well, something I didn't count on just happened - you survived, and you took care of my problem...shit! I wasn't planning on paying you out right now, but a deal's a deal I suppose and I always keep my word. Here, take this and beat feet, why don't ya?"
+tier2_office_clear_quest_name,quests,Quests,,,Tier 2 Office Clear
+tier2_office_clear_subtitle,quests,Quests,,,Clear the Area
+tier2_office_clear_description,quests,Quests,,,"There is an old legal office that is filled with zombie lawyers - travel to [DECEA3]{poi.name}[-] and kill them all!"
+tier2_office_clear_offer,quests,Quests,,,"No one likes lawyers, right? The only thing worse than a living one is a zombie lawyer, and there's an entire office space filled with them. You mind taking the law into your own hands and eliminating the perpetrators with extreme prejudice? I always pay well for this kind of work."
+tier2_office_clear_statement,Quest,Quest Info,,,"Go to the office near [DECEA3]{poi.name}[-] and kill all of the zombies there."
+tier2_office_clear_response,Quest,Quest Info,,,Office Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_office_clear_completion,quests,Quests,,,"It looks like the court has delivered its verdict, and all counsel were found guilty of lying to the judge and have been disbarred, hmm? Not too bad for an afternoon's work. Let me talk to the 'treasurer' and get your court fees processed - here ya go, and thanks."
+tier2_office_fetch_quest_name,quests,Quests,,,Tier 2 Office Fetch
+tier2_office_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier2_office_fetch_description,quests,Quests,,,"There's an important legal document that Duke wants, and the first person to go to the office at [DECEA3]{poi.name}[-] and bring it back will get a nice reward."
+tier2_office_fetch_offer,quests,Quests,,,"Howdy - you here for Duke's bounty on that legal paper he keeps talking about? I'm not sure what crazy notion has entered his mind now, but he's claiming that he needs it or else something bad could happen to the people here. You got a minute to head up there and bring back what he's looking for? Always something nice in it for you when you come back."
+tier2_office_fetch_statement,Quest,Quest Info,,,Go to the office at [DECEA3]{poi.name}[-] and bring back the legal document there.
+tier2_office_fetch_response,Quest,Quest Info,,,Office Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_office_fetch_completion,quests,Quests,,,"It's good to see you back - Duke's gonna be mighty thankful for you bringing that paperwork here. Between you and me, it's his rap sheet - he got himself into a little bit of trouble back in the day and served a few years of hard time. He's a changed man now, and there's no need for any skeletons in his closet to disrupt the progress he's made. Thanks again, and do everybody a favor and keep this between us?" 
+tier2_office_fetch_and_clear_quest_name,quests,Quests,,,Tier 2 Office Fetch and Clear
+tier2_office_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier2_office_fetch_and_clear_description,quests,Quests,,,"There is a commercial area with an office nearby - head to [DECEA3]{poi.name}[-], take out the enemies there, and bring back the Plant Fiber Pants."
+tier2_office_fetch_and_clear_offer,quests,Quests,,,"Hey bro, can you do something for me? This probably sounds absurd to someone who doesn't understand fashion, but there are a pair of Plant Fiber Plants that I would really like you to pick up for me - I am going out on a date with Jen later and I want to impress her. I'll pay you if you can hurry!"
+tier2_office_fetch_and_clear_statement,Quest,Quest Info,,,"Head to the office at [DECEA3]{poi.name}[-], kill the enemies inside, and bring back the Plant Fiber Pants."
+tier2_office_fetch_and_clear_response,Quest,Quest Info,,,Office Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_office_fetch_and_clear_completion,quests,Quests,,,"Thank goodness you're back, because I was starting to freak out. Do you think she will dig these? I am starting to second guess myself now...oh well. Here's your dough, and now if you'll excuse me, I have some clothes to try on." 
+tier2_office_clear_and_defend_quest_name,quests,Quests,,,Tier 2 Office Clear and Defend
+tier2_office_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier2_office_clear_and_defend_description,quests,Quests,,,"We need someone to go to the office space at [DECEA3]{poi.name}[-] and take care of a vermin problem, but the only problem is that these 'rats' have a lot of friends."
+tier2_office_clear_and_defend_offer,quests,Quests,,,"I've got a dangerous job that might make you think twice. You ever been to the office I used to work at? Well, now it's a base for raiders, who have been killing anyone that comes close to their headquarters. This isn't a simple clear job, however, because there are reinforcements that these scum will call in - you'll have to defend the area once you've taken it. Please, be careful."
+tier2_office_clear_and_defend_statement,Quest,Quest Info,,,"Visit the office at [DECEA3]{poi.name}[-], take care of the zombies, and defend the area."
+tier2_office_clear_and_defend_response,Quest,Quest Info,,,Office Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_office_clear_and_defend_completion,quests,Quests,,,"I sure am glad to see you, because that means you've finished your job - another notch on the belt, eh big boy? A gal could get used to this kind of treatment. Sit tight while I get you what is yours."
+tier3_military_outpost_clear_quest_name,quests,Quests,,,Tier 3 Military Outpost Clear
+tier3_military_outpost_clear_subtitle,quests,Quests,,,Clear the Area
+tier3_military_outpost_clear_description,quests,Quests,,,"There are rumors of an abandoned military outpost out by [DECEA3]{poi.name}[-] that was used as a testing ground for experiments...who have now taken over the facility."
+tier3_military_outpost_clear_offer,quests,Quests,,,"You might not believe me when I say this, but every word is true - you ever hear of 'Project Grey'? Scientists from the White River Settlement and Black Creek Township working together on a zombie vaccine, but something went horribly wrong. Nobody knows what happened, either, because no one has ever returned from the base. Duke wants someone to check it out and clear the area of hostiles - you up for the challenge?"
+tier3_military_outpost_clear_statement,Quest,Quest Info,,,Travel to the military outpost near [DECEA3]{poi.name}[-] and eliminate any threats.
+tier3_military_outpost_clear_response,Quest,Quest Info,,,Military Outpost Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_military_outpost_clear_completion,quests,Quests,,,"I was convinced that you weren't going to return, but what do I know? And I suppose you went to the base and took care of the problem? We might never know the truth behind 'Project Grey' but at least we won't be bothered by the zombies. You're a real hero, kid, you know that? Let me get you your loot."
+tier3_military_outpost_fetch_quest_name,quests,Quests,,,Tier 3 Military Outpost Clear
+tier3_military_outpost_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier3_military_outpost_fetch_description,quests,Quests,,,"Some raiders from the Black Creek Bandits have taken over the military outpost at [DECEA3]{poi.name}[-] and are using it to launch raids in the White River Settlement - take them out for a nice reward."
+tier3_military_outpost_fetch_offer,quests,Quests,,,"Boy, am I glad to see you...yeah, I've got a job for you, all right. The Black Creek Bandits are showing their faces again, and this time they have seized a military outpost that they are using for a base. We don't want that kind of scum operating around these parts, so I will pay you to take care of this problem. Show them no mercy!"
+tier3_military_outpost_fetch_statement,Quest,Quest Info,,,Go to the military outpost at [DECEA3]{poi.name}[-] and kill all of the raiders.
+tier3_military_outpost_fetch_response,Quest,Quest Info,,,Military Outpost Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_military_outpost_fetch_completion,quests,Quests,,,"I knew that I could count on you to finish off the Black Creek Bandits, so thank you so much. I owe you big time, cowboy - now here is what I promised to you."
+tier3_military_outpost_fetch_and_clear_quest_name,quests,Quests,,,Tier 3 Military Outpost Fetch and Clear
+tier3_military_outpost_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier3_military_outpost_fetch_and_clear_description,quests,Quests,,,"There are highly sensitive documents located at the military outpost near [DECEA3]{poi.name}[-] that will fetch top dollar once we bring them back."
+tier3_military_outpost_fetch_and_clear_offer,quests,Quests,,,"Hey, good to see ya - I'm going to need your help with something I want to keep hush hush. There's a military outpost not too far from here, and I've got a reason to believe that a schematic I've been looking for is somewhere on the premises. Think you can take five minutes from your busy day and do a fetch quest for me? Be advised that you might find...resistance, but nothing a champ like you can't handle."
+tier3_military_outpost_fetch_and_clear_statement,Quest,Quest Info,,,"Head out to the military outpost near [DECEA3]{poi.name}[-], kill anything that tries to stop you, and locate the missing schematic."
+tier3_military_outpost_fetch_and_clear_response,Quest,Quest Info,,,Military Outpost Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_military_outpost_fetch_and_clear_completion,quests,Quests,,,"Just the person I was hoping to see, and that's saying something, because I never usually want to see you. You got the goods? Now, that's what I'm talking about! I'll get you what I owe you in just a minute...and no, I won't tell you what I'm going to use the schematic for; sorry, not sorry. Sit tight for a minute while I get your payment."
+tier3_military_outpost_clear_and_defend_quest_name,quests,Quests,,,Tier 3 Military Outpost Clear and Defend
+tier3_military_outpost_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier3_military_outpost_clear_and_defend_description,quests,Quests,,,"A group of highly-intelligent, mutated zombies have taken over a military base near [DECEA3]{poi.name}[-], which is a troubling development - we gotta take them out."
+tier3_military_outpost_clear_and_defend_offer,quests,Quests,,,"I've got some bad news - it seems like the zombies are evolving. Usually, they're dumber than dirt, but I've heard disturbing reports about an abandoned military outpost that has been taken over - it seems that they are working towards some dark purpose, and I don't want to find out what it is. You're going to have to hold off a second wave of attackers, though; these mutated zombies are highly organized. Be careful, kid...this sounds like a suicide mission." 
+tier3_military_outpost_clear_and_defend_statement,Quest,Quest Info,,,"Go to the military base near [DECEA3]{poi.name}[-], kill all of the zombies, and defend against any reinforcements that try to take over the outpost."
+tier3_military_outpost_clear_and_defend_response,Quest,Quest Info,,,Military Outpost Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_military_outpost_clear_and_defend_completion,quests,Quests,,,"Seeing you walk through the door almost brought a tear to my eye - I thought for sure that you were gonna be a goner. I know you wouldn't come back here unless you had something to show for your efforts, so I take it the zombie problem was taken care of - amazing. We might never know what they were up to, but thankfully, it'll never be a concern again. Here's what I owe you."
+tier3_warehouse_clear_quest_name,quests,Quests,,,Tier 3 Warehouse Clear
+tier3_warehouse_clear_subtitle,quests,Quests,,,Clear the Area
+tier3_warehouse_clear_description,quests,Quests,,,"There are rumors circulating through the White River Settlement about something shady going on in the warehouse near [DECEA3]{poi.name}[-] - go clear it out for a reward."
+tier3_warehouse_clear_offer,quests,Quests,,,"Normally, I like to give you as much information as I can when it comes to a job, but for this one, I don't got much to work off of. There's a warehouse that is becoming a hotspot for the wrong kind of activity - zombies, raiders, cannibals? Heck if I know...I just know folks around here are scared of venturing out that way. Do us all a favor and smoke out the rats living inside."
+tier3_warehouse_clear_statement,Quest,Quest Info,,,Venture to the warehouse that is near [DECEA3]{poi.name}[-] and kill all the enemies inside.
+tier3_warehouse_clear_response,Quest,Quest Info,,,Warehouse Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_warehouse_clear_completion,quests,Quests,,,"You work quick, you know that? I suppose getting paid is a powerful motivator. Anyways, you have my thanks, and everyone around here tips their hats to you. Here's what I promised...don't be a stranger."
+tier3_warehouse_fetch_quest_name,quests,Quests,,,Tier 3 Warehouse Fetch
+tier3_warehouse_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier3_warehouse_fetch_description,quests,Quests,,,"There's an abandoned warehouse...well, maybe abandoned isn't the right word; there's a zombie-infested warehouse near [DECEA3]{poi.name}[-] that is filled with valuable military equipment that would fetch a pretty penny."
+tier3_warehouse_fetch_offer,quests,Quests,,,"Welcome back - you busy right now? I could use some help with retrieving some ammo from a warehouse, but I haven't been able to find anyone reliable enough to scoop it up and make it back alive. You think you got what it takes?"
+tier3_warehouse_fetch_statement,Quest,Quest Info,,,Head towards the warehouse at [DECEA3]{poi.name}[-] and retrieve the military supplies.
+tier3_warehouse_fetch_response,Quest,Quest Info,,,Warehouse Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_warehouse_fetch_completion,quests,Quests,,,"Hey, you're back already! And you've got the goods, like usual...is 'Reliable' your middle name, or something? Let me get what belongs to ya, so sit tight."
+tier3_warehouse_fetch_and_clear_quest_name,quests,Quests,,,Warehouse Fetch and Clear
+tier3_warehouse_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier3_warehouse_fetch_and_clear_description,quests,Quests,,,"Someone needs to go to the warehouse that is near [DECEA3]{poi.name}[-] and bring back some of the equipment left there by scientists...if you can clear out the building and survive, that is."
+tier3_warehouse_fetch_and_clear_offer,quests,Quests,,,"There's a warehouse by [DECEA3]{poi.name}[-] that was rumored to be some sort of zombie cloning facility...black ops projects, buncha scientists from White River Settlement and Black Creek Township working on something spooky. The eggheads cleared out a long time ago, but there's valuable tech they left behind that we could put to use. Think you can clear out the lab and bring back what you find?"
+tier3_warehouse_fetch_and_clear_statement,Quest,Quest Info,,,"Find the abandoned cloning facility/warehouse at [DECEA3]{poi.name}[-], kill all of the zombies, and bring back the military supplies."
+tier3_warehouse_fetch_and_clear_response,Quest,Quest Info,,,Warehouse Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_warehouse_fetch_and_clear_completion,quests,Quests,,,"You're alive! I, uh, didn't expect to see you again, if I'm being honest. I've hired about seven cats before you to do the job, and not a single one came back. I guess they didn't have what it takes. And you got the stuff? Best give it to me...I've heard exposure over a long time can cause disease. Thanks again."
+tier3_warehouse_clear_and_defend_quest_name,quests,Quests,,,Tier 3 Warehouse Clear and Defend
+tier3_warehouse_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier3_warehouse_clear_and_defend_description,quests,Quests,,,"Go to the warehouse out near [DECEA3]{poi.name}[-], clear out the enemies inside, and make sure that they don't take the warehouse over again - you'll have to defend the building against reinforcements."
+tier3_warehouse_clear_and_defend_offer,quests,Quests,,,"Hey there bossman, you got a minute? You've done jobs like this before, but for whatever reason, this one feels a little bit more dangerous. There's a warehouse I need you to clear out, but there's reason to believe that a second wave will be impossible to defend against...if you have a Rocket Launcher, might want to bring it, just in case. You in?"
+tier3_warehouse_clear_and_defend_statement,Quest,Quest Info,,,"Travel to the warehouse at [DECEA3]{poi.name}[-] and kill all of the enemies, including any second waves that try to counterattack."
+tier3_warehouse_clear_and_defend_response,Quest,Quest Info,,,Warehouse Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_warehouse_clear_and_defend_completion,quests,Quests,,,"Me and some of the other traders took a bet to see if you'd make it back, and I'm happy to say that I'm going to clean up nicely when the debts are paid out, so thanks for making me rich. Oh, and speaking of that, here is your reward."
+tier3_farm_clear_quest_name,quests,Quests,,,Tier 3 Farm Clear
+tier3_farm_clear_subtitle,quests,Quests,,,Clear the Area
+tier3_farm_clear_description,quests,Quests,,,"Visit the farm out by [DECEA3]{poi.name}[-] and kill all of the zombies."
+tier3_farm_clear_offer,quests,Quests,,,"I'm in a little bit of a pickle today, so it's a good thing that you are here. I have a buddy who has a farm, grows some giant cabbages - he's a regular Diocletian. Only problem is that the local zombies have picked up on the activity there and have made his life a living hell. Do us all a favor and take care of this problem for a nice reward?"
+tier3_farm_clear_statement,Quest,Quest Info,,,Travel out to the farm at [DECEA3]{poi.name}[-] and finish off any zombies lurking around.
+tier3_farm_clear_response,Quest,Quest Info,,,Farm Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_farm_clear_completion,quests,Quests,,,"You would've made a great farmer - that's what my buddy says. If you ever want to retire from this line of work and get a job planting and harvesting, you let me know! Thanks again."
+tier3_farm_fetch_quest_name,quests,Quests,,,Tier 3 Farm Fetch
+tier3_farm_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier3_farm_fetch_description,quests,Quests,,,"Venture out to the farm at [DECEA3]{poi.name}[-] and bring back some fresh fruits and vegetables...because scurvy isn't anything you want to deal with in the White River."
+tier3_farm_fetch_offer,quests,Quests,,,"I'm glad to see you, because it's almost dinner time and I forgot to make a side! Do you mind going to a farm and bringing me back something fresh? Fruits, veggies...as long as it comes out of the grown, I want it. I'll pay you, as you know."
+tier3_farm_fetch_statement,Quest,Quest Info,,,Travel out to the farm at [DECEA3]{poi.name}[-] and bring back the fresh fruit and vegetables for a reward.
+tier3_farm_fetch_response,Quest,Quest Info,,,Farm Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_farm_fetch_completion,quests,Quests,,,"Mmm, mmm, MMM! Green beans, fruit salad...I'm not sure what I'm going to make, but this is a good problem to have. You have my thanks!"
+tier3_farm_fetch_and_clear_quest_name,quests,Quests,,,Tier 3 Farm Fetch and Clear
+tier3_farm_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier3_farm_fetch_and_clear_description,quests,Quests,,,"Head to the farm that is out by [DECEA3]{poi.name}[-], kill all of the bad guys, and bring back the food supplies for a reward."
+tier3_farm_fetch_and_clear_offer,quests,Quests,,,"This might sound like it's not worth your time, but I will pay you just the same for a finished job. I am in desperate need of some fresh food supplies, and the only place that I know has the goods for sure is this farm. The problem, naturally, is that it's filled with zombies and I can't take them on myself. Clear them out for me and bring back some food and I'll pay you for your time."
+tier3_farm_fetch_and_clear_statement,Quest,Quest Info,,,"Travel to the farm near [DECEA3]{poi.name}[-], eliminate any threats in the region, and search for the food that the trader wants."
+tier3_farm_fetch_and_clear_response,Quest,Quest Info,,,Farm Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_farm_fetch_and_clear_completion,quests,Quests,,,"A round of applause for the baddest cat to ever step foot inside the White River Settlement! What would we honestly do without you...and you've got what I sent you to get; nice. Here's your payment - take it with my thanks."
+tier3_farm_clear_and_defend_quest_name,quests,Quests,,,Tier 3 Farm Clear and Defend
+tier3_farm_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier3_farm_clear_and_defend_description,quests,Quests,,,Head out to the farm near [DECEA3]{poi.name}[-], clear the region of enemies, and defend it against the onslaught of reinforcements.
+tier3_farm_clear_and_defend_offer,quests,Quests,,,"I've heard a disturbing report about raiders that are trying to grow their own food supplies; they've taken over one of the local farms and are stealing what is rightfully ours. Can you head out there and take care of these interlopers? I'll give you something nice for sending them all packing. And by all, I mean all of them - they will undoubtedly throw everything they've got at you."
+tier3_farm_clear_and_defend_statement,Quest,Quest Info,,,"Travel to the farm near [DECEA3]{poi.name}[-], kill all of the enemies in the region, and be sure to take out any reinforcements."
+tier3_farm_clear_and_defend_response,Quest,Quest Info,,,Farm Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_farm_clear_and_defend_completion,quests,Quests,,,"I was starting to get a little worried about you, but it looks like I was just being paranoid - you always come back, no matter how tough the job is. Thanks again, my friend - here is what I promised you."
+tier3_apartments_clear_quest_name,quests,Quests,,,Tier 3 Apartment Clear
+tier3_apartments_clear_subtitle,quests,Quests,,,Clear the Area
+tier3_apartments_clear_description,quests,Quests,,,"There's an apartment complex out by [DECEA3]{poi.name}[-] that has a pest problem, and there will be a reward for the first exterminator to clear out the 'roaches'."
+tier3_apartments_clear_offer,quests,Quests,,,"Hey! In case you haven't noticed, all of the Pest Control companies have left the White River Settlement, and you're the next best thing. There's an apartment I know of that is filled with enemies - zombies? Raiders? Disgruntled members of the White River Post Office? Who the hell knows anymore. What I can tell you, however, is that I will pay you for a completed mission."
+tier3_apartments_clear_statement,Quest,Quest Info,,,"Go to the apartments near [DECEA3]{poi.name}[-] and clear out the enemies inside."
+tier3_apartments_clear_response,Quest,Quest Info,,,Apartment Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_apartments_clear_completion,quests,Quests,,,"Well well well, you're walking in here looking mighty pleased with yourself - I guess you took care of what I asked you to do? Very good - let me pay you out so I can get back to what I was doing. Oh yeah, and thanks."
+tier3_apartments_fetch_quest_name,quests,Quests,,,Tier 3 Apartment Fetch
+tier3_apartments_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier3_apartments_fetch_description,quests,Quests,,,"John, the rumored Special Ops agent and Zombie Killing Machine, has an apartment near [DECEA3]{poi.name}[-] that has a file that Duke wants to read...think you can be of assistance in liberating this missing paperwork?"
+tier3_apartments_fetch_offer,quests,Quests,,,"I got another special mission for you, so keeping mum about it is all a part of the gig. Back in the day, a gent named John used to oversee a project around here, something called 'Project Grey'...don't know much about it, but Duke wants to know more. John has an apartment, but he's left White River on some business...and I can see from your face that you know where this is going. Remember; discretion is key here."
+tier3_apartments_fetch_statement,Quest,Quest Info,,,Go to the apartment at [DECEA3]{poi.name}[-] and search for John's paperwork.
+tier3_apartments_fetch_response,Quest,Quest Info,,,Apartment Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_apartments_fetch_completion,quests,Quests,,,"You did it! You got the missing file. This is going to shed a lot of light on the origins of 'Project Grey'...a lot of men have died to keep this information secret. Duke sends his regards and this as a reward."
+tier3_apartments_fetch_and_clear_quest_name,quests,Quests,,,Tier 3 Apartment Fetch and Clear
+tier3_apartments_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier3_apartments_fetch_and_clear_description,quests,Quests,,,"One of the head scientists working on 'Project Grey' rented an apartment at [DECEA3]{poi.name}[-] - search the building for missing files, but beware; there are other factions looking for the same paperwork."
+tier3_apartments_fetch_and_clear_offer,quests,Quests,,,"You are a rare bird in White River; able to take high-pressure jobs without blabbing about it to everyone; you want to keep building up your legacy? There's an apartment nearby that a scientist used to rent out, and rumor has it he kept a log of his experiments. The Main Lab burned down a long time ago, so this might be the only records we have...can you get them for Duke?"
+tier3_apartments_fetch_and_clear_statement,Quest,Quest Info,,,"Visit the apartment at [DECEA3]{poi.name}[-], kill all of the enemies inside, and return with the goods for a reward."
+tier3_apartments_fetch_and_clear_response,Quest,Quest Info,,,Apartment Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_apartments_fetch_and_clear_completion,quests,Quests,,,"I hope, for your sake, that you didn't read the contents of the file that you brought back - I'd hate to see Duke hiring a squad of assassins to take out his Ace. Some things are better left unknown...like what your reward is going to be."
+tier3_apartments_clear_and_defend_quest_name,quests,Quests,,,Tier 3 Apartment Clear and Defend
+tier3_apartments_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier3_apartments_clear_and_defend_description,quests,Quests,,,"It seems that someone is hot on your heels - there are rumors of an extraction team searching an apartment building that you were recently spotted at. Go to [DECEA3]{poi.name}[-] and take out your would-be captors."
+tier3_apartments_clear_and_defend_offer,quests,Quests,,,"You've managed to make some powerful enemies, and the crazy part is that no one even really knows who they are. I keep picking up chatter on the comms, though, and it sounds like someone has hired some raiders to kidnap you. It might be time to turn the tables on the would-be kidnappers and send them six feet under."
+tier3_apartments_clear_and_defend_statement,Quest,Quest Info,,,"Travel out to the apartments near [DECEA3]{poi.name}[-], kill everyone inside, and kill off any reinforcements sent to finish you off."
+tier3_apartments_clear_and_defend_response,Quest,Quest Info,,,Apartment Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_apartments_clear_and_defend_completion,quests,Quests,,,"You did it - not only did you kill the main group of enemies, but you even took care of a second wave of attackers. Whoever hired these goons is going to be furious when they find out that you took them all out. Here's what I owe you and please keep yourself safe; there's not many people that you can trust around here."
+tier3_store_clear_quest_name,quests,Quests,,,Tier 3 Store Clear
+tier3_store_clear_subtitle,quests,Quests,,,Clear the Area
+tier3_store_clear_description,quests,Quests,,,"Go to the store near [DECEA3]{poi.name}[-] and keep your eyes peeled for zombies that are shopping for bargains."
+tier3_store_clear_offer,quests,Quests,,,"I swear, the zombies around here are always getting themselves into the weirdest situations. I've heard about a store that they keep hanging around - did they use to work there? Are they looking for sales? Old habits die hard, but the good news is that you can expect a reward for taking them out."
+tier3_store_clear_statement,Quest,Quest Info,,,Venture to the store at [DECEA3]{poi.name}[-] and kill anything hostile that resists you.
+tier3_store_clear_response,Quest,Quest Info,,,Store Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_store_clear_completion,quests,Quests,,,"What a chad! Those zombies never stood a chance, did they? You are becoming known as someone who doesn't take any crap - always a pleasure to do business with you."
+tier3_store_fetch_quest_name,quests,Quests,,,Tier 3 Store Fetch
+tier3_store_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier3_store_fetch_description,quests,Quests,,,There is a store out near [DECEA3]{poi.name}[-] that has some supplies that could be mighty useful - fetch them for a handsome reward."
+tier3_store_fetch_offer,quests,Quests,,,"Hey, you available to run a small errand for me? I'd do it myself, but then who would keep an eye on the store? There are some things I could use in a store, because my inventory is running a little low...bring me back some stock and I'll pay you your regular rate."
+tier3_store_fetch_statement,Quest,Quest Info,,,"Go out to [DECEA3]{poi.name}[-], look for a store, and bring back the missing supplies."
+tier3_store_fetch_response,Quest,Quest Info,,,Store Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_store_fetch_completion,quests,Quests,,,"I am thankful to see your grinning face - you always come through for me in a pinch, you know that? Always a pleasure doing business with you, and hope we can do the same in the future."
+tier3_store_fetch_and_clear_quest_name,quests,Quests,,,Tier 3 Store Fetch and Clear
+tier3_store_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier3_store_fetch_and_clear_description,quests,Quests,,,"There's a store out by [DECEA3]{poi.name}[-] that has some supplies that are needed in White River, but there are too many raiders hanging around - we need someone with gumption and guts to help out."
+tier3_store_fetch_and_clear_offer,quests,Quests,,,"If there's one positive thing you could say about the raiders that infest the White River, it's that they ain't stupid - they know what side their bread is buttered on, and they absolutely know where the goods are. Only problem is, the store that they are hanging out in has some things that I could use...do you mind taking them all out and bringing me back what I need?"
+tier3_store_fetch_and_clear_statement,Quest,Quest Info,,,"Go to the store that is close to [DECEA3]{poi.name}[-], kill all of the enemies, and bring back the missing supplies for a reward."
+tier3_store_fetch_and_clear_response,Quest,Quest Info,,,Store Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_store_fetch_and_clear_completion,quests,Quests,,,"They always used to say that a life of crime never pays, but try telling that to one of the raiders out here hanging and banging...it's a damn shame that so many turn to crime. But thanks to you, we don't have to worry about them too much. Thanks again hoss; talk soon?"
+tier3_store_clear_and_defend_quest_name,quests,Quests,,,Tier 3 Store Clear and Defend
+tier3_store_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier3_store_clear_and_defend_description,quests,Quests,,,"There's an electronics store by [DECEA3]{poi.name}[-] that zombies love hanging around, for whatever reason - take them out, and make sure their friends know the place is off-limits to meatsacks."
+tier3_store_clear_and_defend_offer,quests,Quests,,,"You got a few minutes and want to get paid for spreading lead everywhere? I keep hearing about a group of zombies that are loitering in front and inside of a store - don't care what they're doing or thinking, just want 'em dead. They have a lot of friends, though, so make sure you're armed to the teeth and ready to get your hands dirty."
+tier3_store_clear_and_defend_statement,Quest,Quest Info,,,"Visit the store at [DECEA3]{poi.name}[-] kill everything inside, and defend against a second wave."
+tier3_store_clear_and_defend_response,Quest,Quest Info,,,Store Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_store_clear_and_defend_completion,quests,Quests,,,"So I heard about what you did - I guess that store has an 'all sales are final' policy. No refunds! The customer is never right in White River, thanks to you, the Employee of the Month. Appreciate you homie, so let's get your reward."
+tier4_military_outpost_fetch_and_clear_quest_name,quests,Quests,,,Tier 4 Military Outpost Fetch and Clear
+tier4_military_outpost_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier4_military_outpost_fetch_and_clear_description,quests,Quests,,,"There's an unoccupied military outpost near [DECEA3]{poi.name}[-] that has become a hotspot for enemies - take them all out and look for anything interesting to bring back."
+tier4_military_outpost_fetch_and_clear_offer,quests,Quests,,,"You familiar with 'Project Grey'? White River and Black Creek scientists workin' on something shady; splicing alien and zombie DNA together...maybe that's what got us into this problem in the first place. To make a long story short, I will pay you to go to one of their military bases, eliminate the threats, and bring back some of the tech they left sitting around."
+tier4_military_outpost_fetch_and_clear_statement,Quest,Quest Info,,,"Go to the military outpost at [DECEA3]{poi.name}[-], kill off all of the enemies and bring back the missing supplies."
+tier4_military_outpost_fetch_and_clear_response,Quest,Quest Info,,,Military Outpost Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_military_outpost_fetch_and_clear_completion,quests,Quests,,,"Just in the nick of time, with seconds to spare! Nah, I'm just kidding...I'm not going anywhere. Makes it feel more dramatic though, ya know? I appreciate you handling this for me...here is your payment."
+tier4_military_outpost_clear_and_defend_quest_name,quests,Quests,,,Tier 4 Military Outpost Clear and Defend
+tier4_military_outpost_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier4_military_outpost_clear_and_defend_description,quests,Quests,,,"The military outpost by [DECEA3]{poi.name}[-] has become a checkpoint used by the Black Creek Bandits - those guys are like cockroaches, always coming back when you think they're finally gone. Take 'em all out, including any reinforcements."
+tier4_military_outpost_clear_and_defend_offer,quests,Quests,,,"I know you've tussled with the Black Creek Bandits a couple times by now, but I have bad news for you - they are back, and this time, they aren't messing about. Make sure you're heavily armed if you're going to accept this job, because they know you and will throw everything they've got at you."
+tier4_military_outpost_clear_and_defend_statement,Quest,Quest Info,,,"Go to the military outpost at [DECEA3]{poi.name}[-], kill the raiders, and eliminate the second wave."
+tier4_military_outpost_clear_and_defend_response,Quest,Quest Info,,,Military Outpost Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_military_outpost_clear_and_defend_completion,quests,Quests,,,"I shouldn't be surprised every time you come back here, even when the odds are stacked against you - is there anything you can't do? Thanks for another successful mission, and I hope you find this payment is worth the danger you put yourself in."
+tier4_city_building_fetch_and_clear_quest_name,quests,Quests,,,Tier 4 City Building Fetch and Clear
+tier4_city_building_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier4_city_building_fetch_and_clear_description,quests,Quests,,,Travel to the city, find the building near [DECEA3]{poi.name}[-], fetch the supplies and kill off the enemies.
+tier4_city_building_fetch_and_clear_offer,quests,Quests,,,"I've got a simple job for you, about as straightforward as it gets; go into the city, kill monsters, bring back what I need. Think you can handle simple instructions?"
+tier4_city_building_fetch_and_clear_statement,Quest,Quest Info,,,"Head to the city, enter the building at [DECEA3]{poi.name}[-], take care of the enemies inside and bring back the supplies for a reward."
+tier4_city_building_fetch_and_clear_response,Quest,Quest Info,,,City Building Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_city_building_fetch_and_clear_completion,quests,Quests,,,"My favorite errand boy is back...good, very good. Don't give me that look - if it walks and talks like a duck, what am I gonna call it? Here, thanks again and come back if you need more work."
+tier4_city_building_clear_and_defend_quest_name,quests,Quests,,,Tier 4 City Building Clear and Defend
+tier4_city_building_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier4_city_building_clear_and_defend_description,quests,Quests,,,"Go into the city, find the building at [DECEA3]{poi.name}[-], take out the mobs and defend against a second wave."
+tier4_city_building_clear_and_defend_offer,quests,Quests,,,"Hey there, you busy? Want to risk life and limb for the chance of a randomized reward? I figured you would. If you have some time to kill, I'd love it if you went into the city, took care of an infestation problem for me, and made sure that all of their buddies get smoked, too. You know what I'm willing to pay for a completed job..."
+tier4_city_building_clear_and_defend_statement,Quest,Quest Info,,,"Head into the city, kill all of the enemies at [DECEA3]{poi.name}[-], and defend against reinforcements."
+tier4_city_building_clear_and_defend_response,Quest,Quest Info,,,City Building Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_city_building_clear_and_defend_completion,quests,Quests,,,"Well, you did it - no surprises there. And you're bleeding a little...you get banged up a bit? All in a day's work for you, I guess. You held up your end of the bargain, so let me do the same - here ya go."
+tier4_store_fetch_and_clear_quest_name,quests,Quests,,,Tier 4 Store Fetch and Clear
+tier4_store_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier4_store_fetch_and_clear_description,quests,Quests,,,"Head to the abandoned store near [DECEA3]{poi.name}[-], keep an eye out for the food supplies, and bring them back after you've finished off the bad guys."
+tier4_store_fetch_and_clear_offer,quests,Quests,,,"You ever get a craving for a snack that you just can't get rid of? Well, that's me right now - I'm damn sick of tired of eating Hobo Stew every night, and would kill for something sweet. You know the store up the road? Why don't you go there and see if you can find me something..."
+tier4_store_fetch_and_clear_statement,Quest,Quest Info,,,"Visit the store near [DECEA3]{poi.name}[-], find the food supplies, and clear out the building before returning for a reward."
+tier4_store_fetch_and_clear_response,Quest,Quest Info,,,Store Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_store_fetch_and_clear_completion,quests,Quests,,,"My stomach started grumbling as soon as I saw you walk in - were you able to find me something different - praise Noah, you sure did! Here, let me get you what I owe you so I can eat in peace. Thanks again!"
+tier4_store_clear_and_defend_quest_name,quests,Quests,,,Tier 4 Store Clear and Defend
+tier4_store_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier4_store_clear_and_defend_description,quests,Quests,,,"Head towards the store out near [DECEA3]{poi.name}[-], kill off all the baddies inside, and defend against any second waves - we aren't going to let any abandoned storefronts turn into zombie bases."
+tier4_store_clear_and_defend_offer,quests,Quests,,,"We've done this song and dance a couple times by now, so you know the score; I need you to clear out a building and make sure that the friends of the recently deceased don't avenge their deaths, if you catch my drift. I'll pay you for a job well done, so take care of yourself."
+tier4_store_clear_and_defend_statement,Quest,Quest Info,,,"Travel to [DECEA3]{poi.name}[-], finish off any hostiles inside, and make sure that the reinforcements don't take over the building."
+tier4_store_clear_and_defend_response,Quest,Quest Info,,,Store Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_store_clear_and_defend_completion,quests,Quests,,,"Hats off to you, cowboy - you did the impossible, yet again. They haven't made a zombie or a raider that can hold their own against ya, I've noticed...better not mention this, in case I'm jinxing you. Here, take this and come back soon."
+tier5_skyscraper_fetch_and_clear_quest_name,quests,Quests,,,Tier 5 Skyscraper Fetch and Clear
+tier5_skyscraper_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier5_skyscraper_fetch_and_clear_description,quests,Quests,,,"The skyscraper near [DECEA3]{poi.name}[-] used to house a government facility, but no one has been able to get inside in a long time - Duke wants this to change..."
+tier5_skyscraper_fetch_and_clear_offer,quests,Quests,,,"I remember, a long time ago, when the government told us they'd be opening up an office in White River - everyone was so happy, but maybe that's when all of our troubles began. Now that you've proven yourself to be someone we can trust, Duke has a special job for you, one that comes from his boss, Noah - that's right, the founder of everything that you see around here. We need you to get inside the former headquarters of this government agency and look for a dossier - I can explain more when you come back. You better be armed to the teeth, though, because whatever is shacked up inside the skyscraper does not want this info getting out."
+tier5_skyscraper_fetch_and_clear_statement,Quest,Quest Info,,,"There is a skycraper near [DECEA3]{poi.name}[-] that used to be the headquarters of a secret agency - fetch the dossier inside and bring it back."
+tier5_skyscraper_fetch_and_clear_response,Quest,Quest Info,,,Skyscraper Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier5_skyscraper_fetch_and_clear_completion,quests,Quests,,,"Alright, kid - sit down and listen up, because I'm about to blow your mind. You got that dossier, right? What you have in your possession is the only physical copy of a report that describes a government agency that used to work in White River - the Department of Ultra-Kinectic Electrochemistry, or 'D.U.K.E.' for short. 'Duke', my boss? Not even really sure if that's his real name. All I know is that he worked for them in some capacity, back in the day; him, Noah, and John. I've said enough for now, maybe too much...here is your payment, and don't repeat a word of this."
+tier5_skyscraper_clear_and_defend_quest_name,quests,Quests,,,Tier 5 Skyscraper Clear and Defend
+tier5_skyscraper_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier5_skyscraper_clear_and_defend_description,quests,Quests,,,"The skyscraper near [DECEA3]{poi.name}[-], which used to be the headquarters of the Department of Ultra-Kinetic Electrochemistry, has been taken over by a mysterious wave of attackers - take them out and secure the building."
+tier5_skyscraper_clear_and_defend_offer,quests,Quests,,,"We got a five alarm fire mega-crisis brewing, so thank goodness you walked in when you did. The skyscraper in town that used to be the HQ of a secret government agency has been taken over by a rogue group, and Duke and Noah both think they are trying to get their hands on some experimental data. You can't leave any survivors - anyone who knows about the existence of D.U.K.E. is a threat to national security. Be careful..."
+tier5_skyscraper_clear_and_defend_statement,Quest,Quest Info,,,"Go to the skyscraper at [DECEA3]{poi.name}[-], kill everything inside, and defend the building against any reinforcements."
+tier5_skyscraper_clear_and_defend_response,Quest,Quest Info,,,Skyscraper Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier5_skyscraper_clear_and_defend_completion,quests,Quests,,,"You've managed to do the impossible again - we all salute you. God knows what would have happened if you hadn't come here when you did...I can't even let myself think about it. Here's your payment, and please keep in mind that your discretion will ensure that you are hired for these jobs in the future."
+tier5_factory_fetch_and_clear_quest_name,quests,Quests,,,Tier 5 Skyscraper Fetch and Clear
+tier5_factory_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier5_factory_fetch_and_clear_description,quests,Quests,,,"Inside of the skyscraper at [DECEA3]{poi.name}[-] is a secret file that we will need to fetch, but there are mutated zombies infesting the office space."
+tier5_factory_fetch_and_clear_offer,quests,Quests,,,"You like to read, cowboy? What if I pay you to get a file, but you gotta promise me that you won't look inside? Noah wants you to personally bring back some documents from town, but he told me that if you read the contents, you'll be marked as a dead man...apparently, there are some secrets that even our top agent cannot know about. Don't be too disappointed, though, because I will pay you handsomely for mission completion.
+tier5_factory_fetch_and_clear_statement,Quest,Quest Info,,,"Go into the city, find the skyscraper near [DECEA3]{poi.name}[-], kill all of the enemies and find the secret file."
+tier5_factory_fetch_and_clear_response,Quest,Quest Info,,,Skyscraper Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier5_factory_fetch_and_clear_completion,quests,Quests,,,"Thank goodness you're back, and I can tell from the look on your face that you have not pried through the contents of the file - good. How do I know? There are apparently secrets so harrowing inside that I would be able to tell just by looking at your face. Honest and reliable...a winning combination. Here's what I promised you, so thanks again."
+tier5_factory_clear_and_defend_quest_name,quests,Quests,,,Tier 5 Factory Clear and Defend
+tier5_factory_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier5_factory_clear_and_defend_description,quests,Quests,,,"The abandoned factory near [DECEA3]{poi.name}[-] was once rumored to be a zombie cloning facility. We need to clear it out and take care of anyone that tries to stop us."
+tier5_factory_clear_and_defend_offer,quests,Quests,,,"I don't even believe this myself, but apparently it's true - there is a factory in town that was used as a zombie cloning facility by the Department of Ultra-Kinetic Electrochemistry, and even though the groundskeepers are long gone, it seems that the experiments are still taking place. You're going to have to kill everything inside, but be warned that you might have to fight off a second wave...the bad guys are throwing everything they have at this one."
+tier5_factory_clear_and_defend_statement,Quest,Quest Info,,,"Head inside the factory at [DECEA3]{poi.name}[-] and kill everyone, and hold it off against any reinforcements that appear."
+tier5_factory_clear_and_defend_response,Quest,Quest Info,,,Factory Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier5_factory_clear_and_defend_completion,quests,Quests,,,"If only the citizens of White River knew that the reason they can sleep peacefully at night is the hard work you do to keep them safe. I have your payment right here, so thank you...and we will never mention this to anyone, right? Don't want to scare the kiddos."
+tier2_infested_urban_clear_quest_name,quests,Quests,,,Tier 2 Urban Clear
+tier2_infested_urban_clear_subtitle,quests,Quests,,,Clear the Area
+tier2_infested_urban_clear_description,quests,Quests,,,"Go into the city and locate [DECEA3]{poi.name}[-] then take care of the zombie problem, but keep an eye out for the missing book."
+tier2_infested_urban_clear_offer,quests,Quests,,,"Have you ever heard of a place called [DECEA3]{poi.name}[-]? Some real bad stuff went down there involving Duke, and that was before the zombies came in. Guess where I need you to clear out? There's a book I'm looking for..."
+tier2_infested_urban_clear_statement,Quest,Quest Info,,,Take care of the zombies and look for the missing book. 
+tier2_infested_urban_clear_response,Quest,Quest Info,,,Urban Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_urban_clear_completion,quests,Quests,,,"Well, I'll be a monkey's uncle - you're alive! Unless you're a ghost or a zombie, but you don't look like either. And you have my book! Let me get you some money."
+tier2_infested_urban_fetch_quest_name,quests,Quests,,,Tier 2 Urban Fetch
+tier2_infested_urban_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier2_infested_urban_fetch_description,quests,Quests,,,"There's a missing shipment that someone is looking for - it was last seen near [DECEA3]{poi.name}[-]."
+tier2_infested_urban_fetch_offer,quests,Quests,,,"Ugh, not you again. Well, maybe it's a good thing you are here - I need help with something. I was expecting a shipment of goods 'bout a week ago, but the courier never arrived. Will you go to [DECEA3]{poi.name}[-] and see what's what?"
+tier2_infested_urban_fetch_statement,Quest,Quest Info,,,Go to [DECEA3]{poi.name}[-] and look for the missing shipment.
+tier2_infested_urban_fetch_response,Quest,Quest Info,,,Urban Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_urban_fetch_completion,quests,Quests,,,"Hot diggity damn, you're back and just in time! Stock was running low here. I guess I owe you a little something, hmm? Hold on, I'll be right back."
+tier3_infested_urban_clear_quest_name,quests,Quests,,,Tier 3 Urban Clear
+tier3_infested_urban_clear_subtitle,quests,Quests,,,Clear the Area
+tier3_infested_urban_clear_description,quests,Quests,,,"Although [DECEA3]{poi.name}[-] was abandoned by humans long ago, there are zombies there we need to clear."
+tier3_infested_urban_clear_offer,quests,Quests,,,"Hey stranger, fancy seeing you 'round these parts. Are you available for a job? I would pay top dollar to see [DECEA3]{poi.name}[-] cleared of zombies. You know the rate I'm willing to pay, so have fun hunting."
+tier3_infested_urban_clear_statement,Quest,Quest Info,,,"Head into the city, find [DECEA3]{poi.name}[-], and eliminate the zombies."
+tier3_infested_urban_clear_response,Quest,Quest Info,,,Urban Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_urban_clear_completion,quests,Quests,,,"You're back, and right on time, too...didn't even break a sweat, did ya? I know I can always count on you...here's what was promised."
+tier3_infested_urban_fetch_quest_name,quests,Quests,,,Tier 3 Urban Fetch
+tier3_infested_urban_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier3_infested_urban_fetch_description,quests,Quests,,,"There are supplies at [DECEA3]{poi.name}[-] that we need ASAP."
+tier3_infested_urban_fetch_offer,quests,Quests,,,"Do you believe in miracles? Because I am in need of one, and you walking through the door seems like no coincidence. I need some supplies at [DECEA3]{poi.name}[-] or else the good people of the White River Settlement will suffer, and nobody wants that."
+tier3_infested_urban_fetch_statement,Quest,Quest Info,,,Locate [DECEA3]{poi.name}[-] and retrieve the supplies that the trader is looking for.
+tier3_infested_urban_fetch_response,Quest,Quest Info,,,Urban Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_urban_fetch_completion,quests,Quests,,,"Good night in the morning! You're back already? I figured you'd be at least a few more hours. Nevermind that...it looks like you have what I asked for; nice work. How does some cold, hard cash sound?"
+tier4_infested_urban_clear_quest_name,quests,Quests,,,Tier 4 Urban Clear
+tier4_infested_urban_clear_subtitle,quests,Quests,,,Clear the Area
+tier4_infested_urban_clear_description,quests,Quests,,,"Locate [DECEA3]{poi.name}[-] and take care of the bandit problem."
+tier4_infested_urban_clear_offer,quests,Quests,,,"Hey there cowboy; long time no see. You got a few minutes and want something to do? A buncha dirtbags are holed up near [DECEA3]{poi.name}[-] and have been giving me grief...think you can take care of them for me?"
+tier4_infested_urban_clear_statement,Quest,Quest Info,,,Go to the bandit hideout near [DECEA3]{poi.name}[-] and clear out the raiders.
+tier4_infested_urban_clear_response,Quest,Quest Info,,,Urban Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_infested_urban_clear_completion,quests,Quests,,,"If you isn't a sight for sore eyes, and none the worse for wear, it seems. And about that payment...you prefer the money that folds and not the money that jingles, I've heard."
+tier4_infested_urban_fetch_quest_name,quests,Quests,,,Tier 4 Urban Fetch
+tier4_infested_urban_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier4_infested_urban_fetch_description,quests,Quests,,,"Go into [DECEA3]{poi.name}[-] and look for the medical supplies that a sick child needs."
+tier4_infested_urban_fetch_offer,quests,Quests,,,"What's up hoss! Always glad to see your shadow darken my door. Can I trouble you for a spell? We got a sick kid at the White River Settlement and there are antibiotics in [DECEA3]{poi.name}[-] that could be mighty useful. Don't worry, though, this isn't some charity case - top dollar if you make it back."
+tier4_infested_urban_fetch_statement,Quest,Quest Info,,,Locate the medical supplies in [DECEA3]{poi.name}[-] and bring them back for a reward.
+tier4_infested_urban_fetch_response,Quest,Quest Info,,,Urban Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_infested_urban_fetch_completion,quests,Quests,,,"Thank God you're back - poor kiddo took a turn for the worse, so those meds are going to save her life. How does it feel to be a hero? The grateful parents left this wad of dough for you."
+tier2_infested_rural_clear_quest_name,quests,Quests,,,Tier 2 Rural Clear
+tier2_infested_rural_clear_subtitle,quests,Quests,,,Clear the Area
+tier2_infested_rural_clear_description,quests,Quests,,,"Some mutated zombies near [DECEA3]{poi.name}[-] need to be exterminated. The seem to be infected with a virus that is making them act crazy..."
+tier2_infested_rural_clear_offer,quests,Quests,,,"Thank goodness you walked in! We have a major crisis on our hands that needs dealing with. There's some sorta mutation spreading around the zombies, makes 'em real aggressive-like, and we gotta nip this little flu in the bud or else! Take 'em all out and come back here when you're done."
+tier2_infested_rural_clear_statement,Quest,Quest Info,,,Go to [DECEA3]{poi.name}[-] and kill off the mutated zombies.
+tier2_infested_rural_clear_response,Quest,Quest Info,,,Rural Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_rural_clear_completion,quests,Quests,,,"It's a good thing you took care of them sick zombies when you did, because if it had gotten any worse, I don't know what we would have done. Here is what I owe ya - fingers crossed I won't be hiring you for the same kinda job any time soon."
+tier2_infested_rural_fetch_quest_name,quests,Quests,,,Tier 2 Rural Fetch
+tier2_infested_rural_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier2_infested_rural_fetch_description,quests,Quests,,,"Head out towards [DECEA3]{poi.name}[-] and bring back missing supplies or else the shop might go out of business."
+tier2_infested_rural_fetch_offer,quests,Quests,,,"Just who I was looking for - you psychic or something? A really important shipment I was waiting on hasn't arrived, and I think it got lost in the wilderness. I need it, or else I might go bust - can you help?"
+tier2_infested_rural_fetch_statement,Quest,Quest Info,,,Locate [DECEA3]{poi.name}[-] and bring back the supplies to the store.
+tier2_infested_rural_fetch_response,Quest,Quest Info,,,Rural Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_rural_fetch_completion,quests,Quests,,,"You have no idea how much this means to me...I really owe you one, cowboy. Here is what I promised and a little extra on top as a thank you. See you sometime soon, I hope?"
+tier3_infested_rural_clear_quest_name,quests,Quests,,,Tier 3 Rural Clear
+tier3_infested_rural_clear_subtitle,quests,Quests,,,Clear the Area
+tier3_infested_rural_clear_description,quests,Quests,,,"There's an abandoned logging site near [DECEA3]{poi.name}[-] that some lumberjack zombies have taken over?!"
+tier3_infested_rural_clear_offer,quests,Quests,,,"Bro! You're here, just in the nick of time. Zombies have taken over a section of the forest and are attacking anyone that heads near the woods - can you take 'em out before things get worse? You know what I'll pay you when you're done."
+tier3_infested_rural_clear_statement,Quest,Quest Info,,,"Head towards [DECEA3]{poi.name}[-] and kill every zombie that you can find."
+tier3_infested_rural_clear_response,Quest,Quest Info,,,Rural Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_rural_clear_completion,quests,Quests,,,"Welcome back, kind stranger! I can see that you've taken care of what I asked you to - atta boy! And in record time, it looks like...here, take this money and try not to spend it all in one place, unless it's here."
+tier3_infested_rural_fetch_quest_name,quests,Quests,,,Tier 3 Rural Fetch
+tier3_infested_rural_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier3_infested_rural_fetch_description,quests,Quests,,,"Go to the wooded site near [DECEA3]{poi.name}[-] and find the missing magazines."
+tier3_infested_rural_fetch_offer,quests,Quests,,,"Blah...today's a bad day. I, uh, have some really special magazines that I keep in the woods, but I haven't been able to find them. Do you mind grabbing them for me? Just don't go looking through them - I'll be able to tell."
+tier3_infested_rural_fetch_statement,Quest,Quest Info,,,"Find the place near [DECEA3]{poi.name}[-] where the magazines are and bring them back."
+tier3_infested_rural_fetch_response,Quest,Quest Info,,,Rural Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_rural_fetch_completion,quests,Quests,,,"You're back! I was starting to get worried, but maybe you're more competent than you look. Nevermind all of that - here's some money; now give me my magazines. Hey, you bent one of the edges! Grrr..."
+tier4_infested_rural_clear_quest_name,quests,Quests,,,Tier 4 Rural Clear
+tier4_infested_rural_clear_subtitle,quests,Quests,,,Clear the Area
+tier4_infested_rural_clear_description,quests,Quests,,,"We have been asked to go to [DECEA3]{poi.name}[-] and take care of any hostiles that we encounter."
+tier4_infested_rural_clear_offer,quests,Quests,,,"Hey there chief, what's cracking? You gotta minute to rap with me? I need some help with some aggros that are holed up in the woods - bastards keep taking potshots at my store and I'm getting tired of running for cover. I'll pay you for a job well done."
+tier4_infested_rural_clear_statement,Quest,Quest Info,,,"Find the bandit hideout near [DECEA3]{poi.name}[-] and take care of business."
+tier4_infested_rural_clear_response,Quest,Quest Info,,,Rural Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_infested_rural_clear_completion,quests,Quests,,,"I'm happy to see you've returned, my friend - doesn't seem like you had any problem with the bad guys either. Here's what I owe ya - stop by again sometime and we'll crack open a brew together."
+tier4_infested_rural_fetch_quest_name,quests,Quests,,,Tier 4 Rural Fetch
+tier4_infested_rural_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier4_infested_rural_fetch_description,quests,Quests,,,"Travel deep into the woods, out near [DECEA3]{poi.name}[-], and bring back the supplies that are needed."
+tier4_infested_rural_fetch_offer,quests,Quests,,,"Good day to you, my famous friend. Yeah, I said famous! Everyone know's you as a do-gooder around here, and speaking of which, I have a job for you. Can you bring back a missing shipment? My buddy was being chased by zombies and ditched a crate in the woods that I need."
+tier4_infested_rural_fetch_statement,Quest,Quest Info,,,Go to [DECEA3]{poi.name}[-] and keep your eyes peeled for the missing supplies.
+tier4_infested_rural_fetch_response,Quest,Quest Info,,,Rural Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_infested_rural_fetch_completion,quests,Quests,,,"Bro, if you aren't a sight for sore eyes...and with the crate! My man. Shoulda hired you from the very beginning. Here, take this money and my thanks, and I'll see you soon, I hope."
+tier2_infested_farm_clear_quest_name,quests,Quests,,,Tier 2 Farm Clear
+tier2_infested_farm_clear_subtitle,quests,Quests,,,Clear the Area
+tier2_infested_farm_clear_description,quests,Quests,,,"Travel out to the yucca farm at [DECEA3]{poi.name}[-] that has a weeds problem - go take out the zombies that infest the region."
+tier2_infested_farm_clear_offer,quests,Quests,,,"Thank goodness you're here - I've got a problem that only you can fix. You got a green thumb? Because I'm gonna need you to go to a farm and harvest me some zombies - they've taken over and I haven't had fresh yucca in a long time, and I'm picky when it comes to juice. Think you got what it takes?"
+tier2_infested_farm_clear_statement,Quest,Quest Info,,,Go out to the farm that is at [DECEA3]{poi.name}[-] and kill all the mobs.
+tier2_infested_farm_clear_response,Quest,Quest Info,,,Farm Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_farm_clear_completion,quests,Quests,,,"Good to see ya, partner. I can guess by the all of the blood splatter and zombie guts on ya that you've been busy. Farm's good? Nice, then here's what I owe ya. Talk soon!"
+tier2_infested_farm_fetch_quest_name,quests,Quests,,,Tier 2 Farm Fetch
+tier2_infested_farm_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier2_infested_farm_fetch_description,quests,Quests,,,"We need to go out by the farm close to [DECEA3]{poi.name}[-] and bring back the small engine for a reward."
+tier2_infested_farm_fetch_offer,quests,Quests,,,"Bro! Perfect timing, as usual - you busy? There's a small engine up at the farm that I could use around here - no sense in leaving it sitting around unused, when there's so much work to be done. Come back as soon as you have it so I can get to work - my tractor is broken."
+tier2_infested_farm_fetch_statement,Quest,Quest Info,,,There is a small engine at the farm near [DECEA3]{poi.name}[-] that we need to fetch.
+tier2_infested_farm_fetch_response,Quest,Quest Info,,,Farm Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_farm_fetch_completion,quests,Quests,,,"You're back just in the nick of time - I was getting so desperate that I was thinking about paying Rekt to borrow his. My back thanks ya, because I'm going to be able to sit down while this puppy does the heavy lifting. Sit tight while I get you what's rightfully yours."
+tier2_infested_farm_fetch_and_clear_quest_name,quests,Quests,,,Tier 2 Farm Fetch and Clear
+tier2_infested_farm_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier2_infested_farm_fetch_and_clear_description,quests,Quests,,,"There are some raiders calling themselves the 'Black Creek Bandits' that are searching around the farm near [DECEA3]{poi.name}[-] for a schematic that Duke wants. 
+tier2_infested_farm_fetch_and_clear_offer,quests,Quests,,,"Got a big one for ya today, but it's dangerous. Duke's heard about a Rocket Launcher Schematic that's been hidden at a farm, but the problem is, so have the Black Creek Bandits - those troublemakers have crossed over from their side of the mountain and are poking around the White River Settlement. If you can take 'em out and bring back the schematic, you'll be a very rich individual...but that's if you make it back."
+tier2_infested_farm_fetch_and_clear_statement,Quest,Quest Info,,,"Go to the farm that is at [DECEA3]{poi.name}[-], kill all of the Black Creek Bandits, and bring back the Rocket Launcher Schematic."
+tier2_infested_farm_fetch_and_clear_response,Quest,Quest Info,,,Farm Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_farm_fetch_and_clear_completion,quests,Quests,,,"I-I can't believe it. I'm used to you pulling off the impossible by now, but never in a million years did I expect you'd be able to do this! And you've got the schematic Duke wants? You're going to make him broke at this rate, but believe me, he'll be grinnin' from ear to ear. Here's your payment - thanks again."
+tier2_infested_farm_clear_and_defend_quest_name,quests,Quests,,,Tier 2 Farm Clear and Defend
+tier2_infested_farm_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier2_infested_farm_clear_and_defend_description,quests,Quests,,,"We've got something bad going on - the Black Creek Bandits are trying to move in on our turf, and unless we drive them out of [DECEA3]{poi.name}[-], we might lose everything!"
+tier2_infested_farm_clear_and_defend_offer,quests,Quests,,,"Thank goodness you're here! The Black Creek Bandits are trying to seize a farm as a base of operations, and unless someone is able to take 'em out, the White River Settlement could be under invasion! You'd be a hero if you come to our rescue, and you know what they say about heroes; they get paid handsomely for saving the day! Be careful, though, because you'll have to kill any reinforcements. Best of luck!"
+tier2_infested_farm_clear_and_defend_statement,Quest,Quest Info,,,"Venture to the farm that is near [DECEA3]{poi.name}[-], kill the Black Creek Bandits, and hold off any reinforcements."
+tier2_infested_farm_clear_and_defend_response,Quest,Quest Info,,,Farm Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_farm_clear_and_defend_completion,quests,Quests,,,"I can't believe you're alive! We could hear the explosions and gunfire all the way down here - but you did it! After the ass whoopings you handed out, I doubt that we will ever see the Black Creek Bandits around here ever again. That was crazy, man, for real! You're such a badass...let me get your reward."
+tier2_infested_store_clear_quest_name,quests,Quests,,,Tier 2 Store Clear
+tier2_infested_store_clear_subtitle,quests,Quests,,,Clear the Area
+tier2_infested_store_clear_description,quests,Quests,,,"There is a liquor store near [DECEA3]{poi.name}[-] that has become filled with alcoholic zombies - not good. Take them all out for a reward."
+tier2_infested_store_clear_offer,quests,Quests,,,"Hrrmph. You look like someone who spends a lot of time at the liquor store, so next time you're there, do you mind taking care of the drunk zombies that are hanging around? Bad for business. I'll give you a little something, but since the liquor store is on your way, don't expect too much..."
+tier2_infested_store_clear_statement,Quest,Quest Info,,,"Travel to the liquor store at [DECEA3]{poi.name}[-] and kill all of the zombies."
+tier2_infested_store_clear_response,Quest,Quest Info,,,Store Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_store_clear_completion,quests,Quests,,,"You're back already, and you're standing up straight and walking a straight line - surprised you didn't help yourself to the merchandise, you reprobate. Ah well, a deal's a deal - here's your loot, now why don't you scoot?"
+tier2_infested_store_fetch_quest_name,quests,Quests,,,Tier 2 Store Fetch
+tier2_infested_store_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier2_infested_store_fetch_description,quests,Quests,,,"Go to the commercial center at [DECEA3]{poi.name}[-] find the thrift store, and grab yjr shirt for a reward."
+tier2_infested_store_fetch_offer,quests,Quests,,,"Do you mind helping me with something a little silly? There's a vintage shirt that I'm really digging on, but I didn't grab it the last time I was there, like a total dummy. Would you get it for me? I can't stop thinking about it, and I'm afraid it's going to be gone the next time I'm there. I'm willing to pay you for your time."
+tier2_infested_store_fetch_statement,Quest,Quest Info,,,Find the shirt at [DECEA3]{poi.name}[-] and bring it back to the shop for a reward.
+tier2_infested_store_fetch_response,Quest,Quest Info,,,Store Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_store_fetch_completion,quests,Quests,,,"Ooh, ooh! You have it, thank goodness! I was certain that someone had snagged it at the last minute, and all of this would have been a waste of time. You've made my day yet again, so thank you very much, kind stranger - here's something for you, and there's plenty more where that came from."
+tier2_infested_store_fetch_and_clear_quest_name,quests,Quests,,,Tier 2 Store Fetch and Clear
+tier2_infested_store_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier2_infested_store_fetch_and_clear_description,quests,Quests,,,"Travel to the store near [DECEA3]{poi.name}[-] and find the potato seeds and bring them back for a reward."
+tier2_infested_store_fetch_and_clear_offer,quests,Quests,,,"I'm in a pickle - the White River Settlement Food Festival is right around the corner, and I was hoping to make my Cajun Fries but my potato crop failed! I know where some potato seeds are, but I can't get them myself - are you willing to help me? This is a big deal for me, so I will pay you for your time."
+tier2_infested_store_fetch_and_clear_statement,Quest,Quest Info,,,Head to the stores near [DECEA3]{poi.name}[-] and search for potato seeds to bring back.
+tier2_infested_store_fetch_and_clear_response,Quest,Quest Info,,,Store Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_store_fetch_and_clear_completion,quests,Quests,,,"You're back! And that can only mean you've done what I've asked you to, so thank you so much. Thanks to you, I'm going to win first place at the Food Festival - no judge can resist my Spicy-Sweet Cajun Fries. Let me get you your reward - sit tight."
+tier2_infested_store_clear_and_defend_quest_name,quests,Quests,,,Tier 2 Store Clear and Defend
+tier2_infested_store_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier2_infested_store_clear_and_defend_description,quests,Quests,,,"Head towards the store that out near [DECEA3]{poi.name}[-], kill all the baddies, and defend it against a second wave, and you'll get a reward."
+tier2_infested_store_clear_and_defend_offer,quests,Quests,,,"I got an easy job for ya, but it's a little dangerous - nothing you won't be able to handle if you keep your head in the game. There are some raiders in a store nearby that are really pissing me off, and I'd like to see their brains splattered against the walls. Here's where it gets tricky; once you show up at the base blasting away, they'll send out an emergency signal that will call for reinforcements - you're gonna have to defend the store once you clear it." 
+tier2_infested_store_clear_and_defend_statement,Quest,Quest Info,,,"Visit the store at [DECEA3]{poi.name}[-], kill the raiders inside, and defend against the second wave that will soon arrive."
+tier2_infested_store_clear_and_defend_response,Quest,Quest Info,,,Store Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_store_clear_and_defend_completion,quests,Quests,,,"Ladies and gentlemen, a round of applause for the bad mammerjammer that just walked through the door. You really took care of business, didn't you? My problem has been solved, so for that I am in your debt - here is something good as a thank you."
+tier2_infested_cabin_clear_quest_name,quests,Quests,,,Tier 2 Cabin Clear
+tier2_infested_cabin_clear_subtitle,quests,Quests,,,Clear the Area
+tier2_infested_cabin_clear_description,quests,Quests,,,"A trader wants to go on a vacation, but he can't because his cabin out by [DECEA3]{poi.name}[-] is infested with zombies - will anyone help him out for a reward?"
+tier2_infested_cabin_clear_offer,quests,Quests,,,"I know why you're here, and I am already grateful - I haven't been on a trip in months and I am sick and tired of seeing the same faces at work all of the time, no offense. Please, let me know when you've killed the zombies at my cabin so I can get away for a couple of days! You know how bitchy I get when I'm overworked - I need a vacation bad."
+tier2_infested_cabin_clear_statement,Quest,Quest Info,,,Go to the cabin out by [DECEA3]{poi.name}[-] and take care of the zombies.
+tier2_infested_cabin_clear_response,Quest,Quest Info,,,Cabin Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_cabin_clear_completion,quests,Quests,,,"I am so happy to see you, happier than I've ever been. Thank you so much for clearing out the zombie issue that I was dealing with. Once I get your bill squared away, I have a few more things to take care of, but my mind is already in vacation mode. Thanks again!"
+tier2_infested_cabin_fetch_quest_name,quests,Quests,,,Tier 2 Cabin Fetch
+tier2_infested_cabin_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier2_infested_cabin_fetch_description,quests,Quests,,,"There is a cabin close to [DECEA3]{poi.name}[-] that has a Minibike Chassis that a trader will pay you for."
+tier2_infested_cabin_fetch_offer,quests,Quests,,,"You know, I'm actually glad to see you; I promise not to be a dick today if you help me. I'm trying to restore a dirtbike but the frame is all screwed up, but I've got a Minibike Chassis out in my cabin that I could use. Could you get it for me? I'll pay you and even say thanks for once, haha. Yes, that's how desperate I am!"
+tier2_infested_cabin_fetch_statement,Quest,Quest Info,,,Go to the cabin that is out near [DECEA3]{poi.name}[-] and bring back the Minibike Chassis for a reward.
+tier2_infested_cabin_fetch_response,Quest,Quest Info,,,Cabin Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_cabin_fetch_completion,quests,Quests,,,"My man! I was starting to get worried that you wouldn't be able to find it. Thank you so much - let me get you some dough. I can't promise I'll be in a good mood tomorrow, but you did a lot to cheer me up just now, so thanks again."
+tier2_infested_cabin_fetch_and_clear_quest_name,quests,Quests,,,Tier 2 Cabin Fetch and Clear
+tier2_infested_cabin_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier2_infested_cabin_fetch_and_clear_description,quests,Quests,,,"If we can head to the cabin out near [DECEA3]{poi.name}[-] and kill all of the raiders that are living there, there will be a nice reward offered as a bounty."
+tier2_infested_cabin_fetch_and_clear_offer,quests,Quests,,,"Do you mind if I bug you with a 'fetch and clear' quest? There are some real bad dudes that are shacked up in my cabin and they aren't leaving, and I'm tired of asking nicely. If you could evict my lousy tenants, I'd be happy to pay you for your services. And one more thing; keep your eyes peeled for my Leather Duster - I love that jacket and want to make sure it's still there. Deal?" 
+tier2_infested_cabin_fetch_and_clear_statement,Quest,Quest Info,,,"Go to [DECEA3]{poi.name}[-], kill all of the raiders, and look for the Leather Duster while you're at it."
+tier2_infested_cabin_fetch_and_clear_response,Quest,Quest Info,,,Cabin Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_cabin_fetch_and_clear_completion,quests,Quests,,,"Welcome back - I never had any doubt you'd return. And it looks like you have my jacket, and it's in excellent condition - not a bullet hole to be seen in it. Fantastic. Thanks again, old friend - let me get your reward."
+tier2_infested_cabin_clear_and_defend_quest_name,quests,Quests,,,Tier 2 Cabin Clear and Defend
+tier2_infested_cabin_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier2_infested_cabin_clear_and_defend_description,quests,Quests,,,"You can win ONE(1) free stay at a cabin near [DECEA3]{poi.name}[-] if you are able to clear out the zombies and defend it against any attacks - inquire at a trader for details."
+tier2_infested_cabin_clear_and_defend_offer,quests,Quests,,,"Meh, it's you. And you're here for the contest...of course you are. Well, the terms have changed; no more free night, but I'll pay you to take care of my zombie problem. It's kind of tough to enjoy a good night's rest in the country when you have zombies pounding against your door, ya know? Come back when you're done, but be advised that you'll have to defend the cabin once you've cleared it...what can I say? I'm a popular guy."
+tier2_infested_cabin_clear_and_defend_statement,Quest,Quest Info,,,"Travel to the cabin at [DECEA3]{poi.name}[-], kill the zombies there, and hold off any second waves that might attack."
+tier2_infested_cabin_clear_and_defend_response,Quest,Quest Info,,,Cabin Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_cabin_clear_and_defend_completion,quests,Quests,,,"Well well well, something I didn't count on just happened - you survived, and you took care of my problem...shit! I wasn't planning on paying you out right now, but a deal's a deal I suppose and I always keep my word. Here, take this and beat feet, why don't ya?"
+tier2_infested_office_clear_quest_name,quests,Quests,,,Tier 2 Office Clear
+tier2_infested_office_clear_subtitle,quests,Quests,,,Clear the Area
+tier2_infested_office_clear_description,quests,Quests,,,"There is an old legal office that is filled with zombie lawyers - travel to [DECEA3]{poi.name}[-] and kill them all!"
+tier2_infested_office_clear_offer,quests,Quests,,,"No one likes lawyers, right? The only thing worse than a living one is a zombie lawyer, and there's an entire office space filled with them. You mind taking the law into your own hands and eliminating the perpetrators with extreme prejudice? I always pay well for this kind of work."
+tier2_infested_office_clear_statement,Quest,Quest Info,,,"Go to the office near [DECEA3]{poi.name}[-] and kill all of the zombies there."
+tier2_infested_office_clear_response,Quest,Quest Info,,,Office Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_office_clear_completion,quests,Quests,,,"It looks like the court has delivered its verdict, and all counsel were found guilty of lying to the judge and have been disbarred, hmm? Not too bad for an afternoon's work. Let me talk to the 'treasurer' and get your court fees processed - here ya go, and thanks."
+tier2_infested_office_fetch_quest_name,quests,Quests,,,Tier 2 Office Fetch
+tier2_infested_office_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier2_infested_office_fetch_description,quests,Quests,,,"There's an important legal document that Duke wants, and the first person to go to the office at [DECEA3]{poi.name}[-] and bring it back will get a nice reward."
+tier2_infested_office_fetch_offer,quests,Quests,,,"Howdy - you here for Duke's bounty on that legal paper he keeps talking about? I'm not sure what crazy notion has entered his mind now, but he's claiming that he needs it or else something bad could happen to the people here. You got a minute to head up there and bring back what he's looking for? Always something nice in it for you when you come back."
+tier2_infested_office_fetch_statement,Quest,Quest Info,,,Go to the office at [DECEA3]{poi.name}[-] and bring back the legal document there.
+tier2_infested_office_fetch_response,Quest,Quest Info,,,Office Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_office_fetch_completion,quests,Quests,,,"It's good to see you back - Duke's gonna be mighty thankful for you bringing that paperwork here. Between you and me, it's his rap sheet - he got himself into a little bit of trouble back in the day and served a few years of hard time. He's a changed man now, and there's no need for any skeletons in his closet to disrupt the progress he's made. Thanks again, and do everybody a favor and keep this between us?" 
+tier2_infested_office_fetch_and_clear_quest_name,quests,Quests,,,Tier 2 Office Fetch and Clear
+tier2_infested_office_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier2_infested_office_fetch_and_clear_description,quests,Quests,,,"There is a commercial area with an office nearby - head to [DECEA3]{poi.name}[-], take out the enemies there, and bring back the Plant Fiber Pants."
+tier2_infested_office_fetch_and_clear_offer,quests,Quests,,,"Hey bro, can you do something for me? This probably sounds absurd to someone who doesn't understand fashion, but there are a pair of Plant Fiber Plants that I would really like you to pick up for me - I am going out on a date with Jen later and I want to impress her. I'll pay you if you can hurry!"
+tier2_infested_office_fetch_and_clear_statement,Quest,Quest Info,,,"Head to the office at [DECEA3]{poi.name}[-], kill the enemies inside, and bring back the Plant Fiber Pants."
+tier2_infested_office_fetch_and_clear_response,Quest,Quest Info,,,Office Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_office_fetch_and_clear_completion,quests,Quests,,,"Thank goodness you're back, because I was starting to freak out. Do you think she will dig these? I am starting to second guess myself now...oh well. Here's your dough, and now if you'll excuse me, I have some clothes to try on." 
+tier2_infested_office_clear_and_defend_quest_name,quests,Quests,,,Tier 2 Office Clear and Defend
+tier2_infested_office_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier2_infested_office_clear_and_defend_description,quests,Quests,,,"We need someone to go to the office space at [DECEA3]{poi.name}[-] and take care of a vermin problem, but the only problem is that these 'rats' have a lot of friends."
+tier2_infested_office_clear_and_defend_offer,quests,Quests,,,"I've got a dangerous job that might make you think twice. You ever been to the office I used to work at? Well, now it's a base for raiders, who have been killing anyone that comes close to their headquarters. This isn't a simple clear job, however, because there are reinforcements that these scum will call in - you'll have to defend the area once you've taken it. Please, be careful."
+tier2_infested_office_clear_and_defend_statement,Quest,Quest Info,,,"Visit the office at [DECEA3]{poi.name}[-], take care of the zombies, and defend the area."
+tier2_infested_office_clear_and_defend_response,Quest,Quest Info,,,Office Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier2_infested_office_clear_and_defend_completion,quests,Quests,,,"I sure am glad to see you, because that means you've finished your job - another notch on the belt, eh big boy? A gal could get used to this kind of treatment. Sit tight while I get you what is yours."
+tier3_infested_military_outpost_clear_quest_name,quests,Quests,,,Tier 3 Military Outpost Clear
+tier3_infested_military_outpost_clear_subtitle,quests,Quests,,,Clear the Area
+tier3_infested_military_outpost_clear_description,quests,Quests,,,"There are rumors of an abandoned military outpost out by [DECEA3]{poi.name}[-] that was used as a testing ground for experiments...who have now taken over the facility."
+tier3_infested_military_outpost_clear_offer,quests,Quests,,,"You might not believe me when I say this, but every word is true - you ever hear of 'Project Grey'? Scientists from the White River Settlement and Black Creek Township working together on a zombie vaccine, but something went horribly wrong. Nobody knows what happened, either, because no one has ever returned from the base. Duke wants someone to check it out and clear the area of hostiles - you up for the challenge?"
+tier3_infested_military_outpost_clear_statement,Quest,Quest Info,,,"Travel to the military outpost near [DECEA3]{poi.name}[-] and eliminate any threats."
+tier3_infested_military_outpost_clear_response,Quest,Quest Info,,,Military Outpost Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_military_outpost_clear_completion,quests,Quests,,,"I was convinced that you weren't going to return, but what do I know? And I suppose you went to the base and took care of the problem? We might never know the truth behind 'Project Grey' but at least we won't be bothered by the zombies. You're a real hero, kid, you know that? Let me get you your loot."
+tier3_infested_military_outpost_fetch_quest_name,quests,Quests,,,Tier 3 Military Outpost Clear
+tier3_infested_military_outpost_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier3_infested_military_outpost_fetch_description,quests,Quests,,,"Some raiders from the Black Creek Bandits have taken over the military outpost at [DECEA3]{poi.name}[-] and are using it to launch raids in the White River Settlement - take them out for a nice reward."
+tier3_infested_military_outpost_fetch_offer,quests,Quests,,,"Boy, am I glad to see you...yeah, I've got a job for you, all right. The Black Creek Bandits are showing their faces again, and this time they have seized a military outpost that they are using for a base. We don't want that kind of scum operating around these parts, so I will pay you to take care of this problem. Show them no mercy!"
+tier3_infested_military_outpost_fetch_statement,Quest,Quest Info,,,Go to the military outpost at [DECEA3]{poi.name}[-] and kill all of the raiders.
+tier3_infested_military_outpost_fetch_response,Quest,Quest Info,,,Military Outpost Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_military_outpost_fetch_completion,quests,Quests,,,"I knew that I could count on you to finish off the Black Creek Bandits, so thank you so much. I owe you big time, cowboy - now here is what I promised to you."
+tier3_infested_military_outpost_fetch_and_clear_quest_name,quests,Quests,,,Tier 3 Military Outpost Fetch and Clear
+tier3_infested_military_outpost_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier3_infested_military_outpost_fetch_and_clear_description,quests,Quests,,,"There are highly sensitive documents located at the military outpost near [DECEA3]{poi.name}[-] that will fetch top dollar once we bring them back."
+tier3_infested_military_outpost_fetch_and_clear_offer,quests,Quests,,,"Hey, good to see ya - I'm going to need your help with something I want to keep hush hush. There's a military outpost not too far from here, and I've got a reason to believe that a schematic I've been looking for is somewhere on the premises. Think you can take five minutes from your busy day and do a fetch quest for me? Be advised that you might find...resistance, but nothing a champ like you can't handle."
+tier3_infested_military_outpost_fetch_and_clear_statement,Quest,Quest Info,,,"Head out to the military outpost near [DECEA3]{poi.name}[-], kill anything that tries to stop you, and locate the missing schematic."
+tier3_infested_military_outpost_fetch_and_clear_response,Quest,Quest Info,,,Military Outpost Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_military_outpost_fetch_and_clear_completion,quests,Quests,,,"Just the person I was hoping to see, and that's saying something, because I never usually want to see you. You got the goods? Now, that's what I'm talking about! I'll get you what I owe you in just a minute...and no, I won't tell you what I'm going to use the schematic for; sorry, not sorry. Sit tight for a minute while I get your payment."
+tier3_infested_military_outpost_clear_and_defend_quest_name,quests,Quests,,,Tier 3 Military Outpost Clear and Defend
+tier3_infested_military_outpost_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier3_infested_military_outpost_clear_and_defend_description,quests,Quests,,,"A group of highly-intelligent, mutated zombies have taken over a military base near [DECEA3]{poi.name}[-], which is a troubling development - we gotta take them out."
+tier3_infested_military_outpost_clear_and_defend_offer,quests,Quests,,,"I've got some bad news - it seems like the zombies are evolving. Usually, they're dumber than dirt, but I've heard disturbing reports about an abandoned military outpost that has been taken over - it seems that they are working towards some dark purpose, and I don't want to find out what it is. You're going to have to hold off a second wave of attackers, though; these mutated zombies are highly organized. Be careful, kid...this sounds like a suicide mission." 
+tier3_infested_military_outpost_clear_and_defend_statement,Quest,Quest Info,,,"Go to the military base near [DECEA3]{poi.name}[-], kill all of the zombies, and defend against any reinforcements that try to take over the outpost."
+tier3_infested_military_outpost_clear_and_defend_response,Quest,Quest Info,,,Military Outpost Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_military_outpost_clear_and_defend_completion,quests,Quests,,,"Seeing you walk through the door almost brought a tear to my eye - I thought for sure that you were gonna be a goner. I know you wouldn't come back here unless you had something to show for your efforts, so I take it the zombie problem was taken care of - amazing. We might never know what they were up to, but thankfully, it'll never be a concern again. Here's what I owe you."
+tier3_infested_warehouse_clear_quest_name,quests,Quests,,,Tier 3 Warehouse Clear
+tier3_infested_warehouse_clear_subtitle,quests,Quests,,,Clear the Area
+tier3_infested_warehouse_clear_description,quests,Quests,,,"There are rumors circulating through the White River Settlement about something shady going on in the warehouse near [DECEA3]{poi.name}[-] - go clear it out for a reward."
+tier3_infested_warehouse_clear_offer,quests,Quests,,,"Normally, I like to give you as much information as I can when it comes to a job, but for this one, I don't got much to work off of. There's a warehouse that is becoming a hotspot for the wrong kind of activity - zombies, raiders, cannibals? Heck if I know...I just know folks around here are scared of venturing out that way. Do us all a favor and smoke out the rats living inside."
+tier3_infested_warehouse_clear_statement,Quest,Quest Info,,,Venture to the warehouse that is near [DECEA3]{poi.name}[-] and kill all the enemies inside.
+tier3_infested_warehouse_clear_response,Quest,Quest Info,,,Warehouse Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_warehouse_clear_completion,quests,Quests,,,"You work quick, you know that? I suppose getting paid is a powerful motivator. Anyways, you have my thanks, and everyone around here tips their hats to you. Here's what I promised...don't be a stranger."
+tier3_infested_warehouse_fetch_quest_name,quests,Quests,,,Tier 3 Warehouse Fetch
+tier3_infested_warehouse_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier3_infested_warehouse_fetch_description,quests,Quests,,,"There's an abandoned warehouse...well, maybe abandoned isn't the right word; there's a zombie-infested warehouse near [DECEA3]{poi.name}[-] that is filled with valuable military equipment that would fetch a pretty penny."
+tier3_infested_warehouse_fetch_offer,quests,Quests,,,"Welcome back - you busy right now? I could use some help with retrieving some ammo from a warehouse, but I haven't been able to find anyone reliable enough to scoop it up and make it back alive. You think you got what it takes?"
+tier3_infested_warehouse_fetch_statement,Quest,Quest Info,,,Head towards the warehouse at [DECEA3]{poi.name}[-] and retrieve the military supplies.
+tier3_infested_warehouse_fetch_response,Quest,Quest Info,,,Warehouse Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_warehouse_fetch_completion,quests,Quests,,,"Hey, you're back already! And you've got the goods, like usual...is 'Reliable' your middle name, or something? Let me get what belongs to ya, so sit tight."
+tier3_infested_warehouse_fetch_and_clear_quest_name,quests,Quests,,,Warehouse Fetch and Clear
+tier3_infested_warehouse_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier3_infested_warehouse_fetch_and_clear_description,quests,Quests,,,"Someone needs to go to the warehouse that is near [DECEA3]{poi.name}[-] and bring back some of the equipment left there by scientists...if you can clear out the building and survive, that is."
+tier3_infested_warehouse_fetch_and_clear_offer,quests,Quests,,,"There's a warehouse by [DECEA3]{poi.name}[-] that was rumored to be some sort of zombie cloning facility...black ops projects, buncha scientists from White River Settlement and Black Creek Township working on something spooky. The eggheads cleared out a long time ago, but there's valuable tech they left behind that we could put to use. Think you can clear out the lab and bring back what you find?"
+tier3_infested_warehouse_fetch_and_clear_statement,Quest,Quest Info,,,"Find the abandoned cloning facility/warehouse at [DECEA3]{poi.name}[-], kill all of the zombies, and bring back the military supplies."
+tier3_infested_warehouse_fetch_and_clear_response,Quest,Quest Info,,,Warehouse Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_warehouse_fetch_and_clear_completion,quests,Quests,,,"You're alive! I, uh, didn't expect to see you again, if I'm being honest. I've hired about seven cats before you to do the job, and not a single one came back. I guess they didn't have what it takes. And you got the stuff? Best give it to me...I've heard exposure over a long time can cause disease. Thanks again."
+tier3_infested_warehouse_clear_and_defend_quest_name,quests,Quests,,,Tier 3 Warehouse Clear and Defend
+tier3_infested_warehouse_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier3_infested_warehouse_clear_and_defend_description,quests,Quests,,,"Go to the warehouse out near [DECEA3]{poi.name}[-], clear out the enemies inside, and make sure that they don't take the warehouse over again - you'll have to defend the building against reinforcements."
+tier3_infested_warehouse_clear_and_defend_offer,quests,Quests,,,"Hey there bossman, you got a minute? You've done jobs like this before, but for whatever reason, this one feels a little bit more dangerous. There's a warehouse I need you to clear out, but there's reason to believe that a second wave will be impossible to defend against...if you have a Rocket Launcher, might want to bring it, just in case. You in?"
+tier3_infested_warehouse_clear_and_defend_statement,Quest,Quest Info,,,"Travel to the warehouse at [DECEA3]{poi.name}[-] and kill all of the enemies, including any second waves that try to counterattack."
+tier3_infested_warehouse_clear_and_defend_response,Quest,Quest Info,,,Warehouse Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_warehouse_clear_and_defend_completion,quests,Quests,,,"Me and some of the other traders took a bet to see if you'd make it back, and I'm happy to say that I'm going to clean up nicely when the debts are paid out, so thanks for making me rich. Oh, and speaking of that, here is your reward."
+tier3_infested_farm_clear_quest_name,quests,Quests,,,Tier 3 Farm Clear
+tier3_infested_farm_clear_subtitle,quests,Quests,,,Clear the Area
+tier3_infested_farm_clear_description,quests,Quests,,,"Visit the farm out by [DECEA3]{poi.name}[-] and kill all of the zombies."
+tier3_infested_farm_clear_offer,quests,Quests,,,"I'm in a little bit of a pickle today, so it's a good thing that you are here. I have a buddy who has a farm, grows some giant cabbages - he's a regular Diocletian. Only problem is that the local zombies have picked up on the activity there and have made his life a living hell. Do us all a favor and take care of this problem for a nice reward?"
+tier3_infested_farm_clear_statement,Quest,Quest Info,,,"Travel out to the farm at [DECEA3]{poi.name}[-] and finish off any zombies lurking around."
+tier3_infested_farm_clear_response,Quest,Quest Info,,,Farm Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_farm_clear_completion,quests,Quests,,,"You would've made a great farmer - that's what my buddy says. If you ever want to retire from this line of work and get a job planting and harvesting, you let me know! Thanks again."
+tier3_infested_farm_fetch_quest_name,quests,Quests,,,Tier 3 Farm Fetch
+tier3_infested_farm_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier3_infested_farm_fetch_description,quests,Quests,,,"Venture out to the farm at [DECEA3]{poi.name}[-] and bring back some fresh fruits and vegetables...because scurvy isn't anything you want to deal with in the White River."
+tier3_infested_farm_fetch_offer,quests,Quests,,,"I'm glad to see you, because it's almost dinner time and I forgot to make a side! Do you mind going to a farm and bringing me back something fresh? Fruits, veggies...as long as it comes out of the grown, I want it. I'll pay you, as you know."
+tier3_infested_farm_fetch_statement,Quest,Quest Info,,,Travel out to the farm at [DECEA3]{poi.name}[-] and bring back the fresh fruit and vegetables for a reward.
+tier3_infested_farm_fetch_response,Quest,Quest Info,,,Farm Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_farm_fetch_completion,quests,Quests,,,"Mmm, mmm, MMM! Green beans, fruit salad...I'm not sure what I'm going to make, but this is a good problem to have. You have my thanks!"
+tier3_infested_farm_fetch_and_clear_quest_name,quests,Quests,,,Tier 3 Farm Fetch and Clear
+tier3_infested_farm_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier3_infested_farm_fetch_and_clear_description,quests,Quests,,,"Head to the farm that is out by [DECEA3]{poi.name}[-], kill all of the bad guys, and bring back the food supplies for a reward."
+tier3_infested_farm_fetch_and_clear_offer,quests,Quests,,,"This might sound like it's not worth your time, but I will pay you just the same for a finished job. I am in desperate need of some fresh food supplies, and the only place that I know has the goods for sure is this farm. The problem, naturally, is that it's filled with zombies and I can't take them on myself. Clear them out for me and bring back some food and I'll pay you for your time."
+tier3_infested_farm_fetch_and_clear_statement,Quest,Quest Info,,,"Travel to the farm near [DECEA3]{poi.name}[-], eliminate any threats in the region, and search for the food that the trader wants."
+tier3_infested_farm_fetch_and_clear_response,Quest,Quest Info,,,Farm Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_farm_fetch_and_clear_completion,quests,Quests,,,"A round of applause for the baddest cat to ever step foot inside the White River Settlement! What would we honestly do without you...and you've got what I sent you to get; nice. Here's your payment - take it with my thanks."
+tier3_infested_farm_clear_and_defend_quest_name,quests,Quests,,,Tier 3 Farm Clear and Defend
+tier3_infested_farm_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier3_infested_farm_clear_and_defend_description,quests,Quests,,,Head out to the farm near [DECEA3]{poi.name}[-], clear the region of enemies, and defend it against the onslaught of reinforcements.
+tier3_infested_farm_clear_and_defend_offer,quests,Quests,,,"I've heard a disturbing report about raiders that are trying to grow their own food supplies; they've taken over one of the local farms and are stealing what is rightfully ours. Can you head out there and take care of these interlopers? I'll give you something nice for sending them all packing. And by all, I mean all of them - they will undoubtedly throw everything they've got at you."
+tier3_infested_farm_clear_and_defend_statement,Quest,Quest Info,,,"Travel to the farm near [DECEA3]{poi.name}[-], kill all of the enemies in the region, and be sure to take out any reinforcements."
+tier3_infested_farm_clear_and_defend_response,Quest,Quest Info,,,Farm Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_farm_clear_and_defend_completion,quests,Quests,,,"I was starting to get a little worried about you, but it looks like I was just being paranoid - you always come back, no matter how tough the job is. Thanks again, my friend - here is what I promised you."
+tier3_infested_apartments_clear_quest_name,quests,Quests,,,Tier 3 Apartment Clear
+tier3_infested_apartments_clear_subtitle,quests,Quests,,,Clear the Area
+tier3_infested_apartments_clear_description,quests,Quests,,,"There's an apartment complex out by [DECEA3]{poi.name}[-] that has a pest problem, and there will be a reward for the first exterminator to clear out the 'roaches'."
+tier3_infested_apartments_clear_offer,quests,Quests,,,"Hey! In case you haven't noticed, all of the Pest Control companies have left the White River Settlement, and you're the next best thing. There's an apartment I know of that is filled with enemies - zombies? Raiders? Disgruntled members of the White River Post Office? Who the hell knows anymore. What I can tell you, however, is that I will pay you for a completed mission."
+tier3_infested_apartments_clear_statement,Quest,Quest Info,,,Go to the apartments near [DECEA3]{poi.name}[-] and clear out the enemies inside.
+tier3_infested_apartments_clear_response,Quest,Quest Info,,,Apartment Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_apartments_clear_completion,quests,Quests,,,"Well well well, you're walking in here looking mighty pleased with yourself - I guess you took care of what I asked you to do? Very good - let me pay you out so I can get back to what I was doing. Oh yeah, and thanks."
+tier3_infested_apartments_fetch_quest_name,quests,Quests,,,Tier 3 Apartment Fetch
+tier3_infested_apartments_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier3_infested_apartments_fetch_description,quests,Quests,,,"John, the rumored Special Ops agent and Zombie Killing Machine, has an apartment near [DECEA3]{poi.name}[-] that has a file that Duke wants to read...think you can be of assistance in liberating this missing paperwork?"
+tier3_infested_apartments_fetch_offer,quests,Quests,,,"I got another special mission for you, so keeping mum about it is all a part of the gig. Back in the day, a gent named John used to oversee a project around here, something called 'Project Grey'...don't know much about it, but Duke wants to know more. John has an apartment, but he's left White River on some business...and I can see from your face that you know where this is going. Remember; discretion is key here."
+tier3_infested_apartments_fetch_statement,Quest,Quest Info,,,Go to the apartment at [DECEA3]{poi.name}[-] and search for John's paperwork.
+tier3_infested_apartments_fetch_response,Quest,Quest Info,,,Apartment Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_apartments_fetch_completion,quests,Quests,,,"You did it! You got the missing file. This is going to shed a lot of light on the origins of 'Project Grey'...a lot of men have died to keep this information secret. Duke sends his regards and this as a reward."
+tier3_infested_apartments_fetch_and_clear_quest_name,quests,Quests,,,Tier 3 Apartment Fetch and Clear
+tier3_infested_apartments_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier3_infested_apartments_fetch_and_clear_description,quests,Quests,,,"One of the head scientists working on 'Project Grey' rented an apartment at [DECEA3]{poi.name}[-] - search the building for missing files, but beware; there are other factions looking for the same paperwork."
+tier3_infested_apartments_fetch_and_clear_offer,quests,Quests,,,"You are a rare bird in White River; able to take high-pressure jobs without blabbing about it to everyone; you want to keep building up your legacy? There's an apartment nearby that a scientist used to rent out, and rumor has it he kept a log of his experiments. The Main Lab burned down a long time ago, so this might be the only records we have...can you get them for Duke?"
+tier3_infested_apartments_fetch_and_clear_statement,Quest,Quest Info,,,"Visit the apartment at [DECEA3]{poi.name}[-], kill all of the enemies inside, and return with the goods for a reward."
+tier3_infested_apartments_fetch_and_clear_response,Quest,Quest Info,,,Apartment Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_apartments_fetch_and_clear_completion,quests,Quests,,,"I hope, for your sake, that you didn't read the contents of the file that you brought back - I'd hate to see Duke hiring a squad of assassins to take out his Ace. Some things are better left unknown...like what your reward is going to be."
+tier3_infested_apartments_clear_and_defend_quest_name,quests,Quests,,,Tier 3 Apartment Clear and Defend
+tier3_infested_apartments_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier3_infested_apartments_clear_and_defend_description,quests,Quests,,,"It seems that someone is hot on your heels - there are rumors of an extraction team searching an apartment building that you were recently spotted at. Go to [DECEA3]{poi.name}[-] and take out your would-be captors."
+tier3_infested_apartments_clear_and_defend_offer,quests,Quests,,,"You've managed to make some powerful enemies, and the crazy part is that no one even really knows who they are. I keep picking up chatter on the comms, though, and it sounds like someone has hired some raiders to kidnap you. It might be time to turn the tables on the would-be kidnappers and send them six feet under."
+tier3_infested_apartments_clear_and_defend_statement,Quest,Quest Info,,,"Travel out to the apartments near [DECEA3]{poi.name}[-], kill everyone inside, and kill off any reinforcements sent to finish you off."
+tier3_infested_apartments_clear_and_defend_response,Quest,Quest Info,,,Apartment Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_apartments_clear_and_defend_completion,quests,Quests,,,"You did it - not only did you kill the main group of enemies, but you even took care of a second wave of attackers. Whoever hired these goons is going to be furious when they find out that you took them all out. Here's what I owe you and please keep yourself safe; there's not many people that you can trust around here."
+tier3_infested_store_clear_quest_name,quests,Quests,,,Tier 3 Store Clear
+tier3_infested_store_clear_subtitle,quests,Quests,,,Clear the Area
+tier3_infested_store_clear_description,quests,Quests,,,"Go to the store near [DECEA3]{poi.name}[-] and keep your eyes peeled for zombies that are shopping for bargains."
+tier3_infested_store_clear_offer,quests,Quests,,,"I swear, the zombies around here are always getting themselves into the weirdest situations. I've heard about a store that they keep hanging around - did they use to work there? Are they looking for sales? Old habits die hard, but the good news is that you can expect a reward for taking them out."
+tier3_infested_store_clear_statement,Quest,Quest Info,,,"Venture to the store at [DECEA3]{poi.name}[-] and kill anything hostile that resists you."
+tier3_infested_store_clear_response,Quest,Quest Info,,,Store Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_store_clear_completion,quests,Quests,,,"What a chad! Those zombies never stood a chance, did they? You are becoming known as someone who doesn't take any crap - always a pleasure to do business with you."
+tier3_infested_store_fetch_quest_name,quests,Quests,,,Tier 3 Store Fetch
+tier3_infested_store_fetch_subtitle,quests,Quests,,,Retrieve the Supplies
+tier3_infested_store_fetch_description,quests,Quests,,,There is a store out near [DECEA3]{poi.name}[-] that has some supplies that could be mighty useful - fetch them for a handsome reward."
+tier3_infested_store_fetch_offer,quests,Quests,,,"Hey, you available to run a small errand for me? I'd do it myself, but then who would keep an eye on the store? There are some things I could use in a store, because my inventory is running a little low...bring me back some stock and I'll pay you your regular rate."
+tier3_infested_store_fetch_statement,Quest,Quest Info,,,"Go out to [DECEA3]{poi.name}[-], look for a store, and bring back the missing supplies."
+tier3_infested_store_fetch_response,Quest,Quest Info,,,Store Fetch ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_store_fetch_completion,quests,Quests,,,"I am thankful to see your grinning face - you always come through for me in a pinch, you know that? Always a pleasure doing business with you, and hope we can do the same in the future."
+tier3_infested_store_fetch_and_clear_quest_name,quests,Quests,,,Tier 3 Store Fetch and Clear
+tier3_infested_store_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier3_infested_store_fetch_and_clear_description,quests,Quests,,,"There's a store out by [DECEA3]{poi.name}[-] that has some supplies that are needed in White River, but there are too many raiders hanging around - we need someone with gumption and guts to help out."
+tier3_infested_store_fetch_and_clear_offer,quests,Quests,,,"If there's one positive thing you could say about the raiders that infest the White River, it's that they ain't stupid - they know what side their bread is buttered on, and they absolutely know where the goods are. Only problem is, the store that they are hanging out in has some things that I could use...do you mind taking them all out and bringing me back what I need?"
+tier3_infested_store_fetch_and_clear_statement,Quest,Quest Info,,,"Go to the store that is close to [DECEA3]{poi.name}[-], kill all of the enemies, and bring back the missing supplies for a reward."
+tier3_infested_store_fetch_and_clear_response,Quest,Quest Info,,,Store Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_store_fetch_and_clear_completion,quests,Quests,,,"They always used to say that a life of crime never pays, but try telling that to one of the raiders out here hanging and banging...it's a damn shame that so many turn to crime. But thanks to you, we don't have to worry about them too much. Thanks again hoss; talk soon?"
+tier3_infested_store_clear_and_defend_quest_name,quests,Quests,,,Tier 3 Store Clear and Defend
+tier3_infested_store_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier3_infested_store_clear_and_defend_description,quests,Quests,,,"There's an electronics store by [DECEA3]{poi.name}[-] that zombies love hanging around, for whatever reason - take them out, and make sure their friends know the place is off-limits to meatsacks."
+tier3_infested_store_clear_and_defend_offer,quests,Quests,,,"You got a few minutes and want to get paid for spreading lead everywhere? I keep hearing about a group of zombies that are loitering in front and inside of a store - don't care what they're doing or thinking, just want 'em dead. They have a lot of friends, though, so make sure you're armed to the teeth and ready to get your hands dirty."
+tier3_infested_store_clear_and_defend_statement,Quest,Quest Info,,,"Visit the store at [DECEA3]{poi.name}[-] kill everything inside, and defend against a second wave."
+tier3_infested_store_clear_and_defend_response,Quest,Quest Info,,,Store Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier3_infested_store_clear_and_defend_completion,quests,Quests,,,"So I heard about what you did - I guess that store has an 'all sales are final' policy. No refunds! The customer is never right in White River, thanks to you, the Employee of the Month. Appreciate you homie, so let's get your reward."
+tier4_infested_military_outpost_fetch_and_clear_quest_name,quests,Quests,,,Tier 4 Military Outpost Fetch and Clear
+tier4_infested_military_outpost_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier4_infested_military_outpost_fetch_and_clear_description,quests,Quests,,,"There's an unoccupied military outpost near [DECEA3]{poi.name}[-] that has become a hotspot for enemies - take them all out and look for anything interesting to bring back."
+tier4_infested_military_outpost_fetch_and_clear_offer,quests,Quests,,,"You familiar with 'Project Grey'? White River and Black Creek scientists workin' on something shady; splicing alien and zombie DNA together...maybe that's what got us into this problem in the first place. To make a long story short, I will pay you to go to one of their military bases, eliminate the threats, and bring back some of the tech they left sitting around."
+tier4_infested_military_outpost_fetch_and_clear_statement,Quest,Quest Info,,,"Go to the military outpost at [DECEA3]{poi.name}[-], kill off all of the enemies and bring back the missing supplies."
+tier4_infested_military_outpost_fetch_and_clear_response,Quest,Quest Info,,,Military Outpost Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_infested_military_outpost_fetch_and_clear_completion,quests,Quests,,,"Just in the nick of time, with seconds to spare! Nah, I'm just kidding...I'm not going anywhere. Makes it feel more dramatic though, ya know? I appreciate you handling this for me...here is your payment."
+tier4_infested_military_outpost_clear_and_defend_quest_name,quests,Quests,,,Tier 4 Military Outpost Clear and Defend
+tier4_infested_military_outpost_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier4_infested_military_outpost_clear_and_defend_description,quests,Quests,,,"The military outpost by [DECEA3]{poi.name}[-] has become a checkpoint used by the Black Creek Bandits - those guys are like cockroaches, always coming back when you think they're finally gone. Take 'em all out, including any reinforcements."
+tier4_infested_military_outpost_clear_and_defend_offer,quests,Quests,,,"I know you've tussled with the Black Creek Bandits a couple times by now, but I have bad news for you - they are back, and this time, they aren't messing about. Make sure you're heavily armed if you're going to accept this job, because they know you and will throw everything they've got at you."
+tier4_infested_military_outpost_clear_and_defend_statement,Quest,Quest Info,,,"Go to the military outpost at [DECEA3]{poi.name}[-], kill the raiders, and eliminate the second wave."
+tier4_infested_military_outpost_clear_and_defend_response,Quest,Quest Info,,,Military Outpost Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_infested_military_outpost_clear_and_defend_completion,quests,Quests,,,"I shouldn't be surprised every time you come back here, even when the odds are stacked against you - is there anything you can't do? Thanks for another successful mission, and I hope you find this payment is worth the danger you put yourself in."
+tier4_infested_city_building_fetch_and_clear_quest_name,quests,Quests,,,Tier 4 City Building Fetch and Clear
+tier4_infested_city_building_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier4_infested_city_building_fetch_and_clear_description,quests,Quests,,,Travel to the city, find the building near [DECEA3]{poi.name}[-], fetch the supplies and kill off the enemies.
+tier4_infested_city_building_fetch_and_clear_offer,quests,Quests,,,"I've got a simple job for you, about as straightforward as it gets; go into the city, kill monsters, bring back what I need. Think you can handle simple instructions?"
+tier4_infested_city_building_fetch_and_clear_statement,Quest,Quest Info,,,"Head to the city, enter the building at [DECEA3]{poi.name}[-], take care of the enemies inside and bring back the supplies for a reward."
+tier4_infested_city_building_fetch_and_clear_response,Quest,Quest Info,,,City Building Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_infested_city_building_fetch_and_clear_completion,quests,Quests,,,"My favorite errand boy is back...good, very good. Don't give me that look - if it walks and talks like a duck, what am I gonna call it? Here, thanks again and come back if you need more work."
+tier4_infested_city_building_clear_and_defend_quest_name,quests,Quests,,,Tier 4 City Building Clear and Defend
+tier4_infested_city_building_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier4_infested_city_building_clear_and_defend_description,quests,Quests,,,"Go into the city, find the building at [DECEA3]{poi.name}[-], take out the mobs and defend against a second wave."
+tier4_infested_city_building_clear_and_defend_offer,quests,Quests,,,"Hey there, you busy? Want to risk life and limb for the chance of a randomized reward? I figured you would. If you have some time to kill, I'd love it if you went into the city, took care of an infestation problem for me, and made sure that all of their buddies get smoked, too. You know what I'm willing to pay for a completed job..."
+tier4_infested_city_building_clear_and_defend_statement,Quest,Quest Info,,,"Head into the city, kill all of the enemies at [DECEA3]{poi.name}[-], and defend against reinforcements."
+tier4_infested_city_building_clear_and_defend_response,Quest,Quest Info,,,City Building Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_infested_city_building_clear_and_defend_completion,quests,Quests,,,"Well, you did it - no surprises there. And you're bleeding a little...you get banged up a bit? All in a day's work for you, I guess. You held up your end of the bargain, so let me do the same - here ya go."
+tier4_infested_store_fetch_and_clear_quest_name,quests,Quests,,,Tier 4 Store Fetch and Clear
+tier4_infested_store_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier4_infested_store_fetch_and_clear_description,quests,Quests,,,"Head to the abandoned store near [DECEA3]{poi.name}[-], keep an eye out for the food supplies, and bring them back after you've finished off the bad guys."
+tier4_infested_store_fetch_and_clear_offer,quests,Quests,,,"You ever get a craving for a snack that you just can't get rid of? Well, that's me right now - I'm damn sick of tired of eating Hobo Stew every night, and would kill for something sweet. You know the store up the road? Why don't you go there and see if you can find me something..."
+tier4_infested_store_fetch_and_clear_statement,Quest,Quest Info,,,"Visit the store near [DECEA3]{poi.name}[-], find the food supplies, and clear out the building before returning for a reward."
+tier4_infested_store_fetch_and_clear_response,Quest,Quest Info,,,Store Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_infested_store_fetch_and_clear_completion,quests,Quests,,,"My stomach started grumbling as soon as I saw you walk in - were you able to find me something different - praise Noah, you sure did! Here, let me get you what I owe you so I can eat in peace. Thanks again!"
+tier4_infested_store_clear_and_defend_quest_name,quests,Quests,,,Tier 4 Store Clear and Defend
+tier4_infested_store_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier4_infested_store_clear_and_defend_description,quests,Quests,,,"Head towards the store out near [DECEA3]{poi.name}[-], kill off all the baddies inside, and defend against any second waves - we aren't going to let any abandoned storefronts turn into zombie bases."
+tier4_infested_store_clear_and_defend_offer,quests,Quests,,,"We've done this song and dance a couple times by now, so you know the score; I need you to clear out a building and make sure that the friends of the recently deceased don't avenge their deaths, if you catch my drift. I'll pay you for a job well done, so take care of yourself."
+tier4_infested_store_clear_and_defend_statement,Quest,Quest Info,,,"Travel to [DECEA3]{poi.name}[-], finish off any hostiles inside, and make sure that the reinforcements don't take over the building."
+tier4_infested_store_clear_and_defend_response,Quest,Quest Info,,,Store Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier4_infested_store_clear_and_defend_completion,quests,Quests,,,"Hats off to you, cowboy - you did the impossible, yet again. They haven't made a zombie or a raider that can hold their own against ya, I've noticed...better not mention this, in case I'm jinxing you. Here, take this and come back soon."
+tier5_infested_skyscraper_fetch_and_clear_quest_name,quests,Quests,,,Tier 5 Skyscraper Fetch and Clear
+tier5_infested_skyscraper_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier5_infested_skyscraper_fetch_and_clear_description,quests,Quests,,,"The skyscraper near [DECEA3]{poi.name}[-] used to house a government facility, but no one has been able to get inside in a long time - Duke wants this to change..."
+tier5_infested_skyscraper_fetch_and_clear_offer,quests,Quests,,,"I remember, a long time ago, when the government told us they'd be opening up an office in White River - everyone was so happy, but maybe that's when all of our troubles began. Now that you've proven yourself to be someone we can trust, Duke has a special job for you, one that comes from his boss, Noah - that's right, the founder of everything that you see around here. We need you to get inside the former headquarters of this government agency and look for a dossier - I can explain more when you come back. You better be armed to the teeth, though, because whatever is shacked up inside the skyscraper does not want this info getting out."
+tier5_infested_skyscraper_fetch_and_clear_statement,Quest,Quest Info,,,"There is a skycraper near [DECEA3]{poi.name}[-] that used to be the headquarters of a secret agency - fetch the dossier inside and bring it back."
+tier5_infested_skyscraper_fetch_and_clear_response,Quest,Quest Info,,,Skyscraper Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier5_infested_skyscraper_fetch_and_clear_completion,quests,Quests,,,"Alright, kid - sit down and listen up, because I'm about to blow your mind. You got that dossier, right? What you have in your possession is the only physical copy of a report that describes a government agency that used to work in White River - the Department of Ultra-Kinectic Electrochemistry, or 'D.U.K.E.' for short. 'Duke', my boss? Not even really sure if that's his real name. All I know is that he worked for them in some capacity, back in the day; him, Noah, and John. I've said enough for now, maybe too much...here is your payment, and don't repeat a word of this."
+tier5_infested_skyscraper_clear_and_defend_quest_name,quests,Quests,,,Tier 5 Skyscraper Clear and Defend
+tier5_infested_skyscraper_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier5_infested_skyscraper_clear_and_defend_description,quests,Quests,,,"The skyscraper near [DECEA3]{poi.name}[-], which used to be the headquarters of the Department of Ultra-Kinetic Electrochemistry, has been taken over by a mysterious wave of attackers - take them out and secure the building."
+tier5_infested_skyscraper_clear_and_defend_offer,quests,Quests,,,"We got a five alarm fire mega-crisis brewing, so thank goodness you walked in when you did. The skyscraper in town that used to be the HQ of a secret government agency has been taken over by a rogue group, and Duke and Noah both think they are trying to get their hands on some experimental data. You can't leave any survivors - anyone who knows about the existence of D.U.K.E. is a threat to national security. Be careful..."
+tier5_infested_skyscraper_clear_and_defend_statement,Quest,Quest Info,,,"Go to the skyscraper at [DECEA3]{poi.name}[-], kill everything inside, and defend the building against any reinforcements."
+tier5_infested_skyscraper_clear_and_defend_response,Quest,Quest Info,,,Skyscraper Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier5_infested_skyscraper_clear_and_defend_completion,quests,Quests,,,"You've managed to do the impossible again - we all salute you. God knows what would have happened if you hadn't come here when you did...I can't even let myself think about it. Here's your payment, and please keep in mind that your discretion will ensure that you are hired for these jobs in the future."
+tier5_infested_factory_fetch_and_clear_quest_name,quests,Quests,,,Tier 5 Skyscraper Fetch and Clear
+tier5_infested_factory_fetch_and_clear_subtitle,quests,Quests,,,Clear Area and Retrieve Supplies
+tier5_infested_factory_fetch_and_clear_description,quests,Quests,,,"Inside of the skyscraper at [DECEA3]{poi.name}[-] is a secret file that we will need to fetch, but there are mutated zombies infesting the office space."
+tier5_infested_factory_fetch_and_clear_offer,quests,Quests,,,"You like to read, cowboy? What if I pay you to get a file, but you gotta promise me that you won't look inside? Noah wants you to personally bring back some documents from town, but he told me that if you read the contents, you'll be marked as a dead man...apparently, there are some secrets that even our top agent cannot know about. Don't be too disappointed, though, because I will pay you handsomely for mission completion.
+tier5_infested_factory_fetch_and_clear_statement,Quest,Quest Info,,,"Go into the city, find the skyscraper near [DECEA3]{poi.name}[-], kill all of the enemies and find the secret file."
+tier5_infested_factory_fetch_and_clear_response,Quest,Quest Info,,,Skyscraper Fetch / Clear ([DECEA3]{poi.distance} {poi.direction}[-])
+tier5_infested_factory_fetch_and_clear_completion,quests,Quests,,,"Thank goodness you're back, and I can tell from the look on your face that you have not pried through the contents of the file - good. How do I know? There are apparently secrets so harrowing inside that I would be able to tell just by looking at your face. Honest and reliable...a winning combination. Here's what I promised you, so thanks again."
+tier5_infested_factory_clear_and_defend_quest_name,quests,Quests,,,Tier 5 Factory Clear and Defend
+tier5_infested_factory_clear_and_defend_subtitle,quests,Quests,,,Clear and Defend the Area
+tier5_infested_factory_clear_and_defend_description,quests,Quests,,,"The abandoned factory near [DECEA3]{poi.name}[-] was once rumored to be a zombie cloning facility. We need to clear it out and take care of anyone that tries to stop us."
+tier5_infested_factory_clear_and_defend_offer,quests,Quests,,,"I don't even believe this myself, but apparently it's true - there is a factory in town that was used as a zombie cloning facility by the Department of Ultra-Kinetic Electrochemistry, and even though the groundskeepers are long gone, it seems that the experiments are still taking place. You're going to have to kill everything inside, but be warned that you might have to fight off a second wave...the bad guys are throwing everything they have at this one."
+tier5_infested_factory_clear_and_defend_statement,Quest,Quest Info,,,"Head inside the factory at [DECEA3]{poi.name}[-] and kill everyone, and hold it off against any reinforcements that appear."
+tier5_infested_factory_clear_and_defend_response,Quest,Quest Info,,,Factory Clear / Defend ([DECEA3]{poi.distance} {poi.direction}[-])
+tier5_infested_factory_clear_and_defend_completion,quests,Quests,,,"If only the citizens of White River knew that the reason they can sleep peacefully at night is the hard work you do to keep them safe. I have your payment right here, so thank you...and we will never mention this to anyone, right? Don't want to scare the kiddos."

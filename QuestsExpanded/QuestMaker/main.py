@@ -2,6 +2,7 @@ from properties import Properties
 from objectives import Objectives
 from rewards import Rewards
 from quest import QuestList, make_quest
+from zztong_pois import ZZTongPois
 
 """
     This is a slightly nicer way to write quests for 7 days to die since the regular quests.xml isn't nearly as flexible as python
@@ -12,7 +13,7 @@ property_object = Properties()
 
 urban = True
 rural = True
-tier_1_pois = False
+tier_1_pois = True
 tier_2_pois = True
 tier_3_pois = True
 tier_4_pois = True
@@ -22,6 +23,26 @@ tier_5_pois = True
 infested_quest = True
 infested_string = "infested_" if infested_quest else ""
 
+# Set if generating quests that include ZZtong prefabs
+ZPois = ZZTongPois()
+ZPois.make_quests()
+
+zztong_t1_caves = ZPois.t1_caves
+zztong_t1_cabins = ZPois.t1_cabins
+zztong_t1_stations = ZPois.t1_stations
+zztong_t1_stores = ZPois.t1_stores
+
+zztong_t2_farm = ZPois.t2_farm
+zztong_t2_store = ZPois.t2_store
+
+zztong_t3_farm = ZPois.t3_farm
+zztong_t3_store = ZPois.t3_store
+
+zztong_t4_army = ZPois.t4_army
+zztong_t4_downtown = ZPois.t4_downtown
+zztong_t4_store = ZPois.t4_store
+
+zztong_t5_skyscraper = ZPois.t5_skyscraper
 
 if urban:
     if infested_quest is False:
@@ -383,7 +404,7 @@ if rural:
     rewards = Rewards().tier4_fetch_rewards
     quest_list.append(make_quest(quest_id, properties, objectives, rewards))
 
-if tier_1_pois:
+if tier_1_pois and infested_quest is False:
     current_tier = 1
 
     # Cabins
@@ -398,11 +419,11 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
-        <property name="PrefabNames" value="cabin_01,cabin_06,cabin_09,cabin_11,cabin_07,cabin_05,cabin_08,cabin_14,cabin_02,cabin_12,cabin_15,cabin_10,cabin_04,cabin_16" />
+        <property name="PrefabNames" value="cabin_01,cabin_06,cabin_09,cabin_11,cabin_07,cabin_05,cabin_08,cabin_14,cabin_02,cabin_12,cabin_15,cabin_10,cabin_04,cabin_16{zztong_t1_cabins}" />
     </objective>
     """ + Objectives().objective_clear_ending
     rewards = Rewards().tier1_clear_rewards
@@ -419,11 +440,11 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
-        <property name="PrefabNames" value="cabin_01,cabin_06,cabin_09,cabin_11,cabin_07,cabin_05,cabin_08,cabin_14,cabin_02,cabin_12,cabin_15,cabin_10,cabin_04,cabin_16" />
+        <property name="PrefabNames" value="cabin_01,cabin_06,cabin_09,cabin_11,cabin_07,cabin_05,cabin_08,cabin_14,cabin_02,cabin_12,cabin_15,cabin_10,cabin_04,cabin_16{zztong_t1_cabins}" />
     </objective>
     """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier1_fetch_rewards
@@ -527,11 +548,11 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
-        <property name="PrefabNames" value="cave_05,cave_01,cave_04,cave_03,cave_02" />
+        <property name="PrefabNames" value="cave_05,cave_01,cave_04,cave_03,cave_02{zztong_t1_caves}" />
     </objective>
     """ + Objectives().objective_clear_ending
     rewards = Rewards().tier1_clear_rewards
@@ -548,11 +569,11 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
-        <property name="PrefabNames" value="cave_05,cave_01,cave_04,cave_03,cave_02" />
+        <property name="PrefabNames" value="cave_05,cave_01,cave_04,cave_03,cave_02{zztong_t1_caves}" />
     </objective>
     """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier1_fetch_rewards
@@ -570,11 +591,11 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
-        <property name="PrefabNames" value="store_electronics_01,store_grocery_05,store_grocery_04,store_grocery_06,store_laundry_01,store_pharmacy_01" />
+        <property name="PrefabNames" value="store_electronics_01,store_grocery_05,store_grocery_04,store_grocery_06,store_laundry_01,store_pharmacy_01{zztong_t1_stores}" />
     </objective>
     """ + Objectives().objective_clear_ending
     rewards = Rewards().tier1_clear_rewards
@@ -591,11 +612,11 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
-        <property name="PrefabNames" value="store_electronics_01,store_grocery_05,store_grocery_04,store_grocery_06,store_laundry_01,store_pharmacy_01" />
+        <property name="PrefabNames" value="store_electronics_01,store_grocery_05,store_grocery_04,store_grocery_06,store_laundry_01,store_pharmacy_01{zztong_t1_stores}" />
     </objective>
     """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier1_fetch_rewards
@@ -699,11 +720,11 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
-        <property name="PrefabNames" value="ranger_station_02,ranger_station_03,ranger_station_04,ranger_station_05" />
+        <property name="PrefabNames" value="ranger_station_02,ranger_station_03,ranger_station_04,ranger_station_05{zztong_t1_stations}" />
     </objective>
     """ + Objectives().objective_clear_ending
     rewards = Rewards().tier1_clear_rewards
@@ -720,11 +741,11 @@ if tier_1_pois:
         completion_key=f"{quest_id}_completion",
         difficulty_tier=str(current_tier),
     )
-    objectives = """
+    objectives = f"""
     <objective type="GotoPOISDX, QuestsExpanded">
         <property name="phase" value="1" />
         <property name="nav_object" value="quest" />
-        <property name="PrefabNames" value="ranger_station_02,ranger_station_03,ranger_station_04,ranger_station_05" />
+        <property name="PrefabNames" value="ranger_station_02,ranger_station_03,ranger_station_04,ranger_station_05{zztong_t1_stations}" />
     </objective>
     """ + Objectives().objective_fetch_ending
     rewards = Rewards().tier1_fetch_rewards
@@ -735,7 +756,7 @@ if tier_2_pois:
 
     # Farm
     current_poi = "farm"
-    poi_objectives = "farm_04,barn_03,farm_01,farm_14,farm_07,barn_02,farm_08,farm_11,farm_10,farm_03"
+    poi_objectives = f"farm_04,barn_03,farm_01,farm_14,farm_07,barn_02,farm_08,farm_11,farm_10,farm_03{zztong_t2_farm}"
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear"
     properties = property_object.properties(
@@ -827,7 +848,7 @@ if tier_2_pois:
 
     # Stores
     current_poi = "store"
-    poi_objectives = "store_electronics_02,store_bakery_01,store_autoparts_01,body_shop_01,store_hardware_01,store_book_01,store_grocery_01,post_office_01"
+    poi_objectives = f"store_electronics_02,store_bakery_01,store_autoparts_01,body_shop_01,store_hardware_01,store_book_01,store_grocery_01,post_office_01{zztong_t2_store}"
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear"
     properties = property_object.properties(
@@ -1290,7 +1311,7 @@ if tier_3_pois:
 
     # Farm
     current_poi = "farm"
-    poi_objectives = "farm_05,farm_02,farm_13,farm_15"
+    poi_objectives = f"farm_05,farm_02,farm_13,farm_15{zztong_t3_farm}"
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear"
     properties = property_object.properties(
@@ -1475,7 +1496,7 @@ if tier_3_pois:
 
     # Stores
     current_poi = "store"
-    poi_objectives = "store_grocery_03,store_discount_01,store_clothing_02,store_pharmacy_02,store_book_02,store_clothing_01,store_hardware_02"
+    poi_objectives = f"store_grocery_03,store_discount_01,store_clothing_02,store_pharmacy_02,store_book_02,store_clothing_01,store_hardware_02{zztong_t3_store}"
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear"
     properties = property_object.properties(
@@ -1570,7 +1591,7 @@ if tier_4_pois:
 
     # Military Outpost
     current_poi = "military_outpost"
-    poi_objectives = "army_camp_02,army_camp_03,army_camp_05,army_camp_01"
+    poi_objectives = f"army_camp_02,army_camp_03,army_camp_05,army_camp_01{zztong_t4_army}"
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(
@@ -1618,7 +1639,7 @@ if tier_4_pois:
 
     # City Building
     current_poi = "city_building"
-    poi_objectives = "skyscraper_04,city_center_01,downtown_strip_12,downtown_strip_11,downtown_strip_01,downtown_strip_02,downtown_strip_03,downtown_strip_04,downtown_building_02,downtown_strip_05,downtown_strip_07"
+    poi_objectives = f"skyscraper_04,city_center_01,downtown_strip_12,downtown_strip_11,downtown_strip_01,downtown_strip_02,downtown_strip_03,downtown_strip_04,downtown_building_02,downtown_strip_05,downtown_strip_07{zztong_t4_downtown}"
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(
@@ -1666,7 +1687,7 @@ if tier_4_pois:
 
     # Store
     current_poi = "store"
-    poi_objectives = "store_hardware_03,store_grocery_02,store_gun_01,store_gun_02"
+    poi_objectives = f"store_hardware_03,store_grocery_02,store_gun_01,store_gun_02{zztong_t4_store}"
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(
@@ -1717,7 +1738,7 @@ if tier_5_pois:
 
     # Skyscraper
     current_poi = "skyscraper"
-    poi_objectives = "skyscraper_01,skyscraper_02,skyscraper_03"
+    poi_objectives = f"skyscraper_01,skyscraper_02,skyscraper_03{zztong_t5_skyscraper}"
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_fetch_and_clear"
     properties = property_object.properties(

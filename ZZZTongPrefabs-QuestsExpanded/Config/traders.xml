@@ -1,0 +1,18 @@
+<config>
+	<!--Joel - Clothes and Armor-->
+	<set xpath="/traders/trader_info[@id='1']/@reset_interval">2</set>
+	<!--Bob - Tools and Vehicles-->
+	<set xpath="/traders/trader_info[@id='6']/@reset_interval">2</set>
+	<!--Jen - Medical and Books-->
+	<set xpath="/traders/trader_info[@id='2']/@reset_interval">2</set>
+	<!--Hugh - Guns & Ammo-->
+	<set xpath="/traders/trader_info[@id='7']/@reset_interval">2</set>
+	<!--Rekt - Food & Farming-->
+	<set xpath="/traders/trader_info[@id='8']/@reset_interval">2</set>
+	
+	<!--POI - Drink Vending Machines -->
+	<set xpath="/traders/trader_info[@id='4']/@reset_interval">2</set>
+	<!--POI - Food and Candy Vending Machines-->
+	<set xpath="/traders/trader_info[@id='10']/@reset_interval">2</set>
+	
+</config>
