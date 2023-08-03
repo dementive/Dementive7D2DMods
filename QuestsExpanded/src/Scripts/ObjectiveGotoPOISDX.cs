@@ -85,7 +85,7 @@ internal class ObjectiveGotoPOISDX : ObjectiveRandomPOIGoto
 
             else
             {
-                SingletonMonoBehaviour<ConnectionManager>.Instance.SendToServer(NetPackageManager.GetPackage<NetPackageGotoPOISDX>().Setup(entityAlive.entityId, OwnerQuest.QuestTags,
+                SingletonMonoBehaviour<ConnectionManager>.Instance.SendToServer(NetPackageManager.GetPackage<NetPackageGotoPOIDEM>().Setup(entityAlive.entityId, OwnerQuest.QuestTags,
                     OwnerQuest.QuestCode, NetPackageQuestGotoPoint.QuestGotoTypes.RandomPOI, OwnerQuest.QuestClass.DifficultyTier, (int)position.x, (int)position.z, 0f, 0f, 0f, -1f, biomeFilterType, biomeFilter, strPOIname));
                 CurrentValue = 1;
             }

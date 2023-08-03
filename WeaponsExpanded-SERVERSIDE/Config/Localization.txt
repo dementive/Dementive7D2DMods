@@ -2,9 +2,9 @@ Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german
 DementiveHughsGlock,items,Gun,,,Hugh's Special Glock
 DementiveHughsGlockDesc,items,Gun,,,Hugh's special glock that he modified with his own hands way back in the day, he somehow lost it long ago...but here it is in perfect condition ready for killing.
 DementiveDesertRedeemer,items,Gun,,,Desert Redeemer
-DementiveDesertRedeemerDesc,items,Gun,,,This gas-operated, semi-automatic pistol is sure to have zombies wishing they had gone vegan when they see you strapped with one of these.
-DementivegunHandgunT2Magnum44,items,Gun,,,Joe's Golden Magnum
-DementivegunHandgunT2Magnum44Desc,items,Gun,,,This gold-plated magnum bears an engraving with the name 'Joe' on it, nothing else seems to remain of Joe but not doubt Joe would want countless zombies to be killed with his magnum in his name.
+DementiveDesertRedeemerDesc,items,Gun,,,This gas-operated semi-automatic pistol is sure to have zombies wishing they had gone vegan when they see you strapped with one of these.
+DementivegunHandgunT2Magnum44,items,Gun,,,Golden Eye
+DementivegunHandgunT2Magnum44Desc,items,Gun,,,One shot... One Opportunity...
 DementivegunHandgunT3SMG5,items,Gun,,,Marc's MP5
 DementivegunHandgunT3SMG5Desc,items,Gun,,,Marc's custom homemade MP5, he made it at the beginning of the Zombie Apocalypse. Unfortunately Marc didn't make it...he got eaten only a few days after putting the final touches on his MP5.
 DementivegunMGT1AK47,items,Gun,,,Red Army AK-47
@@ -29,6 +29,8 @@ DementivemeleeToolAxeT2SteelAxe,items,Tool,,,Barbarian's Battle Axe
 DementivemeleeToolAxeT2SteelAxeDesc,items,Tool,,,An axe made for a true barbarian, perfect for cutting down enemies of all sizes.
 DementivemeleeToolAxeT3Chainsaw,items,Tool,,,Rekt's Chainsaw
 DementivemeleeToolAxeT3ChainsawDesc,items,Tool,,,Trader Rekt originally made this chainsaw to cut down trees but he soon found that it had many other uses...
+DementivemeleeToolAxeT3Auger,items,Tool,,,Gravedigger
+DementivemeleeToolAxeT3AugerDesc,items,Tool,,, You can sometimes make out the sound of chilling whispers when wielded.
 DementivemeleeWpnBatonT2StunBaton,items,Melee,,,Lightning Rod
 DementivemeleeWpnBatonT2StunBatonDesc,items,Melee,,,Someone found a way to modify the stun baton to emit 5x the normal power, some say each strike feels like lightning.
 DementivemeleeWpnClubT3SteelClub,items,Melee,,,Joel's Retribution
@@ -41,3 +43,19 @@ DementivemeleeWpnSpearT3SteelSpear,items,Melee,,,Sam's Stabbing Stick
 DementivemeleeWpnSpearT3SteelSpearDesc,items,Melee,,,Some dude named Sam put his name on this totally badass spear...sweet!
 DementivegunShotgunT2PumpShotgun,items,Gun,,,Super Pump
 DementivegunShotgunT2PumpShotgunDesc,items,Gun,,,This pump shotgun will give your enemies something to remember...for the last few seconds of their life.
+DementivemeleeWpnBladeHellHound,items,Melee,,,Hell Hound
+DementivemeleeWpnBladeHellHoundDesc,items,Melee,,,Fetch me their souls!
+DementivegunRocketFinale,items,Gun,,,The Finale
+DementivegunRocketFinaleDesc,items,Gun,,,Go out in glory.
+DementivegunBotBff,items,Gun,,,"Killer Drone"
+DementivegunBotBffDesc,items,Gun,,,Not leaving your side.
+DementivemeleeBotPapaSledge,items,Melee,,,Papa Sledge
+DementivemeleeBotPapaSledgeDesc,items,Melee,,,Take another step sweetheart.
+DementivegunBotWarden,items,Gun,,,The Warden
+DementivegunBotWardenDesc,items,Gun,,,Initiate lockdown protocol.
+DementivegunTrifecta,items,Gun,,,The Trifecta
+DementivegunTrifectaDesc,items,Gun,,,We are on a roll.
+DementivegunPacifier,items,Gun,,,The Pacifier
+DementivegunPacifierDesc,items,Gun,,,Lay them to rest.
+DementivemeleeToolArchitect,items,Melee,,,The Architect
+DementivemeleeToolArchitectDesc,items,Melee,,,Law of equivelent exchange.

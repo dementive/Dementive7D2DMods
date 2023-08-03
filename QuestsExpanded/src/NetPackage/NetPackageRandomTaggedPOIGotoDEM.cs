@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class NetPackageRandomTaggedPOIGotoSDX : NetPackage
+public class NetPackageRandomTaggedPOIGotoDEM : NetPackage
 {
     // Private fields from NetPackageQuestGotoPoint
 
@@ -179,7 +179,7 @@ public class NetPackageRandomTaggedPOIGotoSDX : NetPackage
         _bw.Write(minSearchDistance);
     }
 
-    public NetPackageRandomTaggedPOIGotoSDX Setup(
+    public NetPackageRandomTaggedPOIGotoDEM Setup(
         int _ownerId,
         FastTags _questTags,
         int _questCode,

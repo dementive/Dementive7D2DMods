@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class NetPackageGotoPOISDX : NetPackage
+public class NetPackageGotoPOIDEM : NetPackage
 {
-    public NetPackageGotoPOISDX Setup(int _playerId, FastTags _questTags, int _questCode, NetPackageQuestGotoPoint.QuestGotoTypes _gotoType, byte _difficulty, int posX = 0, int posZ = -1, float sizeX = 0f, float sizeY = 0f, float sizeZ = 0f, float offset = -1f, BiomeFilterTypes _biomeFilterType = BiomeFilterTypes.AnyBiome, string _biomeFilter = "", string _POIFilter = "")
+    public NetPackageGotoPOIDEM Setup(int _playerId, FastTags _questTags, int _questCode, NetPackageQuestGotoPoint.QuestGotoTypes _gotoType, byte _difficulty, int posX = 0, int posZ = -1, float sizeX = 0f, float sizeY = 0f, float sizeZ = 0f, float offset = -1f, BiomeFilterTypes _biomeFilterType = BiomeFilterTypes.AnyBiome, string _biomeFilter = "", string _POIFilter = "")
     {
         this.playerId = _playerId;
         this.questCode = _questCode;
