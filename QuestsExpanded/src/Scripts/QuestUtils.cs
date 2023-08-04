@@ -18,7 +18,7 @@ public static class QuestUtils
         {
             if (GamePrefs.GetBool(EnumGamePrefs.DebugMenuEnabled))
             {
-                Log.Out($"GotoPOISDX: No Prefabs by this name found: {poiName} Biome Filter Type: {biomeFilterType} Biome Filter: {biomeFilter}");
+                Log.Out($"GotoPOIDEM: No Prefabs by this name found: {poiName} Biome Filter Type: {biomeFilterType} Biome Filter: {biomeFilter}");
             }
             return null;
         }
@@ -56,7 +56,7 @@ public static class QuestUtils
                 if (biomeFilterType == BiomeFilterTypes.OnlyBiome && biomeAt.m_sBiomeName != biomeFilter)
                 {
                     if (GamePrefs.GetBool(EnumGamePrefs.DebugMenuEnabled))
-                        Log.Out($"GotoPOISDX: Prefab Filtered based on Biome Filter Type: {biomeFilterType}  Biome Filter: {biomeFilter}");
+                        Log.Out($"GotoPOIDEM: Prefab Filtered based on Biome Filter Type: {biomeFilterType}  Biome Filter: {biomeFilter}");
 
                     continue;
                 }
@@ -75,7 +75,7 @@ public static class QuestUtils
                         if (biomeAt.m_sBiomeName == array[j])
                         {
                             if (GamePrefs.GetBool(EnumGamePrefs.DebugMenuEnabled))
-                                Log.Out($"GotoPOISDX: Prefab excluded based on Biome Filter Type: {biomeFilterType}  Biome Filter: {biomeFilter}");
+                                Log.Out($"GotoPOIDEM: Prefab excluded based on Biome Filter Type: {biomeFilterType}  Biome Filter: {biomeFilter}");
 
                             flag = true;
                             break;
@@ -90,13 +90,13 @@ public static class QuestUtils
 
             float dist = Vector3.Distance(t.boundingBoxPosition, position);
             if (GamePrefs.GetBool(EnumGamePrefs.DebugMenuEnabled))
-                Log.Out($"GotoPOISDX: Prefab {t.name} Found at {t.boundingBoxPosition} Distance: {dist} {biomeFilterType}  Biome Filter: {biomeFilter}");
+                Log.Out($"GotoPOIDEM: Prefab {t.name} Found at {t.boundingBoxPosition} Distance: {dist} {biomeFilterType}  Biome Filter: {biomeFilter}");
 
             if (dist < minDist)
             {
                 if (GamePrefs.GetBool(EnumGamePrefs.DebugMenuEnabled))
                     if (prefab != null)
-                        Log.Out($"GotoPOISDX: Found closer Prefab {t.name} than {prefab.name} Old distance {minDist}");
+                        Log.Out($"GotoPOIDEM: Found closer Prefab {t.name} than {prefab.name} Old distance {minDist}");
                 prefab = t;
                 minDist = dist;
             }

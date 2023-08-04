@@ -3,13 +3,13 @@ using UnityEngine;
 using Random = System.Random;
 
 /*
- * 	<objective type="GotoPOISDX, QuestsExpanded" value="500-800" phase="1">
+ * 	<objective type="GotoPOIDEM, QuestsExpanded" value="500-800" phase="1">
 			<property name="completion_distance" value="50" />
             <property name="PrefabName" value="prefabName" />
             <property name="PrefabNames" value="prefabName,prefabName2" />
 		</objective>
 */
-internal class ObjectiveGotoPOISDX : ObjectiveRandomPOIGoto
+internal class ObjectiveGotoPOIDEM : ObjectiveRandomPOIGoto
 {
     public string strPOIname = "";
 
@@ -17,7 +17,7 @@ internal class ObjectiveGotoPOISDX : ObjectiveRandomPOIGoto
 
     public override BaseObjective Clone()
     {
-        var objectiveGotoPOI = new ObjectiveGotoPOISDX();
+        var objectiveGotoPOI = new ObjectiveGotoPOIDEM();
         CopyValues(objectiveGotoPOI);
         objectiveGotoPOI.strPOIname = strPOIname;
         return objectiveGotoPOI;
@@ -121,7 +121,7 @@ internal class ObjectiveGotoPOISDX : ObjectiveRandomPOIGoto
             var index = random.Next(TempList.Count);
 
             if (TempList.Count == 0)
-                Debug.Log(" ObjectiveGoToPOISDX PrefabNames Contains no prefabs.");
+                Debug.Log(" ObjectiveGoToPOIDEM PrefabNames Contains no prefabs.");
             else
                 strPOIname = TempList[index];
         }

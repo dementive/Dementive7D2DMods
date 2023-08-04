@@ -54,7 +54,7 @@ public class NetPackageRandomTaggedPOIGotoDEM : NetPackage
             // Why do this 5 times? Dunno - it's how NetPackageQuestGotoPoint does it
             for (int i = 0; i < 5; i++)
             {
-                // Same logic as ObjectiveRandomTaggedPOIGotoSDX
+                // Same logic as ObjectiveRandomTaggedPOIGotoDEM
                 if (questOwner is EntityTrader trader && trader.traderArea != null)
                 {
                     usedPoiLocations = primaryPlayer.QuestJournal.GetUsedPOIs(
@@ -129,7 +129,7 @@ public class NetPackageRandomTaggedPOIGotoDEM : NetPackage
 
         for (int j = 0; j < quest.Objectives.Count; j++)
         {
-            if (quest.Objectives[j] is ObjectiveRandomTaggedPOIGotoSDX taggedGoto)
+            if (quest.Objectives[j] is ObjectiveRandomTaggedPOIGotoDEM taggedGoto)
             {
                 taggedGoto.FinalizePoint(position, size);
             }
