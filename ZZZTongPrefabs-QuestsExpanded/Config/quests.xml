@@ -592,7 +592,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		        <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		        <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		            <property name="phase" value="1" />
 		            <property name="nav_object" value="quest" />
 		            <property name="include_tags" value="downtown, commercial, industrial" />
@@ -649,7 +649,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		        <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		        <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		            <property name="phase" value="1" />
 		            <property name="nav_object" value="quest" />
 		            <property name="include_tags" value="downtown, commercial, industrial" />
@@ -710,7 +710,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="downtown, commercial, industrial" />
@@ -770,7 +770,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="downtown, commercial, industrial" />
@@ -833,7 +833,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="downtown, commercial, industrial" />
@@ -893,7 +893,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="downtown, commercial, industrial" />
@@ -956,7 +956,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="downtown, commercial, industrial" />
@@ -1016,7 +1016,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="downtown, commercial, industrial" />
@@ -1079,7 +1079,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		        <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		        <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		            <property name="phase" value="1" />
 		            <property name="nav_object" value="quest" />
 		            <property name="include_tags" value="countrytown, countryresidential, rural" />
@@ -1136,7 +1136,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		        <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		        <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		            <property name="phase" value="1" />
 		            <property name="nav_object" value="quest" />
 		            <property name="include_tags" value="countrytown, countryresidential, rural" />
@@ -1197,7 +1197,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="countrytown, countryresidential, rural" />
@@ -1257,7 +1257,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="countrytown, countryresidential, rural" />
@@ -1320,7 +1320,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="countrytown, countryresidential, rural" />
@@ -1380,7 +1380,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="countrytown, countryresidential, rural" />
@@ -1443,7 +1443,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="countrytown, countryresidential, rural" />
@@ -1503,7 +1503,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="countrytown, countryresidential, rural" />
@@ -1566,7 +1566,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="cabin_01,cabin_06,cabin_09,cabin_11,cabin_07,cabin_05,cabin_08,cabin_14,cabin_02,cabin_12,cabin_15,cabin_10,cabin_04,cabin_16,zztong_cabin_fort_01" />
@@ -1623,7 +1623,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="cabin_01,cabin_06,cabin_09,cabin_11,cabin_07,cabin_05,cabin_08,cabin_14,cabin_02,cabin_12,cabin_15,cabin_10,cabin_04,cabin_16,zztong_cabin_fort_01" />
@@ -1684,7 +1684,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="survivor_site_02,survivor_site_05,survivor_site_06,survivor_site_08,survivor_site_03,survivor_site_09,survivor_site_01,survivor_site_10,survivor_site_11,survivor_site_07" />
@@ -1741,7 +1741,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="survivor_site_02,survivor_site_05,survivor_site_06,survivor_site_08,survivor_site_03,survivor_site_09,survivor_site_01,survivor_site_10,survivor_site_11,survivor_site_07" />
@@ -1802,7 +1802,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="fastfood_03,fastfood_02,fastfood_01,fastfood_05" />
@@ -1859,7 +1859,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="fastfood_03,fastfood_02,fastfood_01,fastfood_05" />
@@ -1920,7 +1920,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="cave_05,cave_01,cave_04,cave_03,cave_02,zztong_cave_01" />
@@ -1977,7 +1977,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="cave_05,cave_01,cave_04,cave_03,cave_02,zztong_cave_01" />
@@ -2038,7 +2038,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_electronics_01,store_grocery_05,store_grocery_04,store_grocery_06,store_laundry_01,store_pharmacy_01,zztong_car_wash_01,zztong_pharmacy_01,zztong_store_xs_01,zztong_store_xs_02,zztong_store_xs_04,zztong_store_xs_05,zztong_store_xs_07,zztong_store_xs_08,zztong_store_xs_09,zztong_store_xs_11,zztong_store_xs_12,zztong_store_xs_13,zztong_store_xs_15" />
@@ -2095,7 +2095,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_electronics_01,store_grocery_05,store_grocery_04,store_grocery_06,store_laundry_01,store_pharmacy_01,zztong_car_wash_01,zztong_pharmacy_01,zztong_store_xs_01,zztong_store_xs_02,zztong_store_xs_04,zztong_store_xs_05,zztong_store_xs_07,zztong_store_xs_08,zztong_store_xs_09,zztong_store_xs_11,zztong_store_xs_12,zztong_store_xs_13,zztong_store_xs_15" />
@@ -2156,7 +2156,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="gas_station_11,gas_station_04,gas_station_08,gas_station_10,gas_station_01,gas_station_09,fastfood_04,gas_station_03,gas_station_02,gas_station_07" />
@@ -2213,7 +2213,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="gas_station_11,gas_station_04,gas_station_08,gas_station_10,gas_station_01,gas_station_09,fastfood_04,gas_station_03,gas_station_02,gas_station_07" />
@@ -2274,7 +2274,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="diner_01,diner_02,diner_03,diner_04" />
@@ -2331,7 +2331,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="diner_01,diner_02,diner_03,diner_04" />
@@ -2392,7 +2392,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="ranger_station_02,ranger_station_03,ranger_station_04,ranger_station_05,zztong_cabin_fort_01,zztong_tfp_ranger_station_01" />
@@ -2449,7 +2449,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="ranger_station_02,ranger_station_03,ranger_station_04,ranger_station_05,zztong_cabin_fort_01,zztong_tfp_ranger_station_01" />
@@ -2510,7 +2510,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="farm_04,barn_03,farm_01,farm_14,farm_07,barn_02,farm_08,farm_11,farm_10,farm_03,zztong_farm_01,zztong_farm_03,zztong_farm_07" />
@@ -2570,7 +2570,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="farm_04,barn_03,farm_01,farm_14,farm_07,barn_02,farm_08,farm_11,farm_10,farm_03,zztong_farm_01,zztong_farm_03,zztong_farm_07" />
@@ -2633,7 +2633,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="farm_04,barn_03,farm_01,farm_14,farm_07,barn_02,farm_08,farm_11,farm_10,farm_03,zztong_farm_01,zztong_farm_03,zztong_farm_07" />
@@ -2700,7 +2700,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="farm_04,barn_03,farm_01,farm_14,farm_07,barn_02,farm_08,farm_11,farm_10,farm_03,zztong_farm_01,zztong_farm_03,zztong_farm_07" />
@@ -2782,7 +2782,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_electronics_02,store_bakery_01,store_autoparts_01,body_shop_01,store_hardware_01,store_book_01,store_grocery_01,post_office_01,zztong_rebirth_01,zztong_restaurant_01,zztong_store_s_02,zztong_store_xs_03,zztong_store_xs_06,zztong_store_xs_10,zztong_strip_mall_01" />
@@ -2842,7 +2842,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_electronics_02,store_bakery_01,store_autoparts_01,body_shop_01,store_hardware_01,store_book_01,store_grocery_01,post_office_01,zztong_rebirth_01,zztong_restaurant_01,zztong_store_s_02,zztong_store_xs_03,zztong_store_xs_06,zztong_store_xs_10,zztong_strip_mall_01" />
@@ -2905,7 +2905,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_electronics_02,store_bakery_01,store_autoparts_01,body_shop_01,store_hardware_01,store_book_01,store_grocery_01,post_office_01,zztong_rebirth_01,zztong_restaurant_01,zztong_store_s_02,zztong_store_xs_03,zztong_store_xs_06,zztong_store_xs_10,zztong_strip_mall_01" />
@@ -2972,7 +2972,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_electronics_02,store_bakery_01,store_autoparts_01,body_shop_01,store_hardware_01,store_book_01,store_grocery_01,post_office_01,zztong_rebirth_01,zztong_restaurant_01,zztong_store_s_02,zztong_store_xs_03,zztong_store_xs_06,zztong_store_xs_10,zztong_strip_mall_01" />
@@ -3054,7 +3054,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="cabin_18,cabin_13,cabin_03,cabin_17" />
@@ -3114,7 +3114,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="cabin_18,cabin_13,cabin_03,cabin_17" />
@@ -3177,7 +3177,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="cabin_18,cabin_13,cabin_03,cabin_17" />
@@ -3244,7 +3244,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="cabin_18,cabin_13,cabin_03,cabin_17" />
@@ -3326,7 +3326,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="office_03,office_02,office_04" />
@@ -3386,7 +3386,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="office_03,office_02,office_04" />
@@ -3449,7 +3449,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="office_03,office_02,office_04" />
@@ -3516,7 +3516,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="office_03,office_02,office_04" />
@@ -3598,7 +3598,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="army_barracks_01,army_camp_04,bombshelter_02,ranger_station_07,ranger_station_01" />
@@ -3658,7 +3658,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="army_barracks_01,army_camp_04,bombshelter_02,ranger_station_07,ranger_station_01" />
@@ -3721,7 +3721,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="army_barracks_01,army_camp_04,bombshelter_02,ranger_station_07,ranger_station_01" />
@@ -3788,7 +3788,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="army_barracks_01,army_camp_04,bombshelter_02,ranger_station_07,ranger_station_01" />
@@ -3874,7 +3874,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="warehouse_08,warehouse_05,warehouse_02" />
@@ -3934,7 +3934,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="warehouse_08,warehouse_05,warehouse_02" />
@@ -3997,7 +3997,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="warehouse_08,warehouse_05,warehouse_02" />
@@ -4064,7 +4064,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="warehouse_08,warehouse_05,warehouse_02" />
@@ -4150,7 +4150,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="farm_05,farm_02,farm_13,farm_15,zztong_farm_08" />
@@ -4210,7 +4210,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="farm_05,farm_02,farm_13,farm_15,zztong_farm_08" />
@@ -4273,7 +4273,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="farm_05,farm_02,farm_13,farm_15,zztong_farm_08" />
@@ -4340,7 +4340,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="farm_05,farm_02,farm_13,farm_15,zztong_farm_08" />
@@ -4426,7 +4426,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="motel_04,apartments_03,motel_03" />
@@ -4486,7 +4486,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="motel_04,apartments_03,motel_03" />
@@ -4549,7 +4549,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="motel_04,apartments_03,motel_03" />
@@ -4616,7 +4616,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="motel_04,apartments_03,motel_03" />
@@ -4702,7 +4702,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_grocery_03,store_discount_01,store_clothing_02,store_pharmacy_02,store_book_02,store_clothing_01,store_hardware_02,zztong_store_s_01,zztong_store_xs_14,zztong_strip_mall_02" />
@@ -4762,7 +4762,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_grocery_03,store_discount_01,store_clothing_02,store_pharmacy_02,store_book_02,store_clothing_01,store_hardware_02,zztong_store_s_01,zztong_store_xs_14,zztong_strip_mall_02" />
@@ -4825,7 +4825,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_grocery_03,store_discount_01,store_clothing_02,store_pharmacy_02,store_book_02,store_clothing_01,store_hardware_02,zztong_store_s_01,zztong_store_xs_14,zztong_strip_mall_02" />
@@ -4892,7 +4892,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_grocery_03,store_discount_01,store_clothing_02,store_pharmacy_02,store_book_02,store_clothing_01,store_hardware_02,zztong_store_s_01,zztong_store_xs_14,zztong_strip_mall_02" />
@@ -4978,7 +4978,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="army_camp_02,army_camp_03,army_camp_05,army_camp_01,zztong_ntt_hq_01" />
@@ -5045,7 +5045,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="army_camp_02,army_camp_03,army_camp_05,army_camp_01,zztong_ntt_hq_01" />
@@ -5131,7 +5131,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="skyscraper_04,city_center_01,downtown_strip_12,downtown_strip_11,downtown_strip_01,downtown_strip_02,downtown_strip_03,downtown_strip_04,downtown_building_02,downtown_strip_05,downtown_strip_07,zztong_apartment_01,zztong_apartment_02,zztong_apartment_03" />
@@ -5198,7 +5198,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="skyscraper_04,city_center_01,downtown_strip_12,downtown_strip_11,downtown_strip_01,downtown_strip_02,downtown_strip_03,downtown_strip_04,downtown_building_02,downtown_strip_05,downtown_strip_07,zztong_apartment_01,zztong_apartment_02,zztong_apartment_03" />
@@ -5284,7 +5284,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_hardware_03,store_grocery_02,store_gun_01,store_gun_02,zztong_warehouse_02" />
@@ -5351,7 +5351,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_hardware_03,store_grocery_02,store_gun_01,store_gun_02,zztong_warehouse_02" />
@@ -5437,7 +5437,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="skyscraper_01,skyscraper_02,skyscraper_03,zztong_office_building_03,zztong_skyscraper_01,zztong_tfp_skyscraper_02" />
@@ -5504,7 +5504,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="skyscraper_01,skyscraper_02,skyscraper_03,zztong_office_building_03,zztong_skyscraper_01,zztong_tfp_skyscraper_02" />
@@ -5598,7 +5598,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="factory_01,factory_02,factory_03" />
@@ -5665,7 +5665,7 @@
 		    <property name="repeatable" value="true"/>
 		    <property name="completiontype" value="TurnIn"/>
 		    
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="factory_01,factory_02,factory_03" />
@@ -5762,7 +5762,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="downtown, commercial, industrial" />
@@ -5825,7 +5825,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="downtown, commercial, industrial" />
@@ -5891,7 +5891,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="downtown, commercial, industrial" />
@@ -5954,7 +5954,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="downtown, commercial, industrial" />
@@ -6020,7 +6020,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="downtown, commercial, industrial" />
@@ -6083,7 +6083,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="downtown, commercial, industrial" />
@@ -6149,7 +6149,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="countrytown, countryresidential, rural" />
@@ -6212,7 +6212,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="countrytown, countryresidential, rural" />
@@ -6278,7 +6278,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="countrytown, countryresidential, rural" />
@@ -6341,7 +6341,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="countrytown, countryresidential, rural" />
@@ -6407,7 +6407,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="countrytown, countryresidential, rural" />
@@ -6470,7 +6470,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="RandomTaggedPOIGotoSDX, QuestsExpanded">
+		    <objective type="RandomTaggedPOIGotoDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="include_tags" value="countrytown, countryresidential, rural" />
@@ -6536,7 +6536,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="farm_04,barn_03,farm_01,farm_14,farm_07,barn_02,farm_08,farm_11,farm_10,farm_03,zztong_farm_01,zztong_farm_03,zztong_farm_07" />
@@ -6599,7 +6599,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="farm_04,barn_03,farm_01,farm_14,farm_07,barn_02,farm_08,farm_11,farm_10,farm_03,zztong_farm_01,zztong_farm_03,zztong_farm_07" />
@@ -6665,7 +6665,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="farm_04,barn_03,farm_01,farm_14,farm_07,barn_02,farm_08,farm_11,farm_10,farm_03,zztong_farm_01,zztong_farm_03,zztong_farm_07" />
@@ -6735,7 +6735,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="farm_04,barn_03,farm_01,farm_14,farm_07,barn_02,farm_08,farm_11,farm_10,farm_03,zztong_farm_01,zztong_farm_03,zztong_farm_07" />
@@ -6820,7 +6820,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_electronics_02,store_bakery_01,store_autoparts_01,body_shop_01,store_hardware_01,store_book_01,store_grocery_01,post_office_01,zztong_rebirth_01,zztong_restaurant_01,zztong_store_s_02,zztong_store_xs_03,zztong_store_xs_06,zztong_store_xs_10,zztong_strip_mall_01" />
@@ -6883,7 +6883,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_electronics_02,store_bakery_01,store_autoparts_01,body_shop_01,store_hardware_01,store_book_01,store_grocery_01,post_office_01,zztong_rebirth_01,zztong_restaurant_01,zztong_store_s_02,zztong_store_xs_03,zztong_store_xs_06,zztong_store_xs_10,zztong_strip_mall_01" />
@@ -6949,7 +6949,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_electronics_02,store_bakery_01,store_autoparts_01,body_shop_01,store_hardware_01,store_book_01,store_grocery_01,post_office_01,zztong_rebirth_01,zztong_restaurant_01,zztong_store_s_02,zztong_store_xs_03,zztong_store_xs_06,zztong_store_xs_10,zztong_strip_mall_01" />
@@ -7019,7 +7019,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_electronics_02,store_bakery_01,store_autoparts_01,body_shop_01,store_hardware_01,store_book_01,store_grocery_01,post_office_01,zztong_rebirth_01,zztong_restaurant_01,zztong_store_s_02,zztong_store_xs_03,zztong_store_xs_06,zztong_store_xs_10,zztong_strip_mall_01" />
@@ -7104,7 +7104,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="cabin_18,cabin_13,cabin_03,cabin_17" />
@@ -7167,7 +7167,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="cabin_18,cabin_13,cabin_03,cabin_17" />
@@ -7233,7 +7233,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="cabin_18,cabin_13,cabin_03,cabin_17" />
@@ -7303,7 +7303,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="cabin_18,cabin_13,cabin_03,cabin_17" />
@@ -7388,7 +7388,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="office_03,office_02,office_04" />
@@ -7451,7 +7451,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="office_03,office_02,office_04" />
@@ -7517,7 +7517,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="office_03,office_02,office_04" />
@@ -7587,7 +7587,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="office_03,office_02,office_04" />
@@ -7672,7 +7672,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="army_barracks_01,army_camp_04,bombshelter_02,ranger_station_07,ranger_station_01" />
@@ -7735,7 +7735,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="army_barracks_01,army_camp_04,bombshelter_02,ranger_station_07,ranger_station_01" />
@@ -7801,7 +7801,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="army_barracks_01,army_camp_04,bombshelter_02,ranger_station_07,ranger_station_01" />
@@ -7871,7 +7871,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="army_barracks_01,army_camp_04,bombshelter_02,ranger_station_07,ranger_station_01" />
@@ -7960,7 +7960,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="warehouse_08,warehouse_05,warehouse_02" />
@@ -8023,7 +8023,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="warehouse_08,warehouse_05,warehouse_02" />
@@ -8089,7 +8089,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="warehouse_08,warehouse_05,warehouse_02" />
@@ -8159,7 +8159,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="warehouse_08,warehouse_05,warehouse_02" />
@@ -8248,7 +8248,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="farm_05,farm_02,farm_13,farm_15,zztong_farm_08" />
@@ -8311,7 +8311,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="farm_05,farm_02,farm_13,farm_15,zztong_farm_08" />
@@ -8377,7 +8377,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="farm_05,farm_02,farm_13,farm_15,zztong_farm_08" />
@@ -8447,7 +8447,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="farm_05,farm_02,farm_13,farm_15,zztong_farm_08" />
@@ -8536,7 +8536,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="motel_04,apartments_03,motel_03" />
@@ -8599,7 +8599,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="motel_04,apartments_03,motel_03" />
@@ -8665,7 +8665,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="motel_04,apartments_03,motel_03" />
@@ -8735,7 +8735,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="motel_04,apartments_03,motel_03" />
@@ -8824,7 +8824,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_grocery_03,store_discount_01,store_clothing_02,store_pharmacy_02,store_book_02,store_clothing_01,store_hardware_02,zztong_store_s_01,zztong_store_xs_14,zztong_strip_mall_02" />
@@ -8887,7 +8887,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_grocery_03,store_discount_01,store_clothing_02,store_pharmacy_02,store_book_02,store_clothing_01,store_hardware_02,zztong_store_s_01,zztong_store_xs_14,zztong_strip_mall_02" />
@@ -8953,7 +8953,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_grocery_03,store_discount_01,store_clothing_02,store_pharmacy_02,store_book_02,store_clothing_01,store_hardware_02,zztong_store_s_01,zztong_store_xs_14,zztong_strip_mall_02" />
@@ -9023,7 +9023,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_grocery_03,store_discount_01,store_clothing_02,store_pharmacy_02,store_book_02,store_clothing_01,store_hardware_02,zztong_store_s_01,zztong_store_xs_14,zztong_strip_mall_02" />
@@ -9112,7 +9112,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="army_camp_02,army_camp_03,army_camp_05,army_camp_01,zztong_ntt_hq_01" />
@@ -9182,7 +9182,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="army_camp_02,army_camp_03,army_camp_05,army_camp_01,zztong_ntt_hq_01" />
@@ -9271,7 +9271,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="skyscraper_04,city_center_01,downtown_strip_12,downtown_strip_11,downtown_strip_01,downtown_strip_02,downtown_strip_03,downtown_strip_04,downtown_building_02,downtown_strip_05,downtown_strip_07,zztong_apartment_01,zztong_apartment_02,zztong_apartment_03" />
@@ -9341,7 +9341,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="skyscraper_04,city_center_01,downtown_strip_12,downtown_strip_11,downtown_strip_01,downtown_strip_02,downtown_strip_03,downtown_strip_04,downtown_building_02,downtown_strip_05,downtown_strip_07,zztong_apartment_01,zztong_apartment_02,zztong_apartment_03" />
@@ -9430,7 +9430,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_hardware_03,store_grocery_02,store_gun_01,store_gun_02,zztong_warehouse_02" />
@@ -9500,7 +9500,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="store_hardware_03,store_grocery_02,store_gun_01,store_gun_02,zztong_warehouse_02" />
@@ -9589,7 +9589,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="skyscraper_01,skyscraper_02,skyscraper_03,zztong_office_building_03,zztong_skyscraper_01,zztong_tfp_skyscraper_02" />
@@ -9659,7 +9659,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="skyscraper_01,skyscraper_02,skyscraper_03,zztong_office_building_03,zztong_skyscraper_01,zztong_tfp_skyscraper_02" />
@@ -9756,7 +9756,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="factory_01,factory_02,factory_03" />
@@ -9826,7 +9826,7 @@
 		    <property name="spawn_multiplier" value="2"/>
 		    <property name="gamestage_mod" value=".6"/>
 		    <property name="gamestage_bonus" value="30"/>
-		    <objective type="GotoPOISDX, QuestsExpanded">
+		    <objective type="GotoPOIDEM, QuestsExpanded">
 		        <property name="phase" value="1" />
 		        <property name="nav_object" value="quest" />
 		        <property name="PrefabNames" value="factory_01,factory_02,factory_03" />

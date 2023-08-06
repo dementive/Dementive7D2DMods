@@ -89,7 +89,7 @@ public class NetPackageGotoPOIDEM : NetPackage
             {
                 Log.Out($"Objective position: {this.position}");
                 var num2 = (int)GameManager.Instance.World.GetHeightAt(position.x, position.y);
-                ((ObjectiveGotoPOISDX)quest.Objectives[j]).FinalizePoint(new Vector3(this.position.x, num2, this.position.y), this.size);
+                ((ObjectiveGotoPOIDEM)quest.Objectives[j]).FinalizePoint(new Vector3(this.position.x, num2, this.position.y), this.size);
             }
         }
     }

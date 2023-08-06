@@ -12,7 +12,7 @@ using UnityEngine;
 /// </summary>
 /// <example>
 /// <code>
-/// &lt;objective type="RandomTaggedPOIGotoSDX, WeaponsExpanded">
+/// &lt;objective type="RandomTaggedPOIGotoDEM, WeaponsExpanded">
 ///     &lt;!-- Standard objective properties not listed... -->
 ///     &lt;property name="include_tags" value="downtown,industrial"/>
 ///     &lt;property name="exclude_tags" value="rural,wilderness"/>
@@ -20,7 +20,7 @@ using UnityEngine;
 /// &lt;/objective>
 /// </code>
 /// </example>
-public class ObjectiveRandomTaggedPOIGotoSDX : ObjectiveRandomPOIGoto
+public class ObjectiveRandomTaggedPOIGotoDEM : ObjectiveRandomPOIGoto
 {
     /// <summary>
     /// The name of the property used to include POI tags.
@@ -173,7 +173,7 @@ public class ObjectiveRandomTaggedPOIGotoSDX : ObjectiveRandomPOIGoto
             Vector2 prefabCenter = prefabInstance.GetCenterXZ();
             if (prefabCenter.x == -0.1f && prefabCenter.y == -0.1f)
             {
-                Log.Error("ObjectiveRandomTaggedPOIGotoSDX: No POI found.");
+                Log.Error("ObjectiveRandomTaggedPOIGotoDEM: No POI found.");
                 return Vector3.zero;
             }
 
@@ -245,7 +245,7 @@ public class ObjectiveRandomTaggedPOIGotoSDX : ObjectiveRandomPOIGoto
     /// <returns></returns>
     public override BaseObjective Clone()
     {
-        var objectiveRandomPOIGoto = new ObjectiveRandomTaggedPOIGotoSDX();
+        var objectiveRandomPOIGoto = new ObjectiveRandomTaggedPOIGotoDEM();
         CopyValues(objectiveRandomPOIGoto);
         return objectiveRandomPOIGoto;
     }
@@ -257,7 +257,7 @@ public class ObjectiveRandomTaggedPOIGotoSDX : ObjectiveRandomPOIGoto
     protected override void CopyValues(BaseObjective objective)
     {
         base.CopyValues(objective);
-        ObjectiveRandomTaggedPOIGotoSDX obj = (ObjectiveRandomTaggedPOIGotoSDX)objective;
+        ObjectiveRandomTaggedPOIGotoDEM obj = (ObjectiveRandomTaggedPOIGotoDEM)objective;
         obj.IncludeTags = IncludeTags;
         obj.ExcludeTags = ExcludeTags;
         obj.MinSearchDistance = MinSearchDistance;
