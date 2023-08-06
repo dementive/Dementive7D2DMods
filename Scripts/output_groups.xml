@@ -1,0 +1,7247 @@
+<configs>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS1']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS2']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS5']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS8']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS11']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS14']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS18']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS22']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS27']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS31']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS36']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS41']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS46']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS52']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS58']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS64']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS70']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS76']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS82']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS89']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS96']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS103']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS110']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS117']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS125']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS132']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS140']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS148']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS156']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS164']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS172']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS181']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS189']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS198']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS207']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS216']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS225']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS234']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS243']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS252']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS262']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS272']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS281']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS291']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS301']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS311']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS322']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS332']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS343']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS364']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS374']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS385']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS396']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS407']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS419']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS430']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS441']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS453']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS464']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS476']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS488']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS500']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS512']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS524']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS5']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS536']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS548']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS560']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS573']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS585']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='sleeperHordeStageGS598']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS1']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS3']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS8']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS13']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS21']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS30']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS40']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS51']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS65']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS79']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS95']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS112']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS130']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS150']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS171']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS194']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS217']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS242']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS268']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS296']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS325']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS355']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS386']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS419']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS452']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS488']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS524']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassHordeStageGS561']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS1']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS3']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS8']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS13']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS21']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS30']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS40']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS51']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS65']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS79']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS95']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS112']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS130']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS150']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS171']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS194']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS217']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS242']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS268']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS296']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS325']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS355']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS386']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS419']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS452']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS488']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS1']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS524']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS561']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS600']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS640']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='badassOnlyHordeStageGS681']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS1']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS2']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS5']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS8']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS11']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS14']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS18']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS22']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS27']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS31']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS36']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS41']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS46']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS52']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS58']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS64']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS70']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS76']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS82']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS89']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS96']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS103']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS110']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS117']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS125']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS132']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS140']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS148']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS156']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS164']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS172']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS181']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS189']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS198']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS207']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS216']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS225']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS234']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS243']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS252']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS262']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS272']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS281']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS291']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS301']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS311']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS322']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS332']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS343']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS353']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS364']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS374']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS385']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS396']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS407']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS419']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS430']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS441']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS453']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS464']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS476']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS488']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='scoutHordeStageGS500']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS1']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS2']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS4']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS7']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS10']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS13']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS16']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS19']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS23']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS27']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS31']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS35']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS40']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS44']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS49']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS54']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS59']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS64']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS69']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS74']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS80']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS85']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS91']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS97']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS103']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS109']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS115']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS121']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS127']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS133']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS140']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS147']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS153']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS160']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS167']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS174']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS181']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS188']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS195']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS202']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS210']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS217']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS225']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS232']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS240']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS247']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS255']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS263']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS271']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS279']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS287']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS295']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS304']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS312']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS320']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS329']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS337']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS346']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS354']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS363']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS372']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS381']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS389']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS398']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS407']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS417']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS426']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS435']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS444']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS453']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS463']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS472']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS482']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS491']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS501']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS510']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS520']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS530']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS540']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='feralHordeStageGS550']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS1']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS2']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS5']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS8']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS11']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS14']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS18']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS22']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS27']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS31']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS36']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS41']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS46']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS52']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS58']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS64']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS70']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS76']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS82']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS89']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS96']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS103']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS110']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS117']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS125']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS132']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS140']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS148']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS156']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS164']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS172']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS181']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS189']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS198']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS207']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS216']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS225']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS234']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS243']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS252']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS262']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS272']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS281']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS291']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS301']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS311']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS322']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS332']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS343']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS353']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS364']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS374']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS385']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS396']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS407']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS419']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS430']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS441']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS453']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS464']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS476']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS488']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS500']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS512']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS524']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS536']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS548']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS560']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS573']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS585']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+<csv xpath="/entitygroups/entitygroup[@name='defenseHordeStageGS598']/text()" delim="\n" op="add" >
+    zombieGuppyThorton
+    zombieGuppyStripper
+    zombieGuppySeth
+    zombieGuppySecurityGuard
+    zombieGuppyPoliceRalph
+    zombieGuppyPete
+    zombieGuppyOldManZombie
+    zombieGuppyCheerleader
+    zombieGuppyNurse
+    zombieGuppyLucy
+    zombieGuppyHungryJeff
+    zombieGuppyHungryGeorge
+    zombieGuppyGermanCosplay
+    zombieGuppyClot
+    zombieGuppyCarmela
+    zombieGuppyBilly
+    zombieGuppyBelle
+    zombieGuppyAlma
+    none, 0.0
+</csv>
+</configs>
