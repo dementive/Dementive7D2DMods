@@ -24,6 +24,16 @@ normal_zombies = """
     zombieGuppyBelle
     zombieGuppyBeatCop
     zombieGuppyAlma
+    zombieGuppyGlenda
+    zombieGuppyBonnie
+    zombieGuppyJessica
+    zombieGuppyTravis
+    zombieGuppyChris
+    zombieGuppyDillon
+    zombieGuppyBetty
+    zombieGuppyCletus
+    zombieGuppyNoArms
+    zombieGuppyRiotGear
     none, 0.0
 """
 
@@ -53,17 +63,36 @@ wasteland_zombies = """
     zombieGuppyBeatCop
     zombieGuppyAlma
     zombieGuppyBabyBoomer
+    zombieGuppyEmaciated
+    zombieGuppyBones
+    zombieGuppyGlenda
+    zombieGuppyBonnie
+    zombieGuppyJessica
+    zombieGuppyTravis
+    zombieGuppyChris
+    zombieGuppyDillon
+    zombieGuppyBurnt
+    zombieGuppyCletus
+    zombieGuppyDoom
+    zombieGuppyNoArms
+    zombieGuppyRadiated
+    zombieGuppyRiotGear
     none, 0.0
 """
 
 feral_zombies = """
     zombieGuppyBiomechanicalWight, 0.05
     zombieGuppyBabyBoomer
+    zombieGuppyRadiated
+    zombieGuppyMeaty
+    zombieGuppyDoom
     none, 0.0
 """
 
 boss_zombies = """
     zombieGuppyRoland
+    zombieGuppyRadiated
+    zombieGuppyMeaty, 0.05
     none, 0.0
 """
 
@@ -76,6 +105,7 @@ fat_cop_zombies = """
     zombieGuppyBeatCop
     zombieGuppyPoliceRalph
     zombieGuppySecurityGuard
+    zombieGuppyRiotGear
     none, 0.0
 """
 
@@ -89,6 +119,7 @@ farm_zombies = """
 
 soldier_zombies = """
     zombieGuppyGermanCosplay
+    zombieGuppyRiotGear
     none, 0.0
 """
 
@@ -109,6 +140,18 @@ ghost_town_zombies = """
     zombieGuppyLucy
     zombieGuppyBob
     zombieGuppyBilly
+    zombieGuppyGlenda
+    zombieGuppyBonnie
+    zombieGuppyJessica
+    zombieGuppyTravis
+    zombieGuppyChris
+    zombieGuppyDillon
+    zombieGuppyBetty
+    zombieGuppyCletus
+    zombieGuppyNoArms
+    zombieGuppyEmaciated
+    zombieGuppyBones
+    zombieGuppyDoom
     none, 0.0
 """
 
@@ -121,12 +164,15 @@ hospital_zombies = """
 lab_worker_zombies = """
     zombieGuppyNurse
     zombieGuppySecurityGuard
+    zombieGuppyRiotGear
     none, 0.0
 """
 
 biker_zombies = """
     zombieGuppyStripper
     zombieGuppyCheerleader
+    zombieGuppyTravis
+    zombieGuppyBonnie
     none, 0.0
 """
 
@@ -135,12 +181,17 @@ night_club_zombies = """
     zombieGuppyCheerleader
     zombieGuppyCarmela
     zombieGuppyBelle
+    zombieGuppyTravis
+    zombieGuppyBonnie
     none, 0.0
 """
 
 special_zombies = """
     zombieGuppyBiomechanicalWight, 0.05
     zombieGuppyKennethClown
+    zombieGuppyBones
+    zombieGuppyMeaty
+    zombieGuppyRadiated
     none, 0.0
 """
 
@@ -152,6 +203,10 @@ wandering_zombies = """
     zombieGuppyBilly
     zombieGuppyHungryJeff
     zombieGuppyHungryGeorge
+    zombieGuppyBones
+    zombieGuppyTravis
+    zombieGuppyDillon
+    zombieGuppyDoom
     none, 0.0
 """
 
@@ -174,21 +229,35 @@ sleeper_horder_zombies = """
     zombieGuppyBilly
     zombieGuppyBelle
     zombieGuppyAlma
+    zombieGuppyEmaciated
+    zombieGuppyBones
+    zombieGuppyGlenda
+    zombieGuppyBonnie
+    zombieGuppyJessica
+    zombieGuppyTravis
+    zombieGuppyChris
+    zombieGuppyDillon
+    zombieGuppyBetty
+    zombieGuppyBurnt
+    zombieGuppyCletus
+    zombieGuppyDoom
+    zombieGuppyNoArms
+    zombieGuppyRiotGear
     none, 0.0
 """
 
 
 def write_group(group_list, group_zombies):
-    with open("output_groups.xml", "w") as file:
+    with open("entitygroups.xml", "w") as file:
         file.write("<configs>\n")
-    with open("output_groups.xml", "a") as file:
+    with open("entitygroups.xml", "a") as file:
         for i in group_list:
             file.write(
                 f'<csv xpath="/entitygroups/entitygroup[@name=\'{i}\']/text()" delim="\\n" op="add" >'
             )
             file.write(group_zombies)
             file.write(f"</csv>\n")
-    with open("output_groups.xml", "a") as file:
+    with open("entitygroups.xml", "a") as file:
         file.write("</configs>")
 
 
