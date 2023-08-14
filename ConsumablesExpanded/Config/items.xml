@@ -301,18 +301,34 @@
 		</item>
 
 		<item name="DementiveGrapeMegaCrush">
-			<property name="Extends" value="drinkCanMegaCrush"/>
+			<property name="Tags" value="drinks,foodSkill"/>
+			<property name="DisplayType" value="grapeCrush"/>			
+			<property name="HoldType" value="3"/>
+			<property name="Meshfile" value="@:Other/Items/Food/bottled_waterPrefab.prefab"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="Mglass"/>
+			<!-- <property name="Weight" value="10"/> -->
+			<property name="Stacknumber" value="50"/> <!-- STK drink -->
+			<property name="EconomicValue" value="48"/>
+			<property class="Action0">
+				<property name="Class" value="Eat"/>
+				<property name="Delay" value="1.0"/>
+				<property name="Sound_start" value="player_drinking"/>
+				<!-- <property name="Create_item" value="drinkJarEmpty"/> -->
+			</property>
+			<property name="Group" value="Food/Cooking,CFDrink/Cooking"/>
+			<property name="EconomicValue" value="240"/>
 			<property name="CustomIcon" value="DementiveGrapeMegaCrush"/>
 			<effect_group tiered="false" name="Drink Tier Found">
 				<requirement name="NotHasBuff" buff="buffIsOnFire"/>
 					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="60"/>
 					<display_value name="dStaminaRegen" value=".15"/>
-					<display_value name="dRunSpeed" value=".5"/>
+					<display_value name="dDysenteryRisk" value="3"/> 
 					<display_value name="dDuration" value="360"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffMegaCrushDuration" operation="add" value="363"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffMegaCrushDuration" operation="set" value="1083">
-						<requirement name="CVarCompare" cvar="$buffMegaCrushDuration" operation="GT" value="1083"/></triggered_effect>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffMegaCrush"/>
+					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffGrapeMegaCrushDuration" operation="add" value="363"/>
+					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffGrapeMegaCrushDuration" operation="set" value="1083">
+						<requirement name="CVarCompare" cvar="$buffGrapeMegaCrushDuration" operation="GT" value="1083"/></triggered_effect>
+					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffGrapeMegaCrush"/>
 			</effect_group>
 
 			<effect_group tiered="false">
@@ -322,18 +338,37 @@
 		</item>
 
 		<item name="DementiveGreenAppleMegaCrush">
-			<property name="Extends" value="drinkCanMegaCrush"/>
+			<property name="Tags" value="drinks,foodSkill"/>
+			<property name="DisplayType" value="appleCrush"/>			
+			<property name="HoldType" value="3"/>
+			<property name="Meshfile" value="@:Other/Items/Food/bottled_waterPrefab.prefab"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="Mglass"/>
+			<!-- <property name="Weight" value="10"/> -->
+			<property name="Stacknumber" value="50"/> <!-- STK drink -->
+			<property name="EconomicValue" value="48"/>
+			<property class="Action0">
+				<property name="Class" value="Eat"/>
+				<property name="Delay" value="1.0"/>
+				<property name="Sound_start" value="player_drinking"/>
+				<!-- <property name="Create_item" value="drinkJarEmpty"/> -->
+			</property>
+			<property name="Group" value="Food/Cooking,CFDrink/Cooking"/>
+			<property name="EconomicValue" value="240"/>
 			<property name="CustomIcon" value="DementiveGreenAppleMegaCrush"/>
 			<effect_group tiered="false" name="Drink Tier Found">
 				<requirement name="NotHasBuff" buff="buffIsOnFire"/>
 					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="60"/>
 					<display_value name="dStaminaRegen" value=".15"/>
-					<display_value name="dRunSpeed" value=".5"/>
+					<display_value name="dLootStageFlat" value="10"/>
+					<display_value name="dLootStagePerc" value=".1"/>
+					<display_value name="dStopsConcussion" value="0.25"/>
+					<display_value name="dDysenteryRisk" value="0.5"/> 					
 					<display_value name="dDuration" value="360"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffMegaCrushDuration" operation="add" value="363"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffMegaCrushDuration" operation="set" value="1083">
-						<requirement name="CVarCompare" cvar="$buffMegaCrushDuration" operation="GT" value="1083"/></triggered_effect>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffMegaCrush"/>
+					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffAppleMegaCrushDuration" operation="add" value="363"/>
+					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffAppleMegaCrushDuration" operation="set" value="1083">
+						<requirement name="CVarCompare" cvar="$buffAppleMegaCrushDuration" operation="GT" value="1083"/></triggered_effect>
+					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffAppleMegaCrush"/>
 			</effect_group>
 
 			<effect_group tiered="false">
@@ -343,18 +378,34 @@
 		</item>
 
 		<item name="DementiveFruitPunchMegaCrush">
-			<property name="Extends" value="drinkCanMegaCrush"/>
+			<property name="Tags" value="drinks,foodSkill"/>
+			<property name="DisplayType" value="fruitCrush"/>
+			<property name="HoldType" value="3"/>
+			<property name="Meshfile" value="@:Other/Items/Food/bottled_waterPrefab.prefab"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="Mglass"/>
+			<!-- <property name="Weight" value="10"/> -->
+			<property name="Stacknumber" value="50"/> <!-- STK drink -->
+			<property name="EconomicValue" value="48"/>
+			<property class="Action0">
+				<property name="Class" value="Eat"/>
+				<property name="Delay" value="1.0"/>
+				<property name="Sound_start" value="player_drinking"/>
+				<!-- <property name="Create_item" value="drinkJarEmpty"/> -->
+			</property>
+			<property name="Group" value="Food/Cooking,CFDrink/Cooking"/>
+			<property name="EconomicValue" value="240"/>
 			<property name="CustomIcon" value="DementiveFruitPunchMegaCrush"/>
 			<effect_group tiered="false" name="Drink Tier Found">
 				<requirement name="NotHasBuff" buff="buffIsOnFire"/>
 					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="60"/>
 					<display_value name="dStaminaRegen" value=".15"/>
-					<display_value name="dRunSpeed" value=".5"/>
+					<display_value name="dDysenteryRisk" value=".5"/>				
 					<display_value name="dDuration" value="360"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffMegaCrushDuration" operation="add" value="363"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffMegaCrushDuration" operation="set" value="1083">
-						<requirement name="CVarCompare" cvar="$buffMegaCrushDuration" operation="GT" value="1083"/></triggered_effect>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffMegaCrush"/>
+					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffFruitPunchMegaCrushDuration" operation="add" value="363"/>
+					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffFruitPunchMegaCrushDuration" operation="set" value="1083">
+						<requirement name="CVarCompare" cvar="$buffFruitPunchMegaCrushDuration" operation="GT" value="1083"/></triggered_effect>
+					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffFruitPunchMegaCrush"/>
 			</effect_group>
 
 			<effect_group tiered="false">

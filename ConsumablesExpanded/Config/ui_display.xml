@@ -1,5 +1,28 @@
 <Dementive>
-<!-- 	<append xpath="/ui_display_info/item_display">
-
-	</append> -->
+	<append xpath="ui_display_info/item_display">
+		<item_display_info display_type="grapeCrush" display_group="groupConsumables">
+			<display_entry name="$waterAmountAdd" title_key="statWaterAmount"/>		
+			<display_entry name="dStaminaRegen" title_key="statStaminaRegen" display_type="Percent"/>			
+			<display_entry name="dDysenteryRisk" title_key="statJumpDistance" display_leading_plus="true"/>
+			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>			
+		</item_display_info>
+		<item_display_info display_type="appleCrush" display_group="groupConsumables">
+			<display_entry name="$waterAmountAdd" title_key="statWaterAmount"/>
+			<display_entry name="dStaminaRegen" title_key="statStaminaRegen" display_type="Percent"/>
+			<display_entry name="dLootStageFlat" title_key="statLootStage" display_leading_plus="true"/>
+			<display_entry name="dLootStagePerc" title_key="statLootStage" display_type="Percent" display_leading_plus="true"/>			
+			<display_entry name="dStopsConcussion" title_key="statLockpickTime" display_type="Percent" display_leading_plus="true"/>
+			<display_entry name="dDysenteryRisk" title_key="Looting Speed" display_type="Percent" display_leading_plus="true"/>
+			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>
+		</item_display_info>
+		<item_display_info display_type="fruitCrush" display_group="groupConsumables">
+			<display_entry name="$waterAmountAdd" title_key="statWaterAmount"/>
+			<display_entry name="dStaminaRegen" title_key="statStaminaRegen" display_type="Percent"/>		
+			<display_entry name="dDysenteryRisk" title_key="statHarvestQuantityOre" display_type="Percent" display_leading_plus="true"/>
+			<display_entry name="dDysenteryRisk" title_key="statHarvestQuantityWood" display_type="Percent" display_leading_plus="true"/>
+			<display_entry name="dDysenteryRisk" title_key="statHarvestQuantitySalvage" display_type="Percent" display_leading_plus="true"/>
+			<display_entry name="dDysenteryRisk" title_key="statHarvestQuantityMeat" display_type="Percent" display_leading_plus="true"/>
+			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>			
+		</item_display_info>
+	</append>
 </Dementive>

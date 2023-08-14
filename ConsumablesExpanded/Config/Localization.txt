@@ -16,11 +16,17 @@ DementiveFriedEggDesc,items,Food,,,"A great way to start the day!"
 DementiveOmlet,items,Food,,,Omelette
 DementiveOmletDesc,items,Food,,,"The single greatest conglomeration of eggs known to man now lies in your hands."
 DementiveFruitPunchMegaCrush,items,Food,,,Fruit Punch Mega Crush
-DementiveFruitPunchMegaCrushDesc,items,Food,,,"Crush your enemies and your thirst with Fruit Punch Mega Crush! It's got electrolytes and a new blood red color!"
+DementiveFruitPunchMegaCrushDesc,items,Food,,,"Out-harvest your enemies with Fruit Punch Mega Crush! It's got electrolytes and fuels you with fire!"
+buffFruitPunchMegaCrush,buffs,Buff,,,Fruit Punch Mega Crush
+buffFruitPunchMegaCrushDesc,buffs,Buff,,,All forms of harvesting are increased by 50%. Stamina is regenerating.
 DementiveGrapeMegaCrush,items,Food,,,Grape Mega Crush
-DementiveGrapeMegaCrushDesc,items,Food,,,"Crush your enemies and your thirst with Grape Mega Crush! It's got electrolytes and strange particles floating in it!"
+DementiveGrapeMegaCrushDesc,items,Food,,,"Become one with a kangaroo and hop over your enemies with Grape Mega Crush! It's got electrolytes and strange particles floating in it!"
+buffGrapeMegaCrush,buffs,Buff,,,Grape Mega Crush
+buffGrapeMegaCrushDesc,buffs,Buff,,,Jump height increased by 3 blocks. Stamina is regenerating.
 DementiveGreenAppleMegaCrush,items,Food,,,Green Apple Mega Crush
-DementiveGreenAppleMegaCrushDesc,items,Food,,,"Crush your enemies and your thirst with Green Apple Mega Crush! It's got electrolytes, glows green, and is most likely not radioactive!"
+DementiveGreenAppleMegaCrushDesc,items,Food,,,"Out-loot your enemies with Green Apple Mega Crush! It's got electrolytes, and makes your eyes emit radiation!"
+buffAppleMegaCrush,buffs,Buff,,,Green Apple Mega Crush
+buffAppleMegaCrushDesc,buffs,Buff,,,Loot stage is increased by 10 and then by 10%. Looting and lockpicking speeds increased by 50%. Stamina is regenerating.
 DementiveGrapeDrink,items,Food,,,Grape Drink
 DementiveGrapeDrinkDesc,items,Food,,,"This glorious drink derived from the declicate grape is also known by the name of 'Thirst Quencher'."
 DementiveGlowingGreenJuice,items,Food,,,Glowing Green Juice
