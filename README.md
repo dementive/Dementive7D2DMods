@@ -28,13 +28,7 @@ These are some other mods that go good with my mods for a full vanilla experienc
 
 • Skyrim Lockpicking - https://7daystodiemods.com/skyrim-style-lockpicking-minigame/
 
-• Add more zombie mods here
-
-• Add more vehicle mods here
-
-• Add more weapon mods here
-
-• Add more POI mods here
+• Ztensity Art studio - https://www.nexusmods.com/7daystodie/mods/1340
 
 # Weapons
 
@@ -46,7 +40,10 @@ These are some other mods that go good with my mods for a full vanilla experienc
 
 • Zuhma's WW2 weapons - https://www.nexusmods.com/7daystodie/mods/3327
 
-• War3zuk's HD Katanas - https://www.nexusmods.com/7daystodie/mods/3398
+• Server-side weapons - https://7daystodiemods.com/a21-server-side-weapons/
+
+• 7.62 Weapon pack - https://7daystodiemods.com/7-62-gun-pack/
+
 
 # Items
 
