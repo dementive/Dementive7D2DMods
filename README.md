@@ -8,7 +8,11 @@
 
 • Quests Expanded
 
-# Other Alpha 21 Mods
+# Other 1.0 Mods
+
+https://7daystodiemods.com/sams-building-stuff/
+
+# Other A21 Mods
 
 These are some other mods that go good with my mods for a full vanilla experience
 
