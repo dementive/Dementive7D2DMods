@@ -1,24 +1,28 @@
 <Dementive>
 
 	<append xpath="/traders/trader_item_groups/trader_item_group[@name='skillMagazines']">
-		<item name="DementivearmorSkillMagazine" count="1,2" prob=".05"/>
-		<item name="DementivebookBigHitters" count="1,2" prob=".05"/>
-		<item name="DementivebookBowHunters" count="1,2" prob=".05"/>
+		<item name="DementivebookExplosiveMagazine" count="1,2" prob=".05"/>
+		<item name="DementivebookHandgunMagazine" count="1,2" prob=".05"/>
+		<item name="DementivebookKnifeGuy" count="1,2" prob=".05"/>
+		<item name="DementivebookRifleWorld" count="1,2" prob=".05"/>
+		<item name="DementivebookSharpSticks" count="1,2" prob=".05"/>
+		<item name="DementivebookFuriousFists" count="1,2" prob=".05"/>
+		<item name="DementivebookMedicalJournal" count="1,2" prob=".05"/>
+		<item name="DementivebookShotgunWeekly" count="1,2" prob=".05"/>
+		<item name="DementivebookSniperDamage" count="1,2" prob=".05"/>
+		<item name="DementivebookTacticalWarfare" count="1,2" prob=".05"/>
+		<item name="DementivebookHomeCookingWeekly" count="1,2" prob=".05"/>
+		<item name="DementivebookSouthernFarming" count="1,2" prob=".05"/>
+		<item name="DementivebookElectricalTraps" count="1,2" prob=".05"/>
 		<item name="DementivebookForgeAhead" count="1,2" prob=".05"/>
 		<item name="DementivebookGetHammered" count="1,2" prob=".05"/>
-		<item name="DementivebookHandgunMagazine" count="1,2" prob=".05"/>
 		<item name="DementivebookHandyLand" count="1,2" prob=".05"/>
-		<item name="DementivebookHomeCookingWeekly" count="1,2" prob=".05"/>
-		<item name="DementivebookKnifeGuy" count="1,2" prob=".05"/>
-		<item name="DementivebookMedicalJournal" count="1,2" prob=".05"/>
-		<item name="DementivebookRifleWorld" count="1,2" prob=".05"/>
 		<item name="DementivebookScrapping4Fun" count="1,2" prob=".05"/>
-		<item name="DementivebookSharpSticks" count="1,2" prob=".05"/>
-		<item name="DementivebookShotgunWeekly" count="1,2" prob=".05"/>
-		<item name="DementivebookSouthernFarming" count="1,2" prob=".05"/>
-		<item name="DementivebookTacticalWarfare" count="1,2" prob=".05"/>
+		<item name="DementivebookTechPlanet" count="1,2" prob=".05"/>
 		<item name="DementivebookToolsDigest" count="1,2" prob=".05"/>
+		<item name="DementivebookVehicleAdventures" count="1,2" prob=".05"/>
 		<item name="DementivebookWiring101" count="1,2" prob=".05"/>
+		<item name="DementivearmorSkillMagazine" count="1,2" prob=".05"/>
 	</append>
 
 	<append xpath="/traders/trader_item_groups/trader_item_group[@name='perkBooks']">
@@ -30,7 +34,6 @@
 		<item name="DementivebookFiremansAlmanacHeat" count="1,2" prob=".05"/>
 		<item name="DementivebookHuntingJournalBears" count="1,2" prob=".05"/>
 		<item name="DementivebookLuckyLooterDukes" count="1,2" prob=".05"/>
-		<item name="DementivebookNeedleAndThreadWinterWear" count="1,2" prob=".05"/>
 		<item name="DementivebookNightStalkerStealthDamage" count="1,2" prob=".05"/>
 		<item name="DementivebookPistolPeteTakeAim" count="1,2" prob=".05"/>
 		<item name="DementivebookRangersArrowRecovery" count="1,2" prob=".05"/>
@@ -42,43 +45,6 @@
 		<item name="DementivebookTheGreatHeistSafes" count="1,2" prob=".05"/>
 		<item name="DementivebookUrbanCombatLanding" count="1,2" prob=".05"/>
 		<item name="DementivebookWasteTreasuresHoney" count="1,2" prob=".05"/>
-	</append>
-
-	<append xpath="/traders/trader_item_groups/trader_item_group[@name='skillMagazinesTraderHugh']">
-		<item name="DementivebookExplosiveMagazine" count="1,2" prob=".05"/>
-		<item name="DementivebookHandgunMagazine" count="1,2" prob=".05"/>
-		<item name="DementivebookKnifeGuy" count="1,2" prob=".05"/>
-		<item name="DementivebookRifleWorld" count="1,2" prob=".05"/>
-		<item name="DementivebookSharpSticks" count="1,2" prob=".05"/>
-		<item name="DementivebookShotgunWeekly" count="1,2" prob=".05"/>
-		<item name="DementivebookSniperDamage" count="1,2" prob=".05"/>
-		<item name="DementivebookTacticalWarfare" count="1,2" prob=".05"/>
-	</append>
-
-	<append xpath="/traders/trader_item_groups/trader_item_group[@name='skillMagazinesTraderBob']">
-		<item name="DementivebookElectricalTraps" count="1,2" prob=".05"/>
-		<item name="DementivebookForgeAhead" count="1,2" prob=".05"/>
-		<item name="DementivebookGetHammered" count="1,2" prob=".05"/>
-		<item name="DementivebookHandyLand" count="1,2" prob=".05"/>
-		<item name="DementivebookScrapping4Fun" count="1,2" prob=".05"/>
-		<item name="DementivebookTechPlanet" count="1,2" prob=".05"/>
-		<item name="DementivebookToolsDigest" count="1,2" prob=".05"/>
-		<item name="DementivebookVehicleAdventures" count="1,2" prob=".05"/>
-		<item name="DementivebookWiring101" count="1,2" prob=".05"/>
-	</append>
-
-	<append xpath="/traders/trader_item_groups/trader_item_group[@name='skillMagazinesTraderJoel']">
-		<item name="DementivearmorSkillMagazine" count="1,2" prob=".05"/>
-	</append>
-
-	<append xpath="/traders/trader_item_groups/trader_item_group[@name='skillMagazinesTraderJen']">
-		<item name="DementivebookFuriousFists" count="1,2" prob=".05"/>
-		<item name="DementivebookMedicalJournal" count="1,2" prob=".05"/>
-	</append>
-
-	<append xpath="/traders/trader_item_groups/trader_item_group[@name='skillMagazinesTraderRekt']">
-		<item name="DementivebookHomeCookingWeekly" count="1,2" prob=".05"/>
-		<item name="DementivebookSouthernFarming" count="1,2" prob=".05"/>
 	</append>
 
 </Dementive>

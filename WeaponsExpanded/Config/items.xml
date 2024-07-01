@@ -103,12 +103,6 @@
 					<passive_effect name="EntityDamage" operation="perc_add" value="4" tags="perkDeepCuts"/>
 					<display_value name="dEntityDamageSneak" value="4"/>
 			</effect_group>
-
-			<effect_group name="corpseRemoval">
-				<requirement name="!IsAlive" target="other"/>
-				<requirement name="EntityTagCompare" target="other" tags="walker,crawler,spider"/>
-					<passive_effect name="EntityDamage" operation="base_add" value="500"/>
-			</effect_group>
 		</item>
 		
 		<item name="DementivegunRocketFinale">
@@ -881,7 +875,7 @@
 				<!-- <passive_effect name="RoundsPerMinute" operation="perc_add" value="-.05,.05" tags="perkMachineGunner"/> --> <!-- random APM -->
 				<!-- <passive_effect name="MagazineSize" operation="perc_add" value="-.122,.122"/> --> <!-- random MagazineSize -->
 				<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkMachineGunner"/> <!-- random WeaponHandling -->
-				<passive_effect name="RoundsPerMinute" operation="base_set" value="300" tags="perkMachineGunner"/>
+				<passive_effect name="RoundsPerMinute" operation="base_set" value="400" tags="perkMachineGunner"/>
 				<passive_effect name="BurstRoundCount" operation="base_set" value="1000" tags="perkMachineGunner"/>
 				<passive_effect name="MagazineSize" operation="base_set" value="50" tags="perkMachineGunner"/>
 				<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1" tags="perkMachineGunner"/> <!-- 2.85s -->
@@ -1333,12 +1327,6 @@
 				<passive_effect name="StaminaLoss" operation="base_set" value="39.9" tags="secondary"/>
 				<!-- Moaning and grunting sounds moved to buffs.xml, <effect_group name="Power Attack Grunt"> -->
 			</effect_group>
-
-			<effect_group name="corpseRemoval">
-				<requirement name="!IsAlive" target="other"/>
-				<requirement name="EntityTagCompare" target="other" tags="walker,crawler,spider"/>
-					<passive_effect name="EntityDamage" operation="base_add" value="500"/>
-			</effect_group>
 		</item>
 
 		<!-- Barbarian's Battle Axe -->
@@ -1379,12 +1367,6 @@
 				<passive_effect name="BlockDamage" operation="perc_add" value="1.25" tags="secondary"/>
 				<!-- <passive_effect name="AttacksPerMinute" operation="perc_add" value="-.3" tags="secondary"/> -->
 				<passive_effect name="StaminaLoss" operation="base_set" value="61.7" tags="secondary"/>
-			</effect_group>
-
-			<effect_group name="corpseRemoval">
-				<requirement name="!IsAlive" target="other"/>
-				<requirement name="EntityTagCompare" target="other" tags="walker,crawler,spider"/>
-					<passive_effect name="EntityDamage" operation="base_add" value="500"/>
 			</effect_group>
 		</item>
 
@@ -1438,12 +1420,6 @@
 				<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="1" tags="perkMiner69r"/>
 				<passive_effect name="WeaponHandling" operation="base_set" value="6" tags="perkMiner69r"/>
 			</effect_group>
-
-			<effect_group name="corpseRemoval">
-				<requirement name="!IsAlive" target="other"/>
-				<requirement name="EntityTagCompare" target="other" tags="walker,crawler,spider"/>
-					<passive_effect name="EntityDamage" operation="base_add" value="500"/>
-			</effect_group>
 		</item>
 		
 		<!-- Gravedigger -->
@@ -1493,12 +1469,6 @@
 
 				<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="1" tags="perkMiner69r"/>
 				<passive_effect name="WeaponHandling" operation="base_set" value="6" tags="perkMiner69r"/>
-			</effect_group>
-
-			<effect_group name="corpseRemoval">
-				<requirement name="!IsAlive" target="other"/>
-				<requirement name="EntityTagCompare" target="other" tags="walker,crawler,spider"/>
-					<passive_effect name="EntityDamage" operation="base_add" value="500"/>
 			</effect_group>
 		</item>
 		
@@ -1757,12 +1727,6 @@
 				<passive_effect name="BlockDamage" operation="perc_add" value="1" tags="secondary"/>
 				<!-- <passive_effect name="AttacksPerMinute" operation="perc_add" value="-.3" tags="secondary"/> -->
 				<passive_effect name="StaminaLoss" operation="base_set" value="14.5" tags="secondary"/>
-			</effect_group>
-
-			<effect_group name="corpseRemoval">
-				<requirement name="!IsAlive" target="other"/>
-				<requirement name="EntityTagCompare" target="other" tags="walker,crawler,spider"/>
-					<passive_effect name="EntityDamage" operation="base_add" value="500"/>
 			</effect_group>
 		</item>
 

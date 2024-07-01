@@ -14,6 +14,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingArmor" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -25,6 +29,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingClubs" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -36,6 +44,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingBows" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -47,6 +59,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -58,6 +74,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingExplosives" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -69,6 +89,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingKnuckles" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -80,6 +104,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingWorkstations" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -91,6 +119,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSledgehammers" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -102,6 +134,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingHandguns" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -114,6 +150,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingRepairTools" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -125,6 +165,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingFood" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -136,6 +180,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingBlades" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -147,6 +195,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingMedical" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -158,6 +210,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingRifles" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -169,6 +225,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSalvageTools" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -180,6 +240,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSpears" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -191,6 +255,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingShotguns" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -202,6 +270,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSeeds" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -213,6 +285,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingMachineGuns" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -224,6 +300,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingRobotics" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -235,6 +315,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingHarvestingTools" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -246,6 +330,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingVehicles" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -257,6 +345,10 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingElectrician" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+					<requirement name="HasBuff" buff="buffNerdOutfit"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				</triggered_effect>
 			</effect_group>
 		</item>
 
@@ -827,77 +919,6 @@
 					<requirement name="PerksUnlocked" skill_name="skillLuckyLooter" operation="GTE" value="7"/></triggered_effect>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
 					<requirement name="PerksUnlocked" skill_name="skillLuckyLooter" operation="GTE" value="7"/></triggered_effect>
-			</effect_group>
-			<effect_group tiered="false">
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-			</effect_group>
-		</item>
-
-		<item name="DementivebookNeedleAndThreadWinterWear">
-			<property name="Extends" value="bookNeedleAndThreadWinterWear"/>
-			<property name="CustomIcon" value="DementivebookNeedleAndThreadWinterWear"/>
-			<property name="EconomicValue" value="200"/>
-			<effect_group tiered="false">
-				<requirement name="ProgressionLevel" progression_name="perkNeedleAndThreadWinterWear" operation="Equals" value="0"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadWinterWear" level="-1"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadLegwear" level="-1"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadComplete" level="-1">
-					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
-					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
-			</effect_group>
-			<effect_group tiered="false">
-				<requirement name="ProgressionLevel" progression_name="perkNeedleAndThreadLegwear" operation="Equals" value="0"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadLegwear" level="-1"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadFootwear" level="-1"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadComplete" level="-1">
-					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
-					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
-			</effect_group>
-			<effect_group tiered="false">
-				<requirement name="ProgressionLevel" progression_name="perkNeedleAndThreadFootwear" operation="Equals" value="0"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadFootwear" level="-1"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadDesertWear" level="-1"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadComplete" level="-1">
-					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
-					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
-			</effect_group>
-			<effect_group tiered="false">
-				<requirement name="ProgressionLevel" progression_name="perkNeedleAndThreadDesertWear" operation="Equals" value="0"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadDesertWear" level="-1"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadDusters" level="-1"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadComplete" level="-1">
-					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
-					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
-			</effect_group>
-			<effect_group tiered="false">
-				<requirement name="ProgressionLevel" progression_name="perkNeedleAndThreadDusters" operation="Equals" value="0"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadDusters" level="-1"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadPufferCoats" level="-1"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadComplete" level="-1">
-					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
-					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
-			</effect_group>
-			<effect_group tiered="false">
-				<requirement name="ProgressionLevel" progression_name="perkNeedleAndThreadPufferCoats" operation="Equals" value="0"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadPufferCoats" level="-1"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadPockets" level="-1"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadComplete" level="-1">
-					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
-					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
-			</effect_group>
-			<effect_group tiered="false">
-				<requirement name="ProgressionLevel" progression_name="perkNeedleAndThreadPockets" operation="Equals" value="0"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadPockets" level="-1"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="SetProgressionLevel" progression_name="perkNeedleAndThreadComplete" level="-1">
-					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="read_skillbook_final" play_in_head="true">
-					<requirement name="PerksUnlocked" skill_name="skillNeedleAndThread" operation="GTE" value="7"/></triggered_effect>
 			</effect_group>
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
