@@ -12,6 +12,9 @@
 
 https://7daystodiemods.com/sams-building-stuff/
 
+https://7daystodiemods.com/sams-deco-stuff/
+
+
 # Other A21 Mods
 
 These are some other mods that go good with my mods for a full vanilla experience
