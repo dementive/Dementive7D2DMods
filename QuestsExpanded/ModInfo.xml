@@ -2,8 +2,9 @@
 <xml>
 	<Name value="QuestsExpanded" />
 	<DisplayName value="Quests Expanded" />
-	<Version value="1.0" />
 	<Description value="More quests in the same style as the base game." />
 	<Author value="Dementive" />
+	<Version value="1.1.0.4" />
 	<Website value="" />
+	<SkipWithAntiCheat value="false" />
 </xml>
