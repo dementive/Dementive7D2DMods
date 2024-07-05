@@ -1,12 +1,12 @@
 # Dementive7D2DMods
 
-• Consumables Expanded
+• [Consumables Expanded](https://www.nexusmods.com/7daystodie/mods/3096)
 
-• Books Expanded
+• [Books Expanded](https://www.nexusmods.com/7daystodie/mods/3097/)
 
 • [Weapons Expanded](https://www.nexusmods.com/7daystodie/mods/3200)
 
-• Quests Expanded
+• [Quests Expanded](https://www.nexusmods.com/7daystodie/mods/3426/)
 
 # Other 1.0 Mods
 
