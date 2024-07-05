@@ -4,7 +4,7 @@
 
 • Books Expanded
 
-• Weapons Expanded
+• [Weapons Expanded](https://www.nexusmods.com/7daystodie/mods/3200)
 
 • Quests Expanded
 
