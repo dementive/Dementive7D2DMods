@@ -2,9 +2,9 @@
 <xml>
 	<Name value="WeaponsExpanded"/>
 	<DisplayName value="Weapons Expanded" />
-	<Description value="More weapons in the same style as the base game."/>
+	<Description value="More weapons in the same style as the base game. Updated for 7 Days to Die v3.0 (modern stats blocks, DualSense/Xbox trigger effects, UnlockedBy progression, perk conventions)."/>
 	<Author value="Dementive"/>
-	<Version value="1.1.0.4" />
+	<Version value="2.0.0.0" />
 	<Website value="" />
 	<SkipWithAntiCheat value="false" />
 </xml>
