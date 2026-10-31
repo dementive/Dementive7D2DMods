@@ -11,6 +11,7 @@ New quests should be generated with QuestMaker like the existing ones, with thei
 3. **Clear and Defend**, **Bounty Hunt** (with its horde variant), **Build and Defend**, **Clear, Build and Defend**, **Last Stand**, **Blood Moon Bounty** and **Create Outpost**: built (50 quests from `QuestMaker/defense.py`); waiting on an in-game playtest.
 4. **Contracts**: built, then removed after playtesting (see Decided against).
 5. **Retire the POI-group quests:** done (see the last section).
+6. **NPC quests** (Bandit Hideout, bandit raids, Rescue, Safehouse): designed and approved, not built yet. They only appear when the player has NPC mods installed.
 
 ## Rules for every new quest type
 
@@ -232,6 +233,119 @@ A bounty for the next horde night, fought wherever you are (normally your own ba
 - **Winning:** kill every boss without dying. There is no deadline: horde nights often run into the next day, so bosses don't leave at dawn. Dying fails the bounty.
 - **Co-op:** one shared set of bosses for the party, sized to the party. Everyone sharing the quest gets the reward; a member who dies fails their own bounty while the rest carry on.
 
+## NPC quests (with NPC mods)
+
+Quests with human NPCs: bandits to fight and survivors to rescue. The base game has no NPCs that can do this, so these quests use whatever NPC mods the player has installed. QuestsExpanded doesn't require any of them: without NPC mods these quests never show up at the trader, and the rest of the mod works exactly as before.
+
+**Status: designed and approved on 2026-10-31 (see "Decided" below), nothing built yet.** Building starts once SCore, NPC Core and NPC packs are installed for testing (see "Before building").
+
+### Finding the NPCs
+
+The base game already has types for human NPCs that it doesn't use yet, and the NPC mods build on them:
+- **Hostile humans:** vanilla `EntityHuman` and `EntityBandit`. SCore's bandits (`EntityNPCBandit`, `EntityEnemySDX`) derive from these.
+- **Friendly NPCs:** vanilla `EntityNPC` (and its `EntitySurvivor`). SCore's NPCs (`EntityAliveSDX`, `EntityAliveSDXV4`) derive from it through `EntityTrader`.
+- **Factions:** vanilla's `bandits`, `whiteriver`, `duke` and `trader` (`npc.xml`).
+
+So:
+- **The NPC list:** when the game starts, the server goes through every loaded entity class and sorts out the hostile humans and the friendly survivors by their C# class, with the faction as a cross-check. It skips traders, and vanilla's own unused survivor entries and templates (`npcSurvivorTemplate`, `npcSurvivorRanged`, ...).
+- **Followers:** only NPCs made with SCore (the `IEntityAliveSDX` interface) can follow a player, so only they can be rescued or move into a safehouse. Nearly every NPC pack is built on SCore and NPC Core.
+- **No link to SCore:** QuestsExpanded never references SCore's DLL. To make a survivor follow, it calls SCore's own `EntityUtilities.SetLeader` by name (reflection), the same call SCore's hiring makes: it sets the NPC's `Leader` cvar, the player's `hired_<id>` cvar and the `buffOrderFollow` buff. Without SCore, Rescue and Safehouse aren't offered.
+- **Only offered when possible:** traders only offer a bandit quest when hostile humans were found, and a Rescue or Safehouse when followers were found (the same check that hides commissions you can't craft).
+- **An NPC mod removed mid-quest:** the quest fails with a message instead of breaking.
+- Everything about the NPCs themselves (looks, weapons, AI, loot) comes from the NPC mods, so every NPC pack the player adds makes these quests more varied.
+
+### Bandit Hideout
+
+Bandits have taken over a POI. Go in and kill every one of them.
+
+- **Flow:** go to the POI, rally point, kill the bandits, return to the trader. When the quest starts, bandits are posted at the POI's sleeper spots. The POI's own zombie sleepers are there as usual, but you don't have to clear them.
+- **Three-way fights:** vanilla zombies already go after bandits, so the shooting draws zombies into the fight against both sides.
+- **Goal:** kill every bandit. Once 3 or fewer are left, they show on the map and compass (`buffDementiveMarked`). From tier 3 a bandit leader with the boss buff holds the far end of the POI and drops the boss loot bag.
+- **Numbers:** scale with gamestage and party size, but fewer than a zombie wave since bandits shoot back (about a third of a wave, at least 2).
+- **Tiers:** 2-6, at POIs of the quest's tier that support clear quests.
+- **Co-op:** one set of bandits for the party; kills by anyone count; everyone sharing the quest completes it.
+- **Rewards:** the mod's clear rewards for the tier, plus whatever the bandits drop.
+- **Built on** the wave director: bandits are spawned and tracked like the Bounty Hunt boss and its escorts. Kill counting already includes them: `EntityBandit` is an `EntityEnemy`, so `DefenseKillPatches` already sees their deaths.
+
+### Bandit raids in the defense quests
+
+When bandit NPCs are installed, some defense waves are bandit raids instead of zombies.
+
+- **Where:** Create Outpost only, to start. From tier 3, one night's attack in each outpost is a bandit raid, never the first night. Build and Defend and Clear, Build and Defend could get raids too after a playtest.
+- **How they play:** bandits fight from range, so cover and sightlines matter, not just walls. Zombies drawn by the shooting go after them too.
+- **Size:** about a third of the zombie wave they replace, at least 2.
+- Without bandit NPCs every wave stays zombies, as now.
+
+### Rescue
+
+A group of survivors is holed up in a POI and under attack. Break the attack and bring as many of them as you can back to the trader alive. Always a group: this merges the first single-survivor Rescue with the Relief Mission and Hostage Rescue ideas.
+
+- **The group:** 3 survivors at tier 2, 4 at tiers 3-4, 5 at tier 5, 6 at tier 6, picked from the friendly NPCs that can follow (mixed, for variety).
+- **Under attack when you arrive:** zombies besieging them (waves from the wave director, going for the survivors as well as the players), or, when bandit NPCs are installed, bandits holding them (posted around them like in Bandit Hideout). Tiers 2-4 pick one at random; at tiers 5-6 it can be both. The attack starts when you reach the rally point, so the survivors aren't overrun before you get there, and they can't be hurt before that.
+- **Where they are:** together, in the part of the POI farthest from the entrance, marked once you're inside. You don't have to clear the whole POI.
+- **Breaking it:** kill the attackers (the siege's waves, or every bandit guard). The survivors fight back with whatever their NPC mod gives them.
+- **Getting out:** walk up to a survivor and they follow you. SCore's follow system keeps them with you: they keep up, ride along in vehicles, and catch up on their own if they fall more than 60m behind. Reinforcements come twice, when the group starts following and when you leave the POI's area. Each survivor who reaches the trader's compound goes inside and counts as saved.
+- **Pay:** half of the tier's fetch-and-clear experience and dukes for finishing, the other half split between the survivors and paid for each one saved, plus the usual loot picks. The quest only fails if every survivor dies.
+- **Vanishing:** a survivor who vanishes (NPC Core lists hired NPCs vanishing around vehicles as a known issue) comes back next to the player they were following.
+- **Dying:** once the group is following, the quest is no longer treated as a POI quest (like Create Outpost after the banner), so dying doesn't fail it. Your survivors wait where they are until someone from the party walks up to them.
+- **Co-op:** one group for the party. Each survivor follows whoever walks up to them first, so the group can be spread across the party. Everyone sharing the quest gets the same reward, based on how many made it.
+- **Tiers:** 2-6.
+
+### Arm the Group (part of Rescue)
+
+- Survivors start with little gear. They use the weapons, armor and medicine you give them (SCore's give-to-NPC), so crafting and bringing gear for them means more of them make it, and a bigger payout.
+- Anyone in the party can hand out gear. What you give a survivor goes inside with them; that's the cost of keeping them alive.
+- **To check once installed:** NPC packs often give their NPCs special NPC-only weapons, so a crafted pistol may have to be swapped for the NPC's own version of it. Survivors from a pack that can't take gear just fight with what they have.
+
+### Survivors who join you
+
+- At tier 4 and up, each player sharing the quest can take one saved survivor on as a hired NPC (a reward pick): they come back out of the trader's compound to join you. You get them with all of the NPC mod's own orders (follow, stay, guard, patrol), so you can, for example, post them at your outpost or safehouse.
+- **Co-op:** each player takes a different survivor, first come first served. When there are more players than saved survivors, the pick pays dukes instead.
+
+### Safehouse
+
+Refugees at the trader need a place to live. Build them a safehouse, lead them there, and hold it with them through its first night.
+
+- **Accept:** the refugees wait just outside the trader's compound (2 at tier 2, 3 at tiers 3-4, 4 at tier 5, 5 at tier 6), and you get a Safehouse flag.
+- **Build:** plant the flag where you want the safehouse: anywhere outside a trader's area, in the wild, in a POI or at your own base. Everything on the checklist has to be within 10m of the flag, and the quest log ticks items off as they're done. There's no kit: crafting it is the point.
+
+| Tier | Checklist |
+|---|---|
+| 2 | a bedroll for each refugee, each under a roof; a campfire; a light; a storage box; a door |
+| 3 | adds a workbench |
+| 4 | adds a dew collector |
+| 5 | adds a chemistry station |
+| 6 | adds an electric light with power (a generator, battery bank or solar bank) |
+
+- **Move in:** once the checklist passes, walk up to the refugees and lead them to the safehouse (the same follow system as Rescue). When they arrive, they settle in.
+- **First night:** at 22:00 the safehouse is attacked: 3 waves like a Create Outpost night, from just outside the safehouse, going for the refugees and the players. At least one player sharing the quest has to be there when it starts. The refugees fight alongside you. If they move in after 22:00, the attack comes the next night.
+- **Winning:** at least one refugee alive when the last wave ends. Losing all of them fails the quest. Return to the trader for the reward.
+- **Afterwards:** the refugees stay and guard the safehouse (SCore's guard order, kept in the save), so it becomes a staffed outpost you built. They aren't anyone's hires, and nothing happens if they die later.
+- **Co-op:** one safehouse per party. Blocks anyone places count toward the checklist, whoever walks up to a refugee leads them, and everyone sharing the quest completes it.
+- **Rewards:** the mod's fetch-and-clear rewards plus 20%, like Clear, Build and Defend.
+- **Tiers:** 2-6.
+- **Built on:** the flag of Build and Defend (`PlaceFlagDEM`), Rescue's follow system, a Create Outpost night with its presence check, and a new checklist objective that scans the blocks around the flag.
+- **Note:** planting the flag in a base that already has everything passes the checklist at once. Like the other build quests, there are no anti-exploit rules for that.
+
+### Later, maybe
+
+- **Specialists:** some survivors have a trade (medic, gunsmith, mechanic, cook). Once living in a safehouse, they craft their kind of item from materials you give them, like a workstation run by an NPC. Only once Safehouse has been playtested and turned out to be fun.
+
+### Decided
+
+- **Tiers:** Bandit Hideout, Rescue and Safehouse at 2-6.
+- **Rescue** is always a group; it merges the first single-survivor Rescue with the Relief Mission and Hostage Rescue ideas. Arm the Group is part of it.
+- **Bandit Hideout:** only the bandits have to die; the POI's zombies are optional.
+- **Bandit raids:** one night per Create Outpost from tier 3, never the first; other defense quests maybe after a playtest.
+- **Survivors who join you:** yes, from tier 4, one per player.
+- **Squad Op and Ambush:** not chosen (see Decided against). **Specialists:** later, maybe, after a Safehouse playtest.
+- **Bandit difficulty:** NPC packs don't share a difficulty scale, so the quests rank the hostile NPCs they found by health and use the weaker ones at low tiers, all of them at tier 6. A list for server admins of which NPCs the quests may use comes only if that isn't enough.
+
+### Before building
+
+- Install SCore, NPC Core, a bandit pack and a friendly NPC pack (soldiers or civilians, unless NPC Core comes with followers) for testing, and check how NPC Core sets up its NPCs (classes, factions, tags). NPC Core is only on Nexus, so its files haven't been looked at yet.
+- NPC mods have to be installed on the server and every client. That requirement is theirs: QuestsExpanded's own requirements don't change.
+
 ## Decided against
 
 - **Contracts** (a roguelike layer over any quest: rewards went into a pot that grew with every quest done in a row, with boons to pick and a boss on the fifth): built, then removed after playtesting; it wasn't fun.
@@ -244,7 +358,9 @@ A bounty for the next horde night, fought wherever you are (normally your own ba
 - **Questlines tied to other mods** (e.g. quests rewarding Weapons Expanded weapons): every mod stays standalone.
 - **Cosmetic or gimmick quests** (random chaos events, big heads, supply drops, heists, timed clears, treasure trails): they didn't add anything new to how the game plays.
 - **Supply Depot** (defend three caches at once): too close to the other defend quests.
-- **Other systems pitched and not chosen:** Nemesis (zombies that kill you come back stronger), Outbreak (infestation spreading across POIs over days), Job Board (player-posted paid requests), Stranded (dropped far away, survive the trip back), Nest Purge (destroy zombie-spawning nests in a POI), Raid (multi-stage tier 6 set piece).
+- **Other systems pitched and not chosen:** Nemesis (zombies that kill you come back stronger), Outbreak (infestation spreading across POIs over days), Job Board (player-posted paid requests), Stranded (dropped far away, survive the trip back), Nest Purge (destroy zombie-spawning nests in a POI), Raid (multi-stage tier 6 set piece), Repo Job (fix up a broken-down vehicle and drive it back), Demolition Order (bring down a condemned building), Live Specimen (wear down a fleeing zombie and capture it alive).
+- **Variants of vanilla types, pitched and not chosen:** filling in the late tiers (Fetch, Buried Supplies, Restore Power and the urban/rural quests at tiers 4-6), infested Fetch & Clear and Restore Power, Search (Fetch & Clear with unmarked supplies), Backyard Stash (Buried Supplies in a POI's yard).
+- **NPC quests, pitched and not chosen:** Squad Op (the trader lends you mercenaries for one hard job), Ambush (set up and spring an ambush on a bandit patrol on a road).
 
 ## Retiring POI-group quests
 
