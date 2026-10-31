@@ -30,22 +30,10 @@ X = {n: load(n + ".xml") for n in [
     "ui_display", "item_modifiers", "entityclasses", "entitygroups", "gameevents", "npc", "gamestages", "dialogs"]}
 
 types = lines("types.txt")
-# Classes the mods' own DLLs define (src/**/*.cs), for types given as "Name, Assembly". A mod that ships a DLL
-# without its source (like ZZZTongPrefabs-QuestsExpanded) uses the source of the sibling mod that builds that DLL.
-def source_dir(m):
-    if os.path.isdir(os.path.join(m, "src")):
-        return os.path.join(m, "src")
-    parent = os.path.dirname(os.path.abspath(m))
-    for dll in (f for f in os.listdir(m) if f.endswith(".dll")):
-        for sibling in os.listdir(parent):
-            src = os.path.join(parent, sibling, "src")
-            if os.path.isdir(src) and os.path.exists(os.path.join(parent, sibling, dll)):
-                return src
-    return None
+# Classes the mods' own DLLs define (src/**/*.cs), for types given as "Name, Assembly"
 mod_types = set()
 for m in mod_dirs:
-    src = source_dir(m)
-    for root, _, files in os.walk(src) if src else []:
+    for root, _, files in os.walk(os.path.join(m, "src")):
         for fn in files:
             if fn.endswith(".cs"):
                 with open(os.path.join(root, fn), encoding="utf-8-sig", errors="replace") as f:

@@ -3,14 +3,14 @@
 
 Run from anywhere: python config.py
 Writes Config/buffs.xml, Config/blocks.xml and Config/dialogs.xml, and rewrites their rows of Config/Localization.csv,
-in QuestsExpanded and ZZZTongPrefabs-QuestsExpanded.
+in QuestsExpanded.
 
 A boon here must also be in ContractsDEM.Boons (src/Scripts/ContractsDEM.cs) for traders to offer it.
 """
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-MODS = [os.path.join(HERE, ".."), os.path.join(HERE, "..", "..", "ZZZTongPrefabs-QuestsExpanded")]
+MODS = [os.path.join(HERE, "..")]
 
 # Localization rows this script owns (rewritten every run)
 LOC_PREFIXES = ("buffDementiveBoon_", "buffDementiveContract", "dialog_dementive_", "ContractDEM_", "questFlagDEM",

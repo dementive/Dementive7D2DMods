@@ -8,7 +8,6 @@ set "GAME=%SRC%..\..\..\.."
 set "MANAGED=%GAME%\7DaysToDie_Data\Managed"
 set "HARMONY=%GAME%\Mods\0_TFP_Harmony"
 set "OUT=%SRC%..\QuestsExpanded.dll"
-set "ZZZTONG=%SRC%..\..\ZZZTongPrefabs-QuestsExpanded"
 
 set "CSC="
 for /f "usebackq delims=" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -find MSBuild\**\Bin\Roslyn\csc.exe`) do set "CSC=%%i"
@@ -26,6 +25,4 @@ rem C# 9 is the newest language version Unity 2022 (the game's runtime) official
     -recurse:"%SRC%Harmony\*.cs" -recurse:"%SRC%Scripts\*.cs" -recurse:"%SRC%NetPackage\*.cs"
 if errorlevel 1 exit /b 1
 
-copy /y "%SRC%..\QuestsExpanded.dll" "%ZZZTONG%\QuestsExpanded.dll" >nul
-copy /y "%SRC%..\QuestsExpanded.pdb" "%ZZZTONG%\QuestsExpanded.pdb" >nul
-echo Built QuestsExpanded.dll and copied it to ZZZTongPrefabs-QuestsExpanded.
+echo Built QuestsExpanded.dll.

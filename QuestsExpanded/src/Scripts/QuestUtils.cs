@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,67 +8,6 @@ using UnityEngine;
 
 public static class QuestUtils
 {
-    /// <summary>
-    /// Gets a POI for a quest that targets specific prefabs, e.g. "any cabin". Every instance of the named
-    /// prefabs in the world is a candidate if it passes the same checks as vanilla quest POIs. Like vanilla trader
-    /// quests, it picks a random candidate from the closest distance band (within 500m, then 1500m, then anywhere).
-    /// </summary>
-    /// <param name="questGiver"></param>
-    /// <param name="prefabNames">Prefab names (file names without extension)</param>
-    /// <param name="questTag"></param>
-    /// <param name="usedPoiLocations"></param>
-    /// <param name="entityIdForQuests"></param>
-    /// <param name="biomeFilterType"></param>
-    /// <param name="biomeFilter"></param>
-    /// <returns></returns>
-    public static PrefabInstance GetNamedPOINearEntity(
-        Entity questGiver,
-        ICollection<string> prefabNames,
-        FastTags<TagGroup.Global> questTag,
-        List<Vector2> usedPoiLocations = null,
-        int entityIdForQuests = -1,
-        BiomeFilterTypes biomeFilterType = BiomeFilterTypes.AnyBiome,
-        string biomeFilter = "")
-    {
-        var bands = new[] { new List<PrefabInstance>(), new List<PrefabInstance>(), new List<PrefabInstance>() };
-        Vector2 questGiverPosition = new Vector2(questGiver.position.x, questGiver.position.z);
-
-        foreach (PrefabInstance prefab in GameManager.Instance.GetDynamicPrefabDecorator().allPrefabs)
-        {
-            if (!prefabNames.Contains(prefab.location.Name))
-                continue;
-
-            if (!ValidPrefabForQuest(
-                questGiver,
-                prefab,
-                questTag,
-                FastTags<TagGroup.Poi>.none,
-                FastTags<TagGroup.Poi>.none,
-                usedPoiLocations,
-                entityIdForQuests,
-                biomeFilterType,
-                biomeFilter))
-            {
-                continue;
-            }
-
-            float distance = Vector2.Distance(questGiverPosition, prefab.GetCenterXZ());
-            bands[GetTraderPrefabListTier(distance)].Add(prefab);
-        }
-
-        foreach (List<PrefabInstance> band in bands)
-        {
-            if (band.Count > 0)
-                return band[GameManager.Instance.World.GetGameRandom().RandomRange(band.Count)];
-        }
-
-        if (LoggingEnabled)
-        {
-            Log.Out($"Quest {questTag}: No usable POI named {string.Join(",", prefabNames)}");
-        }
-        return null;
-    }
-
     /// <summary>
     /// Whether logging is enabled. Defaults to true if the debug menu is enabled.
     /// Can be set to temporarily override in code for testing, e.g. on the server.

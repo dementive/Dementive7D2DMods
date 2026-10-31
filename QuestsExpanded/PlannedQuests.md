@@ -10,7 +10,7 @@ New quests should be generated with QuestMaker like the existing ones, with thei
 2. **The shared wave system**: built (`WaveDirectorDEM`), with bosses, boss loot bags, themed hordes and map markers.
 3. **Clear and Defend**, **Bounty Hunt** (with its horde variant), **Build and Defend**, **Clear, Build and Defend**, **Last Stand**, **Blood Moon Bounty** and **Create Outpost**: built (50 quests from `QuestMaker/defense.py`); waiting on an in-game playtest.
 4. **Contracts**: built (`ContractsDEM`, trader dialog and boons from `QuestMaker/config.py`); waiting on an in-game playtest.
-5. If the new types work out, retire the POI-group quests (see the last section). Not done yet: it waits on the playtest.
+5. **Retire the POI-group quests:** done (see the last section).
 
 ## Rules for every new quest type
 
@@ -269,6 +269,8 @@ An optional layer on top of every quest, vanilla ones included. Start a contract
 - **Other systems pitched and not chosen:** Nemesis (zombies that kill you come back stronger), Outbreak (infestation spreading across POIs over days), Job Board (player-posted paid requests), Stranded (dropped far away, survive the trip back), Nest Purge (destroy zombie-spawning nests in a POI), Raid (multi-stage tier 6 set piece).
 
 ## Retiring POI-group quests
+
+**Status: done.** The 108 POI-group quests, the 6 old hand-written Clear and Defend quests, the `GotoPOIDEM` objective and ZZZTongPrefabs-QuestsExpanded are gone; the 28 urban/rural tag quests stay. A removed quest a player had in progress is dropped when their save loads.
 
 Once the new types are working, retire the 108 quests tied to specific POI groups (cabin, cave, gas station, farm, ... fetch, clear and clear-and-defend quests). They caused most of the Nexus complaints (long trips, missing markers, fetch quests at POIs that can't host them) and never worked well with POI packs like ZZTong's.
 
