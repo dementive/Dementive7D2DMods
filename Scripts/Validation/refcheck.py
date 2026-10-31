@@ -308,6 +308,26 @@ def check_trader(e, stack, mod):
             bad(mod, stack, f"trader group '{e.get('group')}' does not exist")
 walk(X["traders"], check_trader)
 
+# --- groups used before they're defined: the game reads loot.xml and traders.xml top to bottom, and a group can only
+# use groups defined above it (otherwise the whole file fails to load) ---
+def check_order(root, group_tag):
+    defined = set()
+    stack = []
+    def rec(e):
+        stack.append(e)
+        if e.tag == group_tag and e.get("name"):
+            defined.add(e.get("name"))
+        group = e.get("group") if e.tag == "item" else None
+        mod = owner(stack)
+        if group and mod and group not in defined:
+            bad(mod, stack, f"{group_tag} '{group}' is used before it is defined")
+        for c in e:
+            rec(c)
+        stack.pop()
+    rec(root)
+check_order(X["loot"], "lootgroup")
+check_order(X["traders"], "trader_item_group")
+
 # --- quests ---
 def check_quest(e, stack, mod):
     if e.tag == "objective":

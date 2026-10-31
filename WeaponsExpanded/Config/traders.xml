@@ -3,8 +3,10 @@
 	<!-- Traders can stock the weapons: each group is a small-weight entry in the vanilla groups traders pick their
 	     weapons and rare tools from, so a typical trader has about a 5% chance per restock to have one (Hugh,
 	     who stocks twice as many weapons, about 8%). Each weapon's TraderStageTemplate still decides from which
-	     trader stage, and at which quality, it can show up. -->
-	<append xpath="/traders/trader_item_groups">
+	     trader stage, and at which quality, it can show up.
+	     The game only lets a group use groups defined above it, so these go before groupMeleeAll, the first vanilla
+	     group that uses one of them. -->
+	<insertBefore xpath="/traders/trader_item_groups/trader_item_group[@name='groupMeleeAll']">
 		<trader_item_group name="groupDementiveTraderRanged" count="1">
 			<item name="DementiveHughsGlock" quality="1,6"/>
 			<item name="DementiveDesertRedeemer" quality="1,6"/>
@@ -51,7 +53,7 @@
 			<item name="DementivemeleeToolArchitect" quality="1,6"/>
 			<item name="DementivemeleeToolPickProspector" quality="1,6"/>
 		</trader_item_group>
-	</append>
+	</insertBefore>
 
 	<append xpath="/traders/trader_item_groups/trader_item_group[@name='groupRangedAll']">
 		<item group="groupDementiveTraderRanged" prob="0.11"/>
