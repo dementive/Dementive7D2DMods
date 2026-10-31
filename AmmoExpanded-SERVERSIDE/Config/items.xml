@@ -307,7 +307,12 @@
 			</effect_group>
 
 			<effect_group name=".44 Magnum Explosive Tip Round" tiered="false">
-				<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" target_tags="zombie,animal,bandit" buff="buffDementiveAmmoExplosiveTip"/>
+				<requirement name="IsAlive" target="other"/>
+					<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" target_tags="zombie,animal,bandit" buff="buffDementiveAmmoExplosiveTip"/>
+			</effect_group>
+			<effect_group name=".44 Magnum Explosive Tip Round kill" tiered="false">
+				<triggered_effect trigger="onSelfKilledOther" action="AddBuff" target="other" target_tags="zombie,animal,bandit" buff="buffDementiveAmmoExplosiveTipKill"/>
+				<triggered_effect trigger="onSelfKilledOther" action="AddBuff" target="other" target_tags="zombie,animal,bandit" buff="buffDementiveAmmoExplosiveTipKill"/>
 			</effect_group>
 		</item>
 

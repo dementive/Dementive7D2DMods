@@ -129,8 +129,13 @@ AMMO = [
          ability="+50% headshot damage. 30% tighter spread when aiming. Doesn't pass through targets."),
     dict(name="DementiveAmmo44Explosive", title=".44 Magnum Explosive Tip Round", parent="ammo44MagnumBulletBall", caliber="44", tier=3,
          edits=[dmg(60)], tint="#F1C40F",
-         # The Explode action only runs on the server, so the blast goes through a buff on the target (buffs.xml)
-         signature=[(None, f'<triggered_effect trigger="{GUN_HIT}" action="AddBuff" target="other" target_tags="zombie,animal,bandit" buff="buffDementiveAmmoExplosiveTip"/>')],
+         # The Explode action only runs on the server, so the blast goes through a buff on the target (buffs.xml).
+         # Buffs never start on a dead entity, so a killing hit adds a second buff twice: re-adding a buff fires
+         # onSelfBuffStack right away, dead or not. The IsAlive check keeps hits on corpses from exploding
+         signature=[(None, f"""<requirement name="IsAlive" target="other"/>
+	<triggered_effect trigger="{GUN_HIT}" action="AddBuff" target="other" target_tags="zombie,animal,bandit" buff="buffDementiveAmmoExplosiveTip"/>"""),
+                    ("kill", """<triggered_effect trigger="onSelfKilledOther" action="AddBuff" target="other" target_tags="zombie,animal,bandit" buff="buffDementiveAmmoExplosiveTipKill"/>
+<triggered_effect trigger="onSelfKilledOther" action="AddBuff" target="other" target_tags="zombie,animal,bandit" buff="buffDementiveAmmoExplosiveTipKill"/>""")],
          recipe=[("resourceBulletTip", 1), ("resourceGunPowder", 5), ("resourceBulletCasing", 1), ("resourceScrapPolymers", 1)],
          lore="A .44 round with a tiny explosive charge in the tip. Don't fire it at anything standing next to you.",
          ability="Every hit sets off a small blast: 50 damage to everything within 2 meters, including you."),
@@ -183,14 +188,26 @@ AMMO = [
 BUFFS = """<Dementive>
 
 	<append xpath="/buffs">
-		<!-- .44 Magnum Explosive Tip: added to whatever the round hits. MinEventActionExplode only runs on the server,
-		     and buffs on zombies run there, so the blast works when a client fires too -->
+		<!-- .44 Magnum Explosive Tip: added to whatever the round hits and doesn't kill. MinEventActionExplode only runs
+		     on the server, and buffs on zombies run there, so the blast works when a client fires too -->
 		<buff name="buffDementiveAmmoExplosiveTip" hidden="true">
 			<stack_type value="ignore"/>
 			<duration value="1"/>
 			<effect_group>
 				<triggered_effect trigger="onSelfBuffStart" action="Explode" blast_power="0" block_damage="5" block_radius="1" entity_damage="50" entity_radius="2" damage_type="Heat"/>
 				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffDementiveAmmoExplosiveTip"/>
+			</effect_group>
+		</buff>
+
+		<!-- .44 Magnum Explosive Tip on a killing hit: added twice to the body. Buffs never start on a dead entity, but
+		     adding one the body already has fires onSelfBuffStack right away on every machine the add reaches, the
+		     server included. The blast only goes off on the stack, so it happens once -->
+		<buff name="buffDementiveAmmoExplosiveTipKill" hidden="true">
+			<stack_type value="replace"/>
+			<duration value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStack" action="Explode" blast_power="0" block_damage="5" block_radius="1" entity_damage="50" entity_radius="2" damage_type="Heat"/>
+				<triggered_effect trigger="onSelfBuffStack" action="RemoveBuff" buff="buffDementiveAmmoExplosiveTipKill"/>
 			</effect_group>
 		</buff>
 	</append>

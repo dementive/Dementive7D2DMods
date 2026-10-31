@@ -1,14 +1,26 @@
 <Dementive>
 
 	<append xpath="/buffs">
-		<!-- .44 Magnum Explosive Tip: added to whatever the round hits. MinEventActionExplode only runs on the server,
-		     and buffs on zombies run there, so the blast works when a client fires too -->
+		<!-- .44 Magnum Explosive Tip: added to whatever the round hits and doesn't kill. MinEventActionExplode only runs
+		     on the server, and buffs on zombies run there, so the blast works when a client fires too -->
 		<buff name="buffDementiveAmmoExplosiveTip" hidden="true">
 			<stack_type value="ignore"/>
 			<duration value="1"/>
 			<effect_group>
 				<triggered_effect trigger="onSelfBuffStart" action="Explode" blast_power="0" block_damage="5" block_radius="1" entity_damage="50" entity_radius="2" damage_type="Heat"/>
 				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffDementiveAmmoExplosiveTip"/>
+			</effect_group>
+		</buff>
+
+		<!-- .44 Magnum Explosive Tip on a killing hit: added twice to the body. Buffs never start on a dead entity, but
+		     adding one the body already has fires onSelfBuffStack right away on every machine the add reaches, the
+		     server included. The blast only goes off on the stack, so it happens once -->
+		<buff name="buffDementiveAmmoExplosiveTipKill" hidden="true">
+			<stack_type value="replace"/>
+			<duration value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStack" action="Explode" blast_power="0" block_damage="5" block_radius="1" entity_damage="50" entity_radius="2" damage_type="Heat"/>
+				<triggered_effect trigger="onSelfBuffStack" action="RemoveBuff" buff="buffDementiveAmmoExplosiveTipKill"/>
 			</effect_group>
 		</buff>
 	</append>
