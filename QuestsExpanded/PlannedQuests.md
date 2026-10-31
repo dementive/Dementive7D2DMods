@@ -7,7 +7,7 @@ New quests should be generated with QuestMaker like the existing ones, with thei
 ## Build order
 
 1. **Commission**: built (43 commissions, `QuestMaker/commissions.py`); waiting on an in-game playtest.
-2. **The shared wave system**, with a single Clear and Defend quest built on it as a prototype. Playtest this before going further.
+2. **The shared wave system**, with a single Clear and Defend quest built on it as a prototype: built (`WaveDirectorDEM`, tier 2 Clear and Defend from `QuestMaker/defense.py`); waiting on an in-game playtest before going further.
 3. Once waves work in-game: **Clear and Defend**, then **Bounty Hunt** (with its horde variant), **Build and Defend**, **Clear, Build and Defend**, **Last Stand**, **Blood Moon Bounty**, and **Create Outpost**.
 4. **Contracts** can be built at any point; they work on top of any quest and don't depend on the new types.
 5. If the new types work out, retire the POI-group quests (see the last section).
@@ -21,43 +21,31 @@ New quests should be generated with QuestMaker like the existing ones, with thei
 - **Blood moons:** no special handling. Planning around horde night is the player's job.
 - **Distance:** same distance bands and biome rules as vanilla quests.
 
-## Shared foundation: game-event waves
+## Shared foundation: the wave director
 
-Every defense-style quest below needs waves of zombies that reliably end. The old Clear and Defend quests (still in `Config/quests.xml`, but commented out of every trader's quest list) did each wave as `<action type="SpawnEnemy">` followed by `<objective type="ObjectiveEntityKill" value="N">`, that is, "spawn some zombies, then kill N of anything". That is why players reported on Nexus that the waves got stuck:
+**Status: built, with a tier 2 Clear and Defend prototype; not yet playtested.**
+
+Every defense-style quest needs waves of zombies that reliably end. The old Clear and Defend quests (still in `Config/quests.xml`, but commented out of every trader's quest list) did each wave as `<action type="SpawnEnemy">` followed by `<objective type="ObjectiveEntityKill" value="N">`, that is, "spawn some zombies, then kill N of anything". That is why players reported on Nexus that the waves got stuck:
 
 - Kills from bleeding, traps, turrets or other players may not count.
 - A zombie that spawns inside a wall or falls through the floor can never be killed, so the wave never finishes.
 - The zombie lists are fixed, so difficulty doesn't follow the player's gamestage.
 
-The plan is to run each wave as a game event sequence (in a mod `gameevents.xml`) from an `ObjectiveGameEvent` objective (`event`, `event_tag`). The objective completes when the sequence does. V3.4 has everything needed in vanilla `gameevents.xml` and the game code:
+The first plan was to run each wave as a vanilla game event sequence. That doesn't work in co-op: the game's `ObjectiveGameEvent` runs the event for whoever's copy of the quest reaches it, so every member of a party would start their own waves, and only that member's copy is told when the event finishes.
 
-| Piece | What it does |
-|---|---|
-| `SpawnEntity` action | Spawns `entity_names` or a gamestage spawn list (`entity_group`, e.g. `SleeperGSList`), with `spawn_count`, `party_addition` (more per party member), `add_to_group`, `safe_spawn`, `min_distance` / `max_distance` and `spawn_type="WanderingHorde"` |
-| `WaitForDead` action | Waits until a group is dead, no matter what killed it |
-| `Delay`, `BeltTooltip`, `AddChatMessage` | Pauses between waves and wave announcements |
-| `SetupBossGroup` action | A boss with minions (used by the Twitch integration) |
-| `AddItems` action | Gives the player items |
-| `RemoveEntities` action | Cleans up leftover zombies |
-| `QuestActionGameEvent` (`event`) | Runs a game event when a quest phase starts |
-| `QuestActionSpawnGSEnemy` (`gamestage_list`, `count`) | Quest action that spawns gamestage-scaled enemies |
-| `ObjectiveTime` (`time`) | Countdown objective |
-| `ObjectiveRandomGoto` (`distance`, `completion_distance`, biome filters) | Sends the player to a random spot; it searches for flat ground |
-| `ObjectiveStayWithin` (`radius`) | Keeps the player near a spot |
+So the waves run in C# in `QuestsExpanded.dll`:
 
-Vanilla already uses this kind of spawn: `quest_treasure_explosion_horde` spawns a wandering horde from `SleeperGSList` around buried treasure.
+- **`ObjectiveDefendWavesDEM`** (`<objective type="DefendWavesDEM, QuestsExpanded">`, property `waves`): the objective. Put it in the same phase as `POIStayWithin` so leaving the area fails the quest. Its value is the number of waves done, so a quest picked up again later resumes from the next wave.
+- **`WaveDirectorDEM`** (server): one defense per quest, keyed by quest code, which shared copies keep. Every party member whose quest reaches the defense joins it; the first one starts it, and it only stops when every member has left (finished, failed, abandoned or logged out).
+- **Waves** come from vanilla's `defenseGSList` spawner (a gamestage table vanilla ships for its unreleased defense quests) at the party's gamestage (`GameStageDefinition.CalcGameStageAround`), each wave at a slightly higher gamestage than the last, with more zombies for each extra player. They spawn 6-14m outside the POI's footprint all around it, not in water or a trader's area, and are sent after the closest player.
+- **Breaks** of 15 seconds between waves, with on-screen messages before and during each wave, and the quest log showing the wave and zombies left.
+- **No stalls:** a wave that lasts 4 minutes removes whatever is left (stuck or lost zombies) and counts as done. Zombies that die any way (bleeding, traps, turrets, other players) or unload count as gone.
+- **`NetPackageDefendWavesDEM`** carries joining, leaving and the server's status to each player.
+- **`QuestMaker/defense.py`** generates the defense quests and the wave text, like `commissions.py`.
 
-Wave rules for all defense types:
+Things to check in the playtest: the waves start after the clear, zombies reach the player and the waves end, the quest log and messages update, leaving the area fails the quest and removes the zombies, and in a party only one set of waves spawns and everyone's quest completes.
 
-- Zombies come from outside and attack the player's position.
-- Each break between waves is 15 seconds, with a warning before the next wave.
-- Leaving the area while waves are running fails the quest.
-
-To check while prototyping:
-
-- Each wave needs a way out if a zombie gets stuck or unloads, for example a time limit after which leftovers are removed with `RemoveEntities` and the wave counts as done.
-- Whether `ObjectiveTime` completes or fails the quest when it runs out (for build phases). If it fails, the countdown can be a `Delay` inside a game event instead.
-- Whether spawned enemies can get map markers and custom names. This may need a little C# in `QuestsExpanded.dll`.
+Still to settle for later types: map markers on spawned enemies, and how bosses are made tougher.
 
 ## Commission
 
@@ -105,6 +93,8 @@ A bounty boss is holed up in a POI. Clear the POI, kill the boss and report back
 ## Clear and Defend
 
 Clear a POI, then hold it against waves of zombies coming from outside.
+
+**Status:** the tier 2 version is built as the wave system prototype (`QuestMaker/defense.py`); the other tiers and the infested variant follow once it has been playtested.
 
 - **Generic, like vanilla:** any POI of the quest's tier that supports clear quests, with the existing tag-based POI picking. This replaces the POI-specific `*_clear_and_defend` quests and the hand-written `tier1`-`tier6_dementiveDefenseQuests` in `Config/quests.xml`.
 - **Waves:** 3 at tiers 1-2, 4 at tiers 3-4, 5 at tiers 5-6 (the last with a boss). Gamestage-scaled, 15-second breaks with a warning, leaving fails the quest.
