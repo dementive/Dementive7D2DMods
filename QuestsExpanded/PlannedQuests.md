@@ -6,7 +6,7 @@ New quests should be generated with QuestMaker like the existing ones, with thei
 
 ## Build order
 
-1. **Commission**: no wave system needed, but needs C# for the recipe check and party crafting.
+1. **Commission**: built (43 commissions, `QuestMaker/commissions.py`); waiting on an in-game playtest.
 2. **The shared wave system**, with a single Clear and Defend quest built on it as a prototype. Playtest this before going further.
 3. Once waves work in-game: **Clear and Defend**, then **Bounty Hunt** (with its horde variant), **Build and Defend**, **Clear, Build and Defend**, **Last Stand**, **Blood Moon Bounty**, and **Create Outpost**.
 4. **Contracts** can be built at any point; they work on top of any quest and don't depend on the new types.
@@ -60,6 +60,8 @@ To check while prototyping:
 - Whether spawned enemies can get map markers and custom names. This may need a little C# in `QuestsExpanded.dll`.
 
 ## Commission
+
+**Status: built, not yet playtested.** Things to check in-game: traders offer commissions (non-POI quests are new to this mod), crafting at a workstation counts, turn-in takes the items, shared commissions credit everyone's crafting and only the original taker delivers.
 
 A crafting order: the trader commissions a batch of items you have to craft yourself, then you deliver it. Commissions are there to make the crafting side of the game pay off.
 
