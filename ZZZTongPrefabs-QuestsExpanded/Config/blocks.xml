@@ -1,0 +1,17 @@
+<Dementive>
+
+	<append xpath="/blocks">
+		<!-- The flag Build and Defend quests hand out in their kit. Planting it near the quest's site starts the build
+		phase, and the waves come at it (BlockQuestFlagDEM in QuestsExpanded.dll). -->
+		<block name="questFlagDEM">
+			<property name="Extends" value="flagPoleWhiteRiver"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="Class" value="QuestFlagDEM, QuestsExpanded"/>
+			<property name="CustomIcon" value="flagPoleWhiteRiver"/>
+			<!-- Planted in the wrong spot? Pick it up and plant it again -->
+			<property name="CanPickup" value="true"/>
+			<property name="DescriptionKey" value="questFlagDEMDesc"/>
+		</block>
+	</append>
+
+</Dementive>

@@ -27,9 +27,29 @@ def lines(name):
 
 X = {n: load(n + ".xml") for n in [
     "items", "blocks", "buffs", "loot", "recipes", "traders", "progression", "quests",
-    "ui_display", "item_modifiers", "entityclasses", "entitygroups", "gameevents", "npc"]}
+    "ui_display", "item_modifiers", "entityclasses", "entitygroups", "gameevents", "npc", "gamestages"]}
 
 types = lines("types.txt")
+# Classes the mods' own DLLs define (src/**/*.cs), for types given as "Name, Assembly". A mod that ships a DLL
+# without its source (like ZZZTongPrefabs-QuestsExpanded) uses the source of the sibling mod that builds that DLL.
+def source_dir(m):
+    if os.path.isdir(os.path.join(m, "src")):
+        return os.path.join(m, "src")
+    parent = os.path.dirname(os.path.abspath(m))
+    for dll in (f for f in os.listdir(m) if f.endswith(".dll")):
+        for sibling in os.listdir(parent):
+            src = os.path.join(parent, sibling, "src")
+            if os.path.isdir(src) and os.path.exists(os.path.join(parent, sibling, dll)):
+                return src
+    return None
+mod_types = set()
+for m in mod_dirs:
+    src = source_dir(m)
+    for root, _, files in os.walk(src) if src else []:
+        for fn in files:
+            if fn.endswith(".cs"):
+                with open(os.path.join(root, fn), encoding="utf-8-sig", errors="replace") as f:
+                    mod_types |= set(re.findall(r"\bclass\s+(\w+)", f.read()))
 passives = lines("passive_effects.txt")
 pois = lines("pois.txt")
 icons = lines("icons.txt")
@@ -61,6 +81,8 @@ items = names(X["items"], "item")
 blocks = names(X["blocks"], "block")
 item_mods = names(X["item_modifiers"], "item_modifier")
 itemlike = items | blocks | item_mods
+# Shape variants of building blocks, e.g. "frameShapes:VariantHelper"
+itemlike |= {f"{b}:VariantHelper" for b in blocks if b.endswith("Shapes")}
 buffs = names(X["buffs"], "buff")
 lootgroups = names(X["loot"], "lootgroup")
 lootcontainers = names(X["loot"], "lootcontainer")
@@ -76,6 +98,7 @@ entity_groups = names(X["entitygroups"], "entitygroup")
 recipes_out = names(X["recipes"], "recipe")
 workstations = {b for b in blocks}  # craft_area names are block names of workstations
 game_events = names(X["gameevents"], "action_sequence")
+spawners = names(X["gamestages"], "spawner")
 
 issues = defaultdict(list)
 
@@ -129,6 +152,8 @@ def class_props(e, stack, mod):
     if e.tag != "property" or e.get("name") != "Class" or not e.get("value"):
         return
     v = e.get("value").split(",")[0].strip()
+    # "Name, Assembly": a class from a mod's DLL
+    known = mod_types if "," in e.get("value") else types
     parent = stack[-2] if len(stack) > 1 else None
     if parent is not None and parent.tag == "property" and (parent.get("class") or "").startswith("Action"):
         cands = ["ItemAction" + v, v]
@@ -138,7 +163,7 @@ def class_props(e, stack, mod):
         cands = ["ItemClass" + v, v]
     else:
         return
-    if not any(c in types for c in cands):
+    if not any(c in known for c in cands):
         bad(mod, stack, f"Class '{v}' has no matching game type ({cands[0]})")
 
 def effects(e, stack, mod):
@@ -281,13 +306,23 @@ walk(X["traders"], check_trader)
 def check_quest(e, stack, mod):
     if e.tag == "objective":
         t = (e.get("type") or "").split(",")[0].strip()
-        if "," not in (e.get("type") or "") and ("Objective" + t) not in types and t not in types:
+        known = mod_types if "," in (e.get("type") or "") else types
+        if ("Objective" + t) not in known and t not in known:
             bad(mod, stack, f"unknown objective type '{t}'")
         for p in e.findall("property"):
             if p.get("name") in ("PrefabName", "PrefabNames"):
                 for poi in split(p.get("value")):
                     if poi not in pois:
                         bad(mod, stack, f"POI '{poi}' not in Data/Prefabs/POIs")
+            # QuestsExpanded's DefendWavesDEM
+            if p.get("name") == "bosses":
+                for ent in split(p.get("value")):
+                    if ent not in entity_classes:
+                        bad(mod, stack, f"boss '{ent}' is not an entity class")
+            if p.get("name") == "spawners":
+                for sp in split(p.get("value")):
+                    if sp not in spawners:
+                        bad(mod, stack, f"spawner '{sp}' is not in gamestages.xml")
     if e.tag == "reward":
         t = e.get("type")
         if t and ("Reward" + t) not in types:
@@ -306,6 +341,10 @@ def check_quest(e, stack, mod):
             for ent in split(e.get("id")):
                 if ent not in entity_classes:
                     bad(mod, stack, f"SpawnEnemy entity '{ent}' does not exist")
+        if t == "GameEvent":
+            ev = e.get("id") or next((p.get("value") for p in e.findall("property") if p.get("name") == "event"), None)
+            if ev not in game_events:
+                bad(mod, stack, f"GameEvent action event '{ev}' is not an action_sequence in gameevents.xml")
     if e.tag == "requirement" and stack[-2].tag == "quest":
         t = e.get("type")
         if t and ("QuestRequirement" + t) not in types and ("Requirement" + t) not in types:
@@ -321,6 +360,21 @@ def check_quest(e, stack, mod):
     if e.tag == "quest" and len(stack) > 1 and stack[-2].tag == "quest_list" and e.get("id") not in quests:
         bad(mod, stack, f"quest_list entry '{e.get('id')}' is not a defined quest")
 walk(X["quests"], check_quest)
+
+# --- game events ---
+def check_gameevent(e, stack, mod):
+    if e.tag == "action" and e.get("class"):
+        if ("GameEvent.SequenceActions.Action" + e.get("class")) not in types and ("Action" + e.get("class")) not in types:
+            bad(mod, stack, f"unknown game event action '{e.get('class')}'")
+        props = {p.get("name"): p.get("value") for p in e.findall("property")}
+        if e.get("class") == "AddItems":
+            added = split(props.get("added_items"))
+            for it in added:
+                if it not in itemlike:
+                    bad(mod, stack, f"AddItems item '{it}' does not exist")
+            if len(split(props.get("added_item_counts"))) not in (0, len(added)):
+                bad(mod, stack, "AddItems added_item_counts doesn't match added_items")
+walk(X["gameevents"], check_gameevent)
 
 # --- duplicate definitions (a mod re-adding something vanilla or another mod already defines) ---
 for fname, tag, attr in (("items", "item", "name"), ("blocks", "block", "name"), ("buffs", "buff", "name"),

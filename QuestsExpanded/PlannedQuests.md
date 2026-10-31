@@ -1,16 +1,17 @@
 # Planned Quest Types
 
-Design notes for quest types and systems we want to add or bring back. **None of this is implemented yet.** Each section says how the quest plays, what has been decided, how it would be built, and what has to be checked in-game.
+Design notes for quest types and systems we want to add or bring back. Each section says how the quest plays, what has been decided, how it is (or would be) built, and what has to be checked in-game. **Nothing here has been playtested yet.**
 
 New quests should be generated with QuestMaker like the existing ones, with their text in `Config/Localization.csv`.
 
 ## Build order
 
 1. **Commission**: built (43 commissions, `QuestMaker/commissions.py`); waiting on an in-game playtest.
-2. **The shared wave system**, with a single Clear and Defend quest built on it as a prototype: built (`WaveDirectorDEM`, tier 2 Clear and Defend from `QuestMaker/defense.py`); waiting on an in-game playtest before going further.
-3. Once waves work in-game: **Clear and Defend**, then **Bounty Hunt** (with its horde variant), **Build and Defend**, **Clear, Build and Defend**, **Last Stand**, **Blood Moon Bounty**, and **Create Outpost**.
-4. **Contracts** can be built at any point; they work on top of any quest and don't depend on the new types.
-5. If the new types work out, retire the POI-group quests (see the last section).
+2. **The shared wave system**: built (`WaveDirectorDEM`), with bosses, boss loot bags, themed hordes and map markers.
+3. **Clear and Defend**, **Bounty Hunt** (with its horde variant), **Build and Defend** and **Clear, Build and Defend**: built (33 quests from `QuestMaker/defense.py`); waiting on an in-game playtest.
+4. Still to build: **Last Stand**, **Blood Moon Bounty** and **Create Outpost**.
+5. **Contracts** can be built at any point; they work on top of any quest and don't depend on the new types.
+6. If the new types work out, retire the POI-group quests (see the last section).
 
 ## Rules for every new quest type
 
@@ -23,7 +24,7 @@ New quests should be generated with QuestMaker like the existing ones, with thei
 
 ## Shared foundation: the wave director
 
-**Status: built, with a tier 2 Clear and Defend prototype; not yet playtested.**
+**Status: built, not yet playtested.**
 
 Every defense-style quest needs waves of zombies that reliably end. The old Clear and Defend quests (still in `Config/quests.xml`, but commented out of every trader's quest list) did each wave as `<action type="SpawnEnemy">` followed by `<objective type="ObjectiveEntityKill" value="N">`, that is, "spawn some zombies, then kill N of anything". That is why players reported on Nexus that the waves got stuck:
 
@@ -35,17 +36,29 @@ The first plan was to run each wave as a vanilla game event sequence. That doesn
 
 So the waves run in C# in `QuestsExpanded.dll`:
 
-- **`ObjectiveDefendWavesDEM`** (`<objective type="DefendWavesDEM, QuestsExpanded">`, property `waves`): the objective. Put it in the same phase as `POIStayWithin` so leaving the area fails the quest. Its value is the number of waves done, so a quest picked up again later resumes from the next wave.
-- **`WaveDirectorDEM`** (server): one defense per quest, keyed by quest code, which shared copies keep. Every party member whose quest reaches the defense joins it; the first one starts it, and it only stops when every member has left (finished, failed, abandoned or logged out).
-- **Waves** come from vanilla's `defenseGSList` spawner (a gamestage table vanilla ships for its unreleased defense quests) at the party's gamestage (`GameStageDefinition.CalcGameStageAround`), each wave at a slightly higher gamestage than the last, with more zombies for each extra player. They spawn 6-14m outside the POI's footprint all around it, not in water or a trader's area, and are sent after the closest player.
+- **`ObjectiveDefendWavesDEM`** (`<objective type="DefendWavesDEM, QuestsExpanded">`): the objective. Put it in the same phase as `POIStayWithin` (or `StayWithin`) so leaving the area fails the quest. Its value is the number of waves done, so a quest picked up again later resumes from the next wave. Properties:
+  - `waves`; `center`: `poi` (the POI's footprint, default), `location` (the quest's marker) or `flag` (the flag the player planted); `radius` for `location` and `flag`
+  - `spawners`: gamestage spawners, one picked per wave; `bosses`: entity classes, one picked for the final wave; `strength`: gamestage multiplier
+  - `bounty`: a boss inside the POI instead of waves (see Bounty Hunt); `keyword` and `text`: the quest's own versions of the objective text and messages (e.g. `DefendWavesDEM_incoming_horde`)
+- **`WaveDirectorDEM`** (server): one defense per quest, keyed by quest code, which shared copies keep. Every party member whose quest reaches the defense joins it; the first one starts it, and it only stops when every member has left (finished, failed, abandoned or logged out). A won defense is remembered for an hour, so a party member whose quest only reaches it later completes instead of starting it over.
+- **Waves** are sized by vanilla's `defenseGSList` spawner (a gamestage table vanilla ships for its unreleased defense quests) at the party's gamestage (`GameStageDefinition.CalcGameStageAround`), each wave at a slightly higher gamestage than the last, with more zombies for each extra player. The zombies come from the quest's spawners (`defenseGSList` unless the quest picks themed hordes; themed spawners only choose which zombies, since their own counts are for wandering hordes). They spawn 6-14m outside the defended area all around it, not in water or a trader's area, and are sent after the closest player.
 - **Breaks** of 15 seconds between waves, with on-screen messages before and during each wave, and the quest log showing the wave and zombies left.
 - **No stalls:** a wave that lasts 4 minutes removes whatever is left (stuck or lost zombies) and counts as done. Zombies that die any way (bleeding, traps, turrets, other players) or unload count as gone.
 - **`NetPackageDefendWavesDEM`** carries joining, leaving and the server's status to each player.
 - **`QuestMaker/defense.py`** generates the defense quests and the wave text, like `commissions.py`.
 
-Things to check in the playtest: the waves start after the clear, zombies reach the player and the waves end, the quest log and messages update, leaving the area fails the quest and removes the zombies, and in a party only one set of waves spawns and everyone's quest completes.
+- **Markers:** once 3 or fewer zombies of a wave are left, they show on the map and compass (`buffDementiveMarked`).
+- **Bosses** (`buffDementiveBoss`): 2.5x health, half damage from explosions, 20% bigger, with vanilla's Twitch boss health bar overhead and a marker on the map and compass. A boss always drops a boss loot bag (`EntityLootContainerBoss`) where it dies. Bosses by tier, one picked at random:
 
-Still to settle for later types: map markers on spawned enemies, and how bosses are made tougher.
+| Tier | Bosses |
+|---|---|
+| 2 | Biker, Fat Cop |
+| 3 | Feral Wight, Demolisher |
+| 4 | Radiated Mutated, Radiated Screamer |
+| 5 | Charged Wight, Mutated, Spider or Utility Worker (vanilla has the Charged Biker, Fat Cop and Soldier commented out) |
+| 6 | Infernal Biker, Fat Cop, Wight, Mutated or Soldier |
+
+Things to check in the playtest: the waves start after the clear, zombies reach the player and the waves end, the quest log and messages update, leaving the area fails the quest and removes the zombies, bosses are tougher and marked and drop their bag, and in a party only one set of waves spawns and everyone's quest completes.
 
 ## Commission
 
@@ -73,6 +86,8 @@ A crafting order: the trader commissions a batch of items you have to craft your
 
 A bounty boss is holed up in a POI. Clear the POI, kill the boss and report back.
 
+**Status: built (tiers 2-6, plus the horde variant at tiers 2-6), not yet playtested.** The boss spawns when the clear starts, at the POI's sleeper spawn point farthest from the players, with 2-6 escorts (by gamestage) at the spawn points nearest it. The clear and the boss are both objectives of the clear phase. The horde variant goes to a spot 350-600m from the trader (like vanilla's buried supplies); when you arrive, one themed horde (cops, soldiers, spiders, biker bar, burnt, lumberjacks, utility workers or zombie dogs) comes at you with a boss from the tier's list leading it, and `StayWithin` keeps you within 50m of the spot. The wave time limit and the markers handle horde members that wander off. Rewards: the mod's clear rewards for the tier, plus the boss bag.
+
 - **The boss is in the POI from the start**, as a tougher version of its zombie type (moderately more health; tough, not ultra difficult). It always drops a boss loot bag.
 - **Boss by tier** (2-6):
 
@@ -94,7 +109,7 @@ A bounty boss is holed up in a POI. Clear the POI, kill the boss and report back
 
 Clear a POI, then hold it against waves of zombies coming from outside.
 
-**Status:** the tier 2 version is built as the wave system prototype (`QuestMaker/defense.py`); the other tiers and the infested variant follow once it has been playtested.
+**Status: built (tiers 1-6, infested variant at tiers 3-6), not yet playtested.** Infested variants use vanilla's infested settings (double sleepers, POIs a tier lower) and pay 25% more. Rewards: the mod's fetch-and-clear rewards for the tier (tier 1: its clear rewards plus 15%).
 
 - **Generic, like vanilla:** any POI of the quest's tier that supports clear quests, with the existing tag-based POI picking. This replaces the POI-specific `*_clear_and_defend` quests and the hand-written `tier1`-`tier6_dementiveDefenseQuests` in `Config/quests.xml`.
 - **Waves:** 3 at tiers 1-2, 4 at tiers 3-4, 5 at tiers 5-6 (the last with a boss). Gamestage-scaled, 15-second breaks with a warning, leaving fails the quest.
@@ -104,6 +119,21 @@ Clear a POI, then hold it against waves of zombies coming from outside.
 ## Build and Defend
 
 The trader hands you a supply kit, you go to a spot in the wilderness, build a defense against the clock, then survive the waves.
+
+**Status: built (tiers 1-5), not yet playtested.** How it's built, where it differs from the plan below:
+- The "marker" that starts the build phase is a **White River flag** in the kit (block `questFlagDEM`, `PlaceFlagDEM` objective). Plant it within 30m of the quest's marker, where you want your base; the waves come at the flag. A flag planted too far away says so, and can be picked up and planted again. In a party, the flag one member plants counts for everyone.
+- The 5-minute countdown (`BuildPhaseDEM`) shows in the quest log, with a warning 30 seconds before the waves.
+- The site is 350-600m from the trader, like vanilla's buried supplies. During the waves `StayWithin` keeps you within 60m of the quest's marker; the waves spawn 18-26m from the flag.
+- Waves: 3/4/4/5/6 at tiers 1-5, boss in the last wave at tiers 4-5. Rewards: fetch-and-clear rewards plus 10%.
+- **Kits** as built (counts in `QuestMaker/defense.py`). The planned blade and dart traps were left out because they need power (a generator or battery bank, fuel or batteries, and wiring) to do anything; adding a power setup would make the kits much bigger. **To decide:** leave them out, or add a small power setup at tiers 3-4.
+
+| Tier | Kit |
+|---|---|
+| 1 | 30 wood frames, 20 cobblestone, 8 wood spikes |
+| 2 | 30 wood frames, 30 cobblestone, 8 wood spikes, 6 iron bars, 8 barbed wire fences |
+| 3 | 20 cobblestone, 30 concrete, 10 iron spikes, 8 iron bars, 10 barbed wire fences |
+| 4 | 50 concrete, 12 iron spikes, 10 iron bars, 12 barbed wire fences |
+| 5 | 30 concrete, 30 steel, 12 iron spikes, 12 barbed wire fences, a junk turret and 300 turret ammo |
 
 1. **Accept:** the trader gives you the kit right away. A phase-1 `QuestActionGameEvent` runs an `AddItems` event.
 2. **Travel:** `ObjectiveRandomGoto` to flat ground, with the same distances as vanilla quests.
@@ -126,6 +156,8 @@ The trader hands you a supply kit, you go to a spot in the wilderness, build a d
 ## Clear, Build and Defend
 
 The finale: clear a POI, fortify it against the clock with a kit from the trader, then defend it against a really difficult horde coming from outside.
+
+**Status: built (tiers 3-6, infested variant at tiers 3-6), not yet playtested.** The kit (no flag) is the Build and Defend kit of the tier; tier 6 gets 40 concrete, 40 steel, 16 iron spikes, 16 barbed wire fences, a junk turret and 400 ammo. Waves: 4/4/5/5 at tiers 3-6 at 1.25x gamestage, with a boss in the last wave at every tier. Rewards: fetch-and-clear rewards plus 20% (infested: plus 25% on top).
 
 - **Tiers:** 3-6.
 - **POIs:** any POI of the quest's tier that supports clear quests. No hand-picked list.

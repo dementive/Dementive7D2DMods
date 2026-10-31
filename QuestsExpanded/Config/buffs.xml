@@ -1,0 +1,35 @@
+<Dementive>
+
+	<append xpath="/buffs">
+		<!-- Bosses of the defense and bounty quests (WaveDirectorDEM in QuestsExpanded.dll): tougher, bigger, explosion
+		resistant, with a health bar overhead and a marker on the map and compass. Max health only goes up after the
+		buff starts, so health is topped up to the new max then, like vanilla's tough Twitch vote zombies. -->
+		<buff name="buffDementiveBoss" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+
+			<effect_group>
+				<passive_effect name="HealthMax" operation="perc_add" value="1.5"/>
+				<passive_effect name="ExplosionIncomingDamage" operation="perc_add" value="-0.5"/>
+			</effect_group>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Health" operation="add" value="30000"/>
+				<triggered_effect trigger="onSelfBuffStart" action="SetScale" scale="1.2"/>
+				<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="twitch_vote_boss" add="true"/>
+				<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="zombie" add="true"/>
+			</effect_group>
+		</buff>
+
+		<!-- The last few zombies of a defense wave: shown on the map and compass so nobody has to hunt for them -->
+		<buff name="buffDementiveMarked" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="zombie" add="true"/>
+			</effect_group>
+		</buff>
+	</append>
+
+</Dementive>

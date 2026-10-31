@@ -1,5 +1,3 @@
-﻿using UnityEngine;
-
 /// <summary>
 /// Messages between defense objectives (clients) and <see cref="WaveDirectorDEM"/> (server): a player's quest
 /// joining or leaving a defense, and the server telling each player where the defense stands.
@@ -18,30 +16,24 @@ public class NetPackageDefendWavesDEM : NetPackage
     private int questCode;
 
     // Join
-    private Vector3 poiPosition;
+    private DefenseSettingsDEM settings;
 
-    private Vector3 poiSize;
-
-    // Join and Status
+    // Status
     private int waves;
 
     private int wavesDone;
 
-    // Status
     private bool fighting;
 
     private int zombiesLeft;
 
     private string messageKey = "";
 
-    public NetPackageDefendWavesDEM SetupJoin(int _questCode, Vector3 _poiPosition, Vector3 _poiSize, int _waves, int _wavesDone)
+    public NetPackageDefendWavesDEM SetupJoin(int _questCode, DefenseSettingsDEM _settings)
     {
         kind = Kinds.Join;
         questCode = _questCode;
-        poiPosition = _poiPosition;
-        poiSize = _poiSize;
-        waves = _waves;
-        wavesDone = _wavesDone;
+        settings = _settings;
         return this;
     }
 
@@ -68,13 +60,18 @@ public class NetPackageDefendWavesDEM : NetPackage
     {
         kind = (Kinds)_br.ReadByte();
         questCode = _br.ReadInt32();
-        poiPosition = StreamUtils.ReadVector3(_br);
-        poiSize = StreamUtils.ReadVector3(_br);
-        waves = _br.ReadInt32();
-        wavesDone = _br.ReadInt32();
-        fighting = _br.ReadBoolean();
-        zombiesLeft = _br.ReadInt32();
-        messageKey = _br.ReadString();
+        if (kind == Kinds.Join)
+        {
+            settings = DefenseSettingsDEM.Read(_br);
+        }
+        else if (kind == Kinds.Status)
+        {
+            waves = _br.ReadInt32();
+            wavesDone = _br.ReadInt32();
+            fighting = _br.ReadBoolean();
+            zombiesLeft = _br.ReadInt32();
+            messageKey = _br.ReadString();
+        }
     }
 
     public override void write(PooledBinaryWriter _bw)
@@ -82,13 +79,18 @@ public class NetPackageDefendWavesDEM : NetPackage
         base.write(_bw);
         _bw.Write((byte)kind);
         _bw.Write(questCode);
-        StreamUtils.Write(_bw, poiPosition);
-        StreamUtils.Write(_bw, poiSize);
-        _bw.Write(waves);
-        _bw.Write(wavesDone);
-        _bw.Write(fighting);
-        _bw.Write(zombiesLeft);
-        _bw.Write(messageKey);
+        if (kind == Kinds.Join)
+        {
+            settings.Write(_bw);
+        }
+        else if (kind == Kinds.Status)
+        {
+            _bw.Write(waves);
+            _bw.Write(wavesDone);
+            _bw.Write(fighting);
+            _bw.Write(zombiesLeft);
+            _bw.Write(messageKey);
+        }
     }
 
     public override void ProcessPackage(World _world, GameManager _callbacks)
@@ -111,7 +113,7 @@ public class NetPackageDefendWavesDEM : NetPackage
 
         if (kind == Kinds.Join)
         {
-            WaveDirectorDEM.Join(questCode, Sender.entityId, poiPosition, poiSize, waves, wavesDone);
+            WaveDirectorDEM.Join(questCode, Sender.entityId, settings);
         }
         else
         {
@@ -130,6 +132,7 @@ public class NetPackageDefendWavesDEM : NetPackage
             return;
         }
 
+        ObjectiveDefendWavesDEM shown = null;
         foreach (Quest quest in player.QuestJournal.quests)
         {
             if (quest.QuestCode != questCode || quest.CurrentState != Quest.QuestState.InProgress)
@@ -142,13 +145,15 @@ public class NetPackageDefendWavesDEM : NetPackage
                 if (objective is ObjectiveDefendWavesDEM defend && defend.Phase == quest.CurrentPhase)
                 {
                     defend.UpdateStatus(wavesDone, fighting, zombiesLeft);
+                    shown = defend;
                 }
             }
         }
 
         if (messageKey != "")
         {
-            GameManager.ShowTooltip(player, string.Format(Localization.Get(messageKey), wavesDone + 1, waves, (int)WaveDirectorDEM.BreakSeconds));
+            string key = shown != null ? shown.TextKey(messageKey) : messageKey;
+            GameManager.ShowTooltip(player, string.Format(Localization.Get(key), wavesDone + 1, waves, (int)WaveDirectorDEM.BreakSeconds));
         }
     }
 }

@@ -22,7 +22,7 @@ XML patches only apply when a world loads, so reaching the main menu proves noth
    Scripts\bin\XmlPatch.exe <game>\Data\Config <merged dir> <repo>\BooksExpanded <repo>\ConsumablesExpanded <repo>\QuestsExpanded <repo>\WeaponsExpanded
    ```
 
-3. **Check every reference** the mods add (items, blocks, buffs, loot groups, quests, POIs, icons, meshes, localization, effect actions and requirements) against the merged XML and the game info. It should end with `TOTAL 0`.
+3. **Check every reference** the mods add (items, blocks, buffs, loot groups, quests, POIs, icons, meshes, localization, effect actions and requirements, game events and the items they give, defense quest bosses and spawners) against the merged XML and the game info. Classes from a mod's own DLL (`"Name, Assembly"`) are checked against the mod's `src`, or the `src` of the sibling mod that builds the same DLL. It should end with `TOTAL 0` (ZZZTongPrefabs-QuestsExpanded reports its ZZTong POI names, which aren't in the base game).
 
    ```
    python Validation\refcheck.py <game> <merged dir> <info dir> <repo>\BooksExpanded <repo>\ConsumablesExpanded <repo>\QuestsExpanded <repo>\WeaponsExpanded
