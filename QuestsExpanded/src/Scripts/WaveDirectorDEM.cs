@@ -118,28 +118,29 @@ public static class WaveDirectorDEM
         if (world == null)
             return;
 
+        // Ticking can change the defenses: a status that completes or fails the local player's quest (on a listen
+        // server or in single player) makes it leave its defense right away, which can remove that defense
         float deltaTime = Time.deltaTime;
         var finished = new List<Defense>();
-        foreach (Defense defense in defenses.Values)
+        foreach (Defense defense in new List<Defense>(defenses.Values))
         {
-            if (defense.Tick(world, deltaTime))
+            bool stillRunning = defenses.TryGetValue(defense.QuestCode, out Defense current) && current == defense;
+            if (stillRunning && defense.Tick(world, deltaTime))
                 finished.Add(defense);
         }
         foreach (Defense defense in finished)
         {
-            defenses.Remove(defense.QuestCode);
+            if (defenses.TryGetValue(defense.QuestCode, out Defense current) && current == defense)
+                defenses.Remove(defense.QuestCode);
             if (defense.Won)
                 won[defense.QuestCode] = new KeyValuePair<float, int>(Time.time, defense.Waves);
         }
 
-        var finishedHunts = new List<int>();
-        foreach (KeyValuePair<int, Defense> hunt in hunts)
+        foreach (KeyValuePair<int, Defense> hunt in new List<KeyValuePair<int, Defense>>(hunts))
         {
-            if (hunt.Value.Tick(world, deltaTime))
-                finishedHunts.Add(hunt.Key);
+            if (hunts.TryGetValue(hunt.Key, out Defense current) && current == hunt.Value && hunt.Value.Tick(world, deltaTime))
+                hunts.Remove(hunt.Key);
         }
-        foreach (int playerId in finishedHunts)
-            hunts.Remove(playerId);
 
         if (won.Count > 0)
         {
@@ -520,7 +521,8 @@ internal abstract class Defense
     public void SendStatus(string messageKey, int messageValue = 0)
     {
         lastReportedAlive = zombies.Count;
-        foreach (int id in Listeners)
+        // A copy: the status can complete or fail the local player's quest, which makes them leave (see Update)
+        foreach (int id in new List<int>(Listeners))
             WaveDirectorDEM.SendStatus(QuestCode, id, Status(messageKey, messageValue));
     }
 
