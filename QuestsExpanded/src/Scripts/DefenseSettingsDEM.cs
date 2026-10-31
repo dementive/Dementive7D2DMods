@@ -17,6 +17,12 @@ public class DefenseSettingsDEM
         BloodMoon,
         /// <summary>Nightly attacks on a flag in a POI, for a number of nights.</summary>
         Outpost,
+        /// <summary>Bandits (from an NPC mod) holding a POI; over when every one is dead.</summary>
+        Hideout,
+        /// <summary>A group of survivors under attack in a POI: break the attack and lead them to the trader.</summary>
+        Rescue,
+        /// <summary>Build a safehouse to a checklist, lead refugees to it and hold it through its first night.</summary>
+        Safehouse,
     }
 
     public Modes Mode;
@@ -80,6 +86,18 @@ public class DefenseSettingsDEM
 
     public int AttackWaves = 3;
 
+    /// <summary>The quest's tier, for picking NPCs (the NPC quests and the outposts' bandit raids).</summary>
+    public int Tier = 1;
+
+    /// <summary>Rescue: survivors in the group. Safehouse: refugees.</summary>
+    public int Count;
+
+    /// <summary>Outpost: one night's attack is a bandit raid, when an NPC mod adds bandits.</summary>
+    public bool BanditRaid;
+
+    /// <summary>Safehouse: where the refugees wait (just outside the trader's compound).</summary>
+    public Vector3 Trader;
+
     public void Write(PooledBinaryWriter _bw)
     {
         _bw.Write((byte)Mode);
@@ -99,6 +117,10 @@ public class DefenseSettingsDEM
         _bw.Write((byte)SpawnStyle);
         StreamUtils.Write(_bw, PoiMin);
         StreamUtils.Write(_bw, PoiSize);
+        _bw.Write(Tier);
+        _bw.Write(Count);
+        _bw.Write(BanditRaid);
+        StreamUtils.Write(_bw, Trader);
     }
 
     public static DefenseSettingsDEM Read(PooledBinaryReader _br)
@@ -122,6 +144,10 @@ public class DefenseSettingsDEM
             SpawnStyle = (SpawnStyles)_br.ReadByte(),
             PoiMin = StreamUtils.ReadVector3(_br),
             PoiSize = StreamUtils.ReadVector3(_br),
+            Tier = _br.ReadInt32(),
+            Count = _br.ReadInt32(),
+            BanditRaid = _br.ReadBoolean(),
+            Trader = StreamUtils.ReadVector3(_br),
         };
     }
 

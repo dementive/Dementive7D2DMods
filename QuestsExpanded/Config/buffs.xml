@@ -30,6 +30,28 @@
 				<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="zombie" add="true"/>
 			</effect_group>
 		</buff>
+
+		<!-- Survivors and refugees of the NPC quests waiting for a player to come and get them: shown on the map and
+		compass. Removed when they follow someone. -->
+		<buff name="buffDementiveWaiting" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="fetch_container" add="true"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="SetNavObject" nav_object="fetch_container" add="false"/>
+			</effect_group>
+		</buff>
+	</append>
+
+	<!-- SCore's NPCs take no damage while they have a buff with this name, but SCore doesn't define one. The NPC
+	quests use it to keep survivors and refugees alive until a player has come for them (NpcDefensesDEM). Added only
+	if no mod loaded before this one defines it. -->
+	<append xpath="/buffs[not(buff[@name='buffInvulnerable'])]">
+		<buff name="buffInvulnerable" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+		</buff>
 	</append>
 
 </Dementive>

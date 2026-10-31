@@ -9,6 +9,7 @@
  * 		<property name="block" value="questFlagDEM"/>   which flag counts
  * 		<property name="max_distance" value="40"/>      how far from the quest's location the flag can go
  * 		<property name="inside_poi" value="true"/>      the flag has to go inside the quest's POI instead
+ * 		<property name="keyword" value="SafehouseDEM_flag_keyword"/>   the objective's text, if not the default
  * 	</objective>
  */
 public class ObjectivePlaceFlagDEM : BaseObjective
@@ -19,11 +20,13 @@ public class ObjectivePlaceFlagDEM : BaseObjective
 
     public bool InsidePOI;
 
+    public string KeywordKey = "";
+
     public override ObjectiveValueTypes ObjectiveValueType => ObjectiveValueTypes.Boolean;
 
     public override void SetupObjective()
     {
-        keyword = Localization.Get(InsidePOI ? "PlaceFlagDEM_keyword_poi" : "PlaceFlagDEM_keyword");
+        keyword = Localization.Get(KeywordKey != "" ? KeywordKey : InsidePOI ? "PlaceFlagDEM_keyword_poi" : "PlaceFlagDEM_keyword");
     }
 
     public override void SetupDisplay()
@@ -80,6 +83,7 @@ public class ObjectivePlaceFlagDEM : BaseObjective
         properties.ParseString("block", ref Block);
         properties.ParseFloat("max_distance", ref MaxDistance);
         properties.ParseBool("inside_poi", ref InsidePOI);
+        properties.ParseString("keyword", ref KeywordKey);
     }
 
     public override void InternalToParametersDictionary(ref System.Collections.Generic.Dictionary<string, object> parameters)
@@ -94,6 +98,7 @@ public class ObjectivePlaceFlagDEM : BaseObjective
         objective.Block = Block;
         objective.MaxDistance = MaxDistance;
         objective.InsidePOI = InsidePOI;
+        objective.KeywordKey = KeywordKey;
         return objective;
     }
 }

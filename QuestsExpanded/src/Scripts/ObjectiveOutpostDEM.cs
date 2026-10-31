@@ -12,6 +12,7 @@
  * 		<property name="attack_hour" value="22"/>
  * 		<property name="attack_waves" value="3"/>   waves in each night's attack
  * 		<property name="strength" value="1"/>       gamestage multiplier
+ * 		<property name="bandit_raid" value="true"/> one night's attack is a bandit raid, when an NPC mod adds bandits
  * 	</objective>
  */
 public class ObjectiveOutpostDEM : ObjectiveDefenseBaseDEM
@@ -23,6 +24,8 @@ public class ObjectiveOutpostDEM : ObjectiveDefenseBaseDEM
     public int AttackWaves = 3;
 
     public float Strength = 1f;
+
+    public bool BanditRaid;
 
     public ObjectiveOutpostDEM() : base("OutpostDEM_keyword")
     {
@@ -77,6 +80,8 @@ public class ObjectiveOutpostDEM : ObjectiveDefenseBaseDEM
             Flag = flag,
             AttackHour = AttackHour,
             AttackWaves = AttackWaves,
+            BanditRaid = BanditRaid,
+            Tier = OwnerQuest.QuestClass.DifficultyTier,
         };
         return true;
     }
@@ -93,6 +98,7 @@ public class ObjectiveOutpostDEM : ObjectiveDefenseBaseDEM
         properties.ParseInt("attack_hour", ref AttackHour);
         properties.ParseInt("attack_waves", ref AttackWaves);
         properties.ParseFloat("strength", ref Strength);
+        properties.ParseBool("bandit_raid", ref BanditRaid);
     }
 
     public override void InternalToParametersDictionary(ref System.Collections.Generic.Dictionary<string, object> parameters)
@@ -108,6 +114,7 @@ public class ObjectiveOutpostDEM : ObjectiveDefenseBaseDEM
         objective.AttackHour = AttackHour;
         objective.AttackWaves = AttackWaves;
         objective.Strength = Strength;
+        objective.BanditRaid = BanditRaid;
         return objective;
     }
 }

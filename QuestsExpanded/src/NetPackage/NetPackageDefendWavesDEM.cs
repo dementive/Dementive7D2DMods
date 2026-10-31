@@ -173,6 +173,15 @@ public class DefenseStatusDEM
 
     public Results Result;
 
+    /// <summary>Rescue: survivors lost. Safehouse: refugees lost.</summary>
+    public int Lost;
+
+    /// <summary>Rescue and Safehouse: which part of the quest the defense is in.</summary>
+    public int Stage;
+
+    /// <summary>Safehouse: what the checklist found (see SafehouseChecklistDEM).</summary>
+    public int Checklist;
+
     public void Write(PooledBinaryWriter _bw)
     {
         _bw.Write(WavesDone);
@@ -184,6 +193,9 @@ public class DefenseStatusDEM
         _bw.Write(BreakSeconds);
         _bw.Write(NextTime);
         _bw.Write((byte)Result);
+        _bw.Write(Lost);
+        _bw.Write(Stage);
+        _bw.Write(Checklist);
     }
 
     public static DefenseStatusDEM Read(PooledBinaryReader _br)
@@ -199,6 +211,9 @@ public class DefenseStatusDEM
             BreakSeconds = _br.ReadInt32(),
             NextTime = _br.ReadUInt64(),
             Result = (Results)_br.ReadByte(),
+            Lost = _br.ReadInt32(),
+            Stage = _br.ReadInt32(),
+            Checklist = _br.ReadInt32(),
         };
     }
 }

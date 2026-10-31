@@ -36,8 +36,13 @@ public static class WaveDirectorDEM
 
     private static readonly Dictionary<int, Defense> defenses = new Dictionary<int, Defense>();
 
-    /// <summary>Defenses that were won, by quest code: when they finished and how many waves they had.</summary>
-    private static readonly Dictionary<int, KeyValuePair<float, int>> won = new Dictionary<int, KeyValuePair<float, int>>();
+    /// <summary>Defenses that were won, by quest code: when they finished and how they ended.</summary>
+    private static readonly Dictionary<int, KeyValuePair<float, DefenseStatusDEM>> won = new Dictionary<int, KeyValuePair<float, DefenseStatusDEM>>();
+
+    /// <summary>Seconds between sweeps for NPCs an NPC quest spawned and no longer looks after.</summary>
+    private const float CleanUpSeconds = 10f;
+
+    private static float cleanUpTimer = CleanUpSeconds;
 
     public static void Init()
     {
@@ -49,15 +54,10 @@ public static class WaveDirectorDEM
     /// </summary>
     public static void Join(int questCode, int playerId, DefenseSettingsDEM settings)
     {
-        if (won.TryGetValue(questCode, out KeyValuePair<float, int> result))
+        if (won.TryGetValue(questCode, out KeyValuePair<float, DefenseStatusDEM> result))
         {
-            // The party already won it; don't start it over for someone who arrives late
-            SendStatus(questCode, playerId, new DefenseStatusDEM
-            {
-                WavesDone = result.Value,
-                Waves = result.Value,
-                Result = DefenseStatusDEM.Results.Won,
-            });
+            // The party already won it; don't start it over for someone who arrives late, just tell them how it ended
+            SendStatus(questCode, playerId, result.Value);
             return;
         }
 
@@ -96,13 +96,66 @@ public static class WaveDirectorDEM
             defense.OnEnemyDied(enemy);
     }
 
+    /// <summary>
+    /// Server side: a non-enemy entity died (see DefenseKillPatches). If it was a survivor or refugee of an NPC quest,
+    /// that quest counts it as lost, even if nobody is around to find the body. A settled refugee whose safehouse isn't
+    /// running right now (its party is offline) is struck from the safehouse's record.
+    /// </summary>
+    public static void NpcDied(EntityAlive npc)
+    {
+        if (npc == null || npc.Buffs == null)
+            return;
+        foreach (Defense defense in new List<Defense>(defenses.Values))
+        {
+            if (defense is NpcDefense npcDefense && npcDefense.OnNpcDied(npc.entityId))
+                return;
+        }
+        if (npc.Buffs.HasCustomVar(NpcDefense.SettledCvar))
+            SafehouseRegistryDEM.RefugeeDied(npc.Buffs.GetCustomVar(NpcDefense.SettledCvar), npc.entityId);
+    }
+
+    /// <summary>
+    /// Server side: despawns NPCs an NPC quest spawned (they carry its tag) that no running quest looks after any
+    /// more: ones that come back with their chunk after the quest ended, was abandoned or replaced them, so they don't
+    /// follow someone forever or keep their marker.
+    /// </summary>
+    private static void CleanUpQuestNpcs(World world)
+    {
+        var byTag = new Dictionary<float, NpcDefense>();
+        foreach (KeyValuePair<int, Defense> entry in defenses)
+        {
+            if (entry.Value is NpcDefense npcDefense)
+                byTag[NpcDefense.Tag(entry.Key)] = npcDefense;
+        }
+        foreach (Entity entity in new List<Entity>(world.Entities.list))
+        {
+            if (!(entity is EntityAlive npc) || entity is EntityPlayer || npc.IsDead() || npc.Buffs == null
+                || !npc.Buffs.HasCustomVar(NpcDefense.TagCvar))
+                continue;
+            if (byTag.TryGetValue(npc.Buffs.GetCustomVar(NpcDefense.TagCvar), out NpcDefense defense) && defense.IsMember(npc.entityId))
+                continue;
+            NpcFollowDEM.Release(npc, NpcFollowDEM.Leader(npc));
+            world.RemoveEntity(npc.entityId, EnumRemoveEntityReason.Despawned);
+        }
+    }
+
     private static void Update(ref ModEvents.SGameUpdateData data)
     {
-        if (defenses.Count == 0 || !SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer)
+        if (!SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer)
             return;
 
         World world = GameManager.Instance.World;
         if (world == null)
+            return;
+
+        cleanUpTimer -= Time.deltaTime;
+        if (cleanUpTimer <= 0f)
+        {
+            cleanUpTimer = CleanUpSeconds;
+            CleanUpQuestNpcs(world);
+        }
+
+        if (defenses.Count == 0)
             return;
 
         // Ticking can change the defenses: a status that completes or fails the local player's quest (on a listen
@@ -120,13 +173,13 @@ public static class WaveDirectorDEM
             if (defenses.TryGetValue(defense.QuestCode, out Defense current) && current == defense)
                 defenses.Remove(defense.QuestCode);
             if (defense.Won)
-                won[defense.QuestCode] = new KeyValuePair<float, int>(Time.time, defense.Waves);
+                won[defense.QuestCode] = new KeyValuePair<float, DefenseStatusDEM>(Time.time, defense.FinalStatus());
         }
 
         if (won.Count > 0)
         {
             var forgotten = new List<int>();
-            foreach (KeyValuePair<int, KeyValuePair<float, int>> entry in won)
+            foreach (KeyValuePair<int, KeyValuePair<float, DefenseStatusDEM>> entry in won)
             {
                 if (Time.time - entry.Value.Key > RememberSeconds)
                     forgotten.Add(entry.Key);
@@ -182,6 +235,9 @@ internal abstract class Defense
     /// <summary>Every wave was beaten (or the bounty killed), rather than everyone leaving.</summary>
     public bool Won;
 
+    /// <summary>The defense was lost (an NPC quest's survivors all died, its NPC mod is gone, ...).</summary>
+    public bool Failed;
+
     public int Waves => settings.Waves;
 
     protected readonly DefenseSettingsDEM settings;
@@ -190,6 +246,9 @@ internal abstract class Defense
     protected float timer;
     protected readonly List<int> zombies = new List<int>();
     protected readonly List<Boss> bosses = new List<Boss>();
+
+    /// <summary>The hostile NPCs (bandits) among <see cref="zombies"/>, which pick their own targets.</summary>
+    protected readonly HashSet<int> bandits = new HashSet<int>();
     private float retargetTimer;
     private bool marked;
     private int lastReportedAlive = -1;
@@ -229,6 +288,12 @@ internal abstract class Defense
                 return new BloodMoonDefense(questCode, settings);
             case DefenseSettingsDEM.Modes.Outpost:
                 return new OutpostDefense(questCode, settings);
+            case DefenseSettingsDEM.Modes.Hideout:
+                return new HideoutDefense(questCode, settings);
+            case DefenseSettingsDEM.Modes.Rescue:
+                return new RescueDefense(questCode, settings);
+            case DefenseSettingsDEM.Modes.Safehouse:
+                return new SafehouseDefense(questCode, settings);
             default:
                 return new WaveDefense(questCode, settings);
         }
@@ -421,9 +486,7 @@ internal abstract class Defense
 
         // The wave's size always comes from the defense spawner; themed spawners (hordes of cops, soldiers,
         // spiders, ...) only pick which zombies, since their counts are for wandering hordes.
-        // Spawner counts are for one player; more players in the defense means more zombies.
-        int count = Mathf.RoundToInt(Mathf.Max(WaveDirectorDEM.WaveSize(gameStage), 4) * sizeMultiplier);
-        count += count * (players.Count - 1) / 2;
+        int count = WaveCount(gameStage, sizeMultiplier, players.Count);
         int lastClassId = -1;
         for (int i = 0; i < count; i++)
         {
@@ -432,6 +495,46 @@ internal abstract class Defense
             if (WavePosition(world, random, players, out Vector3 position))
                 Spawn(world, classId, position, Closest(players, position), random);
         }
+    }
+
+    /// <summary>
+    /// Zombies in a wave: the defense spawner's count at the gamestage (for one player), more for each extra player.
+    /// </summary>
+    protected static int WaveCount(int gameStage, float sizeMultiplier, int players)
+    {
+        int count = Mathf.RoundToInt(Mathf.Max(WaveDirectorDEM.WaveSize(gameStage), 4) * sizeMultiplier);
+        return count + count * (players - 1) / 2;
+    }
+
+    /// <summary>
+    /// Bandits in place of a wave of zombies: about a third as many, since they shoot back, and at least 2.
+    /// </summary>
+    protected static int BanditCount(int zombies)
+    {
+        return Mathf.Max(2, Mathf.RoundToInt(zombies / 3f));
+    }
+
+    /// <summary>
+    /// Spawns hostile NPCs (bandits from an NPC mod) for the tier at spots from <paramref name="position"/>, sent
+    /// after the closest player (or posted where they are, with no players). Returns how many spawned.
+    /// </summary>
+    protected int SpawnBandits(World world, List<EntityPlayer> players, GameRandom random, int count, System.Func<int, Vector3?> position)
+    {
+        int spawned = 0;
+        for (int i = 0; i < count; i++)
+        {
+            Vector3? spot = position(i);
+            if (!spot.HasValue)
+                continue;
+            EntityPlayer target = players != null ? Closest(players, spot.Value) : null;
+            EntityAlive bandit = Spawn(world, NpcCatalogDEM.PickHostile(settings.Tier, random), spot.Value, target, random);
+            if (bandit != null)
+            {
+                bandits.Add(bandit.entityId);
+                spawned++;
+            }
+        }
+        return spawned;
     }
 
     /// <summary>
@@ -491,21 +594,7 @@ internal abstract class Defense
     /// </summary>
     private bool InsidePosition(World world, GameRandom random, List<EntityPlayer> players, out Vector3 position)
     {
-        if (insidePoints == null)
-        {
-            insidePoints = new List<Vector3>();
-            PrefabInstance poi = GameManager.Instance.GetDynamicPrefabDecorator()?.GetPrefabFromWorldPosInside(
-                Mathf.FloorToInt(settings.Center.x), Mathf.FloorToInt(settings.Center.z));
-            if (poi != null)
-            {
-                foreach (SleeperVolume volume in poi.sleeperVolumes)
-                {
-                    foreach (SleeperVolume.SpawnPoint point in volume.spawnPointList)
-                        insidePoints.Add(point.pos.ToVector3() + new Vector3(0.5f, 0f, 0.5f));
-                }
-            }
-        }
-
+        List<Vector3> insidePoints = PoiSpawnPoints();
         for (int attempt = 0; attempt < 15 && insidePoints.Count > 0; attempt++)
         {
             Vector3 candidate = insidePoints[random.RandomRange(insidePoints.Count)];
@@ -520,6 +609,53 @@ internal abstract class Defense
         }
         position = Vector3.zero;
         return false;
+    }
+
+    /// <summary>
+    /// The POI's sleeper spawn points (loaded on first use). Don't change the list.
+    /// </summary>
+    protected List<Vector3> PoiSpawnPoints()
+    {
+        if (insidePoints == null)
+        {
+            insidePoints = new List<Vector3>();
+            PrefabInstance poi = GameManager.Instance.GetDynamicPrefabDecorator()?.GetPrefabFromWorldPosInside(
+                Mathf.FloorToInt(settings.Center.x), Mathf.FloorToInt(settings.Center.z));
+            if (poi != null)
+            {
+                foreach (SleeperVolume volume in poi.sleeperVolumes)
+                {
+                    foreach (SleeperVolume.SpawnPoint point in volume.spawnPointList)
+                        insidePoints.Add(point.pos.ToVector3() + new Vector3(0.5f, 0f, 0.5f));
+                }
+            }
+        }
+        return insidePoints;
+    }
+
+    /// <summary>
+    /// Up to <paramref name="count"/> of the points, the ones farthest from the players first and at least
+    /// <paramref name="spacing"/> apart (closer together once that runs out), so NPCs end up spread through the POI.
+    /// </summary>
+    protected static List<Vector3> SpreadOut(List<Vector3> points, List<EntityPlayer> players, int count, float spacing)
+    {
+        var sorted = new List<Vector3>(points);
+        sorted.Sort((a, b) => (Closest(players, b).position - b).sqrMagnitude.CompareTo((Closest(players, a).position - a).sqrMagnitude));
+        var picked = new List<Vector3>();
+        for (float gap = spacing; picked.Count < count && gap >= 0f; gap -= spacing / 2f)
+        {
+            foreach (Vector3 point in sorted)
+            {
+                if (picked.Count >= count)
+                    break;
+                bool apart = !picked.Contains(point);
+                foreach (Vector3 other in picked)
+                    apart &= (other - point).sqrMagnitude >= gap * gap;
+                if (apart)
+                    picked.Add(point);
+            }
+        }
+        return picked;
     }
 
     /// <summary>
@@ -593,6 +729,18 @@ internal abstract class Defense
         retargetTimer = 10f;
     }
 
+    /// <summary>Removes the zombies left in a wave that ran too long, but not bandits: they hold their posts.</summary>
+    protected void RemoveWaveZombies()
+    {
+        World world = GameManager.Instance.World;
+        foreach (int id in zombies)
+        {
+            if (!bandits.Contains(id) && world?.GetEntity(id) is EntityAlive zombie && !zombie.IsDead())
+                world.RemoveEntity(id, EnumRemoveEntityReason.Despawned);
+        }
+        zombies.RemoveAll(id => !bandits.Contains(id));
+    }
+
     public void RemoveZombies()
     {
         World world = GameManager.Instance.World;
@@ -618,8 +766,14 @@ internal abstract class Defense
             MessageKey = messageKey ?? "",
             MessageValue = messageValue,
             BreakSeconds = Mathf.RoundToInt(settings.BreakSeconds),
-            Result = Won ? DefenseStatusDEM.Results.Won : DefenseStatusDEM.Results.None,
+            Result = Won ? DefenseStatusDEM.Results.Won : Failed ? DefenseStatusDEM.Results.Lost : DefenseStatusDEM.Results.None,
         };
+    }
+
+    /// <summary>How the defense ended, for party members who only get there later.</summary>
+    public DefenseStatusDEM FinalStatus()
+    {
+        return Status(null, 0);
     }
 
     /// <summary>
@@ -790,17 +944,7 @@ internal class BountyDefense : Defense
     /// <summary>Returns false if the boss couldn't spawn, to try again.</summary>
     private bool SpawnBounty(World world, List<EntityPlayer> players, GameRandom random)
     {
-        var spawnPoints = new List<Vector3>();
-        PrefabInstance poi = GameManager.Instance.GetDynamicPrefabDecorator()?.GetPrefabFromWorldPosInside(
-            Mathf.FloorToInt(settings.Center.x), Mathf.FloorToInt(settings.Center.z));
-        if (poi != null)
-        {
-            foreach (SleeperVolume volume in poi.sleeperVolumes)
-            {
-                foreach (SleeperVolume.SpawnPoint point in volume.spawnPointList)
-                    spawnPoints.Add(point.pos.ToVector3() + new Vector3(0.5f, 0f, 0.5f));
-            }
-        }
+        var spawnPoints = new List<Vector3>(PoiSpawnPoints());
 
         if (spawnPoints.Count > 0)
         {
@@ -954,6 +1098,13 @@ internal class OutpostDefense : Defense
     private float flagTimer;
     private float scheduleTimer;
 
+    /// <summary>
+    /// Tonight's attack is a bandit raid: one night per outpost (never the first), when the quest asks for it and an
+    /// NPC mod adds bandits.
+    /// </summary>
+    private bool RaidTonight => settings.BanditRaid && outpost.Nights > 1 && NpcCatalogDEM.HasHostile
+        && outpost.NightsHeld == 1 + (QuestCode & int.MaxValue) % (outpost.Nights - 1);
+
     public OutpostDefense(int questCode, DefenseSettingsDEM settings) : base(questCode, settings)
     {
         outpost = OutpostRegistryDEM.Get(questCode);
@@ -1055,7 +1206,7 @@ internal class OutpostDefense : Defense
             fighting = true;
             attackWave = 0;
             timer = 0f;
-            SendStatus("OutpostDEM_attack", outpost.NightsHeld + 1);
+            SendStatus(RaidTonight ? "OutpostDEM_attack_bandits" : "OutpostDEM_attack", outpost.NightsHeld + 1);
             return false;
         }
 
@@ -1125,7 +1276,16 @@ internal class OutpostDefense : Defense
         // Bigger every night, and each wave of the night a little harder than the last
         int night = outpost.NightsHeld;
         int gameStage = Mathf.RoundToInt(GameStageDefinition.CalcGameStageAround(players[0]) * settings.Strength * (1f + 0.25f * night) * (1f + 0.15f * attackWave));
-        SpawnWaveZombies(world, players, random, gameStage, 1f + 0.2f * night);
+        if (RaidTonight)
+        {
+            // Bandits instead of zombies, from just outside the POI like the zombies would
+            int bandits = BanditCount(WaveCount(gameStage, 1f + 0.2f * night, players.Count));
+            SpawnBandits(world, players, random, bandits, i => OutsidePosition(world, random, out Vector3 p) ? p : (Vector3?)null);
+        }
+        else
+        {
+            SpawnWaveZombies(world, players, random, gameStage, 1f + 0.2f * night);
+        }
         if (zombies.Count == 0)
         {
             timer = 5f;

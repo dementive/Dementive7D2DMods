@@ -1,4 +1,5 @@
-"""QuestsExpanded's buffs and blocks: the bosses and marked zombies of the defense quests, and the quest flags.
+"""QuestsExpanded's buffs and blocks: the bosses and marked zombies of the defense quests, the marker on NPCs waiting
+for a player in the NPC quests, and the quest flags.
 
 Run from anywhere: python config.py
 Writes Config/buffs.xml and Config/blocks.xml, and rewrites their rows of Config/Localization.csv, in QuestsExpanded.
@@ -9,7 +10,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 MODS = [os.path.join(HERE, "..")]
 
 # Localization rows this script owns (rewritten every run)
-LOC_PREFIXES = ("questFlagDEM", "questOutpostFlagDEM")
+LOC_PREFIXES = ("questFlagDEM", "questOutpostFlagDEM", "questSafehouseFlagDEM")
 
 BUFFS = '''<Dementive>
 
@@ -43,10 +44,38 @@ BUFFS = '''<Dementive>
 				<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="zombie" add="true"/>
 			</effect_group>
 		</buff>
+
+		<!-- Survivors and refugees of the NPC quests waiting for a player to come and get them: shown on the map and
+		compass. Removed when they follow someone. -->
+		<buff name="buffDementiveWaiting" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="SetNavObject" nav_object="fetch_container" add="true"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="SetNavObject" nav_object="fetch_container" add="false"/>
+			</effect_group>
+		</buff>
 	</append>
 
 </Dementive>
 '''
+
+BUFFS = BUFFS.replace('''
+</Dementive>
+''', '''
+	<!-- SCore's NPCs take no damage while they have a buff with this name, but SCore doesn't define one. The NPC
+	quests use it to keep survivors and refugees alive until a player has come for them (NpcDefensesDEM). Added only
+	if no mod loaded before this one defines it. -->
+	<append xpath="/buffs[not(buff[@name='buffInvulnerable'])]">
+		<buff name="buffInvulnerable" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+		</buff>
+	</append>
+
+</Dementive>
+''')
 
 BLOCKS = '''<Dementive>
 
@@ -74,6 +103,17 @@ BLOCKS = '''<Dementive>
 			<property name="MaxDamage" value="2000"/>
 			<property name="DescriptionKey" value="questOutpostFlagDEMDesc"/>
 		</block>
+
+		<!-- The flag Safehouse quests hand out: planted wherever the player wants the safehouse, it is the safehouse's
+		middle (the checklist counts what's within 10m of it, and the refugees settle in around it). -->
+		<block name="questSafehouseFlagDEM">
+			<property name="Extends" value="flagWallHungHonorDuty"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="Class" value="QuestFlagDEM, QuestsExpanded"/>
+			<property name="CustomIcon" value="flagWallHungHonorDuty"/>
+			<property name="CanPickup" value="true"/>
+			<property name="DescriptionKey" value="questSafehouseFlagDEMDesc"/>
+		</block>
 	</append>
 
 </Dementive>
@@ -84,6 +124,8 @@ FLAG_TEXT = {
     "questFlagDEMDesc": "A White River flag from a trader's build kit. Plant it at the site of a Build and Defend or Last Stand quest to start the build. Planted in the wrong spot? Pick it up and plant it again.",
     "questOutpostFlagDEM": "Outpost Banner",
     "questOutpostFlagDEMDesc": "The Duke's banner from a Create Outpost kit. Hang it inside the quest's building to claim it as an outpost. If it's destroyed or taken down, the outpost falls.",
+    "questSafehouseFlagDEM": "Safehouse Flag",
+    "questSafehouseFlagDEMDesc": "The flag from a Safehouse quest. Hang it where you want the refugees' safehouse: everything the safehouse needs has to be within 10 blocks of it.",
 }
 
 

@@ -24,6 +24,17 @@
 			<property name="MaxDamage" value="2000"/>
 			<property name="DescriptionKey" value="questOutpostFlagDEMDesc"/>
 		</block>
+
+		<!-- The flag Safehouse quests hand out: planted wherever the player wants the safehouse, it is the safehouse's
+		middle (the checklist counts what's within 10m of it, and the refugees settle in around it). -->
+		<block name="questSafehouseFlagDEM">
+			<property name="Extends" value="flagWallHungHonorDuty"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="Class" value="QuestFlagDEM, QuestsExpanded"/>
+			<property name="CustomIcon" value="flagWallHungHonorDuty"/>
+			<property name="CanPickup" value="true"/>
+			<property name="DescriptionKey" value="questSafehouseFlagDEMDesc"/>
+		</block>
 	</append>
 
 </Dementive>

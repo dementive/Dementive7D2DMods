@@ -11,7 +11,7 @@ New quests should be generated with QuestMaker like the existing ones, with thei
 3. **Clear and Defend**, **Bounty Hunt** (with its horde variant), **Build and Defend**, **Clear, Build and Defend**, **Last Stand**, **Blood Moon Bounty** and **Create Outpost**: built (50 quests from `QuestMaker/defense.py`); waiting on an in-game playtest.
 4. **Contracts**: built, then removed after playtesting (see Decided against).
 5. **Retire the POI-group quests:** done (see the last section).
-6. **NPC quests** (Bandit Hideout, bandit raids, Rescue, Safehouse): designed and approved, not built yet. They only appear when the player has NPC mods installed.
+6. **NPC quests** (Bandit Hideout, bandit raids, Rescue, Safehouse): built (15 quests from `QuestMaker/npc.py`); waiting on an in-game playtest with SCore, NPC Core and Oak's Bandit Head Hunters installed. They only appear when the player has NPC mods installed.
 
 ## Rules for every new quest type
 
@@ -237,7 +237,16 @@ A bounty for the next horde night, fought wherever you are (normally your own ba
 
 Quests with human NPCs: bandits to fight and survivors to rescue. The base game has no NPCs that can do this, so these quests use whatever NPC mods the player has installed. QuestsExpanded doesn't require any of them: without NPC mods these quests never show up at the trader, and the rest of the mod works exactly as before.
 
-**Status: designed and approved on 2026-10-31 (see "Decided" below), nothing built yet.** Building starts once SCore, NPC Core and NPC packs are installed for testing (see "Before building").
+**Status: built on 2026-10-31 (tiers 2-6 of each, plus the outposts' bandit raids), not yet playtested.** How it's built, where it differs from the design below:
+- **Code:** `NpcCatalogDEM` (finding the NPCs), `NpcFollowDEM` (SCore's follow and hire, by reflection), and in the wave director `HideoutDefense`, `RescueDefense` and `SafehouseDefense` (`NpcDefensesDEM.cs`) with the objectives `BanditHideoutDEM`, `RescueDEM` and `SafehouseDEM`, the rewards `RescueDEM` (pay by survivors saved) and `RescueJoinDEM` (the join pick, through `NetPackageRescueJoinDEM`), `SafehouseChecklistDEM` and `SafehouseRegistryDEM` (`safehouses.dat` in the world's save folder). `NpcQuestPatches` hides the quests at traders when their NPCs are missing.
+- **Bandit difficulty by weapon, not health:** NPC mods set health in effect groups, which can't be read from the entity class. Bandits are ranked by their weapon (melee, pipe guns, guns, automatic and heavy weapons) plus NPC Core's difficulty tags (`DRLow`, `DRMid`, `DRHigh`).
+- **Survivors are protected until a player is within 15m** (and refugees while they wait at the trader), so posted bandits and the siege don't kill them before anyone arrives. SCore's NPCs take no damage with a buff named `buffInvulnerable`; SCore doesn't define it, so QuestsExpanded's buffs.xml does, unless a mod loaded before it already has. Bandits are never steered at the survivors; they pick their own targets.
+- **Waiting NPCs** have a marker on the map and compass (`buffDementiveWaiting`). Walking within 3m of one makes it follow you.
+- **The Safehouse flag** is a wall-hung flag (`questSafehouseFlagDEM`, extends `flagWallHungHonorDuty`), so it works indoors. The safehouse stays where it was first hung. The refugees appear once a player is within 100m of the trader after the checklist passes.
+- **Join pick:** when the party has taken every survivor saved, the pick pays a quarter of the tier's dukes instead. The saved survivors are remembered for 2 hours of real time after the rescue; after a server restart the pick also pays dukes.
+- **NPC Core (3.4.01) checked:** it ships the Nurse and the Baker as friendly followers (`EntityAliveSDX`, faction `whiteriver`) and Harley as a bandit (`EntityNPCBandit`, faction `bandits`), one class per weapon; Oak's pack adds 8 bandits. NPC Core already makes zombies attack friendly NPCs, and a player an NPC follows can open its inventory to hand over weapons. Its fox companion and its `...Test` classes are skipped.
+- **Keeping track of the NPCs:** NPCs a quest spawns carry a tag cvar (`questNpcDEM`), and every 10 seconds the server despawns tagged NPCs that no running quest looks after, so a survivor saved with an unloaded chunk can't come back later as a copy that follows someone forever. A missing NPC is only replaced once the spot it was last seen at is loaded. Deaths come from the game's death hook (`DefenseKillPatches`), not from finding the body. Settled refugees carry `safehouseNpcDEM` instead; one that dies while its party is offline is struck from the safehouse's record. A party member who gets to a won Rescue late gets its real result (survivors saved).
+- **Things to check in the playtest:** the log line `QuestsExpanded: found N hostile and M friendly NPC types`; traders offering the NPC quests; bandits posted and fighting; survivors following, keeping up and being saved at the trader; reinforcements; the Safehouse checklist in the quest log, refugees moving in and the night attack; the join pick; a party (one group, each survivor following whoever picks them up); and logging out mid-quest.
 
 ### Finding the NPCs
 
@@ -339,11 +348,11 @@ Refugees at the trader need a place to live. Build them a safehouse, lead them t
 - **Bandit raids:** one night per Create Outpost from tier 3, never the first; other defense quests maybe after a playtest.
 - **Survivors who join you:** yes, from tier 4, one per player.
 - **Squad Op and Ambush:** not chosen (see Decided against). **Specialists:** later, maybe, after a Safehouse playtest.
-- **Bandit difficulty:** NPC packs don't share a difficulty scale, so the quests rank the hostile NPCs they found by health and use the weaker ones at low tiers, all of them at tier 6. A list for server admins of which NPCs the quests may use comes only if that isn't enough.
+- **Bandit difficulty:** NPC packs don't share a difficulty scale, so the quests rank the hostile NPCs they found (by weapon and difficulty tags, see the status above) and use the weaker ones at low tiers, all of them at tier 6. A list for server admins of which NPCs the quests may use comes only if that isn't enough.
 
 ### Before building
 
-- Install SCore, NPC Core, a bandit pack and a friendly NPC pack (soldiers or civilians, unless NPC Core comes with followers) for testing, and check how NPC Core sets up its NPCs (classes, factions, tags). NPC Core is only on Nexus, so its files haven't been looked at yet.
+- Install SCore, NPC Core, a bandit pack and a friendly NPC pack (soldiers or civilians, unless NPC Core comes with followers) for testing, and check how NPC Core sets up its NPCs (classes, factions, tags). A first look at its source on GitHub (`7D2D/V2Mods`, version 3.1.00) shows it ships its own characters: the Nurse and the Baker as friendly, hireable followers (`EntityAliveSDX`, faction `whiteriver`) and Harley as a bandit (`EntityNPCBandit`, faction `bandits`), each as one entity class per weapon (`npcNursePistol`, `npcHarleyAK47`, ...). So SCore and NPC Core alone are enough to test with; bandit and friendly packs only add variety. It also has a hireable fox (`npcAnimalFox`), so finding survivors has to skip animals.
 - NPC mods have to be installed on the server and every client. That requirement is theirs: QuestsExpanded's own requirements don't change.
 
 ## Decided against
