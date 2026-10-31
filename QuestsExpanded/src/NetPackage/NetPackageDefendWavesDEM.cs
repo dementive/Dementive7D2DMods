@@ -103,7 +103,6 @@ public class NetPackageDefendWavesDEM : NetPackage
 
     /// <summary>
     /// Client side: updates the local player's defense objective for the quest and shows the message, if any.
-    /// Quest code 0 is a message that belongs to no quest (e.g. a contract boss).
     /// </summary>
     public void ApplyStatus(World world)
     {

@@ -37,13 +37,3 @@ public static class RewardUtilsDEM
         }
     }
 }
-
-/// <summary>
-/// A reward that pays experience and dukes worked out when the quest is turned in (so a contract can hold them).
-/// </summary>
-public interface IPotRewardDEM
-{
-    int PotExp { get; }
-
-    int PotDukes { get; }
-}

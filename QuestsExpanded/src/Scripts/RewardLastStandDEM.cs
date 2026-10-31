@@ -5,7 +5,7 @@
  * wave pays 25% more than the one before, so staying pays faster the longer you stay.
  * 	<reward type="LastStandDEM, QuestsExpanded" value="550,145"/>   experience and dukes for the first wave
  */
-public class RewardLastStandDEM : BaseReward, IPotRewardDEM
+public class RewardLastStandDEM : BaseReward
 {
     /// <summary>How much more each wave pays than the one before.</summary>
     public const float Growth = 0.25f;
@@ -53,9 +53,9 @@ public class RewardLastStandDEM : BaseReward, IPotRewardDEM
         return Mathf.RoundToInt(baseAmount * (waves + Growth * waves * (waves - 1) / 2f));
     }
 
-    public int PotExp => Total(BaseExp, Waves);
+    public int Exp => Total(BaseExp, Waves);
 
-    public int PotDukes => Total(BaseDukes, Waves);
+    public int Dukes => Total(BaseDukes, Waves);
 
     public void RefreshValue(int waves)
     {
@@ -73,8 +73,8 @@ public class RewardLastStandDEM : BaseReward, IPotRewardDEM
     public override void GiveReward(EntityPlayer player)
     {
         var local = player as EntityPlayerLocal;
-        RewardUtilsDEM.GiveExp(local, PotExp);
-        RewardUtilsDEM.GiveDukes(local, PotDukes);
+        RewardUtilsDEM.GiveExp(local, Exp);
+        RewardUtilsDEM.GiveDukes(local, Dukes);
     }
 
     public override BaseReward Clone()

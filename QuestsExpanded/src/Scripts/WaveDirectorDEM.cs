@@ -9,7 +9,6 @@ using UnityEngine;
 /// Waves are drawn from gamestage spawners (vanilla's defenseGSList by default) at the party's gamestage, spawn just
 /// outside the defended area all around it and go after the players. Bosses get <see cref="BossBuff"/> and drop a
 /// boss loot bag.
-/// It also runs the boss that hunts a player on the last stage of a contract (<see cref="StartHunt"/>).
 /// </summary>
 public static class WaveDirectorDEM
 {
@@ -39,9 +38,6 @@ public static class WaveDirectorDEM
 
     /// <summary>Defenses that were won, by quest code: when they finished and how many waves they had.</summary>
     private static readonly Dictionary<int, KeyValuePair<float, int>> won = new Dictionary<int, KeyValuePair<float, int>>();
-
-    /// <summary>Contract bosses, by the entity id of the player they hunt.</summary>
-    private static readonly Dictionary<int, Defense> hunts = new Dictionary<int, Defense>();
 
     public static void Init()
     {
@@ -90,28 +86,9 @@ public static class WaveDirectorDEM
         }
     }
 
-    /// <summary>
-    /// Sends a boss after the player (the last stage of a contract), one picked from the list. <paramref name="ended"/>
-    /// is told whether the boss was killed when the hunt is over.
-    /// </summary>
-    public static void StartHunt(int playerId, string bosses, System.Action<bool> ended)
-    {
-        if (!hunts.ContainsKey(playerId))
-            hunts.Add(playerId, new HuntDefense(playerId, bosses, ended));
-    }
-
-    public static void StopHunt(int playerId)
-    {
-        if (hunts.TryGetValue(playerId, out Defense hunt))
-        {
-            hunt.RemoveZombies();
-            hunts.Remove(playerId);
-        }
-    }
-
     private static void Update(ref ModEvents.SGameUpdateData data)
     {
-        if ((defenses.Count == 0 && hunts.Count == 0) || !SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer)
+        if (defenses.Count == 0 || !SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer)
             return;
 
         World world = GameManager.Instance.World;
@@ -134,12 +111,6 @@ public static class WaveDirectorDEM
                 defenses.Remove(defense.QuestCode);
             if (defense.Won)
                 won[defense.QuestCode] = new KeyValuePair<float, int>(Time.time, defense.Waves);
-        }
-
-        foreach (KeyValuePair<int, Defense> hunt in new List<KeyValuePair<int, Defense>>(hunts))
-        {
-            if (hunts.TryGetValue(hunt.Key, out Defense current) && current == hunt.Value && hunt.Value.Tick(world, deltaTime))
-                hunts.Remove(hunt.Key);
         }
 
         if (won.Count > 0)
@@ -220,7 +191,6 @@ internal abstract class Defense
         public Vector3 Position;
         public float Health = 1f;
         public int Wave;
-        public string ExtraBuff;
     }
 
     protected Defense(int questCode, DefenseSettingsDEM settings)
@@ -328,22 +298,20 @@ internal abstract class Defense
         return zombie;
     }
 
-    protected EntityAlive SpawnBoss(World world, string list, Vector3 position, EntityPlayer target, GameRandom random, int wave = 0, string extraBuff = null)
+    protected EntityAlive SpawnBoss(World world, string list, Vector3 position, EntityPlayer target, GameRandom random, int wave = 0)
     {
         string[] names = list.Split(',');
         string name = names[random.RandomRange(names.Length)].Trim();
-        return SpawnBossNamed(world, name, position, target, random, wave, extraBuff);
+        return SpawnBossNamed(world, name, position, target, random, wave);
     }
 
-    private EntityAlive SpawnBossNamed(World world, string name, Vector3 position, EntityPlayer target, GameRandom random, int wave, string extraBuff)
+    private EntityAlive SpawnBossNamed(World world, string name, Vector3 position, EntityPlayer target, GameRandom random, int wave)
     {
         EntityAlive boss = Spawn(world, EntityClass.FromString(name), position, target, random);
         if (boss == null)
             return null;
         boss.Buffs.AddBuff(WaveDirectorDEM.BossBuff);
-        if (extraBuff != null)
-            boss.Buffs.AddBuff(extraBuff);
-        bosses.Add(new Boss { Id = boss.entityId, ClassName = name, Position = boss.position, Wave = wave, ExtraBuff = extraBuff });
+        bosses.Add(new Boss { Id = boss.entityId, ClassName = name, Position = boss.position, Wave = wave });
         return boss;
     }
 
@@ -374,7 +342,7 @@ internal abstract class Defense
             // If it can't come back, it counts as killed
             Vector3? position = respawnAt(boss);
             EntityAlive again = position.HasValue
-                ? SpawnBossNamed(world, boss.ClassName, position.Value, target, random, boss.Wave, boss.ExtraBuff)
+                ? SpawnBossNamed(world, boss.ClassName, position.Value, target, random, boss.Wave)
                 : null;
             if (again == null)
                 DropBossBag(world, boss.Position);
@@ -1083,62 +1051,5 @@ internal class OutpostDefense : Defense
         status.Result = outpost.Fallen ? DefenseStatusDEM.Results.Lost
             : outpost.Won ? DefenseStatusDEM.Results.Won : DefenseStatusDEM.Results.None;
         return status;
-    }
-}
-
-/// <summary>
-/// The boss that hunts a player on the last stage of a contract. It comes out of nowhere near the player, wherever
-/// they are, and keeps coming until it's dead.
-/// </summary>
-internal class HuntDefense : Defense
-{
-    /// <summary>Extra toughness on top of the boss buff.</summary>
-    public const string HuntBuff = "buffDementiveContractBoss";
-
-    private readonly int playerId;
-    private readonly System.Action<bool> ended;
-    private bool spawned;
-
-    public HuntDefense(int playerId, string bosses, System.Action<bool> ended) : base(0, new DefenseSettingsDEM { Bosses = bosses })
-    {
-        this.playerId = playerId;
-        this.ended = ended;
-        Listeners.Add(playerId);
-    }
-
-    public override bool Tick(World world, float deltaTime)
-    {
-        if (!(world.GetEntity(playerId) is EntityPlayer player))
-        {
-            // Logged out: the boss leaves, and comes back when they're on the last stage again
-            RemoveZombies();
-            ended?.Invoke(false);
-            return true;
-        }
-        if (player.IsDead())
-            return false;
-
-        GameRandom random = world.GetGameRandom();
-        if (!spawned)
-        {
-            if (!Around(world, random, player.position, 30f, 45f, out Vector3 position))
-                return false;
-            spawned = SpawnBoss(world, settings.Bosses, position, player, random, 0, HuntBuff) != null;
-            if (spawned)
-                SendStatus("ContractDEM_boss");
-            return false;
-        }
-
-        TrackBosses(world, random, boss => Around(world, random, player.position, 30f, 45f, out Vector3 p) ? p : (Vector3?)null, player);
-        PruneZombies(world);
-        if (bosses.Count == 0)
-        {
-            SendStatus("ContractDEM_bossdead");
-            ended?.Invoke(true);
-            return true;
-        }
-
-        Retarget(world, new List<EntityPlayer> { player }, deltaTime, true);
-        return false;
     }
 }

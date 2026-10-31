@@ -9,7 +9,7 @@ New quests should be generated with QuestMaker like the existing ones, with thei
 1. **Commission**: built (43 commissions, `QuestMaker/commissions.py`); waiting on an in-game playtest.
 2. **The shared wave system**: built (`WaveDirectorDEM`), with bosses, boss loot bags, themed hordes and map markers.
 3. **Clear and Defend**, **Bounty Hunt** (with its horde variant), **Build and Defend**, **Clear, Build and Defend**, **Last Stand**, **Blood Moon Bounty** and **Create Outpost**: built (50 quests from `QuestMaker/defense.py`); waiting on an in-game playtest.
-4. **Contracts**: built (`ContractsDEM`, trader dialog and boons from `QuestMaker/config.py`); waiting on an in-game playtest.
+4. **Contracts**: built, then removed after playtesting (see Decided against).
 5. **Retire the POI-group quests:** done (see the last section).
 
 ## Rules for every new quest type
@@ -204,7 +204,7 @@ Endless waves at a site, each harder than the last. After every wave you choose:
 - **Pay:** a new reward type (`RewardLastStandDEM`): experience and dukes for every wave banked, each wave paying 25% more than the one before. The first wave pays the tier's clear rewards / 5.5, so 4 waves pay about one clear quest. The tier's usual loot picks are offered on top (every vanilla quest has loot picks, and the turn-in window expects them).
 - **Co-op:** everyone fights the same waves; each player banks for themselves and only waves they were there for count.
 
-- Push-your-luck inside a single fight, where Contracts does it across several quests.
+- Push-your-luck inside a single fight.
 - **Site:** a random spot almost anywhere (wilderness, town, next to a POI), with the same distance rules as vanilla quests.
 - **Build phase:** 5 minutes with a kit, like the other build quests.
 - **Breaks:** about 30 seconds between waves, longer than in the other defense types. Walking out of the area during a break ends the stand and banks the reward. Leaving during a wave counts as fleeing and loses everything.
@@ -227,35 +227,9 @@ A bounty for the next horde night, fought wherever you are (normally your own ba
 - **Winning:** kill every boss without dying. There is no deadline: horde nights often run into the next day, so bosses don't leave at dawn. Dying fails the bounty.
 - **Co-op:** one shared set of bosses for the party, sized to the party. Everyone sharing the quest gets the reward; a member who dies fails their own bounty while the rest carry on.
 
-## Contracts
-
-An optional layer on top of every quest, vanilla ones included. Start a contract at a trader, and the quests you do next become a run of up to 5 stages where you gamble your rewards forward for a bigger payout. Inspired by the "gamble forward" and pick-one-of-three loop of roguelike games such as Orcs Must Die! Deathtrap.
-
-**Status: built, not yet playtested.** How it's built:
-- **Trader dialog:** "Got any contracts?" in every trader's menu, with options to start one, check on it (stage and pot), pick a boon and cash out.
-- **The pot:** while a contract runs, a completed quest's experience, dukes and items (including the loot pick) go into the pot instead of to the player. Cashing out pays the pot with its experience and dukes grown by 15% per stage done (stage 1: 115%, stage 5: 175%); items are paid as they are.
-- **Escalation:** +10% gamestage per stage done (a buff on the player, `buffDementiveContract`).
-- **Boons** (buffs, picked from three random ones after every stage; config in `QuestMaker/config.py`): Deadeye (+15% damage), Bloodthirst (kills heal 10), Second Wind (stamina regenerates 50% faster), Scavenger (+15% loot stage), Ironhide (+10 armor), Fleet Foot (+10% speed), Regeneration (slow healing), and three deals: Glass Cannon (+30% damage, -20% max health), Adrenaline Junkie (+20% run speed and faster stamina, -15 armor), Juggernaut (+25% max health and +15 armor, -15% run speed). "Survive one lethal hit" was left out: it would need a damage hook in C#.
-- **Stage 5 boss:** 3-8 minutes into the player's quest on the last stage, a boss spawns 30-45m away (never in a trader's area) and hunts them: a boss buff plus double health and +25% damage, picked by the player's gamestage. It drops a boss bag. If the player logs out it leaves, and comes back later.
-- **Losing:** dying, or a quest failing or being abandoned, ends the contract and the pot is lost.
-- **State:** the server keeps every player's contract in the world's save folder (`QuestsExpanded/contracts.dat`) and sends each client theirs.
-
-- **Starting:** a trader dialog option. Players who never start a contract see no change.
-- **Picking quests:** you pick each quest from the trader's normal quest list, exactly as usual. Any quest type counts.
-- **Stages:** each quest completed during a contract is a stage. Its normal reward goes into the contract's pot instead of to you.
-- **Quests don't know about contracts:** the contract layer only watches quests being completed, failed or abandoned. Quests are never changed by it and are balanced on their own.
-- **Escalation:** at each stage the contract raises the player's own gamestage with a buff (the game's `GameStage` passive effect, which the player's gamestage already reads). Everything that spawns around that player gets tougher: quest sleepers, defense waves, wandering hordes, and blood moon hordes too. The buff ends with the contract.
-- **Pick 1 of 3:** after each stage, the trader offers three random boons and you take one. Boons last until the contract ends and work for any quest type, for example +15% damage with every weapon, kills restore a little health, faster stamina regeneration, more loot in containers, or surviving one lethal hit per stage. Some are deals with a downside, like "+30% damage but -20% max health".
-- **Gamble forward or cash out:** after each stage, take another quest to continue, or cash out at the trader and collect the pot. The pot grows by more than the sum of the quests' rewards, so pushing on pays.
-- **Stage 5:** the last stage. A tough contract boss hunts the player down: it spawns near them at some point while their stage 5 quest is active, wherever they are, the same for every quest type (never inside a trader's area, where nothing can spawn). Finishing stage 5 ends the contract with the biggest payout.
-- **Losing:** dying, failing a quest or abandoning a quest during a contract ends it, and the pot is lost.
-- **Tier progress:** quests done on a contract count toward the trader's tier progress exactly like normal quests.
-- **Every quest is treated the same:** same pot rules for every quest type.
-- **Co-op:** every player has their own contract, pot and boons. A shared quest counts as a stage for each party member who is on a contract. If one member dies, only their own contract ends. A contract player's raised gamestage feeds into the party's gamestage the normal way the game combines party members.
-- **Built in C#** in `QuestsExpanded.dll` (Harmony is already set up): hooks for quest completion and failure, player death and quest difficulty; trader dialog options for starting, picking boons and cashing out; and per-player contract state saved with the character and synced in multiplayer.
-
 ## Decided against
 
+- **Contracts** (a roguelike layer over any quest: rewards went into a pot that grew with every quest done in a row, with boons to pick and a boss on the fifth): built, then removed after playtesting; it wasn't fun.
 - **Restore Power by area:** too close to vanilla's restore power quests.
 - **Hunting contracts** (kill N animals or zombies anywhere): boring.
 - **Supply Requests** (hand over items from your inventory): trivial with a stockpile and a chore without one, and they didn't push players toward crafting. Replaced by Commissions.
@@ -263,7 +237,6 @@ An optional layer on top of every quest, vanilla ones included. Start a contract
 - **Eliminate Roaming Horde as its own quest type:** folded into Bounty Hunt as the horde variant.
 - **Hand-picked POIs** for any of the new types.
 - **Questlines tied to other mods** (e.g. quests rewarding Weapons Expanded weapons): every mod stays standalone.
-- **Trader-assigned contract quests:** during a contract the player still picks quests from the normal list.
 - **Cosmetic or gimmick quests** (random chaos events, big heads, supply drops, heists, timed clears, treasure trails): they didn't add anything new to how the game plays.
 - **Supply Depot** (defend three caches at once): too close to the other defend quests.
 - **Other systems pitched and not chosen:** Nemesis (zombies that kill you come back stronger), Outbreak (infestation spreading across POIs over days), Job Board (player-posted paid requests), Stranded (dropped far away, survive the trip back), Nest Purge (destroy zombie-spawning nests in a POI), Raid (multi-stage tier 6 set piece).

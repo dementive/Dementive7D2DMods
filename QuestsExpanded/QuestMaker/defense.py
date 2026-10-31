@@ -14,7 +14,7 @@ Quest types (see PlannedQuests.md):
 - Blood Moon Bounty, tiers 1-6
 - Create Outpost, tiers 2-6
 
-The flags' and contracts' text, buffs and blocks are in config.py.
+The flags' text, the bosses' buffs and the flag blocks are in config.py.
 """
 import os
 import re
