@@ -8,101 +8,65 @@ using UnityEngine;
 
 public static class QuestUtils
 {
-
-
-    public static PrefabInstance FindPrefab(string poiName, Vector3 startPosition, ref List<Vector2> usedPOILocations, BiomeFilterTypes biomeFilterType = BiomeFilterTypes.AnyBiome, string biomeFilter = "")
+    /// <summary>
+    /// Gets a POI for a quest that targets specific prefabs, e.g. "any cabin". Every instance of the named
+    /// prefabs in the world is a candidate if it passes the same checks as vanilla quest POIs. Like vanilla trader
+    /// quests, it picks a random candidate from the closest distance band (within 500m, then 1500m, then anywhere).
+    /// </summary>
+    /// <param name="questGiver"></param>
+    /// <param name="prefabNames">Prefab names (file names without extension)</param>
+    /// <param name="questTag"></param>
+    /// <param name="usedPoiLocations"></param>
+    /// <param name="entityIdForQuests"></param>
+    /// <param name="biomeFilterType"></param>
+    /// <param name="biomeFilter"></param>
+    /// <returns></returns>
+    public static PrefabInstance GetNamedPOINearEntity(
+        Entity questGiver,
+        ICollection<string> prefabNames,
+        FastTags<TagGroup.Global> questTag,
+        List<Vector2> usedPoiLocations = null,
+        int entityIdForQuests = -1,
+        BiomeFilterTypes biomeFilterType = BiomeFilterTypes.AnyBiome,
+        string biomeFilter = "")
     {
-        //var listOfPrefabs = GameManager.Instance.World.ChunkClusters[0].ChunkProvider.GetDynamicPrefabDecorator().GetPOIPrefabs().FindAll(instance => instance.name.Contains(poiName));
-        var listOfPrefabs = GameManager.Instance.World.ChunkClusters[0].ChunkProvider.GetDynamicPrefabDecorator().GetDynamicPrefabs().FindAll(instance => instance.name.Contains(poiName));
-        if (listOfPrefabs == null)
-        {
-            if (GamePrefs.GetBool(EnumGamePrefs.DebugMenuEnabled))
-            {
-                Log.Out($"GotoPOIDEM: No Prefabs by this name found: {poiName} Biome Filter Type: {biomeFilterType} Biome Filter: {biomeFilter}");
-            }
-            return null;
-        }
+        var bands = new[] { new List<PrefabInstance>(), new List<PrefabInstance>(), new List<PrefabInstance>() };
+        Vector2 questGiverPosition = new Vector2(questGiver.position.x, questGiver.position.z);
 
-        // Filter the prefab list if there's an exact name
-        var filteredPrefabs = listOfPrefabs.FindAll(instance => instance.name == poiName);
-        if (filteredPrefabs.Count > 0)
-            listOfPrefabs = filteredPrefabs;
-
-        // Find the closes Prefab
-        var prefab = QuestUtils.FindClosesPrefabs(startPosition, listOfPrefabs, usedPOILocations, biomeFilterType, biomeFilter);
-        if (prefab == null)
+        foreach (PrefabInstance prefab in GameManager.Instance.GetDynamicPrefabDecorator().allPrefabs)
         {
-            return null;
-        }
-        return prefab;
-    }
-    public static PrefabInstance FindClosesPrefabs(Vector3 position, List<PrefabInstance> prefabs, List<Vector2> usedPOILocations, BiomeFilterTypes biomeFilterType, string biomeFilter)
-    {
-        PrefabInstance prefab = null;
-        float minDist = Mathf.Infinity;
-        string[] array = null;
-
-        foreach (var t in prefabs)
-        {
-            // Have we already went to this one?
-            Vector2 vector = new Vector2((float)t.boundingBoxPosition.x, (float)t.boundingBoxPosition.z);
-            if (usedPOILocations != null && usedPOILocations.Contains(vector))
+            if (!prefabNames.Contains(prefab.location.Name))
                 continue;
 
-            // Check if there's a biome filter.
-            if (biomeFilterType != BiomeFilterTypes.AnyBiome)
+            if (!ValidPrefabForQuest(
+                questGiver,
+                prefab,
+                questTag,
+                FastTags<TagGroup.Poi>.none,
+                FastTags<TagGroup.Poi>.none,
+                usedPoiLocations,
+                entityIdForQuests,
+                biomeFilterType,
+                biomeFilter))
             {
-                BiomeDefinition biomeAt = GameManager.Instance.World.ChunkCache.ChunkProvider.GetBiomeProvider().GetBiomeAt((int)vector.x, (int)vector.y);
-                if (biomeFilterType == BiomeFilterTypes.OnlyBiome && biomeAt.m_sBiomeName != biomeFilter)
-                {
-                    if (GamePrefs.GetBool(EnumGamePrefs.DebugMenuEnabled))
-                        Log.Out($"GotoPOIDEM: Prefab Filtered based on Biome Filter Type: {biomeFilterType}  Biome Filter: {biomeFilter}");
-
-                    continue;
-                }
-                if (biomeFilterType == BiomeFilterTypes.ExcludeBiome)
-                {
-                    if (array == null)
-                    {
-                        array = biomeFilter.Split(new char[]
-                        {
-                                    ','
-                        });
-                    }
-                    bool flag = false;
-                    for (int j = 0; j < array.Length; j++)
-                    {
-                        if (biomeAt.m_sBiomeName == array[j])
-                        {
-                            if (GamePrefs.GetBool(EnumGamePrefs.DebugMenuEnabled))
-                                Log.Out($"GotoPOIDEM: Prefab excluded based on Biome Filter Type: {biomeFilterType}  Biome Filter: {biomeFilter}");
-
-                            flag = true;
-                            break;
-                        }
-                    }
-                    if (flag)
-                    {
-                        continue;
-                    }
-                }
+                continue;
             }
 
-            float dist = Vector3.Distance(t.boundingBoxPosition, position);
-            if (GamePrefs.GetBool(EnumGamePrefs.DebugMenuEnabled))
-                Log.Out($"GotoPOIDEM: Prefab {t.name} Found at {t.boundingBoxPosition} Distance: {dist} {biomeFilterType}  Biome Filter: {biomeFilter}");
-
-            if (dist < minDist)
-            {
-                if (GamePrefs.GetBool(EnumGamePrefs.DebugMenuEnabled))
-                    if (prefab != null)
-                        Log.Out($"GotoPOIDEM: Found closer Prefab {t.name} than {prefab.name} Old distance {minDist}");
-                prefab = t;
-                minDist = dist;
-            }
+            float distance = Vector2.Distance(questGiverPosition, prefab.GetCenterXZ());
+            bands[GetTraderPrefabListTier(distance)].Add(prefab);
         }
 
-        return prefab;
+        foreach (List<PrefabInstance> band in bands)
+        {
+            if (band.Count > 0)
+                return band[GameManager.Instance.World.GetGameRandom().RandomRange(band.Count)];
+        }
+
+        if (LoggingEnabled)
+        {
+            Log.Out($"Quest {questTag}: No usable POI named {string.Join(",", prefabNames)}");
+        }
+        return null;
     }
 
     /// <summary>
@@ -133,10 +97,10 @@ public static class QuestUtils
     /// <returns></returns>
     public static PrefabInstance GetRandomPOINearTrader(
         EntityTrader trader,
-        FastTags questTag,
+        FastTags<TagGroup.Global> questTag,
         byte difficulty,
-        POITags includeTags,
-        POITags excludeTags,
+        FastTags<TagGroup.Poi> includeTags,
+        FastTags<TagGroup.Poi> excludeTags,
         float minSearchDistance,
         float maxSearchDistance,
         List<Vector2> usedPoiLocations = null,
@@ -206,10 +170,10 @@ public static class QuestUtils
     /// <returns></returns>
     public static PrefabInstance GetRandomPOINearEntityPos(
         Entity entity,
-        FastTags questTag,
+        FastTags<TagGroup.Global> questTag,
         byte difficulty,
-        POITags includeTags,
-        POITags excludeTags,
+        FastTags<TagGroup.Poi> includeTags,
+        FastTags<TagGroup.Poi> excludeTags,
         float minSearchDistance,
         float maxSearchDistance,
         List<Vector2> usedPOILocations = null,
@@ -288,9 +252,9 @@ public static class QuestUtils
     public static bool ValidPrefabForQuest(
         Entity questGiver,
         PrefabInstance prefab,
-        FastTags questTag,
-        POITags includeTags,
-        POITags excludeTags,
+        FastTags<TagGroup.Global> questTag,
+        FastTags<TagGroup.Poi> includeTags,
+        FastTags<TagGroup.Poi> excludeTags,
         List<Vector2> usedPoiLocations = null,
         int entityIdForQuests = -1,
         BiomeFilterTypes biomeFilterType = BiomeFilterTypes.AnyBiome,
@@ -298,7 +262,8 @@ public static class QuestUtils
         float minSearchDistance = -1,
         float maxSearchDistance = -1)
     {
-        if (!prefab.prefab.bSleeperVolumes)
+        // Same checks vanilla's DynamicPrefabDecorator.ValidPrefabForQuest uses
+        if (!prefab.prefab.SleeperVolumeList.AnyUsedEntry)
         {
             if (LoggingEnabled)
             {
@@ -307,14 +272,16 @@ public static class QuestUtils
             return false;
         }
 
-        //if (!prefab.prefab.GetQuestTag(questTag))
-        //{
-        //    if (LoggingEnabled)
-        //    {
-        //        Log.Out($"Quest {questTag}: Prefab {prefab.name} does not have quest tag {questTag}");
-        //    }
-        //    return false;
-        //}
+        // The POI must support every quest tag (fetch, clear, infested, ...). Without this, fetch quests could
+        // pick a POI with no fetch container markers and the satchel would spawn in another POI kilometers away.
+        if (!prefab.prefab.GetQuestTag(questTag))
+        {
+            if (LoggingEnabled)
+            {
+                Log.Out($"Quest {questTag}: Prefab {prefab.name} does not have quest tag {questTag}");
+            }
+            return false;
+        }
 
         Vector2 poiLocation = new Vector2(prefab.boundingBoxPosition.x, prefab.boundingBoxPosition.z);
 
@@ -482,7 +449,7 @@ public static class QuestUtils
     /// <param name="includeTags"></param>
     /// <param name="excludeTags"></param>
     /// <returns></returns>
-    public static bool MeetsTagRequirements(PrefabInstance prefabInstance, POITags includeTags, POITags excludeTags)
+    public static bool MeetsTagRequirements(PrefabInstance prefabInstance, FastTags<TagGroup.Poi> includeTags, FastTags<TagGroup.Poi> excludeTags)
     {
         if (!includeTags.IsEmpty &&
             !prefabInstance.prefab.Tags.Test_AnySet(includeTags))

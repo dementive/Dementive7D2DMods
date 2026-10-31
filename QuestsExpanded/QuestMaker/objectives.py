@@ -4,6 +4,7 @@ class Objectives:
 	<objective type="RallyPoint">
 		<property name="phase" value="2"/>
 		<property name="nav_object" value="rally" />
+		<property name="rally_marker_type" value="questRallyMarkerFetch"/>
 	</objective>
 
 	<objective type="FetchFromContainer">
@@ -37,6 +38,7 @@ class Objectives:
 	<objective type="RallyPoint">
 		<property name="phase" value="2"/>
 		<property name="nav_object" value="rally" />
+		<property name="rally_marker_type" value="questRallyMarkerClear"/>
 	</objective>
 
 	<objective type="ClearSleepers">
@@ -67,6 +69,7 @@ class Objectives:
 	<objective type="RallyPoint">
 		<property name="phase" value="2"/>
 		<property name="nav_object" value="rally" />
+		<property name="rally_marker_type" value="questRallyMarkerFetchClear"/>
 	</objective>
 
 	<objective type="ClearSleepers">
@@ -105,6 +108,7 @@ class Objectives:
 	<objective type="RallyPoint">
 		<property name="phase" value="2"/>
 		<property name="nav_object" value="rally" />
+		<property name="rally_marker_type" value="questRallyMarkerClear"/>
 	</objective>
 
 	<objective type="ClearSleepers">
@@ -124,7 +128,7 @@ class Objectives:
 		<property name="radius" value="25"/>
 	</objective>
 	
-	<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="5-7" phase="5"/>
+	<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombiePartyGirl,zombieChuck,zombieRancher" value="5-7" phase="5"/>
 	<objective type="ObjectiveEntityKill" value="4" phase="5"/>
 	<objective type="POIStayWithin">
 		<property name="phase" value="5"/>
@@ -157,6 +161,7 @@ class Objectives:
 	<objective type="RallyPoint">
 		<property name="phase" value="2"/>
 		<property name="nav_object" value="rally" />
+		<property name="rally_marker_type" value="questRallyMarkerClear"/>
 	</objective>
 
 	<objective type="ClearSleepers">
@@ -170,15 +175,15 @@ class Objectives:
 	</objective>
 	
 	<action type="SpawnEnemy" id="zombieBoe,zombieFemaleFat,zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieDarlene,zombieMarlene,zombieYo,zombieSteve,zombieBusinessMan" value="4-6" phase="4"/>
-	<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2-3" phase="4"/>
+	<action type="SpawnEnemy" id="zombiePartyGirlFeral,zombieRancherFeral,zombieChuckFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieFrostclawFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2-3" phase="4"/>
 	<objective type="ObjectiveEntityKill" value="5" phase="4"/>
 	<objective type="POIStayWithin">
 		<property name="phase" value="4"/>
 		<property name="radius" value="25"/>
 	</objective>
 	
-	<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="5-7" phase="5"/>
-	<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2-4" phase="5"/>
+	<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombiePartyGirl,zombieChuck,zombieRancher" value="5-7" phase="5"/>
+	<action type="SpawnEnemy" id="zombiePartyGirlFeral,zombieRancherFeral,zombieChuckFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieFrostclawFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2-4" phase="5"/>
 	<objective type="ObjectiveEntityKill" value="6" phase="5"/>
 	<objective type="POIStayWithin">
 		<property name="phase" value="5"/>
@@ -186,8 +191,8 @@ class Objectives:
 	</objective>
 	
 	<action type="SpawnEnemy" id="zombieSpider,zombieFatCop,zombieFatCopFeral,animalZombieDog" value="1" phase="6"/>
-	<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="2-3" phase="6"/>
-	<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2-3" phase="6"/>
+	<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombiePartyGirl,zombieChuck,zombieRancher" value="2-3" phase="6"/>
+	<action type="SpawnEnemy" id="zombiePartyGirlFeral,zombieRancherFeral,zombieChuckFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieFrostclawFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2-3" phase="6"/>
 	<objective type="ObjectiveEntityKill" value="5" phase="7"/>
 	<objective type="POIStayWithin">
 		<property name="phase" value="7"/>
@@ -212,6 +217,7 @@ class Objectives:
 	<objective type="RallyPoint">
 		<property name="phase" value="2"/>
 		<property name="nav_object" value="rally" />
+		<property name="rally_marker_type" value="questRallyMarkerClear"/>
 	</objective>
 
 	<objective type="ClearSleepers">
@@ -225,15 +231,15 @@ class Objectives:
 	</objective>
 	
 	<action type="SpawnEnemy" id="zombieBoe,zombieFemaleFat,zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieDarlene,zombieMarlene,zombieYo,zombieSteve,zombieBusinessMan" value="2-3" phase="4"/>
-	<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="3-4" phase="4"/>
+	<action type="SpawnEnemy" id="zombiePartyGirlFeral,zombieRancherFeral,zombieChuckFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieFrostclawFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="3-4" phase="4"/>
 	<objective type="ObjectiveEntityKill" value="5" phase="4"/>
 	<objective type="POIStayWithin">
 		<property name="phase" value="4"/>
 		<property name="radius" value="25"/>
 	</objective>
 	
-	<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="3" phase="5"/>
-	<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="3" phase="5"/>
+	<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombiePartyGirl,zombieChuck,zombieRancher" value="3" phase="5"/>
+	<action type="SpawnEnemy" id="zombiePartyGirlFeral,zombieRancherFeral,zombieChuckFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieFrostclawFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="3" phase="5"/>
 	<objective type="ObjectiveEntityKill" value="5" phase="5"/>
 	<objective type="POIStayWithin">
 		<property name="phase" value="5"/>
@@ -241,8 +247,8 @@ class Objectives:
 	</objective>
 	
 	<action type="SpawnEnemy" id="zombieWightFeral,zombieBikerFeral,zombieSoldierFeral,zombieSpiderFeral,zombieFatCopFeral" value="2" phase="5"/>
-	<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="2-3" phase="6"/>
-	<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2" phase="6"/>
+	<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombiePartyGirl,zombieChuck,zombieRancher" value="2-3" phase="6"/>
+	<action type="SpawnEnemy" id="zombiePartyGirlFeral,zombieRancherFeral,zombieChuckFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieFrostclawFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2" phase="6"/>
 	<objective type="ObjectiveEntityKill" value="6" phase="6"/>
 	<objective type="POIStayWithin">
 		<property name="phase" value="6"/>
@@ -267,6 +273,7 @@ class Objectives:
 	<objective type="RallyPoint">
 		<property name="phase" value="2"/>
 		<property name="nav_object" value="rally" />
+		<property name="rally_marker_type" value="questRallyMarkerClear"/>
 	</objective>
 
 	<objective type="ClearSleepers">
@@ -280,17 +287,17 @@ class Objectives:
 	</objective>
 	
 	<action type="SpawnEnemy" id="zombieBoe,zombieFemaleFat,zombieJoe,zombieJanitor,zombieMoe,zombieArlene,zombieLab,zombieDarlene,zombieMarlene,zombieYo,zombieSteve,zombieBusinessMan" value="2-4" phase="4"/>
-	<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="3" phase="4"/>
-	<action type="SpawnEnemy" id="zombieOldTimerRadiated,zombieCheerleaderRadiated,zombieSkateboarderRadiated,zombieMarleneRadiated,zombieSteveRadiated,zombieYoRadiated,zombieDarleneRadiated,zombieLabRadiated,zombieArleneRadiated,zombieMoeRadiated,zombieJanitorRadiated,zombieFemaleFatRadiated,zombieJoeRadiated,zombieBoeRadiated" value="1" phase="4"/>
+	<action type="SpawnEnemy" id="zombiePartyGirlFeral,zombieRancherFeral,zombieChuckFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieFrostclawFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="3" phase="4"/>
+	<action type="SpawnEnemy" id="zombieChuckRadiated,zombiePartyGirlRadiated,zombieSkateboarderRadiated,zombieMarleneRadiated,zombieSteveRadiated,zombieYoRadiated,zombieDarleneRadiated,zombieLabRadiated,zombieArleneRadiated,zombieMoeRadiated,zombieJanitorRadiated,zombieFemaleFatRadiated,zombieJoeRadiated,zombieBoeRadiated" value="1" phase="4"/>
 	<objective type="ObjectiveEntityKill" value="6" phase="4"/>
 	<objective type="POIStayWithin">
 		<property name="phase" value="4"/>
 		<property name="radius" value="25"/>
 	</objective>
 	
-	<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="2-4" phase="5"/>
-	<action type="SpawnEnemy" id="zombieStripperFeral,zombieFarmerFeral,zombieOldTimerFeral,zombieCheerleaderFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieSnowFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2-3" phase="5"/>
-	<action type="SpawnEnemy" id="zombieOldTimerRadiated,zombieCheerleaderRadiated,zombieSkateboarderRadiated,zombieMarleneRadiated,zombieSteveRadiated,zombieYoRadiated,zombieDarleneRadiated,zombieLabRadiated,zombieArleneRadiated,zombieMoeRadiated,zombieJanitorRadiated,zombieFemaleFatRadiated,zombieJoeRadiated,zombieBoeRadiated" value="2" phase="5"/>
+	<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombiePartyGirl,zombieChuck,zombieRancher" value="2-4" phase="5"/>
+	<action type="SpawnEnemy" id="zombiePartyGirlFeral,zombieRancherFeral,zombieChuckFeral,zombieSkateboarderFeral,zombieUtilityWorkerFeral,zombieFatHawaiianFeral,zombieNurseFeral,zombieFrostclawFeral,zombieYoFeral,zombieBusinessManFeral,zombieMarleneFeral,zombieMoeFeral,zombieDarleneFeral,zombieSteveFeral,zombieLabFeral,zombieJoeFeral,zombieJanitorFeral,zombieBoeFeral,zombieFemaleFatFeral,zombieArleneFeral" value="2-3" phase="5"/>
+	<action type="SpawnEnemy" id="zombieChuckRadiated,zombiePartyGirlRadiated,zombieSkateboarderRadiated,zombieMarleneRadiated,zombieSteveRadiated,zombieYoRadiated,zombieDarleneRadiated,zombieLabRadiated,zombieArleneRadiated,zombieMoeRadiated,zombieJanitorRadiated,zombieFemaleFatRadiated,zombieJoeRadiated,zombieBoeRadiated" value="2" phase="5"/>
 	<objective type="ObjectiveEntityKill" value="6" phase="5"/>
 	<objective type="POIStayWithin">
 		<property name="phase" value="5"/>
@@ -298,8 +305,8 @@ class Objectives:
 	</objective>
 	
 	<action type="SpawnEnemy" id="zombieWightRadiated,zombieBikerRadiated,zombieFatCopRadiated,zombieSpiderRadiated,zombieSoldierRadiated,zombieDemolition" value="4" phase="6"/>
-	<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombieCheerleader,zombieOldTimer,zombieFarmer,zombieStripper" value="1-3" phase="6"/>
-	<action type="SpawnEnemy" id="zombieOldTimerRadiated,zombieCheerleaderRadiated,zombieSkateboarderRadiated,zombieMarleneRadiated,zombieSteveRadiated,zombieYoRadiated,zombieDarleneRadiated,zombieLabRadiated,zombieArleneRadiated,zombieMoeRadiated,zombieJanitorRadiated,zombieFemaleFatRadiated,zombieJoeRadiated,zombieBoeRadiated" value="4" phase="6"/>
+	<action type="SpawnEnemy" id="zombieBurnt,zombieNurse,zombieFatHawaiian,zombieMaleHazmat,zombieUtilityWorker,zombieSkateboarder,zombiePartyGirl,zombieChuck,zombieRancher" value="1-3" phase="6"/>
+	<action type="SpawnEnemy" id="zombieChuckRadiated,zombiePartyGirlRadiated,zombieSkateboarderRadiated,zombieMarleneRadiated,zombieSteveRadiated,zombieYoRadiated,zombieDarleneRadiated,zombieLabRadiated,zombieArleneRadiated,zombieMoeRadiated,zombieJanitorRadiated,zombieFemaleFatRadiated,zombieJoeRadiated,zombieBoeRadiated" value="4" phase="6"/>
 	<objective type="ObjectiveEntityKill" value="7" phase="6"/>
 	<objective type="POIStayWithin">
 		<property name="phase" value="6"/>

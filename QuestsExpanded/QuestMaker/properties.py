@@ -19,6 +19,7 @@ properties_template = Template(
     {% if shareable != "" %}<property name="shareable" value="{{shareable}}"/>{% endif %}
     {% if repeatable != "" %}<property name="repeatable" value="{{repeatable}}"/>{% endif %}
     {% if completiontype != "" %}<property name="completiontype" value="{{completiontype}}"/>{% endif %}
+    <property name="filter_tags" value="poi"/>
     {% if infested_quest %}<property name="extra_tags" value="infested"/>
     <property name="spawn_multiplier" value="2"/>
     <property name="gamestage_mod" value=".6"/>
@@ -30,9 +31,9 @@ class Properties:
         self.localization_keys = list()
 
     def write(self):
-        with open("Localization.txt", "w") as file:
-            file.write("Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate ")
-        with open("Localization.txt", "a") as file:
+        with open("Localization.csv", "w") as file:
+            file.write("Key,File,Type,UsedInMainMenu,NoTranslate,KeepLoaded,english,Context / Alternate Text,german,spanish,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese")
+        with open("Localization.csv", "a") as file:
             for i in self.localization_keys:
                 file.write("\n")
                 for j in i:
@@ -40,9 +41,9 @@ class Properties:
                         continue
                     file.write(j)
                     if any(substring in j for substring in ("_group", "_statement", "_response")):
-                        file.write(",Quest,Quest Info,,,")
+                        file.write(",Quest,Quest Info,,,,")
                     else:
-                        file.write(",quests,Quests,,,")
+                        file.write(",quests,Quests,,,,")
                     file.write("\n")
 
     def properties(

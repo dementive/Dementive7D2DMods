@@ -35,12 +35,12 @@ public class ObjectiveRandomTaggedPOIGotoDEM : ObjectiveRandomPOIGoto
     /// <summary>
     /// A prefab must have at least one of these POI tags to be included in the search for POIs.
     /// </summary>
-    public POITags IncludeTags { get; internal set; } = POITags.none;
+    public FastTags<TagGroup.Poi> IncludeTags { get; internal set; } = FastTags<TagGroup.Poi>.none;
 
     /// <summary>
     /// If a prefab has any of these POI tags, it is excluded from the search for POIs.
     /// </summary>
-    public POITags ExcludeTags { get; internal set; } = POITags.none;
+    public FastTags<TagGroup.Poi> ExcludeTags { get; internal set; } = FastTags<TagGroup.Poi>.none;
 
     /// <summary>
     /// The minimum distance to search. POIs inside this distance will not be returned.
@@ -60,11 +60,11 @@ public class ObjectiveRandomTaggedPOIGotoDEM : ObjectiveRandomPOIGoto
     {
         if (properties.Values.ContainsKey(PropIncludeTags))
         {
-            IncludeTags = POITags.Parse(properties.Values[PropIncludeTags].Replace(" ", ""));
+            IncludeTags = FastTags<TagGroup.Poi>.Parse(properties.Values[PropIncludeTags].Replace(" ", ""));
         }
         if (properties.Values.ContainsKey(PropExcludeTags))
         {
-            ExcludeTags = POITags.Parse(properties.Values[PropExcludeTags].Replace(" ", ""));
+            ExcludeTags = FastTags<TagGroup.Poi>.Parse(properties.Values[PropExcludeTags].Replace(" ", ""));
         }
         if (properties.Values.ContainsKey(PropDistance))
         {
@@ -93,7 +93,7 @@ public class ObjectiveRandomTaggedPOIGotoDEM : ObjectiveRandomPOIGoto
     /// <param name="usedPoiLocations"></param>
     /// <param name="entityIdForQuests"></param>
     /// <returns></returns>
-    protected override Vector3 GetPosition(
+    public override Vector3 GetPosition(
         EntityNPC ownerNPC = null,
         EntityPlayer entityPlayer = null,
         List<Vector2> usedPoiLocations = null,
@@ -127,45 +127,15 @@ public class ObjectiveRandomTaggedPOIGotoDEM : ObjectiveRandomPOIGoto
 
         if (SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer)
         {
-            PrefabInstance prefabInstance;
-
-            // Modified so it won't call the method if the "trader" has no TraderArea.
-            // Core NPCs descend from traders, and this will allow them to give POI quests.
-            if (questOwner is EntityTrader trader && trader.traderArea != null)
-            {
-                prefabInstance = QuestUtils.GetRandomPOINearTrader(
-                    trader,
-                    OwnerQuest.QuestTags,
-                    OwnerQuest.QuestClass.DifficultyTier,
-                    IncludeTags,
-                    ExcludeTags,
-                    MinSearchDistance,
-                    MaxSearchDistance,
-                    usedPoiLocations,
-                    entityIdForQuests,
-                    biomeFilterType,
-                    biomeFilter);
-            }
-            else
-            {
-                prefabInstance = QuestUtils.GetRandomPOINearEntityPos(
-                    questOwner,
-                    OwnerQuest.QuestTags,
-                    OwnerQuest.QuestClass.DifficultyTier,
-                    IncludeTags,
-                    ExcludeTags,
-                    // The values used in vanilla are the square of the distance; adjusted here
-                    MinSearchDistance >= 0 ? MinSearchDistance : 50,
-                    MaxSearchDistance >= 0 ? MaxSearchDistance : 2000,
-                    usedPoiLocations,
-                    entityIdForQuests,
-                    biomeFilterType,
-                    biomeFilter);
-            }
+            PrefabInstance prefabInstance = FindPrefab(questOwner, usedPoiLocations, entityIdForQuests);
 
             if (prefabInstance == null)
             {
-                Log.Warning($"Unable to find POI for quest {OwnerQuest.QuestTags}!");
+                // Traders try every quest in their list, so this is expected for quests whose POIs aren't nearby
+                if (QuestUtils.LoggingEnabled)
+                {
+                    Log.Out($"{GetType().Name}: Unable to find POI for quest {OwnerQuest.ID} ({OwnerQuest.QuestTags})");
+                }
                 return Vector3.zero;
             }
 
@@ -195,7 +165,8 @@ public class ObjectiveRandomTaggedPOIGotoDEM : ObjectiveRandomPOIGoto
 
                 OwnerQuest.QuestPrefab = prefabInstance;
 
-                OwnerQuest.DataVariables.Add("POIName", OwnerQuest.QuestPrefab.location.Name);
+                OwnerQuest.DataVariables.Add("POIName", Localization.Get(OwnerQuest.QuestPrefab.location.Name));
+                OwnerQuest.DataVariables.Add("POINameKey", OwnerQuest.QuestPrefab.location.Name);
 
                 if (usedPoiLocations != null)
                 {
@@ -209,25 +180,75 @@ public class ObjectiveRandomTaggedPOIGotoDEM : ObjectiveRandomPOIGoto
         }
         else
         {
-            SingletonMonoBehaviour<ConnectionManager>.Instance.SendToServer(
-                NetPackageManager.GetPackage<NetPackageRandomTaggedPOIGotoDEM>().Setup(
-                    questOwner.entityId,
-                    OwnerQuest.QuestTags,
-                    OwnerQuest.QuestCode,
-                    OwnerQuest.QuestClass.DifficultyTier,
-                    IncludeTags,
-                    ExcludeTags,
-                    MinSearchDistance,
-                    MaxSearchDistance,
-                    0, -1, // POI boundingBoxPosition
-                    0f, 0f, 0f, // POI boundingBoxSize
-                    biomeFilterType,
-                    biomeFilter),
-                false);
+            SingletonMonoBehaviour<ConnectionManager>.Instance.SendToServer(CreateServerRequest(questOwner), false);
 
             CurrentValue = 1;
         }
         return Vector3.zero;
+    }
+
+    /// <summary>
+    /// Finds the quest POI on the server.
+    /// </summary>
+    /// <param name="questOwner">The quest giver, or the player if there is none</param>
+    /// <param name="usedPoiLocations"></param>
+    /// <param name="entityIdForQuests"></param>
+    /// <returns></returns>
+    public virtual PrefabInstance FindPrefab(EntityAlive questOwner, List<Vector2> usedPoiLocations, int entityIdForQuests)
+    {
+        // Modified so it won't call the method if the "trader" has no TraderArea.
+        // Core NPCs descend from traders, and this will allow them to give POI quests.
+        if (questOwner is EntityTrader trader && trader.traderArea != null)
+        {
+            return QuestUtils.GetRandomPOINearTrader(
+                trader,
+                OwnerQuest.QuestTags,
+                (byte)POITier,
+                IncludeTags,
+                ExcludeTags,
+                MinSearchDistance,
+                MaxSearchDistance,
+                usedPoiLocations,
+                entityIdForQuests,
+                biomeFilterType,
+                biomeFilter);
+        }
+
+        return QuestUtils.GetRandomPOINearEntityPos(
+            questOwner,
+            OwnerQuest.QuestTags,
+            (byte)POITier,
+            IncludeTags,
+            ExcludeTags,
+            // The values used in vanilla are the square of the distance; adjusted here
+            MinSearchDistance >= 0 ? MinSearchDistance : 50,
+            MaxSearchDistance >= 0 ? MaxSearchDistance : 2000,
+            usedPoiLocations,
+            entityIdForQuests,
+            biomeFilterType,
+            biomeFilter);
+    }
+
+    /// <summary>
+    /// Creates the package a client sends to ask the server to find the quest POI.
+    /// </summary>
+    /// <param name="questOwner"></param>
+    /// <returns></returns>
+    public virtual NetPackage CreateServerRequest(EntityAlive questOwner)
+    {
+        return NetPackageManager.GetPackage<NetPackageRandomTaggedPOIGotoDEM>().Setup(
+            questOwner.entityId,
+            OwnerQuest.QuestTags,
+            OwnerQuest.QuestCode,
+            (byte)POITier,
+            IncludeTags,
+            ExcludeTags,
+            MinSearchDistance,
+            MaxSearchDistance,
+            0, -1, // POI boundingBoxPosition
+            0f, 0f, 0f, // POI boundingBoxSize
+            biomeFilterType,
+            biomeFilter);
     }
 
     public static Vector3 PrefabCenterToPosition(Vector2 prefabCenter)
@@ -254,28 +275,15 @@ public class ObjectiveRandomTaggedPOIGotoDEM : ObjectiveRandomPOIGoto
     /// Copies the values from another Objective.
     /// </summary>
     /// <param name="objective"></param>
-    protected override void CopyValues(BaseObjective objective)
+    public override void CopyValues(BaseObjective objective)
     {
         base.CopyValues(objective);
         ObjectiveRandomTaggedPOIGotoDEM obj = (ObjectiveRandomTaggedPOIGotoDEM)objective;
+        // ObjectiveGoto.CopyValues doesn't copy this; ObjectiveRandomPOIGoto.Clone does it by hand
+        obj.poiTier = poiTier;
         obj.IncludeTags = IncludeTags;
         obj.ExcludeTags = ExcludeTags;
         obj.MinSearchDistance = MinSearchDistance;
         obj.MaxSearchDistance = MaxSearchDistance;
-    }
-
-    /// <summary>
-    /// Copied verbatim from ObjectiveRandomPOIGoto, made protected so any future subclasses won't
-    /// have to do the same thing.
-    /// </summary>
-    /// <param name="poiSize"></param>
-    protected void SetDistanceOffset(Vector3 poiSize)
-    {
-        if (poiSize.x > poiSize.z)
-        {
-            distanceOffset = poiSize.x;
-            return;
-        }
-        distanceOffset = poiSize.z;
     }
 }

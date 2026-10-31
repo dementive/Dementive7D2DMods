@@ -7,8 +7,8 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
 	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
 	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
-	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
-	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResourcesT0" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResourcesT0,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
 	"""
 
 		self.tier1_fetch_rewards = """
@@ -18,8 +18,8 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
 	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
 	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
-	<reward type="LootItem" id="groupQuestResources" ischosen="true" value="1"/>
-	<reward type="LootItem" id="groupQuestAmmo,groupQuestResources,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestResourcesT0" ischosen="true" value="1"/>
+	<reward type="LootItem" id="groupQuestAmmo,groupQuestResourcesT0,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
 		"""
 
 		self.tier2_clear_rewards = """
@@ -32,7 +32,7 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="2"/>
 	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="2"/>
 	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="2"/>
-	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
 	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 		"""
 
@@ -46,7 +46,7 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="2"/>
 	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="2"/>
 	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="2"/>
-	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
 	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 		"""
 
@@ -60,7 +60,7 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="3"/>
 	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="3"/>
 	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="3"/>
-	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
 	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 		"""
 
@@ -74,7 +74,7 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="3"/>
 	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="3"/>
 	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="3"/>
-	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
 	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 		"""
 
@@ -88,7 +88,7 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="4"/>
 	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="4"/>
 	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="4"/>
-	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
 	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 		"""
 
@@ -102,7 +102,7 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="4"/>
 	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="4"/>
 	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="4"/>
-	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
 	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 		"""
 
@@ -116,7 +116,7 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="5"/>
 	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="5"/>
 	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="5"/>
-	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestSteel02" ischosen="true"/>
 	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 		"""
 
@@ -130,7 +130,7 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="5"/>
 	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="5"/>
 	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="5"/>
-	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestSteel02" ischosen="true"/>
 	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 		"""
 
@@ -144,7 +144,7 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="6"/>
 	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="6"/>
 	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="6"/>
-	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestSteel02" ischosen="true"/>
 	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 		"""
 
@@ -158,7 +158,7 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="6"/>
 	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="6"/>
 	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="6"/>
-	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestSteel02" ischosen="true"/>
 	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 		"""
 
@@ -172,7 +172,7 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="2"/>
 	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="2"/>
 	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="2"/>
-	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
 	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 		"""
 
@@ -186,7 +186,7 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="3"/>
 	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="3"/>
 	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="3"/>
-	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
 	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 		"""
 
@@ -200,7 +200,7 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestTools" ischosen="true" value="4"/>
 	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="4"/>
 	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="4"/>
-	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
 	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 		"""
 
@@ -214,7 +214,7 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="5"/>
 	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="5"/>
 	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="5"/>
-	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestSteel02" ischosen="true"/>
 	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 		"""
 
@@ -228,6 +228,6 @@ class Rewards:
 	<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="6"/>
 	<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="6"/>
 	<reward type="LootItem" id="groupQuestMods" ischosen="true" value="6"/>
-	<reward type="LootItem" id="groupQuestSteel" ischosen="true"/>
+	<reward type="LootItem" id="groupQuestSteel02" ischosen="true"/>
 	<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 		"""

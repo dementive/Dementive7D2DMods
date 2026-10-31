@@ -1127,7 +1127,7 @@ if tier_3_pois:
 
     # Military Outposts
     current_poi = "military_outpost"
-    poi_objectives = "army_barracks_01,army_camp_04,bombshelter_02,ranger_station_07,ranger_station_01"
+    poi_objectives = "army_camp_04,bombshelter_02,ranger_station_07,ranger_station_01"
 
     quest_id = f"tier{current_tier}_{infested_string}{current_poi}_clear"
     properties = property_object.properties(

@@ -1,122 +1,124 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
+/// <summary>
+/// Sent by a client to ask the server for the POI of an <see cref="ObjectiveGotoPOIDEM"/>. The server replies with
+/// the vanilla <see cref="NetPackageQuestGotoPoint"/>, which finalizes any <see cref="ObjectiveRandomPOIGoto"/>.
+/// </summary>
 public class NetPackageGotoPOIDEM : NetPackage
 {
-    public NetPackageGotoPOIDEM Setup(int _playerId, FastTags _questTags, int _questCode, NetPackageQuestGotoPoint.QuestGotoTypes _gotoType, byte _difficulty, int posX = 0, int posZ = -1, float sizeX = 0f, float sizeY = 0f, float sizeZ = 0f, float offset = -1f, BiomeFilterTypes _biomeFilterType = BiomeFilterTypes.AnyBiome, string _biomeFilter = "", string _POIFilter = "")
+    private int questGiverId;
+
+    private int questCode;
+
+    private FastTags<TagGroup.Global> questTags;
+
+    private byte difficulty;
+
+    private BiomeFilterTypes biomeFilterType;
+
+    private string biomeFilter;
+
+    private string prefabNames;
+
+    public NetPackageGotoPOIDEM Setup(
+        int _questGiverId,
+        FastTags<TagGroup.Global> _questTags,
+        int _questCode,
+        byte _difficulty,
+        IEnumerable<string> _prefabNames,
+        BiomeFilterTypes _biomeFilterType = BiomeFilterTypes.AnyBiome,
+        string _biomeFilter = "")
     {
-        this.playerId = _playerId;
-        this.questCode = _questCode;
-        this.GotoType = _gotoType;
-        this.questTags = _questTags;
-        this.position = new Vector2((float)posX, (float)posZ);
-        this.size = new Vector3(sizeX, sizeY, sizeZ);
-        this.difficulty = _difficulty;
-        this.biomeFilterType = _biomeFilterType;
-        this.biomeFilter = _biomeFilter;
-        poiFilter = _POIFilter;
+        questGiverId = _questGiverId;
+        questTags = _questTags;
+        questCode = _questCode;
+        difficulty = _difficulty;
+        prefabNames = string.Join(",", _prefabNames);
+        biomeFilterType = _biomeFilterType;
+        biomeFilter = _biomeFilter;
         return this;
     }
 
     public override void read(PooledBinaryReader _br)
     {
-        this.playerId = _br.ReadInt32();
-        this.questCode = _br.ReadInt32();
-        this.GotoType = (NetPackageQuestGotoPoint.QuestGotoTypes)_br.ReadByte();
-        this.questTags = FastTags.Parse(_br.ReadString());
-        this.position = new Vector2((float)_br.ReadInt32(), (float)_br.ReadInt32());
-        this.size = StreamUtils.ReadVector3(_br);
-        this.difficulty = _br.ReadByte();
-        this.biomeFilterType = (BiomeFilterTypes)_br.ReadByte();
-        this.biomeFilter = _br.ReadString();
-        this.poiFilter = _br.ReadString();
-
+        questGiverId = _br.ReadInt32();
+        questCode = _br.ReadInt32();
+        questTags = FastTags<TagGroup.Global>.Parse(_br.ReadString());
+        difficulty = _br.ReadByte();
+        biomeFilterType = (BiomeFilterTypes)_br.ReadByte();
+        biomeFilter = _br.ReadString();
+        prefabNames = _br.ReadString();
     }
 
     public override void write(PooledBinaryWriter _bw)
     {
         base.write(_bw);
-        _bw.Write(this.playerId);
-        _bw.Write(this.questCode);
-        _bw.Write((byte)this.GotoType);
-        _bw.Write(this.questTags.ToString());
-        _bw.Write((int)this.position.x);
-        _bw.Write((int)this.position.y);
-        StreamUtils.Write(_bw, this.size);
-        _bw.Write(this.difficulty);
-        _bw.Write((byte)this.biomeFilterType);
-        _bw.Write(this.biomeFilter);
-        _bw.Write(this.poiFilter);
-
+        _bw.Write(questGiverId);
+        _bw.Write(questCode);
+        _bw.Write(questTags.ToString());
+        _bw.Write(difficulty);
+        _bw.Write((byte)biomeFilterType);
+        _bw.Write(biomeFilter);
+        _bw.Write(prefabNames);
     }
 
     public override void ProcessPackage(World _world, GameManager _callbacks)
     {
-        if (_world == null)
+        if (_world == null || !SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer)
         {
             return;
         }
 
-        var usedPositions = new List<Vector2>();
-        if (SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer)
+        EntityAlive questGiver = _world.GetEntity(questGiverId) as EntityAlive;
+        if (questGiver == null)
         {
-            for (int i = 0; i < 5; i++)
-            {
-                //  Debug.Log($"Checking Position {this.position}");
-                //var prefabInstance = GameManager.Instance.World.ChunkClusters[0].ChunkProvider.GetDynamicPrefabDecorator().GetClosestPOIToWorldPos(this.questTags, new Vector2(position.x, position.y), null, -1, false, BiomeFilterTypes.AnyBiome, "");
-                PrefabInstance prefabInstance = QuestUtils.FindPrefab(poiFilter, position, ref usedPositions, biomeFilterType, biomeFilter);
-                //new Vector2((float)prefabInstance.boundingBoxPosition.x + (float)prefabInstance.boundingBoxSize.x / 2f, (float)prefabInstance.boundingBoxPosition.z + (float)prefabInstance.boundingBoxSize.z / 2f);
-                if (prefabInstance != null)
-                {
-                    SingletonMonoBehaviour<ConnectionManager>.Instance.SendPackage(NetPackageManager.GetPackage<NetPackageQuestGotoPoint>().Setup(this.playerId, this.questTags, this.questCode, this.GotoType, this.difficulty, prefabInstance.boundingBoxPosition.x, prefabInstance.boundingBoxPosition.z, (float)prefabInstance.boundingBoxSize.x, (float)prefabInstance.boundingBoxSize.y, (float)prefabInstance.boundingBoxSize.z, -1f, biomeFilterType, biomeFilter), false, this.playerId, -1, -1, -1);
-                    //SingletonMonoBehaviour<ConnectionManager>.Instance.SendPackage(NetPackageManager.GetPackage<NetPackageQuestGotoPoint>().Setup(this.playerId, this.questTags, this.questCode, this.GotoType, this.difficulty, (int)position.x, (int)position.y, (float)prefabInstance.boundingBoxSize.x, (float)prefabInstance.boundingBoxSize.y, (float)prefabInstance.boundingBoxSize.z, -1f, biomeFilterType, biomeFilter), false, this.playerId, -1, -1, -1);var num2 = (int)GameManager.Instance.World.GetHeightAt(position.x, position.y);
-
-                    return;
-                }
-            }
             return;
         }
 
-        EntityPlayer primaryPlayer = GameManager.Instance.World.GetPrimaryPlayer();
-        Quest quest = primaryPlayer.QuestJournal.FindActiveQuest(this.questCode);
-        if (quest != null)
+        // A dedicated server has no primary player, so use the player who sent the request
+        EntityPlayer requestingPlayer = Sender != null
+            ? _world.GetEntity(Sender.entityId) as EntityPlayer
+            : _world.GetPrimaryPlayer();
+        int requestingPlayerId = requestingPlayer != null ? requestingPlayer.entityId : -1;
+
+        // Same lookup as NetPackageRandomTaggedPOIGotoDEM, so the player isn't sent back to a POI they just did
+        Vector2 usedPoiCenter = questGiver is EntityTrader trader && trader.traderArea != null
+            ? new Vector2(trader.traderArea.Position.x, trader.traderArea.Position.z)
+            : new Vector2(questGiver.position.x, questGiver.position.z);
+        List<Vector2> usedPoiLocations = requestingPlayer != null
+            ? requestingPlayer.QuestJournal.GetUsedPOIs(usedPoiCenter, difficulty)
+            : null;
+
+        PrefabInstance prefabInstance = QuestUtils.GetNamedPOINearEntity(
+            questGiver,
+            new HashSet<string>(prefabNames.Split(','), StringComparer.OrdinalIgnoreCase),
+            questTags,
+            usedPoiLocations,
+            requestingPlayerId,
+            biomeFilterType,
+            biomeFilter);
+
+        if (prefabInstance == null)
         {
-            for (int j = 0; j < quest.Objectives.Count; j++)
-            {
-                Log.Out($"Objective position: {this.position}");
-                var num2 = (int)GameManager.Instance.World.GetHeightAt(position.x, position.y);
-                ((ObjectiveGotoPOIDEM)quest.Objectives[j]).FinalizePoint(new Vector3(this.position.x, num2, this.position.y), this.size);
-            }
+            return;
         }
+
+        SingletonMonoBehaviour<ConnectionManager>.Instance.SendPackage(
+            NetPackageManager.GetPackage<NetPackageQuestGotoPoint>().Setup(
+                questGiverId,
+                requestingPlayerId,
+                questTags,
+                questCode,
+                NetPackageQuestGotoPoint.QuestGotoTypes.RandomPOI,
+                difficulty,
+                prefabInstance.boundingBoxPosition.x,
+                prefabInstance.boundingBoxPosition.z,
+                prefabInstance.boundingBoxSize.x,
+                prefabInstance.boundingBoxSize.y,
+                prefabInstance.boundingBoxSize.z),
+            _onlyClientsAttachedToAnEntity: false,
+            requestingPlayerId);
     }
-
-    public override int GetLength()
-    {
-        return 8;
-    }
-
-
-    private byte difficulty;
-    private int playerId;
-
-    private int questCode;
-
-    private FastTags questTags;
-
-    private Vector2 position;
-
-    private BiomeFilterTypes biomeFilterType;
-
-    private string biomeFilter;
-    private Vector3 size;
-
-    private string poiFilter;
-
-    public NetPackageQuestGotoPoint.QuestGotoTypes GotoType;
-
 }
-

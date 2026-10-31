@@ -1,20 +1,28 @@
 <Dementive>
 
 	<append xpath="/lootcontainers/lootprobtemplates">
+		<!-- Chance per container opened that one weapon drops -->
 		<lootprobtemplate name="DementiveRaresT1">
-			<loot level="1,999999" prob="0.001"/>  <!-- 1 / 1000  -->
+			<loot level="1,999999" prob="0.005"/>  <!-- 1 / 200 -->
 		</lootprobtemplate>
 		<lootprobtemplate name="DementiveRaresT2">
-			<loot level="1,999999" prob="0.002"/>  <!-- 1 / 500  -->
+			<loot level="1,999999" prob="0.01"/>  <!-- 1 / 100 -->
 		</lootprobtemplate>
 		<lootprobtemplate name="DementiveRaresT3">
-			<loot level="1,999999" prob="0.004"/>  <!-- 1 / 250  -->
+			<loot level="1,999999" prob="0.02"/>  <!-- 1 / 50 -->
 		</lootprobtemplate>
 		<lootprobtemplate name="DementiveRaresT4">
-			<loot level="1,999999" prob="0.008"/>  <!-- 1 / 125 -->
+			<loot level="1,999999" prob="0.04"/>  <!-- 1 / 25 -->
 		</lootprobtemplate>
 		<lootprobtemplate name="DementiveRaresT5">
-			<loot level="1,999999" prob="0.01"/>  <!-- 1 / 100 -->
+			<loot level="1,999999" prob="0.05"/>  <!-- 1 / 20 -->
+		</lootprobtemplate>
+
+		<!-- Quest rewards: the reward "value" is the quest tier. At tiers 4-6 roughly 3% of schematic rewards
+		     (about 1 in 20 quests) offer one of the weapons instead -->
+		<lootprobtemplate name="DementiveQuestRewards">
+			<loot level="0,3" prob="0"/>
+			<loot level="4,7" prob="0.06"/>
 		</lootprobtemplate>
 	</append>
 	
@@ -51,6 +59,16 @@
 			<item name="DementivemeleeWpnKnucklesT3SteelKnuckles"/>
 			<item name="DementivemeleeWpnSledgeT3SteelSledgehammer"/>
 			<item name="DementivemeleeWpnSpearT3SteelSpear"/>
+			<item name="DementivemeleeWpnBladeStalkersHarvester"/>
+			<item name="DementivemeleeWpnClubGrandSlam"/>
+			<item name="DementivemeleeWpnSledgeBloodletter"/>
+			<item name="DementivegunBowHellfire"/>
+			<item name="DementivegunBowWhisper"/>
+			<item name="DementivegunRifleChainReaction"/>
+			<item name="DementivegunShotgunFrostbite"/>
+			<item name="DementivemeleeToolPickProspector"/>
+			<item name="DementivegunMGRampage"/>
+			<item name="DementivegunHandgunLuckySeven"/>
 		</lootgroup>
 
 		<lootgroup name="groupDementiveRanged" count="1" >
@@ -70,6 +88,12 @@
 			<item name="DementivegunRocketFinale"/>
 			<item name="DementivegunTrifecta"/>
 			<item name="DementivegunPacifier"/>
+			<item name="DementivegunBowHellfire"/>
+			<item name="DementivegunBowWhisper"/>
+			<item name="DementivegunRifleChainReaction"/>
+			<item name="DementivegunShotgunFrostbite"/>
+			<item name="DementivegunMGRampage"/>
+			<item name="DementivegunHandgunLuckySeven"/>
 		</lootgroup>
 
 		<lootgroup name="groupDementiveBots" count="1" >
@@ -90,6 +114,9 @@
 			<item name="DementivemeleeWpnKnucklesT3SteelKnuckles"/>
 			<item name="DementivemeleeWpnSledgeT3SteelSledgehammer"/>
 			<item name="DementivemeleeWpnSpearT3SteelSpear"/>
+			<item name="DementivemeleeWpnBladeStalkersHarvester"/>
+			<item name="DementivemeleeWpnClubGrandSlam"/>
+			<item name="DementivemeleeWpnSledgeBloodletter"/>
 		</lootgroup>
 
 		<lootgroup name="groupDementiveTools" count="1">
@@ -98,6 +125,7 @@
 			<item name="DementivemeleeToolAxeT3Auger"/>
 			<item name="DementivemeleeToolAxeT3Chainsaw"/>
 			<item name="DementivemeleeToolArchitect"/>
+			<item name="DementivemeleeToolPickProspector"/>
 		</lootgroup>
 
 		<lootgroup name="groupDementiveAxes" count="1">
@@ -156,6 +184,10 @@
 	
 	<append xpath="//lootgroup[@name='groupBuriedWeaponChest']">
 		<item group="groupDementiveAll" loot_prob_template="DementiveRaresT2" force_prob="true"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupQuestSchematics']">
+		<item group="groupDementiveAll" loot_prob_template="DementiveQuestRewards"/>
 	</append>
 
 	<append xpath="//lootgroup[@name='groupBuriedTreasure']">

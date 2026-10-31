@@ -1,48 +1,36 @@
 <Dementive>
-    
-	<set xpath="/blocks/block[@name='plantedSnowberry1']">
-	    <property name="Extends" value="cropsGrowingMaster" param1="CustomIcon"/>
-	    <property name="CreativeMode" value="Player"/>
-	    <property name="Texture" value="350"/>
-	    <property name="PlantGrowing.Next" value="plantedSnowberry2"/>
-	    <property name="Group" value="Food/Cooking"/>
+
+	<!-- Snowberries are a wild-only plant in vanilla. These patches make them a farmable crop that
+	     follows the same block chain as vanilla blueberries (seed -> growing -> player harvest). -->
+
+	<!-- Seed: plantable, unlocked by the Seeds crafting skill -->
+	<set xpath="/blocks/block[@name='plantedSnowberry1']/property[@name='CreativeMode']/@value">Player</set>
+	<set xpath="/blocks/block[@name='plantedSnowberry1']/property[@name='UnlockedBy']/@value">craftingSeeds</set>
+	<append xpath="/blocks/block[@name='plantedSnowberry1']">
 		<property name="Tags" value="seedSkill"/>
-		<property name="UnlockedBy" value="craftingSeeds"/>
-		<property name="SortOrder1" value="B963"/>
-	    <property name="SortOrder2" value="0000"/>
-	    <drop event="Destroy" name="plantedSnowberry1" count="1"/>
-	    <property name="CustomIcon" value="plantedSnowberry3Harvest"/>
-	</set>
-	
-    <set xpath="/blocks/block[@name='plantedSnowberry3Harvest']">
-	    <property name="Extends" value="cropsHarvestableMaster"/>
-	    <property name="Texture" value="568"/>
-		<property name="CropsGrown.BonusHarvestDivisor" value="8"/>
-		<property name="SortOrder1" value="B963"/>
-	    <property name="SortOrder2" value="0002"/>
+		<property name="SoundPickup" value="seeds_generic1_grab"/>
+		<property name="SoundPlace" value="seeds_generic1_place"/>
+	</append>
+
+	<!-- Player-planted snowberries grow into the player harvest block, like blueberries -->
+	<set xpath="/blocks/block[@name='plantedSnowberry2']/property[@class='PlantGrowing']/property[@name='Next']/@value">plantedSnowberry3HarvestPlayer</set>
+
+	<!-- Wild snowberries become a harvestable crop that drops berries instead of fibers -->
+	<set xpath="/blocks/block[@name='plantedSnowberry3Harvest']/property[@name='Extends']/@value">cropsHarvestableMaster</set>
+	<removeattribute xpath="/blocks/block[@name='plantedSnowberry3Harvest']/property[@name='Extends']/@param1"/>
+	<remove xpath="/blocks/block[@name='plantedSnowberry3Harvest']/drop[@event='Harvest']"/>
+	<append xpath="/blocks/block[@name='plantedSnowberry3Harvest']">
 		<drop event="Harvest" name="foodCropSnowberry" count="1" tag="wildCropsHarvest"/>
 		<drop event="Harvest" name="foodCropSnowberry" prob="0.5" count="1" tag="bonusCropHarvest"/>
-	</set>
-	
-	<set xpath="/blocks/block[@name='plantedSnowberry3HarvestPlayer']">
-	    <property name="Extends" value="plantedSnowberry3Harvest"/>
-	    <property name="DescriptionKey" value="plantedSnowberry3HarvestDesc"/>
-	    <property name="CustomIcon" value="plantedSnowberry1"/>
-	    <property name="CreativeMode" value="None"/>
-        <drop event="Harvest" name="foodCropSnowberry" count="2" tag="cropHarvest"/>
-		<drop event="Harvest" name="foodCropSnowberry" prob="0.5" count="1" tag="bonusCropHarvest"/>
-		<drop event="Destroy" name="plantedSnowberry1" count="1" prob="0.5"/>
-		<!-- <property name="DowngradeBlock" value="plantedSnowberry1"/> -->
-		<property name="SortOrder1" value="B963"/>
-	    <property name="SortOrder2" value="0003"/>
-    </set>
-	
-	<append xpath="/blocks/block[@name='plantedSnowberry3Harvest']">
-		<property name="Class" value="CropsGrown"/>
+		<drop event="Harvest" name="foodCropSnowberry" count="1" tag="farmerBonusHarvest"/>
 	</append>
-	
+
 	<append xpath="/blocks/block[@name='plantedSnowberry3HarvestPlayer']">
-		<property name="Class" value="CropsGrown"/>
+		<drop event="Harvest" name="foodCropSnowberry" count="2" tag="cropHarvest"/>
+		<drop event="Harvest" name="foodCropSnowberry" prob="0.5" count="1" tag="bonusCropHarvest"/>
+		<drop event="Harvest" name="foodCropSnowberry" count="1" tag="farmerBonusHarvest"/>
+		<drop event="Harvest" name="plantedSnowberry1" count="1" tag="farmerBonusSeed"/>
+		<drop event="Destroy" name="plantedSnowberry1" count="1" prob="0.5"/>
 	</append>
-	
+
 </Dementive>

@@ -14,10 +14,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingArmor" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingArmor" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -29,10 +41,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingClubs" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingClubs" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -44,10 +68,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingBows" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingBows" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -59,10 +95,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -74,10 +122,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingExplosives" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingExplosives" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -87,12 +147,24 @@
 			<property name="EconomicValue" value="200"/>
 
 			<effect_group tiered="false">
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingKnuckles" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingWorkstations" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingWorkstations" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -102,12 +174,24 @@
 			<property name="EconomicValue" value="200"/>
 
 			<effect_group tiered="false">
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingWorkstations" level="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingKnuckles" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingKnuckles" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -119,10 +203,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSledgehammers" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSledgehammers" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -134,10 +230,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingHandguns" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingHandguns" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -150,10 +258,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingRepairTools" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingRepairTools" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -165,10 +285,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingFood" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingFood" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -180,10 +312,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingBlades" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingBlades" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -195,10 +339,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingMedical" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingMedical" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -210,10 +366,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingRifles" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingRifles" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -225,10 +393,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSalvageTools" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSalvageTools" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -240,10 +420,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSpears" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSpears" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -255,10 +447,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingShotguns" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingShotguns" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -270,10 +474,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSeeds" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingSeeds" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -285,10 +501,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingMachineGuns" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingMachineGuns" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -300,10 +528,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingRobotics" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingRobotics" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -315,10 +555,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingHarvestingTools" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingHarvestingTools" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -330,10 +582,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingVehicles" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingVehicles" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -345,10 +609,22 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingElectrician" level="2"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingTraps" level="1">
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement_group op="or">
+					<requirement name="ProgressionLevel" progression_name="perkIntellectMastery" operation="GTE" value="3"/>
 					<requirement name="HasBuff" buff="buffNerdOutfit"/>
-					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
-				</triggered_effect>
+				</requirement_group>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="nerdPointChance" operation="set" value="1"/>
+			</effect_group>
+
+			<effect_group tiered="false">
+				<requirement name="CVarCompare" cvar="nerdPointChance" operation="EQ" value="1"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="@$nerdOutfitSkillPointChance"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddProgressionLevel" progression_name="craftingElectrician" level="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="PlaySound" sound="nerd_outfit_perk" play_in_head="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveCVar" cvar="nerdPointChance"/>
 			</effect_group>
 		</item>
 
@@ -1281,7 +1557,7 @@
 		</item>
 
 		<item name="DementivebookSpearHunter1Damage">
-			<property name="Extends" value="bookSniperDamage"/>
+			<property name="Extends" value="bookSpearHunter1Damage"/>
 			<property name="CustomIcon" value="DementivebookSpearHunter1Damage"/>
 			<property name="EconomicValue" value="200"/>
 			<effect_group tiered="false">

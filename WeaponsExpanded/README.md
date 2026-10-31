@@ -1,6 +1,6 @@
 # Weapons Expanded
 
-Mod that adds 29 very rare weapons that can only be looted or bought from traders. All weapons are based on base game items so there will be no out of place icons, or unbalanced buffs.
+Mod that adds 40 very rare weapons that can only be looted or bought from traders. All weapons are based on base game items so there will be no out of place icons, or unbalanced buffs.
 
 **v3.0 Compatible** - Updated for 7 Days to Die v3.0 with modern stats blocks, DualSense/Xbox trigger effects, UnlockedBy progression, and v3.0 perk conventions.
 
@@ -54,6 +54,38 @@ Mod that adds 29 very rare weapons that can only be looted or bought from trader
 29. Papa Sledge (gunBotT1JunkSledge)
 30. The Warden (gunBotT2JunkTurret)
 
+### Signature Weapons
+Each of these has a special ability on top of better stats.
+
+31. Stalker's Harvester (meleeWpnBladeT1HuntingKnife) - 25% chance to cause bleeding, +50% harvest from corpses, 6x sneak attack damage
+32. Grand Slam (meleeWpnClubT1BaseballBat) - power attacks send zombies flying and have a 30% chance to knock them down
+33. Bloodletter (meleeWpnSledgeT1IronSledgehammer) - each hit heals you 8 health, kills heal 15 more
+34. Hellfire (gunBowT1WoodenBow) - 35% chance to set targets on fire
+35. Whisper (gunBowT1IronCrossbow) - 5x sneak attack damage, reloads 40% faster
+36. Chain Reaction (gunRifleT0PipeRifle) - anything it kills explodes, hurting everything within 4 meters (including you)
+37. Frostbite (gunShotgunT0PipeShotgun) - hits slow enemies by 50% for 4 seconds
+38. The Prospector (meleeToolPickT2SteelPickaxe) - +50% ore and stone from mining
+39. Rampage (gunMGT0PipeMachineGun) - each kill gives 6 seconds of +25% fire rate, faster reloads and faster movement
+40. Lucky Seven (gunHandgunT0PipePistol) - every shot has a 7% chance to hit for up to 7x damage
+
+## Where to Find Them
+
+Chance per container opened that it holds one of the weapons:
+
+| Container | Chance |
+|---|---|
+| Large hardened chest (T5) | 5% |
+| Hardened chest (T4) | 4% |
+| Gun safe | 4% weapon + 4% drone/turret |
+| Hero loot chest | 2% |
+| Wall and picture safes, hidden stashes, buried weapon chests | 1% |
+| Buried treasure | about 10% |
+| Zombie loot bags (regular / strong / boss) | 0.5% / 1% / 2% |
+
+Traders can also stock them: a typical trader has about a 5% chance per restock (Hugh about 8%), once your trader stage is high enough for that weapon's tier. Tier 4-6 trader quests have about a 1 in 20 chance to offer one as a reward choice.
+
+The chances are set by the five `DementiveRares` templates at the top of `Config/loot.xml` if you want to tune them.
+
 ## v3.0 Updates
 
 - Bumped to version 2.0.0.0
@@ -64,5 +96,13 @@ Mod that adds 29 very rare weapons that can only be looted or bought from trader
 - Added DualSense/Xbox trigger effects to all ranged weapons with explicit Action blocks
 - Fixed missing `TraderStageTemplate` on DementiveDesertRedeemer, DementivegunMGT3M60
 - Cleaned trailing whitespace bug in `item_modifiers.xml` (`DementiveDesertRedeemer ` with space)
-- Updated `Localization.txt` header to v3.0 format (removed deprecated `latam` column)
+- Renamed `Localization.txt` to `Localization.csv` (the game no longer loads `.txt` localization from mods) and aligned rows to the v3.0 header (removed deprecated `latam` column, added `KeepLoaded` column) so weapon names and descriptions display correctly
 - Verified all perk names still exist in v3.0
+- Lightning Rod uses the V3.4 stun baton logic, so Intellect Mastery (2-hit charge at rank 4, extra shock damage at rank 5), the Tech Junkie bonus charge and the 0-point Electrocutioner shock all work. It keeps its own bonuses: +1s shock duration, double knockback, and leftover charges after a discharge
+- HP/AP ammo, shotgun slugs and better arrows/bolts add their extra damage again. The guns, bows and crossbows used to set a fixed damage that replaced the ammo's, so every ammo type hit the same. Damage with standard ammo is unchanged.
+- Fixed the error spam, stuck mod and broken save after putting a Burning Shaft mod on the Infested Fireaxe, Barbarian's Battle Axe, Hell Hound, Sam's Stabbing Stick, Papa Sledge or Joel's Retribution (the flame effect still used the pre-1.0 asset path). The Legendary War Hammer now gets its flame effect too.
+- Attachment overrides (Burning Shaft flames, scope and sight positions, silencer sounds, club meshes) are copied from each weapon's vanilla parent, which also fixes the scopes' DualSense trigger setting and uses the proper silenced sounds for the Desert Redeemer and Joe's Golden Magnum
+- Loot chances are 5x higher; before this most players never found a single weapon in a whole playthrough
+- Traders can now actually stock the weapons (they were never in any trader's inventory), and tier 4-6 quests can offer one as a reward
+- Server-side version: weapons use their vanilla icons with a color tint again (the last update had switched them to the custom icons, which players without the client mod don't have)
+- Axes and the Gravedigger auger get the V3.4 Strength Mastery healing effect, the Legendary War Hammer gets the V3.4 second-power-attack tracking, and Golden Knuckles use the V3.4 left-hand knuckle attachment

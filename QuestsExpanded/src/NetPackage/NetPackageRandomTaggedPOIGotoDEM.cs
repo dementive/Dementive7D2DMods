@@ -9,7 +9,7 @@ public class NetPackageRandomTaggedPOIGotoDEM : NetPackage
 
     private int questCode;
 
-    private FastTags questTags;
+    private FastTags<TagGroup.Global> questTags;
 
     private Vector2 position;
 
@@ -23,18 +23,13 @@ public class NetPackageRandomTaggedPOIGotoDEM : NetPackage
 
     // Fields needed to get the correct POI
 
-    private POITags includeTags;
+    private FastTags<TagGroup.Poi> includeTags;
 
-    private POITags excludeTags;
+    private FastTags<TagGroup.Poi> excludeTags;
 
     public float maxSearchDistance;
 
     public float minSearchDistance;
-
-    public override int GetLength()
-    {
-        return 20;
-    }
 
     public override void ProcessPackage(World _world, GameManager _callbacks)
     {
@@ -48,6 +43,17 @@ public class NetPackageRandomTaggedPOIGotoDEM : NetPackage
         if (SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer)
         {
             EntityAlive questOwner = GameManager.Instance.World.GetEntity(entityId) as EntityAlive;
+            if (questOwner == null)
+            {
+                return;
+            }
+
+            // A dedicated server has no primary player, so use the player who sent the request
+            EntityPlayer requestingPlayer = Sender != null
+                ? GameManager.Instance.World.GetEntity(Sender.entityId) as EntityPlayer
+                : primaryPlayer;
+            int requestingPlayerId = requestingPlayer != null ? requestingPlayer.entityId : -1;
+
             PrefabInstance prefabInstance;
             List<Vector2> usedPoiLocations;
 
@@ -57,7 +63,7 @@ public class NetPackageRandomTaggedPOIGotoDEM : NetPackage
                 // Same logic as ObjectiveRandomTaggedPOIGotoDEM
                 if (questOwner is EntityTrader trader && trader.traderArea != null)
                 {
-                    usedPoiLocations = primaryPlayer.QuestJournal.GetUsedPOIs(
+                    usedPoiLocations = requestingPlayer?.QuestJournal.GetUsedPOIs(
                         new Vector2(trader.traderArea.Position.x, trader.traderArea.Position.z),
                         difficulty);
 
@@ -70,13 +76,13 @@ public class NetPackageRandomTaggedPOIGotoDEM : NetPackage
                         minSearchDistance,
                         maxSearchDistance,
                         usedPoiLocations,
-                        entityId,
+                        requestingPlayerId,
                         biomeFilterType,
                         biomeFilter);
                 }
                 else
                 {
-                    usedPoiLocations = primaryPlayer.QuestJournal.GetUsedPOIs(
+                    usedPoiLocations = requestingPlayer?.QuestJournal.GetUsedPOIs(
                         new Vector2(questOwner.position.x, questOwner.position.z),
                         difficulty);
 
@@ -90,7 +96,7 @@ public class NetPackageRandomTaggedPOIGotoDEM : NetPackage
                         minSearchDistance >= 0 ? minSearchDistance : 50,
                         maxSearchDistance >= 0 ? maxSearchDistance : 2000,
                         usedPoiLocations,
-                        entityId,
+                        requestingPlayerId,
                         biomeFilterType,
                         biomeFilter);
                 }
@@ -103,6 +109,7 @@ public class NetPackageRandomTaggedPOIGotoDEM : NetPackage
                     SingletonMonoBehaviour<ConnectionManager>.Instance.SendPackage(
                         NetPackageManager.GetPackage<NetPackageQuestGotoPoint>().Setup(
                             entityId,
+                            requestingPlayerId,
                             questTags,
                             questCode,
                             NetPackageQuestGotoPoint.QuestGotoTypes.RandomPOI,
@@ -113,7 +120,7 @@ public class NetPackageRandomTaggedPOIGotoDEM : NetPackage
                             prefabInstance.boundingBoxSize.y,
                             prefabInstance.boundingBoxSize.z),
                         _onlyClientsAttachedToAnEntity: false,
-                        entityId);
+                        requestingPlayerId);
                     break;
                 }
             }
@@ -141,7 +148,7 @@ public class NetPackageRandomTaggedPOIGotoDEM : NetPackage
         // from NetPackageQuestGotoPoint
         entityId = _br.ReadInt32();
         questCode = _br.ReadInt32();
-        questTags = FastTags.Parse(_br.ReadString());
+        questTags = FastTags<TagGroup.Global>.Parse(_br.ReadString());
         position = new Vector2(_br.ReadInt32(), _br.ReadInt32());
         size = StreamUtils.ReadVector3(_br);
         difficulty = _br.ReadByte();
@@ -150,9 +157,9 @@ public class NetPackageRandomTaggedPOIGotoDEM : NetPackage
 
         // needed to get the correct POI
         string includeTagsString = _br.ReadString();
-        includeTags = POITags.Parse(includeTagsString);
+        includeTags = FastTags<TagGroup.Poi>.Parse(includeTagsString);
         string excludeTagsString = _br.ReadString();
-        excludeTags = POITags.Parse(excludeTagsString);
+        excludeTags = FastTags<TagGroup.Poi>.Parse(excludeTagsString);
         maxSearchDistance = _br.ReadSingle();
         minSearchDistance = _br.ReadSingle();
     }
@@ -181,11 +188,11 @@ public class NetPackageRandomTaggedPOIGotoDEM : NetPackage
 
     public NetPackageRandomTaggedPOIGotoDEM Setup(
         int _ownerId,
-        FastTags _questTags,
+        FastTags<TagGroup.Global> _questTags,
         int _questCode,
         byte _difficulty,
-        POITags _includeTags,
-        POITags _excludeTags,
+        FastTags<TagGroup.Poi> _includeTags,
+        FastTags<TagGroup.Poi> _excludeTags,
         float _minSearchDistance,
         float _maxSearchDistance,
         int posX = 0, int posZ = -1,

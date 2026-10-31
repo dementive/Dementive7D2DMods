@@ -1,0 +1,47 @@
+<Dementive>
+
+	<append xpath="/buffs">
+		<!-- Given by the Hellfire bow while it is held: its arrows can set targets on fire -->
+		<buff name="buffDementiveHellfire" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="35"/>
+				<requirement name="CVarCompare" target="other" cvar="_underwater" operation="LT" value="0.3"/>
+					<triggered_effect trigger="onProjectileImpact" action="ModifyCVar" target="other" cvar="$buffBurningElementDuration" operation="set" value="10"/>
+					<triggered_effect trigger="onProjectileImpact" action="AddBuff" target="other" buff="buffBurningElement"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfDied" action="RemoveBuff" buff="buffDementiveHellfire"/>
+			</effect_group>
+		</buff>
+
+		<!-- Given by the Rampage machine gun on each kill -->
+		<buff name="buffDementiveRampage" name_key="buffDementiveRampageName" description_key="buffDementiveRampageDesc" icon="ui_game_symbol_run_and_gun" icon_color="224,17,95">
+			<stack_type value="replace"/>
+			<duration value="6"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<passive_effect name="RoundsPerMinute" operation="perc_add" value=".25" tags="perkMachineGunner"/>
+				<passive_effect name="ReloadSpeedMultiplier" operation="perc_add" value=".2" tags="perkMachineGunner"/>
+				<passive_effect name="RunSpeed" operation="perc_add" value=".15"/>
+				<passive_effect name="WalkSpeed" operation="perc_add" value=".15"/>
+			</effect_group>
+		</buff>
+
+		<!-- Applied by the Frostbite shotgun -->
+		<buff name="buffDementiveFrostbite" name_key="buffDementiveFrostbiteName" description_key="buffDementiveFrostbiteDesc" icon="ui_game_symbol_cold" icon_color="128,200,255">
+			<damage_type value="cold"/>
+			<stack_type value="replace"/>
+			<duration value="4"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".5"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".5"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".5"/>
+				<passive_effect name="JumpStrength" operation="perc_subtract" value=".5"/>
+			</effect_group>
+		</buff>
+	</append>
+
+</Dementive>

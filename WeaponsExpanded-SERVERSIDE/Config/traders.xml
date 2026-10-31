@@ -1,0 +1,66 @@
+<Dementive>
+
+	<!-- Traders can stock the weapons: each group is a small-weight entry in the vanilla groups traders pick their
+	     weapons and rare tools from, so a typical trader has about a 5% chance per restock to have one (Hugh,
+	     who stocks twice as many weapons, about 8%). Each weapon's TraderStageTemplate still decides from which
+	     trader stage, and at which quality, it can show up. -->
+	<append xpath="/traders/trader_item_groups">
+		<trader_item_group name="groupDementiveTraderRanged" count="1">
+			<item name="DementiveHughsGlock" quality="1,6"/>
+			<item name="DementiveDesertRedeemer" quality="1,6"/>
+			<item name="DementivegunHandgunT2Magnum44" quality="1,6"/>
+			<item name="DementivegunHandgunT3SMG5" quality="1,6"/>
+			<item name="DementivegunMGT1AK47" quality="1,6"/>
+			<item name="DementivegunMGT2TacticalAR" quality="1,6"/>
+			<item name="DementivegunMGT3M60" quality="1,6"/>
+			<item name="DementivegunRifleT1HuntingRifle" quality="1,6"/>
+			<item name="DementivegunRifleT2LeverActionRifle" quality="1,6"/>
+			<item name="DementivegunRifleT3SniperRifle" quality="1,6"/>
+			<item name="DementivegunShotgunT1DoubleBarrel" quality="1,6"/>
+			<item name="DementivegunShotgunT3AutoShotgun" quality="1,6"/>
+			<item name="DementivegunShotgunT2PumpShotgun" quality="1,6"/>
+			<item name="DementivegunRocketFinale" quality="1,6"/>
+			<item name="DementivegunTrifecta" quality="1,6"/>
+			<item name="DementivegunPacifier" quality="1,6"/>
+			<item name="DementivegunBowHellfire" quality="1,6"/>
+			<item name="DementivegunBowWhisper" quality="1,6"/>
+			<item name="DementivegunRifleChainReaction" quality="1,6"/>
+			<item name="DementivegunShotgunFrostbite" quality="1,6"/>
+			<item name="DementivegunBotBff" quality="1,6"/>
+			<item name="DementivemeleeBotPapaSledge" quality="1,6"/>
+			<item name="DementivegunBotWarden" quality="1,6"/>
+			<item name="DementivegunMGRampage" quality="1,6"/>
+			<item name="DementivegunHandgunLuckySeven" quality="1,6"/>
+		</trader_item_group>
+		<trader_item_group name="groupDementiveTraderMelee" count="1">
+			<item name="DementivemeleeWpnBladeHellHound" quality="1,6"/>
+			<item name="DementivemeleeWpnBatonT2StunBaton" quality="1,6"/>
+			<item name="DementivemeleeWpnClubT3SteelClub" quality="1,6"/>
+			<item name="DementivemeleeWpnKnucklesT3SteelKnuckles" quality="1,6"/>
+			<item name="DementivemeleeWpnSledgeT3SteelSledgehammer" quality="1,6"/>
+			<item name="DementivemeleeWpnSpearT3SteelSpear" quality="1,6"/>
+			<item name="DementivemeleeWpnBladeStalkersHarvester" quality="1,6"/>
+			<item name="DementivemeleeWpnClubGrandSlam" quality="1,6"/>
+			<item name="DementivemeleeWpnSledgeBloodletter" quality="1,6"/>
+		</trader_item_group>
+		<trader_item_group name="groupDementiveTraderTools" count="1">
+			<item name="DementivemeleeToolAxeT1IronFireaxe" quality="1,6"/>
+			<item name="DementivemeleeToolAxeT2SteelAxe" quality="1,6"/>
+			<item name="DementivemeleeToolAxeT3Auger" quality="1,6"/>
+			<item name="DementivemeleeToolAxeT3Chainsaw" quality="1,6"/>
+			<item name="DementivemeleeToolArchitect" quality="1,6"/>
+			<item name="DementivemeleeToolPickProspector" quality="1,6"/>
+		</trader_item_group>
+	</append>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='groupRangedAll']">
+		<item group="groupDementiveTraderRanged" prob="0.11"/>
+	</append>
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='groupMeleeAll']">
+		<item group="groupDementiveTraderMelee" prob="0.03"/>
+	</append>
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='rareTools']">
+		<item group="groupDementiveTraderTools" prob="0.05"/>
+	</append>
+
+</Dementive>

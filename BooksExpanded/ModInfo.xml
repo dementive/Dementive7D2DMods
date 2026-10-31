@@ -2,9 +2,9 @@
 <xml>
 	<Name value="BooksExpanded"/>
 	<DisplayName value="Books Expanded" />
-	<Description value="More books in the same style as the base game."/>
+	<Description value="More books in the same style as the base game. Updated for 7 Days to Die V3.4."/>
 	<Author value="Dementive"/>
-	<Version value="1.1.0.4" />
+	<Version value="2.0.0.0" />
 	<Website value="" />
 	<SkipWithAntiCheat value="false" />
 </xml>
