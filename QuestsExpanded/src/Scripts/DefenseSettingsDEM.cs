@@ -21,6 +21,24 @@ public class DefenseSettingsDEM
 
     public Modes Mode;
 
+    public enum SpawnStyles : byte
+    {
+        /// <summary>All around the defended area, 6-14m outside it (a flag, a spot in the wild).</summary>
+        Around,
+        /// <summary>Just outside the POI's footprint, so fortifications inside matter.</summary>
+        Walls,
+        /// <summary>About half out of the building itself (its sleeper spots, away from the players), the rest just
+        /// outside the POI's footprint.</summary>
+        Inside,
+    }
+
+    public SpawnStyles SpawnStyle;
+
+    /// <summary>The POI's corner and size, for <see cref="SpawnStyles.Walls"/> and <see cref="SpawnStyles.Inside"/>.</summary>
+    public Vector3 PoiMin;
+
+    public Vector3 PoiSize;
+
     /// <summary>Center of the defended area.</summary>
     public Vector3 Center;
 
@@ -78,6 +96,9 @@ public class DefenseSettingsDEM
         StreamUtils.Write(_bw, Flag);
         _bw.Write(AttackHour);
         _bw.Write(AttackWaves);
+        _bw.Write((byte)SpawnStyle);
+        StreamUtils.Write(_bw, PoiMin);
+        StreamUtils.Write(_bw, PoiSize);
     }
 
     public static DefenseSettingsDEM Read(PooledBinaryReader _br)
@@ -98,6 +119,9 @@ public class DefenseSettingsDEM
             Flag = StreamUtils.ReadVector3(_br),
             AttackHour = _br.ReadInt32(),
             AttackWaves = _br.ReadInt32(),
+            SpawnStyle = (SpawnStyles)_br.ReadByte(),
+            PoiMin = StreamUtils.ReadVector3(_br),
+            PoiSize = StreamUtils.ReadVector3(_br),
         };
     }
 
@@ -106,11 +130,20 @@ public class DefenseSettingsDEM
     /// </summary>
     public static bool FromPOI(Quest quest, out Vector3 center, out float radius)
     {
+        return FromPOI(quest, out center, out radius, out _, out _);
+    }
+
+    /// <summary>
+    /// Center, radius, corner and size of the quest's POI.
+    /// </summary>
+    public static bool FromPOI(Quest quest, out Vector3 center, out float radius, out Vector3 poiPosition, out Vector3 poiSize)
+    {
         center = Vector3.zero;
         radius = 0f;
-        if (!quest.GetPositionData(out Vector3 poiPosition, Quest.PositionDataTypes.POIPosition))
+        poiSize = Vector3.zero;
+        if (!quest.GetPositionData(out poiPosition, Quest.PositionDataTypes.POIPosition))
             return false;
-        quest.GetPositionData(out Vector3 poiSize, Quest.PositionDataTypes.POISize);
+        quest.GetPositionData(out poiSize, Quest.PositionDataTypes.POISize);
         center = new Vector3(poiPosition.x + poiSize.x / 2f, poiPosition.y, poiPosition.z + poiSize.z / 2f);
         // Half the POI's diagonal: anything farther than this from the center is outside the POI
         radius = new Vector2(poiSize.x / 2f, poiSize.z / 2f).magnitude;

@@ -10,6 +10,8 @@
  * 		<property name="waves" value="3"/>
  * 		<property name="center" value="poi"/>                   poi (default), location or flag
  * 		<property name="radius" value="10"/>                    size of the area for location/flag (POIs use their footprint)
+ * 		<property name="spawn" value="inside"/>                 POIs: walls (default; zombies come from just outside the
+ * 		                                                        footprint) or inside (about half come out of the building)
  * 		<property name="spawners" value="defenseGSList"/>       gamestage spawners, one picked per wave
  * 		<property name="bosses" value="zombieMutatedCharged"/>  a boss for the final wave (one picked at random)
  * 		<property name="strength" value="1.25"/>                gamestage multiplier
@@ -23,6 +25,8 @@ public class ObjectiveDefendWavesDEM : ObjectiveDefenseBaseDEM
     public int Waves = 3;
 
     public string Center = "poi";
+
+    public string Spawn = "walls";
 
     public float Radius = 10f;
 
@@ -59,11 +63,19 @@ public class ObjectiveDefendWavesDEM : ObjectiveDefenseBaseDEM
         if (!GetArea(out Vector3 center, out float radius))
             return false;
 
+        var spawnStyle = DefenseSettingsDEM.SpawnStyles.Around;
+        Vector3 poiMin = Vector3.zero, poiSize = Vector3.zero;
+        if (Center != "flag" && Center != "location" && DefenseSettingsDEM.FromPOI(OwnerQuest, out _, out _, out poiMin, out poiSize))
+            spawnStyle = Spawn == "inside" ? DefenseSettingsDEM.SpawnStyles.Inside : DefenseSettingsDEM.SpawnStyles.Walls;
+
         settings = new DefenseSettingsDEM
         {
             Mode = Bounty ? DefenseSettingsDEM.Modes.Bounty : DefenseSettingsDEM.Modes.Waves,
             Center = center,
             Radius = radius,
+            SpawnStyle = spawnStyle,
+            PoiMin = poiMin,
+            PoiSize = poiSize,
             Waves = Waves,
             WavesDone = CurrentValue,
             Spawners = Spawners,
@@ -99,6 +111,7 @@ public class ObjectiveDefendWavesDEM : ObjectiveDefenseBaseDEM
         base.ParseProperties(properties);
         properties.ParseInt("waves", ref Waves);
         properties.ParseString("center", ref Center);
+        properties.ParseString("spawn", ref Spawn);
         properties.ParseFloat("radius", ref Radius);
         properties.ParseString("spawners", ref Spawners);
         properties.ParseString("bosses", ref Bosses);
@@ -119,6 +132,7 @@ public class ObjectiveDefendWavesDEM : ObjectiveDefenseBaseDEM
         CopyDefenseValues(objective);
         objective.Waves = Waves;
         objective.Center = Center;
+        objective.Spawn = Spawn;
         objective.Radius = Radius;
         objective.Spawners = Spawners;
         objective.Bosses = Bosses;

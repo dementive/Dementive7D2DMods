@@ -3909,6 +3909,8 @@
 			<objective type="DefendWavesDEM, QuestsExpanded">
 				<property name="phase" value="4"/>
 				<property name="waves" value="3"/>
+				<property name="spawn" value="inside"/>
+				<property name="bosses" value="zombieSpider,zombieLumberjack,zombieFatHawaiian"/>
 			</objective>
 			<objective type="POIStayWithin">
 				<property name="phase" value="4"/>
@@ -3977,6 +3979,8 @@
 			<objective type="DefendWavesDEM, QuestsExpanded">
 				<property name="phase" value="4"/>
 				<property name="waves" value="3"/>
+				<property name="spawn" value="inside"/>
+				<property name="bosses" value="zombieBiker,zombieFatCop"/>
 			</objective>
 			<objective type="POIStayWithin">
 				<property name="phase" value="4"/>
@@ -4048,6 +4052,8 @@
 			<objective type="DefendWavesDEM, QuestsExpanded">
 				<property name="phase" value="4"/>
 				<property name="waves" value="4"/>
+				<property name="spawn" value="inside"/>
+				<property name="bosses" value="zombieWightFeral,zombieDemolition"/>
 			</objective>
 			<objective type="POIStayWithin">
 				<property name="phase" value="4"/>
@@ -4123,6 +4129,8 @@
 			<objective type="DefendWavesDEM, QuestsExpanded">
 				<property name="phase" value="4"/>
 				<property name="waves" value="4"/>
+				<property name="spawn" value="inside"/>
+				<property name="bosses" value="zombieWightFeral,zombieDemolition"/>
 			</objective>
 			<objective type="POIStayWithin">
 				<property name="phase" value="4"/>
@@ -4194,6 +4202,8 @@
 			<objective type="DefendWavesDEM, QuestsExpanded">
 				<property name="phase" value="4"/>
 				<property name="waves" value="4"/>
+				<property name="spawn" value="inside"/>
+				<property name="bosses" value="zombieMutatedRadiated,zombieScreamerRadiated"/>
 			</objective>
 			<objective type="POIStayWithin">
 				<property name="phase" value="4"/>
@@ -4269,6 +4279,8 @@
 			<objective type="DefendWavesDEM, QuestsExpanded">
 				<property name="phase" value="4"/>
 				<property name="waves" value="4"/>
+				<property name="spawn" value="inside"/>
+				<property name="bosses" value="zombieMutatedRadiated,zombieScreamerRadiated"/>
 			</objective>
 			<objective type="POIStayWithin">
 				<property name="phase" value="4"/>
@@ -4340,6 +4352,7 @@
 			<objective type="DefendWavesDEM, QuestsExpanded">
 				<property name="phase" value="4"/>
 				<property name="waves" value="5"/>
+				<property name="spawn" value="inside"/>
 				<property name="bosses" value="zombieWightCharged,zombieMutatedCharged,zombieSpiderCharged,zombieUtilityWorkerCharged"/>
 			</objective>
 			<objective type="POIStayWithin">
@@ -4416,6 +4429,7 @@
 			<objective type="DefendWavesDEM, QuestsExpanded">
 				<property name="phase" value="4"/>
 				<property name="waves" value="5"/>
+				<property name="spawn" value="inside"/>
 				<property name="bosses" value="zombieWightCharged,zombieMutatedCharged,zombieSpiderCharged,zombieUtilityWorkerCharged"/>
 			</objective>
 			<objective type="POIStayWithin">
@@ -4488,6 +4502,7 @@
 			<objective type="DefendWavesDEM, QuestsExpanded">
 				<property name="phase" value="4"/>
 				<property name="waves" value="5"/>
+				<property name="spawn" value="inside"/>
 				<property name="bosses" value="zombieBikerInfernal,zombieFatCopInfernal,zombieWightInfernal,zombieMutatedInfernal,zombieSoldierInfernal"/>
 			</objective>
 			<objective type="POIStayWithin">
@@ -4564,6 +4579,7 @@
 			<objective type="DefendWavesDEM, QuestsExpanded">
 				<property name="phase" value="4"/>
 				<property name="waves" value="5"/>
+				<property name="spawn" value="inside"/>
 				<property name="bosses" value="zombieBikerInfernal,zombieFatCopInfernal,zombieWightInfernal,zombieMutatedInfernal,zombieSoldierInfernal"/>
 			</objective>
 			<objective type="POIStayWithin">

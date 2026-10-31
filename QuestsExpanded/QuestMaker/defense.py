@@ -46,6 +46,8 @@ BUILD_WAVES = {1: 3, 2: 4, 3: 4, 4: 5, 5: 6}
 
 # Bosses by tier, one picked at random: the bounty, the horde's leader, or the final wave's boss
 BOSSES = {
+    # Tier 1's "boss" is an interesting, somewhat tougher zombie for the last wave of a Clear and Defend
+    1: ["zombieSpider", "zombieLumberjack", "zombieFatHawaiian"],
     2: ["zombieBiker", "zombieFatCop"],
     3: ["zombieWightFeral", "zombieDemolition"],
     4: ["zombieMutatedRadiated", "zombieScreamerRadiated"],
@@ -53,7 +55,7 @@ BOSSES = {
     5: ["zombieWightCharged", "zombieMutatedCharged", "zombieSpiderCharged", "zombieUtilityWorkerCharged"],
     6: ["zombieBikerInfernal", "zombieFatCopInfernal", "zombieWightInfernal", "zombieMutatedInfernal", "zombieSoldierInfernal"],
 }
-CLEAR_AND_DEFEND_BOSS_TIERS = [5, 6]
+CLEAR_AND_DEFEND_BOSS_TIERS = [1, 2, 3, 4, 5, 6]
 BUILD_AND_DEFEND_BOSS_TIERS = [4, 5]
 
 # Themed hordes for the Bounty Hunt horde variant (gamestages.xml spawners); one is picked for each horde
@@ -450,7 +452,8 @@ def quest(qid, kind, text_kind, tier, infested, body):
 def clear_and_defend(tier, infested):
     bosses = ",".join(BOSSES[tier]) if tier in CLEAR_AND_DEFEND_BOSS_TIERS else None
     extra = {"bosses": bosses} if bosses else {}
-    body = go_to_poi(tier, infested) + clear(3) + defend(4, WAVES[tier], **extra) + stay_in_poi(4) + return_to_trader(5, True)
+    # About half of each wave comes back out of the cleared building, the rest from just outside it
+    body = go_to_poi(tier, infested) + clear(3) + defend(4, WAVES[tier], spawn="inside", **extra) + stay_in_poi(4) +         return_to_trader(5, True)
     suffix = "_infested" if infested else ""
     return f"defense_t{tier}_clear_and_defend{suffix}", quest(
         f"defense_t{tier}_clear_and_defend{suffix}", "clear_and_defend", "clear_and_defend" + suffix, tier, infested, body)

@@ -58,7 +58,7 @@ public class ObjectiveOutpostDEM : ObjectiveDefenseBaseDEM
     protected override bool BuildSettings(out DefenseSettingsDEM settings)
     {
         settings = null;
-        if (!DefenseSettingsDEM.FromPOI(OwnerQuest, out Vector3 center, out float radius)
+        if (!DefenseSettingsDEM.FromPOI(OwnerQuest, out Vector3 center, out float radius, out Vector3 poiMin, out Vector3 poiSize)
             || !OwnerQuest.GetPositionData(out Vector3 flag, Quest.PositionDataTypes.Activate))
             return false;
 
@@ -67,6 +67,10 @@ public class ObjectiveOutpostDEM : ObjectiveDefenseBaseDEM
             Mode = DefenseSettingsDEM.Modes.Outpost,
             Center = center,
             Radius = radius,
+            // The attacks come from just outside the POI, so the outpost's fortifications matter
+            SpawnStyle = DefenseSettingsDEM.SpawnStyles.Walls,
+            PoiMin = poiMin,
+            PoiSize = poiSize,
             Waves = Nights,
             WavesDone = CurrentValue,
             Strength = Strength,

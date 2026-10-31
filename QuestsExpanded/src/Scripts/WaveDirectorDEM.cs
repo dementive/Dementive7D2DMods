@@ -86,6 +86,16 @@ public static class WaveDirectorDEM
         }
     }
 
+    /// <summary>
+    /// Server side: an enemy died (see DefenseKillPatches). Every defense counts it toward its wave if it was one of
+    /// the wave's zombies or died in the defended area.
+    /// </summary>
+    public static void EnemyDied(EntityAlive enemy)
+    {
+        foreach (Defense defense in new List<Defense>(defenses.Values))
+            defense.OnEnemyDied(enemy);
+    }
+
     private static void Update(ref ModEvents.SGameUpdateData data)
     {
         if (defenses.Count == 0 || !SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer)
@@ -184,6 +194,14 @@ internal abstract class Defense
     private bool marked;
     private int lastReportedAlive = -1;
 
+    // Kill counting during a wave: every enemy that dies in the area counts, not just the wave's own zombies
+    private bool counting;
+    private int waveTarget;
+    private readonly HashSet<int> waveKills = new HashSet<int>();
+
+    /// <summary>The POI's sleeper spots, for waves that come out of the building (loaded on first use).</summary>
+    private List<Vector3> insidePoints;
+
     protected class Boss
     {
         public int Id;
@@ -279,6 +297,41 @@ internal abstract class Defense
         return new Vector2(a.x - b.x, a.z - b.z).magnitude;
     }
 
+    // ---- Kill counting ----
+
+    /// <summary>
+    /// Zombies left in the current wave: what's left to kill (every enemy killed in the area counts), but never more
+    /// than the wave's zombies still around, and never fewer than its bosses still alive (a wave isn't over until its
+    /// boss is dead).
+    /// </summary>
+    protected int Remaining => counting
+        ? Mathf.Max(bosses.Count, Mathf.Max(0, Mathf.Min(zombies.Count, waveTarget - waveKills.Count)))
+        : zombies.Count;
+
+    /// <summary>Starts counting kills for a wave that just spawned (zombies left over from the last one count too).</summary>
+    protected void StartCounting()
+    {
+        counting = true;
+        waveTarget = zombies.Count;
+        waveKills.Clear();
+        marked = false;
+        lastReportedAlive = -1;
+    }
+
+    /// <summary>The wave is over; zombies still alive carry over into the next one.</summary>
+    protected void StopCounting()
+    {
+        counting = false;
+    }
+
+    public void OnEnemyDied(EntityAlive enemy)
+    {
+        if (!counting || enemy == null)
+            return;
+        if (zombies.Contains(enemy.entityId) || Flat(enemy.position, settings.Center) <= settings.Radius + 20f)
+            waveKills.Add(enemy.entityId);
+    }
+
     // ---- Spawning ----
 
     protected EntityAlive Spawn(World world, int classId, Vector3 position, EntityPlayer target, GameRandom random)
@@ -359,7 +412,7 @@ internal abstract class Defense
     /// <summary>
     /// Spawns a wave of zombies around the defended area, sized by the defense spawner at the gamestage.
     /// </summary>
-    protected void SpawnWaveZombies(World world, List<EntityPlayer> players, GameRandom random, int gameStage, float sizeMultiplier, Vector3 center, float radius)
+    protected void SpawnWaveZombies(World world, List<EntityPlayer> players, GameRandom random, int gameStage, float sizeMultiplier)
     {
         string[] spawners = settings.Spawners.Split(',');
         GameStageDefinition.Stage stage = GameStageDefinition.GetGameStage(spawners[random.RandomRange(spawners.Length)].Trim())?.GetStage(gameStage);
@@ -376,11 +429,97 @@ internal abstract class Defense
         {
             GameStageDefinition.SpawnGroup group = stage.spawnGroups[i % stage.spawnGroups.Count];
             int classId = EntityGroups.GetRandomFromGroup(group.groupName, ref lastClassId, random);
-            if (RingPosition(world, random, center, radius, out Vector3 position))
+            if (WavePosition(world, random, players, out Vector3 position))
                 Spawn(world, classId, position, Closest(players, position), random);
         }
-        marked = false;
-        lastReportedAlive = -1;
+    }
+
+    /// <summary>
+    /// Where a wave's zombie comes from, by the quest's spawn style: out of the building (for about half of them)
+    /// or from outside it.
+    /// </summary>
+    protected bool WavePosition(World world, GameRandom random, List<EntityPlayer> players, out Vector3 position)
+    {
+        if (settings.SpawnStyle == DefenseSettingsDEM.SpawnStyles.Inside && random.RandomFloat < 0.5f
+            && InsidePosition(world, random, players, out position))
+            return true;
+        return OutsidePosition(world, random, out position);
+    }
+
+    /// <summary>A spot outside the defended area: just outside the POI's footprint, or all around a flag or spot.</summary>
+    protected bool OutsidePosition(World world, GameRandom random, out Vector3 position)
+    {
+        if (settings.SpawnStyle != DefenseSettingsDEM.SpawnStyles.Around && settings.PoiSize != Vector3.zero)
+            return WallPosition(world, random, out position);
+        return RingPosition(world, random, settings.Center, settings.Radius, out position);
+    }
+
+    /// <summary>
+    /// A spot on the ground 2-6m outside the POI's footprint, anywhere along its edges.
+    /// </summary>
+    private bool WallPosition(World world, GameRandom random, out Vector3 position)
+    {
+        float width = settings.PoiSize.x;
+        float depth = settings.PoiSize.z;
+        for (int attempt = 0; attempt < 20; attempt++)
+        {
+            float margin = 2f + random.RandomFloat * 4f;
+            // A point along the perimeter, then pushed out from that edge
+            float along = random.RandomFloat * 2f * (width + depth);
+            float x, z;
+            if (along < width) { x = along; z = -margin; }
+            else if (along < width + depth) { x = width + margin; z = along - width; }
+            else if (along < 2f * width + depth) { x = along - width - depth; z = depth + margin; }
+            else { x = -margin; z = along - 2f * width - depth; }
+
+            int bx = Mathf.FloorToInt(settings.PoiMin.x + x);
+            int bz = Mathf.FloorToInt(settings.PoiMin.z + z);
+            int by = world.GetHeight(bx, bz) + 1;
+            var block = new Vector3i(bx, by, bz);
+            if (by <= 1 || world.IsWater(block) || world.IsWithinTraderArea(block))
+                continue;
+            position = new Vector3(bx + 0.5f, by, bz + 0.5f);
+            return true;
+        }
+        position = Vector3.zero;
+        return false;
+    }
+
+    /// <summary>
+    /// One of the POI's sleeper spots at least 10m from every player (another room, in a house), so zombies come back
+    /// into the building without popping up in front of anyone.
+    /// </summary>
+    private bool InsidePosition(World world, GameRandom random, List<EntityPlayer> players, out Vector3 position)
+    {
+        if (insidePoints == null)
+        {
+            insidePoints = new List<Vector3>();
+            PrefabInstance poi = GameManager.Instance.GetDynamicPrefabDecorator()?.GetPrefabFromWorldPosInside(
+                Mathf.FloorToInt(settings.Center.x), Mathf.FloorToInt(settings.Center.z));
+            if (poi != null)
+            {
+                foreach (SleeperVolume volume in poi.sleeperVolumes)
+                {
+                    foreach (SleeperVolume.SpawnPoint point in volume.spawnPointList)
+                        insidePoints.Add(point.pos.ToVector3() + new Vector3(0.5f, 0f, 0.5f));
+                }
+            }
+        }
+
+        for (int attempt = 0; attempt < 15 && insidePoints.Count > 0; attempt++)
+        {
+            Vector3 candidate = insidePoints[random.RandomRange(insidePoints.Count)];
+            bool clear = true;
+            foreach (EntityPlayer player in players)
+                clear &= (player.position - candidate).sqrMagnitude >= 10f * 10f;
+            if (clear && !world.IsWithinTraderArea(new Vector3i(candidate)))
+            {
+                position = candidate;
+                return true;
+            }
+        }
+        position = Vector3.zero;
+        return false;
     }
 
     /// <summary>
@@ -425,7 +564,7 @@ internal abstract class Defense
     /// <summary>Marks the last few zombies of a wave so nobody has to hunt for them.</summary>
     protected void MarkStragglers(World world)
     {
-        if (marked || zombies.Count > 3)
+        if (marked || Remaining > 3)
             return;
         marked = true;
         foreach (int id in zombies)
@@ -475,7 +614,7 @@ internal abstract class Defense
             WavesDone = wavesDone,
             Waves = settings.Waves,
             Fighting = fighting,
-            ZombiesLeft = zombies.Count,
+            ZombiesLeft = Remaining,
             MessageKey = messageKey ?? "",
             MessageValue = messageValue,
             BreakSeconds = Mathf.RoundToInt(settings.BreakSeconds),
@@ -488,7 +627,7 @@ internal abstract class Defense
     /// </summary>
     public void SendStatus(string messageKey, int messageValue = 0)
     {
-        lastReportedAlive = zombies.Count;
+        lastReportedAlive = Remaining;
         // A copy: the status can complete or fail the local player's quest, which makes them leave (see Update)
         foreach (int id in new List<int>(Listeners))
             WaveDirectorDEM.SendStatus(QuestCode, id, Status(messageKey, messageValue));
@@ -497,7 +636,7 @@ internal abstract class Defense
     /// <summary>Sends the status if the number of zombies left changed.</summary>
     protected void ReportAlive()
     {
-        if (zombies.Count != lastReportedAlive)
+        if (Remaining != lastReportedAlive)
             SendStatus(null);
     }
 }
@@ -539,7 +678,7 @@ internal class WaveDefense : Defense
             return false;
         }
 
-        TrackBosses(world, random, boss => RingPosition(world, random, settings.Center, settings.Radius, out Vector3 p) ? p : (Vector3?)null,
+        TrackBosses(world, random, boss => OutsidePosition(world, random, out Vector3 p) ? p : (Vector3?)null,
             Closest(players, settings.Center));
         PruneZombies(world);
 
@@ -550,8 +689,9 @@ internal class WaveDefense : Defense
             SendStatus("DefendWavesDEM_retreat");
         }
 
-        if (zombies.Count == 0)
+        if (Remaining == 0)
         {
+            StopCounting();
             wavesDone++;
             fighting = false;
             timer = settings.BreakSeconds;
@@ -573,15 +713,16 @@ internal class WaveDefense : Defense
 
     private void SpawnWave(World world, List<EntityPlayer> players, GameRandom random)
     {
-        // Each wave is a little harder than the last; a last stand's waves also keep getting bigger
+        // Each wave is bigger and a little harder than the last (e.g. 4, 5, 6 zombies at the lowest gamestages);
+        // a last stand's endless waves grow more slowly
         int gameStage = Mathf.RoundToInt(GameStageDefinition.CalcGameStageAround(players[0]) * settings.Strength * (1f + 0.15f * wavesDone));
-        float size = Endless ? 1f + 0.1f * wavesDone : 1f;
-        SpawnWaveZombies(world, players, random, gameStage, size, settings.Center, settings.Radius);
+        float size = 1f + (Endless ? 0.1f : 0.2f) * wavesDone;
+        SpawnWaveZombies(world, players, random, gameStage, size);
 
         bool boss = Endless
             ? settings.BossEvery > 0 && (wavesDone + 1) % settings.BossEvery == 0
             : wavesDone == settings.Waves - 1;
-        if (boss && settings.Bosses != "" && RingPosition(world, random, settings.Center, settings.Radius, out Vector3 bossSpawn))
+        if (boss && settings.Bosses != "" && WavePosition(world, random, players, out Vector3 bossSpawn))
             SpawnBoss(world, settings.Bosses, bossSpawn, Closest(players, bossSpawn), random);
 
         if (zombies.Count == 0)
@@ -593,6 +734,7 @@ internal class WaveDefense : Defense
 
         fighting = true;
         timer = WaveDirectorDEM.WaveTimeLimit;
+        StartCounting();
         ResetRetarget();
         SendStatus(boss && settings.Bosses != "" ? "DefendWavesDEM_incoming_boss" : "DefendWavesDEM_incoming");
     }
@@ -941,8 +1083,9 @@ internal class OutpostDefense : Defense
             SendStatus("DefendWavesDEM_retreat");
         }
 
-        if (zombies.Count == 0)
+        if (Remaining == 0)
         {
+            StopCounting();
             waveActive = false;
             attackWave++;
             timer = settings.BreakSeconds;
@@ -982,7 +1125,7 @@ internal class OutpostDefense : Defense
         // Bigger every night, and each wave of the night a little harder than the last
         int night = outpost.NightsHeld;
         int gameStage = Mathf.RoundToInt(GameStageDefinition.CalcGameStageAround(players[0]) * settings.Strength * (1f + 0.25f * night) * (1f + 0.15f * attackWave));
-        SpawnWaveZombies(world, players, random, gameStage, 1f + 0.2f * night, settings.Center, settings.Radius);
+        SpawnWaveZombies(world, players, random, gameStage, 1f + 0.2f * night);
         if (zombies.Count == 0)
         {
             timer = 5f;
@@ -990,6 +1133,7 @@ internal class OutpostDefense : Defense
         }
         waveActive = true;
         timer = WaveDirectorDEM.WaveTimeLimit;
+        StartCounting();
         ResetRetarget();
         SendStatus("OutpostDEM_wave", attackWave + 1);
     }
