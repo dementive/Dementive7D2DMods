@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+	<Name value="ReadAllBooks" />
+	<DisplayName value="Read All Books" />
+	<Description value="Adds a button (and F2 hotkey) to the loot window that reads every book and schematic in the open container that you don't know yet. Updated for 7 Days to Die V3.4." />
+	<Author value="Dementive" />
+	<Version value="2.0.0.0" />
+	<Website value="" />
+	<SkipWithAntiCheat value="true" />
+</xml>
