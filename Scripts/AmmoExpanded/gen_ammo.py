@@ -4,8 +4,8 @@ Usage: python gen_ammo.py <game dir> <AmmoExpanded dir> [<AmmoExpanded-SERVERSID
 Each ammo type Extends a vanilla ammo item and carries copies of its effect groups (those are not inherited), with
 edited damage and a signature effect group, plus a schematic that unlocks its recipe. Every gun, bow and crossbow
 whose ammo list is the vanilla list for that caliber gets the new ammo appended. Rewrites Config/items.xml,
-buffs.xml, recipes.xml, loot.xml, traders.xml and Localization.csv, and recolors the vanilla icons into
-UIAtlases/ItemIconAtlas with Scripts/bin/IconTool.exe. The server-side copy uses the vanilla icons with a color tint.
+buffs.xml, recipes.xml, loot.xml, traders.xml and Localization.csv, and paints the vanilla icons into
+UIAtlases/ItemIconAtlas with Scripts/bin/IconTool.exe (ICONS). The server-side copy uses the vanilla icons with a color tint.
 """
 import os
 import re
@@ -184,6 +184,43 @@ AMMO = [
          lore="A crossbow bolt with a heavy padded head. It won't pierce much, but it lands like a punch.",
          ability="50% chance to knock the target down."),
 ]
+
+# Icon recipes for IconTool.exe fx (see the ops in Scripts/WeaponsExpanded/IconTool.cs), in the style of the
+# hand-made Weapons Expanded icons. The vanilla bullets and arrows point up and right, so a zone along 45 degrees
+# picks out the tip. `tint` above is only for the server-side copy.
+BRASS = "map:#2a1500,#a8742a,#ffe2a0"
+GUNMETAL = "map:#0d0d10,#5a5a66,#d0d0dc"
+GOLD = "map:#2a1800,#d4a017,#fff4c0"
+TIP9, TIP44, TIP762, ARROWHEAD = "zone=45/0.6/0.7", "zone=45/0.62/0.72", "zone=45/0.7/0.78", "zone=45/0.5/0.6"
+
+
+def incendiary_icon(tip, seed):
+    return [BRASS, "sheen:0.3", f"map:#300000,#ff4a00,#ffe080,{tip}", f"emissive:#ff5a00,0.25,1,{tip}", f"embers:#ff7a1a,10,1.8,{seed}"]
+
+
+def frangible_icon(tip, seed):
+    return [GUNMETAL, "sheen:0.4", f"map:#200000,#b01818,#ff9090,{tip}", f"pattern:cracks,c1=#140000,scale=7,width=0.09,seed={seed},{tip}", "rim:#ff3030,2,0.35"]
+
+
+ICONS = {
+    "DementiveAmmo9mmIncendiary": incendiary_icon(TIP9, 3),
+    "DementiveAmmo44Incendiary": incendiary_icon(TIP44, 4),
+    "DementiveAmmo762Incendiary": incendiary_icon(TIP762, 5),
+    "DementiveAmmo9mmFrangible": frangible_icon(TIP9, 3),
+    "DementiveAmmo44Frangible": frangible_icon(TIP44, 4),
+    "DementiveAmmo762Frangible": frangible_icon(TIP762, 5),
+    "DementiveAmmo762Match": [GOLD, "sheen:0.7", f"map:#101418,#8a96a8,#ffffff,{TIP762}", "sparkle:#ffffff,2,12,6"],
+    "DementiveAmmo44Explosive": ["map:#0b0f05,#4b5320,#c6cf8a", "pattern:hazard,c1=#ffcc00,c2=#111111,scale=7,angle=-45,op=0.95,zone=45/0.3/0.33/0.5/0.53",
+                                 f"map:#300000,#ff1a00,#ffb0a0,{TIP44}", f"emissive:#ff2200,0.25,0.9,{TIP44}"],
+    "DementiveAmmoShotgunDragonsBreath": ["map:#1a0000,#8a0d00,#ff6a3a", "pattern:flames,c1=#ffe94d,c2=#ff3a00,c3=#140000,op=1,reach=0.55,count=6,seed=2,shade=0.4",
+                                          "glow:#ff4400,7,0.8", "embers:#ff8a1a,12,1.8,5"],
+    "DementiveAmmoShotgunFlechette": ["map:#05121c,#3d7fa6,#e6f6ff", "sheen:0.7", "pattern:cracks,c1=#dff6ff,scale=10,width=0.05,op=0.55,seed=6,shade=0.5", "rim:#9fe8ff,2,0.5", "sparkle:#ffffff,3,10,7"],
+    "DementiveAmmoShotgunBeanBag": ["map:#062b0e,#3ccf4e,#e6ffd0", "sheen:0.55", "pattern:speckle,c1=#0f4a1a,scale=4,amount=0.62,op=0.35,seed=3", "rim:#d8ff6a,2,0.6", "glow:#7dff5a,6,0.5"],
+    "DementiveAmmoArrowBarbed": [GUNMETAL, "sheen:0.4", f"pattern:splatter,c1=#7a0000,scale=6,amount=0.5,seed=3,shade=0.6,{ARROWHEAD}", "rim:#ff2020,2,0.35"],
+    "DementiveAmmoBoltBarbed": [GUNMETAL, "sheen:0.4", f"pattern:splatter,c1=#7a0000,scale=6,amount=0.5,seed=4,shade=0.6,{ARROWHEAD}", "rim:#ff2020,2,0.35"],
+    "DementiveAmmoArrowBlunt": ["map:#1a0f05,#8b5a2b,#e0b47a", "pattern:woodgrain,c1=#c08850,c2=#5a3415,scale=4,angle=45,op=0.6", f"map:#050505,#2a2a2a,#7a7a7a,{ARROWHEAD}"],
+    "DementiveAmmoBoltBlunt": ["map:#1a0f05,#8b5a2b,#e0b47a", "pattern:woodgrain,c1=#c08850,c2=#5a3415,scale=4,angle=45,op=0.6", f"map:#050505,#2a2a2a,#7a7a7a,{ARROWHEAD}"],
+}
 
 BUFFS = """<Dementive>
 
@@ -417,7 +454,7 @@ atlas = os.path.join(mod, "UIAtlases", "ItemIconAtlas")
 os.makedirs(atlas, exist_ok=True)
 for a in AMMO:
     src = os.path.join(game, "Data", "ItemIcons", vanilla_icon(a["parent"]) + ".png")
-    subprocess.run([icon_tool, src, os.path.join(atlas, a["name"] + ".png"), a["tint"], "0.62"], check=True)
+    subprocess.run([icon_tool, "fx", src, os.path.join(atlas, a["name"] + ".png"), *ICONS[a["name"]]], check=True)
 print(f"{len(AMMO)} icons written to {atlas}")
 
 if server:

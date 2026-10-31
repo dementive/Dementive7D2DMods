@@ -4,7 +4,7 @@ Usage: python gen_armor.py <game dir> <ArmorExpanded dir> [<ArmorExpanded-SERVER
 Each named piece Extends a vanilla armor piece and carries copies of its effect groups (those are not inherited),
 with +20% armor rating, +50% durability and a signature effect group. It keeps the vanilla piece's ArmorGroup, so
 it counts toward that set's full set bonus. Rewrites Config/items.xml, buffs.xml, loot.xml, traders.xml and
-Localization.csv, and recolors the vanilla icons into UIAtlases/ItemIconAtlas with Scripts/bin/IconTool.exe.
+Localization.csv, and paints the vanilla icons into UIAtlases/ItemIconAtlas with Scripts/bin/IconTool.exe (ICONS).
 The server-side copy uses the vanilla icons with a color tint instead, since its clients don't have the icons.
 """
 import os
@@ -202,6 +202,28 @@ PIECES = [
         ability="You can't be knocked down or stunned. 30% less damage from explosions and 50% less from land mines.",
     ),
 ]
+
+# Icon recipes for IconTool.exe fx (see the ops in Scripts/WeaponsExpanded/IconTool.cs): a paint job, decal or glow
+# per piece, in the style of the hand-made Weapons Expanded icons. `tint` above is only for the server-side copy.
+GOLD = "map:#2a1800,#d4a017,#fff4c0"
+ICONS = {
+    "DementiveArmorTimberGloves": ["pattern:plaid,c1=#c0281e,c2=#111111,scale=14,op=0.9", "sheen:0.2"],
+    "DementiveArmorSundayBest": ["map:#3a2a10,#e8e2d0,#ffffff", "rim:#ffd700,3,0.6", "glow:#ffd24a,8,0.9", "sparkle:#fff3b0,3,12,2"],
+    "DementiveArmorPickpocketGloves": ["map:#0a0314,#5a1f9a,#d6b8ff", "glow:#8a2be2,9,0.9,noise=12", "rim:#e0c4ff,2,0.6", "sparkle:#e8d0ff,1,10,5"],
+    "DementiveArmorMarathonRunners": ["map:#00141f,#00a8e0,#c8f6ff", "sheen:0.4", "rim:#ff2fd0,2,0.8", "glow:#00d0ff,5,0.5", "trail:#ff2fd0,180,4,8,0.7"],
+    "DementiveArmorDonsShades": [GOLD, "sheen:0.7", "sparkle:#ffffff,2,14,3"],
+    "DementiveArmorMuckBoots": ["map:#0d1405,#4f6b1f,#b9cf7a", "pattern:splatter,c1=#2a170a,scale=9,amount=0.44,op=1,seed=4,shade=0.5,zone=90/-0.55/0.7", "sheen:0.3"],
+    "DementiveArmorRoadCaptainsCut": ["map:#050505,#262626,#7a7a7a", "pattern:flames,c1=#ffe94d,c2=#ff2a00,c3=#120000,op=1,reach=0.8,count=5,seed=3,shade=0.35", "sheen:0.5"],
+    "DementiveArmorJunkRatGoggles": ["map:#1a0d03,#9a6a2a,#f0d8a0", "pattern:speckle,c1=#7a2e0e,scale=8,amount=0.55,op=0.8,seed=3", "pattern:speckle,c1=#3a8a6a,scale=12,amount=0.68,op=0.6,seed=8", "sheen:0.3", "sparkle:#fff6c0,2,10,4"],
+    "DementiveArmorMarshalsGloves": ["map:#120802,#6b3f1a,#d9a066", "sheen:0.3", "rim:#ffd700,2,0.7", "sparkle:#ffe9a0,1,14,2"],
+    "DementiveArmorFlakVest": ["pattern:camo,c1=#6b7a30,c2=#34451f,c3=#8a7048,scale=18,op=0.9,seed=5,shade=0.7", "sheen:0.25", "rim:#c8d890,2,0.3"],
+    "DementiveArmorGhostsHood": ["map:#020208,#1b1b30,#6a6a9a", "glow:#8fd0ff,12,1,noise=10", "rim:#bfe6ff,3,0.6", "emissive:#9fe8ff,0.5,0.9"],
+    "DementiveArmorWildcatterHat": ["map:#2a0f00,#ff8c00,#ffe0a0", "pattern:hazard,c1=#ffcc00,c2=#111111,scale=10,op=0.9,zone=90/-0.3/0.36", "emissive:#fff2b0,0.85,1", "sheen:0.4"],
+    "DementiveArmorWanderersWraps": ["pattern:camo,c1=#c8a874,c2=#8a6a3e,c3=#e8d6a8,scale=16,op=0.9,seed=7,shade=0.8", "pattern:speckle,c1=#f0dca8,scale=5,amount=0.62,op=0.35,seed=2",
+                                     "sheen:0.2", "glow:#ff9a3a,7,0.5", "embers:#ffe0a8,8,1.2,4"],
+    "DementiveArmorThinkingCap": ["map:#06142b,#1e5bb8,#9fd0ff", "pattern:circuit,c1=#3ff0ff,scale=12,op=0.8,bloom=0.5,seed=4", "rim:#7fe8ff,3,0.4"],
+    "DementiveArmorJuggernautBoots": ["map:#0b0b0d,#3a3a40,#9a9aa5", "pattern:cracks,c1=#ff3b00,scale=18,op=1,bloom=0.9,width=0.07,seed=2", "sheen:0.4"],
+}
 
 BUFFS = """<Dementive>
 
@@ -450,7 +472,7 @@ atlas = os.path.join(mod, "UIAtlases", "ItemIconAtlas")
 os.makedirs(atlas, exist_ok=True)
 for p in PIECES:
     src = os.path.join(game, "Data", "ItemIcons", p["parent"] + ".png")
-    subprocess.run([icon_tool, src, os.path.join(atlas, p["name"] + ".png"), p["tint"], "0.62"], check=True)
+    subprocess.run([icon_tool, "fx", src, os.path.join(atlas, p["name"] + ".png"), *ICONS[p["name"]]], check=True)
 print(f"{len(PIECES)} icons written to {atlas}")
 
 if server:

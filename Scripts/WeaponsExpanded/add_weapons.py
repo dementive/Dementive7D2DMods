@@ -4,7 +4,7 @@ Usage: python add_weapons.py <game dir> <WeaponsExpanded dir>
 Each weapon Extends a vanilla weapon and carries copies of its <stats> and effect groups (those are not
 inherited), with legendary stat boosts and a signature effect group. Weapons already in items.xml are skipped,
 so a new weapon can be added to WEAPONS and the script rerun. Also rewrites buffs.xml and adds missing
-localization rows. Afterwards, add the weapon to loot.xml/traders.xml, make its icon with IconTool, and rerun
+localization rows. Afterwards, add the weapon to loot.xml/traders.xml, add its icon recipe to make_icons.py and run it, and rerun
 gen_item_modifiers.py and gen_serverside.py.
 """
 import os
