@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	The settings page for Gears (optional). All of these are global settings: each player picks their own and nothing
+	is sent to the server. The Color, Atmosphere, Film and Dynamic defaults must match the Natural preset in
+	src/GfxSettings.cs, so the Defaults button lands on Natural rather than Custom.
+-->
+<ModSettings version="2">
+	<Global>
+		<Tab name="Look" displayKey="gfxeTabLook">
+			<Category name="General" displayKey="gfxeCatGeneral">
+				<Description key="gfxeCatGeneralDesc" />
+				<Switch name="Enabled" displayKey="gfxeEnabled" type="bool" defaultValue="true">
+					<LocalizationPrefix prefix="gfxeOnOff_" />
+					<Description key="gfxeEnabledDesc" />
+				</Switch>
+				<Selector name="Preset" displayKey="gfxePreset" type="GfxPreset, GraphicsExpanded" defaultValue="Natural">
+					<LocalizationPrefix prefix="gfxePreset_" />
+					<Description key="gfxePresetDesc" />
+				</Selector>
+				<Binding name="CompareKey" displayKey="gfxeCompareKey">
+					<Description key="gfxeCompareKeyDesc" />
+				</Binding>
+			</Category>
+			<Category name="Color" displayKey="gfxeCatColor">
+				<Description key="gfxeCatColorDesc" />
+				<Selector name="Tonemapping" displayKey="gfxeTonemapping" type="GfxTonemapping, GraphicsExpanded" defaultValue="Vanilla">
+					<LocalizationPrefix prefix="gfxeTonemapping_" />
+					<Description key="gfxeTonemappingDesc" />
+				</Selector>
+				<Slider name="Exposure" displayKey="gfxeExposure" type="float" defaultValue="0">
+					<Incremental increment="0.05" minValue="-1" maxValue="1" />
+					<Formatter ui="+0.00;-0.00;0.00" />
+					<Description key="gfxeExposureDesc" />
+				</Slider>
+				<Slider name="Contrast" displayKey="gfxeContrast" type="int" defaultValue="8">
+					<Incremental increment="1" minValue="-50" maxValue="50" />
+					<Formatter ui="+0;-0;0" />
+					<Description key="gfxeContrastDesc" />
+				</Slider>
+				<Slider name="Saturation" displayKey="gfxeSaturation" type="int" defaultValue="6">
+					<Incremental increment="1" minValue="-50" maxValue="50" />
+					<Formatter ui="+0;-0;0" />
+					<Description key="gfxeSaturationDesc" />
+				</Slider>
+				<Slider name="WhiteBalance" displayKey="gfxeWhiteBalance" type="int" defaultValue="3">
+					<Incremental increment="1" minValue="-50" maxValue="50" />
+					<Formatter ui="+0;-0;0" />
+					<Description key="gfxeWhiteBalanceDesc" />
+				</Slider>
+				<Color name="Tint" displayKey="gfxeTint" defaultValue="255,255,255">
+					<Description key="gfxeTintDesc" />
+				</Color>
+			</Category>
+			<Category name="Atmosphere" displayKey="gfxeCatAtmosphere">
+				<Description key="gfxeCatAtmosphereDesc" />
+				<Slider name="FogDensity" displayKey="gfxeFogDensity" type="float" defaultValue="85%">
+					<Incremental increment="5%" minValue="0%" maxValue="200%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeFogDensityDesc" />
+				</Slider>
+				<Color name="FogTint" displayKey="gfxeFogTint" defaultValue="255,255,255">
+					<Description key="gfxeFogTintDesc" />
+				</Color>
+			</Category>
+			<Category name="Film" displayKey="gfxeCatFilm">
+				<Description key="gfxeCatFilmDesc" />
+				<Slider name="Vignette" displayKey="gfxeVignette" type="float" defaultValue="0%">
+					<Incremental increment="5%" minValue="0%" maxValue="50%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeVignetteDesc" />
+				</Slider>
+				<Slider name="FilmGrain" displayKey="gfxeFilmGrain" type="float" defaultValue="0%">
+					<Incremental increment="5%" minValue="0%" maxValue="100%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeFilmGrainDesc" />
+				</Slider>
+				<Slider name="Bloom" displayKey="gfxeBloom" type="float" defaultValue="100%">
+					<Incremental increment="10%" minValue="50%" maxValue="200%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeBloomDesc" />
+				</Slider>
+			</Category>
+			<Category name="Dynamic" displayKey="gfxeCatDynamic">
+				<Description key="gfxeCatDynamicDesc" />
+				<Slider name="TimeOfDay" displayKey="gfxeTimeOfDay" type="float" defaultValue="50%">
+					<Incremental increment="10%" minValue="0%" maxValue="100%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeTimeOfDayDesc" />
+				</Slider>
+				<Slider name="Weather" displayKey="gfxeWeather" type="float" defaultValue="50%">
+					<Incremental increment="10%" minValue="0%" maxValue="100%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeWeatherDesc" />
+				</Slider>
+				<Slider name="BloodMoon" displayKey="gfxeBloodMoon" type="float" defaultValue="100%">
+					<Incremental increment="10%" minValue="0%" maxValue="100%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeBloodMoonDesc" />
+				</Slider>
+			</Category>
+		</Tab>
+		<Tab name="Shadows" displayKey="gfxeTabShadows">
+			<Category name="Sun" displayKey="gfxeCatSun">
+				<Description key="gfxeCatSunDesc" />
+				<Selector name="ShadowDistance" displayKey="gfxeShadowDistance" type="GfxShadowDistance, GraphicsExpanded" defaultValue="Menu">
+					<LocalizationPrefix prefix="gfxeShadowDistance_" />
+					<Description key="gfxeShadowDistanceDesc" />
+				</Selector>
+				<Selector name="ShadowResolution" displayKey="gfxeShadowResolution" type="GfxShadowResolution, GraphicsExpanded" defaultValue="Menu">
+					<LocalizationPrefix prefix="gfxeShadowResolution_" />
+					<Description key="gfxeShadowResolutionDesc" />
+				</Selector>
+			</Category>
+			<Category name="Contact" displayKey="gfxeCatContact">
+				<Description key="gfxeCatContactDesc" />
+				<Selector name="ContactShadows" displayKey="gfxeContactShadows" type="GfxContactShadows, GraphicsExpanded" defaultValue="Menu">
+					<LocalizationPrefix prefix="gfxeContactShadows_" />
+					<Description key="gfxeContactShadowsDesc" />
+				</Selector>
+				<Slider name="ContactShadowLength" displayKey="gfxeContactShadowLength" type="float" defaultValue="100%">
+					<Incremental increment="10%" minValue="50%" maxValue="300%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeContactShadowLengthDesc" />
+				</Slider>
+			</Category>
+		</Tab>
+		<Tab name="Detail" displayKey="gfxeTabDetail">
+			<Category name="Distance" displayKey="gfxeCatDistance">
+				<Description key="gfxeCatDistanceDesc" />
+				<Slider name="LodDistance" displayKey="gfxeLodDistance" type="float" defaultValue="100%">
+					<Incremental increment="10%" minValue="100%" maxValue="300%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeLodDistanceDesc" />
+				</Slider>
+				<Selector name="TreeDistance" displayKey="gfxeTreeDistance" type="GfxTreeDistance, GraphicsExpanded" defaultValue="Menu">
+					<LocalizationPrefix prefix="gfxeTreeDistance_" />
+					<Description key="gfxeTreeDistanceDesc" />
+				</Selector>
+				<Selector name="GrassDistance" displayKey="gfxeGrassDistance" type="GfxGrassDistance, GraphicsExpanded" defaultValue="Menu">
+					<LocalizationPrefix prefix="gfxeGrassDistance_" />
+					<Description key="gfxeGrassDistanceDesc" />
+				</Selector>
+			</Category>
+			<Category name="Textures" displayKey="gfxeCatTextures">
+				<Switch name="Anisotropic16x" displayKey="gfxeAnisotropic16x" type="bool" defaultValue="false">
+					<LocalizationPrefix prefix="gfxeOnOff_" />
+					<Description key="gfxeAnisotropic16xDesc" />
+				</Switch>
+			</Category>
+		</Tab>
+	</Global>
+</ModSettings>
