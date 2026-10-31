@@ -4037,9 +4037,10 @@
 				<passive_effect name="DamageModifier" operation="base_add" value="25" tags="head"/>
 			</effect_group>
 
-			<!-- Chain Reaction: whatever this rifle kills explodes. No block damage, but it hurts anyone close by, including the shooter -->
+			<!-- Chain Reaction: whatever this rifle kills explodes (buffDementiveChainReaction in buffs.xml). Added twice on purpose: the second add is what sets it off -->
 			<effect_group name="DementivegunRifleChainReaction explosion" tiered="false">
-				<triggered_effect trigger="onSelfKilledOther" action="Explode" target="other" blast_power="0" block_damage="0" block_radius="1" entity_damage="120" entity_radius="4" damage_type="Heat"/>
+				<triggered_effect trigger="onSelfKilledOther" action="AddBuff" target="other" buff="buffDementiveChainReaction"/>
+				<triggered_effect trigger="onSelfKilledOther" action="AddBuff" target="other" buff="buffDementiveChainReaction"/>
 			</effect_group>
 		</item>
 

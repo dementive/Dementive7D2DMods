@@ -42,6 +42,18 @@
 				<passive_effect name="JumpStrength" operation="perc_subtract" value=".5"/>
 			</effect_group>
 		</buff>
+
+		<!-- Added twice to whatever the Chain Reaction rifle kills. Explode only runs on the server, but the kill event
+		     fires on the shooter's machine, and buffs never start on a dead entity. Adding a buff the body already has
+		     fires onSelfBuffStack right away on every machine the add reaches, the server included, so the blast
+		     happens for every player. No block damage, but it hurts anyone close by, including the shooter -->
+		<buff name="buffDementiveChainReaction" hidden="true">
+			<stack_type value="replace"/>
+			<duration value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStack" action="Explode" blast_power="0" block_damage="0" block_radius="1" entity_damage="120" entity_radius="4" damage_type="Heat"/>
+			</effect_group>
+		</buff>
 	</append>
 
 </Dementive>

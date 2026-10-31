@@ -106,3 +106,4 @@ The chances are set by the five `DementiveRares` templates at the top of `Config
 - Traders can now actually stock the weapons (they were never in any trader's inventory), and tier 4-6 quests can offer one as a reward
 - Server-side version: weapons use their vanilla icons with a color tint again (the last update had switched them to the custom icons, which players without the client mod don't have)
 - Axes and the Gravedigger auger get the V3.4 Strength Mastery healing effect, the Legendary War Hammer gets the V3.4 second-power-attack tracking, and Golden Knuckles use the V3.4 left-hand knuckle attachment
+- Chain Reaction's kill explosions now work in multiplayer and on dedicated servers for every player. Before, only the host's kills exploded: the game only runs explosions on the server, and other players' kills are detected on their own machines

@@ -150,9 +150,10 @@ WEAPONS = [
             (r'(name="DegradationMax" operation="base_set" value=")100,200"', r'\g<1>400,700"'),
         ],
         signature=[
-            "<!-- Chain Reaction: whatever this rifle kills explodes. No block damage, but it hurts anyone close by, including the shooter -->",
+            "<!-- Chain Reaction: whatever this rifle kills explodes (buffDementiveChainReaction in buffs.xml). Added twice on purpose: the second add is what sets it off -->",
             eg("DementivegunRifleChainReaction explosion", """
-<triggered_effect trigger="onSelfKilledOther" action="Explode" target="other" blast_power="0" block_damage="0" block_radius="1" entity_damage="120" entity_radius="4" damage_type="Heat"/>"""),
+<triggered_effect trigger="onSelfKilledOther" action="AddBuff" target="other" buff="buffDementiveChainReaction"/>
+<triggered_effect trigger="onSelfKilledOther" action="AddBuff" target="other" buff="buffDementiveChainReaction"/>"""),
         ],
         lore="Somebody packed this pipe rifle's ammo box with a little too much extra. Whatever it kills goes out with a bang, so keep your distance.",
         ability="Anything killed with this rifle explodes, dealing up to 120 damage to everything within 4 meters, including you.",
@@ -279,6 +280,18 @@ BUFFS = """<Dementive>
 				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".5"/>
 				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".5"/>
 				<passive_effect name="JumpStrength" operation="perc_subtract" value=".5"/>
+			</effect_group>
+		</buff>
+
+		<!-- Added twice to whatever the Chain Reaction rifle kills. Explode only runs on the server, but the kill event
+		     fires on the shooter's machine, and buffs never start on a dead entity. Adding a buff the body already has
+		     fires onSelfBuffStack right away on every machine the add reaches, the server included, so the blast
+		     happens for every player. No block damage, but it hurts anyone close by, including the shooter -->
+		<buff name="buffDementiveChainReaction" hidden="true">
+			<stack_type value="replace"/>
+			<duration value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStack" action="Explode" blast_power="0" block_damage="0" block_radius="1" entity_damage="120" entity_radius="4" damage_type="Heat"/>
 			</effect_group>
 		</buff>
 	</append>
