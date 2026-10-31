@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 /// <summary>
 /// A party member planted the flag for a shared quest. Clients send it to the server, which passes it to the rest
@@ -10,12 +10,15 @@ public class NetPackageQuestFlagDEM : NetPackage
 
     private int questCode;
 
+    private string blockName;
+
     private Vector3 position;
 
-    public NetPackageQuestFlagDEM Setup(int _placerId, int _questCode, Vector3 _position)
+    public NetPackageQuestFlagDEM Setup(int _placerId, int _questCode, string _blockName, Vector3 _position)
     {
         placerId = _placerId;
         questCode = _questCode;
+        blockName = _blockName;
         position = _position;
         return this;
     }
@@ -24,6 +27,7 @@ public class NetPackageQuestFlagDEM : NetPackage
     {
         placerId = _br.ReadInt32();
         questCode = _br.ReadInt32();
+        blockName = _br.ReadString();
         position = StreamUtils.ReadVector3(_br);
     }
 
@@ -32,6 +36,7 @@ public class NetPackageQuestFlagDEM : NetPackage
         base.write(_bw);
         _bw.Write(placerId);
         _bw.Write(questCode);
+        _bw.Write(blockName);
         StreamUtils.Write(_bw, position);
     }
 
@@ -80,7 +85,7 @@ public class NetPackageQuestFlagDEM : NetPackage
             else
             {
                 SingletonMonoBehaviour<ConnectionManager>.Instance.SendPackage(
-                    NetPackageManager.GetPackage<NetPackageQuestFlagDEM>().Setup(placerId, questCode, position),
+                    NetPackageManager.GetPackage<NetPackageQuestFlagDEM>().Setup(placerId, questCode, blockName, position),
                     _onlyClientsAttachedToAnEntity: false,
                     member.entityId);
             }
@@ -105,7 +110,7 @@ public class NetPackageQuestFlagDEM : NetPackage
             {
                 if (objective is ObjectivePlaceFlagDEM flag && flag.Phase == quest.CurrentPhase)
                 {
-                    flag.TryPlace(position, false);
+                    flag.TryPlace(blockName, position, false);
                 }
             }
         }

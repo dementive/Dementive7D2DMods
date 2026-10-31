@@ -27,7 +27,7 @@ def lines(name):
 
 X = {n: load(n + ".xml") for n in [
     "items", "blocks", "buffs", "loot", "recipes", "traders", "progression", "quests",
-    "ui_display", "item_modifiers", "entityclasses", "entitygroups", "gameevents", "npc", "gamestages"]}
+    "ui_display", "item_modifiers", "entityclasses", "entitygroups", "gameevents", "npc", "gamestages", "dialogs"]}
 
 types = lines("types.txt")
 # Classes the mods' own DLLs define (src/**/*.cs), for types given as "Name, Assembly". A mod that ships a DLL
@@ -130,6 +130,12 @@ def ctx(stack):
 
 def bad(mod, stack, msg):
     issues[mod].append(f"{ctx(stack)}: {msg}")
+
+def known_type(prefix, t):
+    """A type attribute: a game type (with or without its prefix), or "Name, Assembly" from a mod's DLL."""
+    name = t.split(",")[0].strip()
+    known = mod_types if "," in t else types
+    return (prefix + name) in known or name in known
 
 def split(v):
     return [s.strip() for s in re.split(r"[,]", v or "") if s.strip()]
@@ -316,7 +322,7 @@ def check_quest(e, stack, mod):
                         bad(mod, stack, f"POI '{poi}' not in Data/Prefabs/POIs")
             # QuestsExpanded's DefendWavesDEM
             if p.get("name") == "bosses":
-                for ent in split(p.get("value")):
+                for ent in split((p.get("value") or "").replace(";", ",")):
                     if ent not in entity_classes:
                         bad(mod, stack, f"boss '{ent}' is not an entity class")
             if p.get("name") == "spawners":
@@ -325,7 +331,7 @@ def check_quest(e, stack, mod):
                         bad(mod, stack, f"spawner '{sp}' is not in gamestages.xml")
     if e.tag == "reward":
         t = e.get("type")
-        if t and ("Reward" + t) not in types:
+        if t and not known_type("Reward", t):
             bad(mod, stack, f"unknown reward type '{t}'")
         if t == "Item" and e.get("id") not in itemlike:
             bad(mod, stack, f"reward item '{e.get('id')}' does not exist")
@@ -335,7 +341,7 @@ def check_quest(e, stack, mod):
                     bad(mod, stack, f"reward loot group '{g}' does not exist")
     if e.tag == "action":
         t = e.get("type")
-        if t and ("QuestAction" + t) not in types:
+        if t and not known_type("QuestAction", t):
             bad(mod, stack, f"unknown quest action '{t}'")
         if t == "SpawnEnemy":
             for ent in split(e.get("id")):
@@ -375,6 +381,32 @@ def check_gameevent(e, stack, mod):
             if len(split(props.get("added_item_counts"))) not in (0, len(added)):
                 bad(mod, stack, "AddItems added_item_counts doesn't match added_items")
 walk(X["gameevents"], check_gameevent)
+
+# --- dialogs ---
+def check_dialog(e, stack, mod):
+    dialog = next((d for d in reversed(stack) if d.tag == "dialog"), None)
+    if dialog is None:
+        return
+    statements = {s.get("id") for s in dialog.findall("statement")}
+    responses = {r.get("id") for r in dialog.findall("response")}
+    if e.tag in ("statement", "response") and e.get("text") and e.get("text") not in loc:
+        bad(mod, stack, f"no localization for {e.tag} text '{e.get('text')}'")
+    if e.get("nextstatementid") and e.get("nextstatementid") not in statements:
+        bad(mod, stack, f"nextstatementid '{e.get('nextstatementid')}' is not a statement of the dialog")
+    if e.tag == "response_entry" and e.get("id") not in responses:
+        bad(mod, stack, f"response_entry '{e.get('id')}' is not a response of the dialog")
+    if e.tag == "action" and e.get("type") and not known_type("DialogAction", e.get("type")):
+        bad(mod, stack, f"unknown dialog action '{e.get('type')}'")
+    if e.tag == "requirement" and e.get("type") and not known_type("DialogRequirement", e.get("type")):
+        bad(mod, stack, f"unknown dialog requirement '{e.get('type')}'")
+walk(X["dialogs"], check_dialog)
+
+# --- buff text ---
+for e in X["buffs"].iter("buff"):
+    if e.get("dmMod"):
+        for a in ("name_key", "description_key", "tooltip_key"):
+            if e.get(a) and e.get(a) not in loc:
+                issues[e.get("dmMod")].append(f"buff {e.get('name')}: no localization for {a} '{e.get(a)}'")
 
 # --- duplicate definitions (a mod re-adding something vanilla or another mod already defines) ---
 for fname, tag, attr in (("items", "item", "name"), ("blocks", "block", "name"), ("buffs", "buff", "name"),

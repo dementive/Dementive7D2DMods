@@ -1,23 +1,29 @@
 ﻿using UnityEngine;
 
 /*
- * Plant the White River flag from the quest's kit (block questFlagDEM) near the quest's location. Its position is
- * kept in the quest's Activate position data, for a DefendWavesDEM with center "flag". Planting it completes the
- * objective for every party member with the shared quest.
+ * Plant a flag from the quest's kit (a block with Class "QuestFlagDEM, QuestsExpanded") near the quest's location,
+ * or inside its POI. Its position is kept in the quest's Activate position data, for the objectives that defend it.
+ * Planting it completes the objective for every party member with the shared quest.
  * 	<objective type="PlaceFlagDEM, QuestsExpanded">
  * 		<property name="phase" value="2"/>
- * 		<property name="max_distance" value="40"/>   how far from the quest's location the flag can go
+ * 		<property name="block" value="questFlagDEM"/>   which flag counts
+ * 		<property name="max_distance" value="40"/>      how far from the quest's location the flag can go
+ * 		<property name="inside_poi" value="true"/>      the flag has to go inside the quest's POI instead
  * 	</objective>
  */
 public class ObjectivePlaceFlagDEM : BaseObjective
 {
+    public string Block = "questFlagDEM";
+
     public float MaxDistance = 40f;
+
+    public bool InsidePOI;
 
     public override ObjectiveValueTypes ObjectiveValueType => ObjectiveValueTypes.Boolean;
 
     public override void SetupObjective()
     {
-        keyword = Localization.Get("PlaceFlagDEM_keyword");
+        keyword = Localization.Get(InsidePOI ? "PlaceFlagDEM_keyword_poi" : "PlaceFlagDEM_keyword");
     }
 
     public override void SetupDisplay()
@@ -26,24 +32,36 @@ public class ObjectivePlaceFlagDEM : BaseObjective
     }
 
     /// <summary>
-    /// The flag was planted at the position. Returns false if it is too far from the quest's location.
+    /// The flag was planted at the position. Returns false if it's the wrong flag or in the wrong place.
     /// </summary>
-    public bool TryPlace(Vector3 position, bool checkDistance)
+    public bool TryPlace(string blockName, Vector3 position, bool checkPosition)
     {
-        if (Complete)
+        if (Complete || blockName != Block)
             return false;
 
-        if (checkDistance && OwnerQuest.GetPositionData(out Vector3 location, Quest.PositionDataTypes.Location))
-        {
-            var offset = new Vector2(position.x - location.x, position.z - location.z);
-            if (offset.magnitude > MaxDistance)
-                return false;
-        }
+        if (checkPosition && !InPlace(position))
+            return false;
 
         OwnerQuest.SetPositionData(Quest.PositionDataTypes.Activate, position);
         CurrentValue = 1;
         Refresh();
         return true;
+    }
+
+    private bool InPlace(Vector3 position)
+    {
+        if (InsidePOI)
+        {
+            if (!OwnerQuest.GetPositionData(out Vector3 poiPosition, Quest.PositionDataTypes.POIPosition))
+                return true;
+            OwnerQuest.GetPositionData(out Vector3 poiSize, Quest.PositionDataTypes.POISize);
+            return position.x >= poiPosition.x && position.x <= poiPosition.x + poiSize.x
+                && position.z >= poiPosition.z && position.z <= poiPosition.z + poiSize.z;
+        }
+
+        if (!OwnerQuest.GetPositionData(out Vector3 location, Quest.PositionDataTypes.Location))
+            return true;
+        return new Vector2(position.x - location.x, position.z - location.z).magnitude <= MaxDistance;
     }
 
     public override void Refresh()
@@ -59,7 +77,9 @@ public class ObjectivePlaceFlagDEM : BaseObjective
     public override void ParseProperties(DynamicProperties properties)
     {
         base.ParseProperties(properties);
+        properties.ParseString("block", ref Block);
         properties.ParseFloat("max_distance", ref MaxDistance);
+        properties.ParseBool("inside_poi", ref InsidePOI);
     }
 
     public override void InternalToParametersDictionary(ref System.Collections.Generic.Dictionary<string, object> parameters)
@@ -71,7 +91,9 @@ public class ObjectivePlaceFlagDEM : BaseObjective
     {
         var objective = new ObjectivePlaceFlagDEM();
         CopyValues(objective);
+        objective.Block = Block;
         objective.MaxDistance = MaxDistance;
+        objective.InsidePOI = InsidePOI;
         return objective;
     }
 }

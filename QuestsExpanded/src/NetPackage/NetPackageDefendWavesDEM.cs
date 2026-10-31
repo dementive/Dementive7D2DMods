@@ -19,15 +19,7 @@ public class NetPackageDefendWavesDEM : NetPackage
     private DefenseSettingsDEM settings;
 
     // Status
-    private int waves;
-
-    private int wavesDone;
-
-    private bool fighting;
-
-    private int zombiesLeft;
-
-    private string messageKey = "";
+    private DefenseStatusDEM status;
 
     public NetPackageDefendWavesDEM SetupJoin(int _questCode, DefenseSettingsDEM _settings)
     {
@@ -44,15 +36,11 @@ public class NetPackageDefendWavesDEM : NetPackage
         return this;
     }
 
-    public NetPackageDefendWavesDEM SetupStatus(int _questCode, int _wavesDone, int _waves, bool _fighting, int _zombiesLeft, string _messageKey)
+    public NetPackageDefendWavesDEM SetupStatus(int _questCode, DefenseStatusDEM _status)
     {
         kind = Kinds.Status;
         questCode = _questCode;
-        wavesDone = _wavesDone;
-        waves = _waves;
-        fighting = _fighting;
-        zombiesLeft = _zombiesLeft;
-        messageKey = _messageKey;
+        status = _status;
         return this;
     }
 
@@ -66,11 +54,7 @@ public class NetPackageDefendWavesDEM : NetPackage
         }
         else if (kind == Kinds.Status)
         {
-            waves = _br.ReadInt32();
-            wavesDone = _br.ReadInt32();
-            fighting = _br.ReadBoolean();
-            zombiesLeft = _br.ReadInt32();
-            messageKey = _br.ReadString();
+            status = DefenseStatusDEM.Read(_br);
         }
     }
 
@@ -85,11 +69,7 @@ public class NetPackageDefendWavesDEM : NetPackage
         }
         else if (kind == Kinds.Status)
         {
-            _bw.Write(waves);
-            _bw.Write(wavesDone);
-            _bw.Write(fighting);
-            _bw.Write(zombiesLeft);
-            _bw.Write(messageKey);
+            status.Write(_bw);
         }
     }
 
@@ -123,6 +103,7 @@ public class NetPackageDefendWavesDEM : NetPackage
 
     /// <summary>
     /// Client side: updates the local player's defense objective for the quest and shows the message, if any.
+    /// Quest code 0 is a message that belongs to no quest (e.g. a contract boss).
     /// </summary>
     public void ApplyStatus(World world)
     {
@@ -132,28 +113,93 @@ public class NetPackageDefendWavesDEM : NetPackage
             return;
         }
 
-        ObjectiveDefendWavesDEM shown = null;
+        ObjectiveDefenseBaseDEM shown = null;
         foreach (Quest quest in player.QuestJournal.quests)
         {
-            if (quest.QuestCode != questCode || quest.CurrentState != Quest.QuestState.InProgress)
+            if (questCode == 0 || quest.QuestCode != questCode || quest.CurrentState != Quest.QuestState.InProgress)
             {
                 continue;
             }
 
             foreach (BaseObjective objective in quest.Objectives)
             {
-                if (objective is ObjectiveDefendWavesDEM defend && defend.Phase == quest.CurrentPhase)
+                if (objective is ObjectiveDefenseBaseDEM defense && defense.Phase == quest.CurrentPhase)
                 {
-                    defend.UpdateStatus(wavesDone, fighting, zombiesLeft);
-                    shown = defend;
+                    shown = defense;
                 }
             }
         }
 
-        if (messageKey != "")
+        // The message first: updating the objective can close the quest
+        if (status.MessageKey != "")
         {
-            string key = shown != null ? shown.TextKey(messageKey) : messageKey;
-            GameManager.ShowTooltip(player, string.Format(Localization.Get(key), wavesDone + 1, waves, (int)WaveDirectorDEM.BreakSeconds));
+            string key = shown != null ? shown.TextKey(status.MessageKey) : status.MessageKey;
+            GameManager.ShowTooltip(player, string.Format(Localization.Get(key),
+                status.WavesDone + 1, status.Waves, status.BreakSeconds, status.MessageValue));
         }
+        shown?.UpdateStatus(status);
+    }
+}
+
+/// <summary>
+/// Where a defense stands, from the server.
+/// </summary>
+public class DefenseStatusDEM
+{
+    public enum Results : byte
+    {
+        None,
+        Won,
+        Lost,
+    }
+
+    public int WavesDone;
+
+    public int Waves;
+
+    public bool Fighting;
+
+    public int ZombiesLeft;
+
+    /// <summary>On-screen message, formatted with {0} = the current (or next) wave, {1} = waves,
+    /// {2} = seconds between waves, {3} = <see cref="MessageValue"/>.</summary>
+    public string MessageKey = "";
+
+    public int MessageValue;
+
+    public int BreakSeconds;
+
+    /// <summary>Outpost: world time of the next attack.</summary>
+    public ulong NextTime;
+
+    public Results Result;
+
+    public void Write(PooledBinaryWriter _bw)
+    {
+        _bw.Write(WavesDone);
+        _bw.Write(Waves);
+        _bw.Write(Fighting);
+        _bw.Write(ZombiesLeft);
+        _bw.Write(MessageKey ?? "");
+        _bw.Write(MessageValue);
+        _bw.Write(BreakSeconds);
+        _bw.Write(NextTime);
+        _bw.Write((byte)Result);
+    }
+
+    public static DefenseStatusDEM Read(PooledBinaryReader _br)
+    {
+        return new DefenseStatusDEM
+        {
+            WavesDone = _br.ReadInt32(),
+            Waves = _br.ReadInt32(),
+            Fighting = _br.ReadBoolean(),
+            ZombiesLeft = _br.ReadInt32(),
+            MessageKey = _br.ReadString(),
+            MessageValue = _br.ReadInt32(),
+            BreakSeconds = _br.ReadInt32(),
+            NextTime = _br.ReadUInt64(),
+            Result = (Results)_br.ReadByte(),
+        };
     }
 }

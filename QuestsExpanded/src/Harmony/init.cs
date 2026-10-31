@@ -9,5 +9,6 @@ public class QuestsExpanded : IModApi
         var harmony = new HarmonyLib.Harmony(GetType().ToString());
         harmony.PatchAll(Assembly.GetExecutingAssembly());
         WaveDirectorDEM.Init();
+        ContractsDEM.Init();
     }
 }

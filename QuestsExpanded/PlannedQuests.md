@@ -8,10 +8,9 @@ New quests should be generated with QuestMaker like the existing ones, with thei
 
 1. **Commission**: built (43 commissions, `QuestMaker/commissions.py`); waiting on an in-game playtest.
 2. **The shared wave system**: built (`WaveDirectorDEM`), with bosses, boss loot bags, themed hordes and map markers.
-3. **Clear and Defend**, **Bounty Hunt** (with its horde variant), **Build and Defend** and **Clear, Build and Defend**: built (33 quests from `QuestMaker/defense.py`); waiting on an in-game playtest.
-4. Still to build: **Last Stand**, **Blood Moon Bounty** and **Create Outpost**.
-5. **Contracts** can be built at any point; they work on top of any quest and don't depend on the new types.
-6. If the new types work out, retire the POI-group quests (see the last section).
+3. **Clear and Defend**, **Bounty Hunt** (with its horde variant), **Build and Defend**, **Clear, Build and Defend**, **Last Stand**, **Blood Moon Bounty** and **Create Outpost**: built (50 quests from `QuestMaker/defense.py`); waiting on an in-game playtest.
+4. **Contracts**: built (`ContractsDEM`, trader dialog and boons from `QuestMaker/config.py`); waiting on an in-game playtest.
+5. If the new types work out, retire the POI-group quests (see the last section). Not done yet: it waits on the playtest.
 
 ## Rules for every new quest type
 
@@ -173,6 +172,16 @@ The finale: clear a POI, fortify it against the clock with a kit from the trader
 
 The trader gives you a building kit and a flag. Clear a POI, plant the flag inside, and hold the outpost for several in-game days against nightly attacks that grow each night.
 
+**Status: built (tiers 2-6), not yet playtested.** How it's built:
+- **Nights to hold:** 2, 3, 3, 4, 5 at tiers 2-6. Each night at 22:00 an attack of 3 waves hits the outpost, at a higher gamestage (+25% per night held) and with more zombies (+20% per night) each night. Waves come from outside the POI like Clear and Defend.
+- **The flag** is the Duke's wall banner (block `questOutpostFlagDEM`, 3x2x1 so it fits indoors; vanilla's flag poles are 20 blocks tall). It has to go inside the POI's footprint. It has 2000 health (a cloth banner has about 50) so one swipe doesn't end a multi-day quest. Picking it up or losing it to the zombies makes the outpost fall.
+- **Warnings** on screen 2 hours, 1 hour and 15 minutes before each attack; the quest log counts down to it.
+- **Presence:** when an attack starts, at least one player sharing the quest has to be within the POI's area (plus 20m). Zombies go for the players at the outpost; with nobody there, they go for the banner.
+- **Co-op (decision to check):** the outpost is shared. It only falls if *nobody* sharing it is there when an attack comes, and everyone sharing it gets the reward when it holds. A member who was offline when it fell or held finds out when they log in.
+- **Persistence:** the server keeps each outpost's progress in the world's save folder (`QuestsExpanded/outposts.dat`), so it survives logouts and restarts. An attack nobody was online for counts as missed, and the outpost falls. Everyone logging out in the middle of an attack also loses the outpost.
+- **Vanilla quirks handled:** vanilla fails a POI quest when the player dies and when a party member logs back in mid-quest. Once the banner is up the outpost is no longer treated as an active POI quest, so dying or logging out during the days doesn't fail it.
+- **Kit:** the Build and Defend kit of the tier plus the banner. **Rewards:** fetch-and-clear rewards plus 50%.
+
 - **Tiers:** 2-6. **Days to hold:** 2 at tier 2, rising to 5 at tier 6 (exact split to tune).
 - **POIs:** any POI of the quest's tier that supports clear quests.
 - **Kit:** given on accept, like the other build quests. It includes the flag.
@@ -188,6 +197,13 @@ The trader gives you a building kit and a flag. Clear a POI, plant the flag insi
 
 Endless waves at a site, each harder than the last. After every wave you choose: leave with the reward built up so far, or stay for one more wave and a bigger payout. Dying loses everything.
 
+**Status: built (tiers 1-6), not yet playtested.** How it's built:
+- Kit (the Build and Defend kit of the tier, tier 6 too) and White River flag on accept; site 350-600m from the trader; plant the flag; 5-minute build; then the stand.
+- **Waves:** sized by the defense spawner, each at 15% higher gamestage and 10% bigger than the last, with no cap. A boss joins every 5th wave (tier 1 uses the tier 2 bosses). The first wave's gamestage is 0.8x at tier 1 rising to 1.3x at tier 6. 30-second breaks.
+- **Leaving:** more than 50m from the flag counts as leaving. During a break it banks the waves held; during a wave it's fleeing and fails the quest; before the first wave it fails the quest. Dying fails it.
+- **Pay:** a new reward type (`RewardLastStandDEM`): experience and dukes for every wave banked, each wave paying 25% more than the one before. The first wave pays the tier's clear rewards / 5.5, so 4 waves pay about one clear quest. The tier's usual loot picks are offered on top (every vanilla quest has loot picks, and the turn-in window expects them).
+- **Co-op:** everyone fights the same waves; each player banks for themselves and only waves they were there for count.
+
 - Push-your-luck inside a single fight, where Contracts does it across several quests.
 - **Site:** a random spot almost anywhere (wilderness, town, next to a POI), with the same distance rules as vanilla quests.
 - **Build phase:** 5 minutes with a kit, like the other build quests.
@@ -200,6 +216,11 @@ Endless waves at a site, each harder than the last. After every wave you choose:
 
 A bounty for the next horde night, fought wherever you are (normally your own base). Bosses show up during the night; at higher tiers it becomes waves of bosses, each harder than the last.
 
+**Status: built (tiers 1-6), not yet playtested.** How it's built:
+- **Offered** only from 2 days before a blood moon until it starts (a check when traders build their quest list), at most one per trader. A trader's list lasts until it refreshes, so a bounty picked up after the blood moon simply waits for the next one.
+- **Bosses:** when the blood moon starts, the first wave spawns 25-40m from the players; later waves come one in-game hour apart. Tier 1: one tier 2 boss. Tier 2: one tier 3 boss. Tier 3: two tier 3 bosses. Tier 4: three tier 4 bosses. Tier 5: five waves of two (boss tiers 3, 4, 4, 5, 5). Tier 6: six waves of two (4, 4, 5, 5, 6, 6). Bigger parties get more bosses. A boss that unloads or gets lost comes back near the players.
+- **Rewards:** the mod's clear rewards for the tier, plus the boss bags.
+
 - Gives the blood moon a goal and a payoff on top of surviving it.
 - **Offered:** only in the 2 days before a blood moon, at most one per trader. No location; it happens wherever you are when the horde night starts.
 - **Bosses by tier:** 1 boss at tiers 1-2; 2-3 bosses at tiers 3-4; at tiers 5-6 a wave of bosses roughly every hour through the night, each harder than the last. Bosses are tougher versions of their zombie types (like Bounty Hunt) and each drops a boss loot bag.
@@ -209,6 +230,15 @@ A bounty for the next horde night, fought wherever you are (normally your own ba
 ## Contracts
 
 An optional layer on top of every quest, vanilla ones included. Start a contract at a trader, and the quests you do next become a run of up to 5 stages where you gamble your rewards forward for a bigger payout. Inspired by the "gamble forward" and pick-one-of-three loop of roguelike games such as Orcs Must Die! Deathtrap.
+
+**Status: built, not yet playtested.** How it's built:
+- **Trader dialog:** "Got any contracts?" in every trader's menu, with options to start one, check on it (stage and pot), pick a boon and cash out.
+- **The pot:** while a contract runs, a completed quest's experience, dukes and items (including the loot pick) go into the pot instead of to the player. Cashing out pays the pot with its experience and dukes grown by 15% per stage done (stage 1: 115%, stage 5: 175%); items are paid as they are.
+- **Escalation:** +10% gamestage per stage done (a buff on the player, `buffDementiveContract`).
+- **Boons** (buffs, picked from three random ones after every stage; config in `QuestMaker/config.py`): Deadeye (+15% damage), Bloodthirst (kills heal 10), Second Wind (stamina regenerates 50% faster), Scavenger (+15% loot stage), Ironhide (+10 armor), Fleet Foot (+10% speed), Regeneration (slow healing), and three deals: Glass Cannon (+30% damage, -20% max health), Adrenaline Junkie (+20% run speed and faster stamina, -15 armor), Juggernaut (+25% max health and +15 armor, -15% run speed). "Survive one lethal hit" was left out: it would need a damage hook in C#.
+- **Stage 5 boss:** 3-8 minutes into the player's quest on the last stage, a boss spawns 30-45m away (never in a trader's area) and hunts them: a boss buff plus double health and +25% damage, picked by the player's gamestage. It drops a boss bag. If the player logs out it leaves, and comes back later.
+- **Losing:** dying, or a quest failing or being abandoned, ends the contract and the pot is lost.
+- **State:** the server keeps every player's contract in the world's save folder (`QuestsExpanded/contracts.dat`) and sends each client theirs.
 
 - **Starting:** a trader dialog option. Players who never start a contract see no change.
 - **Picking quests:** you pick each quest from the trader's normal quest list, exactly as usual. Any quest type counts.

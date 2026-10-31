@@ -38,6 +38,13 @@
 				<property name="added_item_counts" value="1,30,30,12,12,1,300"/>
 			</action>
 		</action_sequence>
+		<action_sequence name="DementiveBuildKitT6">
+			<property name="allow_user_trigger" value="false"/>
+			<action class="AddItems">
+				<property name="added_items" value="questFlagDEM,concreteShapes:VariantHelper,steelShapes:VariantHelper,trapSpikesIronDmg0,barbedFence,gunBotT2JunkTurret,ammoJunkTurretRegular"/>
+				<property name="added_item_counts" value="1,40,40,16,16,1,400"/>
+			</action>
+		</action_sequence>
 		<action_sequence name="DementiveFortifyKitT3">
 			<property name="allow_user_trigger" value="false"/>
 			<action class="AddItems">
@@ -64,6 +71,41 @@
 			<action class="AddItems">
 				<property name="added_items" value="concreteShapes:VariantHelper,steelShapes:VariantHelper,trapSpikesIronDmg0,barbedFence,gunBotT2JunkTurret,ammoJunkTurretRegular"/>
 				<property name="added_item_counts" value="40,40,16,16,1,400"/>
+			</action>
+		</action_sequence>
+		<action_sequence name="DementiveOutpostKitT2">
+			<property name="allow_user_trigger" value="false"/>
+			<action class="AddItems">
+				<property name="added_items" value="questOutpostFlagDEM,frameShapes:VariantHelper,cobblestoneShapes:VariantHelper,trapSpikesWoodDmg0,ironBars,barbedFence"/>
+				<property name="added_item_counts" value="1,30,30,8,6,8"/>
+			</action>
+		</action_sequence>
+		<action_sequence name="DementiveOutpostKitT3">
+			<property name="allow_user_trigger" value="false"/>
+			<action class="AddItems">
+				<property name="added_items" value="questOutpostFlagDEM,cobblestoneShapes:VariantHelper,concreteShapes:VariantHelper,trapSpikesIronDmg0,ironBars,barbedFence"/>
+				<property name="added_item_counts" value="1,20,30,10,8,10"/>
+			</action>
+		</action_sequence>
+		<action_sequence name="DementiveOutpostKitT4">
+			<property name="allow_user_trigger" value="false"/>
+			<action class="AddItems">
+				<property name="added_items" value="questOutpostFlagDEM,concreteShapes:VariantHelper,trapSpikesIronDmg0,ironBars,barbedFence"/>
+				<property name="added_item_counts" value="1,50,12,10,12"/>
+			</action>
+		</action_sequence>
+		<action_sequence name="DementiveOutpostKitT5">
+			<property name="allow_user_trigger" value="false"/>
+			<action class="AddItems">
+				<property name="added_items" value="questOutpostFlagDEM,concreteShapes:VariantHelper,steelShapes:VariantHelper,trapSpikesIronDmg0,barbedFence,gunBotT2JunkTurret,ammoJunkTurretRegular"/>
+				<property name="added_item_counts" value="1,30,30,12,12,1,300"/>
+			</action>
+		</action_sequence>
+		<action_sequence name="DementiveOutpostKitT6">
+			<property name="allow_user_trigger" value="false"/>
+			<action class="AddItems">
+				<property name="added_items" value="questOutpostFlagDEM,concreteShapes:VariantHelper,steelShapes:VariantHelper,trapSpikesIronDmg0,barbedFence,gunBotT2JunkTurret,ammoJunkTurretRegular"/>
+				<property name="added_item_counts" value="1,40,40,16,16,1,400"/>
 			</action>
 		</action_sequence>
 	</append>

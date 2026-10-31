@@ -14651,6 +14651,1011 @@
 			<reward type="LootItem" id="groupQuestSteel02" ischosen="true"/>
 			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
 		</quest>
+
+		<quest id="defense_t1_last_stand">
+			<property name="name_key" value="defense_t1_last_stand_name"/>
+			<property name="subtitle_key" value="defense_last_stand_subtitle"/>
+			<property name="description_key" value="defense_last_stand_description"/>
+			<property name="offer_key" value="defense_last_stand_offer"/>
+			<property name="statement_key" value="defense_last_stand_statement"/>
+			<property name="response_key" value="defense_last_stand_response"/>
+			<property name="completion_key" value="defense_last_stand_completion"/>
+			<property name="icon" value="ui_game_symbol_hard_target"/>
+			<property name="category_key" value="quest"/>
+			<property name="difficulty_tier" value="1"/>
+			<property name="repeatable" value="true"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5"/>
+			<property name="completiontype" value="TurnIn"/>
+
+			<action type="GameEvent" id="DementiveBuildKitT1" phase="1"/>
+			<objective type="RandomGotoNPC">
+				<property name="phase" value="1"/>
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="350-600"/>
+				<property name="nav_object" value="quest"/>
+			</objective>
+			<objective type="PlaceFlagDEM, QuestsExpanded">
+				<property name="phase" value="2"/>
+				<property name="max_distance" value="30"/>
+			</objective>
+			<objective type="BuildPhaseDEM, QuestsExpanded">
+				<property name="phase" value="3"/>
+				<property name="time" value="300"/>
+			</objective>
+			<objective type="LastStandDEM, QuestsExpanded">
+				<property name="phase" value="4"/>
+				<property name="radius" value="12"/>
+				<property name="leave_distance" value="50"/>
+				<property name="break" value="30"/>
+				<property name="boss_every" value="5"/>
+				<property name="bosses" value="zombieBiker,zombieFatCop"/>
+				<property name="strength" value="0.8"/>
+				<property name="text" value="laststand"/>
+			</objective>
+			<objective type="ReturnToNPC">
+				<property name="phase" value="5"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="5"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+
+			<reward type="LastStandDEM, QuestsExpanded" value="545,145"/>
+
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+			<reward type="LootItem" id="groupQuestResourcesT0" ischosen="true" value="1"/>
+			<reward type="LootItem" id="groupQuestAmmo,groupQuestResourcesT0,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+		</quest>
+
+		<quest id="defense_t2_last_stand">
+			<property name="name_key" value="defense_t2_last_stand_name"/>
+			<property name="subtitle_key" value="defense_last_stand_subtitle"/>
+			<property name="description_key" value="defense_last_stand_description"/>
+			<property name="offer_key" value="defense_last_stand_offer"/>
+			<property name="statement_key" value="defense_last_stand_statement"/>
+			<property name="response_key" value="defense_last_stand_response"/>
+			<property name="completion_key" value="defense_last_stand_completion"/>
+			<property name="icon" value="ui_game_symbol_hard_target"/>
+			<property name="category_key" value="quest"/>
+			<property name="difficulty_tier" value="2"/>
+			<property name="repeatable" value="true"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5"/>
+			<property name="completiontype" value="TurnIn"/>
+
+			<action type="GameEvent" id="DementiveBuildKitT2" phase="1"/>
+			<objective type="RandomGotoNPC">
+				<property name="phase" value="1"/>
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="350-600"/>
+				<property name="nav_object" value="quest"/>
+			</objective>
+			<objective type="PlaceFlagDEM, QuestsExpanded">
+				<property name="phase" value="2"/>
+				<property name="max_distance" value="30"/>
+			</objective>
+			<objective type="BuildPhaseDEM, QuestsExpanded">
+				<property name="phase" value="3"/>
+				<property name="time" value="300"/>
+			</objective>
+			<objective type="LastStandDEM, QuestsExpanded">
+				<property name="phase" value="4"/>
+				<property name="radius" value="12"/>
+				<property name="leave_distance" value="50"/>
+				<property name="break" value="30"/>
+				<property name="boss_every" value="5"/>
+				<property name="bosses" value="zombieBiker,zombieFatCop"/>
+				<property name="strength" value="0.9"/>
+				<property name="text" value="laststand"/>
+			</objective>
+			<objective type="ReturnToNPC">
+				<property name="phase" value="5"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="5"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+
+			<reward type="LastStandDEM, QuestsExpanded" value="820,245"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		</quest>
+
+		<quest id="defense_t3_last_stand">
+			<property name="name_key" value="defense_t3_last_stand_name"/>
+			<property name="subtitle_key" value="defense_last_stand_subtitle"/>
+			<property name="description_key" value="defense_last_stand_description"/>
+			<property name="offer_key" value="defense_last_stand_offer"/>
+			<property name="statement_key" value="defense_last_stand_statement"/>
+			<property name="response_key" value="defense_last_stand_response"/>
+			<property name="completion_key" value="defense_last_stand_completion"/>
+			<property name="icon" value="ui_game_symbol_hard_target"/>
+			<property name="category_key" value="quest"/>
+			<property name="difficulty_tier" value="3"/>
+			<property name="repeatable" value="true"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5"/>
+			<property name="completiontype" value="TurnIn"/>
+
+			<action type="GameEvent" id="DementiveBuildKitT3" phase="1"/>
+			<objective type="RandomGotoNPC">
+				<property name="phase" value="1"/>
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="350-600"/>
+				<property name="nav_object" value="quest"/>
+			</objective>
+			<objective type="PlaceFlagDEM, QuestsExpanded">
+				<property name="phase" value="2"/>
+				<property name="max_distance" value="30"/>
+			</objective>
+			<objective type="BuildPhaseDEM, QuestsExpanded">
+				<property name="phase" value="3"/>
+				<property name="time" value="300"/>
+			</objective>
+			<objective type="LastStandDEM, QuestsExpanded">
+				<property name="phase" value="4"/>
+				<property name="radius" value="12"/>
+				<property name="leave_distance" value="50"/>
+				<property name="break" value="30"/>
+				<property name="boss_every" value="5"/>
+				<property name="bosses" value="zombieWightFeral,zombieDemolition"/>
+				<property name="strength" value="1.0"/>
+				<property name="text" value="laststand"/>
+			</objective>
+			<objective type="ReturnToNPC">
+				<property name="phase" value="5"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="5"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+
+			<reward type="LastStandDEM, QuestsExpanded" value="1090,325"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		</quest>
+
+		<quest id="defense_t4_last_stand">
+			<property name="name_key" value="defense_t4_last_stand_name"/>
+			<property name="subtitle_key" value="defense_last_stand_subtitle"/>
+			<property name="description_key" value="defense_last_stand_description"/>
+			<property name="offer_key" value="defense_last_stand_offer"/>
+			<property name="statement_key" value="defense_last_stand_statement"/>
+			<property name="response_key" value="defense_last_stand_response"/>
+			<property name="completion_key" value="defense_last_stand_completion"/>
+			<property name="icon" value="ui_game_symbol_hard_target"/>
+			<property name="category_key" value="quest"/>
+			<property name="difficulty_tier" value="4"/>
+			<property name="repeatable" value="true"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5"/>
+			<property name="completiontype" value="TurnIn"/>
+
+			<action type="GameEvent" id="DementiveBuildKitT4" phase="1"/>
+			<objective type="RandomGotoNPC">
+				<property name="phase" value="1"/>
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="350-600"/>
+				<property name="nav_object" value="quest"/>
+			</objective>
+			<objective type="PlaceFlagDEM, QuestsExpanded">
+				<property name="phase" value="2"/>
+				<property name="max_distance" value="30"/>
+			</objective>
+			<objective type="BuildPhaseDEM, QuestsExpanded">
+				<property name="phase" value="3"/>
+				<property name="time" value="300"/>
+			</objective>
+			<objective type="LastStandDEM, QuestsExpanded">
+				<property name="phase" value="4"/>
+				<property name="radius" value="12"/>
+				<property name="leave_distance" value="50"/>
+				<property name="break" value="30"/>
+				<property name="boss_every" value="5"/>
+				<property name="bosses" value="zombieMutatedRadiated,zombieScreamerRadiated"/>
+				<property name="strength" value="1.1"/>
+				<property name="text" value="laststand"/>
+			</objective>
+			<objective type="ReturnToNPC">
+				<property name="phase" value="5"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="5"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+
+			<reward type="LastStandDEM, QuestsExpanded" value="1365,370"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		</quest>
+
+		<quest id="defense_t5_last_stand">
+			<property name="name_key" value="defense_t5_last_stand_name"/>
+			<property name="subtitle_key" value="defense_last_stand_subtitle"/>
+			<property name="description_key" value="defense_last_stand_description"/>
+			<property name="offer_key" value="defense_last_stand_offer"/>
+			<property name="statement_key" value="defense_last_stand_statement"/>
+			<property name="response_key" value="defense_last_stand_response"/>
+			<property name="completion_key" value="defense_last_stand_completion"/>
+			<property name="icon" value="ui_game_symbol_hard_target"/>
+			<property name="category_key" value="quest"/>
+			<property name="difficulty_tier" value="5"/>
+			<property name="repeatable" value="true"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5"/>
+			<property name="completiontype" value="TurnIn"/>
+
+			<action type="GameEvent" id="DementiveBuildKitT5" phase="1"/>
+			<objective type="RandomGotoNPC">
+				<property name="phase" value="1"/>
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="350-600"/>
+				<property name="nav_object" value="quest"/>
+			</objective>
+			<objective type="PlaceFlagDEM, QuestsExpanded">
+				<property name="phase" value="2"/>
+				<property name="max_distance" value="30"/>
+			</objective>
+			<objective type="BuildPhaseDEM, QuestsExpanded">
+				<property name="phase" value="3"/>
+				<property name="time" value="300"/>
+			</objective>
+			<objective type="LastStandDEM, QuestsExpanded">
+				<property name="phase" value="4"/>
+				<property name="radius" value="12"/>
+				<property name="leave_distance" value="50"/>
+				<property name="break" value="30"/>
+				<property name="boss_every" value="5"/>
+				<property name="bosses" value="zombieWightCharged,zombieMutatedCharged,zombieSpiderCharged,zombieUtilityWorkerCharged"/>
+				<property name="strength" value="1.2"/>
+				<property name="text" value="laststand"/>
+			</objective>
+			<objective type="ReturnToNPC">
+				<property name="phase" value="5"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="5"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+
+			<reward type="LastStandDEM, QuestsExpanded" value="2725,740"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestSteel02" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		</quest>
+
+		<quest id="defense_t6_last_stand">
+			<property name="name_key" value="defense_t6_last_stand_name"/>
+			<property name="subtitle_key" value="defense_last_stand_subtitle"/>
+			<property name="description_key" value="defense_last_stand_description"/>
+			<property name="offer_key" value="defense_last_stand_offer"/>
+			<property name="statement_key" value="defense_last_stand_statement"/>
+			<property name="response_key" value="defense_last_stand_response"/>
+			<property name="completion_key" value="defense_last_stand_completion"/>
+			<property name="icon" value="ui_game_symbol_hard_target"/>
+			<property name="category_key" value="quest"/>
+			<property name="difficulty_tier" value="6"/>
+			<property name="repeatable" value="true"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5"/>
+			<property name="completiontype" value="TurnIn"/>
+
+			<action type="GameEvent" id="DementiveBuildKitT6" phase="1"/>
+			<objective type="RandomGotoNPC">
+				<property name="phase" value="1"/>
+				<property name="completion_distance" value="20"/>
+				<property name="distance" value="350-600"/>
+				<property name="nav_object" value="quest"/>
+			</objective>
+			<objective type="PlaceFlagDEM, QuestsExpanded">
+				<property name="phase" value="2"/>
+				<property name="max_distance" value="30"/>
+			</objective>
+			<objective type="BuildPhaseDEM, QuestsExpanded">
+				<property name="phase" value="3"/>
+				<property name="time" value="300"/>
+			</objective>
+			<objective type="LastStandDEM, QuestsExpanded">
+				<property name="phase" value="4"/>
+				<property name="radius" value="12"/>
+				<property name="leave_distance" value="50"/>
+				<property name="break" value="30"/>
+				<property name="boss_every" value="5"/>
+				<property name="bosses" value="zombieBikerInfernal,zombieFatCopInfernal,zombieWightInfernal,zombieMutatedInfernal,zombieSoldierInfernal"/>
+				<property name="strength" value="1.3"/>
+				<property name="text" value="laststand"/>
+			</objective>
+			<objective type="ReturnToNPC">
+				<property name="phase" value="5"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="5"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+
+			<reward type="LastStandDEM, QuestsExpanded" value="4365,1310"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestSteel02" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		</quest>
+
+		<quest id="defense_t1_blood_moon_bounty">
+			<property name="name_key" value="defense_t1_blood_moon_bounty_name"/>
+			<property name="subtitle_key" value="defense_blood_moon_bounty_subtitle"/>
+			<property name="description_key" value="defense_blood_moon_bounty_description"/>
+			<property name="offer_key" value="defense_blood_moon_bounty_offer"/>
+			<property name="statement_key" value="defense_blood_moon_bounty_statement"/>
+			<property name="response_key" value="defense_blood_moon_bounty_response"/>
+			<property name="completion_key" value="defense_blood_moon_bounty_completion"/>
+			<property name="icon" value="ui_game_symbol_7th_curse"/>
+			<property name="unique_key" value="bloodmoonbounty"/>
+			<property name="category_key" value="quest"/>
+			<property name="difficulty_tier" value="1"/>
+			<property name="repeatable" value="true"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5"/>
+			<property name="completiontype" value="TurnIn"/>
+
+			<objective type="BloodMoonBountyDEM, QuestsExpanded">
+				<property name="phase" value="1"/>
+				<property name="bosses" value="zombieBiker,zombieFatCop"/>
+				<property name="count" value="1"/>
+			</objective>
+			<objective type="ReturnToNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+
+			<reward type="Exp" value="3000"/>
+			<reward type="Item" id="casinoCoin" value="800"/>
+
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="1"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="1"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="1"/>
+			<reward type="LootItem" id="groupQuestResourcesT0" ischosen="true" value="1"/>
+			<reward type="LootItem" id="groupQuestAmmo,groupQuestResourcesT0,groupQuestMods,groupQuestT1SkillMagazineBundle" ischosen="true" value="1"/>
+		</quest>
+
+		<quest id="defense_t2_blood_moon_bounty">
+			<property name="name_key" value="defense_t2_blood_moon_bounty_name"/>
+			<property name="subtitle_key" value="defense_blood_moon_bounty_subtitle"/>
+			<property name="description_key" value="defense_blood_moon_bounty_description"/>
+			<property name="offer_key" value="defense_blood_moon_bounty_offer"/>
+			<property name="statement_key" value="defense_blood_moon_bounty_statement"/>
+			<property name="response_key" value="defense_blood_moon_bounty_response"/>
+			<property name="completion_key" value="defense_blood_moon_bounty_completion"/>
+			<property name="icon" value="ui_game_symbol_7th_curse"/>
+			<property name="unique_key" value="bloodmoonbounty"/>
+			<property name="category_key" value="quest"/>
+			<property name="difficulty_tier" value="2"/>
+			<property name="repeatable" value="true"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5"/>
+			<property name="completiontype" value="TurnIn"/>
+
+			<objective type="BloodMoonBountyDEM, QuestsExpanded">
+				<property name="phase" value="1"/>
+				<property name="bosses" value="zombieWightFeral,zombieDemolition"/>
+				<property name="count" value="1"/>
+			</objective>
+			<objective type="ReturnToNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+
+			<reward type="Exp" value="4500"/>
+			<reward type="Item" id="casinoCoin" value="1350"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		</quest>
+
+		<quest id="defense_t3_blood_moon_bounty">
+			<property name="name_key" value="defense_t3_blood_moon_bounty_name"/>
+			<property name="subtitle_key" value="defense_blood_moon_bounty_subtitle"/>
+			<property name="description_key" value="defense_blood_moon_bounty_description"/>
+			<property name="offer_key" value="defense_blood_moon_bounty_offer"/>
+			<property name="statement_key" value="defense_blood_moon_bounty_statement"/>
+			<property name="response_key" value="defense_blood_moon_bounty_response"/>
+			<property name="completion_key" value="defense_blood_moon_bounty_completion"/>
+			<property name="icon" value="ui_game_symbol_7th_curse"/>
+			<property name="unique_key" value="bloodmoonbounty"/>
+			<property name="category_key" value="quest"/>
+			<property name="difficulty_tier" value="3"/>
+			<property name="repeatable" value="true"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5"/>
+			<property name="completiontype" value="TurnIn"/>
+
+			<objective type="BloodMoonBountyDEM, QuestsExpanded">
+				<property name="phase" value="1"/>
+				<property name="bosses" value="zombieWightFeral,zombieDemolition"/>
+				<property name="count" value="2"/>
+			</objective>
+			<objective type="ReturnToNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+
+			<reward type="Exp" value="6000"/>
+			<reward type="Item" id="casinoCoin" value="1800"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		</quest>
+
+		<quest id="defense_t4_blood_moon_bounty">
+			<property name="name_key" value="defense_t4_blood_moon_bounty_name"/>
+			<property name="subtitle_key" value="defense_blood_moon_bounty_subtitle"/>
+			<property name="description_key" value="defense_blood_moon_bounty_description"/>
+			<property name="offer_key" value="defense_blood_moon_bounty_offer"/>
+			<property name="statement_key" value="defense_blood_moon_bounty_statement"/>
+			<property name="response_key" value="defense_blood_moon_bounty_response"/>
+			<property name="completion_key" value="defense_blood_moon_bounty_completion"/>
+			<property name="icon" value="ui_game_symbol_7th_curse"/>
+			<property name="unique_key" value="bloodmoonbounty"/>
+			<property name="category_key" value="quest"/>
+			<property name="difficulty_tier" value="4"/>
+			<property name="repeatable" value="true"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5"/>
+			<property name="completiontype" value="TurnIn"/>
+
+			<objective type="BloodMoonBountyDEM, QuestsExpanded">
+				<property name="phase" value="1"/>
+				<property name="bosses" value="zombieMutatedRadiated,zombieScreamerRadiated"/>
+				<property name="count" value="3"/>
+			</objective>
+			<objective type="ReturnToNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+
+			<reward type="Exp" value="7500"/>
+			<reward type="Item" id="casinoCoin" value="2050"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		</quest>
+
+		<quest id="defense_t5_blood_moon_bounty">
+			<property name="name_key" value="defense_t5_blood_moon_bounty_name"/>
+			<property name="subtitle_key" value="defense_blood_moon_bounty_subtitle"/>
+			<property name="description_key" value="defense_blood_moon_bounty_description"/>
+			<property name="offer_key" value="defense_blood_moon_bounty_offer"/>
+			<property name="statement_key" value="defense_blood_moon_bounty_statement"/>
+			<property name="response_key" value="defense_blood_moon_bounty_response"/>
+			<property name="completion_key" value="defense_blood_moon_bounty_completion"/>
+			<property name="icon" value="ui_game_symbol_7th_curse"/>
+			<property name="unique_key" value="bloodmoonbounty"/>
+			<property name="category_key" value="quest"/>
+			<property name="difficulty_tier" value="5"/>
+			<property name="repeatable" value="true"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5"/>
+			<property name="completiontype" value="TurnIn"/>
+
+			<objective type="BloodMoonBountyDEM, QuestsExpanded">
+				<property name="phase" value="1"/>
+				<property name="bosses" value="zombieWightFeral,zombieDemolition;zombieMutatedRadiated,zombieScreamerRadiated;zombieMutatedRadiated,zombieScreamerRadiated;zombieWightCharged,zombieMutatedCharged,zombieSpiderCharged,zombieUtilityWorkerCharged;zombieWightCharged,zombieMutatedCharged,zombieSpiderCharged,zombieUtilityWorkerCharged"/>
+				<property name="count" value="2"/>
+			</objective>
+			<objective type="ReturnToNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+
+			<reward type="Exp" value="15000"/>
+			<reward type="Item" id="casinoCoin" value="4100"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestSteel02" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		</quest>
+
+		<quest id="defense_t6_blood_moon_bounty">
+			<property name="name_key" value="defense_t6_blood_moon_bounty_name"/>
+			<property name="subtitle_key" value="defense_blood_moon_bounty_subtitle"/>
+			<property name="description_key" value="defense_blood_moon_bounty_description"/>
+			<property name="offer_key" value="defense_blood_moon_bounty_offer"/>
+			<property name="statement_key" value="defense_blood_moon_bounty_statement"/>
+			<property name="response_key" value="defense_blood_moon_bounty_response"/>
+			<property name="completion_key" value="defense_blood_moon_bounty_completion"/>
+			<property name="icon" value="ui_game_symbol_7th_curse"/>
+			<property name="unique_key" value="bloodmoonbounty"/>
+			<property name="category_key" value="quest"/>
+			<property name="difficulty_tier" value="6"/>
+			<property name="repeatable" value="true"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5"/>
+			<property name="completiontype" value="TurnIn"/>
+
+			<objective type="BloodMoonBountyDEM, QuestsExpanded">
+				<property name="phase" value="1"/>
+				<property name="bosses" value="zombieMutatedRadiated,zombieScreamerRadiated;zombieMutatedRadiated,zombieScreamerRadiated;zombieWightCharged,zombieMutatedCharged,zombieSpiderCharged,zombieUtilityWorkerCharged;zombieWightCharged,zombieMutatedCharged,zombieSpiderCharged,zombieUtilityWorkerCharged;zombieBikerInfernal,zombieFatCopInfernal,zombieWightInfernal,zombieMutatedInfernal,zombieSoldierInfernal;zombieBikerInfernal,zombieFatCopInfernal,zombieWightInfernal,zombieMutatedInfernal,zombieSoldierInfernal"/>
+				<property name="count" value="2"/>
+			</objective>
+			<objective type="ReturnToNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+
+			<reward type="Exp" value="24000"/>
+			<reward type="Item" id="casinoCoin" value="7200"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestSteel02" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		</quest>
+
+		<quest id="defense_t2_outpost">
+			<property name="name_key" value="defense_t2_outpost_name"/>
+			<property name="subtitle_key" value="defense_outpost_subtitle"/>
+			<property name="description_key" value="defense_outpost_description"/>
+			<property name="offer_key" value="defense_outpost_offer"/>
+			<property name="statement_key" value="defense_outpost_statement"/>
+			<property name="response_key" value="defense_outpost_response"/>
+			<property name="completion_key" value="defense_outpost_completion"/>
+			<property name="icon" value="ui_game_symbol_map_fortress"/>
+			<property name="category_key" value="quest"/>
+			<property name="difficulty_tier" value="2"/>
+			<property name="repeatable" value="true"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5"/>
+			<property name="completiontype" value="TurnIn"/>
+			<property name="login_rally_reset" value="true"/>
+			<property name="filter_tags" value="poi"/>
+
+			<action type="GameEvent" id="DementiveOutpostKitT2" phase="1"/>
+			<objective type="RandomPOIGoto">
+				<property name="phase" value="1"/>
+				<property name="biome_filter_type" value="SameBiome"/>
+				<property name="biome_filter" value=""/>
+				<property name="nav_object" value="quest"/>
+				<property name="poi_tier" value="2"/>
+			</objective>
+			<objective type="RallyPoint">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally"/>
+				<property name="rally_marker_type" value="questRallyMarkerClear"/>
+			</objective>
+			<objective type="ClearSleepers">
+				<property name="phase" value="3"/>
+				<property name="nav_object" value="sleeper_volume"/>
+			</objective>
+			<objective type="POIStayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="25"/>
+			</objective>
+			<objective type="PlaceFlagDEM, QuestsExpanded">
+				<property name="phase" value="4"/>
+				<property name="block" value="questOutpostFlagDEM"/>
+				<property name="inside_poi" value="true"/>
+			</objective>
+			<objective type="OutpostDEM, QuestsExpanded">
+				<property name="phase" value="5"/>
+				<property name="nights" value="2"/>
+				<property name="attack_hour" value="22"/>
+				<property name="attack_waves" value="3"/>
+			</objective>
+			<action type="UnlockPOI">
+				<property name="phase" value="6"/>
+			</action>
+			<objective type="ReturnToNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+
+			<reward type="Exp" value="7600"/>
+			<reward type="Item" id="casinoCoin" value="2100"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="2"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		</quest>
+
+		<quest id="defense_t3_outpost">
+			<property name="name_key" value="defense_t3_outpost_name"/>
+			<property name="subtitle_key" value="defense_outpost_subtitle"/>
+			<property name="description_key" value="defense_outpost_description"/>
+			<property name="offer_key" value="defense_outpost_offer"/>
+			<property name="statement_key" value="defense_outpost_statement"/>
+			<property name="response_key" value="defense_outpost_response"/>
+			<property name="completion_key" value="defense_outpost_completion"/>
+			<property name="icon" value="ui_game_symbol_map_fortress"/>
+			<property name="category_key" value="quest"/>
+			<property name="difficulty_tier" value="3"/>
+			<property name="repeatable" value="true"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5"/>
+			<property name="completiontype" value="TurnIn"/>
+			<property name="login_rally_reset" value="true"/>
+			<property name="filter_tags" value="poi"/>
+
+			<action type="GameEvent" id="DementiveOutpostKitT3" phase="1"/>
+			<objective type="RandomPOIGoto">
+				<property name="phase" value="1"/>
+				<property name="biome_filter_type" value="SameBiome"/>
+				<property name="biome_filter" value=""/>
+				<property name="nav_object" value="quest"/>
+				<property name="poi_tier" value="3"/>
+			</objective>
+			<objective type="RallyPoint">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally"/>
+				<property name="rally_marker_type" value="questRallyMarkerClear"/>
+			</objective>
+			<objective type="ClearSleepers">
+				<property name="phase" value="3"/>
+				<property name="nav_object" value="sleeper_volume"/>
+			</objective>
+			<objective type="POIStayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="25"/>
+			</objective>
+			<objective type="PlaceFlagDEM, QuestsExpanded">
+				<property name="phase" value="4"/>
+				<property name="block" value="questOutpostFlagDEM"/>
+				<property name="inside_poi" value="true"/>
+			</objective>
+			<objective type="OutpostDEM, QuestsExpanded">
+				<property name="phase" value="5"/>
+				<property name="nights" value="3"/>
+				<property name="attack_hour" value="22"/>
+				<property name="attack_waves" value="3"/>
+			</objective>
+			<action type="UnlockPOI">
+				<property name="phase" value="6"/>
+			</action>
+			<objective type="ReturnToNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+
+			<reward type="Exp" value="10100"/>
+			<reward type="Item" id="casinoCoin" value="3000"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="3"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		</quest>
+
+		<quest id="defense_t4_outpost">
+			<property name="name_key" value="defense_t4_outpost_name"/>
+			<property name="subtitle_key" value="defense_outpost_subtitle"/>
+			<property name="description_key" value="defense_outpost_description"/>
+			<property name="offer_key" value="defense_outpost_offer"/>
+			<property name="statement_key" value="defense_outpost_statement"/>
+			<property name="response_key" value="defense_outpost_response"/>
+			<property name="completion_key" value="defense_outpost_completion"/>
+			<property name="icon" value="ui_game_symbol_map_fortress"/>
+			<property name="category_key" value="quest"/>
+			<property name="difficulty_tier" value="4"/>
+			<property name="repeatable" value="true"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5"/>
+			<property name="completiontype" value="TurnIn"/>
+			<property name="login_rally_reset" value="true"/>
+			<property name="filter_tags" value="poi"/>
+
+			<action type="GameEvent" id="DementiveOutpostKitT4" phase="1"/>
+			<objective type="RandomPOIGoto">
+				<property name="phase" value="1"/>
+				<property name="biome_filter_type" value="SameBiome"/>
+				<property name="biome_filter" value=""/>
+				<property name="nav_object" value="quest"/>
+				<property name="poi_tier" value="4"/>
+			</objective>
+			<objective type="RallyPoint">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally"/>
+				<property name="rally_marker_type" value="questRallyMarkerClear"/>
+			</objective>
+			<objective type="ClearSleepers">
+				<property name="phase" value="3"/>
+				<property name="nav_object" value="sleeper_volume"/>
+			</objective>
+			<objective type="POIStayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="25"/>
+			</objective>
+			<objective type="PlaceFlagDEM, QuestsExpanded">
+				<property name="phase" value="4"/>
+				<property name="block" value="questOutpostFlagDEM"/>
+				<property name="inside_poi" value="true"/>
+			</objective>
+			<objective type="OutpostDEM, QuestsExpanded">
+				<property name="phase" value="5"/>
+				<property name="nights" value="3"/>
+				<property name="attack_hour" value="22"/>
+				<property name="attack_waves" value="3"/>
+			</objective>
+			<action type="UnlockPOI">
+				<property name="phase" value="6"/>
+			</action>
+			<objective type="ReturnToNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+
+			<reward type="Exp" value="12600"/>
+			<reward type="Item" id="casinoCoin" value="3450"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="4"/>
+			<reward type="LootItem" id="groupQuestSteel01" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		</quest>
+
+		<quest id="defense_t5_outpost">
+			<property name="name_key" value="defense_t5_outpost_name"/>
+			<property name="subtitle_key" value="defense_outpost_subtitle"/>
+			<property name="description_key" value="defense_outpost_description"/>
+			<property name="offer_key" value="defense_outpost_offer"/>
+			<property name="statement_key" value="defense_outpost_statement"/>
+			<property name="response_key" value="defense_outpost_response"/>
+			<property name="completion_key" value="defense_outpost_completion"/>
+			<property name="icon" value="ui_game_symbol_map_fortress"/>
+			<property name="category_key" value="quest"/>
+			<property name="difficulty_tier" value="5"/>
+			<property name="repeatable" value="true"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5"/>
+			<property name="completiontype" value="TurnIn"/>
+			<property name="login_rally_reset" value="true"/>
+			<property name="filter_tags" value="poi"/>
+
+			<action type="GameEvent" id="DementiveOutpostKitT5" phase="1"/>
+			<objective type="RandomPOIGoto">
+				<property name="phase" value="1"/>
+				<property name="biome_filter_type" value="SameBiome"/>
+				<property name="biome_filter" value=""/>
+				<property name="nav_object" value="quest"/>
+				<property name="poi_tier" value="5"/>
+			</objective>
+			<objective type="RallyPoint">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally"/>
+				<property name="rally_marker_type" value="questRallyMarkerClear"/>
+			</objective>
+			<objective type="ClearSleepers">
+				<property name="phase" value="3"/>
+				<property name="nav_object" value="sleeper_volume"/>
+			</objective>
+			<objective type="POIStayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="25"/>
+			</objective>
+			<objective type="PlaceFlagDEM, QuestsExpanded">
+				<property name="phase" value="4"/>
+				<property name="block" value="questOutpostFlagDEM"/>
+				<property name="inside_poi" value="true"/>
+			</objective>
+			<objective type="OutpostDEM, QuestsExpanded">
+				<property name="phase" value="5"/>
+				<property name="nights" value="4"/>
+				<property name="attack_hour" value="22"/>
+				<property name="attack_waves" value="3"/>
+			</objective>
+			<action type="UnlockPOI">
+				<property name="phase" value="6"/>
+			</action>
+			<objective type="ReturnToNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+
+			<reward type="Exp" value="25350"/>
+			<reward type="Item" id="casinoCoin" value="6900"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="5"/>
+			<reward type="LootItem" id="groupQuestSteel02" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		</quest>
+
+		<quest id="defense_t6_outpost">
+			<property name="name_key" value="defense_t6_outpost_name"/>
+			<property name="subtitle_key" value="defense_outpost_subtitle"/>
+			<property name="description_key" value="defense_outpost_description"/>
+			<property name="offer_key" value="defense_outpost_offer"/>
+			<property name="statement_key" value="defense_outpost_statement"/>
+			<property name="response_key" value="defense_outpost_response"/>
+			<property name="completion_key" value="defense_outpost_completion"/>
+			<property name="icon" value="ui_game_symbol_map_fortress"/>
+			<property name="category_key" value="quest"/>
+			<property name="difficulty_tier" value="6"/>
+			<property name="repeatable" value="true"/>
+			<property name="shareable" value="true"/>
+			<property name="reward_choices_count" value="5"/>
+			<property name="completiontype" value="TurnIn"/>
+			<property name="login_rally_reset" value="true"/>
+			<property name="filter_tags" value="poi"/>
+
+			<action type="GameEvent" id="DementiveOutpostKitT6" phase="1"/>
+			<objective type="RandomPOIGoto">
+				<property name="phase" value="1"/>
+				<property name="biome_filter_type" value="SameBiome"/>
+				<property name="biome_filter" value=""/>
+				<property name="nav_object" value="quest"/>
+				<property name="poi_tier" value="5"/>
+			</objective>
+			<objective type="RallyPoint">
+				<property name="phase" value="2"/>
+				<property name="nav_object" value="rally"/>
+				<property name="rally_marker_type" value="questRallyMarkerClear"/>
+			</objective>
+			<objective type="ClearSleepers">
+				<property name="phase" value="3"/>
+				<property name="nav_object" value="sleeper_volume"/>
+			</objective>
+			<objective type="POIStayWithin">
+				<property name="phase" value="3"/>
+				<property name="radius" value="25"/>
+			</objective>
+			<objective type="PlaceFlagDEM, QuestsExpanded">
+				<property name="phase" value="4"/>
+				<property name="block" value="questOutpostFlagDEM"/>
+				<property name="inside_poi" value="true"/>
+			</objective>
+			<objective type="OutpostDEM, QuestsExpanded">
+				<property name="phase" value="5"/>
+				<property name="nights" value="5"/>
+				<property name="attack_hour" value="22"/>
+				<property name="attack_waves" value="3"/>
+			</objective>
+			<action type="UnlockPOI">
+				<property name="phase" value="6"/>
+			</action>
+			<objective type="ReturnToNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+			<objective type="InteractWithNPC">
+				<property name="phase" value="6"/>
+				<property name="nav_object" value="return_to_trader"/>
+			</objective>
+
+			<reward type="Exp" value="40500"/>
+			<reward type="Item" id="casinoCoin" value="12000"/>
+
+			<reward type="LootItem" id="groupQuestWeapons" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestTools" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestArmor,groupQuestMedical" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestAmmo" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestSchematics" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestMods" ischosen="true" value="6"/>
+			<reward type="LootItem" id="groupQuestSteel02" ischosen="true"/>
+			<reward type="LootItem" id="groupQuestT1SkillMagazineBundle" ischosen="true"/>
+		</quest>
 	</insertAfter>
 
 	<append xpath="/quests/quest_list[starts-with(@id, 'trader_')]">
@@ -14687,6 +15692,23 @@
 		<quest id="defense_t5_clear_build_and_defend_infested"/>
 		<quest id="defense_t6_clear_build_and_defend"/>
 		<quest id="defense_t6_clear_build_and_defend_infested"/>
+		<quest id="defense_t1_last_stand"/>
+		<quest id="defense_t2_last_stand"/>
+		<quest id="defense_t3_last_stand"/>
+		<quest id="defense_t4_last_stand"/>
+		<quest id="defense_t5_last_stand"/>
+		<quest id="defense_t6_last_stand"/>
+		<quest id="defense_t1_blood_moon_bounty"/>
+		<quest id="defense_t2_blood_moon_bounty"/>
+		<quest id="defense_t3_blood_moon_bounty"/>
+		<quest id="defense_t4_blood_moon_bounty"/>
+		<quest id="defense_t5_blood_moon_bounty"/>
+		<quest id="defense_t6_blood_moon_bounty"/>
+		<quest id="defense_t2_outpost"/>
+		<quest id="defense_t3_outpost"/>
+		<quest id="defense_t4_outpost"/>
+		<quest id="defense_t5_outpost"/>
+		<quest id="defense_t6_outpost"/>
 	</append>
 	<!-- End of defense quests -->
 
