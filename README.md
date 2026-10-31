@@ -8,6 +8,10 @@
 
 • [Quests Expanded](https://www.nexusmods.com/7daystodie/mods/3426/)
 
+• Armor Expanded (not on Nexus yet)
+
+• Ammo Expanded (not on Nexus yet)
+
 # Other 1.0 Mods
 
 https://7daystodiemods.com/sams-building-stuff/

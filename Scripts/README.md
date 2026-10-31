@@ -19,13 +19,13 @@ XML patches only apply when a world loads, so reaching the main menu proves noth
 2. **Apply the patches** to the vanilla XML, in load order. Every command whose xpath matches nothing is reported, and the merged XML is written out.
 
    ```
-   Scripts\bin\XmlPatch.exe <game>\Data\Config <merged dir> <repo>\BooksExpanded <repo>\ConsumablesExpanded <repo>\QuestsExpanded <repo>\WeaponsExpanded
+   Scripts\bin\XmlPatch.exe <game>\Data\Config <merged dir> <repo>\AmmoExpanded <repo>\ArmorExpanded <repo>\BooksExpanded <repo>\ConsumablesExpanded <repo>\QuestsExpanded <repo>\WeaponsExpanded
    ```
 
 3. **Check every reference** the mods add (items, blocks, buffs, loot groups, quests, POIs, icons, meshes, localization, effect actions and requirements, game events and the items they give, defense quest bosses and spawners, trader dialog options) against the merged XML and the game info. Classes from a mod's own DLL (`"Name, Assembly"`) are checked against the mod's `src`. It should end with `TOTAL 0`.
 
    ```
-   python Validation\refcheck.py <game> <merged dir> <info dir> <repo>\BooksExpanded <repo>\ConsumablesExpanded <repo>\QuestsExpanded <repo>\WeaponsExpanded
+   python Validation\refcheck.py <game> <merged dir> <info dir> <repo>\AmmoExpanded <repo>\ArmorExpanded <repo>\BooksExpanded <repo>\ConsumablesExpanded <repo>\QuestsExpanded <repo>\WeaponsExpanded
    ```
 
 Other checks:
@@ -45,6 +45,14 @@ Other checks:
 - `gen_serverside.py <game> WeaponsExpanded WeaponsExpanded-SERVERSIDE`: rebuilds the server-side copy from the main mod. Weapons use their vanilla parent's icon with a color tint, since server-side-only players don't have the custom icons. Rerun after any change to WeaponsExpanded.
 - `add_weapons.py <game> WeaponsExpanded`: generates the signature weapons from their vanilla parents. Weapons already in `items.xml` are skipped, so a new one can be added to the script's list and the script rerun.
 - `Scripts\bin\IconTool.exe <vanilla icon.png> <out.png> <#RRGGBB> 0.62`: recolors a vanilla icon (from `<game>\Data\ItemIcons`) into a custom one, like the existing icons. `IconTool.exe sheet <out.png> <icons...>` lays icons side by side for comparing.
+
+## ArmorExpanded
+
+- `ArmorExpanded\gen_armor.py <game> ArmorExpanded ArmorExpanded-SERVERSIDE`: writes the whole mod from the `PIECES` table: each named piece copies its vanilla piece's effect groups (they aren't inherited through `Extends`) with the armor and durability boost and its signature effect group, plus buffs, loot, traders, localization, the recolored icons and the server-side copy (tinted vanilla icons).
+
+## AmmoExpanded
+
+- `AmmoExpanded\gen_ammo.py <game> AmmoExpanded AmmoExpanded-SERVERSIDE`: writes the whole mod from the `AMMO` table: each ammo type copies its vanilla parent's effect groups with edited stats and its signature effect group, plus its schematic, recipe, the ammo list patches, loot, traders, localization, the recolored icons and the server-side copy.
 
 ## QuestMaker
 

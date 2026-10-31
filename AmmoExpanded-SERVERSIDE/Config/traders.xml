@@ -1,0 +1,68 @@
+<Dementive>
+
+	<!-- Traders stock the rounds rarely (weight 0.3 against 1 for a vanilla round, in half the amount): tier 2 with
+	     the HP rounds, tier 3 with the AP rounds, arrows and bolts with the others. Schematics sell alongside the
+	     vanilla mod schematics, together about as often as three of those. -->
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='ammoHP']">
+		<item name="DementiveAmmo9mmIncendiary" count="20,75" prob="0.3"/>
+		<item name="DementiveAmmo44Incendiary" count="7,30" prob="0.3"/>
+		<item name="DementiveAmmo762Incendiary" count="10,50" prob="0.3"/>
+		<item name="DementiveAmmo9mmFrangible" count="20,75" prob="0.3"/>
+		<item name="DementiveAmmo44Frangible" count="7,30" prob="0.3"/>
+		<item name="DementiveAmmo762Frangible" count="10,50" prob="0.3"/>
+		<item name="DementiveAmmoShotgunBeanBag" count="7,50" prob="0.3"/>
+	</append>
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='ammoAP']">
+		<item name="DementiveAmmo762Match" count="10,50" prob="0.3"/>
+		<item name="DementiveAmmo44Explosive" count="7,30" prob="0.3"/>
+		<item name="DementiveAmmoShotgunDragonsBreath" count="7,50" prob="0.3"/>
+		<item name="DementiveAmmoShotgunFlechette" count="7,50" prob="0.3"/>
+	</append>
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='ammoArrowsBolts']">
+		<item name="DementiveAmmoArrowBarbed" count="10,30" prob="0.3"/>
+		<item name="DementiveAmmoBoltBarbed" count="10,30" prob="0.3"/>
+		<item name="DementiveAmmoArrowBlunt" count="10,30" prob="0.3"/>
+		<item name="DementiveAmmoBoltBlunt" count="10,30" prob="0.3"/>
+	</append>
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='ammoAll']">
+		<item name="DementiveAmmo9mmIncendiary" count="20,75" prob="0.3"/>
+		<item name="DementiveAmmo44Incendiary" count="7,30" prob="0.3"/>
+		<item name="DementiveAmmo762Incendiary" count="10,50" prob="0.3"/>
+		<item name="DementiveAmmo9mmFrangible" count="20,75" prob="0.3"/>
+		<item name="DementiveAmmo44Frangible" count="7,30" prob="0.3"/>
+		<item name="DementiveAmmo762Frangible" count="10,50" prob="0.3"/>
+		<item name="DementiveAmmo762Match" count="10,50" prob="0.3"/>
+		<item name="DementiveAmmo44Explosive" count="7,30" prob="0.3"/>
+		<item name="DementiveAmmoShotgunDragonsBreath" count="7,50" prob="0.3"/>
+		<item name="DementiveAmmoShotgunFlechette" count="7,50" prob="0.3"/>
+		<item name="DementiveAmmoShotgunBeanBag" count="7,50" prob="0.3"/>
+		<item name="DementiveAmmoArrowBarbed" count="10,30" prob="0.3"/>
+		<item name="DementiveAmmoBoltBarbed" count="10,30" prob="0.3"/>
+		<item name="DementiveAmmoArrowBlunt" count="10,30" prob="0.3"/>
+		<item name="DementiveAmmoBoltBlunt" count="10,30" prob="0.3"/>
+	</append>
+
+	<insertBefore xpath="/traders/trader_item_groups/trader_item_group[@name='schematicsModsCommon']">
+		<trader_item_group name="groupDementiveAmmoSchematics">
+			<item name="DementiveAmmo9mmIncendiarySchematic"/>
+			<item name="DementiveAmmo44IncendiarySchematic"/>
+			<item name="DementiveAmmo762IncendiarySchematic"/>
+			<item name="DementiveAmmo9mmFrangibleSchematic"/>
+			<item name="DementiveAmmo44FrangibleSchematic"/>
+			<item name="DementiveAmmo762FrangibleSchematic"/>
+			<item name="DementiveAmmo762MatchSchematic"/>
+			<item name="DementiveAmmo44ExplosiveSchematic"/>
+			<item name="DementiveAmmoShotgunDragonsBreathSchematic"/>
+			<item name="DementiveAmmoShotgunFlechetteSchematic"/>
+			<item name="DementiveAmmoShotgunBeanBagSchematic"/>
+			<item name="DementiveAmmoArrowBarbedSchematic"/>
+			<item name="DementiveAmmoBoltBarbedSchematic"/>
+			<item name="DementiveAmmoArrowBluntSchematic"/>
+			<item name="DementiveAmmoBoltBluntSchematic"/>
+		</trader_item_group>
+	</insertBefore>
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='schematicsModsCommon']">
+		<item group="groupDementiveAmmoSchematics" prob="3"/>
+	</append>
+
+</Dementive>

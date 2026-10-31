@@ -1,0 +1,44 @@
+<Dementive>
+
+	<!-- Traders can stock the armor: each group is a small-weight entry in the vanilla light, medium and heavy armor
+	     groups that traders restock from (6 picks each, 8 for Joel), so a typical trader has about a 5% chance per
+	     restock to have one piece (Joel about 7%). Each piece's TraderStageTemplate (baseTier2) keeps them to trader
+	     stage 50 and up.
+	     The game only lets a group use groups defined above it, so these go before groupArmorLight. -->
+	<insertBefore xpath="/traders/trader_item_groups/trader_item_group[@name='groupArmorLight']">
+		<trader_item_group name="groupDementiveTraderArmorLight" count="1">
+			<item name="DementiveArmorTimberGloves" quality="1,6"/>
+			<item name="DementiveArmorSundayBest" quality="1,6"/>
+			<item name="DementiveArmorPickpocketGloves" quality="1,6"/>
+			<item name="DementiveArmorMarathonRunners" quality="1,6"/>
+			<item name="DementiveArmorDonsShades" quality="1,6"/>
+		</trader_item_group>
+		<trader_item_group name="groupDementiveTraderArmorMedium" count="1">
+			<item name="DementiveArmorMuckBoots" quality="1,6"/>
+			<item name="DementiveArmorRoadCaptainsCut" quality="1,6"/>
+			<item name="DementiveArmorJunkRatGoggles" quality="1,6"/>
+			<item name="DementiveArmorMarshalsGloves" quality="1,6"/>
+			<item name="DementiveArmorFlakVest" quality="1,6"/>
+			<item name="DementiveArmorGhostsHood" quality="1,6"/>
+		</trader_item_group>
+		<trader_item_group name="groupDementiveTraderArmorHeavy" count="1">
+			<item name="DementiveArmorWildcatterHat" quality="1,6"/>
+			<item name="DementiveArmorWanderersWraps" quality="1,6"/>
+			<item name="DementiveArmorThinkingCap" quality="1,6"/>
+			<item name="DementiveArmorJuggernautBoots" quality="1,6"/>
+		</trader_item_group>
+	</insertBefore>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='groupArmorLight']">
+		<item group="groupDementiveTraderArmorLight" prob="0.055"/>
+	</append>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='groupArmorMedium']">
+		<item group="groupDementiveTraderArmorMedium" prob="0.055"/>
+	</append>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='groupArmorHeavy']">
+		<item group="groupDementiveTraderArmorHeavy" prob="0.055"/>
+	</append>
+
+</Dementive>

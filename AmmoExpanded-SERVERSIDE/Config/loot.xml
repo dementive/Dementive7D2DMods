@@ -1,0 +1,127 @@
+<Dementive>
+
+	<append xpath="/lootcontainers/lootprobtemplates">
+		<!-- Loose rounds in ammo loot: a quarter as likely as a vanilla HP (tier 2) or AP (tier 3) round once the loot
+		     stage reaches the level those start dropping at -->
+		<lootprobtemplate name="DementiveAmmoLootT2">
+			<loot level="0,29" prob="0"/>
+			<loot level="30,999999" prob="0.25"/>
+		</lootprobtemplate>
+		<lootprobtemplate name="DementiveAmmoLootT3">
+			<loot level="0,87" prob="0"/>
+			<loot level="88,999999" prob="0.25"/>
+		</lootprobtemplate>
+	</append>
+
+	<!-- Schematics drop alongside the vanilla mod schematics, together about as often as three of those -->
+	<insertBefore xpath="/lootcontainers/lootgroup[@name='schematicsModsAndGeneralT0']">
+		<lootgroup name="groupDementiveAmmoSchematicsT1">
+			<item name="DementiveAmmo9mmIncendiarySchematic"/>
+			<item name="DementiveAmmo44IncendiarySchematic"/>
+			<item name="DementiveAmmo762IncendiarySchematic"/>
+			<item name="DementiveAmmo9mmFrangibleSchematic"/>
+			<item name="DementiveAmmo44FrangibleSchematic"/>
+			<item name="DementiveAmmo762FrangibleSchematic"/>
+			<item name="DementiveAmmoShotgunBeanBagSchematic"/>
+			<item name="DementiveAmmoArrowBarbedSchematic"/>
+			<item name="DementiveAmmoBoltBarbedSchematic"/>
+			<item name="DementiveAmmoArrowBluntSchematic"/>
+			<item name="DementiveAmmoBoltBluntSchematic"/>
+		</lootgroup>
+		<lootgroup name="groupDementiveAmmoSchematicsT2">
+			<item name="DementiveAmmo762MatchSchematic"/>
+			<item name="DementiveAmmo44ExplosiveSchematic"/>
+			<item name="DementiveAmmoShotgunDragonsBreathSchematic"/>
+			<item name="DementiveAmmoShotgunFlechetteSchematic"/>
+		</lootgroup>
+	</insertBefore>
+	<append xpath="/lootcontainers/lootgroup[@name='schematicsModsAndGeneralT1']">
+		<item group="groupDementiveAmmoSchematicsT1" prob="3"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='schematicsModsAndGeneralT2']">
+		<item group="groupDementiveAmmoSchematicsT2" prob="3"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='group9mmSmall']">
+		<item name="DementiveAmmo9mmIncendiary" count="6,8" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmo9mmFrangible" count="6,8" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='group9mmMedium']">
+		<item name="DementiveAmmo9mmIncendiary" count="10,20" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmo9mmFrangible" count="10,20" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='group9mmLarge']">
+		<item name="DementiveAmmo9mmIncendiary" count="25,35" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmo9mmFrangible" count="25,35" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='group44MagnumSmall']">
+		<item name="DementiveAmmo44Incendiary" count="4,6" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmo44Frangible" count="4,6" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmo44Explosive" count="4,6" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT3"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='group44MagnumMedium']">
+		<item name="DementiveAmmo44Incendiary" count="8,12" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmo44Frangible" count="8,12" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmo44Explosive" count="8,12" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT3"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='group44MagnumLarge']">
+		<item name="DementiveAmmo44Incendiary" count="16,26" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmo44Frangible" count="16,26" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmo44Explosive" count="16,26" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT3"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='group762mmSmall']">
+		<item name="DementiveAmmo762Incendiary" count="5,7" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmo762Frangible" count="5,7" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmo762Match" count="5,7" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT3"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='group762mmMedium']">
+		<item name="DementiveAmmo762Incendiary" count="8,15" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmo762Frangible" count="8,15" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmo762Match" count="8,15" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT3"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='group762mmLarge']">
+		<item name="DementiveAmmo762Incendiary" count="20,30" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmo762Frangible" count="20,30" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmo762Match" count="20,30" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT3"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupShotgunShellSmall']">
+		<item name="DementiveAmmoShotgunDragonsBreath" count="2,4" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT3"/>
+		<item name="DementiveAmmoShotgunFlechette" count="2,4" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT3"/>
+		<item name="DementiveAmmoShotgunBeanBag" count="2,4" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupShotgunShellMedium']">
+		<item name="DementiveAmmoShotgunDragonsBreath" count="4,6" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT3"/>
+		<item name="DementiveAmmoShotgunFlechette" count="4,6" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT3"/>
+		<item name="DementiveAmmoShotgunBeanBag" count="4,6" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupShotgunShellLarge']">
+		<item name="DementiveAmmoShotgunDragonsBreath" count="6,10" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT3"/>
+		<item name="DementiveAmmoShotgunFlechette" count="6,10" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT3"/>
+		<item name="DementiveAmmoShotgunBeanBag" count="6,10" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupArrowSmall']">
+		<item name="DementiveAmmoArrowBarbed" count="4,6" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmoArrowBlunt" count="4,6" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupArrowMedium']">
+		<item name="DementiveAmmoArrowBarbed" count="8,12" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmoArrowBlunt" count="8,12" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupArrowLarge']">
+		<item name="DementiveAmmoArrowBarbed" count="16,24" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmoArrowBlunt" count="16,24" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupCrossbowBoltSmall']">
+		<item name="DementiveAmmoBoltBarbed" count="4,6" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmoBoltBlunt" count="4,6" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupCrossbowBoltMedium']">
+		<item name="DementiveAmmoBoltBarbed" count="8,12" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmoBoltBlunt" count="8,12" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='groupCrossbowBoltLarge']">
+		<item name="DementiveAmmoBoltBarbed" count="16,24" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+		<item name="DementiveAmmoBoltBlunt" count="16,24" loot_stage_count_mod="0.01" loot_prob_template="DementiveAmmoLootT2"/>
+	</append>
+
+</Dementive>

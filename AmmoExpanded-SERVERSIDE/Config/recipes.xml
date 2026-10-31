@@ -1,0 +1,105 @@
+<Dementive>
+
+	<append xpath="/recipes">
+		<recipe name="DementiveAmmo9mmIncendiary" count="1" craft_time="3.6" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceBulletTip" count="1"/>
+			<ingredient name="resourceGunPowder" count="2"/>
+			<ingredient name="resourceBulletCasing" count="1"/>
+			<ingredient name="resourceCoal" count="1"/>
+		</recipe>
+
+		<recipe name="DementiveAmmo44Incendiary" count="1" craft_time="3.6" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceBulletTip" count="1"/>
+			<ingredient name="resourceGunPowder" count="3"/>
+			<ingredient name="resourceBulletCasing" count="1"/>
+			<ingredient name="resourceCoal" count="1"/>
+		</recipe>
+
+		<recipe name="DementiveAmmo762Incendiary" count="1" craft_time="3.6" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceBulletTip" count="1"/>
+			<ingredient name="resourceGunPowder" count="5"/>
+			<ingredient name="resourceBulletCasing" count="1"/>
+			<ingredient name="resourceCoal" count="1"/>
+		</recipe>
+
+		<recipe name="DementiveAmmo9mmFrangible" count="1" craft_time="3.6" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceBulletTip" count="1"/>
+			<ingredient name="resourceGunPowder" count="2"/>
+			<ingredient name="resourceBulletCasing" count="1"/>
+			<ingredient name="resourceScrapIron" count="2"/>
+		</recipe>
+
+		<recipe name="DementiveAmmo44Frangible" count="1" craft_time="3.6" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceBulletTip" count="1"/>
+			<ingredient name="resourceGunPowder" count="3"/>
+			<ingredient name="resourceBulletCasing" count="1"/>
+			<ingredient name="resourceScrapIron" count="2"/>
+		</recipe>
+
+		<recipe name="DementiveAmmo762Frangible" count="1" craft_time="3.6" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceBulletTip" count="1"/>
+			<ingredient name="resourceGunPowder" count="5"/>
+			<ingredient name="resourceBulletCasing" count="1"/>
+			<ingredient name="resourceScrapIron" count="2"/>
+		</recipe>
+
+		<recipe name="DementiveAmmo762Match" count="1" craft_time="4.8" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceBulletTip" count="2"/>
+			<ingredient name="resourceGunPowder" count="5"/>
+			<ingredient name="resourceBulletCasing" count="1"/>
+			<ingredient name="resourceScrapBrass" count="1"/>
+		</recipe>
+
+		<recipe name="DementiveAmmo44Explosive" count="1" craft_time="4.8" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceBulletTip" count="1"/>
+			<ingredient name="resourceGunPowder" count="5"/>
+			<ingredient name="resourceBulletCasing" count="1"/>
+			<ingredient name="resourceScrapPolymers" count="1"/>
+		</recipe>
+
+		<recipe name="DementiveAmmoShotgunDragonsBreath" count="1" craft_time="4.8" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceGunPowder" count="5"/>
+			<ingredient name="resourcePaper" count="1"/>
+			<ingredient name="resourceCoal" count="2"/>
+		</recipe>
+
+		<recipe name="DementiveAmmoShotgunFlechette" count="1" craft_time="4.8" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceNail" count="3"/>
+			<ingredient name="resourceGunPowder" count="4"/>
+			<ingredient name="resourcePaper" count="1"/>
+		</recipe>
+
+		<recipe name="DementiveAmmoShotgunBeanBag" count="1" craft_time="3.6" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceCloth" count="2"/>
+			<ingredient name="resourceGunPowder" count="2"/>
+			<ingredient name="resourceScrapPolymers" count="1"/>
+		</recipe>
+
+		<recipe name="DementiveAmmoArrowBarbed" count="1" craft_time="2.4" tags="learnable,packMuleCrafting">
+			<ingredient name="resourceArrowHeadIron" count="1"/>
+			<ingredient name="resourceWood" count="1"/>
+			<ingredient name="resourceFeather" count="1"/>
+			<ingredient name="resourceScrapIron" count="2"/>
+		</recipe>
+
+		<recipe name="DementiveAmmoBoltBarbed" count="1" craft_time="2.4" tags="learnable,packMuleCrafting">
+			<ingredient name="resourceArrowHeadIron" count="1"/>
+			<ingredient name="resourceWood" count="1"/>
+			<ingredient name="resourceFeather" count="1"/>
+			<ingredient name="resourceScrapIron" count="2"/>
+		</recipe>
+
+		<recipe name="DementiveAmmoArrowBlunt" count="1" craft_time="2.4" tags="learnable,packMuleCrafting">
+			<ingredient name="resourceWood" count="2"/>
+			<ingredient name="resourceFeather" count="1"/>
+			<ingredient name="resourceCloth" count="1"/>
+		</recipe>
+
+		<recipe name="DementiveAmmoBoltBlunt" count="1" craft_time="2.4" tags="learnable,packMuleCrafting">
+			<ingredient name="resourceWood" count="2"/>
+			<ingredient name="resourceFeather" count="1"/>
+			<ingredient name="resourceCloth" count="1"/>
+		</recipe>
+	</append>
+
+</Dementive>

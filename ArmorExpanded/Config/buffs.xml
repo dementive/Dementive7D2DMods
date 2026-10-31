@@ -1,0 +1,48 @@
+<Dementive>
+
+	<append xpath="/buffs">
+		<!-- Sunday Best: given to the wearer and party members within 15 m for each zombie killed. Each kill adds 5
+		     seconds of 1 health per second -->
+		<buff name="buffDementiveArmorSundayBest" name_key="buffDementiveArmorSundayBestName" description_key="buffDementiveArmorSundayBestDesc" icon="ui_game_symbol_add" icon_color="255,215,0">
+			<stack_type value="duration"/>
+			<duration value="5"/>
+			<update_rate value="1"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="1"/>
+			</effect_group>
+		</buff>
+
+		<!-- Marathon Runners: worn marker, checked by buffPlayerFallingDamage below -->
+		<buff name="buffDementiveArmorMarathonRunners" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+		</buff>
+
+		<!-- Sergeant's Flak Vest: low health burst, then a 2 minute cooldown -->
+		<buff name="buffDementiveArmorFlakVest" name_key="buffDementiveArmorFlakVestName" description_key="buffDementiveArmorFlakVestDesc" icon="ui_game_symbol_armor_iron" icon_color="60,179,113">
+			<stack_type value="ignore"/>
+			<duration value="10"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffDementiveArmorFlakVestCooldown"/>
+				<passive_effect name="GeneralDamageResist" operation="base_add" value=".25"/>
+				<passive_effect name="RunSpeed" operation="perc_add" value=".2"/>
+			</effect_group>
+		</buff>
+		<buff name="buffDementiveArmorFlakVestCooldown" name_key="buffDementiveArmorFlakVestCooldownName" description_key="buffDementiveArmorFlakVestCooldownDesc" icon="ui_game_symbol_armor_iron" icon_color="128,128,128">
+			<stack_type value="ignore"/>
+			<duration value="120"/>
+			<display_value value="duration"/>
+		</buff>
+	</append>
+
+	<!-- Marathon Runners: falls hurt as if they were 4 m shorter (vanilla boots use the same impact speed units:
+	     .02828 = 2 m). Goes in the group where the vanilla boots reduce the impact speed, before it is checked -->
+	<append xpath="/buffs/buff[@name='buffPlayerFallingDamage']/effect_group[triggered_effect[@value='@$rogueBootFallDMG']]">
+		<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".impactSpeed" operation="subtract" value=".05656">
+			<requirement name="HasBuff" buff="buffDementiveArmorMarathonRunners"/>
+		</triggered_effect>
+	</append>
+
+</Dementive>

@@ -1,0 +1,16 @@
+<Dementive>
+
+	<append xpath="/buffs">
+		<!-- .44 Magnum Explosive Tip: added to whatever the round hits. MinEventActionExplode only runs on the server,
+		     and buffs on zombies run there, so the blast works when a client fires too -->
+		<buff name="buffDementiveAmmoExplosiveTip" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="Explode" blast_power="0" block_damage="5" block_radius="1" entity_damage="50" entity_radius="2" damage_type="Heat"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffDementiveAmmoExplosiveTip"/>
+			</effect_group>
+		</buff>
+	</append>
+
+</Dementive>
