@@ -44,6 +44,7 @@ public class GfxGears : IGearsModApi
     private static ISelectorGlobalSetting<GfxBuildingDistance> buildingDistance;
     private static ISelectorGlobalSetting<GfxDistantGrassDistance> distantGrass;
     private static ISelectorGlobalSetting<GfxGrassDistance> grassDistance;
+    private static ISelectorGlobalSetting<GfxPlantDetail> plantDetail;
     private static ISwitchGlobalSetting<bool> anisotropic16x;
 
     private static ISliderGlobalSetting<float> rainWetness;
@@ -100,6 +101,7 @@ public class GfxGears : IGearsModApi
         buildingDistance = Get<ISelectorGlobalSetting<GfxBuildingDistance>>(settings, "Detail", "Distance", "BuildingDistance");
         distantGrass = Get<ISelectorGlobalSetting<GfxDistantGrassDistance>>(settings, "Detail", "Distance", "DistantGrass");
         grassDistance = Get<ISelectorGlobalSetting<GfxGrassDistance>>(settings, "Detail", "Distance", "GrassDistance");
+        plantDetail = Get<ISelectorGlobalSetting<GfxPlantDetail>>(settings, "Detail", "Distance", "PlantDetail");
         anisotropic16x = Get<ISwitchGlobalSetting<bool>>(settings, "Detail", "Textures", "Anisotropic16x");
 
         rainWetness = Get<ISliderGlobalSetting<float>>(settings, "Weather", "Surfaces", "RainWetness");
@@ -148,6 +150,7 @@ public class GfxGears : IGearsModApi
         Listen(buildingDistance, v => GfxSettings.BuildingDistance = v);
         Listen(distantGrass, v => GfxSettings.DistantGrass = v);
         Listen(grassDistance, v => GfxSettings.GrassDistance = v);
+        Listen(plantDetail, v => GfxSettings.PlantDetail = v);
         Listen(anisotropic16x, v => GfxSettings.Anisotropic16x = v);
 
         Listen(rainWetness, v => GfxSettings.RainWetness = v);
@@ -207,6 +210,7 @@ public class GfxGears : IGearsModApi
         Read(buildingDistance, v => GfxSettings.BuildingDistance = v);
         Read(distantGrass, v => GfxSettings.DistantGrass = v);
         Read(grassDistance, v => GfxSettings.GrassDistance = v);
+        Read(plantDetail, v => GfxSettings.PlantDetail = v);
         Read(anisotropic16x, v => GfxSettings.Anisotropic16x = v);
 
         Read(rainWetness, v => GfxSettings.RainWetness = v);

@@ -100,6 +100,12 @@ public enum GfxDistantTrees
     On,
 }
 
+public enum GfxPlantDetail
+{
+    Game,
+    Further,
+}
+
 public enum GfxGrassDistance
 {
     Menu,
@@ -214,8 +220,11 @@ public static class GfxSettings
     /// <summary>Contact shadow length as a fraction of vanilla.</summary>
     public static float ContactShadowLength = 1f;
 
-    /// <summary>Level of detail distance as a fraction of vanilla.</summary>
-    public static float LodDistance = 1f;
+    /// <summary>
+    /// Level of detail distance as a fraction of vanilla. 3 keeps trees on their full models far enough out that they
+    /// no longer change shape as you walk up to them (the game's simpler ones are denser and darker).
+    /// </summary>
+    public static float LodDistance = 3f;
     public static GfxTreeDistance TreeDistance = GfxTreeDistance.Menu;
     public static GfxGrassDistance GrassDistance = GfxGrassDistance.Meters200;
     /// <summary>How far out grass is drawn on the far terrain past the loaded chunks (GfxDistantGrass).</summary>
@@ -260,6 +269,8 @@ public static class GfxSettings
     public static float DistantTiling = 1f;
     /// <summary>Whether the trees past the tree distance are drawn as pictures out to the horizon (GfxForest).</summary>
     public static GfxDistantTrees DistantTrees = GfxDistantTrees.On;
+    /// <summary>Whether things that snap between levels of detail (bushes, plants, props) swap further out (GfxDetailSwaps).</summary>
+    public static GfxPlantDetail PlantDetail = GfxPlantDetail.Further;
 
     /// <summary>
     /// True while the compare key is held. Look and shadows go back to vanilla so they can be compared; draw distances

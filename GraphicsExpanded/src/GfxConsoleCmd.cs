@@ -29,6 +29,8 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             + "  gfxe preset <name>   - vanilla, natural or cinematic\n"
             + "  gfxe materials       - write the block and terrain materials' settings to the game log\n"
             + "  gfxe grass           - where the grass stops: its fade distance, and chunks with grass on by distance\n"
+            + "  gfxe lod             - how levels of detail switch: LOD groups, and which shaders can cross-fade\n"
+            + "  gfxe lod crossfade on | off - turn animated cross-fading on or off for every LOD group now (a test)\n"
             + "  gfxe grass fade <m>  - set the grass fade distance for this session, to see if the grass follows\n"
             + "  gfxe distantgrass    - how the distant grass is running\n"
             + "  gfxe distantgrass debug - magenta tufts; again: also those on roads and water, in red; again: off\n"
@@ -203,6 +205,18 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             }
             console.Output(GfxDistantGrass.Status());
             Log.Out("[GraphicsExpanded] " + GfxDistantGrass.Status());
+            return;
+        }
+        if (_params.Count >= 1 && _params[0].EqualsCaseInsensitive("lod"))
+        {
+            int crossfade = -1;
+            if (_params.Count == 3 && _params[1].EqualsCaseInsensitive("crossfade"))
+                crossfade = _params[2].EqualsCaseInsensitive("on") ? 1 : 0;
+            foreach (string line in GfxDiagnostics.Lods(crossfade))
+            {
+                console.Output(line);
+                Log.Out("[GraphicsExpanded] " + line);
+            }
             return;
         }
         if (_params.Count >= 1 && _params[0].EqualsCaseInsensitive("grass"))

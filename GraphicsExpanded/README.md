@@ -49,16 +49,23 @@ adjustment to vanilla, so the game's own effects (biome fog, weather, night, bri
   its full textures twice as far out (High) or four times (Ultra).
 - **Distant forests**: past the tree distance the game draws no trees at all, so far hills are bare. Every tree out
   there is drawn to the horizon as a lightweight picture of the game's own model, photographed from eight sides when a
-  world loads. They take the game's sunlight, fog and haze, and give way to the real trees wherever the game draws them.
+  world loads, as the game draws it where its own trees take over, so a forest keeps its shape as you walk up to it.
+  They take the game's sunlight, fog and haze, and fade into the real trees over a second wherever the game draws them,
+  instead of switching.
 - **Distant grass**: the game only grows grass on the chunks it has loaded, so past about 100 to 190 m the ground goes
   bare and grass pops in as you walk. Grass is drawn on the far ground too, out to 300 or 500 m, thinning towards the
   edge, colored by biome, and kept off roads, water, buildings and steep slopes; where the game loads a chunk its own
-  grass takes over. The far ground also gets its own texture tiling, so it doesn't repeat into stripes.
+  grass takes over, the far tufts dropping out one by one over a second. The far ground also gets its own texture
+  tiling, so it doesn't repeat into stripes.
+- **Bush and plant detail**: bushes, plants and many props swap to simpler models with distance, and the shader they're
+  drawn with (Torch's among them) can't blend one into the next, so every swap pops. Further moves those swaps out to
+  twice the distance, where they're much harder to see. Trees already blend between their models and aren't changed.
 
 Shadow distance starts at 500 m (the game's own goes to 300 m at most), Grass distance at 200 m (so grass stays full
 out to the edge of the chunks the game has loaded, where the game's own thins it from about 60 m) and Building distance
-at 2 km; the other shadow and detail settings start at "Video menu", so they follow the game's own until you change
-them.
+at 2 km, Level of detail distance at 300% (the game's simpler tree models are denser and darker, so closer in trees
+visibly change shape as you walk up to them) and Bush and plant detail at Further; the other shadow and detail
+settings start at "Video menu", so they follow the game's own until you change them.
 
 ## Install
 
@@ -115,6 +122,9 @@ gfxe distantgrass               how the distant grass is running: its field, bio
 gfxe distantgrass debug         magenta tufts; again: also those on roads and water, in red; again: off
 gfxe grass                      where the game's own grass stops: its fade distance, and chunks with grass by distance
 gfxe grass fade <m>             set the game's grass fade distance for this session
+gfxe lod                        how the scene's levels of detail switch: LOD groups by fade mode, which shaders can
+                                blend and which snap, and how many groups Bush and plant detail has moved out
+gfxe lod crossfade on | off     turn animated cross-fading on for every LOD group now, or put the game's back (a test)
 gfxe terrain fartiling <x>      the far terrain's tiling (default 1, the game's; lower repeats less)
 gfxe farshadows                 how the far shadows are running: the light, where they start, the height map
 gfxe farshadows save            save the height map they're worked out from, to GraphicsExpanded/FarShadowHeights.png
@@ -146,6 +156,10 @@ gfxe farshadows debug           red: where they fall; again: blue, how far the h
 - Detail: a postfix on `GetLODBias`, transpilers on `ChunkGameObject.CheckLODs` (grass cut-off) and
   `DecoManager.UpdateTick` (tree radius), a postfix on `MeshDescription.SetGrassQuality` (grass fade), and
   `PrefabLODManager.SetPOIDistance` for the far-off buildings (the game sets it from `DynamicMeshSettings.MaxViewDistance`).
+- Bush and plant detail (`GfxDetailSwaps`): once a second the LOD groups new to the scene are looked over (the game
+  sets theirs once, when it makes them). Those that snap, set to no fade or with a renderer whose shader has no
+  `LOD_FADE_CROSSFADE` variant, get every `screenRelativeTransitionHeight` halved; the game's own are kept and put back
+  when the setting goes to Game.
 - Weather (`GfxWeather`, `unity/Assets/GraphicsExpanded/WeatherSurface.shader`): a command buffer on the player camera
   at `BeforeReflections`, after the game has drawn every surface into the deferred G-buffer and before reflections and
   lighting, copies G-buffers 0 to 2 and redraws the wet, puddled and snowy surfaces into them. The game's and Torch's
@@ -197,18 +211,22 @@ gfxe farshadows debug           red: where they fall; again: blue, how far the h
   size out to the edge, which cover the ground the same and hand over across 170 to 230 m. Each instance finds its
   tuft on a fixed world grid and collapses where no grass belongs. It reads a field made around the camera (biomes from the chunk provider's `GetBiomeAt`, every 8 m, with a
   color and density per biome, and buildings' bounding boxes from the prefab decorator kept clear), the chunks the
-  game has loaded (its own grass is there), the far shadows' height map and its slope, and the world's splat maps
+  game has loaded (its own grass is there, its share rising over a second once the chunk's mesh is built, so the tufts
+  drop out one by one), the far shadows' height map and its slope, and the world's splat maps
   (`ChunkProviderGenerateWorldFromRaw.splats`: roads in splat3, water in splat4). The game's own grass fade (`_FadeDistance`, which Torch's grass shader
   honours, thinning from about half of it) is set to 1.6 times Grass distance, so it stays full to where it stops.
   The far terrain's material gets its own copy of the per-texture settings with its own tiling.
 - Distant forests (`GfxForest`, `DistantTree.shader`, `TreeCapture.shader`): the game keeps every tree's place in
   `DecoManager`'s 128 m decoration chunks, which the mod reads a few a frame once a world loads, and again every five
   minutes for felled and planted trees. Each kind of tree is pictured from eight sides by borrowing a model from the
-  game's `GameObjectPool` (by file name, as `DecoObject.GetModelName` gives it) and drawing its nearest level of detail
-  with its own materials' deferred pass into a small G-buffer of the mod's; a throwaway camera's command buffers never
-  ran. One `DrawMeshInstancedIndirect` a frame then draws every tree as a camera-facing card into the player camera's
-  G-buffer, so the game's lighting, fog and the haze apply. A card collapses where the game draws the tree itself: in a
-  decoration chunk it shows (`visibleDecoChunks`), closer than that kind's last level of detail stops drawing.
+  game's `GameObjectPool` (by file name, as `DecoObject.GetModelName` gives it) and drawing it with its own materials'
+  deferred pass into a small G-buffer of the mod's (a throwaway camera's command buffers never ran), at the level of
+  detail its LOD group picks at the edge of the tree distance, stepping back past any flat billboard level. One
+  `DrawMeshInstancedIndirect` a frame then draws every tree as a camera-facing card into the player camera's G-buffer,
+  so the game's lighting, fog and the haze apply. A card gives way where the game draws the tree itself: in a
+  decoration chunk it shows (`visibleDecoChunks`), closer than that kind's last level of detail stops drawing. It
+  fades, dithered: a chunk's share rises from 0 to 1 over a second, half a second after its trees are made, and the
+  cards fade back in across a band around where the game's tree stops drawing.
 - Block textures are one 512x512 texture array (407 layers) whose shader has no tunable settings, so there's nothing
   to sharpen; a mipmap bias and the shaders' `_MipSlope` made no visible difference.
 

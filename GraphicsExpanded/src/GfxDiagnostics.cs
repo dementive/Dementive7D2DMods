@@ -10,6 +10,9 @@ using UnityEngine.Rendering;
 /// </summary>
 public static class GfxDiagnostics
 {
+    /// <summary>What each LOD group's fading was before gfxe lod crossfade on, for off to put back.</summary>
+    private static readonly Dictionary<LODGroup, (LODFadeMode mode, bool animate)> gameFades = new Dictionary<LODGroup, (LODFadeMode, bool)>();
+
     public static int LogMaterials()
     {
         List<string> lines = new List<string>();
@@ -102,6 +105,84 @@ public static class GfxDiagnostics
         lines.Add(text.ToString());
         lines.Add("Grass cut-off now " + GfxApply.GrassCullDistance(0f) + " m (0: the game's own); view distance " + GamePrefs.GetInt(EnumGamePrefs.OptionsGfxViewDistance) + " chunks.");
         return lines;
+    }
+
+    /// <summary>
+    /// gfxe lod: how the scene's levels of detail switch: its LOD groups by fade mode, and which of their shaders can
+    /// cross-fade (have a LOD_FADE_CROSSFADE variant; the rest snap from one level to the next). With crossfade 1 or 0,
+    /// first turns animated cross-fading on or off for every LOD group in the scene now.
+    /// </summary>
+    public static List<string> Lods(int crossfade)
+    {
+        List<string> lines = new List<string>();
+        LODGroup[] groups = Object.FindObjectsOfType<LODGroup>();
+        Dictionary<LODFadeMode, int> modes = new Dictionary<LODFadeMode, int>();
+        Dictionary<string, int> canFade = new Dictionary<string, int>(), cannotFade = new Dictionary<string, int>();
+        Dictionary<Shader, bool> fades = new Dictionary<Shader, bool>();
+        int animated = 0;
+        foreach (LODGroup group in groups)
+        {
+            if (crossfade == 1)
+            {
+                if (!gameFades.ContainsKey(group))
+                    gameFades[group] = (group.fadeMode, group.animateCrossFading);
+                group.fadeMode = LODFadeMode.CrossFade;
+                group.animateCrossFading = true;
+            }
+            else if (crossfade == 0 && gameFades.TryGetValue(group, out var game))
+            {
+                // Back to what the game had: most trees fade their own SpeedTree way
+                group.fadeMode = game.mode;
+                group.animateCrossFading = game.animate;
+            }
+            modes[group.fadeMode] = modes.TryGetValue(group.fadeMode, out int count) ? count + 1 : 1;
+            if (group.animateCrossFading)
+                animated++;
+            foreach (LOD lod in group.GetLODs())
+            {
+                foreach (Renderer renderer in lod.renderers)
+                {
+                    if (renderer == null)
+                        continue;
+                    foreach (Material material in renderer.sharedMaterials)
+                    {
+                        Shader shader = material != null ? material.shader : null;
+                        if (shader == null)
+                            continue;
+                        if (!fades.TryGetValue(shader, out bool fade))
+                            fades[shader] = fade = shader.keywordSpace.FindKeyword("LOD_FADE_CROSSFADE").isValid;
+                        Dictionary<string, int> into = fade ? canFade : cannotFade;
+                        into[shader.name] = into.TryGetValue(shader.name, out int uses) ? uses + 1 : 1;
+                    }
+                }
+            }
+        }
+        if (crossfade == 1)
+            lines.Add("Animated cross-fading turned on for " + groups.Length + " LOD groups (until the game makes new ones).");
+        else if (crossfade == 0)
+        {
+            lines.Add("LOD groups put back to the game's own fading.");
+            gameFades.Clear();
+        }
+        List<string> modeText = new List<string>();
+        foreach (KeyValuePair<LODFadeMode, int> mode in modes)
+            modeText.Add(mode.Key + " " + mode.Value);
+        lines.Add(string.Format("LOD groups: {0} ({1}), {2} animating their cross-fades over {3:0.##} s; LOD bias {4:0.##}.",
+            groups.Length, string.Join(", ", modeText), animated, LODGroup.crossFadeAnimationDuration, QualitySettings.lodBias));
+        lines.Add("Swaps moved further out (Bush and plant detail) for " + GfxDetailSwaps.Count + " LOD groups that snap.");
+        lines.Add("Shaders that can cross-fade (uses): " + Top(canFade));
+        lines.Add("Shaders that can't, and snap (uses): " + Top(cannotFade));
+        return lines;
+    }
+
+    private static string Top(Dictionary<string, int> counts)
+    {
+        List<KeyValuePair<string, int>> sorted = new List<KeyValuePair<string, int>>(counts);
+        sorted.Sort((a, b) => b.Value.CompareTo(a.Value));
+        List<string> parts = new List<string>();
+        for (int i = 0; i < sorted.Count && i < 12; i++)
+            parts.Add(sorted[i].Key + " " + sorted[i].Value);
+        return parts.Count > 0 ? string.Join(", ", parts) : "none";
     }
 
     private static void AddTexture(List<string> lines, string label, Texture texture)

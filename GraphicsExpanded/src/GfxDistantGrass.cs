@@ -56,6 +56,11 @@ public static class GfxDistantGrass
     private static Mesh card;
     private static Texture2D blades, field, chunks;
     private static byte[] chunkPixels = new byte[ChunkTexels * ChunkTexels];
+    private static float[] chunkTaken = new float[ChunkTexels * ChunkTexels];     // per chunk, how far the game's grass has taken over
+    private static bool[] chunkBuilt = new bool[ChunkTexels * ChunkTexels];
+    private static bool chunksFresh;            // the field just moved: built chunks start fully taken over
+    private static float lastChunks;
+    private const float TuftsFade = 1f;         // seconds the tufts take to give way to a chunk's own grass
     private static ComputeBuffer nearArgs, farArgs;
     private static int nearCells, farCells;
     private static readonly MaterialPropertyBlock nearDraw = new MaterialPropertyBlock(), farDraw = new MaterialPropertyBlock();
@@ -314,6 +319,7 @@ public static class GfxDistantGrass
         fieldCorner = corner;
         fieldCenter = center;
         nextChunks = 0f;
+        chunksFresh = true;
         material.SetTexture("_GfxGrassField", field);
         material.SetTexture("_GfxGrassChunks", chunks);
         material.SetVector("_GfxGrassFieldRect", new Vector4(corner.x, corner.y, 1f / FieldSize, 0f));
@@ -365,28 +371,59 @@ public static class GfxDistantGrass
         }
     }
 
-    /// <summary>Marks the chunks the game has loaded, where its own grass is, twice a second.</summary>
+    /// <summary>
+    /// How far the game's own grass has taken over each chunk, ten times a second: only once a chunk's ground has a
+    /// mesh (so a chunk that's loaded but not yet built keeps the distant grass instead of a bare gap), then rising over
+    /// a second, the tufts dropping out one by one. A chunk the game stops drawing is back to none at once.
+    /// </summary>
     private static void UpdateChunks()
     {
         if (Time.unscaledTime < nextChunks || world?.m_ChunkManager == null)
             return;
-        nextChunks = Time.unscaledTime + 0.5f;
-        Array.Clear(chunkPixels, 0, chunkPixels.Length);
+        float step = Mathf.Clamp(Time.unscaledTime - lastChunks, 0f, 0.5f) / TuftsFade;
+        lastChunks = Time.unscaledTime;
+        nextChunks = Time.unscaledTime + 0.1f;
+        Array.Clear(chunkBuilt, 0, chunkBuilt.Length);
         loadedChunks = 0;
         Vector3 origin = Origin.position;
         foreach (ChunkGameObject chunk in world.m_ChunkManager.GetUsedChunkGameObjects())
         {
-            if (chunk == null)
+            if (chunk == null || !Built(chunk))
                 continue;
             Vector3 corner = chunk.transform.position + origin;
             int x = Mathf.FloorToInt((corner.x + 8f - fieldCorner.x) / 16f), z = Mathf.FloorToInt((corner.z + 8f - fieldCorner.y) / 16f);
             if (x < 0 || z < 0 || x >= ChunkTexels || z >= ChunkTexels)
                 continue;
-            chunkPixels[z * ChunkTexels + x] = 255;
+            chunkBuilt[z * ChunkTexels + x] = true;
             loadedChunks++;
         }
+        for (int i = 0; i < chunkTaken.Length; i++)
+        {
+            chunkTaken[i] = !chunkBuilt[i] ? 0f : chunksFresh ? 1f : Mathf.Min(1f, chunkTaken[i] + step);
+            chunkPixels[i] = (byte)Mathf.RoundToInt(chunkTaken[i] * 255f);
+        }
+        chunksFresh = false;
         chunks.SetPixelData(chunkPixels, 0);
         chunks.Apply(false);
+    }
+
+    /// <summary>Whether any of the chunk's layers has its ground (terrain) or grass mesh built.</summary>
+    private static bool Built(ChunkGameObject chunk)
+    {
+        if (chunk.layers == null)
+            return false;
+        foreach (ChunkGameObjectLayer layer in chunk.layers)
+        {
+            if (layer?.m_MeshFilter == null)
+                continue;
+            foreach (int mesh in new[] { MeshDescription.MESH_TERRAIN, MeshDescription.MESH_GRASS })
+            {
+                if (mesh < layer.m_MeshFilter.Length && layer.m_MeshFilter[mesh] != null && layer.m_MeshFilter[mesh].sharedMesh != null
+                    && layer.m_MeshFilter[mesh].sharedMesh.vertexCount > 0)
+                    return true;
+            }
+        }
+        return false;
     }
 
     private static void Release()

@@ -47,6 +47,7 @@ public static class GfxForest
         public Vector4 Size;        // as _GfxTreeKinds: half width, height, bottom below the foot, size / last LOD height
         public bool Pictured;
         public int Tries;
+        public int Level;           // the level of detail pictured
     }
 
     private static Shader drawShader, pictureShader;
@@ -62,9 +63,12 @@ public static class GfxForest
     private static readonly List<Kind> kinds = new List<Kind>();
     private static readonly Dictionary<int, int> kindByBlock = new Dictionary<int, int>();
     private static readonly Dictionary<int, int> chunkByKey = new Dictionary<int, int>();
-    private static uint[] chunkFlags = new uint[0];
-    private static int chunkHash;
+    private static float[] chunkShares = new float[0];
     private static float nextChunks;
+    private const float TreesSettle = 0.5f;         // seconds a shown chunk's trees get to arrive before its cards fade
+    private const float CardsFade = 1f;             // seconds the cards take to fade out once they have
+    private static readonly Dictionary<int, float> readySince = new Dictionary<int, float>();
+    private static readonly HashSet<int> seenReady = new HashSet<int>();
 
     private static Texture2DArray colors, normals;
     private static ComputeBuffer trees, kindBuffer, chunkBuffer, args;
@@ -125,6 +129,7 @@ public static class GfxForest
             Release();
             world = current;
         }
+        lastCamera = playerCamera;
 
         DecoManager decos = DecoManager.Instance;
         if (decos == null || decos.decoChunks == null || decos.decoChunks.Count == 0)
@@ -138,7 +143,6 @@ public static class GfxForest
             return;
 
         UpdateChunks(decos);
-        lastCamera = playerCamera;
         drawMaterial.SetVector("_GfxOrigin", Origin.position);
         drawMaterial.SetVector("_GfxTreeParams", new Vector4(LodScale(playerCamera), Views, Brightness, Debug ? 1f : 0f));
         Graphics.DrawMeshInstancedIndirect(card, 0, drawMaterial, new Bounds(playerCamera.transform.position, Vector3.one * 100000f), args, 0,
@@ -259,27 +263,47 @@ public static class GfxForest
         return kind;
     }
 
+    /// <summary>
+    /// How far the game has taken over each decoration chunk's trees, for the cards to fade by. Not as soon as a chunk
+    /// turns visible: the game makes its trees over the next frames (isModelsUpdated once it has asked for them all,
+    /// and the models arrive after), so the cards wait a moment and then fade out over a second. A chunk that goes out
+    /// of sight is 0 again at once, its cards back in full, since the game's trees go with it.
+    /// </summary>
     private static void UpdateChunks(DecoManager decos)
     {
         if (Time.unscaledTime < nextChunks || decos.visibleDecoChunks == null)
             return;
-        nextChunks = Time.unscaledTime + 0.25f;
-        int hash = decos.visibleDecoChunks.Count;
+        nextChunks = Time.unscaledTime + 0.05f;
+        float now = Time.unscaledTime;
+        seenReady.Clear();
         foreach (DecoChunk chunk in decos.visibleDecoChunks)
         {
-            if (chunk != null)
-                hash = hash * 31 + DecoChunk.MakeKey16(chunk.decoChunkX, chunk.decoChunkZ);
+            if (chunk == null || !chunk.isModelsUpdated)
+                continue;
+            int key = DecoChunk.MakeKey16(chunk.decoChunkX, chunk.decoChunkZ);
+            if (!readySince.TryGetValue(key, out float since))
+                readySince[key] = since = now;
+            seenReady.Add(key);
         }
-        if (hash == chunkHash)
+        // Forget chunks that went out of sight or are being remade, so they wait again next time
+        foreach (int key in new List<int>(readySince.Keys))
+        {
+            if (!seenReady.Contains(key))
+                readySince.Remove(key);
+        }
+        bool changed = false;
+        float[] shares = new float[chunkShares.Length];
+        foreach (KeyValuePair<int, float> ready in readySince)
+        {
+            if (chunkByKey.TryGetValue(ready.Key, out int index) && index < shares.Length)
+                shares[index] = Mathf.Clamp01((now - ready.Value - TreesSettle) / CardsFade);
+        }
+        for (int i = 0; i < shares.Length && !changed; i++)
+            changed = shares[i] != chunkShares[i];
+        if (!changed)
             return;
-        chunkHash = hash;
-        Array.Clear(chunkFlags, 0, chunkFlags.Length);
-        foreach (DecoChunk chunk in decos.visibleDecoChunks)
-        {
-            if (chunk != null && chunkByKey.TryGetValue(DecoChunk.MakeKey16(chunk.decoChunkX, chunk.decoChunkZ), out int index) && index < chunkFlags.Length)
-                chunkFlags[index] = 1;
-        }
-        chunkBuffer.SetData(chunkFlags);
+        chunkShares = shares;
+        chunkBuffer.SetData(chunkShares);
     }
 
     private static void Upload(List<DistantTree> found)
@@ -309,8 +333,8 @@ public static class GfxForest
         {
             chunkBuffer?.Release();
             chunkBuffer = new ComputeBuffer(chunks, 4);
-            chunkFlags = new uint[chunks];
-            chunkHash = 0;
+            chunkShares = new float[chunks];
+            chunkBuffer.SetData(chunkShares);
         }
 
         if (args == null)
@@ -449,11 +473,14 @@ public static class GfxForest
         {
             tree.transform.SetPositionAndRotation(PictureSpot, Quaternion.identity);
             tree.SetActive(true);
+            // Pictured as the game draws it where it takes over from the cards, so the cards look like what replaces them
+            int level = HandOverLevel(groups);
+            kind.Level = level;
             foreach (LODGroup group in groups)
-                group.ForceLOD(0);
+                group.ForceLOD(Mathf.Min(level, Mathf.Max(group.lodCount - 1, 0)));
 
-            // What shows at the nearest level of detail, how big it is, and when the game stops drawing it
-            List<Renderer> shown = Shown(tree, groups);
+            // What shows at that level of detail, how big it is, and when the game stops drawing it
+            List<Renderer> shown = Shown(tree, groups, level);
             if (shown.Count == 0)
                 return false;
             Bounds bounds = shown[0].bounds;
@@ -512,14 +539,15 @@ public static class GfxForest
         }
     }
 
-    /// <summary>The renderers drawn at the nearest level of detail: each LOD group's first, and any outside a group.</summary>
-    private static List<Renderer> Shown(GameObject tree, LODGroup[] groups)
+    /// <summary>The renderers drawn at a level of detail: each LOD group's at that level (or its last), and any outside a group.</summary>
+    private static List<Renderer> Shown(GameObject tree, LODGroup[] groups, int level)
     {
         HashSet<Renderer> inGroups = new HashSet<Renderer>();
         List<Renderer> shown = new List<Renderer>();
         foreach (LODGroup group in groups)
         {
             LOD[] lods = group.GetLODs();
+            int at = Mathf.Min(level, lods.Length - 1);
             for (int l = 0; l < lods.Length; l++)
             {
                 foreach (Renderer renderer in lods[l].renderers)
@@ -527,7 +555,7 @@ public static class GfxForest
                     if (renderer == null)
                         continue;
                     inGroups.Add(renderer);
-                    if (l == 0 && renderer.enabled)
+                    if (l == at && renderer.enabled)
                         shown.Add(renderer);
                 }
             }
@@ -538,6 +566,65 @@ public static class GfxForest
                 shown.Add(renderer);
         }
         return shown;
+    }
+
+    /// <summary>
+    /// The level of detail the game draws the tree's largest LOD group at where it takes over from the cards (the edge
+    /// of the tree distance, in decoration chunks of 128 m), but never a flat billboard level, which pictures badly: the
+    /// nearest real model to it.
+    /// </summary>
+    private static int HandOverLevel(LODGroup[] groups)
+    {
+        LODGroup largest = null;
+        float best = 0f;
+        foreach (LODGroup group in groups)
+        {
+            Vector3 scale = group.transform.lossyScale;
+            float size = group.size * Mathf.Max(Mathf.Abs(scale.x), Mathf.Max(Mathf.Abs(scale.y), Mathf.Abs(scale.z)));
+            if (size > best)
+            {
+                best = size;
+                largest = group;
+            }
+        }
+        if (largest == null)
+            return 0;
+        float distance = (Mathf.Max(GfxApply.TreeRadius(EnumGamePrefs.OptionsGfxTreeDistance), 1) + 0.5f) * 128f;
+        float fov = lastCamera != null ? lastCamera.fieldOfView : 65f;
+        float relative = best * GfxDetailSwaps.Pending(largest) * QualitySettings.lodBias / (2f * Mathf.Tan(fov * 0.5f * Mathf.Deg2Rad)) / distance;
+        LOD[] lods = largest.GetLODs();
+        int level = lods.Length - 1;
+        for (int i = 0; i < lods.Length; i++)
+        {
+            if (relative >= lods[i].screenRelativeTransitionHeight)
+            {
+                level = i;
+                break;
+            }
+        }
+        while (level > 0 && IsBillboard(lods[level]))
+            level--;
+        return Mathf.Max(level, 0);
+    }
+
+    private static bool IsBillboard(LOD lod)
+    {
+        foreach (Renderer renderer in lod.renderers)
+        {
+            if (renderer == null)
+                continue;
+            if (renderer is BillboardRenderer)
+                return true;
+            foreach (Material material in renderer.sharedMaterials)
+            {
+                if (material != null && (material.IsKeywordEnabled("EFFECT_BILLBOARD") || material.IsKeywordEnabled("_BILLBOARD")))
+                    return true;
+            }
+            MeshFilter filter = renderer.GetComponent<MeshFilter>();
+            if (filter != null && filter.sharedMesh != null && filter.sharedMesh.vertexCount <= 8)
+                return true;
+        }
+        return false;
     }
 
     /// <summary>The largest LOD group's size over its last level's screen height (0 if it never stops drawing).</summary>
@@ -553,7 +640,7 @@ public static class GfxForest
                 continue;
             best = size;
             float last = lods[lods.Length - 1].screenRelativeTransitionHeight;
-            factor = last > 1e-5f ? size / last : 0f;
+            factor = last > 1e-5f ? size / last * GfxDetailSwaps.Pending(group) : 0f;
         }
         return factor;
     }
@@ -569,8 +656,8 @@ public static class GfxForest
         kinds.Clear();
         kindByBlock.Clear();
         chunkByKey.Clear();
-        chunkFlags = new uint[0];
-        chunkHash = 0;
+        chunkShares = new float[0];
+        readySince.Clear();
         treeCount = 0;
         trees?.Release();
         kindBuffer?.Release();
@@ -603,7 +690,7 @@ public static class GfxForest
                 Save(GfxTerrain.Read(normals, ViewWidth, ViewHeight, slice, RenderTextureFormat.ARGB32, TextureFormat.RGBA32, false), Path.Combine(folder, string.Format("{0:00}_{1}_normal.png", k, view)));
                 saved += 2;
             }
-            Log.Out(string.Format("[GraphicsExpanded] Tree kind {0}: {1}, card {2:0.0} m wide and {3:0.0} m tall, last LOD factor {4:0.0}", k, kinds[k].Model, kinds[k].Size.x * 2f, kinds[k].Size.y, kinds[k].Size.w));
+            Log.Out(string.Format("[GraphicsExpanded] Tree kind {0}: {1}, card {2:0.0} m wide and {3:0.0} m tall, last LOD factor {4:0.0}, pictured at level of detail {5}", k, kinds[k].Model, kinds[k].Size.x * 2f, kinds[k].Size.y, kinds[k].Size.w, kinds[k].Level));
         }
         return "Saved " + saved + " tree pictures to " + folder + " (and each kind's size to the game log).";
     }
@@ -631,6 +718,6 @@ public static class GfxForest
         lastDraws.Sort();
         string lod = lastDraws.Count > 0 ? string.Format("; the game's own trees stop at {0:0} to {1:0} m (median {2:0} m)", lastDraws[0], lastDraws[lastDraws.Count - 1], lastDraws[lastDraws.Count / 2]) : "";
         return string.Format("Distant forests: {0} trees of {1} kinds ({2} pictured) in {3} decoration chunks, the game showing {4} of them{5}; read {6:0} s ago.",
-            treeCount, kinds.Count, pictured, chunkByKey.Count, Array.FindAll(chunkFlags, f => f != 0).Length, lod, Time.unscaledTime - readTime);
+            treeCount, kinds.Count, pictured, chunkByKey.Count, Array.FindAll(chunkShares, f => f >= 1f).Length, lod, Time.unscaledTime - readTime);
     }
 }

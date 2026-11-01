@@ -3,9 +3,10 @@
 // DrawMeshInstancedIndirect, each instance's place, kind, turn and decoration chunk read from _GfxTrees.
 //
 // It's a deferred surface shader, so the cards go into the G-buffer like any other surface and the game's own sun,
-// ambient light, fog (and Torch, and our haze) light and fade them. A card collapses to nothing where the game draws
-// the tree itself: in a decoration chunk the game has shown, closer than where that kind of tree's last level of
-// detail stops drawing.
+// ambient light, fog (and Torch, and our haze) light and fade them. A card gives way where the game draws the tree
+// itself: in a decoration chunk the game has shown, closer than where that kind of tree's last level of detail stops
+// drawing. It fades rather than vanishing, dithered: out over a second as a chunk's trees arrive (_GfxTreeChunks
+// rises from 0 to 1), and in across a band around where the game's tree stops drawing, so neither side snaps.
 Shader "GraphicsExpanded/DistantTree"
 {
     SubShader
@@ -31,7 +32,7 @@ Shader "GraphicsExpanded/DistantTree"
         #ifdef UNITY_PROCEDURAL_INSTANCING_ENABLED
         StructuredBuffer<DistantTree> _GfxTrees;
         StructuredBuffer<float4> _GfxTreeKinds;     // x: half the picture's width, y: its height, z: how far its bottom is below the foot, w: size / last LOD's screen height (0: never culled)
-        StructuredBuffer<uint> _GfxTreeChunks;      // 1 where the game draws the decoration chunk's trees itself
+        StructuredBuffer<float> _GfxTreeChunks;     // how far the game has taken over the decoration chunk's trees: 0 not at all, 1 fully
         #endif
 
         float4 _GfxOrigin;          // xyz: the game's Origin.position
@@ -41,6 +42,8 @@ Shader "GraphicsExpanded/DistantTree"
         struct Input
         {
             float3 atlas;           // xy: where on the picture, z: which picture
+            float shown;            // how much of the card shows, 0 to 1, dithered
+            float4 screenPos;
         };
 
         void setup()
@@ -65,7 +68,11 @@ Shader "GraphicsExpanded/DistantTree"
             float3 foot = tree.position - _GfxOrigin.xyz;
             float3 toCamera = _WorldSpaceCameraPos - foot;
             float distance = length(toCamera);
-            bool gameDraws = _GfxTreeChunks[chunk] != 0 && (size.w <= 0 || distance < size.w * _GfxTreeParams.x * 0.97);
+            // Past where the game's tree stops drawing the card shows; across the band around it, partly
+            float stops = size.w * _GfxTreeParams.x;
+            float beyond = size.w <= 0 ? 0 : saturate((distance - stops * 0.92) / (stops * 0.12));
+            float shown = lerp(1, beyond, _GfxTreeChunks[chunk]);
+            bool gameDraws = shown <= 0.002;
 
             // Turned about the upright to face the camera
             float2 across = toCamera.xz;
@@ -81,6 +88,7 @@ Shader "GraphicsExpanded/DistantTree"
             float views = _GfxTreeParams.y;
             float around = frac((atan2(facing.x, facing.z) - turn) / 6.2831853 + 0.5 / views);
             o.atlas = float3(v.texcoord.xy, kind * views + min(floor(around * views), views - 1));
+            o.shown = shown;
             #endif
         }
 
@@ -94,6 +102,9 @@ Shader "GraphicsExpanded/DistantTree"
             float2 dy = ddy(i.atlas.xy * _GfxTreeSize.xy);
             float mip = 0.5 * log2(max(max(dot(dx, dx), dot(dy, dy)), 1e-6));
             clip(color.a * (1 + max(mip, 0) * 0.25) - 0.5);
+            // Partly shown: a screen-door pattern of the right density, steady from frame to frame
+            float2 pixel = i.screenPos.xy / max(i.screenPos.w, 1e-5) * _ScreenParams.xy;
+            clip(i.shown - frac(52.9829189 * frac(dot(pixel, float2(0.06711056, 0.00583715)))) - 0.001);
 
             float coverage = max(color.a, 1e-3);
             o.Albedo = saturate(color.rgb / coverage * _GfxTreeParams.z);

@@ -54,6 +54,7 @@ public static class GfxApply
             GfxForest.Update(Player(), camera);
             GfxFarShadows.Update(Player(), camera);
             GfxDistantGrass.Update(Player(), camera);
+            GfxDetailSwaps.Update();
             GfxWeather.Update(Player(), camera, Time.deltaTime);
             GfxAtmosphere.Update(Player(), camera);
             GfxHaze.Update(Player(), camera);

@@ -131,7 +131,7 @@
 		<Tab name="Detail" displayKey="gfxeTabDetail">
 			<Category name="Distance" displayKey="gfxeCatDistance">
 				<Description key="gfxeCatDistanceDesc" />
-				<Slider name="LodDistance" displayKey="gfxeLodDistance" type="float" defaultValue="100%">
+				<Slider name="LodDistance" displayKey="gfxeLodDistance" type="float" defaultValue="300%">
 					<Incremental increment="10%" minValue="100%" maxValue="300%" />
 					<Formatter ui="0%" />
 					<Description key="gfxeLodDistanceDesc" />
@@ -155,6 +155,10 @@
 				<Selector name="DistantGrass" displayKey="gfxeDistantGrass" type="GfxDistantGrassDistance, GraphicsExpanded" defaultValue="Meters500">
 					<LocalizationPrefix prefix="gfxeDistantGrass_" />
 					<Description key="gfxeDistantGrassDesc" />
+				</Selector>
+				<Selector name="PlantDetail" displayKey="gfxePlantDetail" type="GfxPlantDetail, GraphicsExpanded" defaultValue="Further">
+					<LocalizationPrefix prefix="gfxePlantDetail_" />
+					<Description key="gfxePlantDetailDesc" />
 				</Selector>
 			</Category>
 			<Category name="Textures" displayKey="gfxeCatTextures">

@@ -22,7 +22,7 @@ Shader "GraphicsExpanded/DistantGrass"
 
         sampler2D _GfxGrassBlades;      // four blade patterns side by side, alpha the blades
         sampler2D _GfxGrassField;       // around the camera: r how much grass grows (biome, buildings), g the biome's color index / 255
-        sampler2D _GfxGrassChunks;      // same area: r 1 where the game has the chunk loaded
+        sampler2D _GfxGrassChunks;      // same area: r how far the game's own grass has taken over the chunk, 0 to 1 over a second
         sampler2D _GfxGrassHeights;     // world heights, Unity space (GfxFarShadows' height map)
         sampler2D _GfxGrassRoads;       // the world's splat3: roads in any channel
         sampler2D _GfxGrassWater;       // the world's splat4: water in green and blue
@@ -95,9 +95,10 @@ Shader "GraphicsExpanded/DistantGrass"
             // The near grid gives way to the far one across the band, each drawing fewer the further into the other's
             float band = saturate((distance - _GfxGrassRing.x) / max(_GfxGrassRing.y - _GfxGrassRing.x, 1));
             float share = _GfxGrassRing.z > 0.5 ? band : 1 - band;
-            float keep = field.r * share * saturate((_GfxGrassRange.y - distance) / _GfxGrassRange.z) * saturate(1.3 - slope * 1.6);
+            // Where the game's grass is coming in, tufts drop out one by one rather than all at once
+            float keep = field.r * share * saturate((_GfxGrassRange.y - distance) / _GfxGrassRange.z) * saturate(1.3 - slope * 1.6) * (1 - loaded);
             bool showMasked = _GfxGrassCard.w > 1.5;
-            bool none = any(fieldUV < 0) || any(fieldUV > 1) || loaded > 0.5 || ground < -9000 || c > keep || (masked && !showMasked);
+            bool none = any(fieldUV < 0) || any(fieldUV > 1) || ground < -9000 || c > keep || (masked && !showMasked);
 
             float scale = _GfxGrassRing.w * (0.75 + 0.5 * d);
             float3 foot = float3(unityXZ.x, ground - 0.15, unityXZ.y);
