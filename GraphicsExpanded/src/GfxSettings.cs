@@ -54,6 +54,13 @@ public enum GfxVolumetricQuality
     High,
 }
 
+public enum GfxWaterQuality
+{
+    Off,
+    Medium,
+    High,
+}
+
 public enum GfxGrassDistance
 {
     Menu,
@@ -183,6 +190,13 @@ public static class GfxSettings
     public static float IndoorDust = 0.5f;
     public static float HeightFog = 1f;
     public static float MorningMist = 1f;
+
+    /// <summary>Distance haze strength, 0 to 2.</summary>
+    public static float DistanceHaze = 1f;
+
+    /// <summary>The water: off (the game's), Medium (the game's reflection probe) or High (and screen-space reflections), and wave strength 0 to 2.</summary>
+    public static GfxWaterQuality WaterQuality = GfxWaterQuality.High;
+    public static float WaterWaves = 1f;
 
     /// <summary>
     /// True while the compare key is held. Look and shadows go back to vanilla so they can be compared; draw distances

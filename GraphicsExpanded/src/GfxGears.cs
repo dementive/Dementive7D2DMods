@@ -51,6 +51,10 @@ public class GfxGears : IGearsModApi
     private static ISliderGlobalSetting<float> indoorDust;
     private static ISliderGlobalSetting<float> heightFog;
     private static ISliderGlobalSetting<float> morningMist;
+    private static ISliderGlobalSetting<float> distanceHaze;
+
+    private static ISelectorGlobalSetting<GfxWaterQuality> waterQuality;
+    private static ISliderGlobalSetting<float> waterWaves;
 
     /// <summary>True while the preset is writing the rows it drives, so they don't turn it to Custom.</summary>
     private static bool applyingPreset;
@@ -96,6 +100,10 @@ public class GfxGears : IGearsModApi
         indoorDust = Get<ISliderGlobalSetting<float>>(settings, "Atmosphere", "LightAndFog", "IndoorDust");
         heightFog = Get<ISliderGlobalSetting<float>>(settings, "Atmosphere", "LightAndFog", "HeightFog");
         morningMist = Get<ISliderGlobalSetting<float>>(settings, "Atmosphere", "LightAndFog", "MorningMist");
+        distanceHaze = Get<ISliderGlobalSetting<float>>(settings, "Atmosphere", "Distance", "DistanceHaze");
+
+        waterQuality = Get<ISelectorGlobalSetting<GfxWaterQuality>>(settings, "Water", "Surface", "Quality");
+        waterWaves = Get<ISliderGlobalSetting<float>>(settings, "Water", "Surface", "Waves");
 
         Listen(enabled, v => GfxSettings.Enabled = v);
         Listen(preset, PresetSelected);
@@ -133,6 +141,10 @@ public class GfxGears : IGearsModApi
         Listen(indoorDust, v => GfxSettings.IndoorDust = v);
         Listen(heightFog, v => GfxSettings.HeightFog = v);
         Listen(morningMist, v => GfxSettings.MorningMist = v);
+        Listen(distanceHaze, v => GfxSettings.DistanceHaze = v);
+
+        Listen(waterQuality, v => GfxSettings.WaterQuality = v);
+        Listen(waterWaves, v => GfxSettings.WaterWaves = v);
 
         IControlBindingSetting compareKey = Get<IControlBindingSetting>(settings, "Look", "General", "CompareKey");
         if (compareKey != null && GfxInput.Actions != null)
@@ -181,6 +193,10 @@ public class GfxGears : IGearsModApi
         Read(indoorDust, v => GfxSettings.IndoorDust = v);
         Read(heightFog, v => GfxSettings.HeightFog = v);
         Read(morningMist, v => GfxSettings.MorningMist = v);
+        Read(distanceHaze, v => GfxSettings.DistanceHaze = v);
+
+        Read(waterQuality, v => GfxSettings.WaterQuality = v);
+        Read(waterWaves, v => GfxSettings.WaterWaves = v);
 
         // A preset other than Custom always matches its rows, since editing one turns it to Custom. Rows a mod update
         // added (saved values don't have them) or preset values it changed would otherwise keep their defaults, so

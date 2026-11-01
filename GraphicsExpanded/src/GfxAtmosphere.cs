@@ -12,15 +12,22 @@ using UnityEngine.Rendering;
 /// Only the sun and moon: lamps and torches are Torch's.
 ///
 /// The fog is a layer sitting 15 m above the average ground around the player and thinning with height, thick in
-/// valleys and over water. It follows the time of day and weather every client already has, so in multiplayer each
-/// player works it out locally and nothing is sent.
+/// valleys and over water, broken into banks that drift with the wind. It comes with the time and the weather: night
+/// and morning mist, rain, snow, overcast skies and the Blood Moon. A clear afternoon has next to none. All of it
+/// follows what every client already has (the world time drives the drift), so in multiplayer each player works it
+/// out locally, sees the same banks in the same places, and nothing is sent.
 /// </summary>
 public static class GfxAtmosphere
 {
     private const float ClearFog = 0.002f;          // extinction per meter of the fog layer on a clear day
     private const float FogFalloff = 0.077f;        // per meter above the base: half as thick every 9 m
     private const float FogAboveGround = 15f;
-    private const float ClearAir = 0.0004f;
+    private const float ClearAir = 0.0003f;          // enough for sunbeams on a clear day, not enough to grey the view
+    private const float ClearDayFog = 0.05f;         // the fog's share left on a clear afternoon
+    private const float BankRepeat = 480f;           // the fog noise repeats every 480 m across, so banks are about 60 m
+    private const float BankRepeatUp = 120f;         // and every 120 m up
+    private static readonly Vector2 DriftPerTick = new Vector2(0.35f, 0.15f);   // a world tick is about 0.15 s at the default day length
+    private const double DriftWrap = BankRepeat * 1000.0;
     private const float IndoorDust = 0.015f;        // at 100% indoor dust, within DustRange of the player
     private const float DustRange = 25f;
     private const float PhaseG = 0.5f;
@@ -39,6 +46,10 @@ public static class GfxAtmosphere
 
     private static float groundHeight;
     private static float nextGroundTime;
+    private static Texture3D fogNoise;
+    private static Vector2 drift;
+    private static bool driftSet;
+    private static float fogAmount = -1f;    // eases towards the weather's; below 0 until the first frame sets it
     private static int frame;
     private static string state = "not started";
 
@@ -53,7 +64,11 @@ public static class GfxAtmosphere
             shader = null;
         }
         if (shader != null)
+        {
             material = new Material(shader) { hideFlags = HideFlags.HideAndDontSave };
+            fogNoise = FogNoise();
+            material.SetTexture("_GfxFogNoise", fogNoise);
+        }
         Shader.SetGlobalFloat("_GfxMarched", 0f);
     }
 
@@ -229,6 +244,7 @@ public static class GfxAtmosphere
         material.SetMatrix("_GfxCameraToWorld", rendering.cameraToWorldMatrix);
         material.SetVector("_GfxLowSize", new Vector4(lowWidth, lowHeight, 1f / lowWidth, 1f / lowHeight));
         material.SetVector("_GfxFullSize", new Vector4(rendering.pixelWidth, rendering.pixelHeight, 1f / rendering.pixelWidth, 1f / rendering.pixelHeight));
+        material.SetFloat("_GfxFar", rendering.farClipPlane);
     }
 
     private static void OnPostRender(Camera rendering)
@@ -251,13 +267,21 @@ public static class GfxAtmosphere
         WeatherManager weather = WeatherManager.Instance;
         float rain = weather != null ? GfxMood.Fraction(weather.GetCurrentRainfallPercent()) : 0f;
         float snowfall = weather != null ? GfxMood.Fraction(weather.GetCurrentSnowfallPercent()) : 0f;
+        float overcast = weather != null ? GfxMood.Fraction(weather.GetCurrentCloudThicknessPercent()) : 0f;
         float bloodMoon = Mathf.Clamp01(SkyManager.BloodMoonVisiblePercent());
-        float mist = Mist((world.worldTime % 24000UL) / 1000f, SkyManager.GetDawnTime()) * GfxSettings.MorningMist;
-        float thicker = Mathf.Min(1f + 5f * mist + 2f * rain + snowfall + 2f * bloodMoon, 8f);
-        float fog = ClearFog * GfxSettings.HeightFog * thicker * GfxSettings.Effective.FogDensity;
+        float hours = (world.worldTime % 24000UL) / 1000f;
+        float mist = Mist(hours, SkyManager.GetDawnTime(), SkyManager.GetDuskTime()) * GfxSettings.MorningMist;
+        // Next to nothing on a clear afternoon; the time of day and the weather bring it in
+        float target = Mathf.Min(ClearDayFog + 6f * mist + 3f * rain + 2f * snowfall + overcast * overcast + 3f * bloodMoon, 8f);
+        fogAmount = fogAmount < 0f ? target : Mathf.MoveTowards(fogAmount, target, Time.deltaTime * 0.1f);
+        float fog = ClearFog * GfxSettings.HeightFog * fogAmount * GfxSettings.Effective.FogDensity;
 
         Vector3 origin = Origin.position;
         material.SetVector("_GfxMedium", new Vector4(fog, FogFalloff, groundHeight + FogAboveGround - origin.y, ClearAir));
+        // Mist lies in banks with clear gaps between; steady rain fills them in
+        Vector2 carried = Drift(world);
+        material.SetVector("_GfxFogBanks", new Vector4(1f / BankRepeat, 1f / BankRepeatUp, Mathf.Lerp(0.9f, 0.4f, Mathf.Max(rain, snowfall)), 0f));
+        material.SetVector("_GfxFogOffset", new Vector4(origin.x + carried.x, origin.y, origin.z + carried.y, 0f));
         material.SetVector("_GfxDust", new Vector4(IndoorDust * GfxSettings.IndoorDust * (1f - GfxMood.Outdoors), DustRange, 0f, 0f));
         Color glow = light.color.linear * light.intensity * GfxSettings.Sunbeams;
         material.SetVector("_GfxLightColor", new Vector4(glow.r, glow.g, glow.b, 0f));
@@ -270,21 +294,103 @@ public static class GfxAtmosphere
         material.SetFloat("_GfxSplitSpheres", QualitySettings.shadowProjection == ShadowProjection.StableFit ? 1f : 0f);
     }
 
-    /// <summary>Morning mist: rises over the hour before dawn, holds for 90 minutes after it, then burns off over an hour.</summary>
-    private static float Mist(float hours, float dawn)
+    /// <summary>
+    /// Night and morning mist: from an hour after dusk it gathers in the low ground through the night, thickest at
+    /// dawn, holds for 90 minutes after it, then burns off over an hour.
+    /// </summary>
+    private static float Mist(float hours, float dawn, float dusk)
     {
         float since = hours - dawn;
-        if (since >= -1f && since < 0f)
-            return Mathf.SmoothStep(0f, 1f, since + 1f);
         if (since >= 0f && since < 1.5f)
             return 1f;
         if (since >= 1.5f && since < 2.5f)
             return Mathf.SmoothStep(1f, 0f, since - 1.5f);
+        // Hours since an hour after dusk, through midnight to dawn
+        float night = hours - (dusk + 1f);
+        if (night < 0f)
+            night += 24f;
+        float nightLength = dawn + 24f - (dusk + 1f);
+        if (night >= 0f && night < nightLength)
+            return Mathf.SmoothStep(0f, 1f, night / nightLength);
         return 0f;
     }
 
+    /// <summary>How far the wind has carried the fog banks: from the synced world time, eased between ticks.</summary>
+    private static Vector2 Drift(World world)
+    {
+        double ticks = world.worldTime;
+        Vector2 target = new Vector2((float)(ticks * DriftPerTick.x % DriftWrap), (float)(ticks * DriftPerTick.y % DriftWrap));
+        if (!driftSet || (target - drift).sqrMagnitude > 500f * 500f)
+            drift = target;     // first frame, a wrap, or a time skip
+        else
+            drift = Vector2.Lerp(drift, target, 0.05f);
+        driftSet = true;
+        return drift;
+    }
+
+    /// <summary>
+    /// The fog's noise: soft value noise on an 8 then a 16 cell lattice, both repeating, so the banks tile seamlessly.
+    /// Made once at start up, 32 cubed.
+    /// </summary>
+    private static Texture3D FogNoise()
+    {
+        const int size = 32;
+        System.Random random = new System.Random(7);
+        float[] coarse = Lattice(random, 8);
+        float[] fine = Lattice(random, 16);
+        byte[] data = new byte[size * size * size];
+        for (int z = 0; z < size; z++)
+        {
+            for (int y = 0; y < size; y++)
+            {
+                for (int x = 0; x < size; x++)
+                {
+                    float value = Smooth(coarse, 8, x, y, z, size) * 0.65f + Smooth(fine, 16, x, y, z, size) * 0.35f;
+                    data[(z * size + y) * size + x] = (byte)Mathf.Clamp(Mathf.RoundToInt(value * 255f), 0, 255);
+                }
+            }
+        }
+        Texture3D texture = new Texture3D(size, size, size, TextureFormat.R8, false)
+        {
+            name = "GraphicsExpanded fog noise",
+            wrapMode = TextureWrapMode.Repeat,
+            filterMode = FilterMode.Bilinear,
+            hideFlags = HideFlags.HideAndDontSave,
+        };
+        texture.SetPixelData(data, 0);
+        texture.Apply(false, true);
+        return texture;
+    }
+
+    private static float[] Lattice(System.Random random, int cells)
+    {
+        float[] values = new float[cells * cells * cells];
+        for (int i = 0; i < values.Length; i++)
+            values[i] = (float)random.NextDouble();
+        return values;
+    }
+
+    /// <summary>The lattice's values blended smoothly at a texel, wrapping at the edges.</summary>
+    private static float Smooth(float[] lattice, int cells, int x, int y, int z, int size)
+    {
+        float fx = (x + 0.5f) * cells / size, fy = (y + 0.5f) * cells / size, fz = (z + 0.5f) * cells / size;
+        int x0 = Mathf.FloorToInt(fx), y0 = Mathf.FloorToInt(fy), z0 = Mathf.FloorToInt(fz);
+        float tx = Fade(fx - x0), ty = Fade(fy - y0), tz = Fade(fz - z0);
+        float At(int i, int j, int k) => lattice[((k % cells) * cells + (j % cells)) * cells + (i % cells)];
+        float x00 = Mathf.Lerp(At(x0, y0, z0), At(x0 + 1, y0, z0), tx);
+        float x10 = Mathf.Lerp(At(x0, y0 + 1, z0), At(x0 + 1, y0 + 1, z0), tx);
+        float x01 = Mathf.Lerp(At(x0, y0, z0 + 1), At(x0 + 1, y0, z0 + 1), tx);
+        float x11 = Mathf.Lerp(At(x0, y0 + 1, z0 + 1), At(x0 + 1, y0 + 1, z0 + 1), tx);
+        return Mathf.Lerp(Mathf.Lerp(x00, x10, ty), Mathf.Lerp(x01, x11, ty), tz);
+    }
+
+    private static float Fade(float t)
+    {
+        return t * t * t * (t * (t * 6f - 15f) + 10f);
+    }
+
     /// <summary>The ground's average height over a 160 m square around the player, from the terrain heights.</summary>
-    private static float AverageGround(World world, EntityPlayerLocal player)
+    public static float AverageGround(World world, EntityPlayerLocal player)
     {
         Vector3i center = World.worldToBlockPos(player.position);
         float sum = 0f;
@@ -308,8 +414,8 @@ public static class GfxAtmosphere
     {
         if (!Loaded)
             return "Sunbeams and height fog are off: the shader didn't load (see the log).";
-        return string.Format("Sunbeams and height fog: {0}; ground {1:0} m, fog base {2:0} m; middle of the screen: {3}.",
-            state, groundHeight, groundHeight + FogAboveGround, Probe());
+        return string.Format("Sunbeams and height fog: {0}; ground {1:0} m, fog base {2:0} m, fog {3:0%} of a misty morning's; middle of the screen: {4}.",
+            state, groundHeight, groundHeight + FogAboveGround, fogAmount / 6f, Probe());
     }
 
     /// <summary>

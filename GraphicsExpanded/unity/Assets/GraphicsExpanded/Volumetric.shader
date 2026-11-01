@@ -82,6 +82,10 @@ Shader "Hidden/GraphicsExpanded/Volumetric"
             float4 _GfxDust;            // x: extra density near the player when indoors, y: how far out it reaches
             float4 _GfxMarch;           // x: steps, y: how far to march, z: phase g (how much light goes forward), w: frame number
             float _GfxSplitSpheres;     // 1: the shadow cascades are split by spheres (stable fit), 0: by view depth
+            float _GfxFar;              // the camera's far clip: rays that reach it are the sky
+            sampler3D _GfxFogNoise;     // soft repeating noise the fog is broken into banks with
+            float4 _GfxFogBanks;        // x: 1 / the noise's repeat across in meters, y: and upwards, z: how patchy the fog is (0 an even sheet to 1 banks and gaps)
+            float4 _GfxFogOffset;       // xyz: added to positions before the noise: the floating origin, and how far the wind has carried the fog
 
             // 1 where the light reaches the point, 0 in its shadow; past the shadow distance everything is lit
             float Visibility(float3 p, float viewDepth)
@@ -118,11 +122,22 @@ Shader "Hidden/GraphicsExpanded/Volumetric"
                 return (1 - g2) / (4 * UNITY_PI * pow(max(1 + g2 - 2 * g * cosTheta, 1e-4), 1.5));
             }
 
+            // The fog alone: a layer thinning with height, broken into drifting banks with gaps between, their tops
+            // rising and falling in wisps
+            float Fog(float3 p)
+            {
+                float3 q = p + _GfxFogOffset.xyz;
+                float noise = tex3Dlod(_GfxFogNoise, float4(q.x * _GfxFogBanks.x, q.y * _GfxFogBanks.y, q.z * _GfxFogBanks.x, 0)).r;
+                float patchy = _GfxFogBanks.z;
+                float top = _GfxMedium.z + (noise - 0.5) * 16 * patchy;
+                float banks = lerp(1, smoothstep(0.36, 0.64, noise) * 1.8, patchy);
+                return _GfxMedium.x * exp(-max(0, p.y - top) * _GfxMedium.y) * banks;
+            }
+
             float Density(float3 p, float distance)
             {
-                float fog = _GfxMedium.x * exp(-max(0, p.y - _GfxMedium.z) * _GfxMedium.y);
                 float dust = _GfxDust.x * saturate(1 - distance / _GfxDust.y);
-                return fog + dust + _GfxMedium.w;
+                return Fog(p) + dust + _GfxMedium.w;
             }
 
             // Per-pixel jitter for where the steps start, so too few steps read as noise (which the blur and the game's
@@ -150,6 +165,8 @@ Shader "Hidden/GraphicsExpanded/Volumetric"
                 float stepLength = marchLength / steps;
                 float jitter = Jitter(i.pos.xy);
                 float phase = Phase(dot(dir, _GfxLightDir.xyz), _GfxMarch.z);
+                // Clear air still shows sunbeams against the sky, but doesn't dim it: the sky already is the air
+                float clearDims = eyeDepth > _GfxFar * 0.98 ? 0 : 1;
 
                 float3 light = 0;
                 float transmittance = 1;
@@ -161,9 +178,8 @@ Shader "Hidden/GraphicsExpanded/Volumetric"
                     float density = Density(p, t);
                     float3 glow = _GfxLightColor.rgb * Visibility(p, t * depthPerMeter) * phase + _GfxAmbient.rgb;
                     // The light this step scatters towards the camera, dimmed by the air in front of it
-                    float stepTransmittance = exp(-density * stepLength);
-                    light += transmittance * glow * (1 - stepTransmittance);
-                    transmittance *= stepTransmittance;
+                    light += transmittance * glow * (1 - exp(-density * stepLength));
+                    transmittance *= exp(-(density - _GfxMedium.w * (1 - clearDims)) * stepLength);
                 }
                 float4 result = float4(light, transmittance);
                 return any(isnan(result)) || any(isinf(result)) ? float4(0, 0, 0, 1) : result;

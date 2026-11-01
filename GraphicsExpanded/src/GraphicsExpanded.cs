@@ -16,6 +16,8 @@ public class GraphicsExpanded : IModApi
         AssetBundle shaders = LoadShaders(_modInstance.Path);
         GfxWeather.Init(shaders);
         GfxAtmosphere.Init(shaders);
+        GfxHaze.Init(shaders);
+        GfxWater.Init(shaders);
         ModEvents.GameUpdate.RegisterHandler(Update);
     }
 

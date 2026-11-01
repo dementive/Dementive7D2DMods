@@ -32,12 +32,38 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             + "  gfxe weather wet <0-1> | snow <0-1> - set it, to see it without waiting for the weather\n"
             + "  gfxe weather debug   - show the sky check instead: cyan is open to the sky, magenta is covered\n"
             + "  gfxe atmosphere      - how the sunbeams and height fog are running\n"
+            + "  gfxe haze            - how the distance haze is running\n"
+            + "  gfxe water           - how the water is running\n"
+            + "  gfxe water debug     - show what the water's reflections find instead\n"
+            + "  gfxe shots           - screenshots of this view with and without the mod's look, to the Screenshots folder\n"
             + "Changes last until the game closes. Install Gears to change and save every setting from the Mods menu.";
     }
 
     public override void Execute(List<string> _params, CommandSenderInfo _senderInfo)
     {
         SdtdConsole console = SingletonMonoBehaviour<SdtdConsole>.Instance;
+        if (_params.Count == 1 && _params[0].EqualsCaseInsensitive("haze"))
+        {
+            console.Output(GfxHaze.Status());
+            Log.Out("[GraphicsExpanded] " + GfxHaze.Status());
+            return;
+        }
+        if (_params.Count >= 1 && _params[0].EqualsCaseInsensitive("water"))
+        {
+            if (_params.Count == 2 && _params[1].EqualsCaseInsensitive("debug"))
+            {
+                GfxWater.Debug = !GfxWater.Debug;
+                console.Output("Water debug view " + (GfxWater.Debug ? "on" : "off") + ": red where screen-space reflections found something, green the reflection's share, blue the shore foam.");
+            }
+            console.Output(GfxWater.Status());
+            Log.Out("[GraphicsExpanded] " + GfxWater.Status());
+            return;
+        }
+        if (_params.Count == 1 && _params[0].EqualsCaseInsensitive("shots"))
+        {
+            console.Output(GfxShots.Take());
+            return;
+        }
         if (_params.Count == 1 && _params[0].EqualsCaseInsensitive("atmosphere"))
         {
             console.Output(GfxAtmosphere.Status());

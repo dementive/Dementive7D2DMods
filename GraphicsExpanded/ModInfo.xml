@@ -2,7 +2,7 @@
 <xml>
 	<Name value="GraphicsExpanded" />
 	<DisplayName value="Graphics Expanded" />
-	<Description value="Better color, fog, shadows and draw distances on top of the video menu, plus surfaces that get wet in rain and snowy in snowfall, sunbeams and height fog, with presets and a hold-to-compare key. Settings page with Gears (optional). Client side. For 7 Days to Die V3.4." />
+	<Description value="Better color, fog, shadows and draw distances on top of the video menu, plus surfaces that get wet in rain and snowy in snowfall, sunbeams, drifting fog, distance haze and new water, with presets and a hold-to-compare key. Settings page with Gears (optional). Client side. For 7 Days to Die V3.4." />
 	<Author value="Dementive" />
 	<Version value="1.0.0.0" />
 	<Website value="" />

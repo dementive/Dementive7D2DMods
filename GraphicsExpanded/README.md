@@ -25,10 +25,17 @@ adjustment to vanilla, so the game's own effects (biome fog, weather, night, bri
   about five minutes, melted in about ten), and anything under a roof stays dry. Zombies and players get wet and
   snowy too.
 - **Sunbeams and height fog**: real shafts of sunlight (and faint moonlight) through windows, doorways, trees and
-  ruins, made from the game's own shadows, with dusty air indoors so beams through windows show. A layer of fog sits
-  about 15 m above the ground around you, filling valleys and low ground, with morning mist after dawn and thicker,
-  redder fog under the Blood Moon. Quality from Low to High, or Off. Only the sun and moon: lamps and torches are
-  Torch's.
+  ruins, made from the game's own shadows, with dusty air indoors so beams through windows show. Fog lies in the low
+  ground and over water in drifting banks with wisps rising off them. A clear afternoon has next to none: it gathers
+  through the night, is thickest at dawn and burns off by mid-morning, and comes with rain, snow, overcast skies and
+  the Blood Moon. Quality from Low to High, or Off. Only the sun and moon: lamps and torches are Torch's.
+- **Distance haze**: far hills, trees and buildings soften into the color of the air, while the first 150 m stay crisp.
+  On a clear day the air takes the sky's hue (blue by day, warm at sunrise and sunset), greying under cloud, rain and
+  snow, with a warm glow towards the sun. The sky itself is left alone.
+- **Water**: lakes, rivers and pools near and far, clear in the shallows and deep blue-green further down, bending
+  what's under them, reflecting the sky and shore (on High also the trees and buildings around, traced across the
+  screen), with the sun's glint, foam along the edges and rings when it rains. Quality Medium or High, or Off for the
+  game's water, and a Waves slider.
 
 The shadow and detail settings start at "Video menu", so out of the box only the look changes.
 
@@ -66,6 +73,12 @@ gfxe weather wet <0-1>          set it, to see it without waiting for rain
 gfxe weather snow <0-1>         the same for snow
 gfxe weather debug              show the sky check: cyan is open to the sky, magenta is covered
 gfxe atmosphere                 how the sunbeams and height fog are running, and what they hold mid-screen
+gfxe haze                       how the distance haze is running
+gfxe water                      how the water is running
+gfxe water debug                show what the reflections find: red screen-space hits, green the reflection's share,
+                                blue the shore foam
+gfxe shots                      two screenshots of the view, with and without the mod's look, to the Screenshots
+                                folder (status lines go to the game log)
 gfxe materials                  write the block and terrain materials and textures to the game log
 ```
 
@@ -106,6 +119,18 @@ gfxe materials                  write the block and terrain materials and textur
   slots the game's own sun effects use (NGSS soft shadows, contact shadows), and the light buffers are added before
   the camera culls, as the game does: added in `OnPreRender`, Unity doesn't run them that frame. The overlay only touches
   the picture on frames the march ran (`_GfxMarched`), and catches invalid values, so it can never black the scene out.
+- The fog's banks are a 32x32x32 tiling noise made when the mod starts, scrolled with the world time so every player
+  sees the same banks. Clear air still scatters sunbeams against the sky but doesn't dim it.
+- Distance haze (`GfxHaze`, `unity/Assets/GraphicsExpanded/Haze.shader`, `GfxHaze.cginc`): a camera command buffer at
+  `BeforeForwardAlpha`, after the solid world and before transparent objects, dims each pixel past 150 m towards the
+  air's color by its distance and height. Its color is `SkyManager.GetSkyColor()`'s hue at the brightness of the
+  game's fog color. The water shader hazes its own reflections the same way.
+- Water (`GfxWater`, `unity/Assets/GraphicsExpanded/Water.shader`): the mod's shader goes on the game's two water
+  materials (`MeshDescription.meshes[1]`: the near one and `materialDistant`, the far one) and the game's shaders go
+  back when it's off or the compare key is held. It grabs the picture behind the water, reads the depth behind it for
+  how deep the water is, reflects the game's reflection probe (`PlayerReflectionProbe`), and on High marches each
+  reflected ray across the screen. The far water still steps aside where near water is drawn, from the game's
+  `_ClipChunks` map of loaded chunks.
 - Sky cover: for every block column within 6 chunks, the top of the highest block that stops rain (solid blocks, not
   plants, grass, flowers or water), read from the chunks 24 a frame and refreshed every two seconds. It comes from the
   block data rather than from rendering, because the game culls chunk pieces you can't see (from inside a house, parts
@@ -122,3 +147,6 @@ gfxe materials                  write the block and terrain materials and textur
   editor in batch mode. It needs Unity 2022.3.62f2, the game's version, from Unity Hub (set `UNITY` to its Unity.exe if
   it isn't in Hub's default folder). The project has no packages besides the built-in AssetBundle module, so nothing is
   downloaded, and every build starts from scratch. Players don't need Unity: the bundle ships in the mod.
+- `src/preview-scene.bat` renders the water and distance haze outside the game, in a made-up lake scene with the
+  game's measured light and exposure, into `unity/Build/scene-preview.png` (with a debug column). It needs a graphics
+  card (batch mode, but not `-nographics`). Unity Hub must be signed in for either Unity script.

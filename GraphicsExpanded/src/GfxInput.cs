@@ -55,10 +55,13 @@ public static class GfxInput
         }
     }
 
+    /// <summary>Set by gfxe shots while it takes its vanilla screenshot, as if the compare key were held.</summary>
+    public static bool ForceCompare;
+
     public static void Update()
     {
         bool held = Actions != null && Actions.Compare.IsPressed && !Typing();
-        GfxSettings.CompareHeld = held;
+        GfxSettings.CompareHeld = held || ForceCompare;
     }
 
     /// <summary>True when there's no player UI (main menu) or a text field has the keyboard (chat, console, signs).</summary>

@@ -196,6 +196,28 @@
 					<Description key="gfxeMorningMistDesc" />
 				</Slider>
 			</Category>
+			<Category name="Distance" displayKey="gfxeCatDistanceHaze">
+				<Description key="gfxeCatDistanceHazeDesc" />
+				<Slider name="DistanceHaze" displayKey="gfxeDistanceHaze" type="float" defaultValue="100%">
+					<Incremental increment="10%" minValue="0%" maxValue="200%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeDistanceHazeDesc" />
+				</Slider>
+			</Category>
+		</Tab>
+		<Tab name="Water" displayKey="gfxeTabWater">
+			<Category name="Surface" displayKey="gfxeCatWater">
+				<Description key="gfxeCatWaterDesc" />
+				<Selector name="Quality" displayKey="gfxeWaterQuality" type="GfxWaterQuality, GraphicsExpanded" defaultValue="High">
+					<LocalizationPrefix prefix="gfxeWaterQuality_" />
+					<Description key="gfxeWaterQualityDesc" />
+				</Selector>
+				<Slider name="Waves" displayKey="gfxeWaterWaves" type="float" defaultValue="100%">
+					<Incremental increment="10%" minValue="0%" maxValue="200%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeWaterWavesDesc" />
+				</Slider>
+			</Category>
 		</Tab>
 	</Global>
 </ModSettings>
