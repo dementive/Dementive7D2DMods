@@ -51,6 +51,8 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             + "  gfxe farshadows save - save the height map they're worked out from, to GraphicsExpanded/FarShadowHeights.png\n"
             + "  gfxe farshadows debug - red: where they fall; again: blue, height map vs ground; again: off\n"
             + "  gfxe haze            - how the distance haze is running\n"
+            + "  gfxe ambience        - how the pollen, fireflies and leaves are running\n"
+            + "  gfxe ambience debug  - show them all in magenta, whatever the time and weather (again to stop)\n"
             + "  gfxe water           - how the water is running\n"
             + "  gfxe water debug     - show what the water's reflections find instead\n"
             + "  gfxe shots           - screenshots of this view with and without the mod's look, to the Screenshots folder\n"
@@ -140,6 +142,17 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             }
             console.Output(GfxFarShadows.Status());
             Log.Out("[GraphicsExpanded] " + GfxFarShadows.Status());
+            return;
+        }
+        if (_params.Count >= 1 && _params[0].EqualsCaseInsensitive("ambience"))
+        {
+            if (_params.Count == 2 && _params[1].EqualsCaseInsensitive("debug"))
+            {
+                GfxAmbience.Debug = !GfxAmbience.Debug;
+                console.Output("Ambient life " + (GfxAmbience.Debug ? "all in magenta, whatever the time and weather." : "drawn normally."));
+            }
+            console.Output(GfxAmbience.Status());
+            Log.Out("[GraphicsExpanded] " + GfxAmbience.Status());
             return;
         }
         if (_params.Count == 1 && _params[0].EqualsCaseInsensitive("haze"))

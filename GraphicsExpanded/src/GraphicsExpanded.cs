@@ -22,6 +22,7 @@ public class GraphicsExpanded : IModApi
         GfxForest.Init(shaders);
         GfxFarShadows.Init(shaders);
         GfxDistantGrass.Init(shaders);
+        GfxAmbience.Init(shaders);
         ModEvents.GameUpdate.RegisterHandler(Update);
     }
 

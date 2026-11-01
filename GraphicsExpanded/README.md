@@ -60,6 +60,10 @@ adjustment to vanilla, so the game's own effects (biome fog, weather, night, bri
 - **Bush and plant detail**: bushes, plants and many props swap to simpler models with distance, and the shader they're
   drawn with (Torch's among them) can't blend one into the next, so every swap pops. Further moves those swaps out to
   twice the distance, where they're much harder to see. Trees already blend between their models and aren't changed.
+- **Ambient life**: pollen drifts in the forest air by day, dust in the desert and wasteland, ash in the burnt forest
+  and ice crystals in the snow on clear days, glinting where the sun catches them, brightest looking into the sun and
+  in its beams. Fireflies blink low over the ground from dusk to midnight in the forest, and now and then a leaf
+  tumbles down from the oaks nearby. None of it in rain or snowfall, or indoors.
 
 Shadow distance starts at 500 m (the game's own goes to 300 m at most), Grass distance at 200 m (so grass stays full
 out to the edge of the chunks the game has loaded, where the game's own thins it from about 60 m) and Building distance
@@ -102,6 +106,8 @@ gfxe weather snow <0-1>         the same for snow
 gfxe weather debug              show the sky check: cyan is open to the sky, magenta is covered
 gfxe atmosphere                 how the sunbeams and height fog are running, and what they hold mid-screen
 gfxe haze                       how the distance haze is running
+gfxe ambience                   how the pollen, fireflies and leaves are running
+gfxe ambience debug             show them all in magenta, whatever the time and weather (again to stop)
 gfxe water                      how the water is running
 gfxe water debug                show what the reflections find: red screen-space hits, green the reflection's share,
                                 blue the shore foam
@@ -227,6 +233,11 @@ gfxe farshadows debug           red: where they fall; again: blue, how far the h
   decoration chunk it shows (`visibleDecoChunks`), closer than that kind's last level of detail stops drawing. It
   fades, dithered: a chunk's share rises from 0 to 1 over a second, half a second after its trees are made, and the
   cards fade back in across a band around where the game's tree stops drawing.
+- Ambient life (`GfxAmbience`, `Ambience.shader`): one `DrawMeshInstancedIndirect` of a few hundred quads in the
+  transparent queue, premultiplied. Each works out what it is and where from its instance number and the time:
+  motes and fireflies are world-fixed points that drift, wrapped into a box that follows the camera and fading towards
+  its sides; leaves fall from the crowns of the nearest broadleaf trees, read from `DecoManager` every two seconds. The
+  kind of mote follows `biomeStandingOn`; rain, snowfall and being indoors come from the dynamic grading's eased values.
 - Block textures are one 512x512 texture array (407 layers) whose shader has no tunable settings, so there's nothing
   to sharpen; a mipmap bias and the shaders' `_MipSlope` made no visible difference.
 

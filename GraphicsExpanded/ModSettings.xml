@@ -224,6 +224,14 @@
 					<Description key="gfxeDistanceHazeDesc" />
 				</Slider>
 			</Category>
+			<Category name="Nature" displayKey="gfxeCatNature">
+				<Description key="gfxeCatNatureDesc" />
+				<Slider name="AmbientLife" displayKey="gfxeAmbientLife" type="float" defaultValue="100%">
+					<Incremental increment="10%" minValue="0%" maxValue="200%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeAmbientLifeDesc" />
+				</Slider>
+			</Category>
 		</Tab>
 		<Tab name="Terrain" displayKey="gfxeTabTerrain">
 			<Category name="Ground" displayKey="gfxeCatGround">

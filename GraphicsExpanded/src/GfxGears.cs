@@ -57,6 +57,7 @@ public class GfxGears : IGearsModApi
     private static ISliderGlobalSetting<float> heightFog;
     private static ISliderGlobalSetting<float> morningMist;
     private static ISliderGlobalSetting<float> distanceHaze;
+    private static ISliderGlobalSetting<float> ambientLife;
 
     private static ISelectorGlobalSetting<GfxWaterQuality> waterQuality;
     private static ISliderGlobalSetting<float> waterWaves;
@@ -114,6 +115,7 @@ public class GfxGears : IGearsModApi
         heightFog = Get<ISliderGlobalSetting<float>>(settings, "Atmosphere", "LightAndFog", "HeightFog");
         morningMist = Get<ISliderGlobalSetting<float>>(settings, "Atmosphere", "LightAndFog", "MorningMist");
         distanceHaze = Get<ISliderGlobalSetting<float>>(settings, "Atmosphere", "Distance", "DistanceHaze");
+        ambientLife = Get<ISliderGlobalSetting<float>>(settings, "Atmosphere", "Nature", "AmbientLife");
 
         waterQuality = Get<ISelectorGlobalSetting<GfxWaterQuality>>(settings, "Water", "Surface", "Quality");
         waterWaves = Get<ISliderGlobalSetting<float>>(settings, "Water", "Surface", "Waves");
@@ -163,6 +165,7 @@ public class GfxGears : IGearsModApi
         Listen(heightFog, v => GfxSettings.HeightFog = v);
         Listen(morningMist, v => GfxSettings.MorningMist = v);
         Listen(distanceHaze, v => GfxSettings.DistanceHaze = v);
+        Listen(ambientLife, v => GfxSettings.AmbientLife = v);
 
         Listen(waterQuality, v => GfxSettings.WaterQuality = v);
         Listen(waterWaves, v => GfxSettings.WaterWaves = v);
@@ -223,6 +226,7 @@ public class GfxGears : IGearsModApi
         Read(heightFog, v => GfxSettings.HeightFog = v);
         Read(morningMist, v => GfxSettings.MorningMist = v);
         Read(distanceHaze, v => GfxSettings.DistanceHaze = v);
+        Read(ambientLife, v => GfxSettings.AmbientLife = v);
 
         Read(waterQuality, v => GfxSettings.WaterQuality = v);
         Read(waterWaves, v => GfxSettings.WaterWaves = v);
