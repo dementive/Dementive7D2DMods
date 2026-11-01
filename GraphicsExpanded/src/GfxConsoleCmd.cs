@@ -51,7 +51,7 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             + "  gfxe farshadows save - save the height map they're worked out from, to GraphicsExpanded/FarShadowHeights.png\n"
             + "  gfxe farshadows debug - red: where they fall; again: blue, height map vs ground; again: off\n"
             + "  gfxe haze            - how the distance haze is running\n"
-            + "  gfxe ambience        - how the pollen, fireflies and leaves are running\n"
+            + "  gfxe ambience        - how the pollen, dust and leaves are running\n"
             + "  gfxe ambience debug  - show them all in magenta, whatever the time and weather (again to stop)\n"
             + "  gfxe water           - how the water is running\n"
             + "  gfxe water debug     - show what the water's reflections find instead\n"

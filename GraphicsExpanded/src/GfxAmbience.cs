@@ -7,7 +7,6 @@ using UnityEngine.Rendering;
 /// - Motes by day, the kind by the biome the player stands in: pollen in the forest, dust in the desert and wasteland,
 ///   ash flakes in the burnt forest (by night too), ice crystals in the snow on clear days. They glint where the sun's
 ///   light scatters forward to the eye, so mostly looking into the sun and in its beams.
-/// - Fireflies from dusk to midnight in the forest.
 /// - The odd leaf tumbling down from the broadleaf trees nearest the player (oaks and plains trees, from DecoManager).
 /// None of them come in rain or snowfall, or indoors; they ease in and out over a few seconds as things change. One
 /// DrawMeshInstancedIndirect of a few hundred quads, whose shader works out every particle from the time alone. Every
@@ -15,9 +14,8 @@ using UnityEngine.Rendering;
 /// </summary>
 public static class GfxAmbience
 {
-    private const int Motes = 400, Fireflies = 24, Leaves = 40;     // at 100%; up to twice as many at 200%
+    private const int Motes = 400, Leaves = 40;     // at 100%; up to twice as many at 200%
     private const float MoteBox = 30f, MoteHeight = 12f;
-    private const float FireflyBox = 60f, FireflyHeight = 3f;
     private const float LeafReach = 40f;
     private const int MaxTrees = 16;
     private const float EaseSeconds = 3f;
@@ -31,7 +29,7 @@ public static class GfxAmbience
     private static ComputeBuffer args;
     private static int drawn = -1;
 
-    private static float motes, fireflies, leaves;  // how much each shows now, eased
+    private static float motes, leaves;             // how much each shows now, eased
     private static int moteKind = Pollen;
     private static readonly Vector4[] trees = new Vector4[MaxTrees];
     private static int treeCount;
@@ -74,17 +72,15 @@ public static class GfxAmbience
         float setting = GfxSettings.LookActive ? Mathf.Clamp(GfxSettings.AmbientLife, 0f, 2f) : 0f;
         if (setting <= 0f || player == null || playerCamera == null || world == null)
         {
-            motes = fireflies = leaves = 0f;
+            motes = leaves = 0f;
             treeCount = 0;
             state = setting <= 0f ? "off" : "no world";
             return;
         }
         float ease = 1f - Mathf.Exp(-Time.deltaTime / EaseSeconds);
 
-        // What's around: the biome underfoot, the time of day, the weather, the sun
+        // What's around: the biome underfoot, the weather, the sun
         biomeName = player.biomeStandingOn?.m_sBiomeName ?? "";
-        float hours = (world.worldTime % 24000UL) / 1000f;
-        float dusk = SkyManager.GetDuskTime();
         float calm = 1f - Smooth(0.03f, 0.25f, Mathf.Max(GfxMood.RainAmount, GfxMood.SnowAmount));
         float outdoors = GfxMood.Outdoors;
         Light sun = SkyManager.sunLight;
@@ -103,24 +99,19 @@ public static class GfxAmbience
         }
         motes = Ease(motes, moteTarget, ease);
 
-        // Fireflies from dusk to midnight, in the forest
-        bool forest = Contains(biomeName, "forest") && !Contains(biomeName, "burnt");
-        float evening = Smooth(dusk - 0.5f, dusk + 0.75f, hours) * (1f - Smooth(23f, 24f, hours));
-        fireflies = Ease(fireflies, Debug ? 1f : forest ? calm * outdoors * evening : 0f, ease);
-
         // Leaves under the broadleaf trees nearby
         UpdateTrees(world, player);
         float wet = Mathf.Max(GfxMood.RainAmount, GfxMood.SnowAmount);
         leaves = Ease(leaves, treeCount == 0 ? 0f : Debug ? 1f : 1f - 0.7f * wet, ease);
 
-        if (motes + fireflies + leaves < 0.002f)
+        if (motes + leaves < 0.002f)
         {
             state = "nothing in the air here now";
             return;
         }
 
-        int moteCount = Mathf.RoundToInt(Motes * setting), fireflyCount = Mathf.RoundToInt(Fireflies * setting), leafCount = Mathf.RoundToInt(Leaves * setting);
-        int count = moteCount + fireflyCount + leafCount;
+        int moteCount = Mathf.RoundToInt(Motes * setting), leafCount = Mathf.RoundToInt(Leaves * setting);
+        int count = moteCount + leafCount;
         if (count != drawn)
         {
             args.SetData(new uint[] { quad.GetIndexCount(0), (uint)count, 0, 0, 0 });
@@ -128,9 +119,8 @@ public static class GfxAmbience
         }
         Color sunLight = sun != null ? sun.color.linear * sun.intensity : Color.black;
         material.SetVector("_GfxOrigin", Origin.position);
-        material.SetVector("_GfxAmbCounts", new Vector4(moteCount, fireflyCount, leafCount, treeCount));
+        material.SetVector("_GfxAmbCounts", new Vector4(moteCount, leafCount, 0f, treeCount));
         material.SetVector("_GfxAmbMotes", new Vector4(motes, moteKind, MoteBox, MoteHeight));
-        material.SetVector("_GfxAmbFireflies", new Vector4(fireflies, FireflyBox, FireflyHeight, 0f));
         material.SetVector("_GfxAmbLeaves", new Vector4(leaves, 0f, 0f, 0f));
         material.SetVectorArray("_GfxAmbTrees", trees);
         material.SetVector("_GfxAmbSun", new Vector4(toSun.x, toSun.y, toSun.z, sunUp));
@@ -139,7 +129,7 @@ public static class GfxAmbience
         material.SetVector("_GfxAmbWind", Wind());
         Graphics.DrawMeshInstancedIndirect(quad, 0, material, new Bounds(playerCamera.transform.position, Vector3.one * 1000f), args, 0, null,
             ShadowCastingMode.Off, false, 0, playerCamera, LightProbeUsage.Off);
-        state = string.Format("{0} {1:0%}, fireflies {2:0%}, leaves {3:0%} from {4} broadleaf trees", MoteName(moteKind), motes, fireflies, leaves, treeCount);
+        state = string.Format("{0} {1:0%}, leaves {2:0%} from {3} broadleaf trees", MoteName(moteKind), motes, leaves, treeCount);
     }
 
     /// <summary>

@@ -248,7 +248,7 @@ public static class GfxSettings
     /// <summary>Distance haze strength, 0 to 2.</summary>
     public static float DistanceHaze = 1f;
 
-    /// <summary>How many motes, fireflies and leaves drift in the air (GfxAmbience), 0 to 2.</summary>
+    /// <summary>How many motes and leaves drift in the air (GfxAmbience), 0 to 2.</summary>
     public static float AmbientLife = 1f;
 
     /// <summary>The water: off (the game's), Medium (the game's reflection probe) or High (and screen-space reflections), and wave strength 0 to 2.</summary>

@@ -128,7 +128,7 @@ gfxeDistanceHazeDesc,UI,Menu,x,,,"How thick the haze is. At 100%, something a ki
 gfxeCatNature,UI,Menu,x,,,Nature,,,,,,,,,,,,,
 gfxeCatNatureDesc,UI,Menu,x,,,"Small, slow movement that makes the world feel alive: things drifting in the air.",,,,,,,,,,,,,
 gfxeAmbientLife,UI,Menu,x,,,Ambient life,,,,,,,,,,,,,
-gfxeAmbientLifeDesc,UI,Menu,x,,,"Pollen drifts in the forest air by day, dust in the desert and wasteland, ash in the burnt forest and ice crystals in the snow on clear days, glinting where the sun catches them. Fireflies blink low over the ground from dusk to midnight in the forest, and now and then a leaf tumbles down from the broadleaf trees nearby. None of it comes in rain or snowfall. Higher values bring more of them; 0% turns it off.",,,,,,,,,,,,,
+gfxeAmbientLifeDesc,UI,Menu,x,,,"Pollen drifts in the forest air by day, dust in the desert and wasteland, ash in the burnt forest and ice crystals in the snow on clear days, glinting where the sun catches them, and now and then a leaf tumbles down from the broadleaf trees nearby. None of it comes in rain or snowfall. Higher values bring more of them; 0% turns it off.",,,,,,,,,,,,,
 gfxeTabWater,UI,Menu,x,,,Water,,,,,,,,,,,,,
 gfxeCatWater,UI,Menu,x,,,Water,,,,,,,,,,,,,
 gfxeCatWaterDesc,UI,Menu,x,,,"A new look for lakes, rivers and pools: clear in the shallows and deep blue-green further down, bending what's under it, reflecting the sky and shore, with the sun's glint, foam along the edges and rings when it rains. Far-off water stays the game's own.",,,,,,,,,,,,,

@@ -1,14 +1,13 @@
 // Ambient life (GfxAmbience): small, slow movement in the air around the player. One DrawMeshInstancedIndirect of a
-// small quad; each instance works out what it is from its number (motes first, then fireflies, then leaves) and where it
-// is from the time alone, so nothing is simulated. Motes and fireflies are points fixed in the world that drift and
-// wander, wrapped into a box that follows the camera (fading out towards its sides, so none pops at the wrap):
+// small quad; each instance works out what it is from its number (motes first, then leaves) and where it is from the
+// time alone, so nothing is simulated. Motes are points fixed in the world that drift and wander, wrapped into a box
+// that follows the camera (fading out towards its sides, so none pops at the wrap):
 // - motes: pollen in the forest, dust in the desert and wasteland, ash flakes in the burnt forest, ice crystals in the
 //   snow. Pollen, dust and ice add light where the sun's light scatters forward to the eye, so they glint looking into
 //   the sun and in its beams; ash covers what's behind, lit by the sun and sky;
-// - fireflies: slow blinking yellow-green glows in loose loops low over the ground;
 // - leaves: tumbling down from the crowns of the broadleaf trees nearest the player (GfxAmbience finds them), carried
 //   along the wind, the odd one at a time.
-// Drawn after the opaque scene with premultiplied alpha, so glows add and leaves cover, depth tested, not written.
+// Drawn after the opaque scene with premultiplied alpha, so glints add and leaves cover, depth tested, not written.
 Shader "GraphicsExpanded/Ambience"
 {
     SubShader
@@ -29,9 +28,8 @@ Shader "GraphicsExpanded/Ambience"
             #include "UnityCG.cginc"
 
             float4 _GfxOrigin;              // xyz: the game's Origin.position (world = Unity + this)
-            float4 _GfxAmbCounts;           // how many of each, in order: x motes, y fireflies, z leaves; w: trees in _GfxAmbTrees
+            float4 _GfxAmbCounts;           // how many of each, in order: x motes, y leaves; w: trees in _GfxAmbTrees
             float4 _GfxAmbMotes;            // x: how much they show, 0 to 1, y: kind (0 pollen, 1 dust, 2 ash, 3 ice), z: box width, w: box height
-            float4 _GfxAmbFireflies;        // x: how much they show, y: box width, z: how high over the ground they fly
             float4 _GfxAmbLeaves;           // x: how much they show
             float4 _GfxAmbTrees[16];        // broadleaf trees near the player: xyz the middle of the crown (Unity), w its radius
             float4 _GfxAmbSun;              // xyz: towards the sun, w: how far it's up, 0 to 1
@@ -51,7 +49,7 @@ Shader "GraphicsExpanded/Ambience"
                 float4 pos : SV_POSITION;
                 float2 uv : TEXCOORD0;
                 float4 color : TEXCOORD1;   // premultiplied: rgb what it adds, a how much it covers what's behind
-                float shape : TEXCOORD2;    // 0 a soft dot, 1 a glow, 2 a leaf
+                float shape : TEXCOORD2;    // 0 a soft dot, 1 a leaf
             };
 
             float3 Hash3(float n)
@@ -141,38 +139,6 @@ Shader "GraphicsExpanded/Ambience"
                 o.shape = 0;
             }
 
-            void Firefly(float i, float2 corner, float3 eye, inout v2f o)
-            {
-                float3 h = Hash3(i * 1.37 + 101.5);
-                float3 size = float3(_GfxAmbFireflies.y, _GfxAmbFireflies.z, _GfxAmbFireflies.y);
-                float t = _Time.y;
-                // Lazy loops, drifting a little with the wind
-                float3 loops = float3(sin(t * (0.2 + 0.2 * h.x) + h.y * 60), 0.3 * sin(t * (0.5 + 0.3 * h.z) + h.x * 60), cos(t * (0.17 + 0.2 * h.y) + h.z * 60)) * 2;
-                float3 p = h * size + loops + float3(_GfxAmbWind.x, 0, _GfxAmbWind.y) * t * 0.05;
-                // In a layer just over the ground the player stands on
-                float3 center = float3(eye.x, _GfxAmbGround.x + _GfxOrigin.y + 0.4 + size.y * 0.5, eye.z);
-                p = Wrap(p, center, size);
-                float3 unity = p - _GfxOrigin.xyz;
-                float distance = length(unity - _WorldSpaceCameraPos);
-
-                // A short, soft pulse every few seconds, dark in between
-                float period = 4 + 5 * h.z;
-                float phase = frac(t / period + h.x);
-                float blink = smoothstep(0, 0.06, phase) * (1 - smoothstep(0.1, 0.26, phase));
-                float glow = 0.09;
-                float across = max(glow, PixelSize(distance) * 3);
-                float dim = (glow / across) * (glow / across);
-                float shows = _GfxAmbFireflies.x * EdgeFade(p, center, size) * saturate((distance - 0.5) / 0.5);
-                o.color = float4(float3(0.7, 1, 0.25) * 1.5 * blink * dim, 0) * shows;
-                if (_GfxAmbGround.z > 0.5)
-                {
-                    o.color = Debug(shows);
-                    across = max(across, 0.15);
-                }
-                o.pos = Facing(unity, corner, across);
-                o.shape = 1;
-            }
-
             void Leaf(float i, float2 corner, inout v2f o)
             {
                 uint trees = (uint)_GfxAmbCounts.w;
@@ -212,7 +178,7 @@ Shader "GraphicsExpanded/Ambience"
                 o.color = float4(color, 1) * shows;
                 if (_GfxAmbGround.z > 0.5)
                     o.color = Debug(shows);
-                o.shape = 2;
+                o.shape = 1;
             }
 
             v2f vert(appdata v)
@@ -222,13 +188,11 @@ Shader "GraphicsExpanded/Ambience"
                 o.pos = float4(2, 2, 2, 1);
                 float2 corner = v.vertex.xy;
                 float3 eye = _WorldSpaceCameraPos + _GfxOrigin.xyz;
-                uint motes = (uint)_GfxAmbCounts.x, fireflies = (uint)_GfxAmbCounts.y;
+                uint motes = (uint)_GfxAmbCounts.x;
                 if (v.id < motes)
                     Mote(v.id, corner, eye, o);
-                else if (v.id < motes + fireflies)
-                    Firefly(v.id - motes, corner, eye, o);
                 else
-                    Leaf(v.id - motes - fireflies, corner, o);
+                    Leaf(v.id - motes, corner, o);
                 // Nothing to show: off screen, so it costs nothing to draw
                 if (max(max(o.color.r, o.color.g), max(o.color.b, o.color.a)) <= 0)
                     o.pos = float4(2, 2, 2, 1);
@@ -244,11 +208,6 @@ Shader "GraphicsExpanded/Ambience"
                 {
                     cover = saturate(1 - r2);
                     cover *= cover;
-                }
-                else if (i.shape < 1.5)
-                {
-                    // A soft halo round a bright heart
-                    cover = exp(-r2 * 6) + 0.8 * exp(-r2 * 40);
                 }
                 else
                 {
