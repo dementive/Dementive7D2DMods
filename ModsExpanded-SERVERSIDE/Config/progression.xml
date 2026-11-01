@@ -1,0 +1,42 @@
+<Dementive>
+
+	<!-- Reactive Plating: damage over time spends the plate too, so an armed plate can't block it forever -->
+	<append xpath="/progression/attributes/attribute[@name='attFortitude']">
+		<effect_group name="DementiveMods Reactive Plating">
+			<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="buffDementiveModsPlatingCooldown1">
+				<requirement name="HasBuff" buff="buffDementiveModsPlatingReady"/>
+				<requirement name="CVarCompare" cvar=".DementiveModsPlatingTier" operation="Equals" value="1"/>
+			</triggered_effect>
+			<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="buffDementiveModsPlatingCooldown2">
+				<requirement name="HasBuff" buff="buffDementiveModsPlatingReady"/>
+				<requirement name="CVarCompare" cvar=".DementiveModsPlatingTier" operation="Equals" value="2"/>
+			</triggered_effect>
+			<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="buffDementiveModsPlatingCooldown3">
+				<requirement name="HasBuff" buff="buffDementiveModsPlatingReady"/>
+				<requirement name="CVarCompare" cvar=".DementiveModsPlatingTier" operation="Equals" value="3"/>
+			</triggered_effect>
+			<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="buffDementiveModsPlatingCooldown4">
+				<requirement name="HasBuff" buff="buffDementiveModsPlatingReady"/>
+				<requirement name="CVarCompare" cvar=".DementiveModsPlatingTier" operation="Equals" value="4"/>
+			</triggered_effect>
+			<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="buffDementiveModsPlatingCooldown5">
+				<requirement name="HasBuff" buff="buffDementiveModsPlatingReady"/>
+				<requirement name="CVarCompare" cvar=".DementiveModsPlatingTier" operation="Equals" value="5"/>
+			</triggered_effect>
+			<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="buffDementiveModsPlatingCooldown6">
+				<requirement name="HasBuff" buff="buffDementiveModsPlatingReady"/>
+				<requirement name="CVarCompare" cvar=".DementiveModsPlatingTier" operation="Equals" value="6"/>
+			</triggered_effect>
+			<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="buffDementiveModsPlatingGuard">
+				<requirement name="HasBuff" buff="buffDementiveModsPlatingReady"/>
+			</triggered_effect>
+			<triggered_effect trigger="onOtherAttackedSelf" action="PlaySound" sound="metalhitmetal">
+				<requirement name="HasBuff" buff="buffDementiveModsPlatingReady"/>
+			</triggered_effect>
+			<triggered_effect trigger="onOtherAttackedSelf" action="RemoveBuff" buff="buffDementiveModsPlatingReady">
+				<requirement name="HasBuff" buff="buffDementiveModsPlatingReady"/>
+			</triggered_effect>
+		</effect_group>
+	</append>
+
+</Dementive>

@@ -14,6 +14,10 @@
 
 • Graphics Expanded (not on Nexus yet)
 
+• Tools Expanded (not on Nexus yet)
+
+• Mods Expanded (not on Nexus yet)
+
 # Other 1.0 Mods
 
 https://7daystodiemods.com/sams-building-stuff/

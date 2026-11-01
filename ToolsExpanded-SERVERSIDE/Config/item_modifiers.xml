@@ -1,0 +1,39 @@
+<Dementive>
+
+	<!-- Mod overrides (flame effects) for each tool, copied from its vanilla parent. Mods look these up by
+	     item name, so they are not inherited through Extends. -->
+
+	<append xpath="/item_modifiers/item_modifier[@name='modMeleeClubBurningShaft']">
+		<item_property_overrides name="DementiveToolGrandpasHatchet">
+			<property name="FlameEffect" value="@:ItemModEffects/mod_stone_axe_flamePrefab.prefab"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementiveToolContractor">
+			<property name="FlameEffect" value="@:ItemModEffects/mod_hammer_flamePrefab.prefab"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementiveToolWidowmaker">
+			<property name="FlameEffect" value="@:ItemModEffects/mod_fireaxe_flamePrefab.prefab"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementiveToolChopper">
+			<property name="FlameEffect" value="@:ItemModEffects/mod_steel_axe_flamePrefab.prefab"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementiveToolProspectorsPick">
+			<property name="FlameEffect" value="@:ItemModEffects/mod_IronPickaxe_flamePrefab.prefab"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementiveToolJohnHenry">
+			<property name="FlameEffect" value="@:ItemModEffects/mod_SteelPickaxe_flamePrefab.prefab"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementiveToolLuckySpade">
+			<property name="FlameEffect" value="@:ItemModEffects/mod_stoneShovel_flamePrefab.prefab"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementiveToolTrenchRaider">
+			<property name="FlameEffect" value="@:ItemModEffects/mod_ironShovel_flamePrefab.prefab"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementiveToolXMarksTheSpot">
+			<property name="FlameEffect" value="@:ItemModEffects/mod_steelShovel_flamePrefab.prefab"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementiveToolGreaseMonkey">
+			<property name="FlameEffect" value="@:ItemModEffects/mod_wrench_flamePrefab.prefab"/>
+		</item_property_overrides>
+	</append>
+
+</Dementive>

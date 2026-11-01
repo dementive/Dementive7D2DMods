@@ -1,0 +1,26 @@
+<Dementive>
+
+	<append xpath="/buffs">
+		<!-- Chopper: given for a zombie killed with a power attack -->
+		<buff name="buffDementiveToolsChopper" name_key="buffDementiveToolsChopperName" description_key="buffDementiveToolsChopperDesc" icon="ui_game_symbol_run_and_gun" icon_color="192,192,192">
+			<stack_type value="replace"/>
+			<duration value="5"/>
+			<display_value value="duration"/>
+			<!-- Swing stamina is asked for with the action's tags (primary/secondary) only, so the axe check is a
+			     requirement rather than a tag -->
+			<effect_group>
+				<requirement name="HoldingItemHasTags" tags="axe"/>
+				<passive_effect name="AttacksPerMinute" operation="perc_add" value=".5" tags="primary,secondary"/>
+				<passive_effect name="StaminaLoss" operation="perc_add" value="-1" tags="primary,secondary"/>
+			</effect_group>
+		</buff>
+
+		<!-- X Marks the Spot: added while the player is inside a buried treasure circle (entityclasses.xml). It also
+		     runs out on its own, in case the circle is left in a way that doesn't fire the exit event -->
+		<buff name="buffDementiveToolsTreasureCircle" hidden="true">
+			<stack_type value="replace"/>
+			<duration value="900"/>
+		</buff>
+	</append>
+
+</Dementive>

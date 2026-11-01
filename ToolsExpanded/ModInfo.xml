@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+	<Name value="ToolsExpanded"/>
+	<DisplayName value="Tools Expanded" />
+	<Description value="Rare named tools in the same style as the base game, one for every vanilla tool, each with its own ability. For 7 Days to Die V3.4."/>
+	<Author value="Dementive"/>
+	<Version value="1.0.0.0" />
+	<Website value="" />
+	<SkipWithAntiCheat value="false" />
+</xml>

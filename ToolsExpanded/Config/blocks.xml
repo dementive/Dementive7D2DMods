@@ -1,0 +1,157 @@
+<Dementive>
+
+	<!-- Widowmaker: trees get a tag of their own, so its damage bonus skips other wood -->
+	<set xpath="/blocks/block[@name='treeMaster']/property[@name='Tags']/@value">wood,DementiveTree</set>
+	<set xpath="/blocks/block[@name='treeBurntMaple01']/property[@name='Tags']/@value">coalBurnedDmg,DementiveTree</set>
+	<set xpath="/blocks/block[@name='treeBurntMaple02']/property[@name='Tags']/@value">coalBurnedDmg,DementiveTree</set>
+	<set xpath="/blocks/block[@name='treeBurntMaple03']/property[@name='Tags']/@value">coalBurnedDmg,DementiveTree</set>
+	<set xpath="/blocks/block[@name='treeBurntMaple04']/property[@name='Tags']/@value">coalBurnedDmg,DementiveTree</set>
+
+	<!-- Prospector's Pick: the Lucky Strike book's drops again, at 3x the chance, for the pick only -->
+	<append xpath="/blocks/block[@name='terrOreIron']">
+		<drop event="Harvest" name="resourceRawDiamond" prob="0.015" count="1" tag="DementiveProspectorHarvest"/>
+		<drop event="Harvest" name="resourceSilverNugget" prob="0.03" count="1" tag="DementiveProspectorHarvest"/>
+		<drop event="Harvest" name="resourceGoldNugget" prob="0.021" count="1" tag="DementiveProspectorHarvest"/>
+	</append>
+	<append xpath="/blocks/block[@name='terrOreLead']">
+		<drop event="Harvest" name="resourceRawDiamond" prob="0.015" count="1" tag="DementiveProspectorHarvest"/>
+		<drop event="Harvest" name="resourceSilverNugget" prob="0.03" count="1" tag="DementiveProspectorHarvest"/>
+		<drop event="Harvest" name="resourceGoldNugget" prob="0.021" count="1" tag="DementiveProspectorHarvest"/>
+	</append>
+	<append xpath="/blocks/block[@name='terrOreCoal']">
+		<drop event="Harvest" name="resourceRawDiamond" prob="0.015" count="1" tag="DementiveProspectorHarvest"/>
+		<drop event="Harvest" name="resourceSilverNugget" prob="0.03" count="1" tag="DementiveProspectorHarvest"/>
+		<drop event="Harvest" name="resourceGoldNugget" prob="0.021" count="1" tag="DementiveProspectorHarvest"/>
+	</append>
+	<append xpath="/blocks/block[@name='terrOrePotassiumNitrate']">
+		<drop event="Harvest" name="resourceRawDiamond" prob="0.015" count="1" tag="DementiveProspectorHarvest"/>
+		<drop event="Harvest" name="resourceSilverNugget" prob="0.03" count="1" tag="DementiveProspectorHarvest"/>
+		<drop event="Harvest" name="resourceGoldNugget" prob="0.021" count="1" tag="DementiveProspectorHarvest"/>
+	</append>
+	<append xpath="/blocks/block[@name='terrOreOilDeposit']">
+		<drop event="Harvest" name="resourceRawDiamond" prob="0.015" count="1" tag="DementiveProspectorHarvest"/>
+		<drop event="Harvest" name="resourceSilverNugget" prob="0.03" count="1" tag="DementiveProspectorHarvest"/>
+		<drop event="Harvest" name="resourceGoldNugget" prob="0.021" count="1" tag="DementiveProspectorHarvest"/>
+	</append>
+
+	<!-- Lucky Spade: dirt, forest ground and sand can hold a buried stash (sand and topsoil inherit it) -->
+	<append xpath="/blocks/block[@name='terrDirt']">
+		<drop event="Harvest" name="DementiveToolsBuriedStash" prob=".004" count="1" tag="DementiveLuckySpadeHarvest"/>
+	</append>
+	<append xpath="/blocks/block[@name='terrForestGround']">
+		<drop event="Harvest" name="DementiveToolsBuriedStash" prob=".004" count="1" tag="DementiveLuckySpadeHarvest"/>
+	</append>
+	<append xpath="/blocks/block[@name='terrBurntForestGround']">
+		<drop event="Harvest" name="DementiveToolsBuriedStash" prob=".004" count="1" tag="DementiveLuckySpadeHarvest"/>
+	</append>
+	<append xpath="/blocks/block[@name='terrDesertGround']">
+		<drop event="Harvest" name="DementiveToolsBuriedStash" prob=".004" count="1" tag="DementiveLuckySpadeHarvest"/>
+	</append>
+
+	<!-- Grease Monkey and Pit Crew: cars are the blocks that salvage into headlights. Their color variants
+	     inherit the drops, tags included. Grease Monkey boosts the drops tagged here; Pit Crew's crate is
+	     a drop of its own -->
+	<setattribute xpath="/blocks/block[@name='cntCar03SedanDamage0Master']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntCar03SedanDamage0Master']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='cntCar03SedanDamage2Master']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntCar03SedanDamage2Master']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='cntSedan01White']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='cntSedan01White']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntSedan01White']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='cntSedan3Wide01White']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='cntSedan3Wide01White']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntSedan3Wide01White']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='cntFrontCrumpledSedan01White']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='cntFrontCrumpledSedan01White']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntFrontCrumpledSedan01White']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='cntMinivan01White']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='cntMinivan01White']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntMinivan01White']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='cntMinivan3Wide01White']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='cntMinivan3Wide01White']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntMinivan3Wide01White']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='cntSUV01White']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='cntSUV01White']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntSUV01White']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='cntSUV3Wide01White']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='cntSUV3Wide01White']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntSUV3Wide01White']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='cntPickupTruck01White']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='cntPickupTruck01White']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntPickupTruck01White']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='cntPickupTruck3Wide01White']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='cntPickupTruck3Wide01White']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntPickupTruck3Wide01White']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='cntSemiTruck01White']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='cntSemiTruck01White']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntSemiTruck01White']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='cntPoliceCar01PickedLockBonus']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='cntPoliceCar01PickedLockBonus']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntPoliceCar01PickedLockBonus']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='cntPoliceCar01AlarmUnlocked']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='cntPoliceCar01AlarmUnlocked']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntPoliceCar01AlarmUnlocked']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='cntFireTruck01White']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='cntFireTruck01White']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntFireTruck01White']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='cntBusSchool']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='cntBusSchool']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntBusSchool']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='cntArmyTruckOpen']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='cntArmyTruckOpen']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntArmyTruckOpen']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='cntFarmTruckClosed']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='cntFarmTruckClosed']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='cntFarmTruckClosed']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='forkliftWhite']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='forkliftWhite']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='forkliftWhite']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+	<setattribute xpath="/blocks/block[@name='forklift2White']/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='smallEngine' or @name='carBattery')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveCarRareSalvage</setattribute>
+	<setattribute xpath="/blocks/block[@name='forklift2White']/drop[@event='Harvest' and @tag='salvageHarvest' and @name!='smallEngine' and @name!='carBattery']" name="tag">salvageHarvest,DementiveCarSalvage</setattribute>
+	<append xpath="/blocks/block[@name='forklift2White']">
+		<drop event="Harvest" name="DementiveToolsVehicleModCrate" prob=".05" count="1" tag="DementivePitCrewHarvest"/>
+	</append>
+
+	<!-- Tinkerer: electrical parts and springs from anything salvaged -->
+	<setattribute xpath="/blocks/block/drop[@event='Harvest' and @tag='salvageHarvest' and (@name='resourceElectricParts' or @name='resourceSpring')]" name="tag">salvageHarvest,DementiveTinkerSalvage</setattribute>
+	<setattribute xpath="/blocks/block/drop[@event='Harvest' and @tag='salvageHarvest,DementiveCarSalvage' and (@name='resourceElectricParts' or @name='resourceSpring')]" name="tag">salvageHarvest,DementiveCarSalvage,DementiveTinkerSalvage</setattribute>
+
+</Dementive>

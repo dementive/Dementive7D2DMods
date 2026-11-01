@@ -19,13 +19,13 @@ XML patches only apply when a world loads, so reaching the main menu proves noth
 2. **Apply the patches** to the vanilla XML, in load order. Every command whose xpath matches nothing is reported, and the merged XML is written out.
 
    ```
-   Scripts\bin\XmlPatch.exe <game>\Data\Config <merged dir> <repo>\AmmoExpanded <repo>\ArmorExpanded <repo>\BooksExpanded <repo>\ConsumablesExpanded <repo>\QuestsExpanded <repo>\WeaponsExpanded
+   Scripts\bin\XmlPatch.exe <game>\Data\Config <merged dir> <repo>\AmmoExpanded <repo>\ArmorExpanded <repo>\BooksExpanded <repo>\ConsumablesExpanded <repo>\ModsExpanded <repo>\QuestsExpanded <repo>\ToolsExpanded <repo>\WeaponsExpanded
    ```
 
 3. **Check every reference** the mods add (items, blocks, buffs, loot groups, quests, POIs, icons, meshes, localization, effect actions and requirements, game events and the items they give, defense quest bosses and spawners, trader dialog options) against the merged XML and the game info. Classes from a mod's own DLL (`"Name, Assembly"`) are checked against the mod's `src`. It should end with `TOTAL 0`.
 
    ```
-   python Validation\refcheck.py <game> <merged dir> <info dir> <repo>\AmmoExpanded <repo>\ArmorExpanded <repo>\BooksExpanded <repo>\ConsumablesExpanded <repo>\QuestsExpanded <repo>\WeaponsExpanded
+   python Validation\refcheck.py <game> <merged dir> <info dir> <repo>\AmmoExpanded <repo>\ArmorExpanded <repo>\BooksExpanded <repo>\ConsumablesExpanded <repo>\ModsExpanded <repo>\QuestsExpanded <repo>\ToolsExpanded <repo>\WeaponsExpanded
    ```
 
 Other checks:
@@ -45,11 +45,19 @@ Other checks:
 - `gen_serverside.py <game> WeaponsExpanded WeaponsExpanded-SERVERSIDE`: rebuilds the server-side copy from the main mod. Weapons use their vanilla parent's icon with a color tint, since server-side-only players don't have the custom icons. Rerun after any change to WeaponsExpanded.
 - `add_weapons.py <game> WeaponsExpanded`: generates the signature weapons from their vanilla parents. Weapons already in `items.xml` are skipped, so a new one can be added to the script's list and the script rerun.
 - `make_icons.py <game> WeaponsExpanded`: paints the signature weapons' icons from their vanilla icons with `IconTool.exe fx` (a recipe per weapon in `ICONS`). The original 30 weapons' hand-made icons aren't touched.
-- `Scripts\bin\IconTool.exe <vanilla icon.png> <out.png> <#RRGGBB> 0.62`: recolors a vanilla icon (from `<game>\Data\ItemIcons`) into a custom one, like the existing icons. `IconTool.exe sheet <out.png> <icons...>` lays icons side by side for comparing. `IconTool.exe fx <vanilla icon.png> <out.png> <op> ...` paints an icon with a chain of effects (gradient maps for gold, chrome or leather, decals like flames, camo, plaid, hazard stripes, cracks and circuits, glows, glowing parts, sparkles and embers, optionally limited to part of the item such as a bullet tip); the ops are listed at the top of `WeaponsExpanded\IconTool.cs`, and ArmorExpanded and AmmoExpanded keep their recipes in `ICONS` in their generators.
+- `Scripts\bin\IconTool.exe <vanilla icon.png> <out.png> <#RRGGBB> 0.62`: recolors a vanilla icon (from `<game>\Data\ItemIcons`) into a custom one, like the existing icons. `IconTool.exe sheet <out.png> <icons...>` lays icons side by side for comparing. `IconTool.exe fx <vanilla icon.png> <out.png> <op> ...` paints an icon with a chain of effects (gradient maps for gold, chrome or leather, decals like flames, camo, plaid, hazard stripes, cracks and circuits, glows, glowing parts, sparkles and embers, optionally limited to part of the item such as a bullet tip); the ops are listed at the top of `WeaponsExpanded\IconTool.cs`, and ArmorExpanded, AmmoExpanded, ToolsExpanded and ModsExpanded keep their recipes in `ICONS` in their generators.
 
 ## ArmorExpanded
 
 - `ArmorExpanded\gen_armor.py <game> ArmorExpanded ArmorExpanded-SERVERSIDE`: writes the whole mod from the `PIECES` table: each named piece copies its vanilla piece's effect groups (they aren't inherited through `Extends`) with the armor and durability boost and its signature effect group, plus buffs, loot, traders, localization, the recolored icons and the server-side copy (tinted vanilla icons).
+
+## ToolsExpanded
+
+- `ToolsExpanded\gen_tools.py <game> ToolsExpanded ToolsExpanded-SERVERSIDE`: writes the whole mod from the `TOOLS` table: each named tool copies its vanilla tool's stats, effect groups and any action it changes (they aren't inherited through `Extends`) with the block damage and durability boost and its signature effect group, plus the block patches its harvest bonuses need, the player's harvest tag defaults, buffs, mod overrides, loot, traders, localization, the painted icons and the server-side copy (tinted vanilla icons). Rerun after a game update: the car, tree and salvage patches are worked out from the vanilla blocks.
+
+## ModsExpanded
+
+- `ModsExpanded\gen_mods.py <game> ModsExpanded ModsExpanded-SERVERSIDE`: writes the whole mod from the `MODS` table: each item mod with its quality-tier effects (cvars set on equip from `RequirementItemModTier`, like vanilla's Cripple 'Em; armor mods carry their logic in a buff while worn), schematic, workbench recipe, the buffs and Spotter Tags' nav object, loot and trader entries in the vanilla mod groups, localization, the painted icons and the server-side copy (tinted vanilla icons).
 
 ## AmmoExpanded
 

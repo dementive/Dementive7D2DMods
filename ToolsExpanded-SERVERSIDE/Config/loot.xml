@@ -1,0 +1,98 @@
+<Dementive>
+
+	<append xpath="/lootcontainers/lootprobtemplates">
+		<!-- Chance per container opened that one named tool drops -->
+		<lootprobtemplate name="DementiveToolRaresT1">
+			<loot level="1,999999" prob="0.005"/>  <!-- 1 / 200 -->
+		</lootprobtemplate>
+		<lootprobtemplate name="DementiveToolRaresT2">
+			<loot level="1,999999" prob="0.01"/>  <!-- 1 / 100 -->
+		</lootprobtemplate>
+		<lootprobtemplate name="DementiveToolRaresT3">
+			<loot level="1,999999" prob="0.02"/>  <!-- 1 / 50 -->
+		</lootprobtemplate>
+		<lootprobtemplate name="DementiveToolRaresT4">
+			<loot level="1,999999" prob="0.04"/>  <!-- 1 / 25 -->
+		</lootprobtemplate>
+		<lootprobtemplate name="DementiveToolRaresT5">
+			<loot level="1,999999" prob="0.05"/>  <!-- 1 / 20 -->
+		</lootprobtemplate>
+
+		<!-- Quest rewards: the reward "value" is the quest tier. At tiers 4-6 roughly 3% of schematic rewards
+		     (about 1 in 20 quests) offer one of the named tools instead -->
+		<lootprobtemplate name="DementiveToolQuestRewards">
+			<loot level="0,3" prob="0"/>
+			<loot level="4,7" prob="0.06"/>
+		</lootprobtemplate>
+	</append>
+
+	<insertBefore xpath="/lootcontainers/lootgroup[@name='groupScrapCommon']">
+		<lootgroup name="groupDementiveToolsAll" count="1" loot_quality_template="qualBaseTemplate">
+			<item name="DementiveToolGrandpasHatchet"/>
+			<item name="DementiveToolContractor"/>
+			<item name="DementiveToolNightShift"/>
+			<item name="DementiveToolWidowmaker"/>
+			<item name="DementiveToolChopper"/>
+			<item name="DementiveToolMeatGrinder"/>
+			<item name="DementiveToolProspectorsPick"/>
+			<item name="DementiveToolJohnHenry"/>
+			<item name="DementiveToolBigBertha"/>
+			<item name="DementiveToolLuckySpade"/>
+			<item name="DementiveToolTrenchRaider"/>
+			<item name="DementiveToolXMarksTheSpot"/>
+			<item name="DementiveToolGreaseMonkey"/>
+			<item name="DementiveToolTinkerer"/>
+			<item name="DementiveToolPitCrew"/>
+		</lootgroup>
+	</insertBefore>
+
+	<!-- Wall and picture safes -->
+	<append xpath="//lootgroup[@name='groupSmallSafeLoot']">
+		<item group="groupDementiveToolsAll" loot_prob_template="DementiveToolRaresT2" force_prob="true"/>
+	</append>
+	<!-- Locked Iron Chest -->
+	<append xpath="//lootgroup[@name='groupReinforcedChestT3']">
+		<item group="groupDementiveToolsAll" loot_prob_template="DementiveToolRaresT3" force_prob="true"/>
+	</append>
+	<!-- Locked Small Hardened Chest -->
+	<append xpath="//lootgroup[@name='groupHardenedChestT4']">
+		<item group="groupDementiveToolsAll" loot_prob_template="DementiveToolRaresT4" force_prob="true"/>
+	</append>
+	<!-- Locked Large Hardened Chest -->
+	<append xpath="//lootgroup[@name='groupHardenedChestT5']">
+		<item group="groupDementiveToolsAll" loot_prob_template="DementiveToolRaresT5" force_prob="true"/>
+	</append>
+
+	<append xpath="//lootgroup[@name='groupZpackBoss']">
+		<item group="groupDementiveToolsAll" loot_prob_template="DementiveToolRaresT3" force_prob="true"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupZpackStrong']">
+		<item group="groupDementiveToolsAll" loot_prob_template="DementiveToolRaresT2" force_prob="true"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupZpackReg']">
+		<item group="groupDementiveToolsAll" loot_prob_template="DementiveToolRaresT1" force_prob="true"/>
+	</append>
+
+	<append xpath="//lootgroup[@name='groupHiddenStash']">
+		<item group="groupDementiveToolsAll" loot_prob_template="DementiveToolRaresT2" force_prob="true"/>
+	</append>
+
+	<append xpath="//lootgroup[@name='groupBuriedTreasure']">
+		<item group="groupDementiveToolsAll" loot_prob_template="DementiveToolRaresT3" force_prob="true"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupQuestSchematics']">
+		<item group="groupDementiveToolsAll" loot_prob_template="DementiveToolQuestRewards"/>
+	</append>
+
+	<!-- What the dug-up bundles hold -->
+	<append xpath="/lootcontainers">
+		<lootcontainer name="DementiveToolsBuriedStash" count="1" size="6,3" sound_open="UseActions/open_garbage" sound_close="silencefiller" loot_quality_template="qualBaseTemplate" destroy_on_close="empty">
+			<item group="groupHiddenStash"/>
+		</lootcontainer>
+		<lootcontainer name="DementiveToolsVehicleModCrate" count="1" size="1,1" sound_open="UseActions/open_garbage" sound_close="silencefiller" loot_quality_template="qualBaseTemplate" destroy_on_close="empty">
+			<item group="vehicleMods"/>
+		</lootcontainer>
+	</append>
+
+</Dementive>

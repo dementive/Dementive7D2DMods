@@ -1,0 +1,18 @@
+<Dementive>
+
+	<!-- The harvest tags this mod adds start at 0, like the Lucky Strike book's. Only the matching tool sets them to 1,
+	     so nobody else gets the bonus drops -->
+	<append xpath="/entity_classes/entity_class[@name='playerMale']/effect_group[passive_effect[@name='HarvestCount' and contains(@tags,'artOfMiningLuckyStrikeHarvest')]]">
+		<passive_effect name="HarvestCount" operation="base_set" value="0" tags="DementiveProspectorHarvest,DementiveLuckySpadeHarvest,DementivePitCrewHarvest"/>
+	</append>
+
+	<!-- X Marks the Spot digs faster inside a buried treasure circle -->
+	<append xpath="/entity_classes/entity_class[@name='playerMale']">
+		<effect_group name="DementiveTools treasure circle">
+			<triggered_effect trigger="onTreasureRadiusEntered" action="AddBuff" buff="buffDementiveToolsTreasureCircle"/>
+			<triggered_effect trigger="onTreasureRadiusExited" action="RemoveBuff" buff="buffDementiveToolsTreasureCircle"/>
+			<triggered_effect trigger="onTreasureRadiusCompleted" action="RemoveBuff" buff="buffDementiveToolsTreasureCircle"/>
+		</effect_group>
+	</append>
+
+</Dementive>

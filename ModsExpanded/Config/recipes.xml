@@ -1,0 +1,113 @@
+<Dementive>
+
+	<append xpath="/recipes">
+		<recipe name="DementiveModExecutioner" count="1" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceForgedSteel" count="3"/>
+			<ingredient name="resourceMechanicalParts" count="4"/>
+			<ingredient name="resourceGlue" count="3"/>
+		</recipe>
+
+		<recipe name="DementiveModLiveWire" count="1" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceElectricParts" count="8"/>
+			<ingredient name="resourceForgedSteel" count="3"/>
+			<ingredient name="resourceScrapPolymers" count="6"/>
+			<ingredient name="resourceGlue" count="3"/>
+		</recipe>
+
+		<recipe name="DementiveModSecondWind" count="1" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceLeather" count="6"/>
+			<ingredient name="resourceGlue" count="3"/>
+			<ingredient name="resourceForgedIron" count="3"/>
+		</recipe>
+
+		<recipe name="DementiveModMomentum" count="1" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceForgedSteel" count="4"/>
+			<ingredient name="resourceMechanicalParts" count="5"/>
+			<ingredient name="resourceSpring" count="4"/>
+		</recipe>
+
+		<recipe name="DementiveModHeadhunter" count="1" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceForgedSteel" count="5"/>
+			<ingredient name="resourceMechanicalParts" count="5"/>
+			<ingredient name="resourceGlue" count="4"/>
+			<ingredient name="resourceSpring" count="6"/>
+		</recipe>
+
+		<recipe name="DementiveModSpeedLoader" count="1" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceForgedIron" count="5"/>
+			<ingredient name="resourceSpring" count="8"/>
+			<ingredient name="resourceMechanicalParts" count="3"/>
+		</recipe>
+
+		<recipe name="DementiveModKnockEmDown" count="1" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceForgedSteel" count="5"/>
+			<ingredient name="resourceMechanicalParts" count="6"/>
+			<ingredient name="resourceSpring" count="6"/>
+			<ingredient name="resourceGlue" count="4"/>
+		</recipe>
+
+		<recipe name="DementiveModSpotterTags" count="1" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceElectricParts" count="10"/>
+			<ingredient name="resourceScrapPolymers" count="6"/>
+			<ingredient name="resourceGlue" count="4"/>
+			<ingredient name="resourceForgedSteel" count="3"/>
+		</recipe>
+
+		<recipe name="DementiveModRabbitsFoot" count="1" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceLeather" count="4"/>
+			<ingredient name="resourceCloth" count="3"/>
+			<ingredient name="resourceGlue" count="2"/>
+		</recipe>
+
+		<recipe name="DementiveModTurboMotor" count="1" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceMechanicalParts" count="10"/>
+			<ingredient name="resourceForgedSteel" count="5"/>
+			<ingredient name="resourceSpring" count="8"/>
+			<ingredient name="resourceOil" count="2"/>
+		</recipe>
+
+		<recipe name="DementiveModPayDirt" count="1" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceForgedSteel" count="4"/>
+			<ingredient name="resourceMechanicalParts" count="4"/>
+			<ingredient name="resourceGlue" count="3"/>
+		</recipe>
+
+		<recipe name="DementiveModScrapMagnet" count="1" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceElectricParts" count="4"/>
+			<ingredient name="resourceForgedIron" count="6"/>
+			<ingredient name="resourceMechanicalParts" count="3"/>
+		</recipe>
+
+		<recipe name="DementiveModThorns" count="1" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceForgedSteel" count="6"/>
+			<ingredient name="resourceNail" count="20"/>
+			<ingredient name="resourceGlue" count="4"/>
+		</recipe>
+
+		<recipe name="DementiveModReactivePlating" count="1" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceForgedSteel" count="10"/>
+			<ingredient name="resourceScrapPolymers" count="8"/>
+			<ingredient name="resourceGlue" count="5"/>
+			<ingredient name="resourceMechanicalParts" count="5"/>
+		</recipe>
+
+		<recipe name="DementiveModSquadComms" count="1" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceElectricParts" count="8"/>
+			<ingredient name="resourceScrapPolymers" count="6"/>
+			<ingredient name="resourceGlue" count="3"/>
+		</recipe>
+
+		<recipe name="DementiveModOffRoadSuspension" count="1" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceMechanicalParts" count="10"/>
+			<ingredient name="resourceSpring" count="12"/>
+			<ingredient name="resourceForgedSteel" count="6"/>
+		</recipe>
+
+		<recipe name="DementiveModRoadkillBumper" count="1" craft_area="workbench" tags="learnable,workbenchCrafting">
+			<ingredient name="resourceForgedSteel" count="12"/>
+			<ingredient name="resourceMechanicalParts" count="6"/>
+			<ingredient name="resourceGlue" count="4"/>
+		</recipe>
+	</append>
+
+</Dementive>

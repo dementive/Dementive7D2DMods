@@ -1,0 +1,76 @@
+<Dementive>
+
+	<append xpath="/lootcontainers/lootgroup[@name='modMeleeT2']">
+		<item name="DementiveModExecutioner"/>
+		<item name="DementiveModMomentum"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='modMeleeT3']">
+		<item name="DementiveModLiveWire"/>
+		<item name="DementiveModTurboMotor"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='modMeleeT1']">
+		<item name="DementiveModSecondWind"/>
+		<item name="DementiveModPayDirt"/>
+		<item name="DementiveModScrapMagnet"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='modGunT2']">
+		<item name="DementiveModHeadhunter"/>
+		<item name="DementiveModKnockEmDown"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='modGunT1']">
+		<item name="DementiveModSpeedLoader"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='modGunT3']">
+		<item name="DementiveModSpotterTags"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='modGunMeleeT2']">
+		<item name="DementiveModRabbitsFoot"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='modArmorT2']">
+		<item name="DementiveModThorns"/>
+		<item name="DementiveModSquadComms"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='modArmorT3']">
+		<item name="DementiveModReactivePlating"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='vehicleMods']">
+		<item name="DementiveModOffRoadSuspension" loot_prob_template="ProbT2Cap"/>
+		<item name="DementiveModRoadkillBumper" loot_prob_template="ProbT2Cap"/>
+	</append>
+
+	<insertBefore xpath="/lootcontainers/lootgroup[@name='schematicsModsAndGeneralT0']">
+		<lootgroup name="groupDementiveModsSchematicsT0">
+			<item name="DementiveModSecondWindSchematic"/>
+			<item name="DementiveModSpeedLoaderSchematic"/>
+			<item name="DementiveModPayDirtSchematic"/>
+			<item name="DementiveModScrapMagnetSchematic"/>
+		</lootgroup>
+		<lootgroup name="groupDementiveModsSchematicsT1">
+			<item name="DementiveModExecutionerSchematic"/>
+			<item name="DementiveModMomentumSchematic"/>
+			<item name="DementiveModHeadhunterSchematic"/>
+			<item name="DementiveModKnockEmDownSchematic"/>
+			<item name="DementiveModRabbitsFootSchematic"/>
+			<item name="DementiveModThornsSchematic"/>
+			<item name="DementiveModSquadCommsSchematic"/>
+			<item name="DementiveModOffRoadSuspensionSchematic"/>
+			<item name="DementiveModRoadkillBumperSchematic"/>
+		</lootgroup>
+		<lootgroup name="groupDementiveModsSchematicsT2">
+			<item name="DementiveModLiveWireSchematic"/>
+			<item name="DementiveModSpotterTagsSchematic"/>
+			<item name="DementiveModTurboMotorSchematic"/>
+			<item name="DementiveModReactivePlatingSchematic"/>
+		</lootgroup>
+	</insertBefore>
+	<append xpath="/lootcontainers/lootgroup[@name='schematicsModsAndGeneralT0']">
+		<item group="groupDementiveModsSchematicsT0" prob="4"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='schematicsModsAndGeneralT1']">
+		<item group="groupDementiveModsSchematicsT1" prob="9"/>
+	</append>
+	<append xpath="/lootcontainers/lootgroup[@name='schematicsModsAndGeneralT2']">
+		<item group="groupDementiveModsSchematicsT2" prob="4"/>
+	</append>
+
+</Dementive>

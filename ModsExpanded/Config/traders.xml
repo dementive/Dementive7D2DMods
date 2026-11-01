@@ -1,0 +1,50 @@
+<Dementive>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='groupMeleeMods']">
+		<item name="DementiveModExecutioner"/>
+		<item name="DementiveModLiveWire"/>
+		<item name="DementiveModSecondWind"/>
+		<item name="DementiveModMomentum"/>
+		<item name="DementiveModRabbitsFoot"/>
+		<item name="DementiveModTurboMotor"/>
+		<item name="DementiveModPayDirt"/>
+		<item name="DementiveModScrapMagnet"/>
+	</append>
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='groupRangedMods']">
+		<item name="DementiveModHeadhunter"/>
+		<item name="DementiveModSpeedLoader"/>
+		<item name="DementiveModKnockEmDown"/>
+		<item name="DementiveModSpotterTags"/>
+	</append>
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='groupArmorMods']">
+		<item name="DementiveModThorns"/>
+		<item name="DementiveModReactivePlating"/>
+		<item name="DementiveModSquadComms"/>
+	</append>
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='groupVehicleMods']">
+		<item name="DementiveModOffRoadSuspension"/>
+		<item name="DementiveModRoadkillBumper"/>
+	</append>
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='schematicsModsCommon']">
+		<item name="DementiveModExecutionerSchematic"/>
+		<item name="DementiveModLiveWireSchematic"/>
+		<item name="DementiveModSecondWindSchematic"/>
+		<item name="DementiveModMomentumSchematic"/>
+		<item name="DementiveModHeadhunterSchematic"/>
+		<item name="DementiveModSpeedLoaderSchematic"/>
+		<item name="DementiveModKnockEmDownSchematic"/>
+		<item name="DementiveModSpotterTagsSchematic"/>
+		<item name="DementiveModRabbitsFootSchematic"/>
+		<item name="DementiveModTurboMotorSchematic"/>
+		<item name="DementiveModPayDirtSchematic"/>
+		<item name="DementiveModScrapMagnetSchematic"/>
+		<item name="DementiveModThornsSchematic"/>
+		<item name="DementiveModReactivePlatingSchematic"/>
+		<item name="DementiveModSquadCommsSchematic"/>
+	</append>
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='schematicsVehiclesMods']">
+		<item name="DementiveModOffRoadSuspensionSchematic"/>
+		<item name="DementiveModRoadkillBumperSchematic"/>
+	</append>
+
+</Dementive>

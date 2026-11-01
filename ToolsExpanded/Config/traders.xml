@@ -1,0 +1,37 @@
+<Dementive>
+
+	<!-- Traders can stock the tools: each group is a small-weight entry in the vanilla tools and rare tools groups
+	     that traders restock from. Each tool's TraderStageTemplate keeps the iron and stone ones to trader stage 1+
+	     (baseTier1) and the steel and motor ones to 50+ (baseTier2).
+	     The game only lets a group use groups defined above it, so these go before rareTools (the first of the two). -->
+	<insertBefore xpath="/traders/trader_item_groups/trader_item_group[@name='rareTools']">
+		<trader_item_group name="groupDementiveTraderToolsBasic" count="1">
+			<item name="DementiveToolGrandpasHatchet" quality="1,6"/>
+			<item name="DementiveToolContractor" quality="1,6"/>
+			<item name="DementiveToolWidowmaker" quality="1,6"/>
+			<item name="DementiveToolProspectorsPick" quality="1,6"/>
+			<item name="DementiveToolLuckySpade" quality="1,6"/>
+			<item name="DementiveToolTrenchRaider" quality="1,6"/>
+			<item name="DementiveToolGreaseMonkey" quality="1,6"/>
+		</trader_item_group>
+		<trader_item_group name="groupDementiveTraderToolsRare" count="1">
+			<item name="DementiveToolNightShift" quality="1,6"/>
+			<item name="DementiveToolChopper" quality="1,6"/>
+			<item name="DementiveToolMeatGrinder" quality="1,6"/>
+			<item name="DementiveToolJohnHenry" quality="1,6"/>
+			<item name="DementiveToolBigBertha" quality="1,6"/>
+			<item name="DementiveToolXMarksTheSpot" quality="1,6"/>
+			<item name="DementiveToolTinkerer" quality="1,6"/>
+			<item name="DementiveToolPitCrew" quality="1,6"/>
+		</trader_item_group>
+	</insertBefore>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='tools']">
+		<item group="groupDementiveTraderToolsBasic" prob="0.055"/>
+	</append>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='rareTools']">
+		<item group="groupDementiveTraderToolsRare" prob="0.055"/>
+	</append>
+
+</Dementive>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+	<Name value="ModsExpanded"/>
+	<DisplayName value="Mods Expanded" />
+	<Description value="More item mods in the same style as the base game, for melee weapons, guns, bows, tools, armor and vehicles. For 7 Days to Die V3.4."/>
+	<Author value="Dementive"/>
+	<Version value="1.0.0.0" />
+	<Website value="" />
+	<SkipWithAntiCheat value="false" />
+</xml>
