@@ -36,8 +36,15 @@ adjustment to vanilla, so the game's own effects (biome fog, weather, night, bri
   what's under them, reflecting the sky and shore (on High also the trees and buildings around, traced across the
   screen), with the sun's glint, foam along the edges and rings when it rains. Quality Medium or High, or Off for the
   game's water, and a Waves slider.
+- **Ground**: photoscanned ground textures. Most of the game's 24 ground layers (rock, soil, gravel, forest floor,
+  asphalt, snow) are swapped for photographed sets from Poly Haven, each matched to the layer it replaces in color,
+  contrast, normal depth and height, so every biome keeps its palette and the layers blend as before. Up close it's
+  real moss, leaf litter and weathered rock, tiled twice as densely as the game's textures so it stays sharp; far hills
+  keep their rocky structure. Needs the texture pack (see
+  Building) and about 400 MB of video memory. **Distant terrain** keeps more of far hills' shape, and the ground keeps
+  its full textures twice as far out (High) or four times (Ultra).
 
-The shadow and detail settings start at "Video menu", so out of the box only the look changes.
+The shadow and detail settings start at "Video menu", so they follow the game's own until you change them.
 
 ## Install
 
@@ -80,6 +87,12 @@ gfxe water debug                show what the reflections find: red screen-space
 gfxe shots                      two screenshots of the view, with and without the mod's look, to the Screenshots
                                 folder (status lines go to the game log)
 gfxe materials                  write the block and terrain materials and textures to the game log
+gfxe terrain                    how the far terrain and the ground's textures are set
+gfxe terrain table              write the terrain's per-texture settings to the game log
+gfxe terrain export             save the 24 ground textures as images to GraphicsExpanded/TerrainExport in the
+                                game's user folder, for build-terrain.bat to match the texture pack to
+gfxe terrain tiling <x>         repeat the photoscanned textures x times as often as the game's did (default 2;
+                                more is sharper up close, with smaller pebbles and leaves)
 ```
 
 ## Works with
@@ -135,9 +148,17 @@ gfxe materials                  write the block and terrain materials and textur
   plants, grass, flowers or water), read from the chunks 24 a frame and refreshed every two seconds. It comes from the
   block data rather than from rendering, because the game culls chunk pieces you can't see (from inside a house, parts
   of the roof).
-- Textures: blocks are one 512x512 texture array (407 layers) whose shader has no tunable settings, and terrain is 24
-  layers at 2048x2048, so there's nothing to sharpen; a mipmap bias and the shaders' `_MipSlope` made no visible
-  difference.
+- Ground textures (`GfxTerrainTextures`): the terrain shader (MicroSplat) reads three texture arrays of 24 layers at
+  2048x2048 from `MeshDescription.meshes[5]`'s near and far materials: color with height in alpha, normal, and
+  smoothness with AO. The mod makes three arrays in exactly the game's format, copies each layer in on the graphics
+  card from `Resources/graphicsexpanded_terrain.bundle` where the pack has one and from the game's array where it
+  doesn't, and puts them on both materials. Row 0 of the terrain's per-texture settings (`_PerTexProps`) is each
+  layer's UV scale, so a copy with the replaced layers' doubled goes on with them. The game's arrays and settings are
+  kept, so turning it off or holding the compare key puts them straight back. The bundle loads in the background when a world starts and is unloaded once copied.
+- Distant terrain (`GfxTerrain`): the far-off Unity terrain tiles get a lower `heightmapPixelError` and a longer
+  `basemapDistance`.
+- Block textures are one 512x512 texture array (407 layers) whose shader has no tunable settings, so there's nothing
+  to sharpen; a mipmap bias and the shaders' `_MipSlope` made no visible difference.
 
 ## Building
 
@@ -149,4 +170,22 @@ gfxe materials                  write the block and terrain materials and textur
   downloaded, and every build starts from scratch. Players don't need Unity: the bundle ships in the mod.
 - `src/preview-scene.bat` renders the water and distance haze outside the game, in a made-up lake scene with the
   game's measured light and exposure, into `unity/Build/scene-preview.png` (with a debug column). It needs a graphics
-  card (batch mode, but not `-nographics`). Unity Hub must be signed in for either Unity script.
+  card (batch mode, but not `-nographics`).
+- `src/build-terrain.bat <sources> <export>` builds the texture pack into `Resources/graphicsexpanded_terrain.bundle`.
+  At about 300 MB it's over GitHub's file limit, so it isn't in the repository: build it, and ship it in the mod's
+  `Resources` folder. Without it the Textures setting does nothing and the ground keeps the game's textures.
+  `src/fetch-terrain-textures.ps1 -Destination <sources>` downloads the Poly Haven sets first (about 170 MB, checked
+  against Poly Haven's checksums), and `gfxe terrain export` in game saves the game's own ground textures into
+  `<export>` to match against. `GfxTerrainPack` (`unity/Assets/Editor`) holds which set replaces which layer and
+  matches each to the game's: average color, contrast octave by octave from fine grain up to the whole tile (so it
+  reads like the game's near and far, without a photo's broad patches tiling into a camouflage pattern), color
+  variety, normal depth, height spread, and average smoothness and AO. It logs every factor to
+  `unity/Build/terrain.log` and saves previews in `unity/Build/terrain/previews`.
+- Unity Hub must be signed in for the Unity scripts.
+
+## Credits
+
+The photoscanned ground textures are from [Poly Haven](https://polyhaven.com) (CC0): asphalt_02, brown_mud_rocks_01,
+burned_ground_01, dry_ground_rocks, forest_ground_04, forest_leaves_02, gravel_road, gravelly_sand,
+red_laterite_soil_stones, road_damaged, rock_06, rock_face_03, rock_ground, rocks_ground_06, sandy_gravel_02,
+snow_02 and tiger_rock.

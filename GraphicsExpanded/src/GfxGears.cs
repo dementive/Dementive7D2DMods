@@ -56,6 +56,9 @@ public class GfxGears : IGearsModApi
     private static ISelectorGlobalSetting<GfxWaterQuality> waterQuality;
     private static ISliderGlobalSetting<float> waterWaves;
 
+    private static ISelectorGlobalSetting<GfxDistantTerrain> distantTerrain;
+    private static ISelectorGlobalSetting<GfxTerrainTexturePack> terrainTextures;
+
     /// <summary>True while the preset is writing the rows it drives, so they don't turn it to Custom.</summary>
     private static bool applyingPreset;
 
@@ -105,6 +108,9 @@ public class GfxGears : IGearsModApi
         waterQuality = Get<ISelectorGlobalSetting<GfxWaterQuality>>(settings, "Water", "Surface", "Quality");
         waterWaves = Get<ISliderGlobalSetting<float>>(settings, "Water", "Surface", "Waves");
 
+        distantTerrain = Get<ISelectorGlobalSetting<GfxDistantTerrain>>(settings, "Terrain", "Ground", "DistantDetail");
+        terrainTextures = Get<ISelectorGlobalSetting<GfxTerrainTexturePack>>(settings, "Terrain", "Ground", "Textures");
+
         Listen(enabled, v => GfxSettings.Enabled = v);
         Listen(preset, PresetSelected);
         Listen(tonemapping, v => { GfxSettings.Look.Tonemapping = v; LookEdited(); });
@@ -145,6 +151,9 @@ public class GfxGears : IGearsModApi
 
         Listen(waterQuality, v => GfxSettings.WaterQuality = v);
         Listen(waterWaves, v => GfxSettings.WaterWaves = v);
+
+        Listen(distantTerrain, v => GfxSettings.DistantTerrain = v);
+        Listen(terrainTextures, v => GfxSettings.TerrainTextures = v);
 
         IControlBindingSetting compareKey = Get<IControlBindingSetting>(settings, "Look", "General", "CompareKey");
         if (compareKey != null && GfxInput.Actions != null)
@@ -197,6 +206,9 @@ public class GfxGears : IGearsModApi
 
         Read(waterQuality, v => GfxSettings.WaterQuality = v);
         Read(waterWaves, v => GfxSettings.WaterWaves = v);
+
+        Read(distantTerrain, v => GfxSettings.DistantTerrain = v);
+        Read(terrainTextures, v => GfxSettings.TerrainTextures = v);
 
         // A preset other than Custom always matches its rows, since editing one turns it to Custom. Rows a mod update
         // added (saved values don't have them) or preset values it changed would otherwise keep their defaults, so

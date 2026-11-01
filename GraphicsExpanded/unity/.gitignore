@@ -10,3 +10,6 @@ Build/
 Packages/packages-lock.json
 ProjectSettings/*
 !ProjectSettings/ProjectVersion.txt
+# Built by GfxTerrainPack from the downloaded Poly Haven sets
+Assets/GraphicsExpanded/TerrainPack/
+Assets/GraphicsExpanded/TerrainPack.meta

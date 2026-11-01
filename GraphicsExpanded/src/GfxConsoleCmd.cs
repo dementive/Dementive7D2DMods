@@ -32,6 +32,10 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             + "  gfxe weather wet <0-1> | snow <0-1> - set it, to see it without waiting for the weather\n"
             + "  gfxe weather debug   - show the sky check instead: cyan is open to the sky, magenta is covered\n"
             + "  gfxe atmosphere      - how the sunbeams and height fog are running\n"
+            + "  gfxe terrain         - how the far terrain and the ground's textures are set\n"
+            + "  gfxe terrain table   - write the terrain's per-texture settings to the game log\n"
+            + "  gfxe terrain export  - save the 24 ground textures as images, to GraphicsExpanded/TerrainExport\n"
+            + "  gfxe terrain tiling <x> - repeat the photoscanned textures x times as often (default 2, 1 is the game's; more is sharper up close)\n"
             + "  gfxe haze            - how the distance haze is running\n"
             + "  gfxe water           - how the water is running\n"
             + "  gfxe water debug     - show what the water's reflections find instead\n"
@@ -42,6 +46,35 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
     public override void Execute(List<string> _params, CommandSenderInfo _senderInfo)
     {
         SdtdConsole console = SingletonMonoBehaviour<SdtdConsole>.Instance;
+        if (_params.Count >= 1 && _params[0].EqualsCaseInsensitive("terrain"))
+        {
+            if (_params.Count == 2 && _params[1].EqualsCaseInsensitive("export"))
+            {
+                console.Output(GfxTerrain.ExportTextures());
+                return;
+            }
+            if (_params.Count == 3 && _params[1].EqualsCaseInsensitive("tiling"))
+            {
+                if (!float.TryParse(_params[2], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out float tiling))
+                {
+                    console.Output("Give the tiling as a number, like 1.5 (1 is the game's).");
+                    return;
+                }
+                GfxSettings.TerrainTiling = UnityEngine.Mathf.Clamp(tiling, 0.25f, 4f);
+                console.Output("Photoscanned textures now repeat " + GfxSettings.TerrainTiling.ToString("0.##") + " times as often as the game's did.");
+                Log.Out("[GraphicsExpanded] Terrain tiling set to " + GfxSettings.TerrainTiling.ToString("0.##"));
+                return;
+            }
+            if (_params.Count == 2 && _params[1].EqualsCaseInsensitive("table"))
+            {
+                console.Output("Wrote " + GfxTerrain.LogTextureTable() + " rows of the terrain's per-texture settings to the game log.");
+                return;
+            }
+            console.Output(GfxTerrain.Status());
+            console.Output(GfxTerrainTextures.Status());
+            Log.Out("[GraphicsExpanded] " + GfxTerrain.Status() + " " + GfxTerrainTextures.Status());
+            return;
+        }
         if (_params.Count == 1 && _params[0].EqualsCaseInsensitive("haze"))
         {
             console.Output(GfxHaze.Status());

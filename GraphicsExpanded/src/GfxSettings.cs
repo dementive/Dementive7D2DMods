@@ -54,6 +54,19 @@ public enum GfxVolumetricQuality
     High,
 }
 
+public enum GfxDistantTerrain
+{
+    Game,
+    High,
+    Ultra,
+}
+
+public enum GfxTerrainTexturePack
+{
+    Game,
+    Photoscanned,
+}
+
 public enum GfxWaterQuality
 {
     Off,
@@ -197,6 +210,17 @@ public static class GfxSettings
     /// <summary>The water: off (the game's), Medium (the game's reflection probe) or High (and screen-space reflections), and wave strength 0 to 2.</summary>
     public static GfxWaterQuality WaterQuality = GfxWaterQuality.High;
     public static float WaterWaves = 1f;
+
+    /// <summary>How sharp the far terrain is.</summary>
+    public static GfxDistantTerrain DistantTerrain = GfxDistantTerrain.High;
+    /// <summary>The ground's textures: the game's own, or the photoscanned pack (when it's installed).</summary>
+    public static GfxTerrainTexturePack TerrainTextures = GfxTerrainTexturePack.Photoscanned;
+    /// <summary>
+    /// How many times more often the photoscanned textures repeat than the game's did on those layers: more is sharper
+    /// up close, with smaller pebbles and leaves. Twice looked best in game (sharper than 1 up close without the
+    /// repeats showing); gfxe terrain tiling changes it for the session.
+    /// </summary>
+    public static float TerrainTiling = 2f;
 
     /// <summary>
     /// True while the compare key is held. Look and shadows go back to vanilla so they can be compared; draw distances

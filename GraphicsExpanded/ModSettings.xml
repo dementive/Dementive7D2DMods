@@ -205,6 +205,19 @@
 				</Slider>
 			</Category>
 		</Tab>
+		<Tab name="Terrain" displayKey="gfxeTabTerrain">
+			<Category name="Ground" displayKey="gfxeCatGround">
+				<Description key="gfxeCatGroundDesc" />
+				<Selector name="Textures" displayKey="gfxeTerrainTextures" type="GfxTerrainTexturePack, GraphicsExpanded" defaultValue="Photoscanned">
+					<LocalizationPrefix prefix="gfxeTerrainTextures_" />
+					<Description key="gfxeTerrainTexturesDesc" />
+				</Selector>
+				<Selector name="DistantDetail" displayKey="gfxeDistantTerrain" type="GfxDistantTerrain, GraphicsExpanded" defaultValue="High">
+					<LocalizationPrefix prefix="gfxeDistantTerrain_" />
+					<Description key="gfxeDistantTerrainDesc" />
+				</Selector>
+			</Category>
+		</Tab>
 		<Tab name="Water" displayKey="gfxeTabWater">
 			<Category name="Surface" displayKey="gfxeCatWater">
 				<Description key="gfxeCatWaterDesc" />

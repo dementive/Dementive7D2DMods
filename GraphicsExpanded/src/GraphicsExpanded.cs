@@ -14,6 +14,7 @@ public class GraphicsExpanded : IModApi
         harmony.PatchAll(Assembly.GetExecutingAssembly());
         GfxInput.Init();
         AssetBundle shaders = LoadShaders(_modInstance.Path);
+        GfxTerrainTextures.Init(_modInstance.Path);
         GfxWeather.Init(shaders);
         GfxAtmosphere.Init(shaders);
         GfxHaze.Init(shaders);
