@@ -1,0 +1,9 @@
+<configs>
+	<!-- The Tesla Coil unlocks at traps crafting skill 50, with the shotgun turret -->
+	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingTraps']/display_entry[@name_key='trapsT2']">
+		<unlock_entry item="DementiveTrapTeslaCoil" unlock_tier="1"/>
+	</append>
+	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingTraps']/effect_group">
+		<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="DementiveTrapTeslaCoil"/>
+	</append>
+</configs>

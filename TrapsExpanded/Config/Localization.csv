@@ -1,0 +1,7 @@
+Key,File,Type,UsedInMainMenu,NoTranslate,KeepLoaded,english,Context / Alternate Text,german,spanish,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese
+DementiveTrapTeslaCoil,blocks,Block,,,,Tesla Coil,,,,,,,,,,,,,
+DementiveTrapTeslaCoilDesc,blocks,Block,,,,"A salvaged high-voltage coil built on a pole transformer. When powered, it zaps the nearest zombie within 8 m every 1.5 seconds for 22 damage, and the arc jumps to 2 more zombies within 4 m of each other at 60% damage per jump. Each zombie hit has a 10% chance to be jolted to a stop for a moment. It needs a clear path to its first target, but zombies in the way still conduct.
+
+Every zap wears the coil a little. When its lamp blinks it is worn out and stops until repaired.
+
+Needs 30 W.",,,,,,,,,,,,,

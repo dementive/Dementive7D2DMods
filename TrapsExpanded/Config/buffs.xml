@@ -1,0 +1,20 @@
+<configs>
+	<append xpath="/buffs">
+		<!-- Tesla Coil jolt: a one-second near stop, with the vanilla shock sparks. No damage of its own. The coil also
+		     starts the vanilla electrocute flinch (EntityAlive.Electrocuted) when it adds this. -->
+		<buff name="buffDementiveTrapsJolt" hidden="true">
+			<stack_type value="replace"/>
+			<duration value="1"/>
+			<effect_group>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".9"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".9"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".9"/>
+				<passive_effect name="JumpStrength" operation="perc_subtract" value=".9"/>
+				<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_electric_shock" parent_transform="Spine1" local_offset="0,-.2,0"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+				<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+			</effect_group>
+		</buff>
+	</append>
+</configs>

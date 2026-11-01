@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+	<Name value="TrapsExpanded"/>
+	<DisplayName value="Traps Expanded" />
+	<Description value="New powered traps with their own models, built to work together like a tower defense game. For 7 Days to Die V3.4."/>
+	<Author value="Dementive"/>
+	<Version value="0.1.0.0" />
+	<Website value="" />
+	<SkipWithAntiCheat value="true" />
+</xml>

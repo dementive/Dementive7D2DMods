@@ -1,0 +1,11 @@
+<configs>
+	<append xpath="/recipes">
+		<recipe name="DementiveTrapTeslaCoil" count="1" craft_area="workbench" tags="perkAdvancedEngineering,learnable">
+			<ingredient name="resourceForgedSteel" count="15"/>
+			<ingredient name="resourceElectricParts" count="12"/>
+			<ingredient name="resourceMechanicalParts" count="4"/>
+			<ingredient name="resourceScrapPolymers" count="5"/>
+			<ingredient name="resourceOil" count="5"/>
+		</recipe>
+	</append>
+</configs>

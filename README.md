@@ -18,6 +18,8 @@
 
 • Mods Expanded (not on Nexus yet)
 
+• Traps Expanded (work in progress, not on Nexus yet)
+
 # Other 1.0 Mods
 
 https://7daystodiemods.com/sams-building-stuff/

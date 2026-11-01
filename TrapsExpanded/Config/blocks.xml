@@ -1,0 +1,60 @@
+<configs>
+	<append xpath="/blocks">
+		<!-- Tesla Coil: zaps the nearest zombie within Range every FireDelay seconds and jumps to Chains more within
+		     ChainRange, each jump doing ChainFalloff of the last. Needs a clear path (bodies in the way still conduct).
+		     Damage is credited to the coil's owner, like the vanilla traps. Each zombie hit has JoltChance of a short
+		     jolt (JoltBuff plus the vanilla electrocute flinch). Each zap costs the coil WearPerZap health; it stops at
+		     its last WornOutFraction until repaired, and its lamp blinks. -->
+		<block name="DementiveTrapTeslaCoil">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="TeslaCoilDEM, TrapsExpanded"/>
+			<property name="RequiredPower" value="30"/>
+			<property name="EntityDamage" value="22"/>
+			<property name="Range" value="8"/>
+			<property name="FireDelay" value="1.5"/>
+			<property name="Chains" value="2"/>
+			<property name="ChainRange" value="4"/>
+			<property name="ChainFalloff" value="0.6"/>
+			<property name="JoltChance" value="0.1"/>
+			<property name="JoltBuff" value="buffDementiveTrapsJolt"/>
+			<property name="WearPerZap" value="1"/>
+			<property name="WornOutFraction" value="0.05"/>
+			<property name="ZapSound" value="electric_fence_impact"/>
+			<property name="UnlockedBy" value="craftingTraps"/>
+			<property name="DisplayType" value="blockElectricalHardenedMulti"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="Material" value="Mmetal_hard"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/trapsexpanded.unity3d?TeslaCoil"/>
+			<property name="MultiBlockDim" value="1,2,1"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="HandleFace" value="Bottom"/>
+			<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+			<property name="Path" value="solid"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="MaxDamage" value="1000"/>
+			<property name="EconomicValue" value="1200"/>
+			<property name="TraderStageTemplate" value="electricTier2"/>
+			<property name="TakeDelay" value="10"/>
+			<property class="RepairItems">
+				<property name="resourceForgedSteel" value="6"/>
+				<property name="resourceElectricParts" value="4"/>
+			</property>
+			<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+			<drop event="Harvest" name="resourceElectricParts" count="2,5" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceMechanicalParts" count="1,2" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceScrapIron" count="20,60" tag="allHarvest,perkJunkMiner"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<property name="SortOrder1" value="B155"/>
+			<property name="SortOrder2" value="0025"/>
+			<property name="Group" value="Science,TCScience"/>
+			<property name="Tags" value="trapsSkill,scrap100"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_electrical,SC_traps"/>
+			<property name="SoundPickup" value="darttrap_grab"/>
+			<property name="SoundPlace" value="darttrap_place"/>
+		</block>
+	</append>
+</configs>
