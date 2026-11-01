@@ -28,6 +28,11 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             + "  gfxe on | off        - turn the whole mod on or off\n"
             + "  gfxe preset <name>   - vanilla, natural or cinematic\n"
             + "  gfxe materials       - write the block and terrain materials' settings to the game log\n"
+            + "  gfxe grass           - where the grass stops: its fade distance, and chunks with grass on by distance\n"
+            + "  gfxe grass fade <m>  - set the grass fade distance for this session, to see if the grass follows\n"
+            + "  gfxe distantgrass    - how the distant grass is running\n"
+            + "  gfxe distantgrass debug - magenta tufts; again: also those on roads and water, in red; again: off\n"
+            + "  gfxe terrain fartiling <x> - the far terrain's tiling (default 1, the game's; lower repeats less)\n"
             + "  gfxe weather         - how wet and snowy things are now\n"
             + "  gfxe weather wet <0-1> | snow <0-1> - set it, to see it without waiting for the weather\n"
             + "  gfxe weather debug   - show the sky check instead: cyan is open to the sky, magenta is covered\n"
@@ -58,6 +63,18 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             if (_params.Count == 2 && _params[1].EqualsCaseInsensitive("export"))
             {
                 console.Output(GfxTerrain.ExportTextures());
+                return;
+            }
+            if (_params.Count == 3 && _params[1].EqualsCaseInsensitive("fartiling"))
+            {
+                if (!float.TryParse(_params[2], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out float far))
+                {
+                    console.Output("Give the tiling as a number, like 0.5 (1 is the game's).");
+                    return;
+                }
+                GfxSettings.DistantTiling = UnityEngine.Mathf.Clamp(far, 0.125f, 4f);
+                console.Output("The far terrain's photoscanned textures now repeat " + GfxSettings.DistantTiling.ToString("0.###") + " times as often as the game's did.");
+                Log.Out("[GraphicsExpanded] Far terrain tiling set to " + GfxSettings.DistantTiling.ToString("0.###"));
                 return;
             }
             if (_params.Count == 3 && _params[1].EqualsCaseInsensitive("tiling"))
@@ -173,6 +190,35 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             }
             console.Output(GfxWeather.Status());
             Log.Out("[GraphicsExpanded] " + GfxWeather.Status());
+            return;
+        }
+        if (_params.Count >= 1 && _params[0].EqualsCaseInsensitive("distantgrass"))
+        {
+            if (_params.Count == 2 && _params[1].EqualsCaseInsensitive("debug"))
+            {
+                GfxDistantGrass.Debug = (GfxDistantGrass.Debug + 1) % 3;
+                console.Output(GfxDistantGrass.Debug == 1 ? "Distant grass in magenta." : GfxDistantGrass.Debug == 2
+                    ? "Distant grass in magenta, and on roads and water in red (normally left out)." : "Distant grass drawn normally.");
+                return;
+            }
+            console.Output(GfxDistantGrass.Status());
+            Log.Out("[GraphicsExpanded] " + GfxDistantGrass.Status());
+            return;
+        }
+        if (_params.Count >= 1 && _params[0].EqualsCaseInsensitive("grass"))
+        {
+            float fade = 0f;
+            if (_params.Count == 3 && _params[1].EqualsCaseInsensitive("fade")
+                && !float.TryParse(_params[2], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out fade))
+            {
+                console.Output("Give the fade distance in meters, like 250.");
+                return;
+            }
+            foreach (string line in GfxDiagnostics.Grass(fade))
+            {
+                console.Output(line);
+                Log.Out("[GraphicsExpanded] " + line);
+            }
             return;
         }
         if (_params.Count == 1 && _params[0].EqualsCaseInsensitive("materials"))

@@ -31,8 +31,8 @@ public static class GfxTerrainTextures
     private static bool[] ours;                     // which layers the pack replaced
     private static Texture[] originals;             // the game's, to put back
     private static Texture nearTable, farTable;     // the game's per-texture settings, to put back
-    private static Texture2D tiledNear, tiledFar;   // copies with the replaced layers tiled by tiledFor
-    private static float tiledFor;
+    private static Texture2D tiledNear, tiledFar;   // copies with the replaced layers tiled by tiledFor and tiledFarFor
+    private static float tiledFor, tiledFarFor;
     private static Material near, far;
     private static bool building;
     private static int replaced;
@@ -208,20 +208,22 @@ public static class GfxTerrainTextures
                 distant.SetTexture(Properties[p], built[p]);
         }
 
-        float tiling = GfxSettings.TerrainTiling;
-        if (tiledFor != tiling)
+        // The far terrain (past the loaded chunks) has its own tiling: what sharpens the ground underfoot repeats into
+        // stripes across a field a hundred meters off
+        float tiling = GfxSettings.TerrainTiling, farTiling = GfxSettings.DistantTiling;
+        if (tiledFor != tiling || tiledFarFor != farTiling)
         {
             ReleaseTables();
             if (!Mathf.Approximately(tiling, 1f))
-            {
                 tiledNear = Tiled(nearTable, tiling);
-                tiledFar = farTable == nearTable ? tiledNear : Tiled(farTable, tiling);
-            }
+            if (!Mathf.Approximately(farTiling, 1f))
+                tiledFar = Tiled(farTable, farTiling);
             tiledFor = tiling;
+            tiledFarFor = farTiling;
         }
         SetTable(terrain, tiledNear != null ? tiledNear : nearTable);
         SetTable(distant, tiledFar != null ? tiledFar : farTable);
-        state = string.Format("photoscanned, {0} of {1} layers replaced, tiled x{2:0.##}", replaced, built[0].depth, tiling);
+        state = string.Format("photoscanned, {0} of {1} layers replaced, tiled x{2:0.##} near and x{3:0.##} far", replaced, built[0].depth, tiling, farTiling);
     }
 
     /// <summary>A copy of the per-texture settings with the replaced layers' UV scale (row 0) multiplied by tiling.</summary>
@@ -253,12 +255,12 @@ public static class GfxTerrainTextures
 
     private static void ReleaseTables()
     {
-        if (tiledFar != null && tiledFar != tiledNear)
+        if (tiledFar != null)
             Object.Destroy(tiledFar);
         if (tiledNear != null)
             Object.Destroy(tiledNear);
         tiledNear = tiledFar = null;
-        tiledFor = 0f;
+        tiledFor = tiledFarFor = 0f;
     }
 
     private static void Restore()

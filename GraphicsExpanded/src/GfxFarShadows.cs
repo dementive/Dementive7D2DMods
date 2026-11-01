@@ -126,6 +126,22 @@ public static class GfxFarShadows
 
     // ---- The height map ----
 
+    /// <summary>
+    /// The world height map (Unity space, as the far terrain is drawn), for distant grass too: made or refreshed if
+    /// needed, whether far shadows are on or not. Null with no far terrain; rect is its corner and 1 / its size.
+    /// </summary>
+    internal static Texture HeightMap(out Vector4 rect)
+    {
+        rect = Vector4.zero;
+        if (!Loaded)
+            return null;
+        Refresh();
+        if (heights == null || tileCount == 0)
+            return null;
+        rect = new Vector4(area.xMin, area.yMin, 1f / area.width, 1f / area.height);
+        return heights;
+    }
+
     private static void Refresh()
     {
         if (Time.unscaledTime < nextCheck && heights != null)

@@ -115,7 +115,11 @@ public class GfxPatch_FogGlobals
     }
 }
 
-/// <summary>The grass fade distance, which SetGrassQuality puts on the grass material.</summary>
+/// <summary>
+/// The grass fade distance, which SetGrassQuality puts on the grass material. Torch's grass shader starts thinning the
+/// grass at about half of it (gfxe grass fade showed it), so it's set well past the cut-off to keep the grass full
+/// nearly to where it stops.
+/// </summary>
 [HarmonyPatch(typeof(MeshDescription), nameof(MeshDescription.SetGrassQuality))]
 public class GfxPatch_GrassFade
 {
@@ -126,7 +130,7 @@ public class GfxPatch_GrassFade
             return;
         Material material = MeshDescription.meshes[MeshDescription.MESH_GRASS]?.material;
         if (material != null)
-            material.SetFloat("_FadeDistance", meters * 1.1f);
+            material.SetFloat("_FadeDistance", meters * 1.6f);
     }
 }
 

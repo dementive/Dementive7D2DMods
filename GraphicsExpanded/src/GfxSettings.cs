@@ -74,6 +74,13 @@ public enum GfxWaterQuality
     High,
 }
 
+public enum GfxDistantGrassDistance
+{
+    Off,
+    Meters300,
+    Meters500,
+}
+
 public enum GfxFarShadowMode
 {
     Off,
@@ -210,7 +217,9 @@ public static class GfxSettings
     /// <summary>Level of detail distance as a fraction of vanilla.</summary>
     public static float LodDistance = 1f;
     public static GfxTreeDistance TreeDistance = GfxTreeDistance.Menu;
-    public static GfxGrassDistance GrassDistance = GfxGrassDistance.Menu;
+    public static GfxGrassDistance GrassDistance = GfxGrassDistance.Meters200;
+    /// <summary>How far out grass is drawn on the far terrain past the loaded chunks (GfxDistantGrass).</summary>
+    public static GfxDistantGrassDistance DistantGrass = GfxDistantGrassDistance.Meters500;
     /// <summary>How far out the game's simplified far-off buildings show.</summary>
     public static GfxBuildingDistance BuildingDistance = GfxBuildingDistance.Meters2000;
     public static bool Anisotropic16x;
@@ -244,6 +253,11 @@ public static class GfxSettings
     /// repeats showing); gfxe terrain tiling changes it for the session.
     /// </summary>
     public static float TerrainTiling = 2f;
+    /// <summary>
+    /// The same for the far terrain past the loaded chunks, where the denser tiling repeats into stripes across a
+    /// field; 1 is the game's. gfxe terrain fartiling changes it for the session.
+    /// </summary>
+    public static float DistantTiling = 1f;
     /// <summary>Whether the trees past the tree distance are drawn as pictures out to the horizon (GfxForest).</summary>
     public static GfxDistantTrees DistantTrees = GfxDistantTrees.On;
 
@@ -299,6 +313,17 @@ public static class GfxSettings
             GfxTreeDistance.PlusOne => 1,
             GfxTreeDistance.PlusTwo => 2,
             _ => 0,
+        };
+    }
+
+    /// <summary>Meters out, or 0 for none.</summary>
+    public static float DistantGrassMeters(GfxDistantGrassDistance distance)
+    {
+        return distance switch
+        {
+            GfxDistantGrassDistance.Meters300 => 300f,
+            GfxDistantGrassDistance.Meters500 => 500f,
+            _ => 0f,
         };
     }
 

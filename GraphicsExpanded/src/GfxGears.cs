@@ -42,6 +42,7 @@ public class GfxGears : IGearsModApi
     private static ISelectorGlobalSetting<GfxTreeDistance> treeDistance;
     private static ISelectorGlobalSetting<GfxDistantTrees> distantTrees;
     private static ISelectorGlobalSetting<GfxBuildingDistance> buildingDistance;
+    private static ISelectorGlobalSetting<GfxDistantGrassDistance> distantGrass;
     private static ISelectorGlobalSetting<GfxGrassDistance> grassDistance;
     private static ISwitchGlobalSetting<bool> anisotropic16x;
 
@@ -97,6 +98,7 @@ public class GfxGears : IGearsModApi
         treeDistance = Get<ISelectorGlobalSetting<GfxTreeDistance>>(settings, "Detail", "Distance", "TreeDistance");
         distantTrees = Get<ISelectorGlobalSetting<GfxDistantTrees>>(settings, "Detail", "Distance", "DistantTrees");
         buildingDistance = Get<ISelectorGlobalSetting<GfxBuildingDistance>>(settings, "Detail", "Distance", "BuildingDistance");
+        distantGrass = Get<ISelectorGlobalSetting<GfxDistantGrassDistance>>(settings, "Detail", "Distance", "DistantGrass");
         grassDistance = Get<ISelectorGlobalSetting<GfxGrassDistance>>(settings, "Detail", "Distance", "GrassDistance");
         anisotropic16x = Get<ISwitchGlobalSetting<bool>>(settings, "Detail", "Textures", "Anisotropic16x");
 
@@ -144,6 +146,7 @@ public class GfxGears : IGearsModApi
         Listen(treeDistance, v => GfxSettings.TreeDistance = v);
         Listen(distantTrees, v => GfxSettings.DistantTrees = v);
         Listen(buildingDistance, v => GfxSettings.BuildingDistance = v);
+        Listen(distantGrass, v => GfxSettings.DistantGrass = v);
         Listen(grassDistance, v => GfxSettings.GrassDistance = v);
         Listen(anisotropic16x, v => GfxSettings.Anisotropic16x = v);
 
@@ -202,6 +205,7 @@ public class GfxGears : IGearsModApi
         Read(treeDistance, v => GfxSettings.TreeDistance = v);
         Read(distantTrees, v => GfxSettings.DistantTrees = v);
         Read(buildingDistance, v => GfxSettings.BuildingDistance = v);
+        Read(distantGrass, v => GfxSettings.DistantGrass = v);
         Read(grassDistance, v => GfxSettings.GrassDistance = v);
         Read(anisotropic16x, v => GfxSettings.Anisotropic16x = v);
 

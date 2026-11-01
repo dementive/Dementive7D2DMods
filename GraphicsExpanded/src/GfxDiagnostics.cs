@@ -51,6 +51,59 @@ public static class GfxDiagnostics
         return lines.Count;
     }
 
+    /// <summary>
+    /// gfxe grass: where the grass stops. The grass material's fade distance (the game sets _FadeDistance from the grass
+    /// distance option; Torch draws grass with its own shader), and how many chunks around the player have their grass
+    /// switched on, in 32 m rings. With fade, sets the fade distance first (on the material and as a global).
+    /// </summary>
+    public static List<string> Grass(float fade)
+    {
+        List<string> lines = new List<string>();
+        MeshDescription[] meshes = MeshDescription.meshes;
+        Material material = meshes != null && meshes.Length > MeshDescription.MESH_GRASS ? meshes[MeshDescription.MESH_GRASS]?.material : null;
+        if (fade > 0f)
+        {
+            material?.SetFloat("_FadeDistance", fade);
+            Shader.SetGlobalFloat("_FadeDistance", fade);
+            lines.Add("Grass fade distance set to " + fade + " m on the material and as a global.");
+        }
+        lines.Add(material == null ? "No grass material yet." : string.Format("Grass material '{0}', shader '{1}', _FadeDistance {2}, global _FadeDistance {3}",
+            material.name, material.shader != null ? material.shader.name : "none", material.GetFloat("_FadeDistance"), Shader.GetGlobalFloat("_FadeDistance")));
+
+        World world = GameManager.Instance != null ? GameManager.Instance.World : null;
+        EntityPlayerLocal player = world?.GetPrimaryPlayer();
+        if (world?.m_ChunkManager == null || player == null)
+            return lines;
+        const int rings = 10;
+        int[] on = new int[rings], with = new int[rings];
+        Vector3 here = player.transform.position;
+        foreach (ChunkGameObject chunk in world.m_ChunkManager.GetUsedChunkGameObjects())
+        {
+            if (chunk == null || chunk.layers == null)
+                continue;
+            Vector3 center = chunk.transform.position + new Vector3(8f, 0f, 8f);
+            int ring = Mathf.Min((int)(new Vector2(center.x - here.x, center.z - here.z).magnitude / 32f), rings - 1);
+            foreach (ChunkGameObjectLayer layer in chunk.layers)
+            {
+                if (layer?.m_MeshRenderer == null || layer.m_MeshRenderer.Length <= MeshDescription.MESH_GRASS)
+                    continue;
+                MeshRenderer renderer = layer.m_MeshRenderer[MeshDescription.MESH_GRASS];
+                MeshFilter filter = layer.m_MeshFilter != null && layer.m_MeshFilter.Length > MeshDescription.MESH_GRASS ? layer.m_MeshFilter[MeshDescription.MESH_GRASS] : null;
+                if (renderer == null || filter == null || filter.sharedMesh == null || filter.sharedMesh.vertexCount == 0)
+                    continue;
+                with[ring]++;
+                if (renderer.enabled && renderer.gameObject.activeInHierarchy)
+                    on[ring]++;
+            }
+        }
+        StringBuilder text = new StringBuilder("Chunk layers with grass, switched on of all, by distance:");
+        for (int r = 0; r < rings; r++)
+            text.AppendFormat(" {0}{1} m: {2}/{3};", r * 32, r == rings - 1 ? "+" : "-" + (r + 1) * 32, on[r], with[r]);
+        lines.Add(text.ToString());
+        lines.Add("Grass cut-off now " + GfxApply.GrassCullDistance(0f) + " m (0: the game's own); view distance " + GamePrefs.GetInt(EnumGamePrefs.OptionsGfxViewDistance) + " chunks.");
+        return lines;
+    }
+
     private static void AddTexture(List<string> lines, string label, Texture texture)
     {
         if (texture == null)

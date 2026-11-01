@@ -50,9 +50,15 @@ adjustment to vanilla, so the game's own effects (biome fog, weather, night, bri
 - **Distant forests**: past the tree distance the game draws no trees at all, so far hills are bare. Every tree out
   there is drawn to the horizon as a lightweight picture of the game's own model, photographed from eight sides when a
   world loads. They take the game's sunlight, fog and haze, and give way to the real trees wherever the game draws them.
+- **Distant grass**: the game only grows grass on the chunks it has loaded, so past about 100 to 190 m the ground goes
+  bare and grass pops in as you walk. Grass is drawn on the far ground too, out to 300 or 500 m, thinning towards the
+  edge, colored by biome, and kept off roads, water, buildings and steep slopes; where the game loads a chunk its own
+  grass takes over. The far ground also gets its own texture tiling, so it doesn't repeat into stripes.
 
-Shadow distance starts at 500 m (the game's own goes to 300 m at most) and Building distance at 2 km; the other
-shadow and detail settings start at "Video menu", so they follow the game's own until you change them.
+Shadow distance starts at 500 m (the game's own goes to 300 m at most), Grass distance at 200 m (so grass stays full
+out to the edge of the chunks the game has loaded, where the game's own thins it from about 60 m) and Building distance
+at 2 km; the other shadow and detail settings start at "Video menu", so they follow the game's own until you change
+them.
 
 ## Install
 
@@ -105,6 +111,11 @@ gfxe trees                      how the distant forests are running: trees, kind
 gfxe trees save                 save the pictures of each kind of tree to GraphicsExpanded/Trees in the user folder
 gfxe trees on | off             turn the distant forests on or off for this session
 gfxe trees debug                draw them bright magenta to see where they are (again to stop)
+gfxe distantgrass               how the distant grass is running: its field, biomes, buildings kept clear
+gfxe distantgrass debug         magenta tufts; again: also those on roads and water, in red; again: off
+gfxe grass                      where the game's own grass stops: its fade distance, and chunks with grass by distance
+gfxe grass fade <m>             set the game's grass fade distance for this session
+gfxe terrain fartiling <x>      the far terrain's tiling (default 1, the game's; lower repeats less)
 gfxe farshadows                 how the far shadows are running: the light, where they start, the height map
 gfxe farshadows save            save the height map they're worked out from, to GraphicsExpanded/FarShadowHeights.png
 gfxe farshadows debug           red: where they fall; again: blue, how far the height map is off the ground drawn
@@ -181,6 +192,15 @@ gfxe farshadows debug           red: where they fall; again: blue, how far the h
   height map (48 steps growing from 2 m to kilometers) and keeps the darker of that and Unity's shadow mask. Being in
   the mask, only the light's direct light dims. It's added in `Camera.onPreCull` for the player camera only, ahead of
   the sunbeams' own pass, so the mask is still the target it draws into.
+- Distant grass (`GfxDistantGrass`, `DistantGrass.shader`): two `DrawMeshInstancedIndirect`s a frame each draw a
+  grid of cells around the camera, a fine one (1.25 m) of small tufts near and a coarse one (2.5 m) of tufts twice the
+  size out to the edge, which cover the ground the same and hand over across 170 to 230 m. Each instance finds its
+  tuft on a fixed world grid and collapses where no grass belongs. It reads a field made around the camera (biomes from the chunk provider's `GetBiomeAt`, every 8 m, with a
+  color and density per biome, and buildings' bounding boxes from the prefab decorator kept clear), the chunks the
+  game has loaded (its own grass is there), the far shadows' height map and its slope, and the world's splat maps
+  (`ChunkProviderGenerateWorldFromRaw.splats`: roads in splat3, water in splat4). The game's own grass fade (`_FadeDistance`, which Torch's grass shader
+  honours, thinning from about half of it) is set to 1.6 times Grass distance, so it stays full to where it stops.
+  The far terrain's material gets its own copy of the per-texture settings with its own tiling.
 - Distant forests (`GfxForest`, `DistantTree.shader`, `TreeCapture.shader`): the game keeps every tree's place in
   `DecoManager`'s 128 m decoration chunks, which the mod reads a few a frame once a world loads, and again every five
   minutes for felled and planted trees. Each kind of tree is pictured from eight sides by borrowing a model from the

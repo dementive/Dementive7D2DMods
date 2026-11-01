@@ -32,6 +32,7 @@ public static class GfxShots
         Log.Out("[GraphicsExpanded] " + GfxTerrain.Status() + " " + GfxTerrainTextures.Status());
         Log.Out("[GraphicsExpanded] " + GfxForest.Status());
         Log.Out("[GraphicsExpanded] " + GfxFarShadows.Status());
+        Log.Out("[GraphicsExpanded] " + GfxDistantGrass.Status());
         Log.Out("[GraphicsExpanded] " + GfxHaze.Status());
         Log.Out("[GraphicsExpanded] " + GfxWater.Status());
         Log.Out("[GraphicsExpanded] " + GfxAtmosphere.Status());

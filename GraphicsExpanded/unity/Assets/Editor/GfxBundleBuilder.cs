@@ -22,6 +22,7 @@ public static class GfxBundleBuilder
         "Assets/GraphicsExpanded/TreeCapture.shader",
         "Assets/GraphicsExpanded/DistantTree.shader",
         "Assets/GraphicsExpanded/FarShadows.shader",
+        "Assets/GraphicsExpanded/DistantGrass.shader",
     };
 
     public static void Build()

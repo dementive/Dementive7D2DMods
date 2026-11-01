@@ -148,9 +148,13 @@
 					<LocalizationPrefix prefix="gfxeBuildingDistance_" />
 					<Description key="gfxeBuildingDistanceDesc" />
 				</Selector>
-				<Selector name="GrassDistance" displayKey="gfxeGrassDistance" type="GfxGrassDistance, GraphicsExpanded" defaultValue="Menu">
+				<Selector name="GrassDistance" displayKey="gfxeGrassDistance" type="GfxGrassDistance, GraphicsExpanded" defaultValue="Meters200">
 					<LocalizationPrefix prefix="gfxeGrassDistance_" />
 					<Description key="gfxeGrassDistanceDesc" />
+				</Selector>
+				<Selector name="DistantGrass" displayKey="gfxeDistantGrass" type="GfxDistantGrassDistance, GraphicsExpanded" defaultValue="Meters500">
+					<LocalizationPrefix prefix="gfxeDistantGrass_" />
+					<Description key="gfxeDistantGrassDesc" />
 				</Selector>
 			</Category>
 			<Category name="Textures" displayKey="gfxeCatTextures">
