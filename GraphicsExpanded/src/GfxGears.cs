@@ -46,6 +46,12 @@ public class GfxGears : IGearsModApi
     private static ISliderGlobalSetting<float> puddleCoverage;
     private static ISliderGlobalSetting<float> snowCover;
 
+    private static ISelectorGlobalSetting<GfxVolumetricQuality> volumetricQuality;
+    private static ISliderGlobalSetting<float> sunbeams;
+    private static ISliderGlobalSetting<float> indoorDust;
+    private static ISliderGlobalSetting<float> heightFog;
+    private static ISliderGlobalSetting<float> morningMist;
+
     /// <summary>True while the preset is writing the rows it drives, so they don't turn it to Custom.</summary>
     private static bool applyingPreset;
 
@@ -85,6 +91,12 @@ public class GfxGears : IGearsModApi
         puddleCoverage = Get<ISliderGlobalSetting<float>>(settings, "Weather", "Surfaces", "Puddles");
         snowCover = Get<ISliderGlobalSetting<float>>(settings, "Weather", "Surfaces", "SnowCover");
 
+        volumetricQuality = Get<ISelectorGlobalSetting<GfxVolumetricQuality>>(settings, "Atmosphere", "LightAndFog", "Quality");
+        sunbeams = Get<ISliderGlobalSetting<float>>(settings, "Atmosphere", "LightAndFog", "Sunbeams");
+        indoorDust = Get<ISliderGlobalSetting<float>>(settings, "Atmosphere", "LightAndFog", "IndoorDust");
+        heightFog = Get<ISliderGlobalSetting<float>>(settings, "Atmosphere", "LightAndFog", "HeightFog");
+        morningMist = Get<ISliderGlobalSetting<float>>(settings, "Atmosphere", "LightAndFog", "MorningMist");
+
         Listen(enabled, v => GfxSettings.Enabled = v);
         Listen(preset, PresetSelected);
         Listen(tonemapping, v => { GfxSettings.Look.Tonemapping = v; LookEdited(); });
@@ -115,6 +127,12 @@ public class GfxGears : IGearsModApi
         Listen(rainWetness, v => GfxSettings.RainWetness = v);
         Listen(puddleCoverage, v => GfxSettings.PuddleCoverage = v);
         Listen(snowCover, v => GfxSettings.SnowCover = v);
+
+        Listen(volumetricQuality, v => GfxSettings.VolumetricQuality = v);
+        Listen(sunbeams, v => GfxSettings.Sunbeams = v);
+        Listen(indoorDust, v => GfxSettings.IndoorDust = v);
+        Listen(heightFog, v => GfxSettings.HeightFog = v);
+        Listen(morningMist, v => GfxSettings.MorningMist = v);
 
         IControlBindingSetting compareKey = Get<IControlBindingSetting>(settings, "Look", "General", "CompareKey");
         if (compareKey != null && GfxInput.Actions != null)
@@ -157,6 +175,12 @@ public class GfxGears : IGearsModApi
         Read(rainWetness, v => GfxSettings.RainWetness = v);
         Read(puddleCoverage, v => GfxSettings.PuddleCoverage = v);
         Read(snowCover, v => GfxSettings.SnowCover = v);
+
+        Read(volumetricQuality, v => GfxSettings.VolumetricQuality = v);
+        Read(sunbeams, v => GfxSettings.Sunbeams = v);
+        Read(indoorDust, v => GfxSettings.IndoorDust = v);
+        Read(heightFog, v => GfxSettings.HeightFog = v);
+        Read(morningMist, v => GfxSettings.MorningMist = v);
 
         // A preset other than Custom always matches its rows, since editing one turns it to Custom. Rows a mod update
         // added (saved values don't have them) or preset values it changed would otherwise keep their defaults, so

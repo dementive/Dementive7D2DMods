@@ -100,6 +100,9 @@ public static class GfxMood
     }
 
     /// <summary>The weather's rainfall and snowfall, as 0 to 1 whether the game keeps them that way or as percent.</summary>
+    /// <summary>How much the player is out in the open, 0 to 1 (the opposite of how enclosed they are), eased.</summary>
+    public static float Outdoors => outdoors;
+
     public static float Fraction(float value)
     {
         return Mathf.Clamp01(value > 1f ? value / 100f : value);

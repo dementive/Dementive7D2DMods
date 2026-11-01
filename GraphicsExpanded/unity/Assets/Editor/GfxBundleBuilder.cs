@@ -16,6 +16,7 @@ public static class GfxBundleBuilder
     private static readonly string[] Shaders =
     {
         "Assets/GraphicsExpanded/WeatherSurface.shader",
+        "Assets/GraphicsExpanded/Volumetric.shader",
     };
 
     public static void Build()

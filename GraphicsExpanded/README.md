@@ -24,6 +24,11 @@ adjustment to vanilla, so the game's own effects (biome fog, weather, night, bri
   flattest first, with a fine grain that sparkles in the sun. Both build up while it falls and wear off after (dry in
   about five minutes, melted in about ten), and anything under a roof stays dry. Zombies and players get wet and
   snowy too.
+- **Sunbeams and height fog**: real shafts of sunlight (and faint moonlight) through windows, doorways, trees and
+  ruins, made from the game's own shadows, with dusty air indoors so beams through windows show. A layer of fog sits
+  about 15 m above the ground around you, filling valleys and low ground, with morning mist after dawn and thicker,
+  redder fog under the Blood Moon. Quality from Low to High, or Off. Only the sun and moon: lamps and torches are
+  Torch's.
 
 The shadow and detail settings start at "Video menu", so out of the box only the look changes.
 
@@ -60,6 +65,7 @@ gfxe weather                    how wet and snowy things are now (also written t
 gfxe weather wet <0-1>          set it, to see it without waiting for rain
 gfxe weather snow <0-1>         the same for snow
 gfxe weather debug              show the sky check: cyan is open to the sky, magenta is covered
+gfxe atmosphere                 how the sunbeams and height fog are running, and what they hold mid-screen
 gfxe materials                  write the block and terrain materials and textures to the game log
 ```
 
@@ -91,6 +97,15 @@ gfxe materials                  write the block and terrain materials and textur
   lighting, copies G-buffers 0 to 2 and redraws the wet, puddled and snowy surfaces into them. The game's and Torch's
   lighting then light them like anything else; Torch's own hooks come later in the frame. It's only attached while
   something is wet or snowy.
+- Sunbeams and height fog (`GfxAtmosphere`, `unity/Assets/GraphicsExpanded/Volumetric.shader`): while the player
+  camera renders, the sun (or moon) gets two command buffers: one at `AfterShadowMap` keeps its shadow map, one at
+  `AfterScreenspaceMask`, while its shadow cascades are still set up, marches a ray per pixel at half or quarter resolution
+  through the fog layer and air, adding the light that scatters towards the camera where the shadow map says the air
+  is lit. A camera command buffer at `AfterForwardAlpha` blurs it, keeping edges, and lays it over the picture
+  (what's there times what gets through, plus the light) before the game's post-processing. Those are the light
+  slots the game's own sun effects use (NGSS soft shadows, contact shadows), and the light buffers are added before
+  the camera culls, as the game does: added in `OnPreRender`, Unity doesn't run them that frame. The overlay only touches
+  the picture on frames the march ran (`_GfxMarched`), and catches invalid values, so it can never black the scene out.
 - Sky cover: for every block column within 6 chunks, the top of the highest block that stops rain (solid blocks, not
   plants, grass, flowers or water), read from the chunks 24 a frame and refreshed every two seconds. It comes from the
   block data rather than from rendering, because the game culls chunk pieces you can't see (from inside a house, parts

@@ -31,12 +31,19 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             + "  gfxe weather         - how wet and snowy things are now\n"
             + "  gfxe weather wet <0-1> | snow <0-1> - set it, to see it without waiting for the weather\n"
             + "  gfxe weather debug   - show the sky check instead: cyan is open to the sky, magenta is covered\n"
+            + "  gfxe atmosphere      - how the sunbeams and height fog are running\n"
             + "Changes last until the game closes. Install Gears to change and save every setting from the Mods menu.";
     }
 
     public override void Execute(List<string> _params, CommandSenderInfo _senderInfo)
     {
         SdtdConsole console = SingletonMonoBehaviour<SdtdConsole>.Instance;
+        if (_params.Count == 1 && _params[0].EqualsCaseInsensitive("atmosphere"))
+        {
+            console.Output(GfxAtmosphere.Status());
+            Log.Out("[GraphicsExpanded] " + GfxAtmosphere.Status());
+            return;
+        }
         if (_params.Count >= 1 && _params[0].EqualsCaseInsensitive("weather"))
         {
             if (_params.Count == 2 && _params[1].EqualsCaseInsensitive("debug"))

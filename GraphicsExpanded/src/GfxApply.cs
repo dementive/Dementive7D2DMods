@@ -50,6 +50,7 @@ public static class GfxApply
 
             Camera camera = PlayerCamera();
             GfxWeather.Update(Player(), camera, Time.deltaTime);
+            GfxAtmosphere.Update(Player(), camera);
             GfxSettings.Effective = GfxMood.Apply(GfxSettings.CurrentLook, Time.deltaTime);
             if (camera != lookCamera || !lookApplied || !GfxSettings.Effective.SameAs(lookValues))
                 ApplyColor(camera);

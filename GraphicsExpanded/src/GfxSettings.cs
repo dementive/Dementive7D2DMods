@@ -46,6 +46,14 @@ public enum GfxTreeDistance
     PlusTwo,
 }
 
+public enum GfxVolumetricQuality
+{
+    Off,
+    Low,
+    Medium,
+    High,
+}
+
 public enum GfxGrassDistance
 {
     Menu,
@@ -168,6 +176,13 @@ public static class GfxSettings
     public static float RainWetness = 1f;
     public static float PuddleCoverage = 0.4f;
     public static float SnowCover = 1f;
+
+    /// <summary>Sunbeams and height fog: quality, and strengths (sunbeams and height fog 0 to 2, the rest 0 to 1).</summary>
+    public static GfxVolumetricQuality VolumetricQuality = GfxVolumetricQuality.Medium;
+    public static float Sunbeams = 1f;
+    public static float IndoorDust = 0.5f;
+    public static float HeightFog = 1f;
+    public static float MorningMist = 1f;
 
     /// <summary>
     /// True while the compare key is held. Look and shadows go back to vanilla so they can be compared; draw distances

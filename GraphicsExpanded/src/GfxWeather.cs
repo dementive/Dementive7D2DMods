@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -12,9 +11,8 @@ using UnityEngine.Rendering;
 ///   cover and stays dry. It comes from the block data rather than from rendering, so chunks the game has culled
 ///   (out of sight from inside a house, say) still count.
 /// - The surface pass: a command buffer on the player camera, after the game has drawn every surface and before
-///   reflections and lighting, redraws the surfaces wet, puddled or snowy (WeatherSurface.shader, from
-///   Resources/graphicsexpanded.bundle, built by src/build-shaders.bat). The game's and Torch's lighting then light
-///   them like anything else. It's only attached while something is wet or snowy.
+///   reflections and lighting, redraws the surfaces wet, puddled or snowy (WeatherSurface.shader). The game's and
+///   Torch's lighting then light them like anything else. It's only attached while something is wet or snowy.
 /// </summary>
 public static class GfxWeather
 {
@@ -59,31 +57,16 @@ public static class GfxWeather
 
     public static bool Loaded => surfaceShader != null;
 
-    public static void Init(string modPath)
+    public static void Init(AssetBundle bundle)
     {
-        string path = Path.Combine(modPath, "Resources", "graphicsexpanded.bundle");
-        try
+        surfaceShader = bundle != null ? bundle.LoadAsset<Shader>("WeatherSurface") : null;
+        if (surfaceShader != null && !surfaceShader.isSupported)
         {
-            AssetBundle bundle = AssetBundle.LoadFromFile(path);
-            if (bundle == null)
-            {
-                Log.Warning("[GraphicsExpanded] Couldn't load " + path + "; rain wetness and snow cover are off");
-                return;
-            }
-            surfaceShader = bundle.LoadAsset<Shader>("WeatherSurface");
-            if (surfaceShader == null || !surfaceShader.isSupported)
-            {
-                Log.Warning("[GraphicsExpanded] The weather shader didn't load or isn't supported on this graphics card; rain wetness and snow cover are off");
-                surfaceShader = null;
-                return;
-            }
-            surfaceMaterial = new Material(surfaceShader) { hideFlags = HideFlags.HideAndDontSave };
-        }
-        catch (Exception e)
-        {
-            Log.Warning("[GraphicsExpanded] Couldn't load the weather shader: " + e.Message);
+            Log.Warning("[GraphicsExpanded] The weather shader isn't supported on this graphics card; rain wetness and snow cover are off");
             surfaceShader = null;
         }
+        if (surfaceShader != null)
+            surfaceMaterial = new Material(surfaceShader) { hideFlags = HideFlags.HideAndDontSave };
     }
 
     /// <summary>Called every frame from GfxApply.Update.</summary>

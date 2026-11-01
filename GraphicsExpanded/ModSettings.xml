@@ -168,5 +168,34 @@
 				</Slider>
 			</Category>
 		</Tab>
+		<Tab name="Atmosphere" displayKey="gfxeTabAtmosphere">
+			<Category name="LightAndFog" displayKey="gfxeCatLightAndFog">
+				<Description key="gfxeCatLightAndFogDesc" />
+				<Selector name="Quality" displayKey="gfxeVolumetricQuality" type="GfxVolumetricQuality, GraphicsExpanded" defaultValue="Medium">
+					<LocalizationPrefix prefix="gfxeVolumetricQuality_" />
+					<Description key="gfxeVolumetricQualityDesc" />
+				</Selector>
+				<Slider name="Sunbeams" displayKey="gfxeSunbeams" type="float" defaultValue="100%">
+					<Incremental increment="10%" minValue="0%" maxValue="200%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeSunbeamsDesc" />
+				</Slider>
+				<Slider name="IndoorDust" displayKey="gfxeIndoorDust" type="float" defaultValue="50%">
+					<Incremental increment="10%" minValue="0%" maxValue="100%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeIndoorDustDesc" />
+				</Slider>
+				<Slider name="HeightFog" displayKey="gfxeHeightFog" type="float" defaultValue="100%">
+					<Incremental increment="10%" minValue="0%" maxValue="200%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeHeightFogDesc" />
+				</Slider>
+				<Slider name="MorningMist" displayKey="gfxeMorningMist" type="float" defaultValue="100%">
+					<Incremental increment="10%" minValue="0%" maxValue="100%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeMorningMistDesc" />
+				</Slider>
+			</Category>
+		</Tab>
 	</Global>
 </ModSettings>
