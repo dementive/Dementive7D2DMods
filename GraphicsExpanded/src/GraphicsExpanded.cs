@@ -19,6 +19,7 @@ public class GraphicsExpanded : IModApi
         GfxAtmosphere.Init(shaders);
         GfxHaze.Init(shaders);
         GfxWater.Init(shaders);
+        GfxForest.Init(shaders);
         ModEvents.GameUpdate.RegisterHandler(Update);
     }
 

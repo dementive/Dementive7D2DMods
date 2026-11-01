@@ -43,6 +43,9 @@ adjustment to vanilla, so the game's own effects (biome fog, weather, night, bri
   keep their rocky structure. Needs the texture pack (see
   Building) and about 400 MB of video memory. **Distant terrain** keeps more of far hills' shape, and the ground keeps
   its full textures twice as far out (High) or four times (Ultra).
+- **Distant forests**: past the tree distance the game draws no trees at all, so far hills are bare. Every tree out
+  there is drawn to the horizon as a lightweight picture of the game's own model, photographed from eight sides when a
+  world loads. They take the game's sunlight, fog and haze, and give way to the real trees wherever the game draws them.
 
 The shadow and detail settings start at "Video menu", so they follow the game's own until you change them.
 
@@ -93,6 +96,10 @@ gfxe terrain export             save the 24 ground textures as images to Graphic
                                 game's user folder, for build-terrain.bat to match the texture pack to
 gfxe terrain tiling <x>         repeat the photoscanned textures x times as often as the game's did (default 2;
                                 more is sharper up close, with smaller pebbles and leaves)
+gfxe trees                      how the distant forests are running: trees, kinds, and where the game's own stop
+gfxe trees save                 save the pictures of each kind of tree to GraphicsExpanded/Trees in the user folder
+gfxe trees on | off             turn the distant forests on or off for this session
+gfxe trees debug                draw them bright magenta to see where they are (again to stop)
 ```
 
 ## Works with
@@ -157,6 +164,14 @@ gfxe terrain tiling <x>         repeat the photoscanned textures x times as ofte
   kept, so turning it off or holding the compare key puts them straight back. The bundle loads in the background when a world starts and is unloaded once copied.
 - Distant terrain (`GfxTerrain`): the far-off Unity terrain tiles get a lower `heightmapPixelError` and a longer
   `basemapDistance`.
+- Distant forests (`GfxForest`, `DistantTree.shader`, `TreeCapture.shader`): the game keeps every tree's place in
+  `DecoManager`'s 128 m decoration chunks, which the mod reads a few a frame once a world loads, and again every five
+  minutes for felled and planted trees. Each kind of tree is pictured from eight sides by borrowing a model from the
+  game's `GameObjectPool` (by file name, as `DecoObject.GetModelName` gives it) and drawing its nearest level of detail
+  with its own materials' deferred pass into a small G-buffer of the mod's; a throwaway camera's command buffers never
+  ran. One `DrawMeshInstancedIndirect` a frame then draws every tree as a camera-facing card into the player camera's
+  G-buffer, so the game's lighting, fog and the haze apply. A card collapses where the game draws the tree itself: in a
+  decoration chunk it shows (`visibleDecoChunks`), closer than that kind's last level of detail stops drawing.
 - Block textures are one 512x512 texture array (407 layers) whose shader has no tunable settings, so there's nothing
   to sharpen; a mipmap bias and the shaders' `_MipSlope` made no visible difference.
 

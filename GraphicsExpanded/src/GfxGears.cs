@@ -39,6 +39,7 @@ public class GfxGears : IGearsModApi
 
     private static ISliderGlobalSetting<float> lodDistance;
     private static ISelectorGlobalSetting<GfxTreeDistance> treeDistance;
+    private static ISelectorGlobalSetting<GfxDistantTrees> distantTrees;
     private static ISelectorGlobalSetting<GfxGrassDistance> grassDistance;
     private static ISwitchGlobalSetting<bool> anisotropic16x;
 
@@ -91,6 +92,7 @@ public class GfxGears : IGearsModApi
 
         lodDistance = Get<ISliderGlobalSetting<float>>(settings, "Detail", "Distance", "LodDistance");
         treeDistance = Get<ISelectorGlobalSetting<GfxTreeDistance>>(settings, "Detail", "Distance", "TreeDistance");
+        distantTrees = Get<ISelectorGlobalSetting<GfxDistantTrees>>(settings, "Detail", "Distance", "DistantTrees");
         grassDistance = Get<ISelectorGlobalSetting<GfxGrassDistance>>(settings, "Detail", "Distance", "GrassDistance");
         anisotropic16x = Get<ISwitchGlobalSetting<bool>>(settings, "Detail", "Textures", "Anisotropic16x");
 
@@ -135,6 +137,7 @@ public class GfxGears : IGearsModApi
 
         Listen(lodDistance, v => GfxSettings.LodDistance = v);
         Listen(treeDistance, v => GfxSettings.TreeDistance = v);
+        Listen(distantTrees, v => GfxSettings.DistantTrees = v);
         Listen(grassDistance, v => GfxSettings.GrassDistance = v);
         Listen(anisotropic16x, v => GfxSettings.Anisotropic16x = v);
 
@@ -190,6 +193,7 @@ public class GfxGears : IGearsModApi
 
         Read(lodDistance, v => GfxSettings.LodDistance = v);
         Read(treeDistance, v => GfxSettings.TreeDistance = v);
+        Read(distantTrees, v => GfxSettings.DistantTrees = v);
         Read(grassDistance, v => GfxSettings.GrassDistance = v);
         Read(anisotropic16x, v => GfxSettings.Anisotropic16x = v);
 

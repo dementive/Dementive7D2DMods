@@ -30,6 +30,7 @@ public static class GfxShots
         yield return new WaitForSecondsRealtime(3f);
         Shoot(Path.Combine(folder, "GraphicsExpanded_" + stamp + "_on.png"));
         Log.Out("[GraphicsExpanded] " + GfxTerrain.Status() + " " + GfxTerrainTextures.Status());
+        Log.Out("[GraphicsExpanded] " + GfxForest.Status());
         Log.Out("[GraphicsExpanded] " + GfxHaze.Status());
         Log.Out("[GraphicsExpanded] " + GfxWater.Status());
         Log.Out("[GraphicsExpanded] " + GfxAtmosphere.Status());

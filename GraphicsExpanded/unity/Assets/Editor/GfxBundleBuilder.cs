@@ -19,6 +19,8 @@ public static class GfxBundleBuilder
         "Assets/GraphicsExpanded/Volumetric.shader",
         "Assets/GraphicsExpanded/Haze.shader",
         "Assets/GraphicsExpanded/Water.shader",
+        "Assets/GraphicsExpanded/TreeCapture.shader",
+        "Assets/GraphicsExpanded/DistantTree.shader",
     };
 
     public static void Build()

@@ -51,6 +51,7 @@ public static class GfxApply
             Camera camera = PlayerCamera();
             GfxTerrain.Update(Player());
             GfxTerrainTextures.Update(Player());
+            GfxForest.Update(Player(), camera);
             GfxWeather.Update(Player(), camera, Time.deltaTime);
             GfxAtmosphere.Update(Player(), camera);
             GfxHaze.Update(Player(), camera);

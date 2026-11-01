@@ -36,6 +36,10 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             + "  gfxe terrain table   - write the terrain's per-texture settings to the game log\n"
             + "  gfxe terrain export  - save the 24 ground textures as images, to GraphicsExpanded/TerrainExport\n"
             + "  gfxe terrain tiling <x> - repeat the photoscanned textures x times as often (default 2, 1 is the game's; more is sharper up close)\n"
+            + "  gfxe trees           - how the distant forests are running\n"
+            + "  gfxe trees save      - save the pictures of each kind of tree, to GraphicsExpanded/Trees\n"
+            + "  gfxe trees on | off  - turn the distant forests on or off for this session\n"
+            + "  gfxe trees debug     - draw them bright magenta to see where they are (again to stop)\n"
             + "  gfxe haze            - how the distance haze is running\n"
             + "  gfxe water           - how the water is running\n"
             + "  gfxe water debug     - show what the water's reflections find instead\n"
@@ -73,6 +77,29 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             console.Output(GfxTerrain.Status());
             console.Output(GfxTerrainTextures.Status());
             Log.Out("[GraphicsExpanded] " + GfxTerrain.Status() + " " + GfxTerrainTextures.Status());
+            return;
+        }
+        if (_params.Count >= 1 && _params[0].EqualsCaseInsensitive("trees"))
+        {
+            if (_params.Count == 2 && _params[1].EqualsCaseInsensitive("save"))
+            {
+                console.Output(GfxForest.SavePictures());
+                return;
+            }
+            if (_params.Count == 2 && (_params[1].EqualsCaseInsensitive("on") || _params[1].EqualsCaseInsensitive("off")))
+            {
+                GfxSettings.DistantTrees = _params[1].EqualsCaseInsensitive("on") ? GfxDistantTrees.On : GfxDistantTrees.Off;
+                console.Output("Distant forests " + (GfxSettings.DistantTrees == GfxDistantTrees.On ? "on (give it a moment to picture the trees)." : "off."));
+                return;
+            }
+            if (_params.Count == 2 && _params[1].EqualsCaseInsensitive("debug"))
+            {
+                GfxForest.Debug = !GfxForest.Debug;
+                console.Output(GfxForest.Debug ? "Distant forest cards in magenta." : "Distant forest cards drawn normally.");
+                return;
+            }
+            console.Output(GfxForest.Status());
+            Log.Out("[GraphicsExpanded] " + GfxForest.Status());
             return;
         }
         if (_params.Count == 1 && _params[0].EqualsCaseInsensitive("haze"))

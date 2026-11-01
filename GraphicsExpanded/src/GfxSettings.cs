@@ -74,6 +74,12 @@ public enum GfxWaterQuality
     High,
 }
 
+public enum GfxDistantTrees
+{
+    Off,
+    On,
+}
+
 public enum GfxGrassDistance
 {
     Menu,
@@ -221,6 +227,8 @@ public static class GfxSettings
     /// repeats showing); gfxe terrain tiling changes it for the session.
     /// </summary>
     public static float TerrainTiling = 2f;
+    /// <summary>Whether the trees past the tree distance are drawn as pictures out to the horizon (GfxForest).</summary>
+    public static GfxDistantTrees DistantTrees = GfxDistantTrees.On;
 
     /// <summary>
     /// True while the compare key is held. Look and shadows go back to vanilla so they can be compared; draw distances

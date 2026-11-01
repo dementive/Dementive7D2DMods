@@ -136,6 +136,10 @@
 					<LocalizationPrefix prefix="gfxeTreeDistance_" />
 					<Description key="gfxeTreeDistanceDesc" />
 				</Selector>
+				<Selector name="DistantTrees" displayKey="gfxeDistantTrees" type="GfxDistantTrees, GraphicsExpanded" defaultValue="On">
+					<LocalizationPrefix prefix="gfxeDistantTrees_" />
+					<Description key="gfxeDistantTreesDesc" />
+				</Selector>
 				<Selector name="GrassDistance" displayKey="gfxeGrassDistance" type="GfxGrassDistance, GraphicsExpanded" defaultValue="Menu">
 					<LocalizationPrefix prefix="gfxeGrassDistance_" />
 					<Description key="gfxeGrassDistanceDesc" />
