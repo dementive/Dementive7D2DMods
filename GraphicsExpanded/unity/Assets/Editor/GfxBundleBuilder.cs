@@ -21,6 +21,7 @@ public static class GfxBundleBuilder
         "Assets/GraphicsExpanded/Water.shader",
         "Assets/GraphicsExpanded/TreeCapture.shader",
         "Assets/GraphicsExpanded/DistantTree.shader",
+        "Assets/GraphicsExpanded/FarShadows.shader",
     };
 
     public static void Build()

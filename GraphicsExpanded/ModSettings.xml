@@ -102,13 +102,17 @@
 		<Tab name="Shadows" displayKey="gfxeTabShadows">
 			<Category name="Sun" displayKey="gfxeCatSun">
 				<Description key="gfxeCatSunDesc" />
-				<Selector name="ShadowDistance" displayKey="gfxeShadowDistance" type="GfxShadowDistance, GraphicsExpanded" defaultValue="Menu">
+				<Selector name="ShadowDistance" displayKey="gfxeShadowDistance" type="GfxShadowDistance, GraphicsExpanded" defaultValue="Meters500">
 					<LocalizationPrefix prefix="gfxeShadowDistance_" />
 					<Description key="gfxeShadowDistanceDesc" />
 				</Selector>
 				<Selector name="ShadowResolution" displayKey="gfxeShadowResolution" type="GfxShadowResolution, GraphicsExpanded" defaultValue="Menu">
 					<LocalizationPrefix prefix="gfxeShadowResolution_" />
 					<Description key="gfxeShadowResolutionDesc" />
+				</Selector>
+				<Selector name="FarShadows" displayKey="gfxeFarShadows" type="GfxFarShadowMode, GraphicsExpanded" defaultValue="On">
+					<LocalizationPrefix prefix="gfxeFarShadows_" />
+					<Description key="gfxeFarShadowsDesc" />
 				</Selector>
 			</Category>
 			<Category name="Contact" displayKey="gfxeCatContact">
@@ -139,6 +143,10 @@
 				<Selector name="DistantTrees" displayKey="gfxeDistantTrees" type="GfxDistantTrees, GraphicsExpanded" defaultValue="On">
 					<LocalizationPrefix prefix="gfxeDistantTrees_" />
 					<Description key="gfxeDistantTreesDesc" />
+				</Selector>
+				<Selector name="BuildingDistance" displayKey="gfxeBuildingDistance" type="GfxBuildingDistance, GraphicsExpanded" defaultValue="Meters2000">
+					<LocalizationPrefix prefix="gfxeBuildingDistance_" />
+					<Description key="gfxeBuildingDistanceDesc" />
 				</Selector>
 				<Selector name="GrassDistance" displayKey="gfxeGrassDistance" type="GfxGrassDistance, GraphicsExpanded" defaultValue="Menu">
 					<LocalizationPrefix prefix="gfxeGrassDistance_" />

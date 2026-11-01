@@ -34,12 +34,14 @@ public class GfxGears : IGearsModApi
 
     private static ISelectorGlobalSetting<GfxShadowDistance> shadowDistance;
     private static ISelectorGlobalSetting<GfxShadowResolution> shadowResolution;
+    private static ISelectorGlobalSetting<GfxFarShadowMode> farShadows;
     private static ISelectorGlobalSetting<GfxContactShadows> contactShadows;
     private static ISliderGlobalSetting<float> contactShadowLength;
 
     private static ISliderGlobalSetting<float> lodDistance;
     private static ISelectorGlobalSetting<GfxTreeDistance> treeDistance;
     private static ISelectorGlobalSetting<GfxDistantTrees> distantTrees;
+    private static ISelectorGlobalSetting<GfxBuildingDistance> buildingDistance;
     private static ISelectorGlobalSetting<GfxGrassDistance> grassDistance;
     private static ISwitchGlobalSetting<bool> anisotropic16x;
 
@@ -87,12 +89,14 @@ public class GfxGears : IGearsModApi
 
         shadowDistance = Get<ISelectorGlobalSetting<GfxShadowDistance>>(settings, "Shadows", "Sun", "ShadowDistance");
         shadowResolution = Get<ISelectorGlobalSetting<GfxShadowResolution>>(settings, "Shadows", "Sun", "ShadowResolution");
+        farShadows = Get<ISelectorGlobalSetting<GfxFarShadowMode>>(settings, "Shadows", "Sun", "FarShadows");
         contactShadows = Get<ISelectorGlobalSetting<GfxContactShadows>>(settings, "Shadows", "Contact", "ContactShadows");
         contactShadowLength = Get<ISliderGlobalSetting<float>>(settings, "Shadows", "Contact", "ContactShadowLength");
 
         lodDistance = Get<ISliderGlobalSetting<float>>(settings, "Detail", "Distance", "LodDistance");
         treeDistance = Get<ISelectorGlobalSetting<GfxTreeDistance>>(settings, "Detail", "Distance", "TreeDistance");
         distantTrees = Get<ISelectorGlobalSetting<GfxDistantTrees>>(settings, "Detail", "Distance", "DistantTrees");
+        buildingDistance = Get<ISelectorGlobalSetting<GfxBuildingDistance>>(settings, "Detail", "Distance", "BuildingDistance");
         grassDistance = Get<ISelectorGlobalSetting<GfxGrassDistance>>(settings, "Detail", "Distance", "GrassDistance");
         anisotropic16x = Get<ISwitchGlobalSetting<bool>>(settings, "Detail", "Textures", "Anisotropic16x");
 
@@ -132,12 +136,14 @@ public class GfxGears : IGearsModApi
 
         Listen(shadowDistance, v => GfxSettings.ShadowDistance = v);
         Listen(shadowResolution, v => GfxSettings.ShadowResolution = v);
+        Listen(farShadows, v => GfxSettings.FarShadows = v);
         Listen(contactShadows, v => GfxSettings.ContactShadows = v);
         Listen(contactShadowLength, v => GfxSettings.ContactShadowLength = v);
 
         Listen(lodDistance, v => GfxSettings.LodDistance = v);
         Listen(treeDistance, v => GfxSettings.TreeDistance = v);
         Listen(distantTrees, v => GfxSettings.DistantTrees = v);
+        Listen(buildingDistance, v => GfxSettings.BuildingDistance = v);
         Listen(grassDistance, v => GfxSettings.GrassDistance = v);
         Listen(anisotropic16x, v => GfxSettings.Anisotropic16x = v);
 
@@ -188,12 +194,14 @@ public class GfxGears : IGearsModApi
 
         Read(shadowDistance, v => GfxSettings.ShadowDistance = v);
         Read(shadowResolution, v => GfxSettings.ShadowResolution = v);
+        Read(farShadows, v => GfxSettings.FarShadows = v);
         Read(contactShadows, v => GfxSettings.ContactShadows = v);
         Read(contactShadowLength, v => GfxSettings.ContactShadowLength = v);
 
         Read(lodDistance, v => GfxSettings.LodDistance = v);
         Read(treeDistance, v => GfxSettings.TreeDistance = v);
         Read(distantTrees, v => GfxSettings.DistantTrees = v);
+        Read(buildingDistance, v => GfxSettings.BuildingDistance = v);
         Read(grassDistance, v => GfxSettings.GrassDistance = v);
         Read(anisotropic16x, v => GfxSettings.Anisotropic16x = v);
 

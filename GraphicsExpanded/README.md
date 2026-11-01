@@ -16,9 +16,13 @@ adjustment to vanilla, so the game's own effects (biome fog, weather, night, bri
   turn blue. Each has a strength slider.
 - **Shadows**: sun shadow distance past the menu's 300 m (up to 800 m) and resolution past its 4096 (8192), keeping
   close shadows as sharp. Contact shadows (the game's own, normally only at High shadow quality and above) on at any
-  quality, with adjustable length.
+  quality, with adjustable length. **Far shadows**: past the shadow distance, hills and ridges shade the land, trees
+  and buildings behind them out to the horizon, worked out from the shape of the land, so far valleys darken at
+  sunrise and sunset instead of staying flat and lit.
 - **Detail**: level of detail distance, tree distance (+128 or +256 m), grass distance (150 or 200 m, the menu stops
-  at about 112 m) and forced 16x texture filtering.
+  at about 112 m), building distance (far-off towns and buildings out to 2 or 3 km, where the game stops at its Dynamic
+  Mesh distance, 1 km by default) and forced 16x texture filtering. Grass only grows on the chunks the game has loaded,
+  so past about 100 m it also needs the game's View Distance raised (12 is about 190 m).
 - **Weather**: in rain, ground, roofs and roads turn dark and glossy and reflect the sky and lights, with a light sheen
   on walls and rippling puddles on flat ground. In snowfall, snow settles on roofs, roads, cars and the tops of blocks,
   flattest first, with a fine grain that sparkles in the sun. Both build up while it falls and wear off after (dry in
@@ -47,7 +51,8 @@ adjustment to vanilla, so the game's own effects (biome fog, weather, night, bri
   there is drawn to the horizon as a lightweight picture of the game's own model, photographed from eight sides when a
   world loads. They take the game's sunlight, fog and haze, and give way to the real trees wherever the game draws them.
 
-The shadow and detail settings start at "Video menu", so they follow the game's own until you change them.
+Shadow distance starts at 500 m (the game's own goes to 300 m at most) and Building distance at 2 km; the other
+shadow and detail settings start at "Video menu", so they follow the game's own until you change them.
 
 ## Install
 
@@ -100,6 +105,10 @@ gfxe trees                      how the distant forests are running: trees, kind
 gfxe trees save                 save the pictures of each kind of tree to GraphicsExpanded/Trees in the user folder
 gfxe trees on | off             turn the distant forests on or off for this session
 gfxe trees debug                draw them bright magenta to see where they are (again to stop)
+gfxe farshadows                 how the far shadows are running: the light, where they start, the height map
+gfxe farshadows save            save the height map they're worked out from, to GraphicsExpanded/FarShadowHeights.png
+gfxe farshadows debug           red: where they fall; again: blue, how far the height map is off the ground drawn
+                                (should be clear on bare ground); again: off
 ```
 
 ## Works with
@@ -124,7 +133,8 @@ gfxe trees debug                draw them bright magenta to see where they are (
   moon get the custom shadow map size (also on the sun's NGSS soft shadows, if it has them). Contact shadows are the
   game's NGSS frustum shadows on the player camera.
 - Detail: a postfix on `GetLODBias`, transpilers on `ChunkGameObject.CheckLODs` (grass cut-off) and
-  `DecoManager.UpdateTick` (tree radius), and a postfix on `MeshDescription.SetGrassQuality` (grass fade).
+  `DecoManager.UpdateTick` (tree radius), a postfix on `MeshDescription.SetGrassQuality` (grass fade), and
+  `PrefabLODManager.SetPOIDistance` for the far-off buildings (the game sets it from `DynamicMeshSettings.MaxViewDistance`).
 - Weather (`GfxWeather`, `unity/Assets/GraphicsExpanded/WeatherSurface.shader`): a command buffer on the player camera
   at `BeforeReflections`, after the game has drawn every surface into the deferred G-buffer and before reflections and
   lighting, copies G-buffers 0 to 2 and redraws the wet, puddled and snowy surfaces into them. The game's and Torch's
@@ -164,6 +174,13 @@ gfxe trees debug                draw them bright magenta to see where they are (
   kept, so turning it off or holding the compare key puts them straight back. The bundle loads in the background when a world starts and is unloaded once copied.
 - Distant terrain (`GfxTerrain`): the far-off Unity terrain tiles get a lower `heightmapPixelError` and a longer
   `basemapDistance`.
+- Far shadows (`GfxFarShadows`, `FarShadows.shader`): every far terrain tile (`Terrain.activeTerrains`) is copied on
+  the graphics card from its `heightmapTexture` into one 2048x2048 world height map, made again when the tiles or the
+  world's origin move and every 30 seconds. A command buffer on the sun or moon at `AfterScreenspaceMask`, the slot the
+  game's contact shadows use, walks from each pixel past four fifths of the shadow distance towards the light over the
+  height map (48 steps growing from 2 m to kilometers) and keeps the darker of that and Unity's shadow mask. Being in
+  the mask, only the light's direct light dims. It's added in `Camera.onPreCull` for the player camera only, ahead of
+  the sunbeams' own pass, so the mask is still the target it draws into.
 - Distant forests (`GfxForest`, `DistantTree.shader`, `TreeCapture.shader`): the game keeps every tree's place in
   `DecoManager`'s 128 m decoration chunks, which the mod reads a few a frame once a world loads, and again every five
   minutes for felled and planted trees. Each kind of tree is pictured from eight sides by borrowing a model from the

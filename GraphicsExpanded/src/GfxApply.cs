@@ -52,6 +52,7 @@ public static class GfxApply
             GfxTerrain.Update(Player());
             GfxTerrainTextures.Update(Player());
             GfxForest.Update(Player(), camera);
+            GfxFarShadows.Update(Player(), camera);
             GfxWeather.Update(Player(), camera, Time.deltaTime);
             GfxAtmosphere.Update(Player(), camera);
             GfxHaze.Update(Player(), camera);
@@ -82,6 +83,8 @@ public static class GfxApply
             if (aniso != anisoApplied)
                 GameOptionsManager.ApplyTextureFilter();
 
+            ApplyBuildings();
+
             GfxGrassDistance grass = GfxSettings.DetailActive ? GfxSettings.GrassDistance : GfxGrassDistance.Menu;
             if (grass != grassApplied)
             {
@@ -93,6 +96,22 @@ public static class GfxApply
         {
             Log.Error("[GraphicsExpanded] " + e);
         }
+    }
+
+    /// <summary>
+    /// How far the game's simplified far-off buildings (PrefabLODManager) show: the game ties it to its Dynamic Mesh
+    /// distance, at most 3 km, and Building distance can push it further. Only the further of the two is used.
+    /// </summary>
+    private static void ApplyBuildings()
+    {
+        PrefabLODManager buildings = GameManager.Instance != null ? GameManager.Instance.prefabLODManager : null;
+        if (buildings == null)
+            return;
+        int menu = Mathf.Min(DynamicMeshSettings.MaxViewDistance, 3000);
+        int meters = GfxSettings.DetailActive ? GfxSettings.BuildingDistanceMeters(GfxSettings.BuildingDistance) : 0;
+        int wanted = Mathf.Max(menu, meters);
+        if (PrefabLODManager.lodPoiDistance != wanted)
+            buildings.SetPOIDistance(wanted);
     }
 
     /// <summary>After the game applied its camera options (it resets the contact shadows and brightness then).</summary>

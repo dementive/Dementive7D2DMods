@@ -108,7 +108,7 @@ public static class GfxAtmosphere
     }
 
     /// <summary>The sun by day, the moon by night: whichever is up, casting shadows and brighter.</summary>
-    private static Light ShadowLight()
+    internal static Light ShadowLight()
     {
         Light best = null;
         foreach (Light candidate in new[] { SkyManager.sunLight, SkyManager.moonLight })

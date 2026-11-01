@@ -40,6 +40,9 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             + "  gfxe trees save      - save the pictures of each kind of tree, to GraphicsExpanded/Trees\n"
             + "  gfxe trees on | off  - turn the distant forests on or off for this session\n"
             + "  gfxe trees debug     - draw them bright magenta to see where they are (again to stop)\n"
+            + "  gfxe farshadows      - how the far shadows are running\n"
+            + "  gfxe farshadows save - save the height map they're worked out from, to GraphicsExpanded/FarShadowHeights.png\n"
+            + "  gfxe farshadows debug - red: where they fall; again: blue, height map vs ground; again: off\n"
             + "  gfxe haze            - how the distance haze is running\n"
             + "  gfxe water           - how the water is running\n"
             + "  gfxe water debug     - show what the water's reflections find instead\n"
@@ -100,6 +103,24 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             }
             console.Output(GfxForest.Status());
             Log.Out("[GraphicsExpanded] " + GfxForest.Status());
+            return;
+        }
+        if (_params.Count >= 1 && _params[0].EqualsCaseInsensitive("farshadows"))
+        {
+            if (_params.Count == 2 && _params[1].EqualsCaseInsensitive("save"))
+            {
+                console.Output(GfxFarShadows.SaveHeights());
+                return;
+            }
+            if (_params.Count == 2 && _params[1].EqualsCaseInsensitive("debug"))
+            {
+                GfxFarShadows.Debug = (GfxFarShadows.Debug + 1) % 3;
+                console.Output(GfxFarShadows.Debug == 1 ? "Far shadows shown in red." : GfxFarShadows.Debug == 2
+                    ? "The height map's mismatch with the ground shown in blue (should be clear on bare ground)." : "Far shadows shown normally.");
+                return;
+            }
+            console.Output(GfxFarShadows.Status());
+            Log.Out("[GraphicsExpanded] " + GfxFarShadows.Status());
             return;
         }
         if (_params.Count == 1 && _params[0].EqualsCaseInsensitive("haze"))

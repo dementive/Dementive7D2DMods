@@ -74,6 +74,19 @@ public enum GfxWaterQuality
     High,
 }
 
+public enum GfxFarShadowMode
+{
+    Off,
+    On,
+}
+
+public enum GfxBuildingDistance
+{
+    Menu,
+    Meters2000,
+    Meters3000,
+}
+
 public enum GfxDistantTrees
 {
     Off,
@@ -185,7 +198,9 @@ public static class GfxSettings
     /// </summary>
     public static GfxLook Effective = Presets[GfxPreset.Vanilla];
 
-    public static GfxShadowDistance ShadowDistance = GfxShadowDistance.Menu;
+    public static GfxShadowDistance ShadowDistance = GfxShadowDistance.Meters500;
+    /// <summary>Whether hills shade the land past the shadow distance (GfxFarShadows).</summary>
+    public static GfxFarShadowMode FarShadows = GfxFarShadowMode.On;
     public static GfxShadowResolution ShadowResolution = GfxShadowResolution.Menu;
     public static GfxContactShadows ContactShadows = GfxContactShadows.Menu;
 
@@ -196,6 +211,8 @@ public static class GfxSettings
     public static float LodDistance = 1f;
     public static GfxTreeDistance TreeDistance = GfxTreeDistance.Menu;
     public static GfxGrassDistance GrassDistance = GfxGrassDistance.Menu;
+    /// <summary>How far out the game's simplified far-off buildings show.</summary>
+    public static GfxBuildingDistance BuildingDistance = GfxBuildingDistance.Meters2000;
     public static bool Anisotropic16x;
 
     /// <summary>Rain wetness and snow cover strength (0 to 1), and the share of flat ground puddles can cover (0 to 0.8).</summary>
@@ -281,6 +298,17 @@ public static class GfxSettings
         {
             GfxTreeDistance.PlusOne => 1,
             GfxTreeDistance.PlusTwo => 2,
+            _ => 0,
+        };
+    }
+
+    /// <summary>Meters, or 0 for the game's own (its Dynamic Mesh distance).</summary>
+    public static int BuildingDistanceMeters(GfxBuildingDistance distance)
+    {
+        return distance switch
+        {
+            GfxBuildingDistance.Meters2000 => 2000,
+            GfxBuildingDistance.Meters3000 => 3000,
             _ => 0,
         };
     }
