@@ -100,7 +100,7 @@ public static class GfxMood
     }
 
     /// <summary>The weather's rainfall and snowfall, as 0 to 1 whether the game keeps them that way or as percent.</summary>
-    private static float Fraction(float value)
+    public static float Fraction(float value)
     {
         return Mathf.Clamp01(value > 1f ? value / 100f : value);
     }

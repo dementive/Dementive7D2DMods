@@ -148,5 +148,25 @@
 				</Switch>
 			</Category>
 		</Tab>
+		<Tab name="Weather" displayKey="gfxeTabWeather">
+			<Category name="Surfaces" displayKey="gfxeCatSurfaces">
+				<Description key="gfxeCatSurfacesDesc" />
+				<Slider name="RainWetness" displayKey="gfxeRainWetness" type="float" defaultValue="100%">
+					<Incremental increment="10%" minValue="0%" maxValue="100%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeRainWetnessDesc" />
+				</Slider>
+				<Slider name="Puddles" displayKey="gfxePuddles" type="float" defaultValue="40%">
+					<Incremental increment="10%" minValue="0%" maxValue="80%" />
+					<Formatter ui="0%" />
+					<Description key="gfxePuddlesDesc" />
+				</Slider>
+				<Slider name="SnowCover" displayKey="gfxeSnowCover" type="float" defaultValue="100%">
+					<Incremental increment="10%" minValue="0%" maxValue="100%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeSnowCoverDesc" />
+				</Slider>
+			</Category>
+		</Tab>
 	</Global>
 </ModSettings>

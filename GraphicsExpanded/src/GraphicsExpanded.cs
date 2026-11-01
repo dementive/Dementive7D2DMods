@@ -10,6 +10,7 @@ public class GraphicsExpanded : IModApi
         var harmony = new HarmonyLib.Harmony("com.dementive.GraphicsExpanded");
         harmony.PatchAll(Assembly.GetExecutingAssembly());
         GfxInput.Init();
+        GfxWeather.Init(_modInstance.Path);
         ModEvents.GameUpdate.RegisterHandler(Update);
     }
 

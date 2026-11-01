@@ -49,6 +49,7 @@ public static class GfxApply
             GfxInput.Update();
 
             Camera camera = PlayerCamera();
+            GfxWeather.Update(Player(), camera, Time.deltaTime);
             GfxSettings.Effective = GfxMood.Apply(GfxSettings.CurrentLook, Time.deltaTime);
             if (camera != lookCamera || !lookApplied || !GfxSettings.Effective.SameAs(lookValues))
                 ApplyColor(camera);
@@ -95,10 +96,15 @@ public static class GfxApply
         ApplyContactShadows(camera);
     }
 
-    private static Camera PlayerCamera()
+    private static EntityPlayerLocal Player()
     {
         World world = GameManager.Instance != null ? GameManager.Instance.World : null;
-        EntityPlayerLocal player = world?.GetPrimaryPlayer();
+        return world?.GetPrimaryPlayer();
+    }
+
+    private static Camera PlayerCamera()
+    {
+        EntityPlayerLocal player = Player();
         return player != null ? player.playerCamera : null;
     }
 

@@ -42,6 +42,10 @@ public class GfxGears : IGearsModApi
     private static ISelectorGlobalSetting<GfxGrassDistance> grassDistance;
     private static ISwitchGlobalSetting<bool> anisotropic16x;
 
+    private static ISliderGlobalSetting<float> rainWetness;
+    private static ISliderGlobalSetting<float> puddleCoverage;
+    private static ISliderGlobalSetting<float> snowCover;
+
     /// <summary>True while the preset is writing the rows it drives, so they don't turn it to Custom.</summary>
     private static bool applyingPreset;
 
@@ -77,6 +81,10 @@ public class GfxGears : IGearsModApi
         grassDistance = Get<ISelectorGlobalSetting<GfxGrassDistance>>(settings, "Detail", "Distance", "GrassDistance");
         anisotropic16x = Get<ISwitchGlobalSetting<bool>>(settings, "Detail", "Textures", "Anisotropic16x");
 
+        rainWetness = Get<ISliderGlobalSetting<float>>(settings, "Weather", "Surfaces", "RainWetness");
+        puddleCoverage = Get<ISliderGlobalSetting<float>>(settings, "Weather", "Surfaces", "Puddles");
+        snowCover = Get<ISliderGlobalSetting<float>>(settings, "Weather", "Surfaces", "SnowCover");
+
         Listen(enabled, v => GfxSettings.Enabled = v);
         Listen(preset, PresetSelected);
         Listen(tonemapping, v => { GfxSettings.Look.Tonemapping = v; LookEdited(); });
@@ -103,6 +111,10 @@ public class GfxGears : IGearsModApi
         Listen(treeDistance, v => GfxSettings.TreeDistance = v);
         Listen(grassDistance, v => GfxSettings.GrassDistance = v);
         Listen(anisotropic16x, v => GfxSettings.Anisotropic16x = v);
+
+        Listen(rainWetness, v => GfxSettings.RainWetness = v);
+        Listen(puddleCoverage, v => GfxSettings.PuddleCoverage = v);
+        Listen(snowCover, v => GfxSettings.SnowCover = v);
 
         IControlBindingSetting compareKey = Get<IControlBindingSetting>(settings, "Look", "General", "CompareKey");
         if (compareKey != null && GfxInput.Actions != null)
@@ -141,6 +153,10 @@ public class GfxGears : IGearsModApi
         Read(treeDistance, v => GfxSettings.TreeDistance = v);
         Read(grassDistance, v => GfxSettings.GrassDistance = v);
         Read(anisotropic16x, v => GfxSettings.Anisotropic16x = v);
+
+        Read(rainWetness, v => GfxSettings.RainWetness = v);
+        Read(puddleCoverage, v => GfxSettings.PuddleCoverage = v);
+        Read(snowCover, v => GfxSettings.SnowCover = v);
 
         // A preset other than Custom always matches its rows, since editing one turns it to Custom. Rows a mod update
         // added (saved values don't have them) or preset values it changed would otherwise keep their defaults, so

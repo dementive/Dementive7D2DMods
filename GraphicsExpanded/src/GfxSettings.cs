@@ -164,6 +164,11 @@ public static class GfxSettings
     public static GfxGrassDistance GrassDistance = GfxGrassDistance.Menu;
     public static bool Anisotropic16x;
 
+    /// <summary>Rain wetness and snow cover strength (0 to 1), and the share of flat ground puddles can cover (0 to 0.8).</summary>
+    public static float RainWetness = 1f;
+    public static float PuddleCoverage = 0.4f;
+    public static float SnowCover = 1f;
+
     /// <summary>
     /// True while the compare key is held. Look and shadows go back to vanilla so they can be compared; draw distances
     /// stay, since reloading trees and grass would stutter.
