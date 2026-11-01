@@ -205,7 +205,7 @@
 					<Formatter ui="0%" />
 					<Description key="gfxeIndoorDustDesc" />
 				</Slider>
-				<Slider name="HeightFog" displayKey="gfxeHeightFog" type="float" defaultValue="100%">
+				<Slider name="HeightFog" displayKey="gfxeHeightFog" type="float" defaultValue="30%">
 					<Incremental increment="10%" minValue="0%" maxValue="200%" />
 					<Formatter ui="0%" />
 					<Description key="gfxeHeightFogDesc" />

@@ -14,7 +14,7 @@ using UnityEngine.Rendering;
 /// </summary>
 public static class GfxAmbience
 {
-    private const int Motes = 400, Leaves = 40;     // at 100%; up to twice as many at 200%
+    private const int Motes = 400, Leaves = 12;     // at 100%; up to twice as many at 200%
     private const float MoteBox = 30f, MoteHeight = 12f;
     private const float LeafReach = 40f;
     private const int MaxTrees = 16;

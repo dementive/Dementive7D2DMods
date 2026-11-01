@@ -153,7 +153,7 @@ Shader "GraphicsExpanded/Ambience"
                 float turn = floor(cycle);
                 float phase = cycle - turn;
                 float3 r = Hash3(turn * 7.31 + i * 0.73 + 11.5);
-                float falls = r.z < 0.35 + 0.3 * _GfxAmbWind.z ? 1 : 0;
+                float falls = r.z < 0.25 + 0.25 * _GfxAmbWind.z ? 1 : 0;
                 float angle = r.x * 6.2832;
                 float radius = sqrt(r.y) * tree.w;
                 float3 start = tree.xyz + float3(cos(angle) * radius, (r.z - 0.5) * tree.w * 0.6, sin(angle) * radius);

@@ -242,7 +242,7 @@ public static class GfxSettings
     public static GfxVolumetricQuality VolumetricQuality = GfxVolumetricQuality.Medium;
     public static float Sunbeams = 1f;
     public static float IndoorDust = 0.5f;
-    public static float HeightFog = 1f;
+    public static float HeightFog = 0.3f;
     public static float MorningMist = 1f;
 
     /// <summary>Distance haze strength, 0 to 2.</summary>
