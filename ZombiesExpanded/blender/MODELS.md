@@ -1,9 +1,11 @@
 # Zombie gear and growth models: brief
 
+The remnants (small props on any zombie) and the round-2 models have their own specs in `REMNANTS.md`.
+
 Zombies Expanded bolts these models onto any zombie in 7 Days to Die: helmets and armor some zombies still wear, and
 growths that show a zombie's mutation. Each is one Blender script here that builds the model with `zkit` (the
 traps' model kit: parts, photo-textured materials, baking, export) and `zombiekit` (the reference skeleton, a
-stand-in body, the per-bone export). `hard_hat.py` is the worked example; read it, `zombiekit.py`, and the parts of
+stand-in body, the per-bone export). `cut/hard_hat.py` (a model no longer built) is the worked example; read it, `zombiekit.py`, and the parts of
 `zkit.py` you use. Traps Expanded's scripts (`../../TrapsExpanded/blender/*.py`) show more material and mesh
 technique (custom node materials like `grease_material` in grease_slick.py, `push`/`solidify` helpers, dents).
 

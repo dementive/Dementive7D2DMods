@@ -20,7 +20,7 @@ import tempfile
 import bmesh
 import bpy
 import numpy as np
-from mathutils import Matrix, Vector, noise
+from mathutils import Vector, noise
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import zkit as tk  # noqa: E402
@@ -572,6 +572,6 @@ slim_forearm()
 mid = ELBOW + AX * (LEN * 0.55)
 zk.previews(SCRIPT, PREVIEWS, mid, distance=0.75)
 close_up("top", DORSAL * 1.0 + FRONT * 0.35, mid, distance=0.42)
-close_up("front", FRONT * 1.0 + DORSAL * 0.3 - AX * 0.2, mid, distance=0.42)
+close_up("thumb", FRONT * 1.0 + DORSAL * 0.3 - AX * 0.2, mid, distance=0.42)
 close_up("wrist", AX * 0.8 + DORSAL * 0.5 + FRONT * 0.5, WRIST - AX * 0.02, distance=0.3)
 print("[%s] done" % SCRIPT)

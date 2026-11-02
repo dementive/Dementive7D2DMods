@@ -138,7 +138,7 @@ def depth_attr(obj, f, seed=0.0):
     return set_attr(obj, "zd", [(f(v.co), seed, v.co.z) for v in obj.data.vertices])
 
 
-def tube(name, pts, radius, mat, sides=6, closed=False, caps=True, twist=0.0, phase=0.0, normals=None, smooth=60,
+def tube(name, pts, radius, mat, sides=6, closed=False, caps=True, twist=0.0, phase=0.0, normals=None, smooth=None,
          s0=0.0):
     """A tube along pts. radius: a number, a list (one per point) or fn(i) -> r or (rx, ry). twist turns the
     cross-section (radians per meter); normals (one per point) fixes the cross-section's x direction. Records zl =
@@ -173,7 +173,8 @@ def tube(name, pts, radius, mat, sides=6, closed=False, caps=True, twist=0.0, ph
     bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
     obj = tk.mesh_object(name, bm, mat)
     set_attr(obj, "zl", vals)
-    return tk.smooth(obj, smooth)
+    # Round all the way round (a hexagon's faces meet at exactly 60 degrees), sharp at the caps where it can be
+    return tk.smooth(obj, smooth if smooth is not None else max(60.0, 360.0 / sides + 15.0))
 
 
 def prism(name, poly, thick, origin, u, v, face, edge, smooth=20):
@@ -309,11 +310,11 @@ def seeded(g, seed):
     return mapping(g, g.coords(), loc=(seed * 1.37 + 0.11, seed * 0.71 + 0.53, seed * 2.03 + 0.29))
 
 
-def gore_mask(g, P, reach=0.035, amount=1.0, runs=0.6, dots=0.6):
+def gore_mask(g, P, reach=0.035, amount=1.0, runs=0.6, dots=0.6, scale=16.0):
     """How bloody a point is from its distance to the skin (zd.x): soaked at and under the skin, ragged out to
     about `reach`, with runs and spatter beyond it."""
     d = attr(g, "zd")[0]
-    edge = add(g, d, mul(g, g.math("SUBTRACT", g.noise(16.0, detail=6.0, roughness=0.65, vector=P), 0.5), reach * 0.9))
+    edge = add(g, d, mul(g, g.math("SUBTRACT", g.noise(scale, detail=6.0, roughness=0.65, vector=P), 0.5), reach * 0.9))
     m = g.ramp(edge, reach, reach * 0.4)
     streak = g.ramp(g.noise(1.0, detail=3.0, vector=mapping(g, P, scale=(70.0, 70.0, 5.0))), 0.6, 0.67)
     m = g.math("MAXIMUM", m, mul(g, mul(g, streak, g.ramp(d, reach * 2.6, reach * 0.6)), runs))
@@ -323,12 +324,12 @@ def gore_mask(g, P, reach=0.035, amount=1.0, runs=0.6, dots=0.6):
     return mul(g, m, amount)
 
 
-def dried_blood(g, col, rough, height, mask, P):
+def dried_blood(g, col, rough, height, mask, P, scale=11.0):
     """Dried blood: deep red going near-black where it pooled thick, tacky and glossy there, dull and flaking where
     thin."""
-    thick = g.ramp(g.noise(11.0, detail=5.0, vector=P), 0.35, 0.72)
+    thick = g.ramp(g.noise(scale, detail=5.0, vector=P), 0.35, 0.72)
     mask = g.math("MINIMUM", mask, 1.0)
-    bc = g.mix(thick, (0.15, 0.007, 0.011), (0.04, 0.002, 0.003))
+    bc = g.mix(thick, (0.13, 0.012, 0.013), (0.04, 0.004, 0.004))
     col = g.mix(mask, col, bc)
     rough = g.mixf(mask, rough, g.mixf(thick, 0.42, 0.16))
     height = add(g, height, mul(g, mask, add(g, 0.1, mul(g, thick, 0.35))))
@@ -406,7 +407,7 @@ def thin_path(P, f, near=0.02, fine=0.007, coarse=0.022, keep=()):
 
 
 def rusty_iron(name, seed=0.0, rust=0.6, scale=2.5, base=(0.05, 0.046, 0.042), rust_value=0.5, polish=0.0,
-               gore=0.0, reach=0.035, grit=0.5, scale_dark=0.4, grime=0.6, bump=0.35, extra=None):
+               gore=0.0, reach=0.035, grit=0.5, scale_dark=0.4, grime=0.6, bump=0.35, extra=None, blood_scale=11.0, rust_sat=0.78):
     """Old iron and steel: dark mill scale, coarse rust in blooms and crevices (the photo, toned down), pitted,
     rubbed bright in places (polish), grimy and dusty, bloodied near the skin (gore, from zd)."""
     mat, g = tk.new_material(name)
@@ -416,7 +417,7 @@ def rusty_iron(name, seed=0.0, rust=0.6, scale=2.5, base=(0.05, 0.046, 0.042), r
     iron = g.mix(tone, base, tk._darker(g, base, 0.6))
     scale_m = mul(g, g.ramp(g.noise(9.0, detail=6.0, roughness=0.6, vector=P), 0.45, 0.6), scale_dark)
     iron = g.mix(scale_m, iron, (0.022, 0.021, 0.02))
-    rust_col = tk.grade(g, p["color"], 0.78, rust_value)
+    rust_col = tk.grade(g, p["color"], rust_sat, rust_value)
     rust_col = g.mix(g.ramp(tk._luma(g, p["color"]), 0.12, 0.03), rust_col, (0.035, 0.016, 0.008))
     blooms = g.ramp(g.noise(4.5, detail=8.0, roughness=0.65, distortion=0.5, vector=P), 0.66 - 0.32 * rust,
                     0.72 - 0.32 * rust)
@@ -443,8 +444,8 @@ def rusty_iron(name, seed=0.0, rust=0.6, scale=2.5, base=(0.05, 0.046, 0.042), r
         col, rough, metal, height = extra(g, P, col, rough, metal, height)
     col, rough, metal = tk._grit(g, col, rough, metal, grit, scratches=0.2, edges=0.15)
     if gore:  # after the dust, so blood isn't dusted over
-        bm_ = gore_mask(g, P, reach, gore)
-        col, rough, height = dried_blood(g, col, rough, height, bm_, P)
+        bm_ = gore_mask(g, P, reach, gore, scale=blood_scale * 1.5)
+        col, rough, height = dried_blood(g, col, rough, height, bm_, P, scale=blood_scale)
         metal = g.mixf(bm_, metal, 0.0)
     return tk.finish(mat, g, col, metal, rough, g.bump(height, bump, 0.002))
 
@@ -574,7 +575,7 @@ def ribs(g, P, col, rough, metal, height):
     rib = g.math("MAXIMUM", lr, tr)
     height = add(g, height, mul(g, rib, 1.1))
     col = g.mix(mul(g, rib, 0.25), col, tk._darker(g, col, 1.35))
-    crust = mul(g, g.ramp(s, 0.075, 0.02), g.ramp(g.noise(40.0, detail=6.0, vector=P), 0.35, 0.55))
+    crust = mul(g, g.ramp(s, 0.05, 0.022), g.ramp(g.noise(40.0, detail=6.0, vector=P), 0.35, 0.55))
     col = g.mix(crust, col, g.mix(g.noise(90.0, vector=P), (0.11, 0.105, 0.095), (0.2, 0.19, 0.175)))
     rough = g.mixf(crust, rough, 0.95)
     metal = g.mixf(crust, metal, 0.0)
@@ -588,7 +589,7 @@ def concrete(name, seed, gore=0.0):
     mat, g = tk.new_material(name)
     P = seeded(g, seed)
     tone = g.noise(7.0, detail=6.0, roughness=0.6, vector=P)
-    col = g.mix(tone, (0.06, 0.058, 0.054), (0.12, 0.115, 0.105))
+    col = g.mix(tone, (0.05, 0.048, 0.045), (0.1, 0.095, 0.088))
     cells = g.node("ShaderNodeTexVoronoi", feature="F1")
     g._in(cells, "Scale", 130.0)
     g.links.new(mapping(g, P, scale=(1.0, 1.0, 1.0), loc=(0.2, 0.4, 0.1)), cells.inputs["Vector"])
@@ -601,19 +602,20 @@ def concrete(name, seed, gore=0.0):
                 g.ramp(g.noise(5.0, vector=P), 0.45, 0.65))
     col = g.mix(pores, col, (0.015, 0.014, 0.013))
     rough = add(g, 0.86, mul(g, tone, 0.08))
-    height = add(g, mul(g, tone, 0.5), add(g, mul(g, stone, 0.4), mul(g, pores, -0.5)))
+    height = add(g, mul(g, tone, 0.35), add(g, mul(g, stone, 0.12), mul(g, pores, -0.9)))
     dirt = tk._grime(g, 0.8)
     col = g.mix(mul(g, dirt, 0.85), col, (0.035, 0.03, 0.024))
     if gore:
         sm = mul(g, g.ramp(g.noise(3.0, detail=6.0, distortion=0.8, vector=P), 0.6, 0.7), gore)
         col, rough, height = dried_blood(g, col, rough, height, sm, P)
     col, rough, metal = tk._grit(g, col, rough, 0.0, 0.6)
-    return tk.finish(mat, g, col, metal, rough, g.bump(height, 0.6, 0.003))
+    return tk.finish(mat, g, col, metal, rough, g.bump(height, 0.4, 0.002))
 
 
 bar_mat = rusty_iron("RebarSteel", seed=1.0, rust=0.95, scale=3.0, rust_value=0.33, gore=1.0, reach=0.09, grit=0.4,
-                     scale_dark=0.25, bump=0.5, extra=ribs)
-stub_mat = rusty_iron("RebarStub", seed=2.0, rust=0.9, scale=3.0, rust_value=0.33, grit=0.5, bump=0.5, extra=ribs)
+                     scale_dark=0.25, bump=0.5, extra=ribs, rust_sat=0.6)
+stub_mat = rusty_iron("RebarStub", seed=2.0, rust=0.9, scale=3.0, rust_value=0.33, grit=0.5, bump=0.5, extra=ribs,
+                     rust_sat=0.6)
 cement = concrete("Concrete", 3.0, gore=0.5)
 flesh = gore_flesh("Gore", 4.0)
 

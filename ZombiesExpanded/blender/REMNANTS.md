@@ -17,8 +17,8 @@ says what each model is. Several agents build these at once: only touch your own
   skin patches read as stickers in game.
 - **Worn items:** 0.5 to 1.5 cm off the stand-in. On the head, keep caps and hats about 2 cm off the head hit box,
   because Joe's shaggy hair comes down to his jaw and pokes through anything tighter.
-- **Look:** photo-real and worn, like the game's own art and the existing gear (`hard_hat.py`, `military_helmet.py`,
-  `kevlar_vest.py`). Dirt, grime in creases, wear on edges, blood where it fits. Keep colors as dark and dirty as the
+- **Look:** photo-real and worn, like the game's own art and the existing gear (`cut/hard_hat.py`, `cut/military_helmet.py`,
+  `cut/kevlar_vest.py`). Dirt, grime in creases, wear on edges, blood where it fits. Keep colors as dark and dirty as the
   zombies; bright or saturated albedo reads as a flat cut-out in game (see `MODELS.md`).
 - **Budget:** small props up to 1,500 triangles with `zk.export(Name, pieces, ASSETS, size=512)`; the big ones
   (HiVisVest, MessengerBag, CowboyHat, SnatcherSack, CarDoor, RiotShield) up to 3,000 with the default 1024.
@@ -44,7 +44,7 @@ Name (as passed to `zk.export`), script, parts, and what it is.
 | Rebar | rebar.py | `Spine2#Rebar` | A length of rusty bent rebar through the chest, out the back, with concrete still on one end. |
 | GlassShards | glass_shards.py | `Head#Shards`, `LeftForeArm#Shards`, `RightForeArm#Shards` | Shards of dirty window glass stuck in the face (cheeks, forehead, clear of the eyes) and the forearms. Opaque: grey-green edges, dark faces. |
 | BearTrap | bear_trap.py | `LeftLeg#Trap` | A rusty bear trap clamped on the left ankle (low on the shin) with a short length of chain hanging from it. The zombie limps. |
-| BarbedWire | barbed_wire.py | `RightForeArm#Wire` | Barbed wire tangled round the right forearm in loose coils, a loose end sticking out. |
+| BarbedWire | barbed_wire.py | `RightForeArm#WireVar1`, `LeftUpLeg#WireVar2`, `Spine1#WireVar3` | Barbed wire in loose coils, a loose end sticking out: round the right forearm, the left thigh or the waist (variant parts). |
 | Noose | noose.py | `Neck#Noose` | A hangman's noose round the neck with the rope cut short, hanging down the chest about 25 cm. |
 
 ### Hospital
@@ -102,3 +102,29 @@ Name (as passed to `zk.export`), script, parts, and what it is.
 **Shields:** strapped to the outside of the left forearm, with the face of the shield toward the zombie's front (-Y)
 when the arm hangs in the bind pose, and offset a few cm in front of the forearm so it covers the left side of the
 torso from the front. The zombie's arm swings it when it attacks.
+
+## After the first review (2026-11-01)
+
+**Cut** (scripts moved to `blender/cut/`, not built): Bandana, BaseballCap, Beanie, DustMask, FannyPack, Handcuffs,
+HeadBandage, HiVisVest, IVLine, Lanyard, LegCast, MessengerBag, NeckBrace, SurgicalMask, ToolBelt, Wristwatch, and
+from the earlier models HardHat, ScrapArmor and Icicles.
+
+**Variant parts.** A part whose piece name contains `Var` (for example `Spine2#BackVar1`, `LeftLeg#WireVar2`) is
+optional: each zombie shows a random selection of a model's `Var` parts, picked from its profile so every player
+sees the same ones. Each `Var` part is shown about half the time, and at least one always shows when a model has
+nothing but `Var` parts. Parts without `Var` always show. Every `Var` part must look right on its own and with any
+of the others.
+
+**Checking on the real zombies.** Model agents may now render their own models in Unity (one Unity at a time per
+project):
+1. Take the lock: `mkdir unity/Build/unity.lock`. If that fails, another agent is rendering: do other work and try
+   again later.
+2. Render, from `ZombiesExpanded/`:
+   `ZED_MODELS="<Name>" "/c/Program Files/Unity/Hub/Editor/2022.3.62f2/Editor/Unity.exe" -batchmode -quit -projectPath "$(cygpath -aw unity)" -executeMethod ZombiesModels.BuildAndPreviewSome -logFile "$(cygpath -aw unity/Build)/unity-<name>.log"`
+   It writes `unity/Build/models/<Name>.png` (the lineup on Joe, the fat cop and the nurse, front and back; it shows
+   every `Var` part at once) and `unity/Build/closeups/<Name>.png` (front and back on Joe, framed on the model).
+3. Release the lock straight after, even if Unity failed: `rmdir unity/Build/unity.lock`.
+
+These renders are what counts: the vanilla zombies are slimmer than the stand-in at the front of the chest, the neck
+and the limbs, and the game's shader shows pale, glossy or saturated materials brighter and flatter than Blender
+does. The nurse's hair shows pink in the editor (it can't draw the game's hair shader); ignore that.

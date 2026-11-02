@@ -21,7 +21,7 @@ import tempfile
 import bmesh
 import bpy
 import numpy as np
-from mathutils import Matrix, Vector, noise
+from mathutils import Vector, noise
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import zkit as tk  # noqa: E402

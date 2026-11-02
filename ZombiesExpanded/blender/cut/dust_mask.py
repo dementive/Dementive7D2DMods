@@ -7,8 +7,8 @@ welded seam round the rim, the straps filthy.
 The cup is an ellipsoid fitted to Joe's real face (a mannequin made to the REMNANTS.md face points, in front of his
 head hit box): its rim is where it meets the face, round the nose bridge and cheeks; under the chin it stops short and
 hangs about 1.5 cm loose so the jaw can drop behind it (the log reports the jaw opened 12 and 18 degrees). The top
-stays under the eyes. The straps run about 1 cm outside the head hit box at the back, where Joe's hair is, and close
-over the ears. One part on the Head bone: Head#Mask.
+stays under the eyes. The straps run about 1 cm outside the head hit box at the back, where Joe's hair is, and pass just
+over the ears at the sides (inside the hit box, into his hair). One part on the Head bone: Head#Mask.
 
     blender -b --factory-startup --python dust_mask.py -- <unity models folder> <preview folder>
 """
@@ -303,7 +303,7 @@ def face_proxy():
         blob("Chin", (0.0, -0.077, 1.611), (0.022, 0.017, 0.017), mat),
         blob("Lips", (0.0, -0.083, 1.646), (0.025, 0.017, 0.013), mat),
         blob("Neck", (0.0, 0.035, 1.56), (0.054, 0.058, 0.11), mat, (2.0, 3.0), rot_x=8.0),
-        blob("Torso", (0.0, 0.045, 1.36), (0.165, 0.128, 0.175), mat, (2.3, 2.6)),
+        blob("Torso", (0.0, 0.04, 1.35), (0.165, 0.135, 0.19), mat, (2.3, 2.6)),  # chest ~2 cm inside the hit box
     ]
     for s in (1.0, -1.0):
         parts.append(blob("Cheek", (s * 0.047, -0.056, 1.699), (0.02, 0.022, 0.015), mat))
@@ -858,7 +858,8 @@ def n95(name, base, seed, inner=False):
     rgh = g.mixf(drops, rgh, 0.6)
     spots = g.math("MULTIPLY", g.ramp(voronoi(g, P, 150.0), 0.14, 0.06), g.ramp(g.noise(6.0, vector=P), 0.45, 0.62))
     col = g.mix(spots, col, (0.04, 0.035, 0.03))
-    col = tk.grade(g, col, 0.8, 1.0)
+    # A step darker: pale masks read as flat panels on the face in game
+    col = tk.grade(g, col, 0.8, 0.72)
     return tk.finish(mat, g, col, 0.0, rgh, g.bump(height, 0.4, 0.0015))
 
 
@@ -882,14 +883,14 @@ VALVE = ell(VALVE_RHO, VALVE_T)
 VALVE_N = ell_normal(VALVE_RHO, VALVE_T)
 VALVE_TOP = VALVE + VALVE_N * 0.012
 
-cup_mat = n95("N95Cup", (0.4, 0.39, 0.36), 71.0)
-inner_mat = n95("N95Inner", (0.42, 0.41, 0.38), 72.0, inner=True)
+cup_mat = n95("N95Cup", (0.33, 0.32, 0.295), 71.0)
+inner_mat = n95("N95Inner", (0.35, 0.34, 0.315), 72.0, inner=True)
 valve_mat = wear("Valve", (0.36, 0.355, 0.34), rough=0.5, seed=73.0, tone=0.25, decals=valve_slots, scratches=0.3,
                  scratch_col=(0.5, 0.49, 0.46), dark_scratches=0.5, scuffs=0.4, scuff_col=(0.26, 0.25, 0.23),
                  edges=0.3, edge_col=(0.45, 0.44, 0.42), dirt=0.7, dirt_range=(0.25, 0.08), grime=1.0, dust=0.6,
                  specks=0.5, splatter=0.4, splatter_col=(0.38, 0.36, 0.32), bump=0.3, grain=0.1,
                  dirt_col=((0.05, 0.045, 0.035), (0.14, 0.12, 0.09)))
-clip_mat = wear("NoseClip", (0.45, 0.45, 0.46), rough=0.4, metal=1.0, seed=74.0, tone=0.25, scratches=0.5,
+clip_mat = wear("NoseClip", (0.32, 0.32, 0.33), rough=0.5, metal=1.0, seed=74.0, tone=0.25, scratches=0.5,
                 scratch_col=(0.6, 0.6, 0.6), scratch_metal=1.0, scuffs=0.3, scuff_col=(0.32, 0.32, 0.33), edges=0.0,
                 dirt=0.7, dirt_range=(0.3, 0.1), grime=0.9, dust=0.5, specks=0.5, bump=0.25, grain=0.05)
 strap_mat = wear("Strap", (0.42, 0.36, 0.12), rough=0.85, seed=75.0, tone=0.35, scratches=0.0, scuffs=0.4,
@@ -923,9 +924,11 @@ def nose_clip():
         n = (b - a).cross(side).normalized()
         if n.dot(surface(rho, t) - E) < 0:
             n = -n
-        pts.append(surface(rho, t) + n * 0.0011)
+        pts.append(surface(rho, t) + n * 0.001)
         ups.append(n)
-    return profile_sweep("NoseClip", pts, rounded_profile(0.0055, 0.0008, 0.3, 1), clip_mat, up=lambda i: ups[i])
+    pts, ups = catmull(pts, 2), catmull(ups, 2)
+    return profile_sweep("NoseClip", pts, rounded_profile(0.0045, 0.0008, 0.3, 1), clip_mat,
+                         up=lambda i: ups[i].normalized())
 
 
 def strap_ring(front_t, back, side_pt):
@@ -944,7 +947,7 @@ def strap_ring(front_t, back, side_pt):
         path.append(Vector((sx * math.cos(ang), sy + (by - sy) * math.sin(ang), sz + (bz - sz) * math.sin(ang))))
     path.append(Vector((0.0, by, bz)))
     right = [Vector((-p.x, p.y, p.z)) for p in reversed(path[:-1])]
-    pts = catmull(path + right, 2)
+    pts = clear_of_face(catmull(path + right, 2), 0.0035)
     hc = Vector((0.0, 0.035, 0.0))
 
     def up(i):
@@ -954,9 +957,21 @@ def strap_ring(front_t, back, side_pt):
     return profile_sweep("Strap", pts, rounded_profile(0.0065, 0.0012, 0.4, 1), strap_mat, up=up, smooth_angle=60)
 
 
+def clear_of_face(pts, gap):
+    """Lifts strap points off the face proxy (out from the head's middle) where they come closer than `gap`."""
+    out = []
+    for p in pts:
+        g = signed(BVH, p)
+        if g < gap:
+            d = Vector((p.x, p.y - 0.035, 0.0)).normalized()
+            p = p + d * (gap - g)
+        out.append(p)
+    return out
+
+
 def straps():
-    top = strap_ring(32.0, (0.0, 0.147, 1.778), (0.1035, 0.03, 1.738))
-    bottom = strap_ring(-28.0, (0.0, 0.143, 1.634), (0.097, 0.026, 1.648))
+    top = strap_ring(32.0, (0.0, 0.147, 1.778), (0.092, 0.03, 1.738))
+    bottom = strap_ring(-28.0, (0.0, 0.143, 1.634), (0.088, 0.026, 1.648))
     return [top, bottom]
 
 

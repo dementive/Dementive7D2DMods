@@ -1,6 +1,19 @@
-"""Pustules: the Bloater's mutation. Clusters of swollen, shiny yellow-green pus sacs and boils on the upper back and
-both shoulders, in inflamed, bruised and veiny skin that swells up around them and dives under the zombie's own skin
-at the edges. Three parts: Spine2#Back, LeftShoulder#Sacs, RightShoulder#Sacs.
+"""Pustules: the Bloater's mutation. Swollen pus sacs, boils, blisters and burst, crusted craters pushing out through
+the zombie's clothes, in tight clusters with lone boils around them that thin out into small blisters and dark, wet,
+bruised flesh. Every part is optional (`Var`), so each Bloater shows its own mix:
+
+    Spine2#BackVar1      upper back, right of the spine: the big cluster
+    Spine2#BackVar2      upper back, left of the spine and lower: a burst boil and a tight knot of boils
+    LeftArm#ShoulderVar1 on top of the left shoulder
+    RightArm#ShoulderVar2 the back of the right shoulder: a slack, half-drained sac
+    LeftArm#ArmVar       down the outside of the left upper arm
+    RightForeArm#ArmVar2 the top of the right forearm
+
+There is no skin patch: each sac and boil rises on its own flared, bruised base from below the lowest clothes any of
+vanilla Joe, the fat cop and the nurse has there (measured on their real meshes in Unity, in each part's own fitted
+space), so the clothes cut every growth at an angle, wherever they lie, and what shows of the base is small, dark and
+wet. Places where those three zombies' bodies differ by more than a few cm (the lower back, the flanks, the neck,
+the chest) carry none.
 
     blender -b --factory-startup --python pustules.py -- <unity models folder> <preview folder>
 """
@@ -21,7 +34,6 @@ args = sys.argv[sys.argv.index("--") + 1:]
 ASSETS, PREVIEWS = os.path.join(args[0], "Pustules"), args[1]
 os.makedirs(ASSETS, exist_ok=True)
 os.makedirs(PREVIEWS, exist_ok=True)
-
 
 # ---------------------------------------------------------------- growth helpers (same block in every growth script)
 # Growths are modeled as signed distance fields (numpy, vectorized over points) on top of a body field built from
@@ -238,7 +250,7 @@ def decimate(obj, tris, keep=None, factor=0.08):
     return obj
 
 
-def drop_crumbs(bm, fraction=0.05):
+def drop_crumbs(bm, fraction=0.05, least=12):
     """Deletes the mesh islands far smaller than the biggest (bits of thin wedges deep inside the body)."""
     bm.faces.index_update()
     seen, islands = set(), []
@@ -259,20 +271,21 @@ def drop_crumbs(bm, fraction=0.05):
     if not islands:
         return
     big = max(len(i) for i in islands)
-    crumbs = [f for i in islands if len(i) < max(12, big * fraction) for f in i]
+    crumbs = [f for i in islands if len(i) < max(least, big * fraction) for f in i]
     if crumbs:
         bmesh.ops.delete(bm, geom=crumbs, context="FACES")
 
 
 def field_mesh(name, fn, lo, hi, h, material, tris, inner=-0.05, bones=TORSO, relax=3, keep=None, cut=-0.025,
-               region=None, ground=None):
+               region=None, ground=None, crumbs=0.05):
     """A mesh of the growth surface fn = 0 where it stands above `inner` (a level inside the body). The solid between
     the two is meshed closed with surface nets inside the box lo..hi, relaxed for even triangles and decimated to
     about `tris` triangles above `cut`; then the faces below `cut` are dropped, so the mesh's edges lie deep inside
     the body. keep(points) weights the
     decimation toward detail. region(points), a distance that is negative under the growth, bounds the solid
     sideways (its walls must lie below `cut`), which keeps it from wrapping around thin limbs. `ground` is the
-    distance to the body the levels are measured from (default: the stand-in, body(points, bones))."""
+    distance to the body the levels are measured from (default: the stand-in, body(points, bones)). Islands smaller
+    than `crumbs` of the biggest are dropped (lower it when the growth is meant to be many separate lumps)."""
     from mathutils import Matrix
     if ground is None:
         ground = lambda P: body(P, bones)  # noqa: E731
@@ -311,11 +324,11 @@ def field_mesh(name, fn, lo, hi, h, material, tris, inner=-0.05, bones=TORSO, re
         else:
             deep = ground(np.array([f.calc_center_median() for f in bm.faces])) < level
         bmesh.ops.delete(bm, geom=[f for f, x in zip(bm.faces, deep) if x], context="FACES")
-        drop_crumbs(bm)
+        drop_crumbs(bm, crumbs, 8)
 
     bm = bmesh.new()
     bm.from_mesh(me)
-    drop_crumbs(bm)
+    drop_crumbs(bm, crumbs, 8)
     relaxed(bm, 0.6)
     bm.to_mesh(me)
     bm.free()
@@ -405,241 +418,510 @@ def preview(name, cam_at, look_at, lens=50, res=(900, 900)):
 # ---------------------------------------------------------------- end of growth helpers
 
 
-SKIN = 0.012    # the infected skin's level above the stand-in (which is a little slimmer than the real zombie)
-SLOPE = 0.42    # around the sacs the swelling slopes down at about 23 degrees, so it meets any skin at an angle,
-DIVE = -0.012   # and below this level it dives steeply,
-DEEP = -0.08    # down to here, so its edges vanish under any zombie's skin
-EDGE = (SKIN - DIVE) / SLOPE  # the width of the visible slope
+MARGIN = 0.004  # each growth's floor sits this far below the lowest clothes measured there
+SPREAD = 0.026  # no growth where the clothes' levels differ more than this between zombies (it would stand on a stalk)
 
 
-class Sac:
-    """One swollen pus sac (or a small boil) pushing out of the skin at the body point nearest `start`: a lumpy,
-    sagging bulb on a flared, inflamed base, optionally with extra lobes, a pus head, or burst open."""
+def unit(v):
+    v = np.asarray(v, float)
+    return v / np.linalg.norm(v)
 
-    def __init__(self, start, R, seed, rise=0.45, elong=1.1, sag=0.18, head=0.0, lean=(0.0, 0.0, 0.0), lobes=0,
-                 burst=False, bones=TORSO):
-        base, n = on_body(start, bones)
-        n = n + np.asarray(lean, float)
-        n /= np.linalg.norm(n)
+
+def sd_torus(P, c, n, major, minor):
+    q = P - c
+    along = q @ n
+    rho = np.linalg.norm(q - along[:, None] * n, axis=1)
+    return np.sqrt((rho - major) ** 2 + along ** 2) - minor
+
+
+def limb_start(bone, child, f, angle, out=0.3):
+    """A point `out` m off a limb, `f` of the way from `bone` to `child` and `angle` degrees around it (0 up and out,
+    90 the back, -90 the front), and the direction back to the limb's axis."""
+    sk = zk.joe()
+    a, b = np.array(sk.pos(bone)), np.array(sk.pos(child))
+    ax = unit(b - a)
+    up = unit(np.array([0.0, 0.0, 1.0]) - ax * ax[2])
+    back = np.cross(ax, up)
+    if back[1] < 0:
+        back = -back
+    d = up * math.cos(math.radians(angle)) + back * math.sin(math.radians(angle))
+    return a + (b - a) * f + d * out, -d
+
+
+class Site:
+    """The patch of body a part grows on, and how high real clothes lie over it. `low` and `high` are quadratics
+    (cm above the stand-in) in the patch's tangent coordinates u, v (cm; u runs across, along up x normal, v roughly
+    up), fitted to the lowest and the highest of vanilla Joe's, the fat cop's and the nurse's real surfaces there,
+    after the game has fitted the part to each of them (their meshes rendered to position maps in Unity)."""
+
+    def __init__(self, start, toward, low, high, span=8.0):
+        self.c, self.n = on_body(start, TORSO, toward=toward)
+        self.F = frame_from(self.n)
+        self.lo_c, self.hi_c = np.asarray(low, float), np.asarray(high, float)
+        self.span = span
+
+    def uv(self, P):
+        d = np.atleast_2d(P) - self.c
+        return d @ self.F[0] * 100.0, d @ self.F[1] * 100.0
+
+    def _quad(self, c, P):
+        u, v = self.uv(P)
+        u, v = np.clip(u, -self.span, self.span), np.clip(v, -self.span, self.span)
+        return (c[0] + c[1] * u + c[2] * v + c[3] * u * u + c[4] * v * v + c[5] * u * v) / 100.0
+
+    def low(self, P):
+        return self._quad(self.lo_c, P)
+
+    def high(self, P):
+        return np.maximum(self._quad(self.hi_c, P), self.low(P) + 0.004)
+
+    def floor(self, P):
+        return self.low(P) - MARGIN
+
+    def at(self, u, v):
+        start = self.c + (self.F[0] * u + self.F[1] * v) / 100.0 + self.n * 0.2
+        p, n = on_body(start, TORSO, toward=-self.n)
+        if not np.all(np.isfinite(p)) or abs(body(p[None])[0]) > 1e-3:
+            p, n = on_body(start, TORSO)  # the ray missed a thin limb: take the nearest point
+        return p, n
+
+
+ELONG = {"sac": 1.1, "slack": 0.6, "boil": 0.62, "crater": 0.8, "blister": 0.34}
+PUS = {"sac": 1.0, "slack": 0.7, "boil": 0.6, "crater": 0.5, "blister": 0.25}
+FOOT = 0.012     # the flared skirts start this far below the floor, out of sight
+SLOPE = 0.9      # skirt width per unit of height: their flanks rise at about 50 degrees at the steepest
+
+
+class Mound:
+    """One growth pushing out at the patch point (u, v) (cm): a swollen head of radius R (cm) whose top stands `rise`
+    cm above the clothes there (q = 1: above the highest clothes, so it shows on every zombie; q = 0: above the
+    lowest, so it only breaks the surface where the clothes lie low), on a flared skirt of bruised flesh reaching down
+    below the floor, so wherever a zombie's clothes cut it, it rises out of them at an angle with no undercut; `lift`
+    raises the skirt that far (cm) above the highest clothes, for the swollen flesh around the big ones. Kinds: 'sac' (big, sagging like a pear, maybe lobed), 'slack' (half drained and wrinkled), 'boil' (a low dome
+    with a pointed pus head), 'crater' (burst: a ragged rim around a crusted pit), 'blister' (low and flat)."""
+
+    def __init__(self, site, u, v, R, rise, seed, kind="boil", q=1.0, elong=None, lean=(0.0, 0.0, 0.0), lobes=0,
+                 sag=None, head=None, weep=0.0, lift=None):
+        base, n0 = site.at(u, v)
+        self.site = site
+        self.n = unit(n0 + np.asarray(lean, float))
+        self.base, self.kind, self.seed, self.weep = base, kind, seed, weep
+        self.uv = (u, v)
         rng = np.random.default_rng(seed)
-        self.base, self.n, self.R, self.seed = base, n, R, seed
-        self.frame = frame_from(n, up=(rng.uniform(-0.4, 0.4), 0.3, 1.0))
+        self.R = R = R / 100.0
+        self.C = C = R * (elong if elong is not None else ELONG[kind]) * rng.uniform(0.92, 1.08)
+        lo, hi = site.low(base[None])[0], site.high(base[None])[0]
+        self.floor = lo - MARGIN
+        self.q = q
+        self.top = lo + q * (hi - lo) + rise / 100.0
+        self.hc = self.top - C
+        self.frame = frame_from(self.n, up=(rng.uniform(-0.4, 0.4), 0.3, 1.0))
+        self.radii = (R * rng.uniform(0.9, 1.1), R * rng.uniform(0.82, 1.0), C)
+        sag = (0.18 if kind == "sac" else 0.06) if sag is None else sag
+        self.c = base + self.n * self.hc + np.array([0.0, 0.0, -R * sag])
+        self.tip = base + self.n * self.top + np.array([0.0, 0.0, -R * sag * 0.6])
+        self.hs = max(self.hc + C * (0.15 if kind == "blister" else 0.3), self.floor + 0.002)
+        if lift is not None:
+            self.hs = max(self.hs, hi + lift / 100.0)
+        self.Rs = max(R * (1.15 if kind == "blister" else 1.35), (self.hs - self.floor + FOOT) * SLOPE)
+        self.head = (0.24 if kind == "boil" else 0.0) if head is None else head
+        self.hue = rng.uniform()
+        self.pus = PUS[kind] * rng.uniform(0.75, 1.0)
+        self.phase = rng.uniform(0, 2 * math.pi, 3)
         t1, t2 = self.frame[0], self.frame[1]
-        self.c = base + n * (SKIN + R * rise) + np.array([0.0, 0.0, -R * sag])
-        self.radii = (R * rng.uniform(0.88, 1.08), R * rng.uniform(0.9, 1.05), R * elong)
-        self.top = self.c + n * R * elong
-        self.head, self.burst = head, burst
         self.lobes = []
-        for i in range(lobes):
+        for _ in range(lobes):
             a = rng.uniform(0, 2 * math.pi)
-            r = R * rng.uniform(0.5, 0.7)
-            self.lobes.append((self.c + (t1 * math.cos(a) + t2 * math.sin(a)) * R * 0.8 - n * R * 0.15, r))
+            self.lobes.append((self.c + (t1 * math.cos(a) + t2 * math.sin(a)) * R * 0.72 - self.n * C * 0.3,
+                               R * rng.uniform(0.48, 0.62)))
+        self.reach = max(self.Rs * 2.4, R * 2.2) + 0.006
 
-    def sdf(self, P):
+    def near(self, P):
+        return np.linalg.norm(P - self.base, axis=1) < self.reach
+
+    def lateral(self, P):
+        q = P - self.base
+        along = q @ self.n
+        return np.linalg.norm(q - along[:, None] * self.n, axis=1), along
+
+    def skirt(self, P, wob):
+        """The height (above the stand-in) of the flared flesh around the head."""
+        rho, _ = self.lateral(P)
+        s = np.exp(-1.6 * (rho / self.Rs) ** 2)
+        f0 = np.minimum(self.site.floor(P), self.floor) - FOOT  # follows the floor down where the body falls away
+        return f0 + (self.hs - f0) * s * (1.0 + 0.1 * wob)
+
+    def sdf(self, P, wob, fine):
         R = self.R
         d = sd_ellipsoid(P, self.c, self.radii, self.frame)
         for c, r in self.lobes:
-            d = smin(d, sd_sphere(P, c, r), R * 0.3)
-        flare = sd_ellipsoid(P, self.base + self.n * SKIN * 0.6, (R * 1.5, R * 1.5, R * 0.45), self.frame)
-        d = smin(d, flare, R * 0.5)
+            d = smin(d, sd_sphere(P, c, r), R * 0.28)
         if self.head:
-            d = smin(d, sd_sphere(P, self.top - self.n * R * 0.1, R * self.head), R * 0.2)
-        d = d + waves(P, R * 1.1, self.seed, 2) * R * 0.11
-        if self.burst:
-            d = smax(d, -sd_sphere(P, self.top + self.n * R * 0.15, R * 0.62), R * 0.15)
+            # A pointed pus head on top
+            d = smin(d, sd_sphere(P, self.tip - self.n * R * self.head * 0.85, R * self.head), R * 0.16)
+        if self.kind == "slack":
+            d = d + fine * R * 0.11 + wob * R * 0.07
+        else:
+            d = d + wob * R * 0.06 + fine * R * 0.012
+        if self.kind == "crater":
+            # Burst: a ragged, swollen rim around a pit
+            q = P - self.tip
+            ang = np.arctan2(q @ self.frame[1], q @ self.frame[0])
+            ragged = 1.0 + 0.18 * np.sin(3 * ang + self.phase[0]) + 0.1 * np.sin(7 * ang + self.phase[1])
+            rim = sd_torus(P, self.tip - self.n * R * 0.3, self.n, R * 0.62, R * 0.2 * ragged)
+            d = smin(d, rim, R * 0.15)
+            d = smax(d, -sd_sphere(P, self.tip + self.n * R * 0.12, R * 0.58), R * 0.1)
         return d
 
 
-def scatter(region, count, rmin, rmax, seed, avoid, tries=400, bones=TORSO):
-    """Small boils at random body points in region = (center, half sizes), clear of the sacs in `avoid`."""
-    rng = np.random.default_rng(seed)
-    out = []
-    c, half = np.asarray(region[0], float), np.asarray(region[1], float)
-    for _ in range(tries):
-        if len(out) >= count:
-            break
-        start = c + rng.uniform(-1, 1, 3) * half
-        R = rng.uniform(rmin, rmax)
-        base, n = on_body(start, bones)
-        if any(np.linalg.norm(base - s.base) < (s.R + R) * 1.3 + 0.005 for s in avoid + out):
-            continue
-        out.append(Sac(start, R, seed * 100 + len(out), rise=rng.uniform(0.0, 0.2), elong=0.85, sag=0.05,
-                       head=rng.uniform(0.3, 0.45), bones=bones))
-    return out
+class Drip:
+    """Pus weeping down from a mound: a narrow, meandering ridge running down the body that sinks into the clothes,
+    so it shows for a cm or two where they lie high and further where they lie low."""
+
+    def __init__(self, site, mound, length, width, seed, fall=0.06):
+        rng = np.random.default_rng(seed)
+        m = mound
+        g = np.array([0.0, 0.0, -1.0])
+        self.d = unit(g - (g @ m.n) * m.n + np.array([rng.uniform(-0.15, 0.15), 0.0, 0.0]))
+        self.h = unit(np.cross(m.n, self.d))
+        self.s0 = m.base + self.d * m.R * 0.85
+        self.length, self.w, self.fall = length / 100.0, width / 100.0, fall
+        self.amp = rng.uniform(0.15, 0.3) * self.w * 2.5
+        self.k, self.phase = rng.uniform(80.0, 140.0), rng.uniform(0, 2 * math.pi)
+        lo, hi = site.low(self.s0[None])[0], site.high(self.s0[None])[0]
+        self.floor = lo - MARGIN
+        self.rise = 0.011  # its crest starts this far above the lowest clothes and sinks along the trail: it only
+        # shows where the clothes lie low, as a tall fin would stand out of the others
+        self.site = site
+        self.reach = self.length + 0.03
+
+    def frame(self, P):
+        q = P - self.s0
+        along = q @ self.d
+        side = q @ self.h - self.amp * np.sin(along * self.k + self.phase)
+        return along, side
+
+    def cross(self, P):
+        along, side = self.frame(P)
+        w = self.w * (1.0 + 0.35 * np.sin(along * 210.0 + self.phase)) * (1.0 - 0.4 * np.clip(along / self.length, 0, 1))
+        return (np.exp(-(side / w) ** 2) * smooth01(-0.008, 0.002, along)
+                * (1.0 - smooth01(self.length * 0.7, self.length, along))), along
+
+    def profile(self, P):
+        c, along = self.cross(P)
+        return c * np.exp(-np.maximum(along, 0.0) / self.fall)
+
+    def height(self, P):
+        c, along = self.cross(P)
+        lo = self.site.low(P)
+        crest = lo + self.rise * np.exp(-np.maximum(along, 0.0) / self.fall) - 0.001
+        f0 = lo - MARGIN - FOOT
+        return f0 + (crest - f0) * c
+
+    def near(self, P):
+        return np.linalg.norm(P - self.s0, axis=1) < self.reach
+
+    def region(self, P):
+        along, side = self.frame(P)
+        return np.maximum(np.abs(side) - self.w * 3.0, np.maximum(-along - 0.012, along - self.length - 0.004))
 
 
 class Cluster:
-    """Sacs on a patch of swollen, infected skin: the skin sits at SKIN over the sacs' footprint (puffing up around
-    them and over an optional broad swelling) and slopes away under the body over EDGE."""
+    """The mounds of one part, meshed together: their skirts merge into swollen flesh where they crowd."""
 
-    def __init__(self, sacs, seed, swell_at=None, swell=0.0, swell_r=(0.07, 0.07, 0.07), bones=TORSO):
-        self.sacs, self.seed, self.bones = sacs, seed, bones
-        self.bases = np.array([s.base for s in sacs])
-        self.radii = np.array([s.R for s in sacs])
-        self.swell_at, self.swell, self.swell_r = swell_at, swell, np.asarray(swell_r, float)
+    def __init__(self, site, mounds, seed, drips=()):
+        self.site, self.mounds, self.seed, self.drips = site, mounds, seed, list(drips)
 
-    def beyond(self, P):
-        """How far outside the sacs' footprint a point is (0 inside)."""
-        d = np.min(np.linalg.norm(P[:, None, :] - self.bases[None], axis=2) - self.radii[None] * 1.0 - 0.002,
-                   axis=1)
-        return np.maximum(d + waves(P, 0.06, self.seed + 7, 2) * 0.01, 0.0)
+    def noise(self, P):
+        return waves(P, 0.022, self.seed, 2), waves(P, 0.0065, self.seed + 1, 2)
 
-    def offset(self, P):
-        b = self.beyond(P)
-        s = np.sqrt(b * b + 0.01 ** 2) - 0.01
-        off = SKIN - SLOPE * s - 1.6 * np.maximum(s - EDGE, 0.0)
-        off = np.maximum(off, DEEP)
-        inside = 1.0 - smooth01(0.0, 0.03, b)
-        off += inside * waves(P, 0.03, self.seed + 3, 2) * 0.0035
-        near = np.linalg.norm(P[:, None, :] - self.bases[None], axis=2) / (self.radii[None] * 1.8 + 0.006)
-        off += inside * 0.011 * np.max(np.exp(-near ** 2 * 1.5) * np.minimum(self.radii[None] / 0.02, 1.3), axis=1)
-        if self.swell_at is not None:
-            q = (P - self.swell_at) / self.swell_r
-            off += inside * self.swell * np.exp(-np.sum(q * q, axis=1))
-        return off
-
-    def skin(self, P):
-        return body(P, self.bones) - self.offset(P)
+    def height(self, P, wob):
+        H = self.site.floor(P) - FOOT
+        for m in self.mounds:
+            k = m.near(P)
+            if k.any():
+                H[k] = smax(H[k], m.skirt(P[k], wob[k]), 0.004)
+        for dr in self.drips:
+            k = dr.near(P)
+            if k.any():
+                H[k] = smax(H[k], dr.height(P[k]), 0.002)
+        return H
 
     def field(self, P):
-        d = self.skin(P)
-        for s in self.sacs:
-            d = smin(d, s.sdf(P), s.R * 0.35)
+        wob, fine = self.noise(P)
+        d = body(P) - self.height(P, wob)
+        for m in self.mounds:
+            k = m.near(P)
+            if k.any():
+                d[k] = smin(d[k], m.sdf(P[k], wob[k], fine[k]), m.R * 0.32)
         return d
 
+    def ground(self, P):
+        """Height above this part's floor."""
+        return body(P) - self.site.floor(P)
+
+    def region(self, P):
+        r = np.full(len(P), 1.0)
+        for m in self.mounds:
+            r = np.minimum(r, np.linalg.norm(P - m.base, axis=1) - m.Rs * 1.5)
+        for dr in self.drips:
+            r = np.minimum(r, dr.region(P))
+        return r
+
     def box(self):
-        reach = (self.radii * 1.0 + EDGE + 0.07)[:, None]
-        tops = np.array([s.base + s.n * (SKIN + s.R * 2.6) for s in self.sacs])
-        lo = np.minimum((self.bases - reach).min(0), tops.min(0) - 0.01)
-        hi = np.maximum((self.bases + reach).max(0), tops.max(0) + 0.01)
+        B = np.array([m.base for m in self.mounds])
+        Rs = np.array([m.Rs for m in self.mounds])[:, None]
+        tops = np.array([m.tip + m.n * m.R * 0.4 for m in self.mounds])
+        lo = np.minimum((B - Rs * 1.7).min(0), tops.min(0)) - 0.01
+        hi = np.maximum((B + Rs * 1.7).max(0), tops.max(0)) + 0.01
+        for dr in self.drips:
+            end = dr.s0 + dr.d * dr.length
+            lo = np.minimum(lo, end - 0.015)
+            hi = np.maximum(hi, end + 0.015)
         return lo, hi
 
-    def mesh(self, name, material, tris, h=0.003, inner=-0.05, cut=-0.025):
+    def mesh(self, name, material, tris, h=0.0022):
         lo, hi = self.box()
-        keep = lambda P: smooth01(0.003, 0.012, self.skin(P))  # noqa: E731
-        region = lambda P: self.beyond(P) - (EDGE + 0.02)  # noqa: E731
-        obj = field_mesh(name, self.field, lo, hi, h, material, tris, bones=self.bones, keep=keep, region=region,
-                         inner=inner, cut=cut)
-        P = mesh_verts(obj)
-        lift = self.skin(P)
-        put(obj, "sac", smooth01(0.0015, 0.009, lift))
-        near = np.zeros(len(P))
-        tip = np.zeros(len(P))
-        burst = np.zeros(len(P))
-        best = np.full(len(P), 1e9)
-        hue = np.zeros(len(P))
-        for s in self.sacs:
-            d = np.linalg.norm(P - s.base, axis=1)
-            near = np.maximum(near, np.exp(-(np.maximum(d - s.R * 1.1, 0.0) / (s.R * 0.6 + 0.004)) ** 2))
-            sd = np.abs(s.sdf(P))
-            closer = sd < best
-            best = np.where(closer, sd, best)
-            up = np.clip((P - s.c) @ s.n / s.radii[2], 0.0, 1.0)
-            tip = np.where(closer, up, tip)
-            hue = np.where(closer, np.random.default_rng(s.seed + 999).uniform(), hue)
-            burst = np.where(closer, up * float(s.burst), burst)
-        on_sac = smooth01(0.002, 0.01, lift)
-        put(obj, "near", near)
-        put(obj, "hue", hue)
-        put(obj, "tip", tip * on_sac)
-        put(obj, "burst", smooth01(0.4, 0.75, burst) * on_sac)
-        put(obj, "edge", np.clip(self.beyond(P) / EDGE, 0.0, 1.0))
+
+        def keep(P):
+            k = smooth01(0.004, 0.018, self.ground(P))
+            for dr in self.drips:
+                near = dr.near(P)
+                if near.any():
+                    k[near] = np.maximum(k[near], 0.8 * dr.profile(P[near]))
+            return k
+
+        obj = field_mesh(name, self.field, lo, hi, h, material, tris, keep=keep, region=self.region, inner=-0.008,
+                         cut=-0.002, ground=self.ground, crumbs=0.003)
+        self.paint(obj)
         return obj
+
+    def paint(self, obj):
+        """The per-vertex masks the material reads."""
+        P = mesh_verts(obj)
+        wob, fine = self.noise(P)
+        lo, hi = self.site.low(P), self.site.high(P)
+        put(obj, "h01", np.clip((body(P) - lo) / (hi - lo + 0.006), 0.0, 1.0))
+        M = len(self.mounds)
+        heads = np.full((M, len(P)), 1.0)
+        skirts = np.full((M, len(P)), -1.0)
+        for i, m in enumerate(self.mounds):
+            k = m.near(P)
+            if k.any():
+                heads[i, k] = m.sdf(P[k], wob[k], fine[k])
+                skirts[i, k] = m.skirt(P[k], wob[k])
+        dh = heads.min(0)
+        dome = 1.0 - smooth01(0.0008, 0.0045, dh)
+        reach = np.zeros(len(P))
+        for m in self.mounds:
+            k = m.near(P)
+            if k.any():
+                rho, _ = m.lateral(P[k])
+                reach[k] = np.maximum(reach[k], np.exp(-1.6 * (rho / m.Rs) ** 2) * min(1.0, m.R / 0.008))
+        put(obj, "outer", 1.0 - reach)
+        owner = np.where(dome > 0.5, heads.argmin(0), skirts.argmax(0))
+        tip, pus, burst, hue = (np.zeros(len(P)) for _ in range(4))
+        near, drip, rim = np.zeros(len(P)), np.zeros(len(P)), np.zeros(len(P))
+        for i, m in enumerate(self.mounds):
+            sel = owner == i
+            if sel.any():
+                rho, along = m.lateral(P[sel])
+                tip[sel] = np.clip((along - m.floor) / max(m.top - m.floor, 1e-3), 0.0, 1.0)
+                pus[sel] = m.pus
+                hue[sel] = m.hue
+                if m.kind == "crater":
+                    burst[sel] = smooth01(m.R * 0.6, m.R * 0.42, rho) * smooth01(m.top - m.C * 0.9, m.top - m.C * 0.5,
+                                                                               along)
+                    rim[sel] = np.exp(-((rho - m.R * 0.62) / (m.R * 0.25)) ** 2) * smooth01(
+                        m.top - m.C * 0.9, m.top - m.C * 0.4, along)
+            if m.kind in ("sac", "slack"):
+                d = np.linalg.norm(P - m.base, axis=1)
+                near = np.maximum(near, np.exp(-(np.maximum(d - m.R, 0.0) / (m.R * 1.3)) ** 2))
+            if m.weep:
+                # Pus weeping down its flanks
+                src = m.c
+                drop = src[2] - P[:, 2]
+                side = np.abs((P - src) @ unit(np.cross((0.0, 0.0, 1.0), m.n) + 1e-9))
+                drip = np.maximum(drip, m.weep * smooth01(-0.006, 0.004, drop) * np.exp(-np.maximum(drop, 0) / 0.04)
+                                  * np.exp(-(side / (m.R * 0.8)) ** 2))
+        for dr in self.drips:
+            k = dr.near(P)
+            if k.any():
+                drip[k] = np.maximum(drip[k], smooth01(0.05, 0.4, dr.profile(P[k])))
+        put(obj, "dome", dome)
+        put(obj, "tip", tip)
+        put(obj, "pus", pus)
+        put(obj, "burst", burst)
+        put(obj, "rim", rim)
+        put(obj, "hue", hue)
+        put(obj, "near", near)
+        put(obj, "drip", drip)
+
+
+def scatter(site, avoid, center, r0, r1, count, seed, rmin=0.4, rmax=0.8, rise=(0.45, -0.7), bounds=None,
+            kinds=(("boil", 0.45), ("blister", 0.35), ("crater", 0.2)), stretch=1.0, angle=0.0):
+    """Lone boils, blisters and small burst ones around a cluster, between r0 and r1 cm from `center` (u, v):
+    smaller, lower and fewer of them the farther out, so they thin out into the clothes; the outer ones only break
+    the surface where a zombie's clothes lie low. `stretch` draws the ring out into an ellipse along `angle` (degrees
+    from u toward v), so the cluster trails off one way."""
+    rng = np.random.default_rng(seed)
+    out = []
+    names, weights = zip(*kinds)
+    weights = np.array(weights) / sum(weights)
+    for _ in range(count * 80):
+        if len(out) >= count:
+            break
+        a = rng.uniform(0, 2 * math.pi)
+        r = r0 + (r1 - r0) * math.sqrt(rng.uniform())
+        x, y = r * math.cos(a) * stretch, r * math.sin(a) / stretch
+        ca, sa = math.cos(math.radians(angle)), math.sin(math.radians(angle))
+        u, v = center[0] + x * ca - y * sa, center[1] + x * sa + y * ca
+        if bounds and not (bounds[0] <= u <= bounds[1] and bounds[2] <= v <= bounds[3]):
+            continue
+        t = (r - r0) / max(r1 - r0, 1e-6)
+        R = rng.uniform(rmin, rmax) * (1.0 - 0.3 * t)
+        base, _ = site.at(u, v)
+        q = float(np.clip(1.0 - 0.8 * t, 0.2, 1.0))
+        spread = site.high(base[None])[0] - site.low(base[None])[0]
+        if spread * q > SPREAD * 0.7 or spread > 0.045:
+            continue  # it would stand tall on whichever zombie's clothes lie lowest here
+        if any(np.linalg.norm(base - m.base) < (m.R + R / 100.0) * 1.5 + 0.004 for m in avoid + out):
+            continue
+        kind = names[rng.choice(len(names), p=weights)]
+        if kind == "crater":
+            R = max(R, 0.65)
+        out.append(Mound(site, u, v, R, rise[0] + (rise[1] - rise[0]) * t + rng.uniform(-0.25, 0.25),
+                         seed * 100 + len(out), kind=kind, q=q,
+                         head=rng.uniform(0.18, 0.3) if kind == "boil" else None))
+    return out
 
 
 def pustule_material(name):
-    """Dead, sickly skin going bruised and veiny toward the sacs, peppered with small pimples; the sacs stretched
-    thin and shiny over yellow-green pus, red at the base, red capillaries, creamy heads, crusted burst craters."""
+    """Dead flesh bruised purple and sickly yellow-green, inflamed red toward the sacs, veined, with small pimples;
+    down where it meets the zombie's clothes, a ragged band of torn, soaked fabric. The heads are skin stretched thin
+    and veined over dark mustard and olive pus with small creamy tips; the burst ones a swollen rim around a crusted,
+    bloody pit; pus weeps down from them in glossy trails. Kept as dark and dirty as the zombies: the game's shader
+    shows pale or saturated colors much brighter."""
     mat, g = tk.new_material(name)
-    sac = attr(g, "sac")
-    near = attr(g, "near")
+    h01 = attr(g, "h01")
     tip = attr(g, "tip")
+    dome = attr(g, "dome")
+    pus = attr(g, "pus")
     burst = attr(g, "burst")
-    edge = attr(g, "edge")
+    rim = attr(g, "rim")
+    hue = attr(g, "hue")
+    near = attr(g, "near")
+    drip = attr(g, "drip")
+    outer = attr(g, "outer")
+    co = g.coords()
 
+    # Flesh around the growths: mottled dead skin, purple and yellow-green bruising, inflamed toward the sacs
     mott = g.noise(14.0, detail=6.0, roughness=0.62)
-    skin = g.mix(g.ramp(mott, 0.3, 0.72), (0.3, 0.27, 0.22), (0.2, 0.18, 0.15))
-    skin = g.mix(g.math("MULTIPLY", g.ramp(g.noise(4.0, detail=3.0), 0.45, 0.7), 0.6), skin, (0.27, 0.27, 0.16))
-    blot = g.math("MULTIPLY", g.ramp(g.noise(7.0, detail=5.0, distortion=0.5), 0.55, 0.75), 0.7)
-    skin = g.mix(blot, skin, (0.19, 0.12, 0.15))
-    inside = g.math("SUBTRACT", 1.0, g.ramp(edge, 0.1, 0.8))
-    inflamed = g.math("MAXIMUM", g.ramp(near, 0.05, 0.6), g.math("MULTIPLY", inside, 0.45))
-    inflamed = g.math("MULTIPLY", inflamed, g.ramp(g.noise(11.0, detail=5.0), 0.2, 0.55))
-    skin = g.mix(g.math("MULTIPLY", inflamed, 0.85), skin, (0.2, 0.05, 0.075))
-    skin = g.mix(g.math("MULTIPLY", g.math("MULTIPLY", inside, g.ramp(g.noise(5.0, detail=4.0), 0.5, 0.7)), 0.7),
-                 skin, (0.11, 0.035, 0.06))
-    skin = g.mix(g.ramp(near, 0.65, 0.98), skin, (0.09, 0.018, 0.025))
-    big = veins(g, 9.0, 0.03, warp_amount=1.5, broken=0.6)
-    fine = veins(g, 30.0, 0.035, warp_amount=1.5, broken=0.75)
-    reach = g.math("ADD", g.math("MULTIPLY", inside, 0.5), g.math("MULTIPLY", near, 0.5))
-    vmask = g.math("MAXIMUM", g.math("MULTIPLY", big, reach), g.math("MULTIPLY", fine, g.math("MULTIPLY", near, 0.9)))
-    vmask = g.math("MULTIPLY", vmask, g.math("SUBTRACT", 1.0, g.math("MULTIPLY", edge, 0.8)))
-    skin = g.mix(g.math("MULTIPLY", vmask, 0.85), skin, (0.07, 0.035, 0.09))
-    # Small pimples with yellow heads, crowded near the sacs
+    skin = g.mix(g.ramp(mott, 0.3, 0.72), (0.036, 0.02, 0.016), (0.021, 0.013, 0.011))
+    blot = g.ramp(g.noise(6.0, detail=4.0, distortion=0.5), 0.42, 0.66)
+    skin = g.mix(g.math("MULTIPLY", blot, 0.9), skin, (0.03, 0.009, 0.017))
+    sick = g.ramp(g.noise(4.5, detail=3.0, distortion=0.8), 0.6, 0.75)
+    skin = g.mix(g.math("MULTIPLY", sick, 0.7), skin, (0.034, 0.031, 0.011))
+    hot = g.math("MULTIPLY", g.ramp(near, 0.1, 0.7), g.ramp(g.noise(11.0, detail=5.0), 0.25, 0.6))
+    skin = g.mix(g.math("MULTIPLY", hot, 0.85), skin, (0.06, 0.012, 0.009))
+    big = veins(g, 9.0, 0.035, warp_amount=1.5, broken=0.5)
+    small = veins(g, 26.0, 0.04, warp_amount=1.5, broken=0.65)
+    vmask = g.math("MAXIMUM", g.math("MULTIPLY", big, 0.9), g.math("MULTIPLY", small, g.math("MULTIPLY", near, 0.9)))
+    skin = g.mix(vmask, skin, (0.016, 0.004, 0.01))
     vor = g.node("ShaderNodeTexVoronoi", feature="F1")
     g._in(vor, "Scale", 95.0)
     g._in(vor, "Randomness", 0.9)
-    g.links.new(g.coords(), vor.inputs["Vector"])
+    g.links.new(co, vor.inputs["Vector"])
     dist = tk._sock(vor.outputs, "Distance")
-    pick = g.ramp(g.noise(30.0, detail=2.0), 0.52, 0.6)
-    pimple = g.math("MULTIPLY", g.ramp(dist, 0.3, 0.05), g.math("MULTIPLY", pick, g.ramp(near, 0.02, 0.4)))
-    pimple = g.math("MULTIPLY", pimple, g.math("SUBTRACT", 1.0, g.ramp(sac, 0.2, 0.6)))
-    skin = g.mix(g.math("MULTIPLY", pimple, 0.9), skin, (0.32, 0.07, 0.05))
-    skin = g.mix(g.math("MULTIPLY", g.ramp(dist, 0.12, 0.04), pimple), skin, (0.75, 0.66, 0.3))
+    pick = g.ramp(g.noise(30.0, detail=2.0), 0.48, 0.56)
+    pimple = g.math("MULTIPLY", g.ramp(dist, 0.32, 0.05), g.math("MULTIPLY", pick, g.ramp(near, 0.0, 0.4)))
+    skin = g.mix(g.math("MULTIPLY", pimple, 0.85), skin, (0.05, 0.012, 0.009))
+    skin = g.mix(g.math("MULTIPLY", g.ramp(dist, 0.12, 0.04), pimple), skin, (0.1, 0.075, 0.024))
 
-    hue = attr(g, "hue")
-    yellow = g.mix(g.ramp(hue, 0.0, 0.5), (0.55, 0.36, 0.05), (0.5, 0.45, 0.07))
-    yellow = g.mix(g.ramp(hue, 0.6, 1.0), yellow, (0.34, 0.4, 0.05))
-    pus = g.mix(g.ramp(g.noise(6.0, detail=4.0, distortion=0.4), 0.3, 0.72), yellow, (0.24, 0.28, 0.035))
-    pus = g.mix(g.math("MULTIPLY", g.ramp(g.noise(18.0, detail=4.0), 0.5, 0.75), 0.7), pus, (0.16, 0.16, 0.025))
-    pus = g.mix(g.math("MULTIPLY", g.ramp(g.noise(9.0, detail=3.0), 0.6, 0.75), 0.5), pus, (0.55, 0.3, 0.06))
-    # The stretched skin over the sac: fleshy and bruised low down, thinning to show the pus toward the top
-    flesh = g.mix(g.ramp(g.noise(12.0, detail=4.0), 0.3, 0.7), (0.3, 0.09, 0.08), (0.2, 0.06, 0.09))
-    thin = g.ramp(g.math("ADD", tip, g.math("MULTIPLY", g.noise(9.0, detail=3.0), 0.25)), 0.25, 0.75)
-    pus = g.mix(g.math("SUBTRACT", 1.0, thin), pus, flesh)
-    ring = g.math("SUBTRACT", 1.0, g.ramp(sac, 0.1, 0.9))
-    pus = g.mix(ring, pus, (0.14, 0.03, 0.04))
-    cap = veins(g, 45.0, 0.04, warp_amount=1.5, broken=0.5)
-    cap = g.math("MULTIPLY", cap, g.math("SUBTRACT", 1.0, g.ramp(tip, 0.6, 0.9)))
-    pus = g.mix(g.math("MULTIPLY", cap, 0.85), pus, (0.2, 0.025, 0.04))
-    head = g.ramp(tip, 0.86, 0.98)
-    pus = g.mix(g.math("MULTIPLY", head, g.ramp(g.noise(25.0, detail=3.0), 0.3, 0.5)), pus, (0.75, 0.65, 0.35))
-    crater = g.mix(g.ramp(g.noise(40.0, detail=5.0), 0.4, 0.6), (0.2, 0.13, 0.03), (0.08, 0.04, 0.015))
-    pus = g.mix(burst, pus, crater)
-    col = g.mix(g.ramp(sac, 0.25, 0.75), skin, pus)
+    # Torn, soaked clothes low down: a ragged tear line, dark wet weave stained with pus and blood below it
+    edge = g.math("ADD", h01, g.math("MULTIPLY", g.math("SUBTRACT", g.noise(7.0, detail=3.0), 0.5), 0.9))
+    edge = g.math("ADD", edge, g.math("MULTIPLY", g.math("SUBTRACT", g.noise(45.0, detail=2.0), 0.5), 0.35))
+    cloth = g.math("MULTIPLY", g.math("SUBTRACT", 1.0, g.ramp(edge, 0.26, 0.34)),
+                   g.math("SUBTRACT", 1.0, g.ramp(drip, 0.2, 0.6)))
+    wx = g.node("ShaderNodeTexWave", wave_type="BANDS", bands_direction="X")
+    g._in(wx, "Scale", 420.0)
+    g._in(wx, "Distortion", 0.6)
+    g.links.new(co, wx.inputs["Vector"])
+    wz = g.node("ShaderNodeTexWave", wave_type="BANDS", bands_direction="Z")
+    g._in(wz, "Scale", 420.0)
+    g._in(wz, "Distortion", 0.6)
+    g.links.new(co, wz.inputs["Vector"])
+    weave = g.math("MULTIPLY", tk._sock(wx.outputs, "Fac"), tk._sock(wz.outputs, "Fac"))
+    fabric = g.mix(g.ramp(g.noise(16.0, detail=4.0), 0.3, 0.7), (0.02, 0.017, 0.014), (0.011, 0.009, 0.008))
+    fabric = g.mix(g.math("MULTIPLY", g.ramp(g.noise(5.0, detail=3.0, distortion=0.6), 0.55, 0.7), 0.8), fabric,
+                   (0.03, 0.021, 0.007))
+    fabric = g.mix(g.math("MULTIPLY", g.ramp(g.noise(8.0, detail=3.0), 0.6, 0.72), 0.8), fabric, (0.03, 0.006, 0.005))
+    fabric = g.mix(g.math("MULTIPLY", weave, 0.25), fabric, (0.012, 0.01, 0.008))
+    # Wet, dark seep just above the tear, and all down the outer flanks, where any zombie's clothes cut them
+    seep = g.math("MULTIPLY", g.ramp(edge, 0.3, 0.55), g.math("SUBTRACT", 1.0, g.ramp(edge, 0.55, 0.85)))
+    flank = g.ramp(g.math("ADD", outer, g.math("MULTIPLY", g.math("SUBTRACT", g.noise(8.0, detail=4.0), 0.5), 0.6)),
+                   0.3, 0.62)
+    seep = g.math("MAXIMUM", g.math("MULTIPLY", seep, 0.75), g.math("MULTIPLY", flank, 0.9))
+    skin = g.mix(seep, skin, (0.018, 0.009, 0.008))
+    skin = g.mix(cloth, skin, fabric)
 
-    # Dried pus crusted around the sacs, and weeping streaks running down
-    crust = g.math("MULTIPLY", g.ramp(g.noise(26.0, detail=6.0), 0.6, 0.68), g.ramp(near, 0.25, 0.6))
-    crust = g.math("MULTIPLY", crust, g.math("SUBTRACT", 1.0, g.ramp(sac, 0.3, 0.6)))
-    col = g.mix(crust, col, (0.25, 0.17, 0.04))
+    # The heads: stretched, veined skin over pus
+    flesh = g.mix(g.ramp(g.noise(12.0, detail=4.0), 0.3, 0.7), (0.05, 0.014, 0.01), (0.03, 0.01, 0.011))
+    yellow = g.mix(g.ramp(hue, 0.0, 0.5), (0.085, 0.055, 0.011), (0.054, 0.052, 0.011))
+    yellow = g.mix(g.ramp(hue, 0.62, 1.0), yellow, (0.07, 0.034, 0.011))
+    pusc = g.mix(g.ramp(g.noise(6.0, detail=4.0, distortion=0.4), 0.3, 0.72), yellow, (0.032, 0.026, 0.007))
+    pusc = g.mix(g.math("MULTIPLY", g.ramp(g.noise(18.0, detail=4.0), 0.5, 0.75), 0.6), pusc, (0.024, 0.02, 0.006))
+    thin = g.math("MULTIPLY", g.ramp(g.math("ADD", tip, g.math("MULTIPLY", g.math(
+        "SUBTRACT", g.noise(9.0, detail=3.0), 0.5), 0.35)), 0.45, 0.88), pus)
+    headc = g.mix(thin, flesh, pusc)
+    cap = veins(g, 34.0, 0.06, warp_amount=1.5, broken=0.35)
+    cap = g.math("MULTIPLY", cap, g.math("SUBTRACT", 1.0, g.ramp(tip, 0.8, 0.97)))
+    headc = g.mix(g.math("MULTIPLY", cap, 0.9), headc, (0.03, 0.004, 0.007))
+    crown = g.math("MULTIPLY", g.math("MULTIPLY", g.ramp(tip, 0.92, 0.99), pus),
+                   g.ramp(g.noise(25.0, detail=3.0), 0.3, 0.5))
+    headc = g.mix(crown, headc, (0.13, 0.1, 0.034))
+    # Burst: crusted yellow-brown rim, a black-red pit with pus left in it
+    rimc = g.mix(g.ramp(g.noise(35.0, detail=5.0), 0.35, 0.65), (0.08, 0.05, 0.014), (0.04, 0.02, 0.008))
+    headc = g.mix(g.math("MULTIPLY", rim, 0.85), headc, rimc)
+    crater = g.mix(g.ramp(g.noise(40.0, detail=5.0), 0.45, 0.65), (0.022, 0.005, 0.004), (0.009, 0.004, 0.003))
+    crater = g.mix(g.math("MULTIPLY", g.ramp(g.noise(15.0, detail=3.0), 0.55, 0.7), 0.8), crater, (0.07, 0.045, 0.01))
+    headc = g.mix(burst, headc, crater)
+    col = g.mix(dome, skin, headc)
+
+    # Pus weeping down in glossy trails, and dried crust around them
     m = g.node("ShaderNodeMapping")
-    g.links.new(g.coords(), m.inputs["Vector"])
+    g.links.new(co, m.inputs["Vector"])
     m.inputs["Scale"].default_value = (30.0, 30.0, 2.5)
-    streak = g.math("MULTIPLY", g.ramp(g.noise(1.0, detail=3.0, vector=m.outputs[0]), 0.62, 0.72),
-                    g.ramp(near, 0.15, 0.5))
-    streak = g.math("MULTIPLY", streak, g.math("SUBTRACT", 1.0, g.ramp(sac, 0.2, 0.5)))
-    col = g.mix(g.math("MULTIPLY", streak, 0.7), col, (0.3, 0.24, 0.06))
-    cav = g.cavity(0.025)
-    col = g.mix(g.math("MULTIPLY", g.math("SUBTRACT", 1.0, cav, clamp=True), 0.75), col, (0.05, 0.012, 0.012))
+    streak = g.math("MULTIPLY", g.ramp(g.noise(1.0, detail=3.0, vector=m.outputs[0]), 0.5, 0.64),
+                    g.ramp(drip, 0.05, 0.4))
+    streak = g.math("MAXIMUM", streak, g.ramp(drip, 0.5, 0.9))
+    trail = g.mix(g.ramp(g.noise(20.0, detail=3.0), 0.35, 0.65), (0.062, 0.043, 0.01), (0.035, 0.016, 0.007))
+    col = g.mix(g.math("MULTIPLY", streak, 0.9), col, trail)
+    crust = g.math("MULTIPLY", g.ramp(g.noise(26.0, detail=6.0), 0.58, 0.68),
+                   g.math("MAXIMUM", g.math("MULTIPLY", g.ramp(near, 0.2, 0.6), 0.6), g.ramp(drip, 0.05, 0.3)))
+    crust = g.math("MAXIMUM", g.math("MULTIPLY", crust, g.math("SUBTRACT", 1.0, g.math("MULTIPLY", dome, 0.7))),
+                   g.math("MULTIPLY", rim, g.ramp(g.noise(30.0, detail=5.0), 0.45, 0.6)))
+    col = g.mix(crust, col, (0.05, 0.031, 0.009))
+    cav = g.cavity(0.02)
+    col = g.mix(g.math("MULTIPLY", g.math("SUBTRACT", 1.0, cav, clamp=True), 0.8), col, (0.01, 0.005, 0.004))
 
-    rough = g.mixf(g.ramp(near, 0.15, 0.85), 0.66, 0.34)
-    rough = g.mixf(streak, rough, 0.15)
-    sheen = g.math("ADD", 0.12, g.math("MULTIPLY", g.noise(14.0, detail=3.0), 0.12))
-    rough = g.mixf(g.ramp(sac, 0.25, 0.75), rough, g.math("ADD", sheen, g.math("MULTIPLY", head, 0.15)))
-    rough = g.mixf(g.math("MAXIMUM", crust, g.math("MULTIPLY", burst, 0.7)), rough, 0.8)
+    rough = g.mixf(g.ramp(near, 0.2, 0.8), 0.44, 0.34)
+    rough = g.mixf(seep, rough, 0.3)
+    rough = g.mixf(cloth, rough, 0.4)
+    rough = g.mixf(dome, rough, g.math("ADD", 0.28, g.math("MULTIPLY", g.noise(14.0, detail=3.0), 0.14)))
+    rough = g.mixf(crown, rough, 0.45)
+    rough = g.mixf(g.math("MAXIMUM", crust, g.math("MULTIPLY", burst, 0.8)), rough, 0.62)
+    rough = g.mixf(streak, rough, 0.24)
     height = g.math("MULTIPLY", g.noise(170.0, detail=4.0), 0.22)
-    height = g.math("ADD", height, g.math("MULTIPLY", big, g.math("SUBTRACT", 0.55, g.math("MULTIPLY", sac, 0.45))))
-    height = g.math("ADD", height, g.math("MULTIPLY", cap, 0.12))
+    height = g.math("ADD", height, g.math("MULTIPLY", big, g.math("SUBTRACT", 0.55, g.math("MULTIPLY", dome, 0.3))))
+    height = g.math("ADD", height, g.math("MULTIPLY", cap, 0.45))
     height = g.math("ADD", height, g.math("MULTIPLY", pimple, 0.9))
-    height = g.math("ADD", height, g.math("MULTIPLY", crust, 0.45))
-    height = g.math("ADD", height, g.math("MULTIPLY", burst, g.noise(45.0, detail=5.0)))
-    # A dark, ragged rim of grime and dried blood where the patch meets the zombie's clothes or skin, so it reads
-    # as torn through them on any zombie rather than laid on top
-    rim = g.ramp(g.math("ADD", edge, g.math("MULTIPLY", g.noise(18.0, detail=5.0, distortion=0.4), 0.5)), 0.6, 0.95)
-    col = g.mix(g.math("MULTIPLY", rim, 0.9), col, (0.03, 0.02, 0.015))
-    # Toned down to sit with the game's dark, dirty zombies (bright growths read as stuck-on shapes in game)
-    col = tk.grade(g, col, sat=0.7, value=0.68)
-    return tk.finish(mat, g, col, 0.0, rough, g.bump(height, 0.25, 0.002))
+    height = g.math("ADD", height, g.math("MULTIPLY", crust, 0.6))
+    height = g.math("ADD", height, g.math("MULTIPLY", g.math("MAXIMUM", burst, rim), g.noise(45.0, detail=5.0)))
+    height = g.math("ADD", height, g.math("MULTIPLY", streak, 0.25))
+    height = g.math("ADD", height, g.math("MULTIPLY", cloth, g.math("MULTIPLY", weave, 0.5)))
+    col = tk.grade(g, col, sat=0.85, value=1.0)
+    return tk.finish(mat, g, col, 0.0, rough, g.bump(height, 0.3, 0.002))
 
 
 tk.reset_scene()
@@ -647,61 +929,131 @@ zk.stage()
 zk.body()
 material = pustule_material("Pustule")
 
-# ---- upper back: a swollen hump with a heavy cluster over the right shoulder blade, sacs climbing toward the neck
-B = 0.6  # start points behind the back; on_body pulls them onto it
-back_sacs = [
-    Sac((-0.04, B, 1.42), 0.034, 11, rise=0.5, lobes=2, head=0.25),
-    Sac((0.042, B, 1.46), 0.027, 12, rise=0.45, lobes=1),
-    Sac((0.025, B, 1.375), 0.022, 13, head=0.3),
-    Sac((-0.01, B, 1.5), 0.017, 14, burst=True),
-    Sac((-0.085, B, 1.36), 0.017, 15, head=0.35),
-    Sac((0.082, B, 1.41), 0.018, 16, lobes=1),
-    Sac((0.062, B, 1.335), 0.014, 17, head=0.4),
-    Sac((-0.022, B, 1.34), 0.016, 18, burst=True),
-    Sac((-0.045, B, 1.505), 0.013, 19, head=0.35),
-    Sac((0.035, B, 1.525), 0.011, 20, head=0.3),
+# ---- the sites, with the clothes' levels measured on vanilla Joe, the fat cop and the nurse
+B = 0.6  # back start points sit behind the back; Site pulls them onto it
+BACK1 = Site((-0.03, B, 1.375), (0.0, -1.0, 0.0),
+             low=(-1.095, 0.132, -0.036, 0.0151, -0.0376, 0.0008), high=(-0.090, 0.139, 0.005, 0.0231, 0.0122, 0.0064))
+BACK2 = Site((0.05, B, 1.35), (0.0, -1.0, 0.0),
+             low=(-1.432, -0.170, 0.084, 0.0205, -0.0245, 0.0073), high=(0.429, -0.194, -0.031, 0.0203, 0.0129, -0.0089))
+SHOULDER1 = Site(*limb_start("LeftArm", "LeftForeArm", 0.1, 30),
+                 low=(0.924, 0.204, -0.050, -0.0031, -0.0107, -0.0181), high=(2.582, 0.263, 0.002, -0.005, 0.002, -0.0013))
+SHOULDER2 = Site(*limb_start("RightArm", "RightForeArm", 0.12, 50),
+                 low=(0.626, -0.215, -0.093, -0.0019, -0.0018, -0.0032),
+                 high=(2.994, -0.424, -0.244, -0.0041, -0.003, -0.0088))
+ARM = Site(*limb_start("LeftArm", "LeftForeArm", 0.58, 25),
+           low=(-1.025, 0.247, -0.014, -0.0106, -0.003, 0.0157), high=(1.360, 0.248, -0.048, 0.0166, 0.0005, -0.0053))
+FOREARM = Site(*limb_start("RightForeArm", "RightHand", 0.55, 20),
+               low=(-1.941, -0.138, 0.049, 0.0255, 0.0013, 0.0102), high=(0.716, -0.215, 0.147, 0.0103, 0.0022, 0.0169))
+
+# ---- upper back, right of the spine (u runs to the zombie's right, v up): one big sagging, lobed sac weeping a long
+# trail, two smaller sacs, a half-drained one, a burst crater, a knot of boils above, flat blisters, lone boils
+# thinning out
+S = BACK1
+back1 = [
+    Mound(S, 2.6, -0.3, 3.0, 2.6, 101, "sac", lobes=2, sag=0.22, weep=1.0, lift=0.7),
+    Mound(S, 6.9, 1.7, 1.7, 1.6, 102, "sac", sag=0.15, lift=0.5),
+    Mound(S, -0.9, 2.6, 1.3, 1.2, 103, "sac", sag=0.1, lift=0.4),
+    Mound(S, 6.4, -3.5, 1.5, 0.7, 104, "slack", lift=0.3),
+    Mound(S, -0.2, -3.4, 1.3, 0.6, 105, "crater", weep=0.8, lift=0.3),
+    Mound(S, 5.2, 3.0, 0.75, 0.6, 106, "boil", head=0.25),
+    Mound(S, 6.4, 3.4, 0.55, 0.45, 107, "boil", head=0.31),
+    Mound(S, 4.4, 4.0, 0.5, 0.4, 108, "boil"),
+    Mound(S, -1.8, -0.4, 0.9, 0.25, 109, "blister"),
+    Mound(S, 3.6, -4.7, 0.7, 0.2, 110, "blister"),
+    Mound(S, 8.8, -1.2, 0.8, 0.6, 111, "boil", head=0.20),
 ]
-back_sacs += scatter(((0.0, 0.3, 1.41), (0.085, 0.0, 0.1)), 5, 0.008, 0.012, 5, back_sacs)
-back_cluster = Cluster(back_sacs, 31, swell_at=np.array([-0.01, 0.22, 1.43]), swell=0.012, swell_r=(0.08, 0.08, 0.08))
-back = back_cluster.mesh("PustulesBack", material, 2700)
+back1 += scatter(S, back1, (3.0, 0.0), 5.5, 9.0, 8, 120, rmin=0.4, rmax=0.9, bounds=(-3.0, 10.5, -7.5, 3.5),
+                 stretch=1.45, angle=-35.0)
+back1_drips = [Drip(S, back1[0], 7.0, 0.45, 131), Drip(S, back1[4], 4.5, 0.32, 132)]
 
-# ---- shoulders: a big sac on top of each, smaller ones spilling toward the back; not mirror images
-SHOULDER = ("Spine2", "LeftArm", "RightArm")
+# ---- upper back, left of the spine and lower (u runs toward the spine): a big burst boil weeping, a tight knot of
+# boils, a lone sac, a blister
+S = BACK2
+back2 = [
+    Mound(S, -1.5, 1.2, 2.0, 1.0, 201, "crater", elong=0.9, weep=1.0, lift=0.5),
+    Mound(S, 1.6, -1.8, 0.9, 0.8, 202, "boil", head=0.26, lift=0.2),
+    Mound(S, 2.6, -0.5, 0.7, 0.6, 203, "boil"),
+    Mound(S, 0.6, -2.9, 0.8, 0.7, 204, "boil", head=0.23),
+    Mound(S, 2.0, -3.2, 0.55, 0.5, 205, "boil", head=0.33),
+    Mound(S, -0.3, -1.3, 0.6, 0.5, 206, "boil"),
+    Mound(S, -4.6, 2.0, 1.3, 1.1, 207, "sac", head=0.25, lift=0.3),
+    Mound(S, 0.8, 3.6, 1.0, 0.25, 208, "blister"),
+]
+back2 += scatter(S, back1 + back2, (-0.5, 0.5), 4.5, 8.0, 6, 220, rmin=0.4, rmax=0.85, bounds=(-7.0, 2.8, -6.0, 4.5),
+                 stretch=1.5, angle=100.0)
+back2_drips = [Drip(S, back2[0], 6.0, 0.42, 231)]
 
+# ---- top of the left shoulder (u runs toward the back, v up toward the neck)
+S = SHOULDER1
+shoulder1 = [
+    Mound(S, 0.2, -0.3, 2.1, 1.6, 301, "sac", lobes=1, sag=0.12, lift=0.5),
+    Mound(S, 3.0, 2.0, 1.2, 0.5, 302, "crater", weep=0.8, lift=0.2),
+    Mound(S, -2.3, 1.3, 0.8, 0.6, 303, "boil", head=0.26),
+    Mound(S, 2.2, -2.8, 0.85, 0.2, 304, "blister"),
+    Mound(S, -1.2, -2.8, 0.6, 0.45, 305, "boil", head=0.29),
+]
+shoulder1 += scatter(S, shoulder1, (0.5, 0.0), 3.6, 6.5, 5, 320, rmin=0.4, rmax=0.8, stretch=1.4, angle=20.0)
 
-def shoulder(side, seed):
-    s = side
-    sacs = [
-        Sac((0.155 * s, 0.13, 1.75), 0.027, seed + 1, rise=0.45, lean=(0.15 * s, 0.12, 0.0), lobes=1, bones=SHOULDER),
-        Sac((0.19 * s, 0.3, 1.66), 0.018, seed + 2, head=0.3, lobes=1, bones=SHOULDER),
-        Sac((0.125 * s, 0.25, 1.72), 0.014, seed + 3, bones=SHOULDER),
-        Sac((0.21 * s, 0.12, 1.75), 0.013, seed + 4, burst=side > 0, head=0.0 if side > 0 else 0.35, bones=SHOULDER),
-    ]
-    sacs += scatter(((0.17 * s, 0.17, 1.58), (0.03, 0.04, 0.02)), 2, 0.008, 0.01, seed + 9, sacs, bones=SHOULDER)
-    cluster = Cluster(sacs, seed + 20, bones=SHOULDER)
-    return cluster.mesh("Pustules%s" % ("Left" if side > 0 else "Right"), material, 1050, h=0.0028, inner=-0.038,
-                        cut=-0.022)
+# ---- back of the right shoulder (u runs toward the front): a slack, half-drained sac, a tight trio of boils, a
+# lone boil, a small burst one
+S = SHOULDER2
+shoulder2 = [
+    Mound(S, 1.8, 0.4, 2.0, 0.9, 401, "slack", lift=0.5),
+    Mound(S, 4.8, 1.9, 0.65, 0.5, 402, "boil", head=0.26),
+    Mound(S, 5.6, 0.7, 0.55, 0.4, 403, "boil"),
+    Mound(S, 5.4, 2.9, 0.48, 0.35, 404, "boil", head=0.33),
+    Mound(S, 2.0, -3.6, 0.9, 0.7, 405, "boil", head=0.23),
+    Mound(S, -0.6, 2.8, 1.0, 0.35, 406, "crater", weep=0.7),
+]
+shoulder2 += scatter(S, shoulder2, (2.0, 0.0), 3.8, 6.5, 4, 420, rmin=0.4, rmax=0.8, bounds=(-1.5, 7.0, -7.0, 6.5),
+                     stretch=1.4, angle=-80.0)
 
+# ---- outside of the left upper arm (v runs up the arm)
+S = ARM
+arm = [
+    Mound(S, 0.0, 1.2, 1.5, 1.1, 501, "sac", lobes=1, sag=0.15, lift=0.4),
+    Mound(S, 0.7, -2.0, 0.85, 0.6, 502, "boil", head=0.26),
+    Mound(S, -0.6, -4.0, 0.95, 0.35, 503, "crater", weep=0.8),
+    Mound(S, -1.6, 3.4, 0.75, 0.15, 504, "blister"),
+]
+arm += scatter(S, arm, (0.0, 0.0), 3.2, 5.8, 4, 520, rmin=0.4, rmax=0.75, stretch=1.5, angle=90.0)
+arm_drips = [Drip(S, arm[2], 3.5, 0.3, 531)]
 
-left = shoulder(1, 40)
-right = shoulder(-1, 60)
+# ---- top of the right forearm
+S = FOREARM
+forearm = [
+    Mound(S, 0.0, 0.8, 1.25, 0.9, 601, "crater", weep=0.8, lift=0.35),
+    Mound(S, 1.7, -1.3, 0.8, 0.8, 602, "boil", head=0.26),
+    Mound(S, -1.3, -1.7, 0.6, 0.6, 603, "boil"),
+    Mound(S, -0.9, 3.0, 0.8, 0.45, 604, "blister"),
+]
+forearm += scatter(S, forearm, (0.0, 0.0), 3.0, 5.2, 3, 620, rmin=0.4, rmax=0.7, stretch=1.4, angle=80.0)
 
-zk.on(back, "Spine2", "Back")
-zk.on(left, "LeftShoulder", "Sacs")
-zk.on(right, "RightShoulder", "Sacs")
-pieces = [back, left, right]
-for p in pieces:
-    V = mesh_verts(p)
-    print("[pustules] %s: %d tris, bounds %s .. %s" % (p.name, sum(len(f.vertices) - 2 for f in p.data.polygons),
-                                                      np.round(V.min(0), 3), np.round(V.max(0), 3)))
+for _m in back1 + back2 + shoulder1 + shoulder2 + arm + forearm:
+    _s = _m.site.high(_m.base[None])[0] - _m.site.low(_m.base[None])[0]
+    if _s * _m.q > SPREAD + 0.004:
+        print("[pustules] note: mound %d stands where the clothes' levels differ by %.1f cm" % (_m.seed, _s * 100))
+
+PARTS = [
+    ("PustulesBack1", "Spine2", "BackVar1", Cluster(BACK1, back1, 11, back1_drips), 1650),
+    ("PustulesBack2", "Spine2", "BackVar2", Cluster(BACK2, back2, 21, back2_drips), 1150),
+    ("PustulesShoulder1", "LeftArm", "ShoulderVar1", Cluster(SHOULDER1, shoulder1, 31), 850),
+    ("PustulesShoulder2", "RightArm", "ShoulderVar2", Cluster(SHOULDER2, shoulder2, 41), 850),
+    ("PustulesArm", "LeftArm", "ArmVar", Cluster(ARM, arm, 51, arm_drips), 750),
+    ("PustulesForeArm", "RightForeArm", "ArmVar2", Cluster(FOREARM, forearm, 61), 600),
+]
+pieces = []
+for name, bone, piece, cluster, tris in PARTS:
+    obj = cluster.mesh(name, material, tris)
+    zk.on(obj, bone, piece)
+    pieces.append(obj)
+    V = mesh_verts(obj)
+    print("[pustules] %s#%s: %d mounds, %d tris, bounds %s .. %s" % (
+        bone, piece, len(cluster.mounds), sum(len(f.vertices) - 2 for f in obj.data.polygons), np.round(V.min(0), 3),
+        np.round(V.max(0), 3)))
 parts = zk.export("Pustules", pieces, ASSETS)
-focus = Vector((0.0, 0.12, 1.42))
-zk.previews("pustules", PREVIEWS, focus, distance=1.25)
-preview("pustules_close_back", (0.12, 0.95, 1.55), (0.0, 0.2, 1.42), lens=60)
-preview("pustules_close_shoulder", (0.55, 0.45, 1.75), (0.16, 0.12, 1.53), lens=60)
-# Straight across the back with the near arm hidden, to see the swelling meet the body
-for o in bpy.context.scene.objects:
-    if o.name in ("Body_9", "Body_10", "BodyRightHand"):
-        o.hide_render = True
-preview("pustules_profile", (-1.0, 0.24, 1.45), (0.0, 0.24, 1.42), lens=70)
+zk.previews("pustules", PREVIEWS, Vector((0.0, 0.12, 1.38)), distance=1.5)
+preview("pustules_close_back", (0.1, 0.9, 1.47), (0.0, 0.2, 1.37), lens=60)
+preview("pustules_close_left", (0.8, 0.65, 1.6), (0.27, 0.1, 1.42), lens=55)
+preview("pustules_close_right", (-0.85, 0.45, 1.5), (-0.33, 0.1, 1.33), lens=50)
 print("[pustules] done")

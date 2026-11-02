@@ -312,7 +312,7 @@ Decided against:
 
 ---
 
-# Round 2: more mutations (approved 2026-11-01, being built)
+# Round 2: more mutations (approved and built 2026-11-01, not playtested)
 
 The first playtest liked the mutations that each do one readable thing (the Lurker). This round adds more of those.
 Same rules as before: any zombie, a strength paid for by a weakness, unchanged XP, works in co-op. Mostly played solo
@@ -388,7 +388,16 @@ sleepers stir, fresh and rotten.
 
 ---
 
-# Round 3: variety (approved 2026-11-01, being built)
+# Round 3: variety (approved and built 2026-11-01, not playtested)
+
+**After the review** (the user marked each model on a gallery page): cut the bandana, baseball cap, beanie, dust mask,
+fanny pack, handcuffs, head bandage, hi-vis vest, IV line, lanyard, leg cast, messenger bag, neck brace, surgical mask,
+tool belt and wristwatch, plus the hard hat, scrap armor and the Frostbitten's icicles (the frost look on its skin stays). The
+Kevlar vest only goes on regular builds (it rode up on fat zombies and sank into female ones). Being reworked:
+the pustules (edges that blend, a more varied pattern, variant clusters), the fungus, a bigger bear trap, barbed wire
+that can also turn up on a leg or the waist, and a narrower cowboy hat.
+After a second look at the renders: cut the cowboy hat, the football and military helmets and the Kevlar vest too. Gear
+left: welding mask, motorcycle and riot helmets, car door and riot shield.
 
 More of what already works: small models bolted onto any zombie, like the gear and growths, so no two zombies look
 alike. A bigger visual round (deep wounds, blood decals in the world, gore chunks, new fire, clothing recolors,

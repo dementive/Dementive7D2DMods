@@ -1,7 +1,7 @@
-"""Fungus: the Regenerator's mutation. Pale cream and tan shelf fungus and knobby fungal masses (cordyceps-infected
-flesh) bursting out of rotting skin on the left side of the head, the left shoulder and across the upper back, with a few
-club-headed stalks and fine white mycelium strands creeping out over the skin. The face stays clear. Three parts:
-Head#Fungus, Spine2#Fungus, LeftArm#Fungus.
+"""Fungus: the Regenerator's mutation. Knobby fungal masses and tiers of thick bracket shelves bursting out of tight
+mounds of rotten flesh, in four optional clusters (each zombie shows a different mix): over the left shoulder blade
+(Spine2#BackVar1), low on the right of the back (Spine2#BackVar2), on top of the left deltoid (LeftArm#ShoulderVar)
+and out of the left cheek (Head#FaceVar).
 
     blender -b --factory-startup --python fungus.py -- <unity models folder> <preview folder>
 """
@@ -406,11 +406,8 @@ def preview(name, cam_at, look_at, lens=50, res=(900, 900)):
 # ---------------------------------------------------------------- end of growth helpers
 
 
-SKIN = 0.012    # the skin's level above the stand-in (which is a little slimmer than the real zombie)
-SLOPE = 0.45    # the infected skin slopes down at about 24 degrees, so it meets any skin at an angle,
-DIVE = -0.012   # and below this level dives steeply,
-DEEP = -0.08    # down to here, so its edges vanish under any zombie's skin
-EDGE = (SKIN - DIVE) / SLOPE
+STEEP = 2.2     # a mound's walls slope at about 65 degrees, so they meet any zombie's skin close to the growths,
+DEEP = -0.07    # and dive to here, far under any zombie's skin
 UP = np.array([0.0, 0.0, 1.0])
 
 
@@ -419,451 +416,488 @@ def unit(v):
     return v / np.linalg.norm(v)
 
 
-class Lump:
-    """A knobby fungal mass breaking out of the body point nearest `start`: a squat bulb crowded with rounded knobs,
-    like cauliflower or a cluster of puffballs gone wrong."""
+class Knob:
+    """A rounded fungal knob (a puffball gone wrong), a little squashed along the surface normal n."""
 
-    def __init__(self, start, r, seed, rise=0.0, knobs=10, bones=TORSO, squash=0.7, toward=None):
-        base, n = on_body(start, bones, toward=toward)
-        self.base, self.n, self.r, self.seed = base, n, r, seed
+    def __init__(self, c, r, n, seed, squash=0.85):
+        self.c, self.r, self.n, self.seed = np.asarray(c, float), r, unit(n), seed
         rng = np.random.default_rng(seed)
-        self.frame = frame_from(n, up=(rng.uniform(-1, 1), rng.uniform(-1, 1), 1.0))
-        self.c = base + n * (SKIN + r * rise)
-        self.radii = (r * rng.uniform(0.95, 1.2), r * rng.uniform(0.85, 1.05), r * squash)
-        self.knobs = []
-        for _ in range(knobs):
-            d = unit(self.frame.T @ np.array([rng.normal(), rng.normal(), abs(rng.normal()) + 0.25]))
-            q = self.c + d * np.array(self.radii) * 0.95
-            self.knobs.append((q, r * rng.uniform(0.32, 0.55)))
+        self.frame = frame_from(self.n, up=(rng.uniform(-1, 1), rng.uniform(-1, 1), 1.0))
+        self.radii = (r * rng.uniform(0.95, 1.15), r * rng.uniform(0.88, 1.05), r * squash)
 
     def sdf(self, P):
-        r = self.r
-        d = sd_ellipsoid(P, self.c, np.array(self.radii) * 0.85, self.frame)
-        for q, kr in self.knobs:
-            d = smin(d, sd_sphere(P, q, kr), r * 0.1)
-        return d + waves(P, r * 0.8, self.seed, 2) * r * 0.05
+        d = sd_ellipsoid(P, self.c, self.radii, self.frame)
+        return d + waves(P, self.r * 0.9, self.seed, 2) * self.r * 0.07
 
 
-class Patch:
-    """Rotting skin around fungal lumps: raised to SKIN over their footprint, sloping away under the body."""
+class Bracket:
+    """A thick, fleshy bracket fungus growing out of root point A: a lobed half-disc in plan sticking out `D` along
+    `out` (kept near level, as brackets grow), `W` wide, `T` thick at the root, with a domed top, a flatter underside,
+    a fat rounded margin that ruffles up and down, and the outer part drooping."""
 
-    def __init__(self, lumps, seed, bones=TORSO, spread=1.6):
-        self.lumps, self.seed, self.bones, self.spread = lumps, seed, bones, spread
-        self.bases = np.array([l.base for l in lumps])
-        self.rs = np.array([l.r for l in lumps])
-        self.shelves = []
+    def __init__(self, A, out, W, D, T, seed, droop=0.35, rise=0.0, ruffle=0.3):
+        rng = np.random.default_rng(seed)
+        o = unit(np.array([out[0], out[1], 0.0]))
+        o = unit(o + UP * rise)
+        side = unit(np.cross(UP, o))
+        self.F = np.array([o, side, np.cross(o, side)])
+        self.A, self.W, self.D, self.T = np.asarray(A, float), W, D, T
+        self.ph = rng.uniform(0, 2 * math.pi, 5)
+        self.droop, self.ruffle = droop, ruffle
+        self.seed = seed
 
+    def local(self, P):
+        q = (P - self.A) @ self.F.T
+        u, v, w = q[:, 0], q[:, 1], q[:, 2]
+        th = np.arctan2(v / (self.W * 0.5), u / self.D)
+        m = 1.0 + 0.13 * np.sin(3 * th + self.ph[0]) + 0.06 * np.sin(6 * th + self.ph[1])
+        a, b = self.D * m, self.W * 0.5 * m
+        rn = np.sqrt((u / a) ** 2 + (v / b) ** 2)
+        return u, v, w, a, b, rn, th
+
+    def sdf(self, P):
+        u, v, w, a, b, rn, th = self.local(P)
+        r1 = np.minimum(rn, 1.0)
+        bend = self.droop + self.ruffle * (0.6 * np.sin(4 * th + self.ph[2]) + 0.4 * np.sin(7 * th + self.ph[3]))
+        w = w + bend * self.T * r1 * r1
+        thick = self.T * (0.42 + 0.58 * np.sqrt(np.maximum(1.0 - r1 ** 2, 0.0)))
+        thick = thick * (1.0 + 0.07 * np.sin(r1 * 17.0 + self.ph[4]) * r1)
+        top, bot = thick * 0.7, -thick * 0.3
+        dv = np.maximum(w - top, bot - w)
+        k1 = np.sqrt((u / (a * a)) ** 2 + (v / (b * b)) ** 2)
+        d2 = rn * (rn - 1.0) / np.maximum(k1, 1e-9)
+        d = smax(d2, dv, self.T * 0.3)
+        return smax(d, -(u + 0.35 * self.D), 0.004)
+
+    def rho(self, P):
+        return np.clip(self.local(P)[5], 0.0, 1.0)
+
+    def reach(self):
+        return max(self.D, self.W * 0.5) * 1.3 + self.T
+
+
+class Cluster:
+    """A fungal cluster bursting out of the body: a tight, steep mound of rotten flesh crowded with knobby fungal
+    masses, and tiers of thick bracket shelves growing out of the masses. One closed surface, so everything grows out
+    of everything else with real fillets. `skin` is the mound's top above the stand-in."""
+
+    def __init__(self, seed, bones=TORSO, skin=0.018, inner=-0.065, cut=-0.04, h=0.002):
+        self.seed, self.bones = seed, bones
+        self.level, self.inner, self.cut, self.h = skin, inner, cut, h
+        self.edge = (skin + 0.012) / STEEP  # how far out from the footprint the walls stand above the skin, about
+        self.knobs, self.feet, self.shelves = [], [], []
+
+    # -- building
+    def knob(self, start, r, lift=0.3, toward=None, foot=0.7, kids=0, squash=0.85):
+        base, n = on_body(start, self.bones, toward=toward)
+        seed = self.seed * 1000 + len(self.knobs)
+        k = Knob(base + n * (self.level + r * lift), r, n, seed, squash)
+        self.knobs.append(k)
+        self.feet.append((base, r * foot))
+        rng = np.random.default_rng(seed + 7)
+        for _ in range(kids):
+            # Smaller knobs crowding the upper side of a big one, cauliflower-like
+            d = unit(k.frame.T @ np.array([rng.normal(), rng.normal(), abs(rng.normal()) * 0.8 + 0.45]))
+            kr = r * rng.uniform(0.36, 0.52)
+            self.knobs.append(Knob(k.c + d * r * rng.uniform(0.72, 0.86), kr, d, seed + 500 + len(self.knobs), 0.9))
+        return k
+
+    def scatter(self, start, toward, size, count, rmax, rmin, angle=0.0, seed=0, kids=2):
+        """A crowd of knobs over an elliptic patch `size` (half-widths along and across, turned `angle` from level)
+        around the body point where a ray from `start` `toward` meets it: biggest in the middle, smaller and lower
+        toward the edge, packed without much overlap."""
+        base, n = on_body(start, self.bones, toward=toward)
+        f = frame_from(n)
+        ca, sa = math.cos(angle), math.sin(angle)
+        e1, e2 = f[0] * ca + f[1] * sa, -f[0] * sa + f[1] * ca
+        rng = np.random.default_rng(self.seed * 77 + seed)
+        placed = []
+        tries = 0
+        while len(placed) < count and tries < 4000:
+            tries += 1
+            x, y = rng.uniform(-1, 1, 2)
+            rr = x * x + y * y
+            if rr > 1:
+                continue
+            r = (rmin + (rmax - rmin) * (1 - rr) ** 1.5) * rng.uniform(0.8, 1.1)
+            p = base + e1 * x * size[0] + e2 * y * size[1]
+            if any(np.linalg.norm(p - q) < 0.85 * (r + s) for q, s in placed):
+                continue
+            placed.append((p, r))
+        placed.sort(key=lambda t: -t[1])
+        for p, r in placed:
+            big = (r - rmin) / max(rmax - rmin, 1e-6)
+            self.knob(p + n * 0.25, r, 0.55 * big - 0.05, -n, kids=int(round(kids * big + 0.3)))
+
+    def shelf(self, start, out, W, D, T, toward=None, inset=0.35, foot=0.15, **kw):
+        """A bracket growing out of the body point nearest `start` (or where a ray from it `toward` meets it), its
+        root sunk `inset` of its depth back into the mound, which spreads under it."""
+        base, n = on_body(start, self.bones, toward=toward)
+        o = unit(np.array([out[0], out[1], 0.0]))
+        A = base + n * (self.level + T * 0.15) - o * D * inset
+        s = Bracket(A, out, W, D, T, self.seed * 1000 + 600 + len(self.shelves), **kw)
+        self.shelves.append(s)
+        self.feet.append((base, W * foot))
+        return s
+
+    def tier(self, start, out, sizes, step, spin=0.25, toward=None, **kw):
+        """Brackets stacked one over another, like a tier on a trunk: `sizes` (W, D, T) from the bottom up, `step`
+        apart, each turned a little."""
+        rng = np.random.default_rng(self.seed + len(self.shelves) * 13)
+        start = np.asarray(start, float)
+        o = np.array([out[0], out[1], 0.0])
+        for i, (W, D, T) in enumerate(sizes):
+            a = rng.uniform(-spin, spin)
+            ca, sa = math.cos(a), math.sin(a)
+            oi = np.array([o[0] * ca - o[1] * sa, o[0] * sa + o[1] * ca])
+            self.shelf(start + UP * step * i, oi, W, D, T, toward=toward, **kw)
+
+    # -- fields
     def beyond(self, P):
-        d = np.min(np.linalg.norm(P[:, None, :] - self.bases[None], axis=2) - self.rs[None] * self.spread, axis=1)
-        return np.maximum(d + waves(P, 0.05, self.seed + 7, 2) * 0.008, 0.0)
+        """Distance outside the mound's footprint (discs around the knobs' and shelves' bases), ragged."""
+        bases = np.array([b for b, _ in self.feet])
+        rs = np.array([r for _, r in self.feet])
+        d = np.min(np.linalg.norm(P[:, None, :] - bases[None], axis=2) - rs[None], axis=1)
+        return np.maximum(d + waves(P, 0.04, self.seed + 7, 2) * 0.005, 0.0)
 
     def offset(self, P):
         b = self.beyond(P)
-        s = np.sqrt(b * b + 0.008 ** 2) - 0.008
-        off = SKIN - SLOPE * s - 1.6 * np.maximum(s - EDGE, 0.0)
-        off = np.maximum(off, DEEP)
-        inside = 1.0 - smooth01(0.0, 0.025, b)
-        return off + inside * waves(P, 0.025, self.seed + 3, 2) * 0.0025
+        s = np.sqrt(b * b + 0.004 ** 2) - 0.004
+        off = np.maximum(self.level - STEEP * s, DEEP)
+        inside = 1.0 - smooth01(0.0, 0.015, b)
+        return off + inside * waves(P, 0.018, self.seed + 3, 2) * 0.004
+
+    def ground(self, P):
+        return body(P, self.bones)
 
     def skin(self, P):
-        return body(P, self.bones) - self.offset(P)
+        return self.ground(P) - self.offset(P)
 
-    def field(self, P):
-        d = self.skin(P)
-        for l in self.lumps:
-            d = smin(d, l.sdf(P), l.r * 0.35)
+    def mass(self, P):
+        d = None
+        for k in self.knobs:
+            e = k.sdf(P)
+            d = e if d is None else smin(d, e, k.r * 0.06)
         return d
 
-    def surface(self, start, inset=0.0):
-        """The point on the grown surface nearest `start` (sunk by `inset`) and the outward normal there."""
-        p = settle(self.field, np.array([start], float), 10)
-        n = normals(self.field, p)[0]
-        return p[0] - n * inset, n
+    def core(self, P):
+        return smin(self.skin(P), self.mass(P), 0.008)
 
+    def brackets(self, P):
+        d = None
+        for s in self.shelves:
+            e = s.sdf(P)
+            d = e if d is None else smin(d, e, 0.003)
+        return d
+
+    def field(self, P):
+        if not self.shelves:
+            return self.core(P)
+        return smin(self.core(P), self.brackets(P), 0.005)
+
+    # -- mesh
     def box(self):
-        reach = (self.rs * (self.spread + 1.5) + EDGE + 0.06)[:, None]
-        return (self.bases - reach).min(0), (self.bases + reach).max(0)
+        pts, rs = [], []
+        for b, r in self.feet:
+            pts.append(b)
+            rs.append(r + self.edge + 0.035)
+        for k in self.knobs:
+            pts.append(k.c)
+            rs.append(k.r * 1.4)
+        for s in self.shelves:
+            pts.append(s.A)
+            rs.append(s.reach())
+        pts, rs = np.array(pts), np.array(rs)[:, None]
+        return (pts - rs).min(0), (pts + rs).max(0)
 
-    def mesh(self, name, material, tris, h=0.0025, inner=-0.05, cut=-0.025):
+    def region(self, P):
+        d = self.beyond(P) - (self.edge + 0.03)
+        if self.shelves:
+            d = np.minimum(d, self.brackets(P) - 0.006)
+        return d
+
+    def mesh(self, name, material, tris):
         lo, hi = self.box()
-        keep = lambda P: smooth01(0.002, 0.01, self.skin(P))  # noqa: E731
-        region = lambda P: self.beyond(P) - (EDGE + 0.02)  # noqa: E731
-        obj = field_mesh(name, self.field, lo, hi, h, material, tris, bones=self.bones, keep=keep, region=region,
-                         inner=inner, cut=cut)
+
+        def keep(P):
+            k = 0.8 * smooth01(0.004, -0.002, self.mass(P))
+            if self.shelves:
+                k = np.maximum(k, smooth01(0.004, -0.001, self.brackets(P)))
+            return k
+
+        obj = field_mesh(name, self.field, lo, hi, self.h, material, tris, inner=self.inner, bones=self.bones,
+                         keep=keep, cut=self.cut, region=self.region, ground=self.ground)
         P = mesh_verts(obj)
-        lift = self.skin(P)
-        near = np.zeros(len(P))
-        for l in self.lumps:
-            d = np.linalg.norm(P - l.base, axis=1)
-            near = np.maximum(near, np.exp(-(np.maximum(d - l.r * 1.2, 0.0) / (l.r * 0.9 + 0.006)) ** 2))
-        put(obj, "fung", smooth01(0.001, 0.008, lift))
-        put(obj, "near", near)
-        put(obj, "edge", np.clip(self.beyond(P) / EDGE, 0.0, 1.0))
+        d_skin, d_mass = self.skin(P), self.mass(P)
+        d_shelf = self.brackets(P) if self.shelves else np.full(len(P), 1.0)
+        fung = np.minimum(d_mass, d_shelf)
+        put(obj, "rot", smooth01(-0.0025, 0.003, fung - d_skin))
+        put(obj, "shelf", smooth01(-0.0015, 0.002, np.minimum(d_mass, d_skin) - d_shelf))
+        put(obj, "near", np.exp(-(np.maximum(d_mass, 0.0) / 0.009) ** 2))
+        put(obj, "edge", np.clip(self.beyond(P) / self.edge, 0.0, 1.0))
+        put(obj, "deep", smooth01(0.006, -0.02, self.ground(P)))
+        put(obj, "low", smooth01(self.level + 0.016, self.level - 0.002, self.ground(P)))
+        # Knobs: how high up the nearest knob a point is (0 underneath, 1 on top)
+        ks = np.stack([k.sdf(P) for k in self.knobs], 1)
+        tip = np.zeros(len(P))
+        near = np.argmin(ks, 1)
+        for i, k in enumerate(self.knobs):
+            m = near == i
+            tip[m] = np.clip(0.5 + 0.5 * ((P[m] - k.c) @ k.n) / (k.r * 0.85), 0.0, 1.0)
+        put(obj, "tip", tip)
+        # And a random shade per knob, so the crowd isn't all one colour
+        put(obj, "kv", np.random.default_rng(self.seed).uniform(0.0, 1.0, len(self.knobs))[near])
+        # Shelves: across the nearest shelf (0 at the root, 1 at the margin) and its underside
+        rho = np.zeros(len(P))
+        under = np.zeros(len(P))
+        sv = np.zeros(len(P))
+        if self.shelves:
+            N = normals(self.field, P)
+            ss = np.stack([s.sdf(P) for s in self.shelves], 1)
+            near = np.argmin(ss, 1)
+            for i, s in enumerate(self.shelves):
+                m = near == i
+                rho[m] = s.rho(P[m])
+                sv[m] = np.random.default_rng(s.seed).uniform()
+                under[m] = smooth01(-0.15, -0.55, N[m] @ s.F[2])
+        put(obj, "rho", rho)
+        put(obj, "under", under)
+        put(obj, "sv", sv)
         return obj
 
 
-def shelf(name, A, out, W, D, T, seed, material, segs=8, droop=0.2, span=1.35):
-    """A bracket fungus growing out sideways from A: a fan-shaped, lobed shelf, thick and domed at the base with
-    low ridges, flat underneath, thinning to a rounded margin; `out` is the way it sticks out (kept level), W its
-    width, D how far it sticks out, T its thickness at the base."""
-    rng = np.random.default_rng(seed)
-    out = unit(np.array([out[0], out[1], 0.0]))
-    side = np.cross(UP, out)
-    ph = rng.uniform(0, 2 * math.pi, 3)
-    rhos = [0.3, 0.55, 0.76, 0.92]
-    thetas = [-span + 2 * span * j / segs for j in range(segs + 1)]
-    bm = bmesh.new()
-    rho_v, under_v = [], []
+# ---------------------------------------------------------------- material
 
-    def spot(rho, th, h_top):
-        m = 1 + 0.14 * math.sin(3 * th + ph[0]) + 0.06 * math.sin(7 * th + ph[1])
-        flat = (side * math.sin(th) * W * 0.5 + out * math.cos(th) * D) * rho * m
-        return A + flat + UP * (h_top - droop * T * rho * rho)
-
-    def top_h(rho):
-        return T * (0.16 + 0.84 * (1 - rho * rho) ** 0.6) * (1 + 0.07 * math.sin(rho * 28 + ph[2]) * rho)
-
-    def bot_h(rho):
-        return -T * 0.25 * (1 - rho * rho) ** 0.7
-
-    top_c = bm.verts.new(A + UP * T)
-    bot_c = bm.verts.new(A - UP * T * 0.25)
-    rho_v += [0.0, 0.0]
-    under_v += [0.0, 1.0]
-    top, bot = [], []
-    for rho in rhos:
-        top.append([bm.verts.new(spot(rho, th, top_h(rho))) for th in thetas])
-        bot.append([bm.verts.new(spot(rho, th, bot_h(rho))) for th in thetas])
-        rho_v += [rho] * len(thetas)
-        under_v += [0.0] * len(thetas)
-        rho_v += [rho] * len(thetas)
-        under_v += [1.0] * len(thetas)
-    rim = [bm.verts.new(spot(1.0, th, T * 0.05)) for th in thetas]
-    rho_v += [1.0] * len(thetas)
-    under_v += [0.5] * len(thetas)
-    n = len(thetas)
-    for j in range(n - 1):
-        bm.faces.new((top_c, top[0][j], top[0][j + 1]))
-        bm.faces.new((bot_c, bot[0][j + 1], bot[0][j]))
-        for i in range(len(rhos) - 1):
-            bm.faces.new((top[i][j], top[i + 1][j], top[i + 1][j + 1], top[i][j + 1]))
-            bm.faces.new((bot[i][j], bot[i][j + 1], bot[i + 1][j + 1], bot[i + 1][j]))
-        bm.faces.new((top[-1][j], rim[j], rim[j + 1], top[-1][j + 1]))
-        bm.faces.new((bot[-1][j], bot[-1][j + 1], rim[j + 1], rim[j]))
-    for j in (0, n - 1):
-        ring = [top_c] + [top[i][j] for i in range(len(rhos))] + [rim[j]]
-        ring += [bot[i][j] for i in range(len(rhos) - 1, -1, -1)] + [bot_c]
-        try:
-            bm.faces.new(ring if j == 0 else list(reversed(ring)))
-        except ValueError:
-            pass
-    bmesh.ops.triangulate(bm, faces=bm.faces[:])
-    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
-    obj = tk.mesh_object(name, bm, material)
-    put(obj, "rho", rho_v)
-    put(obj, "under", under_v)
-    return tk.smooth(obj, 70.0)
+def knob_cells(g, scale, smoothness=0.4):
+    """1 in the middle of rounded cells, 0 in the cracks between them (warped smooth Voronoi)."""
+    v = g.node("ShaderNodeTexVoronoi", feature="SMOOTH_F1")
+    g._in(v, "Scale", scale)
+    g._in(v, "Smoothness", smoothness)
+    g.links.new(warp(g, g.coords(), scale * 0.3, 0.4 / scale), v.inputs["Vector"])
+    return g.math("SUBTRACT", 1.0, g.math("POWER", tk._sock(v.outputs, "Distance"), 1.5), clamp=True)
 
 
-def stalk(name, base, direction, length, radius, seed, material, segs=5):
-    """A cordyceps fruiting stalk: thin, a little crooked, swelling into a club at the tip."""
-    rng = np.random.default_rng(seed)
-    d = unit(direction)
-    wob = np.cross(d, unit(rng.normal(size=3))) * length * 0.15
-    f = frame_from(d)
-    us = [-0.3, 0.0, 0.3, 0.6, 0.75, 0.88, 0.97]
-    bm = bmesh.new()
-    rings, t_v = [], []
-    for u in us:
-        p = base + d * length * u + wob * math.sin(math.pi * max(u, 0.0)) * u
-        r = radius * (1.0 - 0.3 * u if u < 0.65 else 1.6 - 0.5 * (u - 0.65) / 0.32)
-        ring = []
-        for k in range(segs):
-            a = 2 * math.pi * k / segs
-            ring.append(bm.verts.new(p + (f[0] * math.cos(a) + f[1] * math.sin(a)) * r))
-            t_v.append(0.03 + 0.97 * max(u, 0.0))
-        rings.append(ring)
-    for i in range(len(rings) - 1):
-        for k in range(segs):
-            bm.faces.new((rings[i][k], rings[i][(k + 1) % segs], rings[i + 1][(k + 1) % segs], rings[i + 1][k]))
-    tip = bm.verts.new(base + d * length * 1.02 + wob * 0.05)
-    t_v.append(1.0)
-    for k in range(segs):
-        bm.faces.new((rings[-1][k], rings[-1][(k + 1) % segs], tip))
-    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
-    obj = tk.mesh_object(name, bm, material)
-    put(obj, "t", t_v)
-    return tk.smooth(obj, 80.0)
-
-
-def strands(name, patch, count, seed, material, length=(0.025, 0.045), radius=0.0007):
-    """Fine mycelium threads creeping out from the fungal masses over the skin, here and there lifting off it."""
-    rng = np.random.default_rng(seed)
-    bm = bmesh.new()
-    skin = patch.skin
-    for c in range(count):
-        l = patch.lumps[rng.integers(len(patch.lumps))]
-        a = rng.uniform(0, 2 * math.pi)
-        t1, t2 = l.frame[0], l.frame[1]
-        heading = t1 * math.cos(a) + t2 * math.sin(a)
-        p = l.base + heading * l.r * 1.0
-        pts = []
-        L = rng.uniform(*length)
-        steps = 7
-        for i in range(steps + 1):
-            q = settle(skin, np.array([p]), 6)[0]
-            nrm = normals(skin, np.array([q]))[0]
-            lift = 0.0009 + 0.0012 * math.sin(math.pi * i / steps) * rng.uniform(0.0, 1.0)
-            pts.append(q + nrm * lift)
-            heading = unit(heading + np.cross(nrm, heading) * rng.uniform(-0.6, 0.6))
-            heading = unit(heading - nrm * (heading @ nrm))
-            p = q + heading * L / steps
-        rings = []
-        for i, q in enumerate(pts):
-            tan = unit(pts[min(i + 1, steps)] - pts[max(i - 1, 0)])
-            f = frame_from(tan)
-            r = radius * (1.0 - 0.6 * i / steps)
-            rings.append([bm.verts.new(q + (f[0] * math.cos(k * 2.094) + f[1] * math.sin(k * 2.094)) * r)
-                          for k in range(3)])
-        for i in range(steps):
-            for k in range(3):
-                bm.faces.new((rings[i][k], rings[i][(k + 1) % 3], rings[i + 1][(k + 1) % 3], rings[i + 1][k]))
-    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
-    obj = tk.mesh_object(name, bm, material)
-    return tk.smooth(obj, 80.0)
-
-
-# ---------------------------------------------------------------- materials
-
-def rot_material(name):
-    """Skin going necrotic toward the fungus: bruised, then wet brown-black rot, furred with white mycelium around
-    the growths; the fungal masses pale cream and tan, knobbly like cauliflower, with ochre blotches and dark
-    crevices between the knobs."""
+def fungus_material(name):
+    """Rotten flesh, near black and blood-brown, with pale mycelium creeping over it right around the growths and
+    staining the growths' roots where they break out of the zombie; knobby fungal masses, ochre-brown with cracked,
+    cauliflower skin, darker down their sides and pale-specked on their crowns, each a little different; bracket
+    shelves with dark brown concentric growth zones on top, an ochre band and a narrow pale rim at the margin, and a
+    dull tan underside packed with pores. Dark and matte overall: the game's shader shows pale or glossy surfaces much
+    brighter and flatter than Blender does."""
     mat, g = tk.new_material(name)
-    fung = attr(g, "fung")
+    rot = attr(g, "rot")
+    shelf = attr(g, "shelf")
     near = attr(g, "near")
     edge = attr(g, "edge")
-    mott = g.noise(14.0, detail=6.0, roughness=0.62)
-    skin = g.mix(g.ramp(mott, 0.3, 0.72), (0.3, 0.27, 0.22), (0.2, 0.18, 0.15))
-    inside = g.math("SUBTRACT", 1.0, g.ramp(edge, 0.1, 0.8))
-    bz = g.math("MULTIPLY", g.math("MAXIMUM", g.ramp(near, 0.05, 0.5), g.math("MULTIPLY", inside, 0.25)),
-                g.ramp(g.noise(9.0, detail=5.0), 0.25, 0.6))
-    skin = g.mix(bz, skin, (0.15, 0.1, 0.085))
-    # Rotten through the whole patch (not just beside the growths): pale dead skin there read as a flat tan slab on
-    # the zombie's clothes in game
-    rot = g.math("MULTIPLY", g.math("MAXIMUM", g.ramp(near, 0.35, 0.85), g.math("MULTIPLY", inside, 0.85)),
-                 g.ramp(g.noise(16.0, detail=6.0), 0.15, 0.45))
-    skin = g.mix(rot, skin, (0.055, 0.035, 0.022))
-    # Mycelium: a white fur of fine fibres right around the growths, a few threads reaching further
-    fuzz = g.ramp(g.noise(90.0, detail=8.0, roughness=0.8), 0.5, 0.7)
-    furred = g.math("MULTIPLY", fuzz, g.ramp(near, 0.65, 0.97))
-    threads = veins(g, 55.0, 0.025, warp_amount=2.0, broken=0.85)
-    reach = g.math("MULTIPLY", threads, g.ramp(near, 0.55, 0.9))
-    myc = g.math("MAXIMUM", furred, g.math("MULTIPLY", reach, 0.6))
-    skin = g.mix(g.math("MULTIPLY", myc, 0.75), skin, (0.66, 0.63, 0.54))
-
-    # Fungal flesh: bulbous knobs (smooth Voronoi cells) at two sizes, darker in the crevices between them
-    def knobs(scale):
-        v = g.node("ShaderNodeTexVoronoi", feature="SMOOTH_F1")
-        g._in(v, "Scale", scale)
-        g._in(v, "Smoothness", 0.4)
-        g.links.new(warp(g, g.coords(), scale * 0.3, 0.4 / scale), v.inputs["Vector"])
-        return g.math("SUBTRACT", 1.0, g.math("POWER", tk._sock(v.outputs, "Distance"), 1.5), clamp=True)
-
-    big_k = knobs(70.0)
-    small_k = knobs(190.0)
-    lumps = g.math("ADD", g.math("MULTIPLY", big_k, 0.7), g.math("MULTIPLY", small_k, 0.3))
-    fungus = g.mix(g.ramp(g.noise(7.0, detail=4.0), 0.3, 0.7), (0.56, 0.5, 0.37), (0.38, 0.29, 0.17))
-    fungus = g.mix(g.math("MULTIPLY", g.ramp(g.noise(11.0, detail=5.0, distortion=0.5), 0.58, 0.72), 0.7), fungus,
-                   (0.48, 0.32, 0.12))
-    fungus = g.mix(g.math("MULTIPLY", g.ramp(lumps, 0.55, 0.25), 0.85), fungus, (0.2, 0.14, 0.08))
-    base = g.math("SUBTRACT", 1.0, g.ramp(fung, 0.2, 0.9))
-    fungus = g.mix(g.math("MULTIPLY", base, 0.6), fungus, (0.18, 0.11, 0.07))
-    col = g.mix(g.ramp(fung, 0.15, 0.7), skin, fungus)
-    cav = g.cavity(0.02)
-    col = g.mix(g.math("MULTIPLY", g.math("SUBTRACT", 1.0, cav, clamp=True), 0.8), col, (0.06, 0.04, 0.025))
-
-    rough = g.mixf(rot, 0.6, 0.3)
-    rough = g.mixf(myc, rough, 0.85)
-    rough = g.mixf(g.ramp(fung, 0.15, 0.7), rough, g.math("ADD", 0.48, g.math("MULTIPLY", lumps, 0.2)))
-    height = g.math("MULTIPLY", g.noise(170.0, detail=4.0), 0.2)
-    height = g.math("ADD", height, g.math("MULTIPLY", myc, 0.3))
-    height = g.math("ADD", height, g.math("MULTIPLY", g.ramp(fung, 0.1, 0.6), g.math("MULTIPLY", lumps, 1.6)))
-    # A dark, ragged rim of grime and dried blood where the patch meets the zombie's clothes or skin, so it reads
-    # as torn through them on any zombie rather than laid on top
-    rim = g.ramp(g.math("ADD", edge, g.math("MULTIPLY", g.noise(18.0, detail=5.0, distortion=0.4), 0.5)), 0.6, 0.95)
-    col = g.mix(g.math("MULTIPLY", rim, 0.9), col, (0.03, 0.02, 0.015))
-    # Toned down to sit with the game's dark, dirty zombies (bright growths read as stuck-on shapes in game)
-    col = tk.grade(g, col, sat=0.85, value=0.62)
-    # Matte: wet-looking rot turned into a glossy grey sheet in the game's shader, hiding all its detail
-    rough = g.math("ADD", g.math("MULTIPLY", rough, 0.5), 0.4)
-    return tk.finish(mat, g, col, 0.0, rough, g.bump(height, 0.45, 0.002))
-
-
-def bracket_material(name):
-    """Shelf fungus: concentric tan, brown and cream growth zones on top with a pale fresh margin, velvety; a cream
-    underside packed with pores."""
-    mat, g = tk.new_material(name)
+    deep = attr(g, "deep")
+    low = attr(g, "low")
+    tip = attr(g, "tip")
+    kv = attr(g, "kv")
     rho = attr(g, "rho")
+    sv = attr(g, "sv")
     under = attr(g, "under")
-    wob = g.math("ADD", rho, g.math("MULTIPLY", g.noise(12.0, detail=3.0), 0.06))
-    zones = g.math("SINE", g.math("MULTIPLY", wob, 34.0))
-    grain = g.noise(45.0, detail=6.0, roughness=0.7)
-    top = g.mix(g.ramp(zones, -0.9, 0.9), (0.15, 0.095, 0.045), (0.3, 0.22, 0.12))
-    top = g.mix(g.math("MULTIPLY", g.ramp(g.math("SINE", g.math("MULTIPLY", wob, 9.0)), 0.4, 0.95), 0.6), top,
-                (0.09, 0.055, 0.025))
-    top = g.mix(g.ramp(g.noise(8.0, detail=4.0), 0.5, 0.72), top, (0.32, 0.22, 0.1))
-    top = g.mix(g.math("MULTIPLY", g.ramp(grain, 0.35, 0.65), 0.35), top, (0.1, 0.065, 0.035))
-    top = g.mix(g.ramp(rho, 0.8, 0.98), top, (0.56, 0.5, 0.37))
-    top = g.mix(g.ramp(rho, 0.45, 0.05), top, (0.08, 0.05, 0.025))
-    vor = g.node("ShaderNodeTexVoronoi", feature="F1")
-    g._in(vor, "Scale", 260.0)
-    g.links.new(g.coords(), vor.inputs["Vector"])
-    pores = g.ramp(tk._sock(vor.outputs, "Distance"), 0.28, 0.12)
-    bottom = g.mix(g.ramp(g.noise(9.0, detail=3.0), 0.3, 0.7), (0.6, 0.54, 0.38), (0.46, 0.38, 0.23))
-    bottom = g.mix(g.math("MULTIPLY", pores, 0.7), bottom, (0.36, 0.28, 0.16))
-    col = g.mix(under, top, bottom)
-    cav = g.cavity(0.015)
-    col = g.mix(g.math("MULTIPLY", g.math("SUBTRACT", 1.0, cav, clamp=True), 0.7), col, (0.08, 0.05, 0.03))
-    rough = g.mixf(under, 0.78, 0.68)
-    height = g.math("MULTIPLY", g.math("SUBTRACT", 1.0, under),
-                    g.math("ADD", g.math("MULTIPLY", zones, 0.35), g.math("MULTIPLY", grain, 0.4)))
-    height = g.math("ADD", height, g.math("MULTIPLY", g.noise(140.0, detail=5.0), 0.3))
-    height = g.math("SUBTRACT", height, g.math("MULTIPLY", g.math("MULTIPLY", pores, under), 0.6))
-    # Toned down to sit with the game's dark, dirty zombies (bright growths read as stuck-on shapes in game)
-    col = tk.grade(g, col, sat=0.85, value=0.6)
-    return tk.finish(mat, g, col, 0.0, rough, g.bump(height, 0.3, 0.0015))
 
+    # ---- rotten flesh
+    mott = g.noise(16.0, detail=6.0, roughness=0.6)
+    flesh = g.mix(g.ramp(mott, 0.3, 0.72), (0.024, 0.012, 0.009), (0.012, 0.006, 0.005))
+    bruise = g.math("MULTIPLY", g.ramp(g.noise(6.0, detail=4.0, distortion=0.4), 0.5, 0.7), 0.8)
+    flesh = g.mix(bruise, flesh, (0.024, 0.008, 0.011))
+    blood = g.math("MULTIPLY", g.ramp(g.noise(9.0, detail=5.0, distortion=0.6), 0.48, 0.62), 0.9)
+    flesh = g.mix(blood, flesh, (0.04, 0.006, 0.004))
+    wrinkle = veins(g, 24.0, 0.04, warp_amount=1.2, broken=0.4)
+    flesh = g.mix(g.math("MULTIPLY", wrinkle, 0.6), flesh, (0.006, 0.004, 0.003))
+    # Pale mycelium creeping over the rot right around the masses: fuzz, and a few threads reaching out
+    fuzz = g.math("MULTIPLY", g.ramp(g.noise(120.0, detail=6.0, roughness=0.8), 0.6, 0.72),
+                  g.ramp(near, 0.7, 0.98))
+    threads = g.math("MULTIPLY", veins(g, 70.0, 0.03, warp_amount=2.0, broken=0.8), g.ramp(near, 0.1, 0.6))
+    myc = g.math("MAXIMUM", fuzz, g.math("MULTIPLY", threads, 0.6))
+    flesh = g.mix(g.math("MULTIPLY", myc, 0.5), flesh, (0.09, 0.078, 0.06))
+    # Darker and dirtier down the mound's walls into the zombie, so it reads as torn up out of it
+    stain = g.math("MAXIMUM", g.ramp(edge, 0.2, 0.9), g.math("MULTIPLY", deep, 0.9))
+    stain = g.math("MULTIPLY", stain, g.ramp(g.noise(14.0, detail=4.0), 0.15, 0.5))
+    flesh = g.mix(g.math("MULTIPLY", stain, 0.85), flesh, (0.008, 0.005, 0.004))
 
-def thread_material(name):
-    """Cordyceps stalks (orange-tan, darkening to a knobbly brown club) and white mycelium strands, told apart by
-    the stalks' `t` attribute (strands have none, so read 0)."""
-    mat, g = tk.new_material(name)
-    t = attr(g, "t")
-    is_stalk = g.ramp(t, 0.0, 0.02)
-    strand = g.mix(g.ramp(g.noise(30.0, detail=3.0), 0.3, 0.7), (0.76, 0.73, 0.64), (0.6, 0.56, 0.46))
-    stem = g.mix(g.ramp(t, 0.55, 0.8), (0.55, 0.32, 0.12), (0.22, 0.11, 0.05))
-    stem = g.mix(g.math("MULTIPLY", g.ramp(g.noise(120.0, detail=3.0), 0.55, 0.7), g.ramp(t, 0.6, 0.8)), stem,
-                 (0.4, 0.25, 0.1))
-    col = g.mix(is_stalk, strand, stem)
-    rough = g.mixf(is_stalk, 0.7, 0.55)
-    height = g.math("MULTIPLY", g.noise(150.0, detail=3.0), g.ramp(t, 0.6, 0.8))
-    # Toned down to sit with the game's dark, dirty zombies (bright growths read as stuck-on shapes in game)
-    col = tk.grade(g, col, sat=0.9, value=0.7)
-    return tk.finish(mat, g, col, 0.0, rough, g.bump(height, 0.3, 0.001))
+    # ---- fungal knobs: dirty brown, darker down their sides, pale specks only on the crowns
+    cells = knob_cells(g, 150.0)
+    big = knob_cells(g, 55.0, 0.6)
+    knob = g.mix(g.ramp(tip, 0.3, 0.95), (0.016, 0.01, 0.006), (0.058, 0.034, 0.016))
+    ochre = g.math("MULTIPLY", g.ramp(g.noise(13.0, detail=5.0, distortion=0.6), 0.55, 0.7), 0.7)
+    knob = g.mix(ochre, knob, (0.075, 0.04, 0.013))
+    caps = g.math("MULTIPLY", g.ramp(tip, 0.7, 0.95), g.ramp(g.noise(40.0, detail=5.0, roughness=0.7), 0.55, 0.64))
+    knob = g.mix(caps, knob, (0.22, 0.19, 0.14))
+    # Some knobs darker and redder, some paler
+    dark = g.mix(0.5, knob, (0.03, 0.014, 0.009))
+    knob = g.mix(g.math("MULTIPLY", g.ramp(kv, 0.3, 0.0), 0.5), knob, dark)
+    knob = g.mix(g.math("MULTIPLY", g.ramp(kv, 0.8, 1.0), 0.3), knob, (0.1, 0.085, 0.06))
+    cracks = g.math("MAXIMUM", g.ramp(cells, 0.5, 0.15), g.math("MULTIPLY", g.ramp(big, 0.45, 0.1), 0.9))
+    knob = g.mix(g.math("MULTIPLY", cracks, 0.85), knob, (0.022, 0.015, 0.01))
+    spots = g.node("ShaderNodeTexVoronoi", feature="F1")
+    g._in(spots, "Scale", 300.0)
+    g.links.new(g.coords(), spots.inputs["Vector"])
+    pits = g.math("MULTIPLY", g.ramp(tk._sock(spots.outputs, "Distance"), 0.12, 0.05),
+                  g.ramp(g.noise(7.0), 0.5, 0.65))
+    knob = g.mix(g.math("MULTIPLY", pits, 0.8), knob, (0.025, 0.017, 0.011))
+
+    # ---- bracket shelves
+    wob = g.math("ADD", rho, g.math("MULTIPLY", g.noise(14.0, detail=3.0), 0.05))
+    zones = g.math("SINE", g.math("MULTIPLY", wob, 38.0))
+    broad = g.math("SINE", g.math("MULTIPLY", wob, 11.0))
+    top = g.mix(g.ramp(zones, -0.8, 0.8), (0.024, 0.015, 0.009), (0.058, 0.037, 0.019))
+    top = g.mix(g.math("MULTIPLY", g.ramp(broad, 0.3, 0.9), 0.65), top, (0.018, 0.012, 0.008))
+    grain = g.noise(60.0, detail=6.0, roughness=0.7)
+    top = g.mix(g.math("MULTIPLY", g.ramp(grain, 0.35, 0.7), 0.4), top, (0.02, 0.014, 0.009))
+    top = g.mix(g.ramp(rho, 0.8, 0.9), top, (0.09, 0.055, 0.022))
+    top = g.mix(g.ramp(rho, 0.93, 0.99), top, (0.22, 0.19, 0.14))
+    top = g.mix(g.ramp(rho, 0.45, 0.1), top, (0.02, 0.013, 0.009))
+    pores = g.node("ShaderNodeTexVoronoi", feature="F1")
+    g._in(pores, "Scale", 280.0)
+    g.links.new(g.coords(), pores.inputs["Vector"])
+    pore = g.ramp(tk._sock(pores.outputs, "Distance"), 0.3, 0.12)
+    bottom = g.mix(g.ramp(g.noise(9.0, detail=3.0), 0.3, 0.7), (0.13, 0.108, 0.075), (0.085, 0.068, 0.045))
+    bottom = g.mix(g.math("MULTIPLY", pore, 0.7), bottom, (0.032, 0.025, 0.017))
+    bottom = g.mix(g.ramp(rho, 0.5, 0.15), bottom, (0.025, 0.017, 0.011))
+    sh = g.mix(under, top, bottom)
+    # Each shelf its own shade: some rustier, some darker
+    sh = g.mix(g.math("MULTIPLY", g.ramp(sv, 0.6, 1.0), 0.45), sh, g.mix(0.5, sh, (0.09, 0.04, 0.014)))
+    sh = g.mix(g.math("MULTIPLY", g.ramp(sv, 0.35, 0.0), 0.5), sh, g.mix(0.6, sh, (0.02, 0.014, 0.01)))
+
+    col = g.mix(g.math("SUBTRACT", 1.0, rot), flesh, knob)
+    col = g.mix(shelf, col, sh)
+    # Rot climbing the roots of the growths where they break out of the zombie, ragged
+    climb = g.ramp(g.math("ADD", low, g.math("MULTIPLY", g.noise(20.0, detail=4.0), 0.5)), 0.6, 0.95)
+    climb = g.math("MULTIPLY", climb, g.math("SUBTRACT", 1.0, rot))
+    col = g.mix(climb, col, flesh)
+    # Grime over everything
+    grime = g.math("MULTIPLY", g.ramp(g.noise(5.0, detail=5.0), 0.4, 0.75), 0.45)
+    col = g.mix(grime, col, (0.02, 0.014, 0.01))
+    cav = g.cavity(0.02)
+    col = g.mix(g.ramp(cav, 0.85, 0.35), col, (0.008, 0.005, 0.004))
+
+    # The game's shader shows these far brighter than Blender does: darkened to sit with the zombies' own clothes
+    # and skin in the Unity renders, so only the shelves' rims and undersides and the knobs' specks read pale
+    col = tk.grade(g, col, sat=1.05, value=0.62)
+
+    # Roughness: wet only in the blood and the rot, matte everywhere else
+    wet = g.math("MAXIMUM", rot, climb)
+    rough = g.mixf(blood, 0.84, 0.62)
+    rough = g.mixf(wet, g.math("ADD", 0.8, g.math("MULTIPLY", cells, 0.08)), rough)
+    rough = g.mixf(g.math("MULTIPLY", shelf, g.math("SUBTRACT", 1.0, climb)), rough, g.mixf(under, 0.82, 0.9))
+    height = g.math("MULTIPLY", g.noise(150.0, detail=4.0), 0.25)
+    height = g.math("ADD", height, g.math("MULTIPLY", wrinkle, -0.5))
+    height = g.math("ADD", height, g.math("MULTIPLY", myc, 0.3))
+    k_h = g.math("ADD", g.math("MULTIPLY", cells, 0.9), g.math("MULTIPLY", big, 1.2))
+    k_h = g.math("SUBTRACT", k_h, g.math("MULTIPLY", pits, 0.6))
+    height = g.mixf(g.math("SUBTRACT", 1.0, rot), height, k_h)
+    s_top = g.math("ADD", g.math("MULTIPLY", zones, 0.45), g.math("MULTIPLY", grain, 0.5))
+    s_bot = g.math("SUBTRACT", 0.5, g.math("MULTIPLY", pore, 0.9))
+    height = g.mixf(shelf, height, g.mixf(under, s_top, s_bot))
+    return tk.finish(mat, g, col, 0.0, rough, g.bump(height, 0.45, 0.0015))
 
 
 tk.reset_scene()
 zk.stage()
 zk.body()
-rot = rot_material("Rot")
-bracket = bracket_material("Bracket")
-thread = thread_material("Mycelium")
+fungus = fungus_material("Fungus")
 pieces = []
 
 
-def part(objs, bone):
-    for o in objs:
-        zk.on(o, bone, "Fungus")
-    pieces.extend(objs)
+def part(cluster, bone, piece, tris):
+    obj = cluster.mesh(piece, fungus, tris)
+    zk.on(obj, bone, piece)
+    pieces.append(obj)
+    return obj
 
 
-def shelf_on(patch, name, start, out, W, D, T, seed, inset=0.012, **kw):
-    A, n = patch.surface(start, inset)
-    return shelf(name, A, out, W, D, T, seed, bracket, **kw)
-
-
-def stalk_on(patch, name, start, length, radius, seed, lean=(0.0, 0.0, 0.0)):
-    A, n = patch.surface(start, 0.006)
-    return stalk(name, A, unit(n + np.asarray(lean, float)), length, radius, seed, thread)
-
-
-# ---- head: the left temple, side and back of the skull, clear of the face
-HEAD = ("Head",)
-head_lumps = [
-    Lump((0.2, 0.06, 1.72), 0.03, 11, rise=-0.1, knobs=7, bones=HEAD),
-    Lump((0.2, 0.025, 1.78), 0.022, 12, rise=-0.2, knobs=8, bones=HEAD),
-    Lump((0.15, 0.17, 1.68), 0.026, 13, rise=-0.15, knobs=6, bones=HEAD),
-    Lump((0.12, 0.08, 1.85), 0.02, 14, rise=-0.25, knobs=5, bones=HEAD),
-    Lump((0.2, 0.08, 1.62), 0.017, 15, rise=-0.2, knobs=4, bones=HEAD),
-]
-head_patch = Patch(head_lumps, 21, bones=HEAD, spread=1.3)
-head_mass = head_patch.mesh("HeadRot", rot, 850, inner=-0.04, cut=-0.02)
-head_parts = [head_mass,
-              shelf_on(head_patch, "HeadShelf0", (0.2, 0.09, 1.685), (1.0, 0.25), 0.085, 0.055, 0.015, 31),
-              shelf_on(head_patch, "HeadShelf1", (0.2, 0.1, 1.715), (1.0, 0.45), 0.065, 0.042, 0.012, 37),
-              shelf_on(head_patch, "HeadShelf2", (0.2, 0.04, 1.765), (1.0, -0.15), 0.06, 0.04, 0.012, 32),
-              shelf_on(head_patch, "HeadShelf3", (0.12, 0.2, 1.64), (0.5, 1.0), 0.07, 0.045, 0.013, 33),
-              stalk_on(head_patch, "HeadStalk0", (0.12, 0.08, 1.9), 0.035, 0.0022, 34, lean=(0.2, 0.0, 0.3)),
-              stalk_on(head_patch, "HeadStalk1", (0.15, 0.04, 1.86), 0.026, 0.0019, 35, lean=(0.4, -0.2, 0.2)),
-              strands("HeadStrands", head_patch, 4, 36, thread, length=(0.03, 0.05))]
-# The head's hit box is wider than the real skull (radius 0.10 against about 0.075 at the temples), so a patch
-# rooted on it floated in the hair: move each head piece 2 cm in toward the head's axis
-for o in head_parts:
-    V = mesh_verts(o)
-    c = V.mean(0)
-    d = np.array([c[0], c[1] - 0.035, 0.0])
-    V -= unit(d) * 0.02
-    o.data.vertices.foreach_set("co", V.ravel())
-    o.data.update()
-part(head_parts, "Head")
-
-# ---- upper back: a band of masses from the left shoulder blade across the spine, continuing the infection down the
-# left side. Not the front of the chest: that differs too much between zombies (Joe's chest is well inside its hit
-# box, a nurse's or fat cop's pushes past it), so a patch there floated off one and sank into the others; the back
-# matches the hit box on all of them
-B = 0.6
 BACK = (0.0, -1.0, 0.0)
-chest_lumps = [
-    Lump((0.11, B, 1.43), 0.032, 41, rise=-0.1, knobs=7, toward=BACK),
-    Lump((0.06, B, 1.38), 0.026, 42, rise=-0.15, knobs=6, toward=BACK),
-    Lump((0.0, B, 1.34), 0.024, 43, rise=-0.15, knobs=6, toward=BACK),
-    Lump((-0.055, B, 1.3), 0.02, 44, rise=-0.2, knobs=5, toward=BACK),
-    Lump((0.135, B, 1.36), 0.016, 45, rise=-0.2, knobs=4, toward=BACK),
-    Lump((-0.095, B, 1.27), 0.013, 46, rise=-0.25, knobs=4, toward=BACK),
-]
-chest_patch = Patch(chest_lumps, 51, spread=1.4)
-chest_mass = chest_patch.mesh("ChestRot", rot, 1000)
-chest_parts = [chest_mass,
-               shelf_on(chest_patch, "ChestShelf0", (0.1, B, 1.4), (0.3, 1.0), 0.09, 0.055, 0.016, 61),
-               shelf_on(chest_patch, "ChestShelf1", (0.09, B, 1.44), (0.4, 1.0), 0.065, 0.04, 0.012, 66),
-               shelf_on(chest_patch, "ChestShelf2", (0.02, B, 1.32), (-0.1, 1.0), 0.07, 0.044, 0.013, 62),
-               shelf_on(chest_patch, "ChestShelf3", (-0.06, B, 1.28), (-0.3, 1.0), 0.05, 0.034, 0.01, 63),
-               strands("ChestStrands", chest_patch, 5, 65, thread)]
-part(chest_parts, "Spine2")
+B = 0.6
 
-# ---- left shoulder: masses on the deltoid with shelves standing out sideways
+# ---- BackVar1: the big one, over the left shoulder blade toward the spine, where Joe's, the cop's and the nurse's
+# backs all sit within about 2 cm of the stand-in once fitted (higher up the cop's back falls away, lower down it
+# bulges). A diagonal crowd of knobs with a tier of three shelves down its outer side and two toward the spine.
+c = Cluster(1, skin=0.014)
+for x, z, r, lift, kids in ((0.088, 1.39, 0.026, 0.3, 4), (0.115, 1.415, 0.02, 0.2, 3), (0.06, 1.365, 0.021, 0.2, 3),
+                            (0.1, 1.355, 0.016, 0.1, 2), (0.068, 1.42, 0.016, 0.1, 2), (0.132, 1.385, 0.014, 0.05, 1),
+                            (0.04, 1.343, 0.014, 0.05, 1), (0.125, 1.442, 0.012, 0.0, 1), (0.047, 1.395, 0.012, 0.0, 1),
+                            (0.08, 1.333, 0.011, 0.0, 0), (0.147, 1.41, 0.009, -0.05, 0), (0.095, 1.443, 0.01, 0.0, 0)):
+    c.knob((x, B, z), r, lift + 0.004 / r, BACK, kids=kids)
+c.tier((0.13, B, 1.34), (0.7, 1.0), [(0.11, 0.072, 0.028), (0.1, 0.066, 0.026), (0.085, 0.056, 0.022)], 0.031,
+       toward=BACK)
+c.tier((0.035, B, 1.335), (-0.5, 1.0), [(0.075, 0.05, 0.021), (0.06, 0.04, 0.017)], 0.026, toward=BACK)
+part(c, "Spine2", "BackVar1", 2000)
+
+# ---- BackVar2: smaller, on the right of the back a little lower
+c = Cluster(2, skin=0.014)
+for x, z, r, lift, kids in ((-0.085, 1.31, 0.022, 0.3, 3), (-0.06, 1.29, 0.016, 0.15, 2),
+                            (-0.105, 1.335, 0.015, 0.1, 2), (-0.11, 1.29, 0.013, 0.05, 1),
+                            (-0.068, 1.335, 0.012, 0.0, 1), (-0.047, 1.31, 0.01, 0.0, 0),
+                            (-0.092, 1.272, 0.011, 0.0, 1), (-0.127, 1.315, 0.009, -0.05, 0)):
+    c.knob((x, B, z), r, lift + 0.004 / r, BACK, kids=kids)
+c.tier((-0.12, B, 1.27), (-0.75, 1.0), [(0.09, 0.06, 0.024), (0.075, 0.05, 0.02), (0.058, 0.04, 0.016)], 0.028,
+       toward=BACK)
+c.shelf((-0.05, B, 1.27), (-0.1, 1.0), 0.055, 0.036, 0.015, toward=BACK)
+part(c, "Spine2", "BackVar2", 1250)
+
+# ---- ShoulderVar: on top of the left deltoid (the real arm sits 1 to 2 cm outside the stand-in there on all three),
+# knobs on top and tiers of shelves standing out to the side and back
 ARM = ("Spine2", "LeftArm")
-arm_lumps = [
-    Lump((0.3, 0.05, 1.55), 0.03, 71, rise=-0.1, knobs=7, bones=ARM),
-    Lump((0.33, 0.12, 1.46), 0.022, 72, rise=-0.15, knobs=5, bones=ARM),
-    Lump((0.25, -0.05, 1.53), 0.018, 73, rise=-0.2, knobs=4, bones=ARM),
-]
-arm_patch = Patch(arm_lumps, 81, bones=ARM, spread=1.4)
-arm_mass = arm_patch.mesh("ArmRot", rot, 600, inner=-0.035, cut=-0.02)
-arm_parts = [arm_mass,
-             shelf_on(arm_patch, "ArmShelf0", (0.32, 0.06, 1.5), (1.0, 0.2), 0.08, 0.052, 0.015, 91),
-             shelf_on(arm_patch, "ArmShelf1", (0.32, 0.07, 1.535), (1.0, 0.0), 0.06, 0.038, 0.012, 95),
-             shelf_on(arm_patch, "ArmShelf2", (0.33, 0.12, 1.43), (1.0, 0.6), 0.055, 0.036, 0.011, 92),
-             stalk_on(arm_patch, "ArmStalk0", (0.27, 0.0, 1.62), 0.03, 0.002, 93, lean=(0.1, 0.0, 0.4)),
-             strands("ArmStrands", arm_patch, 3, 94, thread)]
-part(arm_parts, "LeftArm")
+a0, a1, ar = CAPS["LeftArm"]
+OUTUP = unit(np.cross(unit(a0 - a1), (0.0, 1.0, 0.0)))  # the outside-top of the upper arm
 
-# The face must stay clear: nothing in front of the head near the eyes
-eye_zone = 0
-for o in head_parts:
-    V = mesh_verts(o)
-    eye_zone += int(np.sum((V[:, 1] < -0.03) & (np.abs(V[:, 0]) < 0.075) & (V[:, 2] > 1.66) & (V[:, 2] < 1.78)))
-print("[fungus] vertices in front of the face: %d" % eye_zone)
-for label in ("Head#Fungus", "Spine2#Fungus", "LeftArm#Fungus"):
-    objs = [p for p in pieces if p["zbone"] == label]
-    V = np.vstack([mesh_verts(p) for p in objs])
+
+def deltoid(t, around=0.0):
+    """A point well off the upper arm `t` of the way along its hit box from the shoulder end, turned `around`
+    (radians) from the top toward the back, and the direction back to it."""
+    p = a1 + (a0 - a1) * t
+    d = OUTUP * math.cos(around) + np.array([0.0, 1.0, 0.0]) * math.sin(around)
+    return p + d * 0.3, -d
+
+
+c = Cluster(3, bones=ARM, skin=0.02, inner=-0.04, cut=-0.022)
+c.scatter(*deltoid(0.27, 0.15), (0.028, 0.038), 7, 0.018, 0.009, kids=3)
+for t, around, out, size in ((0.6, 0.05, (1.0, -0.1), (0.095, 0.065, 0.025)),
+                             (0.5, 0.15, (1.0, 0.1), (0.085, 0.058, 0.023)),
+                             (0.41, 0.25, (1.0, 0.3), (0.07, 0.048, 0.019)),
+                             (0.47, 0.95, (0.45, 1.0), (0.065, 0.044, 0.018)),
+                             (0.37, 1.0, (0.3, 1.0), (0.05, 0.034, 0.014))):
+    s, d = deltoid(t, around)
+    c.shelf(s, out, *size, toward=d, rise=0.1)
+part(c, "LeftArm", "ShoulderVar", 1450)
+
+# ---- FaceVar: bursting out of the left cheekbone, below the eye and in front of the ear (Joe's hair hides the sides
+# and back of his head, the cop's cap the top): a few knobs and a little rosette of shelves under them
+HEAD = ("Head",)
+HEAD_AXIS = np.array([0.0, 0.035, 0.0])
+
+
+def cheek(deg, z):
+    """A point well off the head `deg` degrees round from the front toward its left, at height z, and the direction
+    back to it."""
+    d = np.array([math.sin(math.radians(deg)), -math.cos(math.radians(deg)), 0.0])
+    return HEAD_AXIS + np.array([0.0, 0.0, z]) + d * 0.3, -d
+
+
+c = Cluster(4, bones=HEAD, skin=0.008, inner=-0.04, cut=-0.025, h=0.0016)
+c.scatter(*cheek(42, 1.672), (0.016, 0.014), 5, 0.012, 0.007, kids=2)
+for deg, z, out, size in ((50, 1.646, (1.0, -0.7), (0.05, 0.034, 0.015)),
+                          (56, 1.664, (1.0, -0.35), (0.042, 0.029, 0.013)),
+                          (44, 1.655, (0.6, -1.0), (0.036, 0.025, 0.012))):
+    s, d = cheek(deg, z)
+    c.shelf(s, out, *size, toward=d)
+part(c, "Head", "FaceVar", 850)
+
+# The face must stay clear: nothing in front of the eyes or over the mouth
+face = [p for p in pieces if p["zbone"] == "Head#FaceVar"][0]
+V = mesh_verts(face)
+eyes = np.sum((np.abs(V[:, 0]) < 0.06) & (V[:, 1] < -0.04) & (V[:, 2] > 1.695) & (V[:, 2] < 1.75))
+mouth = np.sum((np.abs(V[:, 0]) < 0.035) & (V[:, 1] < -0.05) & (V[:, 2] < 1.66))
+print("[fungus] vertices over the eyes: %d, over the mouth: %d" % (eyes, mouth))
+for p in pieces:
+    V = mesh_verts(p)
     print("[fungus] %s: %d tris, bounds %s .. %s" % (
-        label, sum(len(f.vertices) - 2 for p in objs for f in p.data.polygons), np.round(V.min(0), 3),
-        np.round(V.max(0), 3)))
+        p["zbone"], sum(len(f.vertices) - 2 for f in p.data.polygons), np.round(V.min(0), 3), np.round(V.max(0), 3)))
 parts = zk.export("Fungus", pieces, ASSETS)
-zk.previews("fungus", PREVIEWS, Vector((0.05, 0.0, 1.5)), distance=1.3)
-preview("fungus_close_head", (0.55, -0.35, 1.8), (0.06, 0.04, 1.7), lens=60)
-preview("fungus_close_back", (0.25, 0.75, 1.5), (0.03, 0.2, 1.38), lens=60)
-preview("fungus_face", (0.0, -0.8, 1.73), (0.02, 0.0, 1.7), lens=60)
+zk.previews("fungus", PREVIEWS, Vector((0.05, 0.05, 1.45)), distance=1.3)
+preview("fungus_close_back", (0.3, 0.75, 1.5), (0.03, 0.2, 1.36), lens=60)
+preview("fungus_close_shoulder", (0.75, -0.35, 1.75), (0.28, 0.05, 1.55), lens=60)
+preview("fungus_face", (0.35, -0.6, 1.72), (0.05, -0.03, 1.66), lens=60)
 print("[fungus] done")

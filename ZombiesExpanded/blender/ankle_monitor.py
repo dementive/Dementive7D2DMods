@@ -403,7 +403,7 @@ def rubber(name, base, seed=0.0):
     worn = g.math("MULTIPLY", g.ramp(g.edges(0.002), 0.06, 0.3), g.ramp(g.noise(30.0, vector=P), 0.35, 0.55))
     col = g.mix(worn, col, (0.08, 0.077, 0.072))
     col, rough, metal, height = grunge(g, P, col, rough, 0.0, height, dirt=0.55, grime=0.9, dust=0.12, specks=0.6,
-                                       blood=0.25, mud=0.65, mud_top=0.19,
+                                       blood=0.25, mud=0.8, mud_top=0.23,
                                        dirt_cols=((0.022, 0.019, 0.016), (0.05, 0.042, 0.032)))
     return tk.finish(mat, g, col, metal, rough, g.bump(height, 0.3, 0.001))
 
@@ -473,7 +473,7 @@ def device_material(name, seed=0.0):
     worn = g.math("MULTIPLY", g.ramp(g.edges(0.0025), 0.06, 0.3), g.ramp(g.noise(30.0, vector=P), 0.36, 0.55))
     col = g.mix(worn, col, (0.1, 0.1, 0.097))
     col2, rough2, metal, height = grunge(g, P, col, rough, metal, height, dirt=0.5, grime=0.9, dust=0.15, specks=0.6,
-                                         blood=0.3, mud=0.6, mud_top=0.19,
+                                         blood=0.3, mud=0.7, mud_top=0.21,
                                          dirt_cols=((0.022, 0.019, 0.016), (0.055, 0.046, 0.035)))
     col = g.mix(g.math("MULTIPLY", lens, 0.8), col2, col)
     return tk.finish(mat, g, col, metal, rough2, g.bump(height, 0.3, 0.001), emission=emission)

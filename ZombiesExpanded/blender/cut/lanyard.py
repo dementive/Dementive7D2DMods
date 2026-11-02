@@ -1,5 +1,5 @@
 """Lanyard: a woven work lanyard round the neck with an employee ID badge hanging on the chest. The strap (dark red,
-"SHAMWAY FOODS" printed along it, faded and grimy, one strand twisted so its plain back shows) rests on the base of
+"SHAMWAY FOODS" printed along it, faded and grimy) rests on the base of
 the neck and runs down over the collarbones to a steel crimp, a swivel and a lobster clip through the badge's slot.
 The badge: a scuffed PVC card with the store's red header and logo, a photo of its owner, his name, a barcode, a crack
 across one corner and blood spattered on it.
@@ -472,7 +472,7 @@ def image_node(g, img, u, v, box, extension="CLIP"):
 CARD_W, CARD_H, CARD_T = 0.054, 0.086, 0.0015
 CBOX = (-CARD_W / 2, -CARD_H / 2, CARD_W / 2, CARD_H / 2)
 CSHAPE = (430, 270)
-WHITE = (0.4, 0.39, 0.35)
+WHITE = (0.33, 0.32, 0.285)
 RED = (0.15, 0.022, 0.018)
 INK = (0.022, 0.02, 0.02)
 SLOT = (-0.0068, 0.0355, 0.0068, 0.0385)
@@ -566,16 +566,16 @@ def lanyard_material(name, seed=0.0):
     mat, g = tk.new_material(name)
     P = seeded(g, seed)
     a, s, side = attr(g)
-    base = (0.1, 0.014, 0.012)
-    col = g.mix(g.ramp(g.noise(5.0, detail=4.0, vector=P), 0.3, 0.7), base, (0.15, 0.03, 0.024))
+    base = (0.075, 0.011, 0.009)
+    col = g.mix(g.ramp(g.noise(5.0, detail=4.0, vector=P), 0.3, 0.7), base, (0.12, 0.024, 0.019))
     rib = g.math("SINE", g.math("DIVIDE", s, 0.00035))
     height = g.math("MULTIPLY", rib, 0.12)
     col = g.mix(g.math("MULTIPLY", g.math("ADD", rib, 1.0), 0.15), col, tk._darker(g, col, 0.6))
     edge = g.ramp(g.math("ABSOLUTE", a), 0.0062, 0.0078)
     col = g.mix(g.math("MULTIPLY", edge, 0.6), col, tk._darker(g, col, 0.55))
     height = g.math("ADD", height, g.math("MULTIPLY", edge, 0.3))
-    pr = g.separate(image_node(g, PRINT, g.math("MULTIPLY", g.math("FRACT", g.math("DIVIDE", s, TILE)), TILE), a,
-                               (0.0, -STRAP_W / 2, TILE, STRAP_W / 2), "REPEAT"))[0]
+    pr = g.separate(image_node(g, PRINT, g.math("MULTIPLY", g.math("FRACT", g.math("DIVIDE", s, TILE)), TILE),
+                               g.math("MULTIPLY", a, -1.0), (0.0, -STRAP_W / 2, TILE, STRAP_W / 2), "REPEAT"))[0]
     cracked = g.ramp(cracks_mask(g, P), 0.5, 0.6)
     pr = g.math("MULTIPLY", g.math("MULTIPLY", pr, g.ramp(side, 0.5, 0.9)), g.math("SUBTRACT", 1.0, cracked))
     pr = g.math("MULTIPLY", pr, g.ramp(g.noise(6.0, detail=5.0, vector=P, distortion=0.4), 0.25, 0.45))
@@ -584,8 +584,8 @@ def lanyard_material(name, seed=0.0):
     rough = g.math("ADD", 0.66, g.math("MULTIPLY", pr, -0.15))
     fuzz = g.math("MULTIPLY", g.ramp(g.edges(0.0012), 0.1, 0.4), g.ramp(g.noise(40.0, vector=P), 0.35, 0.6))
     col = g.mix(fuzz, col, (0.2, 0.08, 0.065))
-    col, rough, metal, height = grunge(g, P, col, rough, 0.0, height, dirt=0.55, grime=0.8, dust=0.15, specks=0.5,
-                                       blood=0.4)
+    col, rough, metal, height = grunge(g, P, col, rough, 0.0, height, dirt=0.6, grime=0.8, dust=0.08, specks=0.5,
+                                       blood=0.4, dirt_cols=((0.025, 0.016, 0.012), (0.06, 0.04, 0.03)))
     return tk.finish(mat, g, col, metal, rough, g.bump(height, 0.25, 0.0008))
 
 
@@ -628,8 +628,8 @@ def badge_material(name, seed=0.0):
                  g.ramp(g.math("ABSOLUTE", z), CARD_H / 2 - 0.004, CARD_H / 2))
     rim = g.math("MULTIPLY", rim, g.ramp(g.noise(30.0, detail=4.0, vector=P), 0.3, 0.6))
     col = g.mix(g.math("MULTIPLY", rim, 0.8), col, (0.06, 0.05, 0.04))
-    col, rough, metal, height = grunge(g, P, col, rough, 0.0, height, dirt=0.45, grime=0.5, dust=0.1, specks=0.6,
-                                       blood=0.55, dirt_range=(0.16, 0.05))
+    col, rough, metal, height = grunge(g, P, col, rough, 0.0, height, dirt=0.6, grime=0.6, dust=0.1, specks=0.7,
+                                       blood=0.6, dirt_range=(0.18, 0.05))
     return tk.finish(mat, g, col, metal, rough, g.bump(height, 0.2, 0.0006))
 
 
@@ -723,39 +723,21 @@ for i in range(len(path)):
 nrm /= np.linalg.norm(nrm, axis=1)[:, None]
 
 
-def twisted_band(name, pts, nrms, twist, width, thick, mat):
-    """band() with the strap turned by twist[i] radians about its path (the plain back shows where it's flipped)."""
-    P = [Vector(p) for p in pts]
-    n = len(P)
-    s = [0.0]
-    for i in range(1, n):
-        s.append(s[-1] + (P[i] - P[i - 1]).length)
-    bm = bmesh.new()
-    rings, vals = [], []
-    for i in range(n):
-        T = (P[min(i + 1, n - 1)] - P[max(i - 1, 0)]).normalized()
-        N0 = Vector(nrms[i])
-        N0 = (N0 - T * N0.dot(T)).normalized()
-        W0 = T.cross(N0)
-        N = N0 * math.cos(twist[i]) + W0 * math.sin(twist[i])
-        W = T.cross(N)
-        rings.append([bm.verts.new(P[i] + W * (a * width) + N * (b * thick)) for a, b in FLAT])
-        vals += [(a * width, s[i], 1.0 if b > 0 else 0.0) for a, b in FLAT]
-    for i in range(n - 1):
-        a, b = rings[i], rings[i + 1]
-        for j in range(4):
-            bm.faces.new((a[j], a[(j + 1) % 4], b[(j + 1) % 4], b[j]))
-    bm.faces.new(list(reversed(rings[0])))
-    bm.faces.new(rings[-1])
-    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
-    obj = tk.mesh_object(name, bm, mat)
-    set_attr(obj, vals)
-    return tk.smooth(obj, 50)
-
-
-# One full twist in the left strand a hand's width above the crimp: the plain back shows in the middle of it
-tw = math.pi * (1 - np.cos(math.pi * np.clip((s_all - 0.07) / 0.09, 0.0, 1.0)))
-pieces = [twisted_band("Strap", path, nrm, tw, STRAP_W, STRAP_T, strap_mat)]
+# Lift the strap wherever an edge of it dips into the hit boxes (it's flat; the neck and chest are round)
+for rnd_ in range(4):
+    for i in range(1, len(path) - 1):
+        T = path[i + 1] - path[i - 1]
+        T /= np.linalg.norm(T)
+        Nn = nrm[i] - T * (nrm[i] @ T)
+        Nn /= np.linalg.norm(Nn)
+        W = np.cross(T, Nn)
+        probe = np.array([path[i] + W * k * STRAP_W / 2 - Nn * STRAP_T / 2 for k in (-1, -0.5, 0, 0.5, 1)])
+        short = 0.004 - sdf(probe, BONES).min()
+        if short > 0:
+            path[i] = path[i] + Nn * short
+    if rnd_ < 3:
+        path[1:-1] = 0.25 * path[:-2] + 0.5 * path[1:-1] + 0.25 * path[2:]
+pieces = [band("Strap", path, nrm, STRAP_W, STRAP_T, strap_mat)]
 
 # ---------------------------------------------------------------- crimp, swivel, clip and badge
 

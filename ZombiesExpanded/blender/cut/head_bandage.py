@@ -203,7 +203,7 @@ def knot_and_tails(mat, theta=math.radians(112.0)):
         knot.data.transform(knot.matrix_world)
         knot.matrix_world = Matrix.Identity(4)
         set_attr(knot, [(0.0, 0.0, 9.0 + k)] * len(knot.data.vertices))
-        pieces.append(tk.smooth(knot, 60))
+        pieces.append(tk.smooth(knot, 180))
     across = UP.cross(out).normalized()  # horizontal, along the head's side
     for k, (length, lean, twist, wdt) in enumerate(((0.078, 0.18, 70.0, 0.03), (0.06, -0.12, -50.0, 0.027))):
         n = 9
@@ -250,20 +250,22 @@ def voronoi(g, vec, scale, feature="F1"):
     return tk._sock(n.outputs, "Distance")
 
 
-def stain(g, center, radius, warp_scale=40.0, seed=0.0):
-    """A soaked-through stain round `center`: its body (0-1) and the darker tide line at its rim (0-1)."""
+def stain(g, center, radius, warp_scale=40.0, seed=0.0, squash=(1.0, 1.0, 1.0)):
+    """A soaked-through stain round `center`: its body (0-1), the darker tide line at its rim (0-1) and the faint
+    halo it wicked out into (0-1). `squash` stretches it (it spreads along the threads, round the head)."""
     P = g.coords()
-    dist = g.node("ShaderNodeVectorMath", operation="DISTANCE")
-    g.links.new(P, dist.inputs[0])
-    dist.inputs[1].default_value = tuple(center)
-    # 1 at the center falling to 0 at `radius`, pushed about by two octaves of noise: a ragged, lobed blot
+    rel = mapping(g, P, scale=squash, loc=tuple(-c * k for c, k in zip(center, squash)))
+    dist = g.node("ShaderNodeVectorMath", operation="LENGTH")
+    g.links.new(rel, dist.inputs[0])
+    # 1 at the center falling to 0 at `radius`, pushed about by three octaves of noise: a ragged, lobed blot
     f = g.math("SUBTRACT", 1.0, g.math("DIVIDE", tk._sock(dist.outputs, "Value"), radius))
-    for k, (sc, amt) in enumerate(((warp_scale, 0.95), (warp_scale * 3.1, 0.35))):
+    for k, (sc, amt) in enumerate(((warp_scale, 0.7), (warp_scale * 2.7, 0.45), (warp_scale * 7.0, 0.2))):
         n = g.noise(sc, detail=3.0, roughness=0.6, vector=mapping(g, P, loc=(seed + k, seed * 0.7, 0.3 * k)))
         f = g.math("ADD", f, g.math("MULTIPLY", g.math("SUBTRACT", n, 0.5), amt))
-    body = g.ramp(f, 0.32, 0.5)
-    rim = g.math("MULTIPLY", g.ramp(f, 0.28, 0.34), g.ramp(f, 0.44, 0.36))
-    return body, rim
+    body = g.ramp(f, 0.36, 0.5)
+    rim = g.math("MULTIPLY", g.ramp(f, 0.3, 0.36), g.ramp(f, 0.46, 0.38))
+    halo = g.math("MULTIPLY", g.ramp(f, 0.08, 0.3), g.ramp(f, 0.4, 0.3))
+    return body, rim, halo
 
 
 def gauze_material(name):
@@ -308,28 +310,30 @@ def gauze_material(name):
     col = g.mix(g.math("MULTIPLY", grime_edge, 0.45), col, (0.07, 0.06, 0.045))
     # Dirt and grime: a photo's dark parts, crevices between the layers, dust, specks
     p = tk.photo(g, "rust_coarse_01", 3.0, (0.21, 0.66, 0.4))
-    dirt = g.math("MULTIPLY", g.ramp(tk._luma(g, p["color"]), 0.26, 0.07), 0.8)
-    dirt = g.math("MAXIMUM", dirt, tk._grime(g, 1.1), clamp=True)
+    dirt = g.math("MULTIPLY", g.ramp(tk._luma(g, p["color"]), 0.3, 0.07), 1.0)
+    dirt = g.math("MAXIMUM", dirt, tk._grime(g, 1.3), clamp=True)
     col = g.mix(g.math("MULTIPLY", dirt, 0.85), col, g.mix(nz(10.0), (0.045, 0.038, 0.028), (0.09, 0.076, 0.055)))
-    smudge = g.math("MULTIPLY", g.ramp(nz(5.0, 6.0, 0.65, 0.8), 0.52, 0.68), 0.5)
-    col = g.mix(smudge, col, tk._darker(g, col, 0.5))
+    smudge = g.math("MULTIPLY", g.ramp(nz(5.0, 6.0, 0.65, 0.8), 0.48, 0.64), 0.7)
+    col = g.mix(smudge, col, tk._darker(g, col, 0.45))
+    # Hair grease and grime soaked into the inner layers' lower edges and round the back
+    z = g.separate(g.coords())[2]
+    greasy = g.math("MULTIPLY", g.ramp(z, 1.76, 1.72), g.ramp(nz(9.0, 5.0, 0.6, 0.6), 0.35, 0.6))
+    col = g.mix(g.math("MULTIPLY", greasy, 0.6), col, (0.075, 0.062, 0.045))
     spots = g.ramp(voronoi(g, P, 160.0), 0.15, 0.06)
     col = g.mix(g.math("MULTIPLY", spots, g.ramp(nz(6.0), 0.4, 0.6)), col, (0.025, 0.02, 0.015))
     rough = g.mixf(dirt, 0.9, 0.95)
     # Blood: soaked through over the left forehead, a dark tide line at the rim; an older brown stain at the back;
     # a few spots
-    body, rim = stain(g, (0.045, -0.074, 1.772), 0.036, 22.0, 0.3)
-    body2, rim2 = stain(g, (0.07, -0.055, 1.783), 0.026, 30.0, 3.3)
-    body = g.math("MAXIMUM", body, body2)
-    rim = g.math("MAXIMUM", rim, rim2)
+    body, rim, halo = stain(g, (0.05, -0.07, 1.775), 0.04, 30.0, 0.3, (0.8, 0.8, 1.35))
+    col = g.mix(g.math("MULTIPLY", halo, 0.55), col, (0.12, 0.075, 0.045))
     fresh = g.ramp(nz(14.0, 4.0), 0.3, 0.7)
-    col = g.mix(g.math("MULTIPLY", body, 0.88), col, g.mix(fresh, (0.038, 0.011, 0.008), (0.058, 0.02, 0.013)))
-    col = g.mix(g.math("MULTIPLY", rim, 0.9), col, (0.024, 0.008, 0.006))
-    core, _ = stain(g, (0.05, -0.078, 1.77), 0.01, 60.0, 1.1)
-    col = g.mix(g.math("MULTIPLY", core, 0.8), col, (0.022, 0.007, 0.005))
+    col = g.mix(g.math("MULTIPLY", body, 0.9), col, g.mix(fresh, (0.034, 0.009, 0.005), (0.052, 0.015, 0.008)))
+    col = g.mix(g.math("MULTIPLY", rim, 0.9), col, (0.02, 0.006, 0.004))
+    core, _, _ = stain(g, (0.052, -0.075, 1.773), 0.014, 60.0, 1.1)
+    col = g.mix(g.math("MULTIPLY", core, 0.8), col, (0.018, 0.005, 0.003))
     rough = g.mixf(g.math("MAXIMUM", body, rim), rough, 0.62)
-    old, old_rim = stain(g, (-0.06, 0.13, 1.735), 0.03, 40.0, 2.3)
-    col = g.mix(g.math("MULTIPLY", old, 0.7), col, (0.1, 0.06, 0.035))
+    old, old_rim, old_halo = stain(g, (-0.06, 0.13, 1.735), 0.032, 40.0, 2.3, (0.8, 0.8, 1.3))
+    col = g.mix(g.math("MULTIPLY", g.math("MAXIMUM", old, old_halo), 0.55), col, (0.1, 0.062, 0.036))
     col = g.mix(g.math("MULTIPLY", old_rim, 0.75), col, (0.06, 0.03, 0.018))
     drops = g.math("MULTIPLY", g.ramp(voronoi(g, mapping(g, P, loc=(1.3, 0.2, 0.8)), 60.0), 0.09, 0.03),
                    g.ramp(nz(2.0, 4.0), 0.62, 0.72))

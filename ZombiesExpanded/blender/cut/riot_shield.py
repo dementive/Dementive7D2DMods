@@ -4,9 +4,10 @@ scuffed. POLICE in worn white vinyl letters across the top, scratched and scuffe
 bloody handprint dragged down the front. On the back: a foam arm pad the forearm lies on, a webbing arm strap round the
 forearm and a grip at the hand, bolted through (the bolt heads show on the front).
 
-It rides the forearm: in the bind pose (the arm hanging 45 degrees down and out) it stands a few cm in front of the
-forearm, facing the zombie's front (-Y), turned a little outward and leaning in at the top so it covers the left side
-of the torso from the shoulder to the hip. One part, LeftForeArm#Shield.
+It rides the forearm: in the bind pose (the arm hanging 45 degrees down and out) the forearm lies along its back 2 cm
+off it, on the pad, so the face looks to the zombie's front (-Y) turned out and tipped up the way the arm hangs, the top
+leaning in toward the neck: it covers the left side of the torso from the shoulder to the hip, and comes upright when
+the arm hangs down. One part, LeftForeArm#Shield.
 
     blender -b --factory-startup --python riot_shield.py -- <unity models folder> <preview folder>
 """

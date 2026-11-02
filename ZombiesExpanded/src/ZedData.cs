@@ -79,7 +79,8 @@ public class ZedMutationInfo
     public static readonly Dictionary<ZedMutation, ZedMutationInfo> All = new Dictionary<ZedMutation, ZedMutationInfo>
     {
         { ZedMutation.Bloater, new ZedMutationInfo { Id = ZedMutation.Bloater, FromGamestage = 0, Model = "Pustules", Buff = "buffZedBloater",
-            Veins = new Color(0.55f, 0.6f, 0.15f), VeinGlow = 0f, Slots = ZedSlot.Back | ZedSlot.LeftShoulder | ZedSlot.RightShoulder } },
+            Veins = new Color(0.55f, 0.6f, 0.15f), VeinGlow = 0f,
+            Slots = ZedSlot.Back | ZedSlot.LeftShoulder | ZedSlot.RightShoulder | ZedSlot.LeftArm | ZedSlot.RightArm } },
         { ZedMutation.Sprinter, new ZedMutationInfo { Id = ZedMutation.Sprinter, FromGamestage = 0, Buff = "buffZedSprinter",
             Veins = new Color(1f, 0.08f, 0.05f), VeinGlow = 1.2f } },
         { ZedMutation.Spiked, new ZedMutationInfo { Id = ZedMutation.Spiked, FromGamestage = 30, Model = "BoneSpurs", Buff = "buffZedSpiked",
@@ -88,13 +89,13 @@ public class ZedMutationInfo
             Slots = ZedSlot.LeftHand | ZedSlot.RightHand } },
         { ZedMutation.Screecher, new ZedMutationInfo { Id = ZedMutation.Screecher, FromGamestage = 40, Model = "ThroatSacs", Buff = "buffZedScreecher",
             Slots = ZedSlot.Neck } },
-        { ZedMutation.Frostbitten, new ZedMutationInfo { Id = ZedMutation.Frostbitten, FromGamestage = 40, OnlyIn = ZedBiome.Snow, Model = "Icicles",
-            Buff = "buffZedFrostbitten", Slots = ZedSlot.Face | ZedSlot.LeftArm | ZedSlot.RightArm | ZedSlot.Waist } },
+        { ZedMutation.Frostbitten, new ZedMutationInfo { Id = ZedMutation.Frostbitten, FromGamestage = 40, OnlyIn = ZedBiome.Snow,
+            Buff = "buffZedFrostbitten" } },
         { ZedMutation.Smoldering, new ZedMutationInfo { Id = ZedMutation.Smoldering, FromGamestage = 40, OnlyIn = ZedBiome.Burnt, Buff = "buffZedSmoldering" } },
         { ZedMutation.Leaper, new ZedMutationInfo { Id = ZedMutation.Leaper, FromGamestage = 50, Model = "Claws", Buff = "buffZedLeaper",
             Slots = ZedSlot.LeftHand | ZedSlot.RightHand } },
         { ZedMutation.Regenerator, new ZedMutationInfo { Id = ZedMutation.Regenerator, FromGamestage = 60, Model = "Fungus", Buff = "buffZedRegenerator",
-            Slots = ZedSlot.Head | ZedSlot.Back | ZedSlot.LeftShoulder | ZedSlot.LeftArm } },
+            Slots = ZedSlot.Face | ZedSlot.Back | ZedSlot.LeftShoulder | ZedSlot.LeftArm } },
         { ZedMutation.Toxic, new ZedMutationInfo { Id = ZedMutation.Toxic, FromGamestage = 75, Buff = "buffZedToxic",
             Veins = new Color(0.35f, 1f, 0.2f), VeinGlow = 2.2f } },
         { ZedMutation.Volatile, new ZedMutationInfo { Id = ZedMutation.Volatile, FromGamestage = 75, Model = "PropaneTank", Buff = "buffZedVolatile",
@@ -146,23 +147,27 @@ public class ZedGearInfo
     public ZedSlot Slots;
     /// <summary>The first gamestage it's worn at.</summary>
     public int FromGamestage;
+    /// <summary>Taken out after review: never rolled (kept so saved zombies still load).</summary>
+    public bool Cut;
+    /// <summary>Rigid body armor: only fits a regular build (not fat, not female).</summary>
+    public bool BodyArmor;
 
     public static readonly Dictionary<ZedGearKind, ZedGearInfo> All = new Dictionary<ZedGearKind, ZedGearInfo>
     {
-        { ZedGearKind.HardHat, Helmet(ZedGearKind.HardHat, "HardHat", 30f) },
+        { ZedGearKind.HardHat, Dropped(Helmet(ZedGearKind.HardHat, "HardHat", 30f)) },
         { ZedGearKind.WeldingMask, Helmet(ZedGearKind.WeldingMask, "WeldingMask", 40f, sight: 0.7f, face: true) },
-        { ZedGearKind.FootballHelmet, Helmet(ZedGearKind.FootballHelmet, "FootballHelmet", 60f, face: true) },
+        { ZedGearKind.FootballHelmet, Dropped(Helmet(ZedGearKind.FootballHelmet, "FootballHelmet", 60f, face: true)) },
         { ZedGearKind.MotorcycleHelmet, Helmet(ZedGearKind.MotorcycleHelmet, "MotorcycleHelmet", 80f, hearing: 0.7f, face: true) },
         { ZedGearKind.RiotHelmet, Helmet(ZedGearKind.RiotHelmet, "RiotHelmet", 100f, hearing: 0.7f, face: true) },
-        { ZedGearKind.MilitaryHelmet, Helmet(ZedGearKind.MilitaryHelmet, "MilitaryHelmet", 100f) },
-        { ZedGearKind.KevlarVest, new ZedGearInfo { Id = ZedGearKind.KevlarVest, Model = "KevlarVest", Parts = new[] { "Spine2" },
-            Covers = EnumBodyPartHit.Torso, Soak = 150f, Takes = 0.5f, Speed = 0.9f, Slots = ZedSlot.Chest | ZedSlot.Back } },
-        { ZedGearKind.ScrapArmor, new ZedGearInfo { Id = ZedGearKind.ScrapArmor, Model = "ScrapArmor",
+        { ZedGearKind.MilitaryHelmet, Dropped(Helmet(ZedGearKind.MilitaryHelmet, "MilitaryHelmet", 100f)) },
+        { ZedGearKind.KevlarVest, new ZedGearInfo { Id = ZedGearKind.KevlarVest, Model = "KevlarVest", Cut = true, Parts = new[] { "Spine2" },
+            Covers = EnumBodyPartHit.Torso, Soak = 150f, Takes = 0.5f, Speed = 0.9f, Slots = ZedSlot.Chest | ZedSlot.Back, BodyArmor = true } },
+        { ZedGearKind.ScrapArmor, new ZedGearInfo { Id = ZedGearKind.ScrapArmor, Model = "ScrapArmor", Cut = true,
             Parts = new[] { "Spine2#Chest", "Spine2#Back", "LeftArm#Pad", "RightArm#Pad" },
             Covers = EnumBodyPartHit.Torso | EnumBodyPartHit.LeftUpperArm | EnumBodyPartHit.RightUpperArm, Soak = 250f, Takes = 0.6f, Speed = 0.8f,
-            Slots = ZedSlot.Chest | ZedSlot.Back | ZedSlot.LeftShoulder | ZedSlot.RightShoulder, FromGamestage = 100 } },
-        { ZedGearKind.CarDoor, Shield(ZedGearKind.CarDoor, "CarDoor", 120f) },
-        { ZedGearKind.RiotShield, Shield(ZedGearKind.RiotShield, "RiotShield", 200f) },
+            Slots = ZedSlot.Chest | ZedSlot.Back | ZedSlot.LeftShoulder | ZedSlot.RightShoulder, FromGamestage = 100, BodyArmor = true } },
+        { ZedGearKind.CarDoor, Dropped(Shield(ZedGearKind.CarDoor, "CarDoor", 120f)) },
+        { ZedGearKind.RiotShield, Dropped(Shield(ZedGearKind.RiotShield, "RiotShield", 200f)) },
     };
 
     private static ZedGearInfo Helmet(ZedGearKind id, string model, float soak, float sight = 1f, float hearing = 1f, bool face = false)
@@ -170,6 +175,12 @@ public class ZedGearInfo
         // A helmet takes all of a hit to the head until it's done
         return new ZedGearInfo { Id = id, Model = model, Parts = new[] { "Head" }, Covers = EnumBodyPartHit.Head, Soak = soak, Takes = 1f,
             Sight = sight, Hearing = hearing, Slots = ZedSlot.Head | (face ? ZedSlot.Face : ZedSlot.None) };
+    }
+
+    private static ZedGearInfo Dropped(ZedGearInfo info)
+    {
+        info.Cut = true;
+        return info;
     }
 
     private static ZedGearInfo Shield(ZedGearKind id, string model, float soak)
@@ -213,19 +224,16 @@ public class ZedGearInfo
     /// <summary>Gear that fits a vanilla zombie's job, by its class name (other zombies pick from everything).</summary>
     public static readonly Dictionary<string, ZedGearKind[]> Jobs = new Dictionary<string, ZedGearKind[]>
     {
-        { "zombieJanitor", new[] { ZedGearKind.HardHat, ZedGearKind.WeldingMask } },
-        { "zombieInmate", new[] { ZedGearKind.WeldingMask, ZedGearKind.ScrapArmor, ZedGearKind.CarDoor } },
-        { "zombieBoe", new[] { ZedGearKind.HardHat, ZedGearKind.ScrapArmor } },
-        { "zombieMoe", new[] { ZedGearKind.HardHat, ZedGearKind.WeldingMask } },
-        { "zombieSkateboarder", new[] { ZedGearKind.FootballHelmet, ZedGearKind.MotorcycleHelmet } },
-        { "zombieYo", new[] { ZedGearKind.FootballHelmet, ZedGearKind.MotorcycleHelmet } },
-        { "zombieSteve", new[] { ZedGearKind.FootballHelmet, ZedGearKind.MotorcycleHelmet } },
-        { "zombieJoe", new[] { ZedGearKind.MotorcycleHelmet, ZedGearKind.HardHat } },
-        { "zombieSoldier", new[] { ZedGearKind.KevlarVest, ZedGearKind.RiotShield } },
-        { "zombieFatCop", new[] { ZedGearKind.KevlarVest, ZedGearKind.RiotShield } },
-        { "zombieBiker", new[] { ZedGearKind.KevlarVest, ZedGearKind.ScrapArmor, ZedGearKind.CarDoor } },
-        { "zombieUtilityWorker", new[] { ZedGearKind.KevlarVest } },
-        { "zombieLab", new[] { ZedGearKind.RiotHelmet, ZedGearKind.MilitaryHelmet } },
+        { "zombieJanitor", new[] { ZedGearKind.WeldingMask } },
+        { "zombieInmate", new[] { ZedGearKind.WeldingMask } },
+        { "zombieBoe", new[] { ZedGearKind.WeldingMask } },
+        { "zombieMoe", new[] { ZedGearKind.WeldingMask } },
+        { "zombieSkateboarder", new[] { ZedGearKind.MotorcycleHelmet } },
+        { "zombieYo", new[] { ZedGearKind.MotorcycleHelmet } },
+        { "zombieSteve", new[] { ZedGearKind.MotorcycleHelmet } },
+        { "zombieJoe", new[] { ZedGearKind.MotorcycleHelmet } },
+        { "zombieSoldier", new[] { ZedGearKind.RiotHelmet } },
+                                { "zombieLab", new[] { ZedGearKind.RiotHelmet } },
         { "zombieBusinessMan", new[] { ZedGearKind.RiotHelmet, ZedGearKind.MotorcycleHelmet } },
     };
 
@@ -300,14 +308,16 @@ public class ZedRemnantInfo
     public bool BareHead;
     public bool Anyone;
     public string Buff;
+    /// <summary>Taken out after review: never rolled or shown (kept so saved zombies still load).</summary>
+    public bool Cut;
 
     public string Model => Id.ToString();
 
     public static readonly Dictionary<ZedRemnant, ZedRemnantInfo> All = new Dictionary<ZedRemnant, ZedRemnantInfo>();
 
-    private static void R(ZedRemnant id, ZedSlot slots, bool anyone = true, bool bareHead = false, string buff = null)
+    private static void R(ZedRemnant id, ZedSlot slots, bool anyone = true, bool bareHead = false, string buff = null, bool cut = false)
     {
-        All[id] = new ZedRemnantInfo { Id = id, Slots = slots, Anyone = anyone, BareHead = bareHead, Buff = buff };
+        All[id] = new ZedRemnantInfo { Id = id, Slots = slots, Anyone = anyone, BareHead = bareHead, Buff = buff, Cut = cut };
     }
 
     static ZedRemnantInfo()
@@ -322,62 +332,62 @@ public class ZedRemnantInfo
         R(ZedRemnant.Rebar, ZedSlot.Chest | ZedSlot.Back);
         R(ZedRemnant.GlassShards, ZedSlot.Face | ZedSlot.LeftArm | ZedSlot.RightArm);
         R(ZedRemnant.BearTrap, ZedSlot.LeftLeg, buff: "buffZedBearTrap");
-        R(ZedRemnant.BarbedWire, ZedSlot.RightArm);
+        // Its coils turn up on the forearm, a leg or round the waist (variant parts)
+        R(ZedRemnant.BarbedWire, ZedSlot.RightArm | ZedSlot.LeftLeg | ZedSlot.Waist);
         R(ZedRemnant.Noose, ZedSlot.Neck | ZedSlot.Chest);
-        R(ZedRemnant.HeadBandage, ZedSlot.Head, bareHead: true);
+        R(ZedRemnant.HeadBandage, ZedSlot.Head, bareHead: true, cut: true);
         R(ZedRemnant.ArmCast, ZedSlot.LeftArm);
-        R(ZedRemnant.LegCast, ZedSlot.RightLeg);
-        R(ZedRemnant.NeckBrace, ZedSlot.Neck);
-        R(ZedRemnant.IVLine, ZedSlot.LeftArm, anyone: false);
+        R(ZedRemnant.LegCast, ZedSlot.RightLeg, cut: true);
+        R(ZedRemnant.NeckBrace, ZedSlot.Neck, cut: true);
+        R(ZedRemnant.IVLine, ZedSlot.LeftArm, anyone: false, cut: true);
         R(ZedRemnant.CrackedGlasses, ZedSlot.Face);
         R(ZedRemnant.Sunglasses, ZedSlot.Face);
         R(ZedRemnant.Headphones, ZedSlot.Neck);
-        R(ZedRemnant.SurgicalMask, ZedSlot.Face, anyone: false);
-        R(ZedRemnant.DustMask, ZedSlot.Face);
+        R(ZedRemnant.SurgicalMask, ZedSlot.Face, anyone: false, cut: true);
+        R(ZedRemnant.DustMask, ZedSlot.Face, cut: true);
         R(ZedRemnant.GasMask, ZedSlot.Neck | ZedSlot.Chest, anyone: false);
-        R(ZedRemnant.BaseballCap, ZedSlot.Head, bareHead: true);
-        R(ZedRemnant.Beanie, ZedSlot.Head, bareHead: true);
-        R(ZedRemnant.Bandana, ZedSlot.Head, bareHead: true);
-        R(ZedRemnant.CowboyHat, ZedSlot.Head, anyone: false, bareHead: true);
+        R(ZedRemnant.BaseballCap, ZedSlot.Head, bareHead: true, cut: true);
+        R(ZedRemnant.Beanie, ZedSlot.Head, bareHead: true, cut: true);
+        R(ZedRemnant.Bandana, ZedSlot.Head, bareHead: true, cut: true);
+        R(ZedRemnant.CowboyHat, ZedSlot.Head, anyone: false, bareHead: true, cut: true);
         R(ZedRemnant.ChainNecklace, ZedSlot.Neck);
-        R(ZedRemnant.Wristwatch, ZedSlot.LeftHand);
-        R(ZedRemnant.Lanyard, ZedSlot.Neck | ZedSlot.Chest, anyone: false);
-        R(ZedRemnant.HiVisVest, ZedSlot.Chest | ZedSlot.Back, anyone: false);
-        R(ZedRemnant.ToolBelt, ZedSlot.Waist, anyone: false);
-        R(ZedRemnant.MessengerBag, ZedSlot.Chest | ZedSlot.Back | ZedSlot.Waist);
-        R(ZedRemnant.FannyPack, ZedSlot.Waist);
-        R(ZedRemnant.Handcuffs, ZedSlot.RightHand, anyone: false);
+        R(ZedRemnant.Wristwatch, ZedSlot.LeftHand, cut: true);
+        R(ZedRemnant.Lanyard, ZedSlot.Neck | ZedSlot.Chest, anyone: false, cut: true);
+        R(ZedRemnant.HiVisVest, ZedSlot.Chest | ZedSlot.Back, anyone: false, cut: true);
+        R(ZedRemnant.ToolBelt, ZedSlot.Waist, anyone: false, cut: true);
+        R(ZedRemnant.MessengerBag, ZedSlot.Chest | ZedSlot.Back | ZedSlot.Waist, cut: true);
+        R(ZedRemnant.FannyPack, ZedSlot.Waist, cut: true);
+        R(ZedRemnant.Handcuffs, ZedSlot.RightHand, anyone: false, cut: true);
         R(ZedRemnant.AnkleMonitor, ZedSlot.RightLeg, anyone: false);
     }
 
     /// <summary>What fits a vanilla zombie's job, by its family (zombies not listed pick from the anyone ones).</summary>
     public static readonly Dictionary<string, ZedRemnant[]> Jobs = new Dictionary<string, ZedRemnant[]>
     {
-        { "zombieNurse", new[] { ZedRemnant.SurgicalMask, ZedRemnant.IVLine, ZedRemnant.HeadBandage, ZedRemnant.Lanyard, ZedRemnant.CrackedGlasses,
-            ZedRemnant.NeckBrace } },
-        { "zombieLab", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.Lanyard, ZedRemnant.SurgicalMask, ZedRemnant.GasMask, ZedRemnant.DustMask } },
-        { "zombieBusinessMan", new[] { ZedRemnant.Lanyard, ZedRemnant.CrackedGlasses, ZedRemnant.Wristwatch, ZedRemnant.MessengerBag } },
-        { "zombieInmate", new[] { ZedRemnant.Handcuffs, ZedRemnant.AnkleMonitor, ZedRemnant.Screwdriver, ZedRemnant.KitchenKnife, ZedRemnant.Noose } },
-        { "zombieJanitor", new[] { ZedRemnant.ToolBelt, ZedRemnant.DustMask, ZedRemnant.HiVisVest, ZedRemnant.BaseballCap, ZedRemnant.Screwdriver } },
-        { "zombieUtilityWorker", new[] { ZedRemnant.HiVisVest, ZedRemnant.ToolBelt, ZedRemnant.DustMask, ZedRemnant.Rebar } },
-        { "zombieBoe", new[] { ZedRemnant.HiVisVest, ZedRemnant.ToolBelt, ZedRemnant.DustMask, ZedRemnant.Rebar, ZedRemnant.BaseballCap } },
-        { "zombieMoe", new[] { ZedRemnant.HiVisVest, ZedRemnant.ToolBelt, ZedRemnant.DustMask, ZedRemnant.Rebar, ZedRemnant.Beanie } },
-        { "zombieLumberjack", new[] { ZedRemnant.Axe, ZedRemnant.BarbedWire, ZedRemnant.BearTrap, ZedRemnant.ToolBelt } },
+        { "zombieNurse", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.ArmCast, ZedRemnant.Headphones } },
+        { "zombieLab", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.GasMask } },
+        { "zombieBusinessMan", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.KitchenKnife, ZedRemnant.ChainNecklace } },
+        { "zombieInmate", new[] { ZedRemnant.AnkleMonitor, ZedRemnant.Screwdriver, ZedRemnant.KitchenKnife, ZedRemnant.Noose } },
+        { "zombieJanitor", new[] { ZedRemnant.Screwdriver, ZedRemnant.GlassShards } },
+        { "zombieUtilityWorker", new[] { ZedRemnant.Rebar, ZedRemnant.BarbedWire } },
+        { "zombieBoe", new[] { ZedRemnant.Rebar, ZedRemnant.Screwdriver } },
+        { "zombieMoe", new[] { ZedRemnant.Rebar, ZedRemnant.GlassShards } },
+        { "zombieLumberjack", new[] { ZedRemnant.Axe, ZedRemnant.BarbedWire, ZedRemnant.BearTrap } },
         { "zombieRancher", new[] { ZedRemnant.Pitchfork, ZedRemnant.BearTrap, ZedRemnant.BarbedWire, ZedRemnant.Arrows } },
         { "zombieTomClark", new[] { ZedRemnant.Pitchfork, ZedRemnant.BearTrap, ZedRemnant.BarbedWire } },
-        { "zombieSkateboarder", new[] { ZedRemnant.Headphones, ZedRemnant.BaseballCap, ZedRemnant.Beanie, ZedRemnant.ArmCast, ZedRemnant.FannyPack } },
-        { "zombieYo", new[] { ZedRemnant.Headphones, ZedRemnant.BaseballCap, ZedRemnant.Sunglasses, ZedRemnant.ChainNecklace, ZedRemnant.FannyPack } },
-        { "zombieSteve", new[] { ZedRemnant.Headphones, ZedRemnant.Beanie, ZedRemnant.Sunglasses, ZedRemnant.LegCast } },
-        { "zombiePartyGirl", new[] { ZedRemnant.Sunglasses, ZedRemnant.ChainNecklace, ZedRemnant.MessengerBag, ZedRemnant.Wristwatch } },
-        { "zombieMarlene", new[] { ZedRemnant.MessengerBag, ZedRemnant.Wristwatch, ZedRemnant.CrackedGlasses, ZedRemnant.ChainNecklace } },
-        { "zombieDarlene", new[] { ZedRemnant.MessengerBag, ZedRemnant.Sunglasses, ZedRemnant.Wristwatch, ZedRemnant.HeadBandage } },
-        { "zombieArlene", new[] { ZedRemnant.Lanyard, ZedRemnant.CrackedGlasses, ZedRemnant.MessengerBag, ZedRemnant.Wristwatch } },
+        { "zombieSkateboarder", new[] { ZedRemnant.Headphones, ZedRemnant.ArmCast } },
+        { "zombieYo", new[] { ZedRemnant.Headphones, ZedRemnant.Sunglasses, ZedRemnant.ChainNecklace } },
+        { "zombieSteve", new[] { ZedRemnant.Headphones, ZedRemnant.Sunglasses } },
+        { "zombiePartyGirl", new[] { ZedRemnant.Sunglasses, ZedRemnant.ChainNecklace } },
+        { "zombieMarlene", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.ChainNecklace } },
+        { "zombieDarlene", new[] { ZedRemnant.Sunglasses, ZedRemnant.ArmCast } },
+        { "zombieArlene", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.ChainNecklace } },
         { "zombieBiker", new[] { ZedRemnant.ChainNecklace, ZedRemnant.Sunglasses, ZedRemnant.BarbedWire, ZedRemnant.Wristwatch } },
         { "zombieSoldier", new[] { ZedRemnant.GasMask, ZedRemnant.ChainNecklace, ZedRemnant.CrossbowBolt, ZedRemnant.Arrows } },
-        { "zombieFatHawaiian", new[] { ZedRemnant.Sunglasses, ZedRemnant.FannyPack, ZedRemnant.CowboyHat, ZedRemnant.BaseballCap } },
+        { "zombieFatHawaiian", new[] { ZedRemnant.Sunglasses, ZedRemnant.Headphones } },
         { "zombieFatCop", new[] { ZedRemnant.Sunglasses, ZedRemnant.Wristwatch, ZedRemnant.Arrows, ZedRemnant.KitchenKnife } },
         { "zombieMaleHazmat", new[] { ZedRemnant.GasMask } },
-        { "zombieDemolition", new[] { ZedRemnant.ToolBelt, ZedRemnant.Rebar } },
+        { "zombieDemolition", new[] { ZedRemnant.Rebar } },
     };
 
     /// <summary>Vanilla zombies whose own model covers the face (a hazmat hood): no glasses or masks.</summary>

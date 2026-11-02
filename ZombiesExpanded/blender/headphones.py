@@ -215,6 +215,20 @@ def flat_curve(name, outlines, depth, mat, bevel=0.0):
     return tk.smooth(obj, 40)
 
 
+def catmull(pts, n):
+    """The polyline smoothed: n points per span on a Catmull-Rom curve through the points."""
+    out = []
+    for i in range(len(pts) - 1):
+        p0, p1, p2 = pts[max(i - 1, 0)], pts[i], pts[i + 1]
+        p3 = pts[min(i + 2, len(pts) - 1)]
+        for k in range(n):
+            t = k / n
+            out.append(0.5 * ((2 * p1) + (-p0 + p2) * t + (2 * p0 - 5 * p1 + 4 * p2 - p3) * t * t
+                              + (-p0 + 3 * p1 - 3 * p2 + p3) * t * t * t))
+    out.append(pts[-1])
+    return out
+
+
 def deform(obj, fn):
     """Moves every vertex through fn(Vector) -> Vector."""
     for v in obj.data.vertices:
@@ -291,7 +305,7 @@ def face_proxy():
         blob("Chin", (0.0, -0.077, 1.611), (0.022, 0.017, 0.017), mat),
         blob("Lips", (0.0, -0.083, 1.646), (0.025, 0.017, 0.013), mat),
         blob("Neck", (0.0, 0.035, 1.56), (0.054, 0.058, 0.11), mat, (2.0, 3.0), rot_x=8.0),
-        blob("Torso", (0.0, 0.045, 1.36), (0.165, 0.128, 0.175), mat, (2.3, 2.6)),
+        blob("Torso", (0.0, 0.04, 1.35), (0.165, 0.135, 0.19), mat, (2.3, 2.6)),  # chest ~2 cm inside the hit box
     ]
     for s in (1.0, -1.0):
         parts.append(blob("Cheek", (s * 0.047, -0.056, 1.699), (0.02, 0.022, 0.015), mat))
@@ -927,8 +941,8 @@ def cable():
     m = cup_frame(1.0)
     start = m @ Vector((0.033, -0.026, 0.024))
     pts = [m @ Vector((0.025, -0.022, 0.024)), start,
-           Vector((0.099, -0.037, 1.519)), Vector((0.1, -0.05, 1.497)), Vector((0.0995, -0.06, 1.471)),
-           Vector((0.098, -0.066, 1.444)), Vector((0.0965, -0.069, 1.418))]
+           Vector((0.099, -0.037, 1.521)), Vector((0.1, -0.053, 1.499)), Vector((0.0995, -0.065, 1.472)),
+           Vector((0.098, -0.072, 1.445)), Vector((0.0965, -0.076, 1.418))]
     wire = tube("Cable", pts, 0.0019, rubber, sides=6, radius_fn=lambda i: 1.6 if i < 2 else 1.0)
     end = pts[-1]
     d = (pts[-1] - pts[-2]).normalized()

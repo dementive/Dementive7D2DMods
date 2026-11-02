@@ -1,12 +1,14 @@
-"""Bear trap (remnant): a rusty double long-spring leg-hold trap sprung shut on the left ankle, low on the shin. Its
-two toothed jaws bite the shin from the front and back, standing up at about 50 degrees from the base where the leg
-stopped them closing; the base bar runs through under the ankle between the hinge posts, and the two flat leaf springs
-stick out either side (turned 25 degrees so the inner one angles back, clear of the other leg), their eyes riding up
-the jaw arms. A short chain hangs from the outer end of the base, trailing back toward the ground, a broken link at its
-end. All of it rusted dark and pitted, the jaws and teeth crusted with dried blood where they bite.
+"""Bear trap (remnant): a big, heavy, rusty double long-spring leg-hold trap sprung shut on the left ankle, low on the
+shin. Its two toothed jaws (18 cm spread, heavy flat bar with big teeth) bite the shin from the front and back,
+standing up at about 46 degrees from the base where the leg stopped them closing; the base bar runs through the ankle
+between the hinge posts, and the two heavy leaf springs stick out 19 cm either side (turned 30 degrees so the inner one
+angles back, clear of the other leg), their eyes riding up the jaw arms. A short heavy chain hangs from the outer end of
+the base, trailing back, its last link burst open. All of it rusted dark and pitted, the jaws and teeth crusted with
+dried blood where they bite.
 
-The teeth sink about 6 mm into Joe's shin (4 cm across there); the base bar and the middle of the jaws' bite are
-inside the leg. One part on LeftLeg: "LeftLeg#Trap".
+Fitted to Joe's real shin (measured on the vanilla mesh): the teeth sink about 8 mm into it 26 cm up, and the base bar
+and the middle of the jaws' bite are inside the leg. It sits that high so that on zombies whose shins scale it up (a
+fat cop's 1.35 times about the knee) the springs stay off the ground. One part on LeftLeg: "LeftLeg#Trap".
 
     blender -b --factory-startup --python bear_trap.py -- <unity models folder> <preview folder>
 """
@@ -139,7 +141,7 @@ def depth_attr(obj, f, seed=0.0):
     return set_attr(obj, "zd", [(f(v.co), seed, v.co.z) for v in obj.data.vertices])
 
 
-def tube(name, pts, radius, mat, sides=6, closed=False, caps=True, twist=0.0, phase=0.0, normals=None, smooth=60,
+def tube(name, pts, radius, mat, sides=6, closed=False, caps=True, twist=0.0, phase=0.0, normals=None, smooth=None,
          s0=0.0):
     """A tube along pts. radius: a number, a list (one per point) or fn(i) -> r or (rx, ry). twist turns the
     cross-section (radians per meter); normals (one per point) fixes the cross-section's x direction. Records zl =
@@ -174,7 +176,8 @@ def tube(name, pts, radius, mat, sides=6, closed=False, caps=True, twist=0.0, ph
     bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
     obj = tk.mesh_object(name, bm, mat)
     set_attr(obj, "zl", vals)
-    return tk.smooth(obj, smooth)
+    # Round all the way round (a hexagon's faces meet at exactly 60 degrees), sharp at the caps where it can be
+    return tk.smooth(obj, smooth if smooth is not None else max(60.0, 360.0 / sides + 15.0))
 
 
 def prism(name, poly, thick, origin, u, v, face, edge, smooth=20):
@@ -329,9 +332,9 @@ def dried_blood(g, col, rough, height, mask, P, scale=11.0):
     thin."""
     thick = g.ramp(g.noise(scale, detail=5.0, vector=P), 0.35, 0.72)
     mask = g.math("MINIMUM", mask, 1.0)
-    bc = g.mix(thick, (0.15, 0.007, 0.011), (0.04, 0.002, 0.003))
+    bc = g.mix(thick, (0.05, 0.007, 0.006), (0.018, 0.003, 0.002))  # dark and dull: the game's shader shows red brighter
     col = g.mix(mask, col, bc)
-    rough = g.mixf(mask, rough, g.mixf(thick, 0.42, 0.16))
+    rough = g.mixf(mask, rough, g.mixf(thick, 0.6, 0.38))
     height = add(g, height, mul(g, mask, add(g, 0.1, mul(g, thick, 0.35))))
     return col, rough, height
 
@@ -407,7 +410,7 @@ def thin_path(P, f, near=0.02, fine=0.007, coarse=0.022, keep=()):
 
 
 def rusty_iron(name, seed=0.0, rust=0.6, scale=2.5, base=(0.05, 0.046, 0.042), rust_value=0.5, polish=0.0,
-               gore=0.0, reach=0.035, grit=0.5, scale_dark=0.4, grime=0.6, bump=0.35, extra=None):
+               gore=0.0, reach=0.035, grit=0.5, scale_dark=0.4, grime=0.6, bump=0.35, extra=None, blood_scale=11.0, rust_sat=0.78):
     """Old iron and steel: dark mill scale, coarse rust in blooms and crevices (the photo, toned down), pitted,
     rubbed bright in places (polish), grimy and dusty, bloodied near the skin (gore, from zd)."""
     mat, g = tk.new_material(name)
@@ -417,7 +420,7 @@ def rusty_iron(name, seed=0.0, rust=0.6, scale=2.5, base=(0.05, 0.046, 0.042), r
     iron = g.mix(tone, base, tk._darker(g, base, 0.6))
     scale_m = mul(g, g.ramp(g.noise(9.0, detail=6.0, roughness=0.6, vector=P), 0.45, 0.6), scale_dark)
     iron = g.mix(scale_m, iron, (0.022, 0.021, 0.02))
-    rust_col = tk.grade(g, p["color"], 0.78, rust_value)
+    rust_col = tk.grade(g, p["color"], rust_sat, rust_value)
     rust_col = g.mix(g.ramp(tk._luma(g, p["color"]), 0.12, 0.03), rust_col, (0.035, 0.016, 0.008))
     blooms = g.ramp(g.noise(4.5, detail=8.0, roughness=0.65, distortion=0.5, vector=P), 0.66 - 0.32 * rust,
                     0.72 - 0.32 * rust)
@@ -444,8 +447,8 @@ def rusty_iron(name, seed=0.0, rust=0.6, scale=2.5, base=(0.05, 0.046, 0.042), r
         col, rough, metal, height = extra(g, P, col, rough, metal, height)
     col, rough, metal = tk._grit(g, col, rough, metal, grit, scratches=0.2, edges=0.15)
     if gore:  # after the dust, so blood isn't dusted over
-        bm_ = gore_mask(g, P, reach, gore)
-        col, rough, height = dried_blood(g, col, rough, height, bm_, P)
+        bm_ = gore_mask(g, P, reach, gore, scale=blood_scale * 1.5)
+        col, rough, height = dried_blood(g, col, rough, height, bm_, P, scale=blood_scale)
         metal = g.mixf(bm_, metal, 0.0)
     return tk.finish(mat, g, col, metal, rough, g.bump(height, bump, 0.002))
 
@@ -558,31 +561,30 @@ def standin(head=False, forearms=False, chest=False):
 
 # ---------------------------------------------------------------- the leg
 
-FOOT, KNEE = SK.pos("LeftFoot"), SK.pos("LeftLeg")
+KNEE = SK.pos("LeftLeg")
 
 
 def leg_center(z):
-    """The middle of Joe's shin at height z: between the bone line and the (calf-centered) hit box."""
-    tb = (z - FOOT.z) / (KNEE.z - FOOT.z)
-    bone = FOOT.lerp(KNEE, tb)
-    a, b, r = next((a, b, r) for bone_, a, b, r in CAPS if bone_ == "LeftLeg")
-    cap = a.lerp(b, (z - a.z) / (b.z - a.z))
-    return Vector(((bone.x + cap.x) / 2, (bone.y + cap.y) / 2, z))
+    """The middle of Joe's real shin at height z (measured on the vanilla mesh in its bind pose: it drifts in toward the
+    knee and a little forward above the calf)."""
+    return Vector((0.182 - 0.12 * (z - 0.15), 0.040 - 0.02 * max(0.0, z - 0.24), z))
 
 
-U = (leg_center(0.4) - leg_center(0.12)).normalized()
-G = leg_center(0.2)  # where the jaws bite
-R_LEG = 0.04
-skin = taper_sdf(leg_center(0.0), leg_center(0.5), 0.036, 0.046)
+U = (leg_center(0.35) - leg_center(0.15)).normalized()  # up the shin
+G = leg_center(0.258)  # where the jaws bite
+R_LEG = 0.049  # Joe's real shin there is 9.8 cm across (4.5 to 5.2 cm round from its middle)
+skin = taper_sdf(leg_center(0.17), leg_center(0.32), 0.043, 0.058)
 
 # ---------------------------------------------------------------- the trap's frame and sizes
 
-X = orth(Vector((math.cos(math.radians(-25)), math.sin(math.radians(-25)), 0.0)), U)  # hinge axis
+TURN = -30.0  # the hinge axis turned off the zombie's left so the inner spring angles back, clear of the other leg
+X = orth(Vector((math.cos(math.radians(TURN)), math.sin(math.radians(TURN)), 0.0)), U)  # hinge axis
 Y = U.cross(X)  # toward the back jaw
-R = 0.078  # jaw radius (15.6 cm spread)
-JT, JH, TOOTH = 0.0048, 0.013, 0.0075  # jaw bar thickness, height, tooth height
+R = 0.092  # jaw radius (18.4 cm spread)
+JT, JH, TOOTH = 0.0085, 0.019, 0.013  # jaw bar thickness, height, tooth height
 LIFT = 0.006  # the hinge above the base bar
-BITE = 0.006
+BITE = 0.008  # how far the teeth sink into the shin
+SPRING = 0.19  # each spring's length past its post
 _r2 = math.hypot(R, JH + TOOTH)
 _d = math.atan2(JH + TOOTH, R)
 THETA = math.acos((R_LEG - BITE) / _r2) - _d  # how far up the jaws stand
@@ -600,25 +602,26 @@ print("[%s] jaws stand at %.1f degrees, bite %.1f cm above the base; base at (%.
 
 # ---------------------------------------------------------------- materials
 
-iron = rusty_iron("TrapIron", seed=1.0, rust=0.8, scale=3.0, rust_value=0.4, gore=1.0, reach=0.03, grit=0.5,
-                  bump=0.45)
-spring_steel = rusty_iron("SpringSteel", seed=2.0, rust=0.6, scale=3.5, rust_value=0.38, polish=0.35, grit=0.5,
-                          gore=0.4, reach=0.03, bump=0.4)
-chain_iron = rusty_iron("ChainIron", seed=3.0, rust=0.9, scale=4.0, rust_value=0.4, grit=0.6, bump=0.5)
+iron = rusty_iron("TrapIron", seed=1.0, rust=0.85, scale=3.0, base=(0.034, 0.03, 0.027), rust_value=0.27,
+                  rust_sat=1.05, gore=0.9, reach=0.024, grit=0.25, bump=0.45, blood_scale=40.0)
+spring_steel = rusty_iron("SpringSteel", seed=2.0, rust=0.7, scale=3.5, base=(0.036, 0.033, 0.03), rust_value=0.28,
+                          rust_sat=1.0, polish=0.3, grit=0.25, gore=0.35, reach=0.025, bump=0.4, blood_scale=40.0)
+chain_iron = rusty_iron("ChainIron", seed=3.0, rust=0.9, scale=4.0, base=(0.032, 0.029, 0.026), rust_value=0.28,
+                        rust_sat=1.0, grit=0.3, bump=0.5)
 
 # ---------------------------------------------------------------- parts
 
 
 def jaw(name, side, phase):
-    """One jaw: a half ring of flat bar from hinge to hinge, stood up THETA toward the leg, teeth along its top
-    edge (offset half a tooth on the other jaw so they interlock)."""
+    """One jaw: a half ring of heavy flat bar from hinge to hinge, stood up THETA toward the leg, big teeth along its
+    top edge (offset half a tooth on the other jaw so they interlock)."""
     th = THETA
     teeth = 7
-    a0, a1 = 0.42, math.pi - 0.42
-    phis = [0.0, 0.2, a0]
+    a0, a1 = 0.4, math.pi - 0.4
+    phis = [0.0, 0.18, a0]
     for k in range(1, 2 * teeth + 1):
         phis.append(a0 + (a1 - a0) * k / (2 * teeth))
-    phis += [math.pi - 0.2, math.pi]
+    phis += [math.pi - 0.18, math.pi]
     H = Vector((0.0, -side * math.sin(th), math.cos(th)))  # the jaw's height direction, toward the leg
 
     def at(phi):
@@ -634,12 +637,12 @@ def jaw(name, side, phase):
             kk = phis.index(phi) - 2
             top = JH + (TOOTH if (kk + phase) % 2 == 1 else 0.0)
         else:
-            top = JH * 0.8
+            top = JH * 0.85
         ring = []
-        for (dr, dh) in ((-1, 0.0), (1, 0.0), (0.6, top), (-0.6, top)):
+        for (dr, dh) in ((-1, 0.0), (1, 0.0), (0.7, top), (-0.7, top)):
             q = p + r * (dr * JT / 2) + H * dh
             if dh > 0 and top > JH:  # teeth taper to a point
-                q = p + r * (dr * JT * 0.18) + H * dh
+                q = p + r * (dr * JT * 0.2) + H * dh
             w = T(q.x, q.y, q.z)
             ring.append(bm.verts.new(w))
             vals.append((phi * R, dr * JT / 2, dh))
@@ -687,79 +690,94 @@ def band(name, pts, side_dirs, width, thick, mat, closed=False):
     return tk.smooth(obj, 40)
 
 
+BASE_Z, BASE_T = -0.0045, 0.011  # the base bar's middle and thickness
+
+
 def base_and_posts():
+    """The base bar under the jaws (through the ankle), the two hinge posts and the pins the jaws turn on."""
     out = []
-    span = R + 0.03
-    pts = [T(-span, 0.0, -0.003), T(-R, 0.0, -0.003), T(0.0, 0.0, -0.003), T(R, 0.0, -0.003), T(span, 0.0, -0.003)]
-    out.append(band("Base", pts, [Y] * 5, 0.024, 0.0062, iron))
+    span = R + 0.034
+    pts = [T(-span, 0.0, BASE_Z), T(-R, 0.0, BASE_Z), T(0.0, 0.0, BASE_Z), T(R, 0.0, BASE_Z), T(span, 0.0, BASE_Z)]
+    out.append(band("Base", pts, [Y] * 5, 0.036, BASE_T, iron))
     for s in (1, -1):
-        out.append(band("Post%d" % s, [T(s * R, 0.0, -0.002), T(s * R, 0.0, LIFT + 0.006)], [Y] * 2, 0.026, 0.012,
+        out.append(band("Post%d" % s, [T(s * R, 0.0, BASE_Z), T(s * R, 0.0, LIFT + 0.011)], [Y] * 2, 0.04, 0.017,
                         iron))
+        out.append(tube("Pin%d" % s, [T(s * (R - 0.0135), 0.0, LIFT), T(s * (R + 0.0135), 0.0, LIFT)], 0.0042, iron,
+                        sides=6))
     return out
 
 
 def spring(s):
-    """A leaf spring off the post at x = s * R: lower leaf out along the base, round the bend, the upper leaf back up
-    to the eye that rides up both jaw arms."""
-    x0, x1 = s * (R + 0.012), s * (R + 0.14)
-    zb, rb = -0.0075, 0.011
-    eye_x, eye_z = s * (R - 0.006), 0.03
+    """A heavy leaf spring off the end of the base at x = s * R: the lower leaf out from under the post, bowed up a
+    little toward the bend, round the bend, the upper leaf back up to the eye that rides up both jaw arms."""
+    x0, x1 = s * (R + 0.012), s * (R + SPRING)
+    zb, rb, bow = BASE_Z, 0.018, 0.01
+    eye_z = 0.04
+    phi_e = math.asin((eye_z - LIFT) / (R * math.sin(THETA)))
+    eye_x = s * R * math.cos(phi_e)
+    arm_y = R * math.sin(phi_e) * math.cos(THETA)  # the jaw arms' spread where the eye grips them
     pts = []
     for k in range(5):
-        pts.append(T(x0 + (x1 - x0) * k / 4, 0.0, zb))
+        pts.append(T(x0 + (x1 - x0) * k / 4, 0.0, zb + bow * (k / 4) ** 2))
     for k in range(1, 7):
         a = math.pi * k / 6
-        pts.append(T(x1 + s * rb * math.sin(a), 0.0, zb + rb * (1 - math.cos(a))))
-    top_z = zb + 2 * rb
-    ex = eye_x + s * 0.017
+        pts.append(T(x1 + s * rb * math.sin(a), 0.0, zb + bow + rb * (1 - math.cos(a))))
+    top_z = zb + bow + 2 * rb
+    ex = eye_x + s * 0.024
     for k in range(1, 6):
         t = k / 5
-        pts.append(T(x1 + (ex - x1) * t, 0.0, top_z + (eye_z - top_z) * t ** 1.2))
-    leaf = band("Spring%d" % s, pts, [Y] * len(pts), 0.021, 0.0036, spring_steel)
-    # The eye: a flat loop round both jaw arms
+        pts.append(T(x1 + (ex - x1) * t, 0.0, top_z + (eye_z - top_z) * t ** 1.3))
+    leaf = band("Spring%d" % s, pts, [Y] * len(pts), 0.034, 0.009, spring_steel)
+    # The eye: a heavy flat loop round both jaw arms
     ring = []
-    hx, hy = 0.014, 0.034
+    hx, hy = 0.02, arm_y + JT / 2 + 0.008
     for k in range(12):
         a = 2 * math.pi * k / 12
         ring.append(T(eye_x + hx * math.cos(a), hy * math.sin(a), eye_z))
-    eye = band("Eye%d" % s, ring, [U] * 12, 0.012, 0.0034, spring_steel, closed=True)
-    return [leaf, eye]
+    eye = band("Eye%d" % s, ring, [U] * 12, 0.017, 0.0058, spring_steel, closed=True)
+    # A rivet head on the end of the base where the lower leaf is fixed to it
+    rv = T(s * (R + 0.024), 0.0, BASE_Z + BASE_T / 2)
+    rivet = blob("Rivet%d" % s, rv, (0.0065, 0.0065, 0.003), (X, Y, U), iron, seed=s, lump=0.08, seg=(8, 4))
+    return [leaf, eye, rivet]
 
 
-def chain_link(name, center, along, across, length=0.034, width=0.021, wire=0.0034, open_gap=0.0):
+def chain_link(name, center, along, across, length=0.052, width=0.032, wire=0.0055, open_gap=0.0):
     """An oval chain link round `center`, long along `along`, flat in the plane of along and across."""
     a = along.normalized()
     b = orth(across, a)
     hl, hw = length / 2 - wire, width / 2 - wire
     pts = []
-    for k in range(5):  # the two round ends
-        t = -math.pi / 2 + math.pi * k / 4
+    for k in range(4):  # the two round ends
+        t = -math.pi / 2 + math.pi * k / 3
         pts.append(center + a * (hl - hw + hw * math.cos(t)) + b * (hw * math.sin(t)))
-    for k in range(5):
-        t = math.pi / 2 + math.pi * k / 4
+    for k in range(4):
+        t = math.pi / 2 + math.pi * k / 3
         pts.append(center + a * (-(hl - hw) + hw * math.cos(t)) + b * (hw * math.sin(t)))
-    if open_gap:
+    if open_gap:  # a link burst open, its ends sprung apart
         pts = pts[1:] + pts[:1]
+        pts[0] = pts[0] + b * 0.004 + a * 0.003
+        pts[-2] = pts[-2] - b * 0.002
         return tube(name, pts[:-1], wire, chain_iron, sides=4, caps=True, phase=math.pi / 4)
     return tube(name, pts, wire, chain_iron, sides=4, closed=True, phase=math.pi / 4)
 
 
 def chain():
-    """The chain off the outer end of the base, hanging down and trailing back, links turned alternately."""
-    start = T(R + 0.024, 0.0, -0.01)
-    ctrl = [start, start - U * 0.03 + Y * 0.004, start - U * 0.062 + Y * 0.015 + X * 0.006,
-            start - U * 0.082 + Y * 0.045 + X * 0.012, start - U * 0.09 + Y * 0.085 + X * 0.012]
+    """A short heavy chain off the outer end of the base, hanging down and trailing back, links turned alternately,
+    the last one burst open where it tore off its stake."""
+    back = orth(Vector((0.0, 1.0, 0.0)), U)
+    start = T(R + 0.03, 0.0, BASE_Z - 0.008)
+    ctrl = [start, start - U * 0.02 + back * 0.004, start - U * 0.036 + back * 0.024 + X * 0.006,
+            start - U * 0.042 + back * 0.062 + X * 0.012, start - U * 0.044 + back * 0.1 + X * 0.014]
     path = catmull(ctrl, 10)
     S = arclen(path)
-    pitch = 0.0215
+    pitch = 0.0355
     out = []
     n = int(S[-1] / pitch)
     for k in range(n + 1):
         c, d = point_at(path, S, k * pitch)
         across = d.cross(X) if k % 2 == 0 else X
-        last = k == n
-        out.append(chain_link("Link%d" % k, c, d, across, open_gap=0.01 if last else 0.0))
-    print("[%s] chain: %d links, lowest at z %.3f" % (SCRIPT, len(out), min(p.z for p in path) - 0.012))
+        out.append(chain_link("Link%d" % k, c, d, across, open_gap=0.01 if k == n else 0.0))
+    print("[%s] chain: %d links" % (SCRIPT, len(out)))
     return out
 
 
@@ -769,10 +787,13 @@ for p in pieces:
     zk.on(p, "LeftLeg", "Trap")
 
 report(pieces, skin)
+low = min((p.matrix_world @ v.co).z for p in pieces for v in p.data.vertices)
+print("[%s] lowest point z %.3f on Joe; on a zombie whose shin is sized 1.12 (Nurse) %.3f, 1.35 (fat Cop) %.3f"
+      % (SCRIPT, low, KNEE.z - (KNEE.z - low) * 1.12, KNEE.z - (KNEE.z - low) * 1.35))
 parts = export(pieces)
-focus = G - U * 0.03
-zk.previews(SCRIPT, PREVIEWS, focus, distance=0.9)
-close_up("close", focus, (0.5, -1.0, 0.45), distance=0.42)
-close_up("inner", focus, (-0.7, -0.4, 0.5), distance=0.45)
-close_up("back_close", focus, (0.5, 1.0, 0.3), distance=0.42)
+focus = G - U * 0.04
+zk.previews(SCRIPT, PREVIEWS, focus, distance=1.0)
+close_up("close", focus, (0.5, -1.0, 0.45), distance=0.5)
+close_up("inner", focus, (-0.7, -0.4, 0.5), distance=0.5)
+close_up("back_close", focus, (0.5, 1.0, 0.3), distance=0.5)
 print("[%s] done" % SCRIPT)

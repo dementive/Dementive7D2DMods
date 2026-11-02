@@ -212,6 +212,20 @@ def flat_curve(name, outlines, depth, mat, bevel=0.0):
     return tk.smooth(obj, 40)
 
 
+def catmull(pts, n):
+    """The polyline smoothed: n points per span on a Catmull-Rom curve through the points."""
+    out = []
+    for i in range(len(pts) - 1):
+        p0, p1, p2 = pts[max(i - 1, 0)], pts[i], pts[i + 1]
+        p3 = pts[min(i + 2, len(pts) - 1)]
+        for k in range(n):
+            t = k / n
+            out.append(0.5 * ((2 * p1) + (-p0 + p2) * t + (2 * p0 - 5 * p1 + 4 * p2 - p3) * t * t
+                              + (-p0 + 3 * p1 - 3 * p2 + p3) * t * t * t))
+    out.append(pts[-1])
+    return out
+
+
 def deform(obj, fn):
     """Moves every vertex through fn(Vector) -> Vector."""
     for v in obj.data.vertices:
@@ -288,7 +302,7 @@ def face_proxy():
         blob("Chin", (0.0, -0.077, 1.611), (0.022, 0.017, 0.017), mat),
         blob("Lips", (0.0, -0.083, 1.646), (0.025, 0.017, 0.013), mat),
         blob("Neck", (0.0, 0.035, 1.56), (0.054, 0.058, 0.11), mat, (2.0, 3.0), rot_x=8.0),
-        blob("Torso", (0.0, 0.045, 1.36), (0.165, 0.128, 0.175), mat, (2.3, 2.6)),
+        blob("Torso", (0.0, 0.04, 1.35), (0.165, 0.135, 0.19), mat, (2.3, 2.6)),  # chest ~2 cm inside the hit box
     ]
     for s in (1.0, -1.0):
         parts.append(blob("Cheek", (s * 0.047, -0.056, 1.699), (0.02, 0.022, 0.015), mat))
@@ -820,7 +834,8 @@ def crack(g, W, P, col, rgh, met, height):
     dx, dz = g.math("SUBTRACT", x, IMPACT.x), g.math("SUBTRACT", z, IMPACT.z)
     d = dist3(g, W, IMPACT)
     ang = g.math("ARCTAN2", dz, dx)
-    wob = g.math("MULTIPLY", g.math("SUBTRACT", g.noise(140.0, detail=2.0, vector=P), 0.5), 0.5)
+    wob = g.math("ADD", g.math("MULTIPLY", g.math("SUBTRACT", g.noise(140.0, detail=2.0, vector=P), 0.5), 0.6),
+                 g.math("MULTIPLY", g.math("SUBTRACT", g.noise(420.0, detail=1.0, vector=P), 0.5), 0.25))
     f = g.math("ADD", g.math("MULTIPLY", ang, 11.0 / (2 * math.pi)), g.math("ADD", wob, 0.37))
     idx = g.math("FLOOR", f)
     rnd = g.node("ShaderNodeTexWhiteNoise", noise_dimensions="1D")

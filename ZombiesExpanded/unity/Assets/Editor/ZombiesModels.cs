@@ -423,6 +423,105 @@ public static class ZombiesModels
         File.WriteAllBytes(path, read.EncodeToPNG());
     }
 
+    /// <summary>Command line: Build/closeups/&lt;Name&gt;.png for every model (or just `only`): a close look on Joe from
+    /// the front and from behind, framed on the model (the Snatcher's sack shown full).</summary>
+    public static void Closeups()
+    {
+        CloseupsOf(null);
+    }
+
+    public static void CloseupsOf(IEnumerable<string> only)
+    {
+        string game = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "../../../.."));
+        string bundleRoot = Path.Combine(game, "Data/Addressables/Standalone");
+        List<AssetBundle> loaded = Bundles.Select(b => AssetBundle.LoadFromFile(Path.Combine(bundleRoot, b))).Where(b => b != null).ToList();
+        string output = Path.Combine(Directory.GetCurrentDirectory(), "Build/closeups");
+        Directory.CreateDirectory(output);
+        const int size = 800;
+        try
+        {
+            Shader gameShader = loaded.SelectMany(b => b.LoadAllAssets<Shader>()).FirstOrDefault(s => s.name == "Game/Entity Tint Mask");
+            foreach (string name in only ?? Names())
+            {
+                GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(Root + "/" + name + "/" + name + ".prefab");
+                if (prefab == null)
+                {
+                    continue;
+                }
+                // Kept through the new scenes below, which unload unused assets
+                Texture2D sheet = new Texture2D(size * 2, size, TextureFormat.RGB24, false) { hideFlags = HideFlags.HideAndDontSave };
+                for (int view = 0; view < 2; view++)
+                {
+                    EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+                    GameObject z = Object.Instantiate(LoadVanilla(loaded, "zjoe.prefab"));
+                    z.transform.rotation = Quaternion.Euler(0f, view == 0 ? 155f : 25f, 0f);
+                    List<GameObject> pieces = Attach(prefab, z.transform);
+                    foreach (GameObject empty in pieces.Where(p => p.name.EndsWith("#Sack")).ToList())
+                    {
+                        pieces.Remove(empty);
+                        Object.DestroyImmediate(empty);
+                    }
+                    if (gameShader != null)
+                    {
+                        foreach (MeshRenderer r in pieces.SelectMany(p => p.GetComponentsInChildren<MeshRenderer>()))
+                        {
+                            r.sharedMaterials = r.sharedMaterials.Select(m => ToGame(gameShader, m)).ToArray();
+                        }
+                    }
+                    Bounds b = new Bounds(pieces[0].transform.position, Vector3.zero);
+                    foreach (Renderer r in pieces.SelectMany(p => p.GetComponentsInChildren<Renderer>()))
+                    {
+                        b.Encapsulate(r.bounds);
+                    }
+                    Texture2D shot = Shot(b, size);
+                    sheet.SetPixels(view * size, 0, size, size, shot.GetPixels());
+                }
+                sheet.Apply();
+                File.WriteAllBytes(Path.Combine(output, name + ".png"), sheet.EncodeToPNG());
+            }
+        }
+        finally
+        {
+            foreach (AssetBundle b in loaded)
+            {
+                b.Unload(true);
+            }
+        }
+    }
+
+    /// <summary>A square render framed on `focus` (at least 45 cm across, so a small prop shows where it sits).</summary>
+    private static Texture2D Shot(Bounds focus, int size)
+    {
+        Light sun = new GameObject("Sun").AddComponent<Light>();
+        sun.type = LightType.Directional;
+        sun.color = new Color(1f, 0.93f, 0.84f);
+        sun.intensity = 1.3f;
+        sun.shadows = LightShadows.Soft;
+        sun.transform.rotation = Quaternion.Euler(35f, 20f, 0f);
+        RenderSettings.ambientMode = AmbientMode.Trilight;
+        RenderSettings.ambientSkyColor = new Color(0.5f, 0.55f, 0.65f);
+        RenderSettings.ambientEquatorColor = new Color(0.38f, 0.38f, 0.38f);
+        RenderSettings.ambientGroundColor = new Color(0.2f, 0.19f, 0.17f);
+        Camera camera = new GameObject("Camera").AddComponent<Camera>();
+        camera.renderingPath = RenderingPath.DeferredShading;
+        camera.allowHDR = true;
+        camera.clearFlags = CameraClearFlags.SolidColor;
+        camera.backgroundColor = new Color(0.5f, 0.56f, 0.66f);
+        camera.fieldOfView = 24f;
+        float frame = Mathf.Max(0.45f, Mathf.Max(focus.size.x, focus.size.y) * 1.4f);
+        float dist = frame / (2f * Mathf.Tan(12f * Mathf.Deg2Rad));
+        camera.transform.position = focus.center + new Vector3(0f, 0.08f, -dist);
+        camera.transform.LookAt(focus.center);
+        RenderTexture target = new RenderTexture(size, size, 24, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);
+        camera.targetTexture = target;
+        camera.Render();
+        RenderTexture.active = target;
+        Texture2D read = new Texture2D(size, size, TextureFormat.RGB24, false);
+        read.ReadPixels(new Rect(0, 0, size, size), 0, 0, false);
+        RenderTexture.active = null;
+        return read;
+    }
+
     /// <summary>Command line: build and preview only the models named in the ZED_MODELS environment variable
     /// (comma separated).</summary>
     public static void BuildAndPreviewSome()
@@ -436,6 +535,7 @@ public static class ZombiesModels
         }
         AssetDatabase.SaveAssets();
         Preview(some);
+        CloseupsOf(some);
     }
 
     /// <summary>Command line: build the model prefabs and preview them all.</summary>

@@ -373,7 +373,9 @@ def gore(g, W, P, col, rgh, met, height, amount=1.0, reach=0.06, soak=0.02):
     """Blood and gore drying on the object where it went in: soaked and clotted from inside the body to `soak` out
     of the stand-in, then runs, smears and spatter thinning out to `reach`."""
     d = skin_distance(g, W)
-    ragged = g.math("MULTIPLY", g.math("SUBTRACT", g.noise(35.0, 6.0, 0.7, P), 0.5), 0.6 * soak)
+    ragged = g.math("ADD", g.math("SUBTRACT", g.noise(14.0, 4.0, 0.6, P), 0.5),
+                    g.math("MULTIPLY", g.math("SUBTRACT", g.noise(60.0, 5.0, 0.7, P), 0.5), 0.6))
+    ragged = g.math("MULTIPLY", ragged, 1.4 * soak + 0.006)
     wet = g.ramp(g.math("ADD", d, ragged), soak, soak * 0.2)
     near = g.ramp(g.math("ADD", d, g.math("MULTIPLY", g.noise(6.0, 4.0, 0.6, P), 0.4 * reach)), reach, soak * 0.5)
     runs = g.ramp(g.noise(1.0, 3.0, 0.55, mapping(g, P, scale=(110.0, 110.0, 7.0), loc=(0.2, 0.7, 0.1))), 0.6, 0.67)
@@ -385,8 +387,8 @@ def gore(g, W, P, col, rgh, met, height, amount=1.0, reach=0.06, soak=0.02):
     b = g.math("MULTIPLY", b, amount, clamp=True)
     clot = g.math("MULTIPLY", g.ramp(d, soak * 0.6, -0.01), g.ramp(g.noise(24.0, 5.0, 0.6, P), 0.38, 0.62))
     fresh = g.ramp(g.noise(7.0, 4.0, vector=mapping(g, P, loc=(1.1, 0.3, 0.6))), 0.45, 0.72)
-    bc = g.mix(fresh, (0.05, 0.008, 0.005), (0.13, 0.015, 0.009))
-    bc = g.mix(clot, bc, (0.022, 0.005, 0.004))
+    bc = g.mix(fresh, (0.034, 0.006, 0.004), (0.085, 0.011, 0.007))
+    bc = g.mix(clot, bc, (0.017, 0.004, 0.003))
     tissue = g.math("MULTIPLY", g.ramp(voronoi(g, mapping(g, P, loc=(0.5, 0.9, 0.2)), 70.0), 0.14, 0.06), clot)
     bc = g.mix(g.math("MULTIPLY", tissue, 0.8), bc, (0.15, 0.07, 0.055))
     col = g.mix(b, col, bc)

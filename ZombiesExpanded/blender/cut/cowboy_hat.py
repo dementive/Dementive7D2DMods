@@ -1,13 +1,16 @@
 """Cowboy hat: a battered tobacco-brown felt cattleman. A crease runs down the middle of the crown with a pinch either
-side at the front; the brim curls up at the sides and dips front and back, wavy and knocked out of shape, bent down
-over the left eye and with a bite torn out of its edge at the back right. The felt is sun-bleached on top, rubbed
+side at the front, the crown narrowing toward its rounded top; the narrow brim (4 cm at the sides, 5.6 front and
+back) rolls up hard at the sides and dips front and back, wavy and knocked out of shape, bent down over the left eye
+and with a bite torn out of its edge at the back right. The felt is sun-bleached on top, rubbed
 pale on the ridges and the brim's edge, dark with sweat above the band with salt lines in it, greasy where the front
 pinches are grabbed, water-marked, dusty and spotted with blood. A bullet went through the crown just over the head,
 in on the right and out on the left. A thin leather band with a little steel buckle on the left goes round the base
 of the crown, and inside, a leather sweatband.
 
-The crown's inside sits 2 to 3 cm off the head hit box at the base and 3 cm over the top in the crease; the brim
-meets the crown 2 cm over the brows. One part, Head#Hat.
+The crown's inside sits 2 to 3 cm off the head hit box at the base and 2.4 cm over the top in the crease; the
+brim meets the crown 1.3 cm over the brows. The crown can't be any smaller: measured on the vanilla mesh, Joe's
+hair reaches 12.4 cm out from his head's axis at the sides and front corners and 13.3 at the back, just inside the
+crown there. One part, Head#Hat.
 
     blender -b --factory-startup --python cowboy_hat.py -- <unity models folder> <preview folder>
 """
@@ -567,15 +570,15 @@ def face_marks():
 CY = HC.y + 0.003
 RXC, RYC = 0.125, 0.135  # the crown's outside half-width and half-length at its base
 THICK = 0.004  # felt
-Z_TOP = 1.896  # the crown's ridges either side of the crease
-CREASE = 0.022  # the crease's depth down the middle
-TAPER = 0.06  # the crown narrows this much toward the top
+Z_TOP = 1.893  # the crown's ridges either side of the crease
+CREASE = 0.02  # the crease's depth down the middle
+TAPER = 0.085  # the crown narrows this much toward the top
 NS = 5.0  # the crown's section: a superellipse, square-ish with rounded shoulders
 COLS = 40
 # The crown's rows from the top down, as ("rho", fraction of the way out across the top) or ("zeta", fraction of the
 # way up the side); then the brim's rows out to its edge
 CROWN_ROWS = [("rho", 0.28), ("rho", 0.55), ("zeta", 0.985), ("zeta", 0.94), ("zeta", 0.85), ("zeta", 0.68),
-              ("zeta", 0.45), ("zeta", 0.22), ("zeta", 0.0)]
+              ("zeta", 0.45), ("zeta", 0.22), ("zeta", 0.0)]  # rho rising, then zeta falling (keep it so for NS)
 BRIM_W = (0.2, 0.45, 0.7, 0.9, 1.0)
 
 
@@ -588,7 +591,7 @@ def base_z(a):
 def pinch(a):
     """The front pinches: how far the crown's upper side is pushed in either side of the front."""
     aa = math.atan2(math.sin(a), math.cos(a))
-    return 0.028 * math.exp(-((abs(aa) - 0.62) / 0.3) ** 2)
+    return 0.033 * math.exp(-((abs(aa) - 0.62) / 0.3) ** 2)
 
 
 def top_z(x, y):
@@ -605,7 +608,7 @@ def crown(a, zeta, rho=None):
         rho = (1.0 - zeta ** NS) ** (1.0 / NS)
     else:
         zeta = (1.0 - rho ** NS) ** (1.0 / NS)
-    k = rho * (1.0 - TAPER * zeta ** 1.5)
+    k = rho * (1.0 - TAPER * zeta ** 2.0)  # narrowing toward the top, clear of the hair at the back
     px, py = RXC * k * math.sin(a), RYC * k * math.cos(a)
     r = math.hypot(px, py)
     if r > 1e-6:
@@ -616,7 +619,8 @@ def crown(a, zeta, rho=None):
 
 
 def brim_width(a):
-    return 0.069 + 0.008 * abs(math.cos(a))
+    """Narrow: 4 cm at the sides, 5.6 front and back (the crown can't shrink: Joe's hair fills it)."""
+    return 0.04 + 0.016 * abs(math.cos(a))
 
 
 def brim(a, w):
@@ -625,11 +629,12 @@ def brim(a, w):
     s, c = math.sin(a), math.cos(a)
     W = brim_width(a)
     # A bite torn out of the edge at the back right
-    bite = 0.016 * math.exp(-((math.atan2(s, c) + 2.35) / 0.12) ** 2) * smoothstep(0.75, 1.0, w)
+    bite = 0.012 * math.exp(-((math.atan2(s, c) + 2.35) / 0.12) ** 2) * smoothstep(0.75, 1.0, w)
     d = W * w - bite
-    z = base.z + 0.042 * s * s * w ** 2.2 - 0.015 * c * c * w ** 1.3
-    z += 0.011 * noise.noise(Vector((math.cos(a) * 1.8, math.sin(a) * 1.8, 0.3))) * w ** 2  # knocked wavy
-    z -= 0.013 * math.exp(-((math.atan2(s, c) - 0.45) / 0.35) ** 2) * w ** 2  # bent down over the left eye
+    # Rolled up hard at the sides like a taco, which keeps it narrow from the front; dipping front and back
+    z = base.z + 0.04 * s * s * w ** 1.45 - 0.012 * c * c * w ** 1.3
+    z += 0.012 * noise.noise(Vector((math.cos(a) * 2.0, math.sin(a) * 2.0, 0.3))) * w ** 2  # knocked wavy
+    z -= 0.014 * math.exp(-((math.atan2(s, c) - 0.45) / 0.35) ** 2) * w ** 2  # bent down over the left eye
     return base + out * d + Vector((0.0, 0.0, z - base.z))
 
 
@@ -673,11 +678,11 @@ def felt_decals(g, W, P, col, rgh, met, height):
     wav = g.math("MULTIPLY", g.math("SUBTRACT", g.noise(7.0, detail=4.0, vector=P), 0.5), 0.035)
     hw = g.math("ADD", hb, wav)
     soak = g.math("MULTIPLY", g.ramp(hw, 0.075, 0.045), crown)
-    col = g.mix(g.math("MULTIPLY", soak, 0.7), col, tk._darker(g, col, 0.45))
+    col = g.mix(g.math("MULTIPLY", soak, 0.85), col, tk._darker(g, col, 0.35))
     rgh = g.mixf(soak, rgh, 0.7)
     salt = g.math("MAXIMUM", band(g, hw, 0.071, 0.075, 0.0015), g.math("MULTIPLY", band(g, hw, 0.09, 0.093, 0.0012), 0.6))
     salt = g.math("MULTIPLY", g.math("MULTIPLY", salt, crown), g.ramp(g.noise(12.0, detail=5.0, vector=P), 0.35, 0.65))
-    col = g.mix(g.math("MULTIPLY", salt, 0.3), col, (0.22, 0.19, 0.15))
+    col = g.mix(g.math("MULTIPLY", salt, 0.45), col, (0.22, 0.19, 0.15))
     # Grease where the front pinches are grabbed
     grab = None
     for s in (1.0, -1.0):
@@ -742,10 +747,23 @@ def crossing(xs):
     return SHOT_IN.lerp(SHOT_OUT, t)
 
 
-HOLES = [crossing(-0.118), crossing(0.118)]
+def through_wall(side):
+    """Where the shot line crosses the crown's side wall (side +1 left, -1 right)."""
+    a, x = side * math.pi / 2, side * 0.118
+    for _ in range(8):
+        p = crossing(x)
+        lo, hi = 0.0, 1.0
+        for _ in range(30):
+            m = (lo + hi) / 2
+            lo, hi = (m, hi) if crown(a, m).z < p.z else (lo, m)
+        x = crown(a, lo).x
+    return crossing(x)
 
-felt = wear("Felt", (0.085, 0.047, 0.022), rough=0.93, seed=91.0, tone=0.35, fade=0.3, scratches=0.0, scuffs=0.55,
-            scuff_col=(0.13, 0.088, 0.052), edges=1.0, edge_col=(0.17, 0.12, 0.075), dirt=0.8,
+
+HOLES = [through_wall(-1), through_wall(1)]
+
+felt = wear("Felt", (0.095, 0.05, 0.02), rough=0.93, seed=91.0, tone=0.35, fade=0.3, scratches=0.0, scuffs=0.55,
+            scuff_col=(0.14, 0.09, 0.05), edges=1.0, edge_col=(0.18, 0.12, 0.07), dirt=0.8,
             dirt_set="rust_coarse_01", dirt_scale=2.5, dirt_range=(0.14, 0.045), grime=1.0, dust=0.22, specks=0.7,
             blood=0.45, bump=0.6, grain=0.5, grain_scale=200.0, decals=felt_decals, late=felt_late,
             dirt_col=((0.035, 0.026, 0.018), (0.1, 0.078, 0.055)))
@@ -769,9 +787,10 @@ buckle_steel = wear("Buckle", (0.32, 0.31, 0.29), rough=0.45, metal=0.85, seed=9
 def body():
     obj = grid("Hat", felt, COLS, len(ROWS), hat_point, pole=True)
     tk.dent(obj, 0.003, 0.05, seed=11)  # knocked about
-    # A dent in the right side of the crown and one in the back
-    for a, v, r, d in ((-1.35, 0.55, 0.05, 0.009), (2.9, 0.6, 0.045, 0.007), (0.95, 0.75, 0.04, 0.006),
-                       (-2.2, 0.85, 0.035, 0.005)):
+    # A dent in the right side of the crown and one in the back (high, clear of the hair), and the felt pushed out a
+    # little at the back left where a tuft of Joe's hair comes closest
+    for a, v, r, d in ((-1.5, 0.6, 0.04, 0.013), (2.9, 0.82, 0.045, 0.009), (0.95, 0.75, 0.035, 0.008),
+                       (-2.3, 0.85, 0.03, 0.007), (-1.0, 0.35, 0.03, 0.006), (2.71, 0.48, 0.045, -0.006)):
         p = wall(a, v)
         push(obj, p, r, (p - Vector((0.0, CY, p.z))).normalized() * -d)
     thicken(obj, THICK, inner=felt_in)

@@ -294,7 +294,10 @@ public static class ZedRoll
         }
         // Scrap armor's rigid chest plate would sink into a fat zombie's belly
         bool fat = zombie.GetWalkType() == EntityAlive.cWalkTypeFat || p.Body == ZedBody.Bloated || p.Has(ZedMutation.Bloater);
-        options.RemoveAll(k => (ZedGearInfo.All[k].Slots & used) != 0 || gs < ZedGearInfo.All[k].FromGamestage || (k == ZedGearKind.ScrapArmor && fat));
+        // Rigid body armor only sits right on a regular build: on a fat or female body it rode up or sank in
+        bool regular = !fat && !Female(zombie);
+        options.RemoveAll(k => ZedGearInfo.All[k].Cut || (ZedGearInfo.All[k].Slots & used) != 0 || gs < ZedGearInfo.All[k].FromGamestage
+            || (k == ZedGearKind.ScrapArmor && fat) || (ZedGearInfo.All[k].BodyArmor && !regular));
         if (options.Count == 0)
         {
             return;
@@ -312,6 +315,14 @@ public static class ZedRoll
             float soak = kind == ZedGearKind.ScrapArmor && part.Contains("Arm") ? info.Soak * 0.25f : info.Soak;
             p.Gear.Add(new ZedGearPiece { Kind = kind, Part = part, Soak = soak });
         }
+    }
+
+    /// <summary>Whether a zombie class has a woman's body, going by its voice (the game's female zombie sounds), which
+    /// works for other mods' zombies too.</summary>
+    public static bool Female(EntityAlive zombie)
+    {
+        string hurt = zombie.EntityClass?.Properties?.GetString("SoundHurt") ?? "";
+        return hurt.IndexOf("female", StringComparison.OrdinalIgnoreCase) >= 0;
     }
 
     /// <summary>The spots on a zombie's body already taken: by its mutations' and gear's models, its remnants, and a
@@ -373,7 +384,7 @@ public static class ZedRoll
                     }
                 }
             }
-            options.RemoveAll(r => p.Remnants.Contains(r) || (ZedRemnantInfo.All[r].Slots & used) != 0);
+            options.RemoveAll(r => ZedRemnantInfo.All[r].Cut || p.Remnants.Contains(r) || (ZedRemnantInfo.All[r].Slots & used) != 0);
             if (options.Count == 0)
             {
                 return;

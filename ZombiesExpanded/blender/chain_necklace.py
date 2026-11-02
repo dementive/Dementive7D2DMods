@@ -5,8 +5,8 @@ silencer round its edge. Stainless tags with rolled rims and embossed lines of l
 letters and the chain's links, blood dried on the lower ends.
 
 Fitted to Joe's neck and chest as the other neck pieces assume them (a neck column 5.5 cm in radius, the chest hit
-box with its top lowered 5 cm to the real shoulder line): the chain 0.6 cm off them, the tags 0.4 cm off the chest
-hit box. One part, Spine2#Chain.
+box with its top lowered 5 cm to the real shoulder line): the chain 3.5 mm off them, the tags 3 to 6 mm off the
+chest hit box. One part, Spine2#Chain.
 
     blender -b --factory-startup --python chain_necklace.py -- <unity models folder> <preview folder>
 """
@@ -567,7 +567,7 @@ NECK_AXIS, NECK_R = Vector((0.0, 0.032, 0.0)), 0.055
 _ca, _cb, CHEST_R = capsule("Spine2")
 CHEST_A, CHEST_B = _ca, _cb - Vector((0.0, 0.0, 0.05))  # the hit box's top half-sphere lowered to the shoulders
 CHAIN_R = 0.0016  # ball chain, 3.2 mm
-OFF = CHAIN_R + 0.0045  # the chain's center off the skin
+OFF = CHAIN_R + 0.0035  # the chain's center off the skin
 
 
 def chest_sd(q):
@@ -600,7 +600,8 @@ def neck_ring(b):
     """Where the chain sits round the back of the neck (b: 0 front, + left): in the crease between the neck and the
     trapezius."""
     d = Vector((math.sin(b), -math.cos(b), 0.0))
-    p = NECK_AXIS + d * (NECK_R + OFF + 0.0015)
+    # a little further out behind, so it stays clear of the head's hit box (which reaches down the back of the neck)
+    p = NECK_AXIS + d * (NECK_R + OFF + 0.0015 + 0.004 * max(0.0, -math.cos(b)))
     c = CHEST_B
     h = math.hypot(p.x - c.x, p.y - c.y)
     p.z = c.z + math.sqrt(max(0.0, (CHEST_R + OFF) ** 2 - h * h))
@@ -688,14 +689,14 @@ def tag_decals(g, W, P, col, rgh, met, height):
     return col, rgh, met, height
 
 
-steel_chain = wear("BallChain", (0.4, 0.4, 0.39), rough=0.38, metal=0.9, seed=101.0, tone=0.35, scratches=0.3,
-                   scratch_col=(0.55, 0.55, 0.54), scratch_metal=1.0, scuffs=0.3, edges=0.0, dirt=0.75,
+steel_chain = wear("BallChain", (0.34, 0.34, 0.33), rough=0.42, metal=0.9, seed=101.0, tone=0.35, scratches=0.3,
+                   scratch_col=(0.5, 0.5, 0.49), scratch_metal=1.0, scuffs=0.3, edges=0.0, dirt=0.9,
                    dirt_range=(0.16, 0.05), grime=0.8, dust=0.2, specks=0.6, blood=0.3, bump=0.5, grain=0.05,
                    decals=ball_chain, dirt_col=((0.03, 0.025, 0.02), (0.08, 0.065, 0.05)))
-tag_steel = wear("DogTag", (0.42, 0.42, 0.41), rough=0.42, metal=0.85, seed=102.0, tone=0.3, scratches=0.9,
-                 scratch_col=(0.6, 0.6, 0.59), scratch_metal=1.0, dark_scratches=0.4, scuffs=0.5,
-                 scuff_col=(0.3, 0.3, 0.29), edges=0.6, edge_col=(0.6, 0.6, 0.58), dirt=0.6, dirt_range=(0.14, 0.04),
-                 grime=0.8, dust=0.15, specks=0.6, blood=0.3, bump=0.45, grain=0.08, line_width=0.02,
+tag_steel = wear("DogTag", (0.34, 0.34, 0.33), rough=0.45, metal=0.85, seed=102.0, tone=0.35, scratches=0.9,
+                 scratch_col=(0.55, 0.55, 0.54), scratch_metal=1.0, dark_scratches=0.5, scuffs=0.5,
+                 scuff_col=(0.24, 0.24, 0.23), edges=0.6, edge_col=(0.55, 0.55, 0.53), dirt=0.85,
+                 dirt_range=(0.16, 0.05), grime=1.0, dust=0.15, specks=0.7, blood=0.45, grease=0.3, bump=0.45, grain=0.08, line_width=0.02,
                  decals=tag_decals, dirt_col=((0.035, 0.03, 0.024), (0.09, 0.075, 0.055)))
 rubber = wear("Silencer", (0.022, 0.021, 0.02), rough=0.75, seed=103.0, tone=0.25, scratches=0.2,
               scratch_col=(0.08, 0.08, 0.075), scuffs=0.4, scuff_col=(0.06, 0.058, 0.055), edges=0.5,

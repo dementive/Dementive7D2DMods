@@ -12,7 +12,7 @@ zedTipSprinter,UI,Tip,,,,"Sprinter: red veins, panting. Runs even by day, but do
 zedTipSpiked,UI,Tip,,,,Spiked: bone spurs. Its hits make you bleed and hitting it up close scratches you. Clubs hurt it most; spears and guns are safe.,,,,,,,,,,,,,
 zedTipGrabber,UI,Tip,,,,"Grabber: huge gnarled hands. It can hold you for 2 seconds. Hit it, or have a teammate hit it, to break free.",,,,,,,,,,,,,
 zedTipScreecher,UI,Tip,,,,"Screecher: torn jaw, swollen throat. It shrieks the first time it sees you and every zombie near comes, then hangs back a few seconds before it joins in. Kill it before it sees you.",,,,,,,,,,,,,
-zedTipFrostbitten,UI,Tip,,,,"Frostbitten: frost and icicles. Its hits chill you. It doesn't feel cold, but fire hurts it 50% more.",,,,,,,,,,,,,
+zedTipFrostbitten,UI,Tip,,,,"Frostbitten: frosted over, rimed with ice. Its hits chill you. It doesn't feel cold, but fire hurts it 50% more.",,,,,,,,,,,,,
 zedTipSmoldering,UI,Tip,,,,Smoldering: charred and glowing. Fire doesn't hurt it and its hits set you alight; it bursts into flame when it dies. Fight it at range.,,,,,,,,,,,,,
 zedTipLeaper,UI,Tip,,,,"Leaper: wiry, long claws. It leaps at you from 4 to 8 meters, and stumbles if it misses. Sidestep the leap.",,,,,,,,,,,,,
 zedTipRegenerator,UI,Tip,,,,Regenerator: pale fungus. It heals when you stop hitting it and slinks off to do it. Fire stops the healing and hurts it more.,,,,,,,,,,,,,

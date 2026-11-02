@@ -202,6 +202,13 @@ def voronoi(g, vec, scale, feature="F1"):
     return tk._sock(n.outputs, "Distance")
 
 
+def vsub(g, vec, c):
+    n = g.node("ShaderNodeVectorMath", operation="SUBTRACT")
+    g.links.new(vec, n.inputs[0])
+    n.inputs[1].default_value = tuple(c)
+    return n.outputs[0]
+
+
 def collar_material(name):
     """A beige knit cover over foam: fine ribs running up it, a darker bound trim along both edges with a stitch
     line, the strap a greyer hook-and-loop. Yellowed along the top, grimy inside, dirt and blotches, dried blood run
@@ -240,31 +247,47 @@ def collar_material(name):
     col = g.mix(is_strap, col, g.mix(g.ramp(hook, 0.3, 0.7), (0.07, 0.062, 0.05), (0.12, 0.105, 0.082)))
     height = g.mixf(is_strap, height, g.math("MULTIPLY", hook, 0.5))
     # Yellowed along the top (sweat, drool), the inside darker with grime and grease
-    yel = g.math("MULTIPLY", g.ramp(h, 0.55, 0.95), g.ramp(nz(4.0, 5.0, 0.6, 0.4), 0.3, 0.6))
-    col = g.mix(g.math("MULTIPLY", yel, 0.75), col, (0.19, 0.14, 0.06))
+    yel = g.math("MULTIPLY", g.ramp(h, 0.45, 0.92), g.ramp(nz(4.0, 5.0, 0.6, 0.4), 0.25, 0.55))
+    col = g.mix(g.math("MULTIPLY", yel, 0.8), col, (0.17, 0.12, 0.045))
+    tide = nz(2.6, 4.0, 0.55, 0.3)
+    ring = g.math("MULTIPLY", g.ramp(tide, 0.53, 0.565), g.ramp(tide, 0.6, 0.565))
+    col = g.mix(g.math("MULTIPLY", g.ramp(tide, 0.55, 0.59), 0.45), col, (0.12, 0.09, 0.055))
+    col = g.mix(g.math("MULTIPLY", ring, 0.8), col, (0.07, 0.05, 0.03))
     col = g.mix(g.math("MULTIPLY", inner, 0.6), col, (0.075, 0.06, 0.042))
     # Dirt and grime, blotches, specks
     p = tk.photo(g, "rust_coarse_01", 2.4, (0.43, 0.12, 0.88))
     dirt = g.math("MULTIPLY", g.ramp(tk._luma(g, p["color"]), 0.26, 0.07), 0.8)
     dirt = g.math("MAXIMUM", dirt, tk._grime(g, 1.1), clamp=True)
     col = g.mix(g.math("MULTIPLY", dirt, 0.85), col, g.mix(nz(10.0), (0.045, 0.036, 0.026), (0.09, 0.072, 0.05)))
-    blot = g.ramp(nz(3.0, 5.0, 0.6, 0.5), 0.56, 0.66)
-    col = g.mix(g.math("MULTIPLY", blot, 0.5), col, (0.11, 0.085, 0.055))
-    smudge = g.math("MULTIPLY", g.ramp(nz(6.0, 6.0, 0.65, 0.8), 0.54, 0.7), 0.5)
-    col = g.mix(smudge, col, tk._darker(g, col, 0.5))
-    spots = g.ramp(voronoi(g, P, 150.0), 0.15, 0.06)
-    col = g.mix(g.math("MULTIPLY", spots, g.ramp(nz(6.0), 0.4, 0.6)), col, (0.025, 0.02, 0.015))
-    # Blood from the mouth: soaked into the front top, run down in streaks, spattered round
-    fr = g.ramp(y, -0.02, -0.055)
-    soak = g.math("MULTIPLY", g.math("MULTIPLY", fr, g.ramp(z, 1.52, 1.552)),
-                  g.ramp(g.math("ADD", g.math("ABSOLUTE", x), g.math("MULTIPLY", nz(18.0, 4.0), 0.03)), 0.05, 0.025))
-    runs = g.ramp(g.noise(1.0, detail=3.0, vector=mapping(g, P, (90.0, 90.0, 7.0))), 0.58, 0.7)
-    runs = g.math("MULTIPLY", g.math("MULTIPLY", runs, fr), g.ramp(g.math("ABSOLUTE", x), 0.05, 0.02))
-    drops = g.math("MULTIPLY", g.ramp(voronoi(g, mapping(g, P, loc=(1.3, 0.2, 0.8)), 40.0), 0.13, 0.05),
+    blot = g.ramp(nz(3.0, 5.0, 0.6, 0.5), 0.5, 0.64)
+    col = g.mix(g.math("MULTIPLY", blot, 0.65), col, (0.09, 0.07, 0.045))
+    smudge = g.math("MULTIPLY", g.ramp(nz(6.0, 6.0, 0.65, 0.8), 0.5, 0.68), 0.6)
+    col = g.mix(smudge, col, tk._darker(g, col, 0.45))
+    grease = g.math("MULTIPLY", g.ramp(nz(11.0, 6.0, 0.7, 1.0), 0.55, 0.7), 0.5)
+    col = g.mix(grease, col, (0.05, 0.042, 0.032))
+    spots = g.ramp(voronoi(g, P, 150.0), 0.1, 0.04)
+    col = g.mix(g.math("MULTIPLY", spots, g.ramp(nz(6.0), 0.5, 0.65)), col, (0.03, 0.024, 0.018))
+    # Blood from the mouth: a ragged blot soaked into the front top a little off center, runs down from it, spatter
+    fr = g.ramp(y, -0.015, -0.05)
+    rel = vsub(g, g.coords(), (0.012, -0.05, 1.552))
+    rx, ry, rz = g.separate(rel)
+    d = g.math("SQRT", g.math("ADD", g.math("MULTIPLY", rx, rx), g.math("MULTIPLY", g.math("MULTIPLY", rz, rz), 2.2)))
+    f = g.math("SUBTRACT", 1.0, g.math("DIVIDE", d, 0.04))
+    for k, (sc, amt) in enumerate(((24.0, 0.9), (70.0, 0.35))):
+        f = g.math("ADD", f, g.math("MULTIPLY", g.math("SUBTRACT", nz(sc, 3.0, 0.6, 0.0,
+                                                                     mapping(g, P, loc=(k, 0.4, 0.2))), 0.5), amt))
+    soak = g.math("MULTIPLY", g.ramp(f, 0.3, 0.46), fr)
+    rim = g.math("MULTIPLY", g.math("MULTIPLY", g.ramp(f, 0.26, 0.32), g.ramp(f, 0.42, 0.34)), fr)
+    runs = g.ramp(g.noise(1.0, detail=3.0, vector=mapping(g, P, (110.0, 110.0, 6.0), loc=(0.3, 0.0, 0.0))), 0.6, 0.7)
+    runs = g.math("MULTIPLY", g.math("MULTIPLY", runs, fr),
+                  g.math("MULTIPLY", g.ramp(g.math("ABSOLUTE", g.math("SUBTRACT", x, 0.012)), 0.045, 0.015),
+                         g.ramp(z, 1.56, 1.54)))
+    drops = g.math("MULTIPLY", g.ramp(voronoi(g, mapping(g, P, loc=(1.3, 0.2, 0.8)), 45.0), 0.12, 0.04),
                    g.math("MULTIPLY", fr, g.ramp(nz(3.0), 0.45, 0.6)))
     bl = g.math("MAXIMUM", g.math("MAXIMUM", soak, runs), drops)
     bl = g.math("MULTIPLY", bl, g.math("SUBTRACT", 1.0, is_strap))
-    col = g.mix(bl, col, g.mix(nz(20.0), (0.035, 0.01, 0.007), (0.06, 0.018, 0.012)))
+    col = g.mix(bl, col, g.mix(nz(20.0), (0.03, 0.009, 0.006), (0.055, 0.017, 0.011)))
+    col = g.mix(g.math("MULTIPLY", rim, 0.8), col, (0.022, 0.007, 0.005))
     rough = g.mixf(bl, g.mixf(dirt, 0.9, 0.95), 0.55)
     col = tk.grade(g, col, sat=0.85, value=1.0)
     return tk.finish(mat, g, col, 0.0, rough, g.bump(height, 0.3, 0.0012))

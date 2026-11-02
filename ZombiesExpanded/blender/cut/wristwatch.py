@@ -1,13 +1,13 @@
-"""Bandana: a red paisley bandana tied over the head do-rag style. The square is folded into a triangle and laid over
-the head: its long folded edge rolled into a band round the forehead and over the ears, the ends tied in a knot at
-the back over the triangle's point, which hangs down to the nape under the knot with the two tied ends. The cloth
-gathers in folds toward the knot. Classic paisley in dirty white and black on a red gone dull and brownish, with
-sweat soaked into the band, dirt and dried blood.
+"""Wristwatch: a cheap steel field watch on the left wrist, its crystal smashed. A round brushed steel case with a
+sloped bezel, four lugs and a knurled crown toward the hand; under the glass a black dial with pale lume markers and
+hands stopped at 4:37, the crystal crazed out from a hit at four o'clock (a crushed white spot, cracks running out
+from it, two broken rings round it). A dark brown leather strap, cracked and gone black with sweat and dirt, its
+edges rubbed pale: the short end with the steel buckle, the long end through it with its tail under the keeper.
 
-The cloth over the head sits 2 cm off the head hit box (2.4 cm over the top), the band 1.4 cm over the brows. One
-part, Head#Bandana.
+Worn on the back of the wrist 2.5 cm up from the joint, the strap 3 to 5 mm loose round Joe's wrist (about 6.4 by
+5 cm). One part, LeftHand#Watch.
 
-    blender -b --factory-startup --python bandana.py -- <unity models folder> <preview folder>
+    blender -b --factory-startup --python wristwatch.py -- <unity models folder> <preview folder>
 """
 import math
 import os
@@ -15,13 +15,13 @@ import sys
 
 import bmesh
 import bpy
-from mathutils import Matrix, Vector, noise
+from mathutils import Matrix, Vector
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import zkit as tk  # noqa: E402
 import zombiekit as zk  # noqa: E402
 
-NAME, SCRIPT, BONE, PART, SIZE = "Bandana", "bandana", "Head", "Bandana", 512
+NAME, SCRIPT, BONE, PART, SIZE = "Wristwatch", "wristwatch", "LeftHand", "Watch", 512
 
 args = sys.argv[sys.argv.index("--") + 1:]
 ASSETS, PREVIEWS = os.path.join(args[0], NAME), args[1]
@@ -560,265 +560,336 @@ def face_marks():
         ellipsoid("Eye%+d" % s, (0.032 * s, -0.066, 1.719), (0.012, 0.008, 0.008), mat, 12, 8)
 
 
-# ---------------------------------------------------------------- the bandana's shape
+# ---------------------------------------------------------------- the wrist's frame
 
-CY = HC.y + 0.002
-THICK = 0.0025
-RXO, RYO = 0.12 + THICK, 0.126 + THICK  # the cloth's outside at the wall: its inside 2 cm off the hit box
-TOP = 1.869  # outside top
-Z_EQ = 1.745  # where the head hit box's wall meets its top half-sphere
-EXP = 2.1
-COLS, ROWS = 24, 7
-KNOT = Vector((0.0, CY + RYO + 0.011, 1.703))
-
-
-def edge_z(a):
-    """The cloth's lower edge, under the band: over the brows, above the ears, down to the knot at the back."""
-    aa = abs(math.atan2(math.sin(a), math.cos(a)))
-    return 1.764 - 0.029 * smoothstep(0.0, math.pi / 2, aa) - 0.035 * smoothstep(math.pi / 2, math.pi, aa)
-
-
-def outer_curve(a):
-    """The cloth's outside at azimuth a, bottom up: a straight wall, then a dome over the top."""
-    pts = []
-    for k in range(30):
-        z = 1.62 + (Z_EQ - 1.62) * k / 30
-        pts.append(Vector((RXO * math.sin(a), CY - RYO * math.cos(a), z)))
-    for k in range(120):
-        phi = (math.pi / 2) * (1.0 - k / 119)
-        s = max(0.0, math.sin(phi)) ** (2.0 / EXP)
-        c = max(0.0, math.cos(phi)) ** (2.0 / EXP)
-        pts.append(Vector((RXO * s * math.sin(a), CY - RYO * s * math.cos(a), Z_EQ + (TOP - Z_EQ) * c)))
-    return pts
+HAND = SK.pos("LeftHand")
+FA = (HAND - SK.pos("LeftForeArm")).normalized()  # along the forearm, toward the hand (3 o'clock)
+_up = SK.point("LeftHand", (0.0, 1.0, 0.0)) - HAND
+DORSAL = (_up - FA * _up.dot(FA)).normalized()  # the back of the wrist (the dial faces this way)
+E12 = DORSAL.cross(FA)  # across the wrist, toward the little finger (12 o'clock)
+CENTER = HAND - FA * 0.025  # the wrist's middle, 2.5 cm up the forearm from the joint
+# The watch is built in its own frame: x toward the hand, y to 12 o'clock, z out of the back of the wrist
+WATCH = Matrix.Translation(CENTER) @ Matrix((FA, E12, DORSAL)).transposed().to_4x4()
+WRIST = (0.032, 0.0255)  # the wrist's half-width and half-thickness there
+A_IN, B_IN = 0.0355, 0.029  # the strap's inside
+STRAP_T, STRAP_W = 0.003, 0.019
+Z0 = 0.0265  # the case back, resting on the back of the wrist
+print("[%s] frame: to the hand %s, to 12 o'clock %s, dial faces %s" % (NAME, tuple(round(c, 3) for c in FA),
+                                                                   tuple(round(c, 3) for c in E12),
+                                                                   tuple(round(c, 3) for c in DORSAL)))
 
 
-class Meridian:
-    """The outside along one azimuth from the lower edge up, by arc length."""
-
-    def __init__(self, a):
-        full = outer_curve(a)
-        zb = edge_z(a)
-        k = next(i for i in range(len(full) - 1) if full[i + 1].z > zb)
-        t = (zb - full[k].z) / max(full[k + 1].z - full[k].z, 1e-9)
-        self.pts = [full[k].lerp(full[k + 1], t)] + full[k + 1:]
-        self.cum = [0.0]
-        for i in range(1, len(self.pts)):
-            self.cum.append(self.cum[-1] + (self.pts[i] - self.pts[i - 1]).length)
-        self.length = self.cum[-1]
-
-    def at(self, s):
-        n = len(self.pts)
-        k = next((i for i in range(n - 1) if self.cum[i + 1] >= s), n - 2)
-        seg = self.pts[k + 1] - self.pts[k]
-        return self.pts[k] + seg * ((s - self.cum[k]) / max(seg.length, 1e-9))
+def place(obj):
+    """Moves a piece built in the watch's frame onto the wrist, recording its watch-frame coordinates as "loc"."""
+    store(obj, "loc", lambda co: (co.x, co.y, co.z))
+    obj.matrix_world = WATCH @ obj.matrix_world
+    return bake_transform(obj)
 
 
-MER = [Meridian(2 * math.pi * i / COLS) for i in range(COLS)]
+def ellipse(theta, off=0.0):
+    """A point on the strap's middle line round the wrist (theta 90 on top, 0 toward 12 o'clock), `off` outward."""
+    a, b = A_IN + STRAP_T / 2, B_IN + STRAP_T / 2
+    p = Vector((0.0, a * math.cos(theta), b * math.sin(theta)))
+    n = Vector((0.0, b * math.cos(theta), a * math.sin(theta))).normalized()
+    return p + n * off
 
 
-def dome_point(i, j):
-    m = MER[i]
-    if j == 0:
-        return m.pts[-1]
-    return m.at(m.length * (1.0 - j / (ROWS - 1)))
-
-
-def dome_values(i, j):
-    """Flat cloth coordinates: the dome laid out round its top."""
-    a = 2 * math.pi * i / COLS
-    r = MER[i].length * j / (ROWS - 1)
-    return (r * math.sin(a), -r * math.cos(a), 0.0)
+def knob(name, center, axis, radius, length, mat, teeth=12, depth=0.0014):
+    """A knurled knob along `axis` from `center`."""
+    bm = bmesh.new()
+    n = teeth * 2
+    r0, r1 = [], []
+    for i in range(n):
+        t = 2 * math.pi * i / n
+        r = radius if i % 2 == 0 else radius - depth
+        r0.append(bm.verts.new((r * math.cos(t), r * math.sin(t), 0.0)))
+        r1.append(bm.verts.new((r * 0.9 * math.cos(t), r * 0.9 * math.sin(t), length)))
+    for i in range(n):
+        j = (i + 1) % n
+        bm.faces.new((r0[i], r0[j], r1[j], r1[i]))
+    bm.faces.new(list(reversed(r0)))
+    bm.faces.new(r1)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    obj = tk.mesh_object(name, bm, mat)
+    rot = Vector((0.0, 0.0, 1.0)).rotation_difference(Vector(axis).normalized()).to_matrix().to_4x4()
+    obj.matrix_world = Matrix.Translation(Vector(center)) @ rot
+    return tk.smooth(bake_transform(obj), 30)
 
 
 # ---------------------------------------------------------------- materials
 
-def paisley(g, fab):
-    """Paisley on a red ground: teardrops (black inside a white outline, a white inner drop and eye, a ring of white
-    dots round them) in staggered rows, alternate ones mirrored, little white flowers between. Returns the color and
-    a height for the print's slight relief."""
-    S = 0.056
-    fx, fy, _ = g.separate(fab)
-    gy = g.math("DIVIDE", fy, S)
-    row = g.math("FLOOR", gy)
-    odd = g.math("SUBTRACT", row, g.math("MULTIPLY", g.math("FLOOR", g.math("MULTIPLY", row, 0.5)), 2.0))
-    gx = g.math("ADD", g.math("DIVIDE", fx, S), g.math("MULTIPLY", odd, 0.5))
-    ci = g.math("FLOOR", gx)
-    flip = g.math("SUBTRACT", ci, g.math("MULTIPLY", g.math("FLOOR", g.math("MULTIPLY", ci, 0.5)), 2.0))
-    cu = g.math("MULTIPLY", g.math("SUBTRACT", g.math("FRACT", gx), 0.5), g.math("SUBTRACT", 1.0, g.math("MULTIPLY", flip,
-                                                                                                         2.0)))
-    cv = g.math("MULTIPLY", g.math("SUBTRACT", g.math("FRACT", gy), 0.5), g.math("SUBTRACT", 1.0, g.math("MULTIPLY", odd,
-                                                                                                          2.0)))
-    p = combine(g, cu, cv)
-    body = (-0.07, -0.1)
-    circles = [(body, 0.21), ((0.05, 0.05), 0.15), ((0.11, 0.17), 0.1), ((0.1, 0.27), 0.06), ((0.04, 0.32), 0.035)]
-    d = di = None
-    for (cx, cy), r in circles:
-        e = g.math("SUBTRACT", vdist(g, p, (cx, cy, 0.0)), r)
-        d = e if d is None else g.math("MINIMUM", d, e)
-        ix, iy = body[0] + (cx - body[0]) * 0.55, body[1] + (cy - body[1]) * 0.55
-        e = g.math("SUBTRACT", vdist(g, p, (ix, iy, 0.0)), r * 0.5)
-        di = e if di is None else g.math("MINIMUM", di, e)
-    outline = band(g, d, -0.05, 0.0, 0.008)
-    fill = g.ramp(d, -0.045, -0.055)
-    inner = band(g, d, -0.1, -0.08, 0.007)  # a second outline inside, following the first
-    ang = g.math("ARCTAN2", g.math("SUBTRACT", cv, body[1]), g.math("SUBTRACT", cu, body[0]))
-    beads = g.math("MULTIPLY", band(g, di, -0.07, -0.02, 0.008),
-                   g.ramp(g.math("SINE", g.math("MULTIPLY", ang, 10.0)), 0.1, 0.6))  # a string of beads in the middle
-    dots = g.math("MULTIPLY", band(g, d, 0.04, 0.075, 0.01), g.ramp(g.math("SINE", g.math("MULTIPLY", ang, 18.0)), 0.2,
-                                                                    0.6))
-    fv = mapping(g, fab, scale=(2.2 / S,) * 3, loc=(0.3, 0.1, 0.0))
-    flowers = g.math("MULTIPLY", g.ramp(voronoi(g, fv, 1.0), 0.2, 0.13), g.ramp(d, 0.1, 0.13))
-    petals = g.math("MULTIPLY", band(g, voronoi(g, fv, 1.0), 0.24, 0.34, 0.03), g.ramp(d, 0.1, 0.13))
-    petals = g.math("MULTIPLY", petals, g.ramp(g.math("SINE", g.math("MULTIPLY", ang, 4.0)), 0.0, 0.8))
-    light = g.math("MAXIMUM", g.math("MAXIMUM", outline, inner), g.math("MAXIMUM", g.math("MAXIMUM", beads, dots),
-                                                                         flowers))
-    dark = g.math("MAXIMUM", g.math("MULTIPLY", fill, g.math("SUBTRACT", 1.0, g.math("MAXIMUM", inner, beads))), petals)
-    col = g.mix(dark, (0.12, 0.028, 0.022), (0.02, 0.016, 0.015))
-    col = g.mix(light, col, (0.33, 0.3, 0.255))
-    return col, g.math("MULTIPLY", g.math("ADD", light, dark), 0.3)
+IMPACT = (0.0055, -0.0046)  # where the crystal was hit, about four o'clock
+HOUR, MINUTE, SECOND = (4 + 37 / 60) * 30.0, 37 * 6.0, 13 * 6.0  # stopped at 4:37:13
 
 
-def cloth_decals(g, W, P, col, rgh, met, height):
-    """The print, the folds gathered toward the knot, and sweat soaked into the band over the brows."""
-    x, y, z = g.separate(W)
-    pat, relief = paisley(g, attr(g, "fab"))
-    col = tk._multiply_color(g, pat, col)
-    height = g.math("ADD", height, relief)
-    # Folds radiating from the knot across the back of the head
-    dk = vdist(g, W, tuple(KNOT))
-    th = g.math("ARCTAN2", g.math("SUBTRACT", z, KNOT.z), x)
-    wob = g.math("MULTIPLY", g.math("SUBTRACT", g.noise(6.0, detail=2.0, vector=P), 0.5), 3.0)
-    folds = g.math("MULTIPLY", g.math("SINE", g.math("ADD", g.math("MULTIPLY", th, 9.0), wob)),
-                   g.math("MULTIPLY", g.ramp(dk, 0.14, 0.05), g.ramp(dk, 0.025, 0.04)))
-    height = g.math("ADD", height, g.math("MULTIPLY", folds, 2.5))
-    col = g.mix(g.math("MULTIPLY", g.ramp(folds, 0.0, -0.8), 0.6), col, tk._darker(g, col, 0.5))
-    # Soft wrinkles all over
-    wr = lines(g, P, (40.0, 40.0, 10.0), (0.3, 0.8, 0.2), (0.4, 0.1, 0.7), 0.15)
-    height = g.math("ADD", height, g.math("MULTIPLY", wr, 0.4))
-    # Sweat soaked into the cloth low on the forehead
-    sw = g.math("MULTIPLY", g.ramp(z, 1.79, 1.765), g.ramp(y, CY - 0.06, CY - 0.1))
-    sw = g.math("MULTIPLY", sw, g.ramp(g.noise(7.0, detail=4.0, vector=P), 0.3, 0.6))
-    col = g.mix(g.math("MULTIPLY", sw, 0.6), col, tk._darker(g, col, 0.5))
-    rgh = g.mixf(sw, rgh, 0.65)
+def hand_mask(g, x, y, degrees, length, width, tail=0.002, taper=0.5):
+    """A clock hand at `degrees` clockwise from 12."""
+    s, c = math.sin(math.radians(degrees)), math.cos(math.radians(degrees))
+    u = g.math("ADD", g.math("MULTIPLY", x, s), g.math("MULTIPLY", y, c))
+    v = g.math("SUBTRACT", g.math("MULTIPLY", x, c), g.math("MULTIPLY", y, s))
+    w = g.math("MULTIPLY", width, g.math("SUBTRACT", 1.0, g.math("MULTIPLY", g.math("DIVIDE", g.math("MAXIMUM", u, 0.0),
+                                                                                         length), taper)))
+    along = band(g, u, -tail, length, 0.0002)
+    return g.math("MULTIPLY", along, g.ramp(g.math("SUBTRACT", g.math("ABSOLUTE", v), w), 0.00012, -0.00005))
+
+
+def crystal_material():
+    """The dial seen through the glass (the game draws no see-through, so it's all one opaque surface): black dial,
+    lume markers and hands, and the crystal's cracks, crush and grime over it, glossy where the glass is whole."""
+    mat, g = tk.new_material("Crystal")
+    L = attr(g, "loc")
+    x, y, _ = g.separate(L)
+    P = mapping(g, L, scale=(60.0, 60.0, 60.0))
+    r = g.math("SQRT", g.math("ADD", g.math("MULTIPLY", x, x), g.math("MULTIPLY", y, y)))
+    phi = g.math("ARCTAN2", x, y)
+    # Dial: black with a faint sunburst, the minute track and the hour markers
+    sun = g.math("MULTIPLY", g.math("SINE", g.math("MULTIPLY", phi, 90.0)), 0.5)
+    col = g.mix(g.math("ADD", 0.5, g.math("MULTIPLY", sun, 0.3)), (0.012, 0.012, 0.013), (0.03, 0.03, 0.032))
+    f = g.math("MULTIPLY", phi, 12.0 / (2 * math.pi))
+    dm = g.math("MULTIPLY", g.math("MULTIPLY", g.math("ABSOLUTE", g.math("SUBTRACT", f, g.math("ROUND", f))),
+                                   2 * math.pi / 12.0), r)
+    f60 = g.math("MULTIPLY", phi, 60.0 / (2 * math.pi))
+    d60 = g.math("MULTIPLY", g.math("MULTIPLY", g.math("ABSOLUTE", g.math("SUBTRACT", f60, g.math("ROUND", f60))),
+                                    2 * math.pi / 60.0), r)
+    quarter = g.math("MULTIPLY", g.math("ABSOLUTE", g.math("SUBTRACT", g.math("DIVIDE", f, 3.0),
+                                                           g.math("ROUND", g.math("DIVIDE", f, 3.0)))), 3.0)
+    big = g.ramp(quarter, 0.2, 0.1)
+    r_in = g.math("SUBTRACT", 0.0112, g.math("MULTIPLY", big, 0.0015))
+    radial = g.math("MULTIPLY", g.ramp(g.math("SUBTRACT", r, r_in), -0.0002, 0.0002), g.ramp(r, 0.0138, 0.0134))
+    markers = g.math("MULTIPLY", radial, g.ramp(dm, g.math("ADD", 0.0007, g.math("MULTIPLY", big, 0.0004)), 0.0004))
+    ticks = g.math("MULTIPLY", band(g, r, 0.0139, 0.0146, 0.0001), g.ramp(d60, 0.00022, 0.0001))
+    lume = (0.4, 0.39, 0.32)
+    col = g.mix(g.math("MAXIMUM", markers, g.math("MULTIPLY", ticks, 0.7)), col, lume)
+    # The hands, 4:37:13, and the center pin
+    hh = hand_mask(g, x, y, HOUR, 0.0078, 0.0009)
+    mh = hand_mask(g, x, y, MINUTE, 0.0122, 0.00065)
+    sh = hand_mask(g, x, y, SECOND, 0.013, 0.00022, tail=0.003, taper=0.2)
+    hands = g.math("MAXIMUM", hh, mh)
+    col = g.mix(hands, col, (0.36, 0.36, 0.33))
+    col = g.mix(sh, col, (0.22, 0.03, 0.02))
+    col = g.mix(g.ramp(r, 0.001, 0.0006), col, (0.3, 0.3, 0.29))
+    # Cracks: spokes out from the hit, two broken rings round it, a crushed white spot where it landed
+    dx, dy = g.math("SUBTRACT", x, IMPACT[0]), g.math("SUBTRACT", y, IMPACT[1])
+    rho = g.math("SQRT", g.math("ADD", g.math("MULTIPLY", dx, dx), g.math("MULTIPLY", dy, dy)))
+    psi = g.math("ARCTAN2", dy, dx)
+    jit = g.math("MULTIPLY", g.math("SUBTRACT", g.noise(3.0, detail=3.0, vector=P), 0.5), 0.5)
+    sp = g.math("ADD", g.math("MULTIPLY", psi, 11.0 / (2 * math.pi)), jit)
+    spoke_i = g.math("ROUND", sp)
+    dsp = g.math("MULTIPLY", g.math("MULTIPLY", g.math("ABSOLUTE", g.math("SUBTRACT", sp, spoke_i)), 2 * math.pi / 11.0),
+                 rho)
+    reach = g.math("ADD", 0.007, g.math("MULTIPLY", white(g, combine(g, spoke_i, 1.7, 0.3)), 0.018))
+    spokes = g.math("MULTIPLY", g.ramp(dsp, 0.00028, 0.00009), g.ramp(rho, reach, g.math("SUBTRACT", reach, 0.003)))
+    rings = None
+    for rr, seed in ((0.0028, 0.2), (0.0062, 1.4)):
+        wob = g.math("MULTIPLY", g.math("SUBTRACT", g.noise(2.0, detail=3.0, vector=mapping(g, P, loc=(seed, 0.0, 0.0))),
+                                        0.5), 0.0016)
+        ring = g.ramp(g.math("ABSOLUTE", g.math("SUBTRACT", g.math("ADD", rho, wob), rr)), 0.00022, 0.00008)
+        ring = g.math("MULTIPLY", ring, g.ramp(g.noise(1.2, detail=2.0, vector=mapping(g, P, loc=(0.0, seed, 0.0))),
+                                               0.42, 0.5))
+        rings = ring if rings is None else g.math("MAXIMUM", rings, ring)
+    crush = g.ramp(g.math("ADD", rho, g.math("MULTIPLY", g.math("SUBTRACT", g.noise(9.0, vector=P), 0.5), 0.001)),
+                   0.0019, 0.0011)
+    crack = g.math("MAXIMUM", g.math("MAXIMUM", spokes, rings), crush)
+    col = g.mix(g.math("MULTIPLY", crack, 0.85), col, (0.55, 0.56, 0.56))
+    # Grime round the edge of the glass and smeared across it
+    edge = g.ramp(r, 0.0135, 0.0152)
+    smear = g.ramp(g.noise(1.5, detail=5.0, distortion=0.6, vector=P), 0.5, 0.68)
+    dirt = g.math("MAXIMUM", edge, g.math("MULTIPLY", smear, 0.6))
+    col = g.mix(g.math("MULTIPLY", dirt, 0.7), col, (0.06, 0.05, 0.04))
+    rgh = g.mixf(dirt, 0.06, 0.6)
+    rgh = g.mixf(crack, rgh, 0.35)
+    height = g.math("ADD", g.math("MULTIPLY", crack, -1.0), g.math("MULTIPLY", g.math("MAXIMUM", markers, hands), 0.4))
+    return tk.finish(mat, g, col, 0.0, rgh, g.bump(height, 0.35, 0.0006))
+
+
+def strap_decals(g, W, P, col, rgh, met, height):
+    """Stitching round the strap's edge, holes in the long end, sweat gone black where it lies on the skin."""
+    s = g.separate(attr(g, "strapv"))  # arc length, across (-1 to 1), 1 on the long end
+    on = g.ramp(g.math("ABSOLUTE", s[2]), 0.5, 0.6)
+    across = g.math("ABSOLUTE", s[1])
+    dash = g.ramp(g.math("SINE", g.math("MULTIPLY", s[0], 1800.0)), -0.1, 0.5)
+    stitch = g.math("MULTIPLY", g.math("MULTIPLY", band(g, across, 0.74, 0.86, 0.03), dash), on)
+    col = g.mix(g.math("MULTIPLY", stitch, 0.6), col, (0.11, 0.085, 0.06))
+    height = g.math("ADD", height, g.math("MULTIPLY", stitch, 0.5))
+    longend = g.ramp(s[2], 1.5, 1.6)
+    holes = g.math("MULTIPLY", g.math("MULTIPLY", g.ramp(across, 0.17, 0.11),
+                                      g.ramp(g.math("ABSOLUTE", g.math("SUBTRACT", g.math("FRACT", g.math("DIVIDE", s[0],
+                                                                                                           0.0065)), 0.5)),
+                                             0.13, 0.07)), longend)
+    holes = g.math("MULTIPLY", holes, band(g, s[0], 0.1, 0.14, 0.002))
+    col = g.mix(holes, col, (0.01, 0.008, 0.006))
+    height = g.math("SUBTRACT", height, g.math("MULTIPLY", holes, 1.5))
+    crack = lines(g, P, (120.0, 120.0, 25.0), (0.3, 0.7, 0.2), (0.4, 0.1, 0.2), 0.07, 30.0)
+    col = g.mix(g.math("MULTIPLY", crack, 0.6), col, (0.015, 0.01, 0.007))
+    height = g.math("SUBTRACT", height, g.math("MULTIPLY", crack, 0.5))
     return col, rgh, met, height
 
 
-def cloth_late(g, W, P, col, rgh, met, height):
-    """Over the dirt: old grime blotches and a bloom of brown where blood soaked in and dried."""
-    blot = g.ramp(g.noise(3.0, detail=6.0, roughness=0.65, distortion=0.7, vector=P), 0.53, 0.7)
-    col = g.mix(g.math("MULTIPLY", blot, 0.5), col, tk._darker(g, col, 0.5))
-    soak = g.ramp(g.noise(2.2, detail=6.0, roughness=0.6, distortion=1.1, vector=mapping(g, P, loc=(4.0, 1.0, 2.0))),
-                  0.6, 0.66)
-    col = g.mix(g.math("MULTIPLY", soak, 0.75), col, (0.06, 0.018, 0.012))
-    rgh = g.mixf(soak, rgh, 0.6)
-    return col, rgh, met, height
-
-
-print_ = wear("Paisley", (1.0, 1.0, 1.0), rough=0.88, seed=81.0, tone=0.22, fade=0.22, scratches=0.0, scuffs=0.45,
-              scuff_col=(0.2, 0.13, 0.1), edges=0.6, edge_col=(0.22, 0.16, 0.12), dirt=0.9, late=cloth_late,
-              dirt_set="rust_coarse_01", dirt_scale=3.0, dirt_range=(0.14, 0.045), grime=1.0, dust=0.25, specks=0.7,
-              blood=0.4, bump=0.5, grain=0.3, grain_scale=320.0, decals=cloth_decals,
-              dirt_col=((0.04, 0.028, 0.02), (0.1, 0.075, 0.05)))
-reverse = wear("PaisleyBack", (0.12, 0.045, 0.036), rough=0.9, seed=82.0, tone=0.35, scratches=0.0, scuffs=0.3,
-               edges=0.3, dirt=0.9, dirt_range=(0.2, 0.06), grime=1.0, dust=0.0, specks=0.6, blood=0.2, bump=0.4,
-               grain=0.3, grain_scale=320.0, dirt_col=((0.035, 0.025, 0.018), (0.08, 0.06, 0.04)))
+crystal = crystal_material()
+case_steel = wear("CaseSteel", (0.3, 0.3, 0.29), rough=0.42, metal=0.9, seed=111.0, tone=0.3, scratches=0.8,
+                  scratch_col=(0.55, 0.55, 0.54), scratch_metal=1.0, scuffs=0.4, scuff_col=(0.25, 0.25, 0.24),
+                  edges=0.6, edge_col=(0.6, 0.6, 0.58), dirt=0.9, dirt_range=(0.16, 0.05), grime=1.0, dust=0.1,
+                  specks=0.6, blood=0.4, bump=0.35, grain=0.05, line_width=0.02,
+                  dirt_col=((0.03, 0.025, 0.02), (0.08, 0.065, 0.05)))
+leather = wear("WatchStrap", (0.045, 0.026, 0.015), rough=0.62, seed=112.0, tone=0.35, scratches=0.4,
+               scratch_col=(0.1, 0.07, 0.045), scuffs=0.5, scuff_col=(0.08, 0.055, 0.035), edges=0.9,
+               edge_col=(0.12, 0.085, 0.055), dirt=0.8, dirt_range=(0.2, 0.06), grime=1.0, dust=0.1, specks=0.5,
+               grease=0.5, blood=0.4, bump=0.45, grain=0.4, grain_scale=220.0, decals=strap_decals,
+               dirt_col=((0.018, 0.012, 0.008), (0.045, 0.03, 0.02)))
 
 
 # ---------------------------------------------------------------- the pieces
 
-def dome():
-    obj = grid("Cloth", print_, COLS, ROWS, dome_point, pole=True, values=dome_values, attr_name="fab")
-    tk.dent(obj, 0.0045, 0.03, seed=8)
-    thicken(obj, THICK, inner=reverse)
-    return tk.smooth(obj, 55)
+CASE_PROFILE = [(0.0, Z0), (0.0165, Z0), (0.0186, Z0 + 0.001), (0.0196, Z0 + 0.003), (0.0196, Z0 + 0.0062),
+                (0.019, Z0 + 0.0072), (0.0177, Z0 + 0.0093), (0.0158, Z0 + 0.0095), (0.0153, Z0 + 0.0088),
+                (0.0105, Z0 + 0.0096), (0.0055, Z0 + 0.0099), (0.0, Z0 + 0.01)]
+CRYSTAL_ROW = 8  # rows from here in are glass
 
 
-def band_ring():
-    """The long edge, folded and rolled into a band round the head, both ends lost in the knot."""
-    n = 22
-    pts, sides = [], []
-    for k in range(n):
-        a = math.radians(-172 + 344 * k / (n - 1))
-        e = Vector((RXO * math.sin(a), CY - RYO * math.cos(a), edge_z(a) + 0.0055))
-        out = Vector((math.sin(a) / RXO, -math.cos(a) / RYO, 0.0)).normalized()
-        pts.append(e + out * 0.0035)
-        sides.append(Vector((0.0, 0.0, 1.0)) - out * 0.15)
-    rnd = [1.0 + 0.12 * math.sin(k * 2.3) + 0.06 * math.sin(k * 5.1) for k in range(n)]
+def case():
+    cols = 20
 
-    def scale(i):
-        return (rnd[i], 1.0 - 0.1 * math.sin(i * 1.7))
+    def fn(i, j):
+        t = 2 * math.pi * i / cols
+        r, z = CASE_PROFILE[j]
+        return Vector((r * math.cos(t), r * math.sin(t), z))
+
+    obj = grid("Case", case_steel, cols, len(CASE_PROFILE), fn, pole=True, end_pole=True, closed=True)
+    obj.data.materials.append(crystal)
+    zc = CASE_PROFILE[CRYSTAL_ROW][1] - 0.0002
+    for p in obj.data.polygons:
+        c = p.center
+        if c.z > zc and math.hypot(c.x, c.y) < CASE_PROFILE[CRYSTAL_ROW][0] + 1e-4:
+            p.material_index = 1
+    tk.smooth(obj, 35)
+    return place(obj)
+
+
+def lugs():
+    out = []
+    for sy in (1.0, -1.0):
+        for sx in (1.0, -1.0):
+            o = tk.box("Lug", (0.0026, 0.0072, 0.0036), (0.0, 0.0, 0.0), case_steel)
+            o.matrix_world = Matrix.Translation((sx * 0.0108, sy * 0.0213, Z0 + 0.0032)) @ \
+                Matrix.Rotation(math.radians(-22 * sy), 4, "X")
+            out.append(place(bake_transform(o)))
+    return out
+
+
+def crown():
+    o = knob("Crown", (0.0193, 0.0, Z0 + 0.0046), (1.0, 0.0, 0.0), 0.0029, 0.0036, case_steel, teeth=8, depth=0.0005)
+    return place(o)
+
+
+def strap_piece(name, pts, flag):
+    cum = [0.0]
+    for k in range(1, len(pts)):
+        cum.append(cum[-1] + (pts[k] - pts[k - 1]).length)
 
     def values(i, k):
-        return (0.33 + 0.36 * i / (n - 1), 0.41 + 0.004 * k, 0.0)
+        return (cum[i], -1.0 if k in (0, 3) else 1.0, flag)
 
-    obj = rope("Band", pts, 0.0115, 0.0048, print_, side=lambda i: sides[i], sides=6, scale=scale, values=values,
-               attr_name="fab")
-    return obj
-
-
-def knot():
-    obj = ellipsoid("Knot", KNOT, (0.024, 0.014, 0.017), print_, u=10, v=7)
-    for v in obj.data.vertices:
-        q = v.co - KNOT
-        bump = noise.noise(v.co * 70.0) * 0.004
-        crease = -0.004 * math.exp(-((q.x - 0.002) / 0.006) ** 2)  # where the ends wrap round each other
-        v.co += q.normalized() * (bump + crease)
-    store(obj, "fab", lambda co: (co.x * 1.4 + 0.21, co.z * 1.4 + 0.37, 0.0))
-    return tk.smooth(obj, 60)
+    o = strap(name, pts, STRAP_W, STRAP_T, leather, (1.0, 0.0, 0.0), values=values, attr_name="strapv")
+    return place(o)
 
 
-def tail(name, root, tip, twist, seed):
-    """One tied end hanging from the knot: a tapering corner of cloth, a little twisted and curled."""
-    axis = tip - root
-    across0 = Vector((1.0, 0.0, 0.0))
-    back = Vector((0.0, 1.0, 0.0))
-
-    def fn(i, j):
-        t = j / 4
-        u = -1.0 + i
-        w = 0.016 * (1.0 - t) ** 0.8 + 0.0015
-        rot = Matrix.Rotation(math.radians(twist * t), 3, axis.normalized())
-        acr = rot @ (across0 - axis.normalized() * across0.dot(axis.normalized())).normalized()
-        nrm = rot @ back
-        return root + axis * t + acr * (u * w) + nrm * (0.004 * math.sin(math.pi * t) + 0.002 * u * u)
-
-    def values(i, j):
-        return (seed + 0.02 * (i - 1), seed * 2.0 + 0.08 * j / 4, 0.0)
-
-    obj = grid(name, print_, 3, 5, fn, cyclic=False, inside=KNOT - Vector((0.0, 0.08, 0.0)), values=values,
-               attr_name="fab")
-    thicken(obj, 0.002, inner=reverse)
-    return tk.smooth(obj, 60)
+def straps():
+    lug = Z0 + 0.0022
+    deg = math.radians
+    short = [Vector((0.0, 0.0236, lug)), Vector((0.0, 0.0268, lug - 0.0032))] + \
+        [ellipse(deg(t)) for t in (42, 22, 2, -18, -36, -48)]
+    long_ = [Vector((0.0, -0.0236, lug)), Vector((0.0, -0.0268, lug - 0.0032))] + \
+        [ellipse(deg(t)) for t in (138, 160, 182, 205, 228, 252, 276, 298)] + \
+        [ellipse(deg(312), STRAP_T * 0.6), ellipse(deg(322), STRAP_T * 1.05)] + \
+        [ellipse(deg(t), STRAP_T * 1.05) for t in (336, 350, 362)]
+    return [strap_piece("StrapShort", short, 1.0), strap_piece("StrapLong", long_, 2.0)]
 
 
-def flap():
-    """The triangle's point, hanging down the back of the head under the knot."""
-    R = (RXO - THICK - 0.001, RYO - THICK - 0.001)
+def buckle():
+    """The steel frame at the short end, its prong across the long end, and the keeper round both."""
+    deg = math.radians
+    th = deg(-49)
+    p = ellipse(th, STRAP_T * 0.5)
+    tan = (ellipse(th + 0.01) - ellipse(th - 0.01)).normalized()
+    nrm = Vector((0.0, -tan.z, tan.y))
+    if nrm.dot(p) < 0:
+        nrm = -nrm
+    xs, ts = 0.0115, 0.0045
+    corners = []
+    for cx, ct in ((1, -1), (1, 1), (-1, 1), (-1, -1)):
+        corners.append(p + Vector((cx * xs, 0.0, 0.0)) + tan * (ct * ts))
+    frame = strap("Buckle", corners, 0.0022, 0.0016, case_steel, nrm, closed=True)
+    prong = tk.box("Prong", (0.0014, 0.0014, 0.0115), (0.0, 0.0, 0.0), case_steel)
+    prong.matrix_world = Matrix.Translation(p + nrm * 0.0024 + tan * 0.0015) @ \
+        Matrix((Vector((1.0, 0.0, 0.0)), nrm, tan)).transposed().to_4x4()
+    bake_transform(prong)
+    th = deg(-28)
+    q = ellipse(th, STRAP_T * 0.5)
+    tan = (ellipse(th + 0.01) - ellipse(th - 0.01)).normalized()
+    nrm = Vector((0.0, -tan.z, tan.y))
+    if nrm.dot(q) < 0:
+        nrm = -nrm
+    lo, hi = -STRAP_T * 0.5 - 0.0007, STRAP_T * 1.6 + 0.0007
+    loop = [q + Vector((cx * 0.0103, 0.0, 0.0)) + nrm * h for cx, h in ((1, lo), (1, hi), (-1, hi), (-1, lo))]
+    keeper = strap("Keeper", loop, 0.0055, 0.0011, leather, tan, closed=True)
+    return [place(frame), place(prong), place(keeper)]
 
-    def fn(i, j):
-        t = j / 3
-        u = -1.0 + 2.0 * i / 4
-        half = 0.055 * (1.0 - t) ** 0.9 + 0.002
-        a = math.pi + u * half / R[1]
-        z = 1.716 - 0.072 * t
-        return Vector((R[0] * math.sin(a), CY - R[1] * math.cos(a), z))
 
-    def values(i, j):
-        return (0.5 + (-1.0 + 2.0 * i / 4) * 0.05, -0.2 - 0.072 * j / 3, 0.0)
+pieces = [case(), crown()] + lugs() + straps() + buckle()
+export(pieces, fit=())
 
-    obj = grid("Flap", print_, 5, 4, fn, cyclic=False, values=values, attr_name="fab")
-    tk.dent(obj, 0.002, 0.03, seed=9)
-    thicken(obj, 0.002, inner=reverse)
-    return tk.smooth(obj, 60)
+# Clearance round the wrist assumed here (an ellipse of WRIST, tapering up the forearm): negative = inside
+inv = WATCH.inverted()
+worst = 1.0
+for o in bpy.data.objects:
+    if o.name.startswith("LeftHand#"):
+        for v in o.data.vertices:
+            q = inv @ (o.matrix_world @ v.co)
+            k = (WRIST[0] ** -2 * q.y ** 2 + WRIST[1] ** -2 * q.z ** 2) ** 0.5
+            worst = min(worst, (1.0 - 1.0 / max(k, 1e-6)) * math.hypot(q.y, q.z))
+print("[%s] closest to the assumed wrist: %.1f mm" % (NAME, 1000 * worst))
 
 
-pieces = [dome(), band_ring(), knot(), flap(),
-          tail("TailL", KNOT + Vector((0.01, 0.005, -0.008)), KNOT + Vector((0.042, 0.004, -0.072)), 30.0, 1.3),
-          tail("TailR", KNOT + Vector((-0.009, 0.007, -0.01)), KNOT + Vector((-0.03, 0.01, -0.066)), -40.0, 2.1)]
-export(pieces, fit=("Head",))
-face_marks()
-focus = Vector((0.0, 0.0, 1.76))
-zk.previews(SCRIPT, PREVIEWS, focus, distance=0.9)
-close_up("close", (-0.75, -0.9, 0.25), focus, distance=0.45)
-close_up("back_close", (0.5, 1.0, 0.2), Vector((0.0, 0.08, 1.72)), distance=0.42)
+def standin_arm():
+    """The stand-in's forearm capsule is fat (5 cm) and its hand a single capsule, so for these previews the left
+    arm gets a slimmer, flattened forearm, a palm and fingers."""
+    mat = bpy.data.materials["BodySkin"]
+    for i, c in enumerate(SK.colliders):
+        if c["bone"] == "LeftForeArm":
+            bpy.data.objects.remove(bpy.data.objects["Body_%d" % i])
+    bpy.data.objects.remove(bpy.data.objects["BodyLeftHand"])
+    elbow = SK.pos("LeftForeArm")
+    rings = 8
+    bm = bmesh.new()
+    vs = []
+    for k in range(rings):
+        t = k / (rings - 1)
+        c = elbow.lerp(HAND + FA * 0.01, t)
+        a = 0.042 + (WRIST[0] - 0.042) * t ** 0.8
+        b = 0.036 + (WRIST[1] - 0.036) * t ** 0.8
+        vs.append([bm.verts.new(c + E12 * (a * math.cos(2 * math.pi * j / 20)) + DORSAL * (b * math.sin(2 * math.pi * j / 20)))
+                   for j in range(20)])
+    for k in range(rings - 1):
+        for j in range(20):
+            j1 = (j + 1) % 20
+            bm.faces.new((vs[k][j], vs[k][j1], vs[k + 1][j1], vs[k + 1][j]))
+    bm.faces.new(vs[-1])
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    tk.smooth(tk.mesh_object("PreForeArm", bm, mat), 60)
+    ax = (SK.pos("LeftHandMiddle1") - HAND).normalized()
+    nh = (DORSAL - ax * DORSAL.dot(ax)).normalized()
+    lat = nh.cross(ax)
+    palm = tk.box("PrePalm", (0.1, 0.075, 0.03), (0.0, 0.0, 0.0), mat, bevel_width=0.01)
+    palm.matrix_world = Matrix.Translation(HAND + ax * 0.045 - nh * 0.004) @ Matrix((ax, lat, nh)).transposed().to_4x4()
+    for f in ("Index", "Middle", "Ring", "Pinky", "Thumb"):
+        r = 0.0115 if f == "Thumb" else 0.0095
+        taper("Pre" + f, SK.pos("LeftHand%s1" % f), SK.pos("LeftHand%s4" % f), r, r * 0.8, mat, seg=12)
+
+
+standin_arm()
+wrist = CENTER + DORSAL * 0.02
+zk.previews(SCRIPT, PREVIEWS, wrist, distance=0.5)
+close_up("dial", DORSAL + E12 * 0.15 - FA * 0.1, CENTER + DORSAL * 0.03, distance=0.13)
+close_up("close", DORSAL * 0.8 - Vector((0.0, 1.0, 0.0)) + FA * 0.2, CENTER + DORSAL * 0.01, distance=0.2)
+close_up("under", -DORSAL * 0.9 - Vector((0.0, 0.6, 0.0)), CENTER - DORSAL * 0.02, distance=0.22)
 print("[%s] done" % SCRIPT)

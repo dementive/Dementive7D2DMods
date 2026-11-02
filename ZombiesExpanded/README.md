@@ -77,38 +77,32 @@ its back gets no axe in it, a helmet and a cap never meet.
 ## Gear
 
 From gamestage 20, 15% of zombies (25% from 100) wear gear that fits their job (vanilla zombies) or anything (other
-zombies); zombies whose model already wears a hat or helmet get no helmet, and fat or bloated ones no scrap armor. Gear takes its share of each hit on what it
-covers until its soak runs out, then it's knocked off as a tumbling prop. Blunt hits wear it 50% faster,
+zombies); zombies whose model already wears a hat or helmet get no helmet. Gear takes its share of each hit on
+what it covers until its soak runs out, then it's knocked off as a tumbling prop. Blunt hits wear it 50% faster,
 armor-piercing rounds go through, explosions strip it.
 
 | Gear | Covers | Takes | Soak | Cost |
 |---|---|---|---|---|
-| Hard hat | head | all | 30 | |
 | Welding mask | head | all | 40 | sees 30% less far |
-| Football helmet | head | all | 60 | |
 | Motorcycle helmet | head | all | 80 | hears 30% less far |
 | Riot helmet | head | all | 100 | hears 30% less far |
-| Military helmet | head | all | 100 | |
-| Kevlar vest | chest | half | 150 | 10% slower |
-| Scrap armor | chest plate (front), back plate (back), two shoulder pads; each breaks on its own | 60% | 250 a plate, 62 a pad | 20% slower |
-| Car door (from 40) | a shield on the left arm: head, torso and left arm, from the front only | all | 120 | 15% slower, attacks 20% slower |
-| Riot shield (from 40; cops, soldiers) | the same | all | 200 | 15% slower, attacks 20% slower |
 
 ## Remnants
 
 About half of all zombies carry a prop that tells who they were and how they died, a fifth of those two: one that
-fits the job for vanilla zombies (a nurse's surgical mask or IV line, an inmate's handcuffs or ankle monitor, a
-worker's hi-vis vest or tool belt, a rancher's pitchfork in the back), otherwise one anyone might have; other mods'
-zombies pick from everything. Hats and anything on top of the head only go on zombies with no hat of their own. They're
-cosmetic, except the bear trap: a zombie with one clamped on its ankle limps (15% slower).
+fits the job for vanilla zombies (an inmate's ankle monitor or a shiv, a lumberjack's axe in the back, a rancher's
+pitchfork, a lab worker's gas mask), otherwise one anyone might have; other mods' zombies pick from everything. Hats
+and anything on top of the head only go on zombies with no hat of their own. They're cosmetic, except the bear trap: a
+zombie with one clamped on its ankle limps (15% slower).
 
 - **Stuck in them:** arrows, a crossbow bolt, a kitchen knife, a screwdriver, an axe, a machete, a snapped pitchfork,
-  rebar through the chest, glass shards, a bear trap, barbed wire, a cut noose.
-- **Hospital:** head bandage, arm cast, leg cast, neck brace, IV line.
-- **Face and neck:** cracked glasses, sunglasses, headphones, surgical mask, dust mask, gas mask.
-- **Headwear:** baseball cap, beanie, bandana, cowboy hat.
-- **Personal, work and law:** chain necklace, wristwatch, lanyard, hi-vis vest, tool belt, messenger bag, fanny pack,
-  handcuffs, ankle monitor.
+  rebar through the chest, glass shards, a bear trap, barbed wire (on the forearm, a leg or round the waist, a
+  different mix on each zombie), a cut noose.
+- **Worn:** an arm cast, cracked glasses, sunglasses, headphones, a gas mask, a chain necklace, an
+  ankle monitor.
+
+Some models come in parts that vary from zombie to zombie (the Bloater's pustules, the Regenerator's fungus, the barbed
+wire): each zombie shows its own mix, the same for every player.
 
 ## Champions and the Alpha
 
@@ -155,7 +149,8 @@ The `ze` console command (F1):
 - `src\build.bat` builds `ZombiesExpanded.dll` (needs Visual Studio's C# compiler).
 - `src\fetch-textures.ps1` downloads the Poly Haven texture sets (CC0) the models are textured with into
   `blender\textures` (not committed).
-- `src\build-models.bat` builds the gear and growth models (each `blender\<model>.py`; see `blender\MODELS.md`),
+- `src\build-models.bat` builds the gear, growth and remnant models (each `blender\<model>.py`; see `blender\MODELS.md`
+  and `blender\REMNANTS.md`),
   then `src\build-bundle.bat`, which builds `Resources\zombiesexpanded.unity3d` with Unity 2022.3.62f2 and renders
   previews: `unity\Build\looks-*.png` (the looks), `unity\Build\models\*.png` (each model on vanilla Joe, Cop and
   Nurse) and `unity\Build\effects.png`.

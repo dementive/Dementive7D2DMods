@@ -21,6 +21,13 @@ public class ZedModels : MonoBehaviour
         { "Head", new Vector3(0f, 0.02f, 0f) }, { "Spine2", new Vector3(-0.00073f, 0.11f, -0.05f) },
     };
 
+    /// <summary>The bone each limb bone points at, which gives the limb's length axis.</summary>
+    private static readonly Dictionary<string, string> LimbChild = new Dictionary<string, string>
+    {
+        { "LeftArm", "LeftForeArm" }, { "LeftForeArm", "LeftHand" }, { "LeftUpLeg", "LeftLeg" }, { "LeftLeg", "LeftFoot" },
+        { "RightArm", "RightForeArm" }, { "RightForeArm", "RightHand" }, { "RightUpLeg", "RightLeg" }, { "RightLeg", "RightFoot" },
+    };
+
     private EntityAlive zombie;
     private readonly Dictionary<string, GameObject> parts = new Dictionary<string, GameObject>();
     private readonly Dictionary<string, Transform> bones = new Dictionary<string, Transform>();
@@ -99,7 +106,7 @@ public class ZedModels : MonoBehaviour
                 }
                 continue;
             }
-            Ensure(model, null);
+            Ensure(model, null, false, p.Seed);
         }
         foreach (ZedGearPiece g in p.Gear)
         {
@@ -115,22 +122,28 @@ public class ZedModels : MonoBehaviour
         }
         foreach (ZedRemnant r in p.Remnants)
         {
-            Ensure(ZedRemnantInfo.All[r].Model, null);
+            if (!ZedRemnantInfo.All[r].Cut)
+            {
+                Ensure(ZedRemnantInfo.All[r].Model, null, true, p.Seed);
+            }
         }
     }
 
-    /// <summary>Puts a model's parts (or just `only`) on the zombie, once.</summary>
-    private void Ensure(string model, string only)
+    /// <summary>Puts a model's parts (or just `only`) on the zombie, once. With `acrossLimb`, parts on an arm or leg
+    /// are sized to the limb's thickness only and keep their length (a cast stays the length of a shin). With a
+    /// `seed`, the model's variant parts (named with "Var") are a selection that seed picks (see Variants).</summary>
+    private void Ensure(string model, string only, bool acrossLimb = false, int? seed = null)
     {
         GameObject prefab = ZedAssets.Get<GameObject>(model);
         if (prefab == null)
         {
             return;
         }
+        HashSet<string> shown = seed.HasValue ? Variants(prefab, model, seed.Value) : null;
         foreach (Transform piece in prefab.transform)
         {
             string key = model + "/" + piece.name;
-            if ((only != null && piece.name != only) || parts.ContainsKey(key))
+            if ((only != null && piece.name != only) || parts.ContainsKey(key) || (shown != null && !shown.Contains(piece.name)))
             {
                 continue;
             }
@@ -139,8 +152,24 @@ public class ZedModels : MonoBehaviour
             {
                 continue;
             }
-            GameObject p = Instantiate(piece.gameObject, bone, false);
             float s = Fit(boneName, out Vector3? center);
+            if (acrossLimb && Mathf.Abs(s - 1f) > 0.01f && AlongLimb(bone, boneName, out int axis))
+            {
+                // A holder scaled across the limb only; the piece keeps its own pose inside it
+                GameObject holder = new GameObject(piece.name);
+                holder.transform.SetParent(bone, false);
+                Vector3 across = Vector3.one * s;
+                across[axis] = 1f;
+                holder.transform.localScale = across;
+                GameObject inner = Instantiate(piece.gameObject, holder.transform, false);
+                inner.transform.localPosition = piece.localPosition;
+                inner.transform.localRotation = piece.localRotation;
+                inner.transform.localScale = piece.localScale;
+                ZedGameShader.Apply(inner.transform);
+                parts[key] = holder;
+                continue;
+            }
+            GameObject p = Instantiate(piece.gameObject, bone, false);
             Vector3 pos = piece.localPosition * s;
             if (center.HasValue && JoeCenter.TryGetValue(boneName, out Vector3 jc))
             {
@@ -157,6 +186,77 @@ public class ZedModels : MonoBehaviour
                 sacScale = p.transform.localScale;
             }
         }
+    }
+
+    /// <summary>Which of a model's parts this zombie shows: every part without "Var" in its name, and each "Var" part
+    /// about half the time (at least one when the model is nothing but variants). Drawn from the zombie's seed and the
+    /// model's name, so every player sees the same selection.</summary>
+    private static HashSet<string> Variants(GameObject prefab, string model, int seed)
+    {
+        HashSet<string> shown = new HashSet<string>();
+        List<string> variants = new List<string>();
+        foreach (Transform piece in prefab.transform)
+        {
+            if (piece.name.IndexOf("Var", System.StringComparison.Ordinal) >= 0)
+            {
+                variants.Add(piece.name);
+            }
+            else
+            {
+                shown.Add(piece.name);
+            }
+        }
+        if (variants.Count == 0)
+        {
+            return shown;
+        }
+        variants.Sort(System.StringComparer.Ordinal);
+        System.Random rng = new System.Random(seed ^ Stable(model));
+        foreach (string v in variants)
+        {
+            if (rng.NextDouble() < 0.5)
+            {
+                shown.Add(v);
+            }
+        }
+        if (shown.Count == 0)
+        {
+            shown.Add(variants[rng.Next(variants.Count)]);
+        }
+        return shown;
+    }
+
+    /// <summary>A string hash that's the same on every machine (string.GetHashCode isn't guaranteed to be).</summary>
+    private static int Stable(string s)
+    {
+        unchecked
+        {
+            int h = 23;
+            foreach (char c in s)
+            {
+                h = h * 31 + c;
+            }
+            return h;
+        }
+    }
+
+    /// <summary>Which of a limb bone's own axes runs along the limb (toward the next bone), if one clearly does.</summary>
+    private bool AlongLimb(Transform bone, string boneName, out int axis)
+    {
+        axis = -1;
+        if (!LimbChild.TryGetValue(boneName, out string childName) || !bones.TryGetValue(childName, out Transform child) || child == null)
+        {
+            return false;
+        }
+        Vector3 d = bone.InverseTransformDirection(child.position - bone.position);
+        if (d.sqrMagnitude < 1e-6f)
+        {
+            return false;
+        }
+        d = d.normalized;
+        float ax = Mathf.Abs(d.x), ay = Mathf.Abs(d.y), az = Mathf.Abs(d.z);
+        axis = ax >= ay && ax >= az ? 0 : ay >= az ? 1 : 2;
+        return Mathf.Max(ax, Mathf.Max(ay, az)) > 0.85f;
     }
 
     private static string BoneOf(string part)
