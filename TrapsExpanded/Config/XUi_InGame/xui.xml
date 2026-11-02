@@ -1,0 +1,7 @@
+<configs>
+	<append xpath="/xui">
+		<window_group name="dementiveTrapReport" defaultselected="btnContinue">
+			<window name="windowDementiveTrapReport" />
+		</window_group>
+	</append>
+</configs>

@@ -1,0 +1,27 @@
+<configs>
+	<!-- The Blood Moon report: the vanilla tip window's layout and controller (title, text, Continue), made bigger with
+	     smaller text so a whole night's report fits. -->
+	<append xpath="/windows">
+		<window name="windowDementiveTrapReport" width="900" height="650" pos="-450, 320" controller="TipWindow" anchor="Center" depth="15" cursor_area="true">
+			<rect name="header" height="43" depth="1">
+				<headerbg />
+				<sprite depth="2" name="windowIcon" style="icon32px" pos="4,-5" sprite="ui_game_symbol_skull"/>
+				<label style="header.name" text="{tiptitle}" width="850" />
+			</rect>
+			<rect name="content" pos="0,-46" height="604" depth="1">
+				<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" pos="0,0" width="900" color="[black]" type="sliced" fillcenter="false" />
+				<sprite color="[darkGrey]" type="sliced" />
+				<label depth="3" name="descriptionText" pos="12,-10" text="{tiptext}" width="876" height="540" font_size="22" />
+
+				<rect name="btnContinue" depth="3" pos="0, -562" height="42" >
+					<sprite depth="8" name="backgroundMain" sprite="menu_empty3px" color="[black]" type="sliced" fillcenter="false" />
+					<sprite depth="2" name="background" pos="3,-3" sprite="menu_empty" width="224" height="32" color="[darkGrey]" type="sliced" />
+					<rect depth="3" pos="0,0" height="42">
+						<button name="clickable" sprite="menu_empty" defaultcolor="[mediumGrey]" hoversprite="ui_game_select_row" hovercolor="[white]" type="sliced" hoverscale="1.0"/>
+						<label depth="2" name="windowName" pos="0,-1" justify="center" text="CONTINUE" text_key="btnContinue" font_size="36" />
+					</rect>
+				</rect>
+			</rect>
+		</window>
+	</append>
+</configs>

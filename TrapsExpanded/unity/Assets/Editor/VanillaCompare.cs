@@ -163,6 +163,14 @@ public static class VanillaCompare
             {
                 r.sharedMaterials = r.sharedMaterials.Select(m => ToGame(shader, m, true)).ToArray();
             }
+            // Effects mid-burst, as they look in game
+            foreach (ParticleSystem ps in ours.GetComponentsInChildren<ParticleSystem>(true))
+            {
+                if (ps.transform.parent == null || ps.transform.parent.GetComponent<ParticleSystem>() == null)
+                {
+                    ps.Simulate(0.4f, true, true);
+                }
+            }
             dart.transform.position = new Vector3(-1.3f, 0f, 0f);
             ours.transform.position = Vector3.zero;
             generator.transform.position = new Vector3(1.3f, 0f, 0f);
@@ -185,6 +193,201 @@ public static class VanillaCompare
                 bundle.Unload(true);
             }
         }
+    }
+
+    /// <summary>
+    /// Writes every transform of a vanilla prefab (position and rotation relative to its root, and its components)
+    /// to a text file, and renders it like Preview: for traps that reuse a vanilla model, to find its parts.
+    /// </summary>
+    public static void DumpVanilla(string prefabFile, string textPath, string imagePath)
+    {
+        string game = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "../../../.."));
+        string root = Path.Combine(game, "Data/Addressables/Standalone");
+        List<AssetBundle> loaded = Bundles.Select(b => AssetBundle.LoadFromFile(Path.Combine(root, b))).Where(b => b != null).ToList();
+        try
+        {
+            EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+            GameObject go = null;
+            foreach (AssetBundle bundle in loaded)
+            {
+                string asset = bundle.GetAllAssetNames().FirstOrDefault(n => n.ToLowerInvariant().EndsWith("/" + prefabFile));
+                if (asset != null)
+                {
+                    go = Object.Instantiate(bundle.LoadAsset<GameObject>(asset));
+                    break;
+                }
+            }
+            if (go == null)
+            {
+                File.WriteAllText(textPath, "not found: " + prefabFile);
+                return;
+            }
+            StringBuilder log = new StringBuilder();
+            foreach (Transform t in go.GetComponentsInChildren<Transform>(true))
+            {
+                string path = t.name;
+                for (Transform p = t.parent; p != null && p != go.transform.parent; p = p.parent)
+                {
+                    path = p.name + "/" + path;
+                }
+                Vector3 pos = go.transform.InverseTransformPoint(t.position);
+                Vector3 fwd = go.transform.InverseTransformDirection(t.forward);
+                string comps = string.Join(", ", t.GetComponents<Component>().Where(c => c != null && !(c is Transform))
+                    .Select(c => c.GetType().Name));
+                Renderer r = t.GetComponent<Renderer>();
+                string b = r != null ? " bounds " + r.bounds.center.ToString("F2") + " size " + r.bounds.size.ToString("F2") : "";
+                log.AppendLine(path + " at " + pos.ToString("F3") + " fwd " + fwd.ToString("F2") + " [" + comps + "]" + b);
+            }
+            File.WriteAllText(textPath, log.ToString());
+            Stage();
+            go.transform.position = Vector3.zero;
+            const int width = 1300, height = 1000;
+            Texture2D sheet = new Texture2D(width * 2, height, TextureFormat.RGB24, false);
+            Vector3[] views = { new Vector3(1.8f, 2.2f, -4.6f), new Vector3(3.5f, 1.6f, 1.5f) };
+            for (int i = 0; i < views.Length; i++)
+            {
+                Texture2D shot = Shot(views[i], new Vector3(0f, 0.6f, 0.4f), 34f, width, height, null);
+                sheet.SetPixels(i * width, 0, width, height, shot.GetPixels());
+            }
+            File.WriteAllBytes(imagePath, sheet.EncodeToPNG());
+        }
+        finally
+        {
+            foreach (AssetBundle bundle in loaded)
+            {
+                bundle.Unload(true);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Side and front views of the vanilla flamethrower trap with a 0.25 m grid and red markers where the Flame
+    /// Vent's C# puts its nozzle (FlameVentDEM's NozzleOffset), to check the flame comes out of the nozzles.
+    /// </summary>
+    public static void FlameNozzles()
+    {
+        string game = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "../../../.."));
+        string root = Path.Combine(game, "Data/Addressables/Standalone");
+        List<AssetBundle> loaded = Bundles.Select(b => AssetBundle.LoadFromFile(Path.Combine(root, b))).Where(b => b != null).ToList();
+        try
+        {
+            Debug.Log("[FlameNozzles] root " + root + " loaded " + loaded.Count + ": " + string.Join(", ", loaded.Select(b => b.name)));
+            EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+            foreach (AssetBundle bundle in loaded)
+            {
+                string asset = bundle.GetAllAssetNames().FirstOrDefault(n => n.ToLowerInvariant().EndsWith("/flamethrowertrapprefab.prefab"));
+                if (asset != null)
+                {
+                    GameObject ft = Object.Instantiate(bundle.LoadAsset<GameObject>(asset));
+                    foreach (Renderer r in ft.GetComponentsInChildren<Renderer>(true))
+                    {
+                        Debug.Log("[FlameNozzles] " + r.name + " enabled " + r.enabled + " active " + r.gameObject.activeInHierarchy
+                            + " bounds " + r.bounds.center.ToString("F2") + " " + r.bounds.size.ToString("F2") + " shader "
+                            + (r.sharedMaterial != null ? r.sharedMaterial.shader.name + " " + r.sharedMaterial.shader.isSupported : "none"));
+                    }
+                    LODGroup lod = ft.GetComponent<LODGroup>();
+                    if (lod != null)
+                    {
+                        lod.ForceLOD(0);
+                    }
+                }
+            }
+            Material red = new Material(Shader.Find("Unlit/Color")) { color = Color.red };
+            Material grid = new Material(Shader.Find("Unlit/Color")) { color = new Color(0f, 0.6f, 1f) };
+            for (float v = -1.75f; v <= 1.76f; v += 0.25f)
+            {
+                GameObject h = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                h.transform.localScale = new Vector3(0.002f, 0.004f, 4f);
+                h.transform.position = new Vector3(0.6f, v, 0f);
+                h.GetComponent<Renderer>().sharedMaterial = grid;
+                GameObject z = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                z.transform.localScale = new Vector3(0.002f, 4f, 0.004f);
+                z.transform.position = new Vector3(0.6f, 0f, v);
+                z.GetComponent<Renderer>().sharedMaterial = grid;
+            }
+            foreach (Vector3 p in new[] { new Vector3(0f, 0.38f, -1.45f), new Vector3(0f, 0.73f, -1.45f), new Vector3(0f, 1.02f, -1.45f) })
+            {
+                GameObject s = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                s.transform.localScale = Vector3.one * 0.06f;
+                s.transform.position = p;
+                s.GetComponent<Renderer>().sharedMaterial = red;
+            }
+            Stage();
+            const int size = 1000;
+            Texture2D sheet = new Texture2D(size * 2, size, TextureFormat.RGB24, false);
+            // From far away through a narrow lens: next to no perspective, so the grid can be read off
+            Texture2D side = Shot(new Vector3(60f, 0.3f, -0.5f), new Vector3(0f, 0.3f, -0.5f), 2.2f, size, size, null);
+            Texture2D front = Shot(new Vector3(0f, 0.3f, -60f), new Vector3(0f, 0.3f, -0.5f), 2.2f, size, size, null);
+            sheet.SetPixels(0, 0, size, size, side.GetPixels());
+            sheet.SetPixels(size, 0, size, size, front.GetPixels());
+            File.WriteAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "Build/flamethrower-nozzles.png"), sheet.EncodeToPNG());
+        }
+        finally
+        {
+            foreach (AssetBundle bundle in loaded)
+            {
+                bundle.Unload(true);
+            }
+        }
+    }
+
+    /// <summary>Renders each of the mod's effect prefabs close up, mid-effect, by day and by night, in a grid of
+    /// tiles (day left, night right), to check how they read before they go in game.</summary>
+    public static void FxSheet(List<string> prefabPaths, string path)
+    {
+        EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+        GameObject ground = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        ground.GetComponent<Renderer>().sharedMaterial = new Material(Shader.Find("Standard")) { color = new Color(0.32f, 0.3f, 0.27f) };
+        Light sun = new GameObject("Sun").AddComponent<Light>();
+        sun.type = LightType.Directional;
+        sun.transform.rotation = Quaternion.Euler(40f, -30f, 0f);
+        Camera cam = new GameObject("FxCam").AddComponent<Camera>();
+        cam.clearFlags = CameraClearFlags.SolidColor;
+        cam.fieldOfView = 40f;
+        const int w = 420, h = 320, cols = 3;
+        RenderTexture rt = new RenderTexture(w, h, 24);
+        cam.targetTexture = rt;
+        int rows = (prefabPaths.Count + cols - 1) / cols;
+        Texture2D sheet = new Texture2D(w * 2 * cols, h * rows, TextureFormat.RGB24, false);
+        for (int i = 0; i < prefabPaths.Count; i++)
+        {
+            string n = Path.GetFileNameWithoutExtension(prefabPaths[i]);
+            GameObject fx = Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(prefabPaths[i]));
+            // Things that fly or hang on a zombie at chest height, the rest on the ground; jets and projectiles point
+            // to the right so their length shows
+            bool flying = n.StartsWith("Flame") || n.Contains("Arrow") || n.Contains("Bolt") || n.Contains("Glob");
+            bool raised = flying || n.Contains("Drip") || n == "FrostCrust" || n == "FrostMist";
+            // Jets start at their origin and go right; projectiles trail back from their tip at the origin
+            float x = n.StartsWith("Flame") ? -1.2f : flying ? 0.45f : 0f;
+            fx.transform.position = new Vector3(x, raised ? 1f : 0.02f, 0f);
+            fx.transform.rotation = flying ? Quaternion.Euler(0f, 90f, 0f) : Quaternion.identity;
+            foreach (ParticleSystem ps in fx.GetComponentsInChildren<ParticleSystem>(true))
+            {
+                if (ps.transform.parent == null || ps.transform.parent.GetComponent<ParticleSystem>() == null)
+                {
+                    ps.Simulate(n == "IcePatch" ? 1f : 0.6f, true, true);
+                }
+            }
+            float dist = n.StartsWith("FlameJetLong") ? 9f : n.StartsWith("Flame") || n == "IcePatch" ? 5f : flying ? 1.3f : 3f;
+            cam.transform.position = new Vector3(n.StartsWith("Flame") ? 1.5f : 0f, 1.6f, -dist);
+            cam.transform.LookAt(new Vector3(cam.transform.position.x, raised ? 1f : 0.4f, 0f));
+            for (int night = 0; night < 2; night++)
+            {
+                sun.intensity = night == 0 ? 1.3f : 0.05f;
+                RenderSettings.ambientLight = night == 0 ? new Color(0.5f, 0.52f, 0.58f) : new Color(0.03f, 0.03f, 0.05f);
+                cam.backgroundColor = night == 0 ? new Color(0.55f, 0.62f, 0.72f) : new Color(0.02f, 0.025f, 0.04f);
+                cam.Render();
+                RenderTexture.active = rt;
+                Texture2D shot = new Texture2D(w, h, TextureFormat.RGB24, false);
+                shot.ReadPixels(new Rect(0, 0, w, h), 0, 0);
+                int col = i % cols, row = rows - 1 - i / cols;
+                sheet.SetPixels((col * 2 + night) * w, row * h, w, h, shot.GetPixels());
+            }
+            Object.DestroyImmediate(fx);
+        }
+        RenderTexture.active = null;
+        File.WriteAllBytes(path, sheet.EncodeToPNG());
+        Debug.Log("[VanillaCompare] Wrote " + path);
     }
 
     private static void Stage()

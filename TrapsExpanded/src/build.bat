@@ -22,7 +22,9 @@ rem C# 9 is the newest language version Unity 2022 (the game's runtime) official
     -r:"%MANAGED%\mscorlib.dll" -r:"%MANAGED%\System.dll" -r:"%MANAGED%\System.Core.dll" ^
     -r:"%MANAGED%\netstandard.dll" -r:"%MANAGED%\Assembly-CSharp.dll" -r:"%MANAGED%\LogLibrary.dll" ^
     -r:"%MANAGED%\UnityEngine.dll" -r:"%MANAGED%\UnityEngine.CoreModule.dll" ^
-    -r:"%MANAGED%\UnityEngine.PhysicsModule.dll" ^
+    -r:"%MANAGED%\UnityEngine.PhysicsModule.dll" -r:"%MANAGED%\UnityEngine.ParticleSystemModule.dll" ^
+    -r:"%MANAGED%\Unity.Addressables.dll" -r:"%MANAGED%\UnityEngine.UIModule.dll" ^
+    -r:"%GAME%\Mods\0_TFP_Harmony\0Harmony.dll" ^
     "%SRC%*.cs"
 if errorlevel 1 exit /b 1
 

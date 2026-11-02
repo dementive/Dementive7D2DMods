@@ -1,0 +1,8 @@
+<configs>
+	<!-- The Salvage Hopper's bin: empty until traps fill it (SalvageHopperDEM adds the hauls). -->
+	<append xpath="/lootcontainers">
+		<lootcontainer name="DementiveTrapSalvageHopper" count="0" size="6,4" sound_open="UseActions/crate_iron_open" sound_close="UseActions/crate_iron_close" loot_quality_template="qualBaseTemplate">
+			<item name="cobweb" count="0"/>
+		</lootcontainer>
+	</append>
+</configs>

@@ -1,9 +1,43 @@
 <configs>
-	<!-- The Tesla Coil unlocks at traps crafting skill 50, with the shotgun turret -->
+	<!-- Unlocks with the vanilla traps crafting skill. The primitive traps fill levels 5 to 20, which vanilla leaves
+	     empty before its electric tier at 25 (the Grease Slick is known from the start); then the Sprinkler, Tar
+	     Sprayer and Salvage Hopper at 25 with the electric fence, dart and blade traps; the Tesla Coil, Cryo Vent and
+	     Ram at 50 with the shotgun turret; the Flame Vent and Overcharger at 75 with the auto turret; the Bolt Thrower
+	     at 100 with the M60 turret. Tar and rebar bolts unlock with the traps that use them. -->
+	<insertBefore xpath="/progression/crafting_skills/crafting_skill[@name='craftingTraps']/display_entry[@name_key='trapsT1']">
+		<display_entry icon="DementiveTrapBurnBarrel" name_key="dem_trapsP1" has_quality="false" unlock_level="5">
+			<unlock_entry item="DementiveTrapBurnBarrel" unlock_tier="1"/>
+		</display_entry>
+		<display_entry icon="DementiveTrapSwingingLog" name_key="dem_trapsP2" has_quality="false" unlock_level="10">
+			<unlock_entry item="DementiveTrapSwingingLog" unlock_tier="1"/>
+		</display_entry>
+		<display_entry icon="DementiveTrapBearTrap" name_key="dem_trapsP3" has_quality="false" unlock_level="15">
+			<unlock_entry item="DementiveTrapBearTrap" unlock_tier="1"/>
+		</display_entry>
+		<display_entry icon="DementiveTrapTripBow" name_key="dem_trapsP4" has_quality="false" unlock_level="20">
+			<unlock_entry item="DementiveTrapTripBow" unlock_tier="1"/>
+		</display_entry>
+	</insertBefore>
+	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingTraps']/display_entry[@name_key='trapsT1']">
+		<unlock_entry item="DementiveTrapSprinkler,DementiveTrapTarSprayer,DementiveTrapTar,DementiveTrapSalvageHopper" unlock_tier="1"/>
+	</append>
 	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingTraps']/display_entry[@name_key='trapsT2']">
-		<unlock_entry item="DementiveTrapTeslaCoil" unlock_tier="1"/>
+		<unlock_entry item="DementiveTrapTeslaCoil,DementiveTrapCryoVent,DementiveTrapRam" unlock_tier="1"/>
+	</append>
+	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingTraps']/display_entry[@name_key='trapsT3']">
+		<unlock_entry item="DementiveTrapFlameVent,DementiveTrapOvercharger" unlock_tier="1"/>
+	</append>
+	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingTraps']/display_entry[@name_key='trapsT4']">
+		<unlock_entry item="DementiveTrapBoltThrower,DementiveTrapRebarBolt" unlock_tier="1"/>
 	</append>
 	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingTraps']/effect_group">
-		<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="DementiveTrapTeslaCoil"/>
+		<passive_effect name="RecipeTagUnlocked" operation="base_set" level="5,100" value="1" tags="DementiveTrapBurnBarrel"/>
+		<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="DementiveTrapSwingingLog"/>
+		<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="DementiveTrapBearTrap"/>
+		<passive_effect name="RecipeTagUnlocked" operation="base_set" level="20,100" value="1" tags="DementiveTrapTripBow"/>
+		<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="DementiveTrapSprinkler,DementiveTrapTarSprayer,DementiveTrapTar,DementiveTrapSalvageHopper"/>
+		<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="DementiveTrapTeslaCoil,DementiveTrapCryoVent,DementiveTrapRam"/>
+		<passive_effect name="RecipeTagUnlocked" operation="base_set" level="75,100" value="1" tags="DementiveTrapFlameVent,DementiveTrapOvercharger"/>
+		<passive_effect name="RecipeTagUnlocked" operation="base_set" level="100,100" value="1" tags="DementiveTrapBoltThrower,DementiveTrapRebarBolt"/>
 	</append>
 </configs>

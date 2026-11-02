@@ -1,11 +1,106 @@
 <configs>
 	<append xpath="/recipes">
+		<!-- Primitive traps: crafted by hand from early-game junk. The Grease Slick is known from the start; the rest
+		     unlock with the traps crafting skill (progression.xml). -->
+		<recipe name="DementiveTrapGreaseSlick" count="1" craft_time="10">
+			<ingredient name="resourceScrapIron" count="12"/>
+			<ingredient name="resourceAnimalFat" count="4"/>
+			<ingredient name="resourceCloth" count="2"/>
+		</recipe>
+		<recipe name="DementiveTrapBurnBarrel" count="1" craft_time="15" tags="learnable">
+			<ingredient name="resourceScrapIron" count="25"/>
+			<ingredient name="resourceRockSmall" count="12"/>
+			<ingredient name="resourceWood" count="10"/>
+		</recipe>
+		<recipe name="DementiveTrapSwingingLog" count="1" craft_time="20" tags="learnable">
+			<ingredient name="resourceWood" count="40"/>
+			<ingredient name="resourceNail" count="12"/>
+			<ingredient name="resourceYuccaFibers" count="10"/>
+			<ingredient name="resourceScrapIron" count="8"/>
+		</recipe>
+		<recipe name="DementiveTrapBearTrap" count="1" craft_time="15" tags="learnable">
+			<ingredient name="resourceForgedIron" count="4"/>
+			<ingredient name="resourceSpring" count="2"/>
+			<ingredient name="resourceScrapIron" count="15"/>
+		</recipe>
+		<recipe name="DementiveTrapTripBow" count="1" craft_time="15" tags="learnable">
+			<ingredient name="gunBowT0PrimitiveBow" count="1"/>
+			<ingredient name="resourceWood" count="15"/>
+			<ingredient name="resourceYuccaFibers" count="8"/>
+			<ingredient name="resourceDuctTape" count="1"/>
+		</recipe>
+
+		<!-- Powered traps: at the workbench, like the vanilla ones -->
 		<recipe name="DementiveTrapTeslaCoil" count="1" craft_area="workbench" tags="perkAdvancedEngineering,learnable">
 			<ingredient name="resourceForgedSteel" count="15"/>
 			<ingredient name="resourceElectricParts" count="12"/>
 			<ingredient name="resourceMechanicalParts" count="4"/>
 			<ingredient name="resourceScrapPolymers" count="5"/>
 			<ingredient name="resourceOil" count="5"/>
+		</recipe>
+		<recipe name="DementiveTrapSprinkler" count="1" craft_area="workbench" tags="perkAdvancedEngineering,learnable">
+			<ingredient name="resourceScrapPolymers" count="10"/>
+			<ingredient name="resourceMetalPipe" count="3"/>
+			<ingredient name="resourceForgedIron" count="4"/>
+			<ingredient name="resourceMechanicalParts" count="3"/>
+			<ingredient name="resourceElectricParts" count="4"/>
+			<ingredient name="resourceDuctTape" count="1"/>
+		</recipe>
+		<recipe name="DementiveTrapTarSprayer" count="1" craft_area="workbench" tags="perkAdvancedEngineering,learnable">
+			<ingredient name="resourceForgedIron" count="6"/>
+			<ingredient name="resourceMechanicalParts" count="4"/>
+			<ingredient name="resourceElectricParts" count="3"/>
+			<ingredient name="resourceScrapPolymers" count="6"/>
+			<ingredient name="resourceMetalPipe" count="2"/>
+		</recipe>
+		<recipe name="DementiveTrapSalvageHopper" count="1" craft_area="workbench" tags="perkAdvancedEngineering,learnable">
+			<ingredient name="resourceScrapIron" count="40"/>
+			<ingredient name="resourceForgedIron" count="4"/>
+			<ingredient name="resourceElectricParts" count="2"/>
+			<ingredient name="resourceMechanicalParts" count="2"/>
+		</recipe>
+		<recipe name="DementiveTrapCryoVent" count="1" craft_area="workbench" tags="perkAdvancedEngineering,learnable">
+			<ingredient name="resourceForgedSteel" count="8"/>
+			<ingredient name="resourceElectricParts" count="8"/>
+			<ingredient name="resourceMechanicalParts" count="6"/>
+			<ingredient name="resourceMetalPipe" count="4"/>
+			<ingredient name="resourceScrapPolymers" count="4"/>
+		</recipe>
+		<recipe name="DementiveTrapRam" count="1" craft_area="workbench" tags="perkAdvancedEngineering,learnable">
+			<ingredient name="resourceForgedSteel" count="10"/>
+			<ingredient name="resourceMechanicalParts" count="8"/>
+			<ingredient name="resourceElectricParts" count="4"/>
+			<ingredient name="resourceOil" count="2"/>
+		</recipe>
+		<recipe name="DementiveTrapFlameVent" count="1" craft_area="workbench" tags="perkAdvancedEngineering,learnable">
+			<ingredient name="resourceForgedSteel" count="12"/>
+			<ingredient name="resourceMechanicalParts" count="6"/>
+			<ingredient name="resourceElectricParts" count="6"/>
+			<ingredient name="resourceMetalPipe" count="4"/>
+			<ingredient name="resourceOil" count="4"/>
+		</recipe>
+		<recipe name="DementiveTrapOvercharger" count="1" craft_area="workbench" tags="perkAdvancedEngineering,learnable">
+			<ingredient name="carBattery" count="2"/>
+			<ingredient name="resourceElectricParts" count="15"/>
+			<ingredient name="resourceForgedSteel" count="4"/>
+			<ingredient name="resourceScrapPolymers" count="6"/>
+		</recipe>
+		<recipe name="DementiveTrapBoltThrower" count="1" craft_area="workbench" tags="perkAdvancedEngineering,learnable">
+			<ingredient name="resourceForgedSteel" count="20"/>
+			<ingredient name="resourceMechanicalParts" count="10"/>
+			<ingredient name="resourceElectricParts" count="6"/>
+			<ingredient name="resourceSpring" count="4"/>
+			<ingredient name="resourceMetalPipe" count="4"/>
+		</recipe>
+
+		<!-- Ammo -->
+		<recipe name="DementiveTrapTar" count="5" craft_area="workbench" craft_time="5" tags="learnable">
+			<ingredient name="resourceOil" count="2"/>
+			<ingredient name="resourceCoal" count="2"/>
+		</recipe>
+		<recipe name="DementiveTrapRebarBolt" count="4" craft_area="workbench" craft_time="5" tags="learnable">
+			<ingredient name="resourceForgedIron" count="3"/>
+			<ingredient name="resourceScrapPolymers" count="1"/>
 		</recipe>
 	</append>
 </configs>

@@ -1,0 +1,33 @@
+<configs>
+	<append xpath="/items">
+		<!-- Tar: the Tar Sprayer's ammo (loaded from its radial menu; one tar is four globs). Cooked from oil and coal. -->
+		<item name="DementiveTrapTar">
+			<property name="UnlockedBy" value="craftingTraps"/>
+			<property name="HoldType" value="45"/>
+			<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="MresourceOil"/>
+			<property name="Stacknumber" value="100"/>
+			<property name="EconomicValue" value="40"/>
+			<property name="Group" value="Resources,Chemicals,CFChemicals"/>
+			<property name="Tags" value="trapsSkill"/>
+			<property name="SoundPickup" value="oil_grab"/>
+			<property name="SoundPlace" value="oil_place"/>
+		</item>
+
+		<!-- Rebar Bolt: the Bolt Thrower's ammo (loaded from its radial menu, one a shot). -->
+		<item name="DementiveTrapRebarBolt">
+			<property name="UnlockedBy" value="craftingTraps"/>
+			<property name="HoldType" value="45"/>
+			<property name="Meshfile" value="@:Other/Items/Misc/sackPrefab.prefab"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="MresourceScrapIron"/>
+			<property name="Stacknumber" value="50"/>
+			<property name="EconomicValue" value="60"/>
+			<property name="Group" value="Ammo/Weapons,Ammo"/>
+			<property name="Tags" value="trapsSkill"/>
+			<property name="SoundPickup" value="trapiron_grab"/>
+			<property name="SoundPlace" value="trapiron_place"/>
+		</item>
+	</append>
+</configs>

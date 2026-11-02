@@ -18,13 +18,20 @@ using UnityEngine.Rendering;
 /// The prefab root carries a BoxCollider around the model (the game reads the block's bounds from it); tags and
 /// layers are set by the mod's C# when the block spawns, because a bundle stores tags as indexes into this
 /// project's tag list.
+/// Effects are made here too: the Tesla Coil's arc template, the Sprinkler's spray (placed at the model's
+/// SprayOrigin, aimed at SprayAim) and the SoakDrip effect the mod attaches to soaked zombies (Assets/TrapsExpanded/Fx).
 /// </summary>
 public static class TrapsBuilder
 {
     private const string BundleName = "trapsexpanded.unity3d";
     private const string Root = "Assets/TrapsExpanded";
 
-    private static readonly string[] Traps = { "TeslaCoil" };
+    private static readonly string[] Traps =
+    {
+        "TeslaCoil", "Sprinkler", "GreaseSlick", "BurnBarrel", "SwingingLog", "BearTrap", "TripBow", "TarSprayer",
+        "SalvageHopper", "CryoVent", "Ram", "Overcharger", "BoltThrower",
+    };
+    private const string Fx = Root + "/Fx";
 
     public static void BuildAndPreview()
     {
@@ -36,12 +43,20 @@ public static class TrapsBuilder
             GraphicsDeviceType.OpenGLCore,
         });
         AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
+        if (!AssetDatabase.IsValidFolder(Fx))
+        {
+            AssetDatabase.CreateFolder(Root, "Fx");
+        }
 
         List<string> prefabs = new List<string>();
         foreach (string trap in Traps)
         {
             prefabs.Add(MakePrefab(trap));
         }
+        prefabs.Add(SoakDrip());
+        List<string> effects = TrapsEffects.BuildAll();
+        prefabs.AddRange(effects);
+        AssetDatabase.SaveAssets();
 
         string output = Path.Combine(Directory.GetCurrentDirectory(), "Build");
         Directory.CreateDirectory(output);
@@ -60,14 +75,31 @@ public static class TrapsBuilder
         {
             VanillaCompare.Preview(Root + "/" + trap + "/" + trap + ".prefab", Path.Combine(output, trap + "-preview.png"));
         }
+        VanillaCompare.FxSheet(effects, Path.Combine(output, "Effects-preview.png"));
+        // The Flame Vent reuses the game's unfinished flamethrower trap model: list its parts to find the nozzle
+        VanillaCompare.DumpVanilla("flamethrowertrapprefab.prefab", Path.Combine(output, "flamethrower-parts.txt"),
+            Path.Combine(output, "flamethrower-preview.png"));
+    }
+
+    /// <summary>Rebuilds only the effect prefabs and renders Build/Effects-preview.png (no bundle), for tuning
+    /// them.</summary>
+    public static void EffectsOnly()
+    {
+        AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
+        List<string> effects = TrapsEffects.BuildAll();
+        AssetDatabase.SaveAssets();
+        string output = Path.Combine(Directory.GetCurrentDirectory(), "Build");
+        VanillaCompare.FxSheet(effects, Path.Combine(output, "Effects-preview.png"));
     }
 
     private static string MakePrefab(string trap)
     {
         string folder = Root + "/" + trap;
+        // The big Tesla Coil gets 2048 color and normal maps like the vanilla turret; smaller traps 1024
+        int maxSize = trap == "TeslaCoil" ? 2048 : 1024;
         foreach (string path in Directory.GetFiles(folder, "*.png"))
         {
-            ConfigureTexture(path.Replace('\\', '/'));
+            ConfigureTexture(path.Replace('\\', '/'), maxSize);
         }
 
         string fbx = folder + "/" + trap + ".fbx";
@@ -125,6 +157,17 @@ public static class TrapsBuilder
         if (trap == "TeslaCoil")
         {
             ArcTemplate(folder, root.transform);
+        }
+        if (trap == "Sprinkler")
+        {
+            Spray(root.transform);
+        }
+        foreach (Transform t in root.GetComponentsInChildren<Transform>(true))
+        {
+            if (t.name.EndsWith("Origin") || t.name.EndsWith("Aim") || t.name.EndsWith("Point"))
+            {
+                Debug.Log("[TrapsBuilder] " + trap + " point " + t.name + " at " + root.transform.InverseTransformPoint(t.position).ToString("F3"));
+            }
         }
         Debug.Log("[TrapsBuilder] " + trap + " bounds center " + bounds.center.ToString("F3") + " size "
             + bounds.size.ToString("F3") + ", materials " + string.Join(", ", names));
@@ -198,7 +241,190 @@ public static class TrapsBuilder
         arc.SetActive(false);
     }
 
-    private static void ConfigureTexture(string path)
+    // ------------------------------------------------------------------ water effects
+
+    /// <summary>A soft round dot for particles.</summary>
+    internal static Texture2D Dot()
+    {
+        Directory.CreateDirectory(Fx);
+        string path = Fx + "/WaterDot.png";
+        if (!File.Exists(path))
+        {
+            const int size = 32;
+            Texture2D t = new Texture2D(size, size, TextureFormat.RGBA32, false, true);
+            for (int y = 0; y < size; y++)
+            {
+                for (int x = 0; x < size; x++)
+                {
+                    float dx = (x + 0.5f) / size - 0.5f, dy = (y + 0.5f) / size - 0.5f;
+                    float a = Mathf.Clamp01(1f - Mathf.Sqrt(dx * dx + dy * dy) * 2f);
+                    t.SetPixel(x, y, new Color(1f, 1f, 1f, a * a));
+                }
+            }
+            File.WriteAllBytes(path, t.EncodeToPNG());
+            AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceSynchronousImport);
+            TextureImporter importer = (TextureImporter)AssetImporter.GetAtPath(path);
+            importer.alphaSource = TextureImporterAlphaSource.FromInput;
+            importer.alphaIsTransparency = true;
+            importer.wrapMode = TextureWrapMode.Clamp;
+            importer.textureCompression = TextureImporterCompression.Uncompressed;
+            importer.SaveAndReimport();
+        }
+        return AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+    }
+
+    /// <summary>A lit, alpha-faded particle material (Particles/Standard Surface in Fade mode), so water isn't
+    /// glowing at night.</summary>
+    internal static Material WaterMaterial(string name, Color color, float smoothness)
+    {
+        string path = Fx + "/" + name + ".mat";
+        Shader shader = Shader.Find("Particles/Standard Surface") ?? Shader.Find("Legacy Shaders/Particles/Alpha Blended");
+        Material m = AssetDatabase.LoadAssetAtPath<Material>(path);
+        if (m == null)
+        {
+            m = new Material(shader);
+            AssetDatabase.CreateAsset(m, path);
+        }
+        m.shader = shader;
+        m.shaderKeywords = new string[0];
+        m.SetTexture("_MainTex", Dot());
+        m.SetColor("_Color", color);
+        m.SetColor("_TintColor", color);
+        m.SetFloat("_Mode", 2f);
+        m.SetOverrideTag("RenderType", "Transparent");
+        m.SetInt("_SrcBlend", (int)BlendMode.SrcAlpha);
+        m.SetInt("_DstBlend", (int)BlendMode.OneMinusSrcAlpha);
+        m.SetInt("_ZWrite", 0);
+        m.SetFloat("_Glossiness", smoothness);
+        m.SetFloat("_Metallic", 0f);
+        m.EnableKeyword("_ALPHABLEND_ON");
+        m.renderQueue = 3000;
+        EditorUtility.SetDirty(m);
+        AssetDatabase.SaveAssets();
+        return m;
+    }
+
+    internal static ParticleSystem Particles(GameObject go, Material material, ParticleSystemRenderMode mode)
+    {
+        ParticleSystem ps = go.AddComponent<ParticleSystem>();
+        ParticleSystemRenderer r = go.GetComponent<ParticleSystemRenderer>();
+        r.sharedMaterial = material;
+        r.renderMode = mode;
+        r.shadowCastingMode = ShadowCastingMode.Off;
+        r.receiveShadows = false;
+        ParticleSystem.MainModule main = ps.main;
+        main.simulationSpace = ParticleSystemSimulationSpace.World;
+        main.playOnAwake = false;
+        main.scalingMode = ParticleSystemScalingMode.Hierarchy;
+        return ps;
+    }
+
+    internal static ParticleSystem.MinMaxGradient Fade(Color c, float alpha)
+    {
+        Gradient g = new Gradient();
+        g.SetKeys(new[] { new GradientColorKey(c, 0f), new GradientColorKey(c, 1f) },
+            new[] { new GradientAlphaKey(alpha, 0f), new GradientAlphaKey(alpha * 0.8f, 0.6f), new GradientAlphaKey(0f, 1f) });
+        return new ParticleSystem.MinMaxGradient(g);
+    }
+
+    /// <summary>
+    /// The Sprinkler's spray: a 0.8 s burst of stretched droplets in a cone from the middle nozzle, falling under
+    /// gravity, with a mist of bigger soft particles. Played by the mod each time the sprinkler soaks someone.
+    /// </summary>
+    private static void Spray(Transform root)
+    {
+        Transform origin = root.GetComponentsInChildren<Transform>(true).First(t => t.name == "SprayOrigin");
+        Transform aim = root.GetComponentsInChildren<Transform>(true).First(t => t.name == "SprayAim");
+        GameObject spray = new GameObject("SprayFx");
+        spray.transform.SetParent(root, false);
+        spray.transform.position = origin.position;
+        spray.transform.rotation = Quaternion.LookRotation(aim.position - origin.position, Vector3.up);
+
+        Color water = new Color(0.72f, 0.8f, 0.88f);
+        ParticleSystem drops = Particles(spray, WaterMaterial("SprayDrops", water, 0.5f), ParticleSystemRenderMode.Stretch);
+        ParticleSystemRenderer dr = spray.GetComponent<ParticleSystemRenderer>();
+        dr.velocityScale = 0.025f;
+        dr.lengthScale = 1f;
+        ParticleSystem.MainModule main = drops.main;
+        main.duration = 0.8f;
+        main.loop = false;
+        main.startLifetime = new ParticleSystem.MinMaxCurve(0.4f, 0.65f);
+        main.startSpeed = new ParticleSystem.MinMaxCurve(4.5f, 7.5f);
+        main.startSize = new ParticleSystem.MinMaxCurve(0.02f, 0.045f);
+        main.gravityModifier = 1f;
+        main.maxParticles = 700;
+        ParticleSystem.EmissionModule emission = drops.emission;
+        emission.rateOverTime = 600f;
+        ParticleSystem.ShapeModule shape = drops.shape;
+        shape.shapeType = ParticleSystemShapeType.Cone;
+        shape.angle = 24f;
+        shape.radius = 0.05f;
+        ParticleSystem.ColorOverLifetimeModule col = drops.colorOverLifetime;
+        col.enabled = true;
+        col.color = Fade(water, 0.4f);
+
+        GameObject mistGo = new GameObject("SprayMist");
+        mistGo.transform.SetParent(spray.transform, false);
+        ParticleSystem mist = Particles(mistGo, WaterMaterial("SprayMist", water, 0.3f), ParticleSystemRenderMode.Billboard);
+        ParticleSystem.MainModule mm = mist.main;
+        mm.duration = 0.8f;
+        mm.loop = false;
+        mm.startLifetime = new ParticleSystem.MinMaxCurve(0.6f, 1.1f);
+        mm.startSpeed = new ParticleSystem.MinMaxCurve(1.5f, 3.5f);
+        mm.startSize = new ParticleSystem.MinMaxCurve(0.25f, 0.6f);
+        mm.gravityModifier = 0.15f;
+        mm.maxParticles = 120;
+        ParticleSystem.EmissionModule me = mist.emission;
+        me.rateOverTime = 70f;
+        ParticleSystem.ShapeModule ms = mist.shape;
+        ms.shapeType = ParticleSystemShapeType.Cone;
+        ms.angle = 30f;
+        ms.radius = 0.08f;
+        ParticleSystem.ColorOverLifetimeModule mc = mist.colorOverLifetime;
+        mc.enabled = true;
+        mc.color = Fade(water, 0.12f);
+        ParticleSystem.SizeOverLifetimeModule size = mist.sizeOverLifetime;
+        size.enabled = true;
+        size.size = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Linear(0f, 0.6f, 1f, 1.6f));
+    }
+
+    /// <summary>
+    /// Water dripping off a soaked zombie: a loose box of falling drops around the body, looping. The mod attaches
+    /// it at chest height and stops it when the soak ends.
+    /// </summary>
+    private static string SoakDrip()
+    {
+        Directory.CreateDirectory(Fx);
+        GameObject go = new GameObject("SoakDrip");
+        Color water = new Color(0.8f, 0.88f, 1f);
+        ParticleSystem ps = Particles(go, WaterMaterial("DripDrops", water, 0.9f), ParticleSystemRenderMode.Stretch);
+        ParticleSystemRenderer r = go.GetComponent<ParticleSystemRenderer>();
+        r.velocityScale = 0.06f;
+        r.lengthScale = 1.5f;
+        ParticleSystem.MainModule main = ps.main;
+        main.loop = true;
+        main.playOnAwake = true;
+        main.duration = 1f;
+        main.startLifetime = new ParticleSystem.MinMaxCurve(0.5f, 0.8f);
+        main.startSpeed = new ParticleSystem.MinMaxCurve(0f, 0.2f);
+        main.startSize = new ParticleSystem.MinMaxCurve(0.015f, 0.03f);
+        main.gravityModifier = 1.2f;
+        main.maxParticles = 80;
+        ParticleSystem.EmissionModule emission = ps.emission;
+        emission.rateOverTime = 22f;
+        ParticleSystem.ShapeModule shape = ps.shape;
+        shape.shapeType = ParticleSystemShapeType.Box;
+        shape.scale = new Vector3(0.4f, 0.9f, 0.3f);
+        ParticleSystem.ColorOverLifetimeModule col = ps.colorOverLifetime;
+        col.enabled = true;
+        col.color = Fade(water, 0.7f);
+        string path = Fx + "/SoakDrip.prefab";
+        PrefabUtility.SaveAsPrefabAsset(go, path);
+        Object.DestroyImmediate(go);
+        return path;
+    }
+
+    private static void ConfigureTexture(string path, int maxSize)
     {
         if (path.EndsWith("/ArcGlow.png"))
         {
@@ -213,8 +439,7 @@ public static class TrapsBuilder
         importer.mipmapEnabled = true;
         importer.wrapMode = path.Contains("_Winding_") ? TextureWrapMode.Repeat : TextureWrapMode.Clamp;
         importer.anisoLevel = 4;
-        // Like the vanilla turret: 2048 color and normal maps for a model with many parts, 1024 for the packed map
-        importer.maxTextureSize = path.EndsWith("_Emission.png") ? 256 : linear ? 1024 : 2048;
+        importer.maxTextureSize = path.EndsWith("_Emission.png") ? 256 : linear ? 1024 : maxSize;
         importer.textureCompression = TextureImporterCompression.Compressed;
         importer.SaveAndReimport();
     }

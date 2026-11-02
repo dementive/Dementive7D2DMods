@@ -1,10 +1,267 @@
 <configs>
 	<append xpath="/blocks">
+		<!-- Every trap: the shared properties (TrapSettingsDEM) are WearPerUse and WornOutFraction (each use costs the trap
+		     that much health; it stops at its last fraction until repaired, and powered ones blink their lamp),
+		     AmmoItems / AmmoCapacity / AmmoPerUse (what it's loaded with from its radial menu, in order of use),
+		     StatusTrap (levels lengthen its status instead of raising damage), UpgradeA / UpgradeB (the two level-3
+		     upgrades; their names are the localization keys blockcommand_dem_up_<block>_A and _B), and PressItem /
+		     PressCount (what a Salvage Hopper's Ammo Press loads into it per kill). Traps level up from their kills at
+		     25, 75, 150 and 300 (+8% damage and +5% speed a level, or +10% status duration). Damage and kills are
+		     credited to the player who placed the trap, like vanilla traps. -->
+
+		<!-- ================================================================ primitive traps (no power) -->
+
+		<!-- Grease Slick: zombies that walk through within Radius of the center are Tarred for TarSeconds, using
+		     AmmoPerUse animal fat each; a zombie isn't greased again by the same slick for RegreaseSeconds. -->
+		<block name="DementiveTrapGreaseSlick">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="GreaseSlickDEM, TrapsExpanded"/>
+			<property name="Radius" value="0.75"/>
+			<property name="TarSeconds" value="12"/>
+			<property name="RegreaseSeconds" value="6"/>
+			<property name="SplashSound" value="vomitimpact"/>
+			<property name="AmmoItems" value="resourceAnimalFat"/>
+			<property name="AmmoCapacity" value="10"/>
+			<property name="AmmoPerUse" value="0.25"/>
+			<property name="StatusTrap" value="true"/>
+			<property name="UpgradeA" value="DeepGrease"/>
+			<property name="UpgradeB" value="VolatileGrease"/>
+			<property name="PressItem" value="resourceAnimalFat"/>
+			<property name="PressCount" value="1"/>
+			<property name="DisplayType" value="blockHardened"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="Material" value="Mmetal_weak"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/trapsexpanded.unity3d?GreaseSlick"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="IsTerrainDecoration" value="true"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="HandleFace" value="Bottom"/>
+			<property name="Collide" value="melee,bullet,arrow,rocket"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="CanPickup" value="true"/>
+			<property name="MaxDamage" value="300"/>
+			<property name="EconomicValue" value="60"/>
+			<property class="RepairItems">
+				<property name="resourceScrapIron" value="5"/>
+			</property>
+			<drop event="Harvest" name="resourceScrapIron" count="3,8" tag="allHarvest,perkJunkMiner"/>
+			<drop event="Destroy" count="0"/>
+			<property name="SortOrder1" value="B155"/>
+			<property name="SortOrder2" value="0010"/>
+			<property name="Group" value="Science,TCScience"/>
+			<property name="Tags" value="trapsSkill"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_traps"/>
+			<property name="SoundPickup" value="trapiron_grab"/>
+			<property name="SoundPlace" value="trapiron_place"/>
+		</block>
+
+		<!-- Burn Barrel: lit and put out from its radial menu. While lit it burns FuelSeconds per wood (SlowBurnFactor
+		     times longer with Slow Burn) and goes out when the wood runs out; zombies within Radius (BellowsRadius with
+		     Bellows) catch fire for BurnSeconds. Its fire is the mod's own (buffDementiveTrapsBurning), weaker than a
+		     molotov. -->
+		<block name="DementiveTrapBurnBarrel">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="BurnBarrelDEM, TrapsExpanded"/>
+			<property name="Radius" value="1.5"/>
+			<property name="BellowsRadius" value="2"/>
+			<property name="BurnSeconds" value="8"/>
+			<property name="FuelSeconds" value="20"/>
+			<property name="SlowBurnFactor" value="3"/>
+			<property name="LightSound" value="torch_swoosh"/>
+			<property name="AmmoItems" value="resourceWood"/>
+			<property name="AmmoCapacity" value="30"/>
+			<property name="UpgradeA" value="Bellows"/>
+			<property name="UpgradeB" value="SlowBurn"/>
+			<property name="PressItem" value="resourceWood"/>
+			<property name="PressCount" value="2"/>
+			<property name="UnlockedBy" value="craftingTraps"/>
+			<property name="DisplayType" value="blockHardened"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="Material" value="Mmetal_weak"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/trapsexpanded.unity3d?BurnBarrel"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="HandleFace" value="Bottom"/>
+			<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+			<property name="Path" value="solid"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="CanPickup" value="true"/>
+			<property name="MaxDamage" value="600"/>
+			<property name="EconomicValue" value="90"/>
+			<property class="RepairItems">
+				<property name="resourceScrapIron" value="8"/>
+			</property>
+			<drop event="Harvest" name="resourceScrapIron" count="5,12" tag="allHarvest,perkJunkMiner"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<property name="SortOrder1" value="B155"/>
+			<property name="SortOrder2" value="0011"/>
+			<property name="Group" value="Science,TCScience"/>
+			<property name="Tags" value="trapsSkill"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_traps"/>
+			<property name="SoundPickup" value="trapiron_grab"/>
+			<property name="SoundPlace" value="trapiron_place"/>
+		</block>
+
+		<!-- Swinging Log (two blocks tall): when a zombie is in front of it (Reach ahead, Width wide) the log swings
+		     through for HitDamage (crushing) and Knockback meters to every zombie there, then takes RecockSeconds to pull
+		     back. Spiked Log: SpikedDamage times the damage. Battering Log: BatteringKnockback meters, BatteringWidth
+		     wide. -->
+		<block name="DementiveTrapSwingingLog">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="SwingingLogDEM, TrapsExpanded"/>
+			<property name="HitDamage" value="35"/>
+			<property name="Knockback" value="3"/>
+			<property name="RecockSeconds" value="5"/>
+			<property name="Width" value="1.2"/>
+			<property name="Reach" value="1.6"/>
+			<property name="SpikedDamage" value="1.5"/>
+			<property name="BatteringKnockback" value="6"/>
+			<property name="BatteringWidth" value="1.8"/>
+			<property name="SwingSound" value="SlowSwoosh"/>
+			<property name="HitSound" value="treelogimpact"/>
+			<property name="WearPerUse" value="2"/>
+			<property name="UpgradeA" value="SpikedLog"/>
+			<property name="UpgradeB" value="BatteringLog"/>
+			<property name="UnlockedBy" value="craftingTraps"/>
+			<property name="DisplayType" value="blockHardenedMulti"/>
+			<property name="Stacknumber" value="5"/>
+			<property name="Material" value="Mwood_weak"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/trapsexpanded.unity3d?SwingingLog"/>
+			<property name="MultiBlockDim" value="1,2,1"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="HandleFace" value="Bottom"/>
+			<property name="Collide" value="melee,bullet,arrow,rocket"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="CanPickup" value="true"/>
+			<property name="MaxDamage" value="800"/>
+			<property name="EconomicValue" value="120"/>
+			<property class="RepairItems">
+				<property name="resourceWood" value="10"/>
+			</property>
+			<drop event="Harvest" name="resourceWood" count="10,25" tag="allHarvest"/>
+			<drop event="Destroy" count="0"/>
+			<property name="SortOrder1" value="B155"/>
+			<property name="SortOrder2" value="0012"/>
+			<property name="Group" value="Science,TCScience"/>
+			<property name="Tags" value="trapsSkill"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_traps"/>
+			<property name="SoundPickup" value="trapwood_grab"/>
+			<property name="SoundPlace" value="trapwood_place"/>
+		</block>
+
+		<!-- Bear Trap: snaps on the first zombie within Radius of its center: HitDamage (piercing) and held for
+		     HoldSeconds (BigHoldSeconds for big zombies); then sprung until re-armed from its radial menu. Spring
+		     Loader: re-arms itself after RearmSeconds. Heavy Jaws: holds for HeavyHoldSeconds, big zombies too. -->
+		<block name="DementiveTrapBearTrap">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="BearTrapDEM, TrapsExpanded"/>
+			<property name="Radius" value="0.55"/>
+			<property name="HitDamage" value="50"/>
+			<property name="HoldSeconds" value="3"/>
+			<property name="BigHoldSeconds" value="1"/>
+			<property name="HeavyHoldSeconds" value="5"/>
+			<property name="RearmSeconds" value="15"/>
+			<property name="SnapSound" value="trapdoor_trigger"/>
+			<property name="RearmSound" value="spring_place"/>
+			<property name="UpgradeA" value="SpringLoader"/>
+			<property name="UpgradeB" value="HeavyJaws"/>
+			<property name="UnlockedBy" value="craftingTraps"/>
+			<property name="DisplayType" value="blockHardened"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="Material" value="Mmetal_weak"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/trapsexpanded.unity3d?BearTrap"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="IsTerrainDecoration" value="true"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="HandleFace" value="Bottom"/>
+			<property name="Collide" value="melee,bullet,arrow,rocket"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="CanPickup" value="true"/>
+			<property name="MaxDamage" value="500"/>
+			<property name="EconomicValue" value="110"/>
+			<property class="RepairItems">
+				<property name="resourceForgedIron" value="2"/>
+			</property>
+			<drop event="Harvest" name="resourceScrapIron" count="4,10" tag="allHarvest,perkJunkMiner"/>
+			<drop event="Destroy" count="0"/>
+			<property name="SortOrder1" value="B155"/>
+			<property name="SortOrder2" value="0013"/>
+			<property name="Group" value="Science,TCScience"/>
+			<property name="Tags" value="trapsSkill"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_traps"/>
+			<property name="SoundPickup" value="trapiron_grab"/>
+			<property name="SoundPlace" value="trapiron_place"/>
+		</block>
+
+		<!-- Trip Bow: every FireDelay seconds shoots a loaded arrow at the first zombie in a LineWidth wide line
+		     ahead, up to Range. ArrowDamage is the damage of each arrow it takes; flaming and exploding arrows work like
+		     the vanilla ones. Repeater: RepeaterDelay. Long Draw: LongDrawDamage times the damage, LongDrawRange. -->
+		<block name="DementiveTrapTripBow">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="TripBowDEM, TrapsExpanded"/>
+			<property name="Range" value="12"/>
+			<property name="LineWidth" value="1.2"/>
+			<property name="FireDelay" value="3"/>
+			<property name="RepeaterDelay" value="1.5"/>
+			<property name="LongDrawRange" value="20"/>
+			<property name="LongDrawDamage" value="1.5"/>
+			<property name="ArrowDamage" value="ammoArrowStone:35,ammoArrowIron:38,ammoArrowSteelAP:42,ammoArrowFlaming:25,ammoArrowExploding:30"/>
+			<property name="FireSound" value="bow_fire"/>
+			<property name="AmmoItems" value="ammoArrowStone,ammoArrowIron,ammoArrowSteelAP,ammoArrowFlaming,ammoArrowExploding"/>
+			<property name="AmmoCapacity" value="30"/>
+			<property name="UpgradeA" value="Repeater"/>
+			<property name="UpgradeB" value="LongDraw"/>
+			<property name="PressItem" value="ammoArrowIron"/>
+			<property name="PressCount" value="1"/>
+			<property name="UnlockedBy" value="craftingTraps"/>
+			<property name="DisplayType" value="blockHardened"/>
+			<property name="Stacknumber" value="5"/>
+			<property name="Material" value="Mwood_weak"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/trapsexpanded.unity3d?TripBow"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="HandleFace" value="Bottom"/>
+			<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+			<property name="Path" value="solid"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="CanPickup" value="true"/>
+			<property name="MaxDamage" value="400"/>
+			<property name="EconomicValue" value="140"/>
+			<property class="RepairItems">
+				<property name="resourceWood" value="6"/>
+			</property>
+			<drop event="Harvest" name="resourceWood" count="5,12" tag="allHarvest"/>
+			<drop event="Destroy" count="0"/>
+			<property name="SortOrder1" value="B155"/>
+			<property name="SortOrder2" value="0014"/>
+			<property name="Group" value="Science,TCScience"/>
+			<property name="Tags" value="trapsSkill"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_traps"/>
+			<property name="SoundPickup" value="bow_wooden_grab"/>
+			<property name="SoundPlace" value="bow_wooden_place"/>
+		</block>
+
+		<!-- ================================================================ powered traps -->
+
 		<!-- Tesla Coil: zaps the nearest zombie within Range every FireDelay seconds and jumps to Chains more within
 		     ChainRange, each jump doing ChainFalloff of the last. Needs a clear path (bodies in the way still conduct).
-		     Damage is credited to the coil's owner, like the vanilla traps. Each zombie hit has JoltChance of a short
-		     jolt (JoltBuff plus the vanilla electrocute flinch). Each zap costs the coil WearPerZap health; it stops at
-		     its last WornOutFraction until repaired, and its lamp blinks. -->
+		     Each zombie hit has JoltChance of a short jolt (JoltBuff plus the vanilla electrocute flinch). Soaked zombies
+		     take SoakedDamage times the damage, the arc gets SoakedChains more jumps once it has hit one, and their jolt
+		     becomes SoakedStunBuff unless they have SoakedStunImmuneBuff (big zombies get the plain jolt). Storm:
+		     StormChains more jumps at StormDamage. Overload: no jumps, OverloadDamage times the damage, and every hit
+		     jolts (a stun, with the same immunity). -->
 		<block name="DementiveTrapTeslaCoil">
 			<property name="CreativeMode" value="Player"/>
 			<property name="Class" value="TeslaCoilDEM, TrapsExpanded"/>
@@ -17,8 +274,17 @@
 			<property name="ChainFalloff" value="0.6"/>
 			<property name="JoltChance" value="0.1"/>
 			<property name="JoltBuff" value="buffDementiveTrapsJolt"/>
-			<property name="WearPerZap" value="1"/>
+			<property name="SoakedDamage" value="2"/>
+			<property name="SoakedChains" value="1"/>
+			<property name="SoakedStunBuff" value="buffDementiveTrapsStun"/>
+			<property name="SoakedStunImmuneBuff" value="buffDementiveTrapsStunImmune"/>
+			<property name="StormChains" value="2"/>
+			<property name="StormDamage" value="0.8"/>
+			<property name="OverloadDamage" value="2.5"/>
+			<property name="WearPerUse" value="1"/>
 			<property name="WornOutFraction" value="0.05"/>
+			<property name="UpgradeA" value="Storm"/>
+			<property name="UpgradeB" value="Overload"/>
 			<property name="ZapSound" value="electric_fence_impact"/>
 			<property name="UnlockedBy" value="craftingTraps"/>
 			<property name="DisplayType" value="blockElectricalHardenedMulti"/>
@@ -50,6 +316,468 @@
 			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
 			<property name="SortOrder1" value="B155"/>
 			<property name="SortOrder2" value="0025"/>
+			<property name="Group" value="Science,TCScience"/>
+			<property name="Tags" value="trapsSkill,scrap100"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_electrical,SC_traps"/>
+			<property name="SoundPickup" value="darttrap_grab"/>
+			<property name="SoundPlace" value="darttrap_place"/>
+		</block>
+
+		<!-- Sprinkler: every PulseDelay seconds sprays a ConeAngle cone up to Range ahead of its nozzles and soaks
+		     every enemy the water can reach with SoakBuff for SoakSeconds. It only sprays when there's someone to soak.
+		     The nozzles face the way the block is turned. Deluge: DelugeAngle cone, DelugeSeconds soak. Pressure Washer:
+		     a WasherAngle jet that shoves zombies WasherShove meters for WasherDamage. -->
+		<block name="DementiveTrapSprinkler">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="SprinklerDEM, TrapsExpanded"/>
+			<property name="RequiredPower" value="5"/>
+			<property name="Range" value="6"/>
+			<property name="ConeAngle" value="60"/>
+			<property name="PulseDelay" value="1"/>
+			<property name="SoakBuff" value="buffDementiveTrapsSoaked"/>
+			<property name="SoakSeconds" value="10"/>
+			<property name="SpraySound" value="bucketbail_water"/>
+			<property name="DelugeAngle" value="90"/>
+			<property name="DelugeSeconds" value="20"/>
+			<property name="WasherAngle" value="20"/>
+			<property name="WasherShove" value="1"/>
+			<property name="WasherDamage" value="15"/>
+			<property name="StatusTrap" value="true"/>
+			<property name="UpgradeA" value="Deluge"/>
+			<property name="UpgradeB" value="PressureWasher"/>
+			<property name="UnlockedBy" value="craftingTraps"/>
+			<property name="DisplayType" value="blockElectricalHardened"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="Material" value="Mmetal_weak"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/trapsexpanded.unity3d?Sprinkler"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="HandleFace" value="Bottom"/>
+			<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+			<property name="Path" value="solid"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="MaxDamage" value="500"/>
+			<property name="EconomicValue" value="400"/>
+			<property name="TraderStageTemplate" value="electricTier1"/>
+			<property name="TakeDelay" value="5"/>
+			<property class="RepairItems">
+				<property name="resourceScrapPolymers" value="4"/>
+				<property name="resourceMetalPipe" value="1"/>
+			</property>
+			<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+			<drop event="Harvest" name="resourceScrapPolymers" count="3,6" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceMetalPipe" count="1" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceMechanicalParts" count="1" tag="salvageHarvest"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<property name="SortOrder1" value="B155"/>
+			<property name="SortOrder2" value="0026"/>
+			<property name="Group" value="Science,TCScience"/>
+			<property name="Tags" value="trapsSkill"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_electrical,SC_traps"/>
+			<property name="SoundPickup" value="darttrap_grab"/>
+			<property name="SoundPlace" value="darttrap_place"/>
+		</block>
+
+		<!-- Tar Sprayer: every FireDelay seconds lobs a tar glob at the nearest zombie within Range it can reach:
+		     HitDamage to every zombie within Splash meters of where it lands, all of them Tarred for TarSeconds, using
+		     AmmoPerUse tar a glob. Sticky Tar: 60% slower. Volatile Tar: Infernos 50% stronger, spreading 5 m. -->
+		<block name="DementiveTrapTarSprayer">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="TarSprayerDEM, TrapsExpanded"/>
+			<property name="RequiredPower" value="5"/>
+			<property name="Range" value="10"/>
+			<property name="FireDelay" value="2"/>
+			<property name="HitDamage" value="5"/>
+			<property name="Splash" value="2"/>
+			<property name="TarSeconds" value="12"/>
+			<property name="FireSound" value="darttrap_fire"/>
+			<property name="SplatSound" value="vomitimpact"/>
+			<property name="AmmoItems" value="DementiveTrapTar"/>
+			<property name="AmmoCapacity" value="40"/>
+			<property name="AmmoPerUse" value="0.25"/>
+			<property name="StatusTrap" value="true"/>
+			<property name="UpgradeA" value="StickyTar"/>
+			<property name="UpgradeB" value="VolatileTar"/>
+			<property name="PressItem" value="DementiveTrapTar"/>
+			<property name="PressCount" value="1"/>
+			<property name="UnlockedBy" value="craftingTraps"/>
+			<property name="DisplayType" value="blockElectricalHardened"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="Material" value="Mmetal_weak"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/trapsexpanded.unity3d?TarSprayer"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="HandleFace" value="Bottom"/>
+			<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+			<property name="Path" value="solid"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="MaxDamage" value="600"/>
+			<property name="EconomicValue" value="450"/>
+			<property name="TraderStageTemplate" value="electricTier1"/>
+			<property name="TakeDelay" value="5"/>
+			<property class="RepairItems">
+				<property name="resourceForgedIron" value="3"/>
+				<property name="resourceMechanicalParts" value="1"/>
+			</property>
+			<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+			<drop event="Harvest" name="resourceMechanicalParts" count="1,2" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceScrapIron" count="10,25" tag="allHarvest,perkJunkMiner"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<property name="SortOrder1" value="B155"/>
+			<property name="SortOrder2" value="0027"/>
+			<property name="Group" value="Science,TCScience"/>
+			<property name="Tags" value="trapsSkill"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_electrical,SC_traps"/>
+			<property name="SoundPickup" value="darttrap_grab"/>
+			<property name="SoundPlace" value="darttrap_place"/>
+		</block>
+
+		<!-- Salvage Hopper: each zombie a trap kills within Range drops ScrapCount scrap iron into its storage, and
+		     BrassChance of BrassCount brass. Only the nearest hopper gets each haul. Ammo Press: the haul goes into the
+		     emptiest ammo trap within Range instead (its PressItem). Scavenger: ScavengeChance of one of ScavengeItems
+		     as well. No power needed. -->
+		<block name="DementiveTrapSalvageHopper">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="HopperDEM, TrapsExpanded"/>
+			<property class="CompositeFeatures">
+				<property class="TEFeatureStorage">
+					<property name="LootList" value="DementiveTrapSalvageHopper"/>
+				</property>
+			</property>
+			<property name="Range" value="10"/>
+			<property name="ScrapItem" value="resourceScrapIron"/>
+			<property name="ScrapCount" value="1,3"/>
+			<property name="BrassItem" value="resourceScrapBrass"/>
+			<property name="BrassChance" value="0.35"/>
+			<property name="BrassCount" value="1,2"/>
+			<property name="ScavengeItems" value="foodCanChili,foodCanBeef,foodCanPeas,medicalBandage,medicalFirstAidBandage,drinkJarBoiledWater,gunHandgunT1PistolParts,gunRifleT1HuntingRifleParts,resourceGunPowder"/>
+			<property name="ScavengeChance" value="0.12"/>
+			<property name="DropSound" value="trapiron_place"/>
+			<property name="UpgradeA" value="AmmoPress"/>
+			<property name="UpgradeB" value="Scavenger"/>
+			<property name="UnlockedBy" value="craftingTraps"/>
+			<property name="DisplayType" value="blockHardened"/>
+			<property name="Stacknumber" value="5"/>
+			<property name="Material" value="Mmetal_weak"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/trapsexpanded.unity3d?SalvageHopper"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="HandleFace" value="Bottom"/>
+			<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+			<property name="Path" value="solid"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="MaxDamage" value="1500"/>
+			<property name="EconomicValue" value="300"/>
+			<property class="RepairItems">
+				<property name="resourceScrapIron" value="15"/>
+			</property>
+			<drop event="Harvest" name="resourceScrapIron" count="10,30" tag="allHarvest,perkJunkMiner"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<property name="SortOrder1" value="B155"/>
+			<property name="SortOrder2" value="0028"/>
+			<property name="Group" value="Science,TCScience"/>
+			<property name="Tags" value="trapsSkill"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_traps"/>
+			<property name="SoundPickup" value="trapiron_grab"/>
+			<property name="SoundPlace" value="trapiron_place"/>
+		</block>
+
+		<!-- Cryo Vent (a floor grate zombies walk over): every PulseDelay seconds each zombie within Radius of its
+		     VentPoint takes ColdDamage and a Chilled stack lasting ChillSeconds; FreezeAt stacks freeze it for
+		     FreezeSeconds. Deep Freeze: DeepFreezeAt stacks, DeepFreezeSeconds. Frost Field: FrostRadius wide, chill
+		     FrostExtraSeconds longer. -->
+		<block name="DementiveTrapCryoVent">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="CryoVentDEM, TrapsExpanded"/>
+			<property name="RequiredPower" value="20"/>
+			<property name="Radius" value="1"/>
+			<property name="PulseDelay" value="1.5"/>
+			<property name="ColdDamage" value="6"/>
+			<property name="ChillSeconds" value="4"/>
+			<property name="FreezeAt" value="3"/>
+			<property name="FreezeSeconds" value="2"/>
+			<property name="DeepFreezeAt" value="2"/>
+			<property name="DeepFreezeSeconds" value="3"/>
+			<property name="FrostRadius" value="2.5"/>
+			<property name="FrostExtraSeconds" value="5"/>
+			<property name="PulseSound" value="SlowSwoosh"/>
+			<property name="WearPerUse" value="1"/>
+			<property name="StatusTrap" value="true"/>
+			<property name="UpgradeA" value="DeepFreeze"/>
+			<property name="UpgradeB" value="FrostField"/>
+			<property name="UnlockedBy" value="craftingTraps"/>
+			<property name="DisplayType" value="blockElectricalHardened"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="Material" value="Mmetal_hard"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/trapsexpanded.unity3d?CryoVent"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="IsTerrainDecoration" value="true"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="HandleFace" value="Bottom"/>
+			<property name="Collide" value="melee,bullet,arrow,rocket"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="MaxDamage" value="800"/>
+			<property name="EconomicValue" value="900"/>
+			<property name="TraderStageTemplate" value="electricTier2"/>
+			<property name="TakeDelay" value="8"/>
+			<property class="RepairItems">
+				<property name="resourceForgedSteel" value="3"/>
+				<property name="resourceElectricParts" value="2"/>
+			</property>
+			<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+			<drop event="Harvest" name="resourceElectricParts" count="1,3" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceMechanicalParts" count="1,2" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceScrapIron" count="10,30" tag="allHarvest,perkJunkMiner"/>
+			<drop event="Destroy" count="0"/>
+			<property name="SortOrder1" value="B155"/>
+			<property name="SortOrder2" value="0029"/>
+			<property name="Group" value="Science,TCScience"/>
+			<property name="Tags" value="trapsSkill"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_electrical,SC_traps"/>
+			<property name="SoundPickup" value="darttrap_grab"/>
+			<property name="SoundPlace" value="darttrap_place"/>
+		</block>
+
+		<!-- Ram: every FireDelay seconds, if a zombie is in front of it (Reach ahead, Width wide), punches every zombie
+		     there for HitDamage (blunt) and Knockback meters, no stun. Piledriver: PiledriverDamage times the damage, no
+		     knockback. Battering Ram: BatteringKnockback meters, BatteringReach. RamPart is the model's sliding part,
+		     moving RamStroke meters. -->
+		<block name="DementiveTrapRam">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="RamDEM, TrapsExpanded"/>
+			<property name="RequiredPower" value="15"/>
+			<property name="Reach" value="2"/>
+			<property name="Width" value="1.2"/>
+			<property name="FireDelay" value="2"/>
+			<property name="HitDamage" value="60"/>
+			<property name="Knockback" value="4"/>
+			<property name="PiledriverDamage" value="2"/>
+			<property name="BatteringKnockback" value="8"/>
+			<property name="BatteringReach" value="3"/>
+			<property name="RamPart" value="RamHead"/>
+			<property name="RamStroke" value="0.6"/>
+			<property name="PunchSound" value="sledge_swingheavy"/>
+			<property name="HitSound" value="impactbodyheavy"/>
+			<property name="WearPerUse" value="2"/>
+			<property name="UpgradeA" value="Piledriver"/>
+			<property name="UpgradeB" value="BatteringRam"/>
+			<property name="UnlockedBy" value="craftingTraps"/>
+			<property name="DisplayType" value="blockElectricalHardened"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="Material" value="Mmetal_hard"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/trapsexpanded.unity3d?Ram"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="HandleFace" value="Bottom"/>
+			<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+			<property name="Path" value="solid"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="MaxDamage" value="1200"/>
+			<property name="EconomicValue" value="900"/>
+			<property name="TraderStageTemplate" value="electricTier2"/>
+			<property name="TakeDelay" value="8"/>
+			<property class="RepairItems">
+				<property name="resourceForgedSteel" value="4"/>
+				<property name="resourceMechanicalParts" value="2"/>
+			</property>
+			<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+			<drop event="Harvest" name="resourceMechanicalParts" count="2,4" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceScrapIron" count="20,50" tag="allHarvest,perkJunkMiner"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<property name="SortOrder1" value="B155"/>
+			<property name="SortOrder2" value="0030"/>
+			<property name="Group" value="Science,TCScience"/>
+			<property name="Tags" value="trapsSkill,scrap100"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_electrical,SC_traps"/>
+			<property name="SoundPickup" value="darttrap_grab"/>
+			<property name="SoundPlace" value="darttrap_place"/>
+		</block>
+
+		<!-- Flame Vent: the game's own unfinished flamethrower trap model. While a zombie is in its cone (Range,
+		     ConeAngle) it fires in PulseDelay bursts, each burning AmmoPerUse gas cans: DamagePerSecond heat to every
+		     zombie in the cone and fire for BurnSeconds (Infernos on tarred zombies; soaked ones don't light). Napalm:
+		     burning fuel stays on the ground for NapalmSeconds. Blowtorch: BlowtorchRange, BlowtorchAngle,
+		     BlowtorchDamage times the damage. NozzleOffsets are the model's three nozzles (from its origin) and NozzleForward
+		     the way they point (the vanilla model fires out of its -Z end). -->
+		<block name="DementiveTrapFlameVent">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="FlameVentDEM, TrapsExpanded"/>
+			<property name="RequiredPower" value="10"/>
+			<property name="Range" value="5"/>
+			<property name="ConeAngle" value="40"/>
+			<property name="PulseDelay" value="0.5"/>
+			<property name="DamagePerSecond" value="15"/>
+			<property name="BurnSeconds" value="6"/>
+			<property name="NapalmSeconds" value="4"/>
+			<property name="BlowtorchRange" value="10"/>
+			<property name="BlowtorchAngle" value="14"/>
+			<property name="BlowtorchDamage" value="1.5"/>
+			<property name="NozzleOffsets" value="0,0.33,-1.48;0,0.67,-1.48;0,1,-1.48"/>
+			<property name="NozzleForward" value="0,0,-1"/>
+			<property name="FireSound" value="flametrap_start"/>
+			<property name="AmmoItems" value="ammoGasCan"/>
+			<property name="AmmoCapacity" value="500"/>
+			<property name="AmmoPerUse" value="0.5"/>
+			<property name="UpgradeA" value="Napalm"/>
+			<property name="UpgradeB" value="Blowtorch"/>
+			<property name="PressItem" value="ammoGasCan"/>
+			<property name="PressCount" value="10"/>
+			<property name="UnlockedBy" value="craftingTraps"/>
+			<property name="DisplayType" value="blockElectricalHardenedMulti"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="Material" value="Mmetal_hard"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="@:Entities/Electrical/flameThrowerTrapPrefab.prefab"/>
+			<property name="CustomIcon" value="flamethrowerTrap"/>
+			<property name="ModelOffset" value="0,.5,.5"/>
+			<property name="MultiBlockDim" value="1,2,2"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="HandleFace" value="Bottom"/>
+			<property name="Collide" value="sight,movement,melee,bullet,arrow,rocket"/>
+			<property name="Path" value="solid"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="MaxDamage" value="1000"/>
+			<property name="EconomicValue" value="1400"/>
+			<property name="TraderStageTemplate" value="electricTier3"/>
+			<property name="TakeDelay" value="10"/>
+			<property class="RepairItems">
+				<property name="resourceForgedSteel" value="5"/>
+				<property name="resourceMechanicalParts" value="2"/>
+			</property>
+			<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+			<drop event="Harvest" name="resourceMechanicalParts" count="1,3" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceElectricParts" count="1,2" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceScrapIron" count="20,100" tag="allHarvest,perkJunkMiner"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<property name="SortOrder1" value="B155"/>
+			<property name="SortOrder2" value="0031"/>
+			<property name="Group" value="Science,TCScience"/>
+			<property name="Tags" value="trapsSkill,scrap100"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_electrical,SC_traps"/>
+			<property name="SoundPickup" value="darttrap_grab"/>
+			<property name="SoundPlace" value="darttrap_place"/>
+		</block>
+
+		<!-- Overcharger: while powered, the mod's powered traps within Range act SpeedBoost times as fast and wear
+		     WearBoost times as fast (the strongest one in range counts). Capacitor Bank: CapacitorRange. Surge:
+		     SurgeSpeed and SurgeWear. It levels from the kills of the traps it boosts. -->
+		<block name="DementiveTrapOvercharger">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="OverchargerDEM, TrapsExpanded"/>
+			<property name="RequiredPower" value="40"/>
+			<property name="Range" value="5"/>
+			<property name="SpeedBoost" value="1.25"/>
+			<property name="WearBoost" value="1.25"/>
+			<property name="CapacitorRange" value="8"/>
+			<property name="SurgeSpeed" value="1.5"/>
+			<property name="SurgeWear" value="2"/>
+			<property name="UpgradeA" value="CapacitorBank"/>
+			<property name="UpgradeB" value="Surge"/>
+			<property name="UnlockedBy" value="craftingTraps"/>
+			<property name="DisplayType" value="blockElectricalHardened"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="Material" value="Mmetal_weak"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/trapsexpanded.unity3d?Overcharger"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="HandleFace" value="Bottom"/>
+			<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+			<property name="Path" value="solid"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="MaxDamage" value="600"/>
+			<property name="EconomicValue" value="1100"/>
+			<property name="TraderStageTemplate" value="electricTier3"/>
+			<property name="TakeDelay" value="8"/>
+			<property class="RepairItems">
+				<property name="resourceElectricParts" value="4"/>
+				<property name="resourceScrapPolymers" value="2"/>
+			</property>
+			<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+			<drop event="Harvest" name="resourceElectricParts" count="2,5" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceScrapLead" count="5,15" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceScrapIron" count="10,25" tag="allHarvest,perkJunkMiner"/>
+			<drop event="Destroy" count="0"/>
+			<property name="SortOrder1" value="B155"/>
+			<property name="SortOrder2" value="0032"/>
+			<property name="Group" value="Science,TCScience"/>
+			<property name="Tags" value="trapsSkill"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_electrical,SC_traps"/>
+			<property name="SoundPickup" value="darttrap_grab"/>
+			<property name="SoundPlace" value="darttrap_place"/>
+		</block>
+
+		<!-- Bolt Thrower: every FireDelay seconds shoots a rebar bolt at the zombie within Range with the most health:
+		     HitDamage (piercing) and a Knockdown meters knockback. Skewer: on through up to SkewerCount zombies within
+		     SkewerWidth of its line. Explosive Bolts: SplashDamage within SplashRadius where it hits (ExplosionItem's
+		     explosion effect; no block damage). -->
+		<block name="DementiveTrapBoltThrower">
+			<property name="CreativeMode" value="Player"/>
+			<property name="Class" value="BoltThrowerDEM, TrapsExpanded"/>
+			<property name="RequiredPower" value="15"/>
+			<property name="Range" value="30"/>
+			<property name="FireDelay" value="3"/>
+			<property name="HitDamage" value="800"/>
+			<property name="Knockdown" value="1.5"/>
+			<property name="SkewerCount" value="3"/>
+			<property name="SkewerWidth" value="0.8"/>
+			<property name="SplashRadius" value="3"/>
+			<property name="SplashDamage" value="150"/>
+			<property name="ExplosionItem" value="ammoArrowExploding"/>
+			<property name="FireSound" value="crossbow2_fire"/>
+			<property name="AmmoItems" value="DementiveTrapRebarBolt"/>
+			<property name="AmmoCapacity" value="20"/>
+			<property name="UpgradeA" value="Skewer"/>
+			<property name="UpgradeB" value="ExplosiveBolts"/>
+			<property name="PressItem" value="DementiveTrapRebarBolt"/>
+			<property name="PressCount" value="1"/>
+			<property name="UnlockedBy" value="craftingTraps"/>
+			<property name="DisplayType" value="blockElectricalHardened"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="Material" value="Mmetal_hard"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/trapsexpanded.unity3d?BoltThrower"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="HandleFace" value="Bottom"/>
+			<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
+			<property name="Path" value="solid"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="MaxDamage" value="1500"/>
+			<property name="EconomicValue" value="2000"/>
+			<property name="TraderStageTemplate" value="electricTier3"/>
+			<property name="TakeDelay" value="10"/>
+			<property class="RepairItems">
+				<property name="resourceForgedSteel" value="8"/>
+				<property name="resourceMechanicalParts" value="3"/>
+			</property>
+			<drop event="Harvest" name="terrStone" count="0" tool_category="Disassemble"/>
+			<drop event="Harvest" name="resourceMechanicalParts" count="2,5" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceElectricParts" count="1,3" tag="salvageHarvest"/>
+			<drop event="Harvest" name="resourceScrapIron" count="30,80" tag="allHarvest,perkJunkMiner"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<property name="SortOrder1" value="B155"/>
+			<property name="SortOrder2" value="0033"/>
 			<property name="Group" value="Science,TCScience"/>
 			<property name="Tags" value="trapsSkill,scrap100"/>
 			<property name="FilterTags" value="MC_playerBlocks,SC_electrical,SC_traps"/>

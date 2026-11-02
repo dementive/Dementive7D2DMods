@@ -195,9 +195,15 @@ def join(objs, name):
     with bpy.context.temp_override(active_object=objs[0], selected_editable_objects=objs,
                                    selected_objects=objs):
         bpy.ops.object.join()
-    objs[0].name = name
-    objs[0].data.name = name
-    return objs[0]
+    obj = objs[0]
+    # The joined object keeps the first part's transform; bake it in so the model's origin is the world origin
+    # (points parented to it, like SprayOrigin, are given in world coordinates)
+    with bpy.context.temp_override(active_object=obj, object=obj, selected_editable_objects=[obj],
+                                   selected_objects=[obj]):
+        bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
+    obj.name = name
+    obj.data.name = name
+    return obj
 
 
 def dent(obj, strength=0.004, size=0.12, seed=0):
@@ -265,6 +271,68 @@ def flat_shape(name, points, thickness, material, location, rotation=(90.0, 0.0,
     obj.location = location
     obj.rotation_euler = [math.radians(r) for r in rotation]
     return obj
+
+
+# ---------------------------------------------------------------- moving parts and points
+
+PART_LABELS = ["_body"]
+
+
+def mark_part(obj, label):
+    """Marks every face of a piece as belonging to the moving part `label` (a swinging log, a jaw, a swivel). Mark the
+    pieces before joining; the whole model is UV-packed and baked as one, and split_part moves the part back out after
+    the bake so the game can move it."""
+    if label not in PART_LABELS:
+        PART_LABELS.append(label)
+    me = obj.data
+    attr = me.attributes.get("trap_part") or me.attributes.new("trap_part", "INT", "FACE")
+    for i in range(len(me.polygons)):
+        attr.data[i].value = PART_LABELS.index(label)
+    return obj
+
+
+def split_part(model, label, pivot):
+    """After baking: moves the faces marked `label` into their own mesh object named `label`, with its origin at
+    `pivot` (world coordinates; the point it turns or slides about) and parented to the model. It keeps the model's
+    baked material. Returns the new object; export it with the model."""
+    idx = PART_LABELS.index(label)
+    for o in bpy.context.scene.objects:
+        o.select_set(o == model)
+    bpy.context.view_layer.objects.active = model
+    bpy.context.tool_settings.mesh_select_mode = (False, False, True)
+    bpy.ops.object.mode_set(mode="EDIT")
+    bm = bmesh.from_edit_mesh(model.data)
+    layer = bm.faces.layers.int.get("trap_part")
+    for f in bm.faces:
+        f.select_set(False)
+    count = 0
+    for f in bm.faces:
+        if f[layer] == idx:
+            f.select_set(True)
+            count += 1
+    bmesh.update_edit_mesh(model.data)
+    if count == 0:
+        bpy.ops.object.mode_set(mode="OBJECT")
+        raise ValueError("No faces are marked as part " + label)
+    bpy.ops.mesh.separate(type="SELECTED")
+    bpy.ops.object.mode_set(mode="OBJECT")
+    part = [o for o in bpy.context.selected_objects if o != model][0]
+    part.name = label
+    part.data.name = label
+    part.data.transform(Matrix.Translation(-Vector(pivot)))
+    part.matrix_world = Matrix.Translation(Vector(pivot))
+    part.parent = model
+    part.matrix_world = Matrix.Translation(Vector(pivot))
+    return part
+
+
+def point(name, location, parent):
+    """An empty the game's code looks up by name (a muzzle, a nozzle, an aim point), at `location` in world
+    coordinates, parented to the model or to a moving part so it moves with it."""
+    empty = link(bpy.data.objects.new(name, None))
+    empty.parent = parent
+    empty.matrix_world = Matrix.Translation(Vector(location))
+    return empty
 
 
 # ---------------------------------------------------------------- materials
@@ -674,12 +742,14 @@ def photo_material(name, base, scale=0.5, sat=1.0, value=1.0, tint=None, exposed
 
 
 def grimy(name, color, roughness=0.55, metallic=0.0, grime=0.5, grime_set="metal_plate_02", scale=0.7,
-          emission=None, bump_scale=60.0, bump=0.08, soot_from=None, stain=None, grit=0.0):
+          emission=None, bump_scale=60.0, bump=0.08, soot_from=None, stain=None, grit=0.0, dirt_range=(0.4, 0.12)):
     """A plain surface (plastic, rubber, tape, porcelain) dirtied with the dark parts of a photo set, optionally
-    sooted above height soot_from (model space) and blotched with a stain color."""
+    sooted above height soot_from (model space) and blotched with a stain color. dirt_range is the photo
+    brightness (linear) from clean to fully dirty; the default dirties most of a dark photo, which suits greys,
+    while strong colors want a narrower range such as (0.1, 0.03) so they survive."""
     mat, g = new_material(name)
     p = photo(g, grime_set, scale, (0.21, 0.5, 0.13))
-    pattern = g.ramp(_luma(g, p["color"]), 0.4, 0.12)
+    pattern = g.ramp(_luma(g, p["color"]), dirt_range[0], dirt_range[1])
     dirt = g.math("MAXIMUM", g.math("MULTIPLY", pattern, grime), _grime(g, grime * 1.4), clamp=True)
     col = g.mix(g.math("MULTIPLY", g.noise(18.0), 0.25), color, _darker(g, color, 0.8))
     if stain is not None:
@@ -696,13 +766,14 @@ def grimy(name, color, roughness=0.55, metallic=0.0, grime=0.5, grime_set="metal
                   emission=emission)
 
 
-def tarnished_copper(name):
-    """Old plumbing copper: dull, with dark tarnish patches and green verdigris in the crevices."""
+def tarnished_copper(name, bright=(0.85, 0.45, 0.24), dark=(0.6, 0.28, 0.14)):
+    """Old plumbing copper (or brass, with yellower colors): dull, with dark tarnish patches and green verdigris
+    in the crevices."""
     mat, g = new_material(name)
     p = photo(g, "rust_coarse_01", 1.2, (0.4, 0.2, 0.9))
     tarnish = g.ramp(_luma(g, p["color"]), 0.2, 0.1)
     cav = g.cavity(0.04)
-    col = g.mix(g.math("MULTIPLY", g.noise(30.0), 0.4), (0.85, 0.45, 0.24), (0.6, 0.28, 0.14))
+    col = g.mix(g.math("MULTIPLY", g.noise(30.0), 0.4), bright, dark)
     col = g.mix(g.math("MULTIPLY", tarnish, 0.9), col, (0.13, 0.07, 0.04))
     green = g.math("MULTIPLY", g.math("SUBTRACT", 1.0, cav, clamp=True), 1.3, clamp=True)
     col = g.mix(g.math("MULTIPLY", green, 0.75), col, (0.12, 0.24, 0.17))

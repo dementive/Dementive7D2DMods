@@ -2,30 +2,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Lives on a Tesla Coil's model. On the server it picks targets, deals the electrical damage (credited to the
-/// coil's owner like vanilla traps) and tells nearby clients which zombies the bolt went through; every game that
-/// draws the coil shows the arcs, the glow and the power lamp.
+/// Lives on a Tesla Coil's model. On the server it picks targets and deals the damage (credited to the coil's owner
+/// like vanilla traps); every game that draws the coil shows the arcs and the glow.
 /// </summary>
-public class TeslaCoilControllerDEM : MonoBehaviour
+public class TeslaCoilControllerDEM : TrapControllerDEM
 {
     private const float ArcLife = 0.22f;
     private const float JitterInterval = 0.035f;
 
-    public bool IsOn;
-
-    private BlockTeslaCoilDEM block;
-    private Vector3i blockPos;
-    private float cooldown;
+    private BlockTeslaCoilDEM coil;
     private Transform arcOrigin;
     private LineRenderer arcTemplate;
     private Light glow;
     private float flash;
-    private Renderer[] renderers;
-    private MaterialPropertyBlock props;
-    private float lampRefresh;
     private readonly List<Arc> arcs = new List<Arc>();
 
-    private static readonly List<Entity> found = new List<Entity>();
     private static readonly List<int> chain = new List<int>();
 
     private class Arc
@@ -38,14 +29,15 @@ public class TeslaCoilControllerDEM : MonoBehaviour
         public float NextJitter;
     }
 
-    public void Setup(BlockTeslaCoilDEM _block, Vector3i _pos)
+    protected override float ActDelay => coil.FireDelay;
+
+    public override void Setup(ITrapDEM trap, Vector3i pos)
     {
-        block = _block;
-        blockPos = _pos;
+        coil = (BlockTeslaCoilDEM)trap;
+        base.Setup(trap, pos);
         arcOrigin = FindDeep(transform, "ArcOrigin");
         Transform template = FindDeep(transform, "ArcTemplate");
         arcTemplate = template != null ? template.GetComponent<LineRenderer>() : null;
-        renderers = GetComponentsInChildren<MeshRenderer>(true);
         if (glow == null)
         {
             GameObject light = new GameObject("TeslaGlow");
@@ -57,13 +49,11 @@ public class TeslaCoilControllerDEM : MonoBehaviour
             glow.shadows = LightShadows.None;
             glow.intensity = 0f;
         }
-        lampRefresh = 0f;
-        // Spread neighbouring coils' zaps out instead of firing in lockstep
-        cooldown = Random.Range(0.1f, block.FireDelay);
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         foreach (Arc arc in arcs)
         {
             DestroyArc(arc);
@@ -72,98 +62,74 @@ public class TeslaCoilControllerDEM : MonoBehaviour
         flash = 0f;
     }
 
-    private void Update()
+    protected override void Update()
     {
-        if (block == null)
+        base.Update();
+        if (coil == null)
         {
             return;
         }
-        float dt = Time.deltaTime;
-        UpdateLamp(dt);
-        UpdateArcs(dt);
-        UpdateGlow(dt);
-
-        if (!IsOn || !SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer)
-        {
-            return;
-        }
-        cooldown -= dt;
-        if (cooldown > 0f)
-        {
-            return;
-        }
-        if (WornOut())
-        {
-            cooldown = 1f;
-            return;
-        }
-        cooldown = Zap() ? block.FireDelay : 0.25f;
-    }
-
-    private bool WornOut()
-    {
-        World world = GameManager.Instance.World;
-        return world != null && block.IsWornOut(world.GetBlock(blockPos));
+        UpdateArcs(Time.deltaTime);
+        UpdateGlow(Time.deltaTime);
     }
 
     // ------------------------------------------------------------------ server
 
-    private bool Zap()
+    protected override bool Act(World world)
     {
-        World world = GameManager.Instance.World;
-        if (world == null)
-        {
-            return false;
-        }
-
-        Vector3 origin = blockPos.ToVector3() + BlockTeslaCoilDEM.ArcOffset;
+        Vector3 origin = BlockPos.ToVector3() + BlockTeslaCoilDEM.ArcOffset;
         chain.Clear();
-        EntityAlive target = Nearest(world, origin, block.Range, true);
+        EntityAlive target = Nearest(world, origin, coil.Range, true);
         if (target == null)
         {
             return false;
         }
 
         int owner = Owner(world);
-        float damage = block.EntityDamage;
+        bool storm = Upgraded('A');
+        bool overload = Upgraded('B');
+        float damage = coil.EntityDamage * DamageMult;
+        int chains = coil.Chains;
+        if (storm)
+        {
+            damage *= coil.StormDamage;
+            chains += coil.StormChains;
+        }
+        else if (overload)
+        {
+            damage *= coil.OverloadDamage;
+            chains = 0;
+        }
         Vector3 from = origin;
+        bool soakedHit = false;
         for (int jump = 0; target != null; jump++)
         {
             chain.Add(target.entityId);
             Vector3 chest = target.getChestPosition();
-            Hit(target, from, damage, owner);
-            if (jump >= block.Chains)
+            soakedHit |= Zap(target, from, damage, owner, overload);
+            if (jump >= chains + (soakedHit && !overload ? coil.SoakedChains : 0))
             {
                 break;
             }
-            damage *= block.ChainFalloff;
+            damage *= coil.ChainFalloff;
             from = chest;
-            target = Nearest(world, chest, block.ChainRange, false);
+            target = Nearest(world, chest, coil.ChainRange, false);
         }
 
         Wear(world);
-        Audio.Manager.BroadcastPlay(origin, block.ZapSound);
-        int[] ids = chain.ToArray();
-        if (!GameManager.IsDedicatedServer)
-        {
-            ShowArcs(ids);
-        }
-        SingletonMonoBehaviour<ConnectionManager>.Instance.SendPackage(
-            NetPackageManager.GetPackage<NetPackageTeslaArcDEM>().Setup(blockPos, ids),
-            _entitiesInRangeOfWorldPos: origin, _range: 96);
+        Audio.Manager.BroadcastPlay(origin, coil.ZapSound);
+        Broadcast(origin, chain.ToArray());
         return true;
     }
 
     /// <summary>Closest living enemy within range that the bolt can reach and hasn't hit this zap.</summary>
     private EntityAlive Nearest(World world, Vector3 from, float range, bool fromCoil)
     {
-        found.Clear();
-        world.GetEntitiesInBounds(typeof(EntityEnemy), new Bounds(from, Vector3.one * (range * 2f)), found);
         EntityAlive best = null;
         float bestDist = range * range;
-        foreach (Entity entity in found)
+        foreach (EntityAlive alive in Enemies(world, from, range))
         {
-            if (!(entity is EntityAlive alive) || !alive.IsAlive() || chain.Contains(alive.entityId))
+            if (chain.Contains(alive.entityId))
             {
                 continue;
             }
@@ -191,80 +157,48 @@ public class TeslaCoilControllerDEM : MonoBehaviour
         return best;
     }
 
-    /// <summary>True when no block or terrain is between the points (bodies in the way still conduct).</summary>
-    private static bool Reachable(World world, Vector3 from, Vector3 to)
-    {
-        Vector3 d = to - from;
-        float dist = d.magnitude;
-        if (dist < 0.05f)
-        {
-            return true;
-        }
-        // Same masks the vanilla turrets use for their line of sight
-        if (!Voxel.Raycast(world, new Ray(from, d / dist), dist, unchecked((int)0xdfe34ff3), 8, 0f))
-        {
-            return true;
-        }
-        WorldRayHitInfo hit = Voxel.voxelRayHitInfo;
-        if (hit.tag != null && hit.tag.StartsWith("E_"))
-        {
-            return true;
-        }
-        return Mathf.Sqrt(hit.hit.distanceSq) >= dist - 0.3f;
-    }
-
     /// <summary>
     /// Heat damage, not Electrical: the game starts its electrocute flinch on every electrical hit, which made each
     /// zap a stun. The flinch comes only with the occasional jolt instead (not on shock-immune charged zombies).
+    /// A soaked zombie takes SoakedDamage times the damage, and its jolt becomes a stun unless it was stunned
+    /// recently or is a big zombie. Overload jolts on every hit, and its jolt is always a stun. Returns whether the
+    /// zombie was soaked.
     /// </summary>
-    private void Hit(EntityAlive target, Vector3 from, float damage, int owner)
+    private bool Zap(EntityAlive target, Vector3 from, float damage, int owner, bool overload)
     {
+        bool soaked = TrapStatusDEM.IsSoaked(target);
+        if (soaked)
+        {
+            damage *= coil.SoakedDamage;
+            BloodMoonDEM.Combo(BloodMoonDEM.ComboSoakedShock);
+        }
         Vector3 dir = (target.getChestPosition() - from).normalized;
-        target.DamageEntity(new DamageSourceEntity(EnumDamageSource.External, EnumDamageTypes.Heat, owner, dir),
-            Mathf.Max(1, Mathf.RoundToInt(damage)), false, 0.2f);
-        if (string.IsNullOrEmpty(block.JoltBuff) || !target.IsAlive() || Random.value >= block.JoltChance
-            || target.HasAnyTags(ChargedTags) || target.Buffs.HasBuff("buffShockImmune"))
+        if (!Hit(target, damage, EnumDamageTypes.Heat, dir, owner))
         {
-            return;
+            return soaked;
         }
-        target.Buffs.AddBuff(block.JoltBuff, owner, true, true);
+        if ((!overload && Random.value >= coil.JoltChance) || TrapStatusDEM.IsShockImmune(target))
+        {
+            return soaked;
+        }
+        if ((soaked || overload) && !string.IsNullOrEmpty(coil.SoakedStunBuff) && !TrapStatusDEM.IsBig(target)
+            && !target.Buffs.HasBuff(coil.SoakedStunImmuneBuff))
+        {
+            target.Buffs.AddBuff(coil.SoakedStunBuff, owner, true, true);
+            target.Buffs.AddBuff(coil.SoakedStunImmuneBuff, owner, true, true);
+        }
+        else if (!string.IsNullOrEmpty(coil.JoltBuff))
+        {
+            target.Buffs.AddBuff(coil.JoltBuff, owner, true, true);
+        }
         target.Electrocuted = true;
-    }
-
-    private static readonly FastTags<TagGroup.Global> ChargedTags = FastTags<TagGroup.Global>.Parse("charged");
-
-    /// <summary>Each zap wears the coil a little (block damage, repaired like any block), stopping short of
-    /// breaking it.</summary>
-    private void Wear(World world)
-    {
-        if (block.WearPerZap <= 0)
-        {
-            return;
-        }
-        BlockValue bv = world.GetBlock(blockPos);
-        if (!(bv.Block is BlockTeslaCoilDEM))
-        {
-            return;
-        }
-        int damage = Mathf.Min(bv.damage + block.WearPerZap, block.MaxDamage - 1);
-        if (damage == bv.damage)
-        {
-            return;
-        }
-        bv.damage = damage;
-        world.SetBlockRPC(blockPos, bv);
-    }
-
-    private int Owner(World world)
-    {
-        TileEntityPoweredMeleeTrap te = world.GetTileEntity(blockPos) as TileEntityPoweredMeleeTrap;
-        return te != null ? te.OwnerEntityID : -1;
+        return soaked;
     }
 
     // ------------------------------------------------------------------ visuals
 
     /// <summary>Draws a bolt from the toroid through each zombie in order.</summary>
-    public void ShowArcs(int[] ids)
+    public override void PlayFx(int[] ids)
     {
         World world = GameManager.Instance.World;
         if (world == null || arcTemplate == null)
@@ -372,54 +306,8 @@ public class TeslaCoilControllerDEM : MonoBehaviour
             return;
         }
         flash = Mathf.Max(0f, flash - dt * 6f);
-        float idle = IsOn ? 0.35f + 0.25f * Mathf.PerlinNoise(Time.time * 9f, blockPos.x * 0.37f) : 0f;
+        float idle = IsOn ? 0.35f + 0.25f * Mathf.PerlinNoise(Time.time * 9f, BlockPos.x * 0.37f) : 0f;
         glow.intensity = idle + flash * 4f;
         glow.enabled = glow.intensity > 0.01f;
-    }
-
-    /// <summary>The red lamp on the junction box is lit while the coil has power, and blinks when it's worn out
-    /// and needs repair. Re-applied now and then in case the game resets the renderers' property blocks (it sets
-    /// block damage and tint through them).</summary>
-    private void UpdateLamp(float dt)
-    {
-        lampRefresh -= dt;
-        if (lampRefresh > 0f || renderers == null)
-        {
-            return;
-        }
-        lampRefresh = 0.5f;
-        if (props == null)
-        {
-            props = new MaterialPropertyBlock();
-        }
-        bool lit = IsOn && (!WornOut() || Mathf.FloorToInt(Time.time * 2f) % 2 == 0);
-        Color color = lit ? new Color(2.5f, 2.5f, 2.5f) : new Color(0.02f, 0.02f, 0.02f);
-        foreach (Renderer r in renderers)
-        {
-            if (r == null)
-            {
-                continue;
-            }
-            r.GetPropertyBlock(props);
-            props.SetColor("_EmissionColor", color);
-            r.SetPropertyBlock(props);
-        }
-    }
-
-    private static Transform FindDeep(Transform root, string name)
-    {
-        if (root.name == name)
-        {
-            return root;
-        }
-        foreach (Transform child in root)
-        {
-            Transform found = FindDeep(child, name);
-            if (found != null)
-            {
-                return found;
-            }
-        }
-        return null;
     }
 }

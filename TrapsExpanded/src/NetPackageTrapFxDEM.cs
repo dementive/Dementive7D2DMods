@@ -1,14 +1,16 @@
 /// <summary>
-/// Server to clients: a Tesla Coil at Pos just zapped these entities, in order, so draw the bolt. The damage is
-/// already done on the server; this is only the visual.
+/// Server to clients: the trap at Pos just acted on these entities (a Tesla Coil's bolt through them in order, a
+/// Sprinkler soaking them), so play its effects. The work itself is already done on the server.
 /// </summary>
-public class NetPackageTeslaArcDEM : NetPackage
+public class NetPackageTrapFxDEM : NetPackage
 {
     private Vector3i pos;
 
     private int[] ids = new int[0];
 
-    public NetPackageTeslaArcDEM Setup(Vector3i _pos, int[] _ids)
+    public override NetPackageDirection PackageDirection => NetPackageDirection.ToClient;
+
+    public NetPackageTrapFxDEM Setup(Vector3i _pos, int[] _ids)
     {
         pos = _pos;
         ids = _ids;
@@ -30,10 +32,11 @@ public class NetPackageTeslaArcDEM : NetPackage
     {
         base.write(_bw);
         StreamUtils.Write(_bw, pos);
-        _bw.Write((byte)ids.Length);
-        foreach (int id in ids)
+        int count = System.Math.Min(ids.Length, 255);
+        _bw.Write((byte)count);
+        for (int i = 0; i < count; i++)
         {
-            _bw.Write(id);
+            _bw.Write(ids[i]);
         }
     }
 
@@ -43,6 +46,6 @@ public class NetPackageTeslaArcDEM : NetPackage
         {
             return;
         }
-        BlockTeslaCoilDEM.FindController(_world, pos)?.ShowArcs(ids);
+        BlockTrapDEM.FindController(_world, pos)?.PlayFx(ids);
     }
 }

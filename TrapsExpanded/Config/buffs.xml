@@ -1,5 +1,10 @@
 <configs>
 	<append xpath="/buffs">
+		<!-- The traps' statuses on zombies. The mod's C# picks the buff and its duration (traps' levels lengthen
+		     them) and sets the cvars that choose a buff's strength; the buffs do the rest on the server and sync like
+		     vanilla ones. Big zombies (tag boss) get half the slows. Effects the game's particle list doesn't have
+		     (dripping water and tar, frost) are attached by the C#. -->
+
 		<!-- Tesla Coil jolt: a one-second near stop, with the vanilla shock sparks. No damage of its own. The coil also
 		     starts the vanilla electrocute flinch (EntityAlive.Electrocuted) when it adds this. -->
 		<buff name="buffDementiveTrapsJolt" hidden="true">
@@ -15,6 +20,241 @@
 				<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
 				<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
 			</effect_group>
+		</buff>
+
+		<!-- Soaked (Sprinkler): 15% slower (half that on big zombies), can't catch fire (vanilla fire, the traps' fire
+		     or an Inferno), and the Tesla Coil hits it harder (see the coil's Soaked properties). Being soaked again
+		     restarts it. -->
+		<buff name="buffDementiveTrapsSoaked" hidden="true">
+			<stack_type value="replace"/>
+			<duration value="10"/>
+			<effect_group>
+				<requirement name="!EntityTagCompare" tags="boss"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".15"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".15"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".15"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="EntityTagCompare" tags="boss"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".075"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".075"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".075"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="BuffResistance" operation="base_set" value="1" tags="buffBurningZombie,buffBurningElement,buffBurningEnvironment,buffBurningFlamingArrow,buffBurningMolotov,buffIsOnFire,buffDementiveTrapsBurning,buffDementiveTrapsInferno"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffBurningZombie,buffBurningElement,buffBurningEnvironment,buffBurningFlamingArrow,buffBurningMolotov,buffIsOnFire,buffDementiveTrapsBurning,buffDementiveTrapsInferno"/>
+			</effect_group>
+		</buff>
+
+		<!-- Tesla Coil on a soaked zombie (or with Overload): its jolt becomes a 2 s full stop with the shock sparks. -->
+		<buff name="buffDementiveTrapsStun" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="2"/>
+			<effect_group>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value="1"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value="1"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value="1"/>
+				<passive_effect name="JumpStrength" operation="perc_subtract" value="1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_electric_shock" parent_transform="Spine1" local_offset="0,-.2,0"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+				<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+			</effect_group>
+		</buff>
+
+		<!-- After a stun: no new stun for 6 s (this lasts the 2 s stun plus 6). The coil checks for it. -->
+		<buff name="buffDementiveTrapsStunImmune" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="8"/>
+		</buff>
+
+		<!-- Tarred (Grease Slick, Tar Sprayer): 35% slower; cvar dementiveTarLevel 2 (Deep Grease) 55%, 3 (Sticky Tar)
+		     60%; half that on big zombies. Any fire turns it into an Inferno (unless it's soaked): the traps' fire does
+		     it in the C#, vanilla fire (molotovs, flaming arrows, burning ground) here within a second. -->
+		<buff name="buffDementiveTrapsTarred" hidden="true">
+			<stack_type value="replace"/>
+			<duration value="12"/>
+			<effect_group>
+				<requirement name="!EntityTagCompare" tags="boss"/>
+				<requirement name="CVarCompare" cvar="dementiveTarLevel" operation="LT" value="2"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".35"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".35"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".35"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="!EntityTagCompare" tags="boss"/>
+				<requirement name="CVarCompare" cvar="dementiveTarLevel" operation="Equals" value="2"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".55"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".55"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".55"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="!EntityTagCompare" tags="boss"/>
+				<requirement name="CVarCompare" cvar="dementiveTarLevel" operation="GTE" value="3"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".6"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".6"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".6"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="EntityTagCompare" tags="boss"/>
+				<requirement name="CVarCompare" cvar="dementiveTarLevel" operation="LT" value="2"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".175"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".175"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".175"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="EntityTagCompare" tags="boss"/>
+				<requirement name="CVarCompare" cvar="dementiveTarLevel" operation="GTE" value="2"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".3"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".3"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".3"/>
+			</effect_group>
+			<effect_group>
+				<requirement_group op="or">
+					<requirement name="HasBuff" buff="buffBurningMolotov"/>
+					<requirement name="HasBuff" buff="buffBurningFlamingArrow"/>
+					<requirement name="HasBuff" buff="buffBurningElement"/>
+					<requirement name="HasBuff" buff="buffBurningEnvironment"/>
+					<requirement name="HasBuff" buff="buffBurningZombie"/>
+					<requirement name="HasBuff" buff="buffIsOnFire"/>
+					<requirement name="HasBuff" buff="buffDementiveTrapsBurning"/>
+				</requirement_group>
+				<requirement name="!HasBuff" buff="buffDementiveTrapsSoaked"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveTrapsInferno"/>
+			</effect_group>
+		</buff>
+
+		<!-- The traps' own fire (Burn Barrel, Flame Vent, Napalm): 5 damage a second for as long as the trap sets
+		     (8 s from a Burn Barrel). Weaker than a molotov's fire on purpose: these traps are cheap and run all night. -->
+		<buff name="buffDementiveTrapsBurning" hidden="true">
+			<damage_type value="heat"/>
+			<stack_type value="replace"/>
+			<duration value="8"/>
+			<effect_group>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" value="5"/>
+				<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_onFire" parent_transform=".body" shape_mesh="true"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_onFire"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_onFire"/>
+				<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="p_onFire"/>
+			</effect_group>
+		</buff>
+
+		<!-- Inferno: a tarred zombie set alight. Triple the traps' fire (15 a second, 22.5 with Volatile grease or tar:
+		     cvar dementiveInfernoPower 2) for 6 s, its tar burning off; every second it lights the tarred zombies within
+		     3 m (5 m with Volatile Tar: dementiveInfernoSpread 2). -->
+		<buff name="buffDementiveTrapsInferno" hidden="true">
+			<damage_type value="heat"/>
+			<stack_type value="ignore"/>
+			<duration value="6"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffDementiveTrapsTarred,buffDementiveTrapsBurning"/>
+				<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_onFire" parent_transform=".body" shape_mesh="true"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_onFire"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_onFire"/>
+				<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="p_onFire"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar="dementiveInfernoPower" operation="LT" value="2"/>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" value="15"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar="dementiveInfernoPower" operation="GTE" value="2"/>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" value="22.5"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar="dementiveInfernoSpread" operation="LT" value="2"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="3" target_tags="zombie,animal" buff="buffDementiveTrapsEmber"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar="dementiveInfernoSpread" operation="GTE" value="2"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="5" target_tags="zombie,animal" buff="buffDementiveTrapsEmber"/>
+			</effect_group>
+		</buff>
+
+		<!-- An Inferno's sparks landing: a tarred zombie (not soaked) goes up too; anything else ignores it. -->
+		<buff name="buffDementiveTrapsEmber" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			<effect_group>
+				<requirement name="HasBuff" buff="buffDementiveTrapsTarred"/>
+				<requirement name="!HasBuff" buff="buffDementiveTrapsSoaked"/>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffDementiveTrapsInferno"/>
+			</effect_group>
+		</buff>
+
+		<!-- Chilled (Cryo Vent): cvar dementiveChill stacks, 20% slower each (half on big zombies). The vent freezes
+		     the zombie when enough stacks build up. -->
+		<buff name="buffDementiveTrapsChilled" hidden="true">
+			<damage_type value="cold"/>
+			<stack_type value="replace"/>
+			<duration value="4"/>
+			<effect_group>
+				<requirement name="!EntityTagCompare" tags="boss"/>
+				<requirement name="CVarCompare" cvar="dementiveChill" operation="LT" value="2"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".2"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".2"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".2"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="!EntityTagCompare" tags="boss"/>
+				<requirement name="CVarCompare" cvar="dementiveChill" operation="GTE" value="2"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".4"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".4"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".4"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="EntityTagCompare" tags="boss"/>
+				<requirement name="CVarCompare" cvar="dementiveChill" operation="LT" value="2"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".1"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".1"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".1"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="EntityTagCompare" tags="boss"/>
+				<requirement name="CVarCompare" cvar="dementiveChill" operation="GTE" value="2"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".2"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".2"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".2"/>
+			</effect_group>
+		</buff>
+
+		<!-- Frozen (Cryo Vent): frozen stiff for as long as the vent sets (2 s, 3 with Deep Freeze). Blunt and crushing
+		     hits do double damage to it (in the C#). Big zombies never freeze. -->
+		<buff name="buffDementiveTrapsFrozen" hidden="true">
+			<damage_type value="cold"/>
+			<stack_type value="ignore"/>
+			<duration value="2"/>
+			<effect_group>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value="1"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value="1"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value="1"/>
+				<passive_effect name="JumpStrength" operation="perc_subtract" value="1"/>
+			</effect_group>
+		</buff>
+
+		<!-- After a freeze: can't freeze again until this ends (the freeze plus 6 s; the vent sets it). -->
+		<buff name="buffDementiveTrapsFrozenImmune" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="8"/>
+		</buff>
+
+		<!-- Held (Bear Trap): can't move for as long as the trap sets. -->
+		<buff name="buffDementiveTrapsHeld" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="3"/>
+			<effect_group>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value="1"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value="1"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value="1"/>
+				<passive_effect name="JumpStrength" operation="perc_subtract" value="1"/>
+			</effect_group>
+		</buff>
+
+		<!-- Just knocked back (Swinging Log, Ram, Pressure Washer, Bolt Thrower): no new knockback for 2.5 s, so traps
+		     can't juggle a zombie. -->
+		<buff name="buffDementiveTrapsKnocked" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="2.5"/>
 		</buff>
 	</append>
 </configs>
