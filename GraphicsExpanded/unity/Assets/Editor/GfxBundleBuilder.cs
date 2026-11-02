@@ -24,6 +24,12 @@ public static class GfxBundleBuilder
         "Assets/GraphicsExpanded/FarShadows.shader",
         "Assets/GraphicsExpanded/DistantGrass.shader",
         "Assets/GraphicsExpanded/Ambience.shader",
+        "Assets/GraphicsExpanded/Juice.shader",
+        "Assets/GraphicsExpanded/JuiceWarp.shader",
+        "Assets/GraphicsExpanded/JuiceDebris.shader",
+        "Assets/GraphicsExpanded/JuiceDecal.shader",
+        "Assets/GraphicsExpanded/JuiceFlash.shader",
+        "Assets/GraphicsExpanded/JuiceScreen.shader",
     };
 
     public static void Build()

@@ -260,5 +260,42 @@
 				</Slider>
 			</Category>
 		</Tab>
+		<Tab name="Feel" displayKey="gfxeTabFeel">
+			<Category name="Juice" displayKey="gfxeCatJuice">
+				<Description key="gfxeCatJuiceDesc" />
+				<Slider name="Amount" displayKey="gfxeJuiceAmount" type="float" defaultValue="100%">
+					<Incremental increment="10%" minValue="0%" maxValue="200%" />
+					<Formatter ui="0%" />
+					<Description key="gfxeJuiceAmountDesc" />
+				</Slider>
+			</Category>
+			<Category name="Areas" displayKey="gfxeCatJuiceAreas">
+				<Description key="gfxeCatJuiceAreasDesc" />
+				<Switch name="Hits" displayKey="gfxeJuiceHits" type="bool" defaultValue="true">
+					<LocalizationPrefix prefix="gfxeOnOff_" />
+					<Description key="gfxeJuiceHitsDesc" />
+				</Switch>
+				<Switch name="Shooting" displayKey="gfxeJuiceShooting" type="bool" defaultValue="true">
+					<LocalizationPrefix prefix="gfxeOnOff_" />
+					<Description key="gfxeJuiceShootingDesc" />
+				</Switch>
+				<Switch name="Breaking" displayKey="gfxeJuiceBreaking" type="bool" defaultValue="true">
+					<LocalizationPrefix prefix="gfxeOnOff_" />
+					<Description key="gfxeJuiceBreakingDesc" />
+				</Switch>
+				<Switch name="Moving" displayKey="gfxeJuiceMoving" type="bool" defaultValue="true">
+					<LocalizationPrefix prefix="gfxeOnOff_" />
+					<Description key="gfxeJuiceMovingDesc" />
+				</Switch>
+				<Switch name="Hurt" displayKey="gfxeJuiceHurt" type="bool" defaultValue="true">
+					<LocalizationPrefix prefix="gfxeOnOff_" />
+					<Description key="gfxeJuiceHurtDesc" />
+				</Switch>
+				<Switch name="Rewards" displayKey="gfxeJuiceRewards" type="bool" defaultValue="true">
+					<LocalizationPrefix prefix="gfxeOnOff_" />
+					<Description key="gfxeJuiceRewardsDesc" />
+				</Switch>
+			</Category>
+		</Tab>
 	</Global>
 </ModSettings>

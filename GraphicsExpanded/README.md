@@ -63,6 +63,28 @@ adjustment to vanilla, so the game's own effects (biome fog, weather, night, bri
 - **Ambient life**: pollen drifts in the forest air by day, dust in the desert and wasteland, ash in the burnt forest
   and ice crystals in the snow on clear days, glinting where the sun catches them, brightest looking into the sun and
   in its beams, and now and then a leaf tumbles down from the oaks nearby. None of it in rain or snowfall, or indoors.
+- **Game juice** (the Feel tab: one Juice amount, 0 to 200%, and a switch per area):
+  - **Hits**: bullets throw sparks off metal, chips and dust off stone, splinters off wood, clods off dirt and shards
+    off glass, and leave small pits in stone, wood and metal. Creatures flash when hit (hotter on kills and
+    headshots) and bleed: blood sprays on along the shot, splatters the wall behind and drips into splats where it
+    lands, and a pool spreads under the dead. Blood dries from glossy red to dull brown and fades after a few
+    minutes; out in the rain it washes away within a minute. Machines spark instead.
+  - **Shooting**: a brighter flare and sparks at the muzzle on top of the game's flash, smoke that hangs, spent
+    casings and shotgun shells thrown out to the right that bounce, settle and stay for a minute, tracers from rifles,
+    SMGs and machine guns, and the air over the barrel shimmering under sustained fire, then a wisp of smoke.
+  - **Breaking things**: axes throw splinters, picks spark (more on ore), broken blocks burst into chunks, shards,
+    scrap or leaves and dust, felled trees throw splinters and leaves. Zombies beating on blocks near you indoors
+    make dust sift from the ceiling. Explosions flash, ripple the air with a shockwave, throw debris, glowing
+    chunks and embers, send a ring of dust out along the ground, leave a scorch mark and a smoke column that
+    drifts on the wind, and shake the camera by how close they were.
+  - **Moving**: footsteps (yours, other players', zombies' and animals') puff dust on dirt, sand and gravel, throw
+    mud on wet ground, kick up snow and splash in water and puddles; bushes shed leaves as you push through; hard
+    landings throw a ring of dust (the game dips the camera itself); vehicles trail dust, mud or snow from their
+    wheels.
+  - **Low health**: below 30% the screen's edges darken and redden with a heartbeat that quickens as health drops.
+    The game's own blood on the side a hit came from is left as it is.
+  - **Rewards**: a soft warm glow round the screen's edges and a few golden motes round you on a level-up, a fainter
+    glow for a finished quest, and quality 5 and 6 loot on the ground glints now and then.
 
 Shadow distance starts at 500 m (the game's own goes to 300 m at most), Grass distance at 200 m (so grass stays full
 out to the edge of the chunks the game has loaded, where the game's own thins it from about 60 m) and Building distance
@@ -135,6 +157,14 @@ gfxe farshadows                 how the far shadows are running: the light, wher
 gfxe farshadows save            save the height map they're worked out from, to GraphicsExpanded/FarShadowHeights.png
 gfxe farshadows debug           red: where they fall; again: blue, how far the height map is off the ground drawn
                                 (should be clear on bare ground); again: off
+gfxe juice                      how the game juice is running, and which layers its bits collide with
+gfxe juice amount <x>           set the juice amount for this session (1 is 100%)
+gfxe juice debug                log every event the juice hears about and show the marks' boxes in magenta
+                                (again to stop)
+gfxe juice test <what>          set one off where you're looking: explosion, blood, kill, headshot, metal, stone,
+                                wood, dirt, snow, glass, water, break, tree, levelup, quest
+gfxe juice shot <what>          the same 3 seconds later (close the console), with screenshots just after, at half a
+                                second and at two seconds, to the Screenshots folder
 ```
 
 ## Works with
@@ -237,6 +267,20 @@ gfxe farshadows debug           red: where they fall; again: blue, how far the h
   motes are world-fixed points that drift, wrapped into a box that follows the camera and fading towards
   its sides; leaves fall from the crowns of the nearest broadleaf trees, read from `DecoManager` every two seconds. The
   kind of mote follows `biomeStandingOn`; rain, snowfall and being indoors come from the dynamic grading's eased values.
+- Game juice (`GfxJuice*`, `Juice*.shader`): the game's own events drive it, each hooked where it runs on every
+  machine: `ParticleEffect.SpawnParticleEffect` sees every impact (`impact_{device}_on_{surface}`, at the hit point,
+  turned to the block face) and break (`blockdestroy_*`, doors, trees, cars) on every client, matched by the id the
+  game sends them under; `EntityAlive.ProcessDamageResponseLocal` every hit on a tracked creature (point, direction,
+  head, kill; damage-over-time ticks skipped); `ItemActionRanged.ItemActionEffects` every shot near the shooter (the
+  muzzle transform; tracers join a shooter's shot to their impacts); `GameManager.ExplosionClient`, `ChangeBlocks`,
+  `EntityAlive.PlayStepSound(string, float)` (the step sound names the surface), `EntityPlayerLocal.FallImpact`,
+  `Progression.AddLevelExp`, `Quest.CloseQuest` and `EntityItem.createMesh`. Bits are moved on the CPU (a ray along
+  the motion for the ones that bounce, splat or die on contact) and drawn in one sorted, premultiplied
+  `DrawMeshInstancedIndirect`; heat shimmer and shockwaves bend a grab of the screen. Debris pieces are a deferred
+  surface shader, so they're lit and shadowed. Marks are boxes drawn into G-buffers 0, 1 and the light buffer before
+  reflections, painting the scene point behind each pixel when it faces the mark's way. The hit flash redraws the
+  creature's renderers with `CommandBuffer.DrawRenderer`. The heartbeat and reward glow are drawn on the UI camera,
+  after the game's upscaling, so they don't smear.
 - Block textures are one 512x512 texture array (407 layers) whose shader has no tunable settings, so there's nothing
   to sharpen; a mipmap bias and the shaders' `_MipSlope` made no visible difference.
 

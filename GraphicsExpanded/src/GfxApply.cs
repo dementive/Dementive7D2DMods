@@ -60,6 +60,7 @@ public static class GfxApply
             GfxAtmosphere.Update(Player(), camera);
             GfxHaze.Update(Player(), camera);
             GfxWater.Update(Player());
+            GfxJuice.Update(Player(), camera);
             GfxSettings.Effective = GfxMood.Apply(GfxSettings.CurrentLook, Time.deltaTime);
             if (camera != lookCamera || !lookApplied || !GfxSettings.Effective.SameAs(lookValues))
                 ApplyColor(camera);

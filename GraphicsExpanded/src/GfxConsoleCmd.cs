@@ -53,6 +53,12 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             + "  gfxe haze            - how the distance haze is running\n"
             + "  gfxe ambience        - how the pollen, dust and leaves are running\n"
             + "  gfxe ambience debug  - show them all in magenta, whatever the time and weather (again to stop)\n"
+            + "  gfxe juice           - how the game juice is running, and the layers its bits collide with\n"
+            + "  gfxe juice amount <x> - set the juice amount for this session (1 is 100%)\n"
+            + "  gfxe juice debug     - log every event the juice hears about and show the marks' boxes in magenta (again to stop)\n"
+            + "  gfxe juice test <what> - set one off where you're looking: explosion, blood, kill, headshot, metal, stone,\n"
+            + "                         wood, dirt, snow, glass, water, break, tree, levelup, quest\n"
+            + "  gfxe juice shot <what> - the same after 3 seconds (close the console), with three screenshots of it\n"
             + "  gfxe water           - how the water is running\n"
             + "  gfxe water debug     - show what the water's reflections find instead\n"
             + "  gfxe shots           - screenshots of this view with and without the mod's look, to the Screenshots folder\n"
@@ -153,6 +159,11 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             }
             console.Output(GfxAmbience.Status());
             Log.Out("[GraphicsExpanded] " + GfxAmbience.Status());
+            return;
+        }
+        if (_params.Count >= 1 && _params[0].EqualsCaseInsensitive("juice"))
+        {
+            Juice(console, _params);
             return;
         }
         if (_params.Count == 1 && _params[0].EqualsCaseInsensitive("haze"))
@@ -286,5 +297,77 @@ public class GfxConsoleCmd : ConsoleCmdAbstract
             GfxSettings.ContactShadowLength, GfxSettings.LodDistance, GfxSettings.TreeDistance,
             GfxSettings.GrassDistance, GfxSettings.Anisotropic16x ? "on" : "off",
             GraphicsExpanded.GearsLoaded ? "is installed" : "isn't installed"));
+    }
+
+    private static void Juice(SdtdConsole console, List<string> _params)
+    {
+        if (_params.Count == 2 && _params[1].EqualsCaseInsensitive("debug"))
+        {
+            GfxJuice.Debug = !GfxJuice.Debug;
+            console.Output("Game juice events " + (GfxJuice.Debug ? "logged to the game log (lines starting [GraphicsExpanded] juice), and marks shown as magenta boxes." : "no longer logged; marks drawn normally."));
+        }
+        else if (_params.Count == 3 && _params[1].EqualsCaseInsensitive("amount"))
+        {
+            if (!float.TryParse(_params[2], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out float amount))
+            {
+                console.Output("Give the amount as a number, like 1.5 for 150%.");
+                return;
+            }
+            GfxSettings.Juice = UnityEngine.Mathf.Clamp(amount, 0f, 2f);
+            console.Output("Game juice at " + GfxSettings.Juice.ToString("0%") + " for this session.");
+        }
+        else if (_params.Count == 3 && _params[1].EqualsCaseInsensitive("shot"))
+        {
+            console.Output(GfxShots.Juice(_params[2].ToLowerInvariant()));
+            return;
+        }
+        else if (_params.Count == 3 && _params[1].EqualsCaseInsensitive("test"))
+        {
+            string result = JuiceTest(_params[2].ToLowerInvariant());
+            console.Output(result);
+            Log.Out("[GraphicsExpanded] juice test: " + result);
+            return;
+        }
+        console.Output(GfxJuice.Status());
+        console.Output("Layers (* = the bits collide with it): " + GfxJuice.Layers());
+        Log.Out("[GraphicsExpanded] " + GfxJuice.Status());
+        Log.Out("[GraphicsExpanded] juice layers: " + GfxJuice.Layers());
+    }
+
+    /// <summary>gfxe juice test: sets an effect off on whatever the player is looking at (within 60 m).</summary>
+    internal static string JuiceTest(string what)
+    {
+        EntityPlayerLocal player = GameManager.Instance?.World?.GetPrimaryPlayer();
+        UnityEngine.Camera camera = player != null ? player.playerCamera : null;
+        if (camera == null)
+            return "Load into a world first.";
+        if (!GfxJuice.Loaded)
+            return GfxJuice.Status();
+        UnityEngine.Transform eye = camera.transform;
+        if (!UnityEngine.Physics.Raycast(eye.position, eye.forward, out UnityEngine.RaycastHit hit, 60f, GfxJuice.WorldMask, UnityEngine.QueryTriggerInteraction.Ignore))
+            return "Look at something within 60 m.";
+        UnityEngine.Vector3 at = hit.point + Origin.position;
+        UnityEngine.Color none = UnityEngine.Color.clear;
+        switch (what)
+        {
+            case "explosion": GfxJuiceEffects.Exploded(at + hit.normal * 0.3f, 4f, player); break;
+            case "blood": GfxJuiceEffects.Bleed(null, at + hit.normal, -hit.normal, 0.4f, false, false); break;
+            case "kill": GfxJuiceEffects.Bleed(null, at + hit.normal, -hit.normal, 0.8f, true, false); break;
+            case "headshot": GfxJuiceEffects.Bleed(null, at + hit.normal, -hit.normal, 0.8f, true, true); break;
+            case "metal": GfxJuiceEffects.Impact("bullet", GfxJuiceEffects.Surface.Metal, at, hit.normal, none, -1); break;
+            case "stone": GfxJuiceEffects.Impact("bullet", GfxJuiceEffects.Surface.Stone, at, hit.normal, none, -1); break;
+            case "wood": GfxJuiceEffects.Impact("metal", GfxJuiceEffects.Surface.Wood, at, hit.normal, none, -1); break;
+            case "dirt": GfxJuiceEffects.Impact("bullet", GfxJuiceEffects.Surface.Earth, at, hit.normal, none, -1); break;
+            case "snow": GfxJuiceEffects.Impact("bullet", GfxJuiceEffects.Surface.Snow, at, hit.normal, none, -1); break;
+            case "glass": GfxJuiceEffects.Impact("bullet", GfxJuiceEffects.Surface.Glass, at, hit.normal, none, -1); break;
+            case "water": GfxJuiceEffects.Impact("bullet", GfxJuiceEffects.Surface.Water, at, hit.normal, none, -1); break;
+            case "break": GfxJuiceEffects.Broke(GfxJuiceEffects.Surface.Stone, at + hit.normal * 0.5f, none, false); break;
+            case "tree": GfxJuiceEffects.Broke(GfxJuiceEffects.Surface.Wood, at + hit.normal * 0.5f, none, true); break;
+            case "levelup": GfxJuiceEffects.LevelUp(player); break;
+            case "quest": GfxJuiceEffects.QuestDone(player); break;
+            default:
+                return "Unknown test '" + what + "'. Try explosion, blood, kill, headshot, metal, stone, wood, dirt, snow, glass, water, break, tree, levelup or quest.";
+        }
+        return "Set off " + what + " " + hit.distance.ToString("0.0") + " m away. " + GfxJuice.Status();
     }
 }

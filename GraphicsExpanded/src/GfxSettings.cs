@@ -251,6 +251,15 @@ public static class GfxSettings
     /// <summary>How many motes and leaves drift in the air (GfxAmbience), 0 to 2.</summary>
     public static float AmbientLife = 1f;
 
+    /// <summary>Game juice (GfxJuice): how much, 0 to 2, and which areas of it are on.</summary>
+    public static float Juice = 1f;
+    public static bool JuiceHits = true;
+    public static bool JuiceShooting = true;
+    public static bool JuiceBreaking = true;
+    public static bool JuiceMoving = true;
+    public static bool JuiceHurt = true;
+    public static bool JuiceRewards = true;
+
     /// <summary>The water: off (the game's), Medium (the game's reflection probe) or High (and screen-space reflections), and wave strength 0 to 2.</summary>
     public static GfxWaterQuality WaterQuality = GfxWaterQuality.High;
     public static float WaterWaves = 1f;

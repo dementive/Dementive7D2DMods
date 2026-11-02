@@ -57,6 +57,10 @@ public static class GfxWeather
 
     public static bool Loaded => surfaceShader != null;
 
+    /// <summary>How wet things are and how much flat ground puddles cover now, as drawn (footsteps splash and kick up mud by them).</summary>
+    public static float Wetness => Loaded ? wet * GfxSettings.RainWetness : 0f;
+    public static float Puddles => Loaded ? puddles * GfxSettings.PuddleCoverage : 0f;
+
     public static void Init(AssetBundle bundle)
     {
         surfaceShader = bundle != null ? bundle.LoadAsset<Shader>("WeatherSurface") : null;
@@ -300,6 +304,23 @@ public static class GfxWeather
             stopsRain[type] = (sbyte)(stops ? 1 : 0);
         }
         return stopsRain[type] == 1;
+    }
+
+    /// <summary>
+    /// Whether a world point is out under the open sky, by the sky map (rain reaches it). True where the map doesn't
+    /// reach or isn't built yet (it's only kept while something is wet or snowy); false for the few frames a new pass
+    /// is being written into it.
+    /// </summary>
+    public static bool OpenToSky(Vector3 world)
+    {
+        if (!skyValid || skyHeights == null)
+            return true;
+        if (fillChunk >= 0)
+            return false;
+        int x = Mathf.FloorToInt(world.x) - shownCorner.x, z = Mathf.FloorToInt(world.z) - shownCorner.y;
+        if (x < 0 || z < 0 || x >= SkySize || z >= SkySize)
+            return true;
+        return world.y >= skyHeights[z * SkySize + x];
     }
 
     public static string Status()

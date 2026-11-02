@@ -59,6 +59,14 @@ public class GfxGears : IGearsModApi
     private static ISliderGlobalSetting<float> distanceHaze;
     private static ISliderGlobalSetting<float> ambientLife;
 
+    private static ISliderGlobalSetting<float> juice;
+    private static ISwitchGlobalSetting<bool> juiceHits;
+    private static ISwitchGlobalSetting<bool> juiceShooting;
+    private static ISwitchGlobalSetting<bool> juiceBreaking;
+    private static ISwitchGlobalSetting<bool> juiceMoving;
+    private static ISwitchGlobalSetting<bool> juiceHurt;
+    private static ISwitchGlobalSetting<bool> juiceRewards;
+
     private static ISelectorGlobalSetting<GfxWaterQuality> waterQuality;
     private static ISliderGlobalSetting<float> waterWaves;
 
@@ -117,6 +125,14 @@ public class GfxGears : IGearsModApi
         distanceHaze = Get<ISliderGlobalSetting<float>>(settings, "Atmosphere", "Distance", "DistanceHaze");
         ambientLife = Get<ISliderGlobalSetting<float>>(settings, "Atmosphere", "Nature", "AmbientLife");
 
+        juice = Get<ISliderGlobalSetting<float>>(settings, "Feel", "Juice", "Amount");
+        juiceHits = Get<ISwitchGlobalSetting<bool>>(settings, "Feel", "Areas", "Hits");
+        juiceShooting = Get<ISwitchGlobalSetting<bool>>(settings, "Feel", "Areas", "Shooting");
+        juiceBreaking = Get<ISwitchGlobalSetting<bool>>(settings, "Feel", "Areas", "Breaking");
+        juiceMoving = Get<ISwitchGlobalSetting<bool>>(settings, "Feel", "Areas", "Moving");
+        juiceHurt = Get<ISwitchGlobalSetting<bool>>(settings, "Feel", "Areas", "Hurt");
+        juiceRewards = Get<ISwitchGlobalSetting<bool>>(settings, "Feel", "Areas", "Rewards");
+
         waterQuality = Get<ISelectorGlobalSetting<GfxWaterQuality>>(settings, "Water", "Surface", "Quality");
         waterWaves = Get<ISliderGlobalSetting<float>>(settings, "Water", "Surface", "Waves");
 
@@ -166,6 +182,13 @@ public class GfxGears : IGearsModApi
         Listen(morningMist, v => GfxSettings.MorningMist = v);
         Listen(distanceHaze, v => GfxSettings.DistanceHaze = v);
         Listen(ambientLife, v => GfxSettings.AmbientLife = v);
+        Listen(juice, v => GfxSettings.Juice = v);
+        Listen(juiceHits, v => GfxSettings.JuiceHits = v);
+        Listen(juiceShooting, v => GfxSettings.JuiceShooting = v);
+        Listen(juiceBreaking, v => GfxSettings.JuiceBreaking = v);
+        Listen(juiceMoving, v => GfxSettings.JuiceMoving = v);
+        Listen(juiceHurt, v => GfxSettings.JuiceHurt = v);
+        Listen(juiceRewards, v => GfxSettings.JuiceRewards = v);
 
         Listen(waterQuality, v => GfxSettings.WaterQuality = v);
         Listen(waterWaves, v => GfxSettings.WaterWaves = v);
@@ -227,6 +250,13 @@ public class GfxGears : IGearsModApi
         Read(morningMist, v => GfxSettings.MorningMist = v);
         Read(distanceHaze, v => GfxSettings.DistanceHaze = v);
         Read(ambientLife, v => GfxSettings.AmbientLife = v);
+        Read(juice, v => GfxSettings.Juice = v);
+        Read(juiceHits, v => GfxSettings.JuiceHits = v);
+        Read(juiceShooting, v => GfxSettings.JuiceShooting = v);
+        Read(juiceBreaking, v => GfxSettings.JuiceBreaking = v);
+        Read(juiceMoving, v => GfxSettings.JuiceMoving = v);
+        Read(juiceHurt, v => GfxSettings.JuiceHurt = v);
+        Read(juiceRewards, v => GfxSettings.JuiceRewards = v);
 
         Read(waterQuality, v => GfxSettings.WaterQuality = v);
         Read(waterWaves, v => GfxSettings.WaterWaves = v);
