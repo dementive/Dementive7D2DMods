@@ -41,6 +41,12 @@ Shader "Hidden/GraphicsExpanded/Volumetric"
         float3 view = farPoint.xyz / farPoint.w;
         return mul(_GfxCameraToWorld, float4(view * (eyeDepth / -view.z), 1)).xyz;
     }
+
+    // True for NaN or infinity. Checked on the bits: the compiler takes isnan() as never true and drops it
+    bool Bad(float4 v)
+    {
+        return any((asuint(v) & 0x7fffffff) >= 0x7f800000);
+    }
     ENDCG
 
     SubShader
@@ -182,7 +188,7 @@ Shader "Hidden/GraphicsExpanded/Volumetric"
                     transmittance *= exp(-(density - _GfxMedium.w * (1 - clearDims)) * stepLength);
                 }
                 float4 result = float4(light, transmittance);
-                return any(isnan(result)) || any(isinf(result)) ? float4(0, 0, 0, 1) : result;
+                return Bad(result) ? float4(0, 0, 0, 1) : result;
             }
             ENDCG
         }
@@ -291,7 +297,7 @@ Shader "Hidden/GraphicsExpanded/Volumetric"
                 if (_GfxMarched < 0.5)
                     return float4(0, 0, 0, 1);
                 float4 result = Upsample(i);
-                if (any(isnan(result)) || any(isinf(result)))
+                if (Bad(result))
                     return float4(0, 0, 0, 1);
                 return float4(min(result.rgb, 64), clamp(result.a, 0.02, 1));
             }

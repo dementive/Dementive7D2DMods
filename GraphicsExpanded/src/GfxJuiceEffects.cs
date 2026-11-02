@@ -202,8 +202,8 @@ public static class GfxJuiceEffects
 
     /// <summary>
     /// A creature took damage (EntityAlive.ProcessDamageResponseLocal, on every machine tracking it). Blood sprays from
-    /// the hit along the shot, splatters the wall behind, drips into small splats where it lands; the creature flashes;
-    /// kills and headshots burst bigger, and a pool spreads under the body once it's down. Machines and drones spark.
+    /// the hit along the shot, splatters the wall behind, drips into small splats where it lands; kills and headshots
+    /// burst bigger, and a pool spreads under the body once it's down. Machines and drones spark.
     /// </summary>
     public static void Damage(EntityAlive victim, DamageResponse response, bool wasDead)
     {
@@ -224,27 +224,20 @@ public static class GfxJuiceEffects
         Note((kill ? "kill " : "hit ") + victim.EntityName + (head ? " in the head" : "") + " for " + response.Strength);
 
         bool firstPerson = victim is EntityPlayerLocal local && local.bFirstPersonView;
+        // Machines don't bleed; their sparks come with the game's own impact on metal (Impact)
         if (Body(victim) != Surface.Organic)
-        {
-            // Machines don't bleed; their sparks come with the game's own impact on metal (Impact)
-            if (!firstPerson)
-                GfxJuiceFlash.Flash(victim, new Color(0.7f, 0.85f, 1f), 0.5f + 0.5f * strength, 0.12f);
             return;
-        }
         if (!firstPerson)
             Bleed(victim, at, flying, strength, kill, head);
     }
 
     /// <summary>
-    /// Blood from a hit at a point, flying on along the shot: the spray, a mist, a splatter on what's behind, the flash
-    /// (with a creature), and on a kill a pool under the body once it's down. gfxe juice test blood calls it without one.
+    /// Blood from a hit at a point, flying on along the shot: the spray, a mist, a splatter on what's behind, and on a
+    /// kill a pool under the body once it's down. gfxe juice test blood calls it without a creature.
     /// </summary>
     public static void Bleed(EntityAlive victim, Vector3 at, Vector3 flying, float strength, bool kill, bool head)
     {
         float burst = (1f + strength * 1.5f) * (kill ? 1.6f : 1f) * (head ? 1.5f : 1f);
-        if (victim != null)
-            GfxJuiceFlash.Flash(victim, kill || head ? new Color(1f, 0.4f, 0.22f) : new Color(1f, 0.82f, 0.7f),
-                kill || head ? 0.9f : 0.45f + 0.35f * strength, kill || head ? 0.28f : 0.13f);
 
         // The spray: a fan of fine droplets and a few bigger drops thrown on along the shot, short-tailed, falling into
         // splats where they land
@@ -311,7 +304,7 @@ public static class GfxJuiceEffects
                 continue;
             Vector3 from = (corpse.entity != null ? corpse.entity.position : corpse.position) - Origin.position + Vector3.up * 0.6f;
             if (Physics.Raycast(from, Vector3.down, out RaycastHit hit, 2.5f, GfxJuice.WorldMask, QueryTriggerInteraction.Ignore) && hit.normal.y > 0.5f)
-                GfxJuiceDecals.Pool(hit.point + Origin.position, hit.normal, Random.Range(0.5f, 0.8f));
+                GfxJuiceDecals.Pool(hit.point + Origin.position, hit.normal, Random.Range(0.35f, 0.55f));
         }
     }
 

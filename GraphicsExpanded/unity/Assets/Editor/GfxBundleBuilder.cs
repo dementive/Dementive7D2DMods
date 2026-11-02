@@ -28,7 +28,6 @@ public static class GfxBundleBuilder
         "Assets/GraphicsExpanded/JuiceWarp.shader",
         "Assets/GraphicsExpanded/JuiceDebris.shader",
         "Assets/GraphicsExpanded/JuiceDecal.shader",
-        "Assets/GraphicsExpanded/JuiceFlash.shader",
         "Assets/GraphicsExpanded/JuiceScreen.shader",
     };
 

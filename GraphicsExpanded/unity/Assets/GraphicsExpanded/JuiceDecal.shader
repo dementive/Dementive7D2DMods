@@ -82,10 +82,11 @@ Shader "GraphicsExpanded/JuiceDecal"
             s = cross(n, t);
         }
 
-        // Half the box's depth, along the normal
+        // Half the box's depth, along the normal. A pool hugs the ground, so grass blades and the body lying in it
+        // stay unpainted
         float Depth(Decal d)
         {
-            return min(d.place.w * 0.5, 0.35);
+            return min(d.place.w * 0.5, (uint)(d.look.x + 0.5) == POOL ? 0.1 : 0.35);
         }
 
         v2f vert(appdata v)
@@ -127,7 +128,9 @@ Shader "GraphicsExpanded/JuiceDecal"
         {
             float r = length(q);
             float edge = (0.6 + 0.4 * Noise(q / max(r, 1e-4) * 1.8 + seed * 17)) * growth;
-            return saturate((edge - r) * 14);
+            // Thinner and patchier towards the edge, where it soaks into the ground
+            float soak = 0.65 + 0.35 * Noise(q * 7 + seed * 29);
+            return saturate((edge - r) * 14) * lerp(1, soak, saturate(r / max(edge, 1e-3)));
         }
 
         float Scorch(float2 q, float seed)

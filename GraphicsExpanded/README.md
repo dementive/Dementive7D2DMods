@@ -65,8 +65,8 @@ adjustment to vanilla, so the game's own effects (biome fog, weather, night, bri
   in its beams, and now and then a leaf tumbles down from the oaks nearby. None of it in rain or snowfall, or indoors.
 - **Game juice** (the Feel tab: one Juice amount, 0 to 200%, and a switch per area):
   - **Hits**: bullets throw sparks off metal, chips and dust off stone, splinters off wood, clods off dirt and shards
-    off glass, and leave small pits in stone, wood and metal. Creatures flash when hit (hotter on kills and
-    headshots) and bleed: blood sprays on along the shot, splatters the wall behind and drips into splats where it
+    off glass, and leave small pits in stone, wood and metal. Creatures bleed when hit (more on kills and
+    headshots): blood sprays on along the shot, splatters the wall behind and drips into splats where it
     lands, and a pool spreads under the dead. Blood dries from glossy red to dull brown and fades after a few
     minutes; out in the rain it washes away within a minute. Machines spark instead.
   - **Shooting**: a brighter flare and sparks at the muzzle on top of the game's flash, smoke that hangs, spent
@@ -278,9 +278,8 @@ gfxe juice shot <what>          the same 3 seconds later (close the console), wi
   the motion for the ones that bounce, splat or die on contact) and drawn in one sorted, premultiplied
   `DrawMeshInstancedIndirect`; heat shimmer and shockwaves bend a grab of the screen. Debris pieces are a deferred
   surface shader, so they're lit and shadowed. Marks are boxes drawn into G-buffers 0, 1 and the light buffer before
-  reflections, painting the scene point behind each pixel when it faces the mark's way. The hit flash redraws the
-  creature's renderers with `CommandBuffer.DrawRenderer`. The heartbeat and reward glow are drawn on the UI camera,
-  after the game's upscaling, so they don't smear.
+  reflections, painting the scene point behind each pixel when it faces the mark's way. The heartbeat and reward
+  glow are drawn on the UI camera, after the game's upscaling, so they don't smear.
 - Block textures are one 512x512 texture array (407 layers) whose shader has no tunable settings, so there's nothing
   to sharpen; a mipmap bias and the shaders' `_MipSlope` made no visible difference.
 

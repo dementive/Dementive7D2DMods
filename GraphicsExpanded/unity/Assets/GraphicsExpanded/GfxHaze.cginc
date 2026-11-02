@@ -3,6 +3,12 @@
 #ifndef GFX_HAZE_INCLUDED
 #define GFX_HAZE_INCLUDED
 
+// True for NaN or infinity. Checked on the bits: the compiler takes isnan() as never true and drops it
+bool Bad(float4 v)
+{
+    return any((asuint(v) & 0x7fffffff) >= 0x7f800000);
+}
+
 float4 _GfxHazeParams;      // x: thickness per meter at the ground, y: the ground's height where drawn, z: 1 / meters up to thin to a third, w: 1 when on
 float4 _GfxHazeColor;       // rgb: the air's own color (the sky's hue at the fog's brightness), w: meters of clear air before it starts
 float4 _GfxHazeSunDir;      // xyz: towards the sun

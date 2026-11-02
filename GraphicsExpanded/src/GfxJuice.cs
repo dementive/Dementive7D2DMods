@@ -12,7 +12,6 @@ using UnityEngine;
 /// - GfxJuiceParticles: sparks, dust, smoke, blood drops, tracers, leaves, glints, rings, heat shimmer;
 /// - GfxJuiceDebris: casings, splinters, chunks and shards that bounce and settle;
 /// - GfxJuiceDecals: blood, scorch marks and bullet pits painted onto surfaces;
-/// - GfxJuiceFlash: creatures lighting up when hit;
 /// - GfxJuiceScreen: the low-health heartbeat and the reward bursts;
 /// - GfxJuiceEffects: the recipes that put those together for each event.
 /// </summary>
@@ -75,7 +74,7 @@ public static class GfxJuice
     public static void Init(AssetBundle bundle)
     {
         Shader particles = Load(bundle, "Juice"), warp = Load(bundle, "JuiceWarp"), debris = Load(bundle, "JuiceDebris");
-        Shader decals = Load(bundle, "JuiceDecal"), flash = Load(bundle, "JuiceFlash"), screen = Load(bundle, "JuiceScreen");
+        Shader decals = Load(bundle, "JuiceDecal"), screen = Load(bundle, "JuiceScreen");
         if (particles == null || !SystemInfo.supportsComputeShaders)
         {
             Log.Warning("[GraphicsExpanded] The game juice shaders didn't load or aren't supported on this graphics card; game juice is off");
@@ -89,7 +88,6 @@ public static class GfxJuice
         GfxJuiceParticles.Init(particles, warp, quad);
         GfxJuiceDebris.Init(debris);
         GfxJuiceDecals.Init(decals);
-        GfxJuiceFlash.Init(flash);
         GfxJuiceScreen.Init(screen);
     }
 
@@ -127,7 +125,6 @@ public static class GfxJuice
         GfxJuiceParticles.Update(playerCamera, dt, Wind, Sunlight());
         GfxJuiceDebris.Update(playerCamera, dt);
         GfxJuiceDecals.Update(playerCamera, dt, On(Area.Hits) || On(Area.Breaking));
-        GfxJuiceFlash.Update(playerCamera);
         GfxJuiceScreen.Update(player, dt, On(Area.Hurt), On(Area.Rewards));
         state = "on";
     }
@@ -138,8 +135,6 @@ public static class GfxJuice
         GfxJuiceDebris.Clear();
         GfxJuiceDecals.Clear();
         GfxJuiceDecals.Update(null, 0f, false);
-        GfxJuiceFlash.Clear();
-        GfxJuiceFlash.Detach();
         GfxJuiceScreen.Clear();
         GfxJuiceEffects.Clear();
     }
@@ -220,8 +215,8 @@ public static class GfxJuice
     {
         if (!Loaded)
             return "Game juice is off: its shaders didn't load (see the log).";
-        return string.Format("Game juice {0} at {1:0%}: {2} bits, {3} warps, {4} pieces, {5} marks, {6} flashing; {7}. {8}",
+        return string.Format("Game juice {0} at {1:0%}: {2} bits, {3} warps, {4} pieces, {5} marks; {6}. {7}",
             state, Amount, GfxJuiceParticles.Count, GfxJuiceParticles.WarpCount, GfxJuiceDebris.Count, GfxJuiceDecals.Count,
-            GfxJuiceFlash.Count, GfxJuiceScreen.Status(), GfxJuiceEffects.Status());
+            GfxJuiceScreen.Status(), GfxJuiceEffects.Status());
     }
 }

@@ -275,7 +275,7 @@ Shader "GraphicsExpanded/Water"
                 surface = surface * haze.a + haze.rgb;
                 UNITY_APPLY_FOG(i.fogCoord, surface);
                 float3 color = body * bodyShare + surface * (1 - bodyShare);
-                if (any(isnan(color)) || any(isinf(color)))
+                if (Bad(float4(color, 0)))
                     color = under;
                 return float4(min(color, 64), 1);
             }

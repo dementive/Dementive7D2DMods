@@ -181,7 +181,7 @@ gfxeJuiceAmountDesc,UI,Menu,x,,,"How much of everything on this tab: more sparks
 gfxeCatJuiceAreas,UI,Menu,x,,,Areas,,,,,,,,,,,,,
 gfxeCatJuiceAreasDesc,UI,Menu,x,,,Turn each part of the juice on or off.,,,,,,,,,,,,,
 gfxeJuiceHits,UI,Menu,x,,,Hits,,,,,,,,,,,,,
-gfxeJuiceHitsDesc,UI,Menu,x,,,"Bullets throw sparks off metal, chips and dust off stone, splinters off wood, clods off dirt and shards off glass, and leave small pits. Creatures flash when hit and bleed: blood sprays along the shot, splatters the wall behind and drips into splats, kills and headshots burst bigger, and a pool spreads under the dead. Blood dries over time and washes away in the rain.",,,,,,,,,,,,,
+gfxeJuiceHitsDesc,UI,Menu,x,,,"Bullets throw sparks off metal, chips and dust off stone, splinters off wood, clods off dirt and shards off glass, and leave small pits. Creatures bleed when hit: blood sprays along the shot, splatters the wall behind and drips into splats, kills and headshots burst bigger, and a pool spreads under the dead. Blood dries over time and washes away in the rain.",,,,,,,,,,,,,
 gfxeJuiceShooting,UI,Menu,x,,,Shooting,,,,,,,,,,,,,
 gfxeJuiceShootingDesc,UI,Menu,x,,,"Punchier muzzle blasts with sparks and smoke that hangs in the air, spent casings and shells thrown out that bounce and pile up, glowing tracers from rifles, SMGs and machine guns, and heat shimmering over the barrel during sustained fire.",,,,,,,,,,,,,
 gfxeJuiceBreaking,UI,Menu,x,,,Breaking things,,,,,,,,,,,,,

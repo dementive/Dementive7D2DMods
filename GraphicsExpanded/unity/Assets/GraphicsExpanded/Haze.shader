@@ -60,7 +60,7 @@ Shader "Hidden/GraphicsExpanded/Haze"
                 if (depth > _ProjectionParams.z * 0.98)
                     return float4(0, 0, 0, 1);
                 float4 haze = GfxHaze(_GfxCameraToWorld._m03_m13_m23, WorldFromDepth(uv, depth));
-                if (any(isnan(haze)) || any(isinf(haze)))
+                if (Bad(haze))
                     return float4(0, 0, 0, 1);
                 return float4(min(haze.rgb, 64), saturate(haze.a));
             }

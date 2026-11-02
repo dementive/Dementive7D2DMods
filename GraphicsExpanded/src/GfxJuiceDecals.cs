@@ -21,6 +21,9 @@ public static class GfxJuiceDecals
 
     private static readonly Color WetBlood = new Color(0.17f, 0.004f, 0.004f);
     private static readonly Color DryBlood = new Color(0.075f, 0.018f, 0.012f);
+    // Pooled blood is thick, so much darker: deep maroon wet, near black-brown dry
+    private static readonly Color WetPool = new Color(0.07f, 0.006f, 0.005f);
+    private static readonly Color DryPool = new Color(0.038f, 0.013f, 0.01f);
     private static readonly Color ScorchColor = new Color(0.018f, 0.016f, 0.014f);
     private static readonly Color PitColor = new Color(0.04f, 0.038f, 0.035f);
 
@@ -224,11 +227,17 @@ public static class GfxJuiceDecals
                     smoothness = 0.1f;
                     opacity *= 0.85f;
                     break;
+                case Kind.Pool:
+                    float dried = Mathf.Clamp01(m.age / BloodDrySeconds);
+                    color = Color.Lerp(WetPool, DryPool, dried);
+                    smoothness = Mathf.Lerp(0.6f, 0.25f, dried);
+                    opacity *= 0.9f;
+                    break;
                 default:
                     float dry = Mathf.Clamp01(m.age / BloodDrySeconds);
                     color = Color.Lerp(WetBlood, DryBlood, dry);
                     smoothness = Mathf.Lerp(0.85f, 0.3f, dry);
-                    opacity *= m.kind == Kind.Pool ? 0.95f : 0.9f;
+                    opacity *= 0.9f;
                     break;
             }
             upload[i] = new GpuMark
