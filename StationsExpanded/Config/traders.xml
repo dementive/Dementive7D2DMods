@@ -1,0 +1,35 @@
+<Dementive>
+
+	<!-- Traders can stock them: a small-weight entry in the vanilla workstation and tool groups that traders
+	     restock from, from trader stage 50 (TraderStageTemplate baseTier2 on each). The game only lets a group
+	     use groups defined above it, so these go before 'tools' (the first of the two). -->
+	<insertBefore xpath="/traders/trader_item_groups/trader_item_group[@name='tools']">
+		<trader_item_group name="groupDementiveTraderStations" count="1">
+			<item name="DementiveStationWorkbench"/>
+			<item name="DementiveStationForge"/>
+			<item name="DementiveStationChemistry"/>
+			<item name="DementiveStationCementMixer"/>
+			<item name="DementiveStationCampfire"/>
+			<item name="DementiveStationDewCollector"/>
+			<item name="DementiveStationApiary"/>
+			<item name="DementiveStationChickenCoop"/>
+		</trader_item_group>
+		<trader_item_group name="groupDementiveTraderStationTools" count="1">
+			<item name="DementiveStationToolAnvil" quality="1,6"/>
+			<item name="DementiveStationToolBellows" quality="1,6"/>
+			<item name="DementiveStationToolCrucible"/>
+			<item name="DementiveStationToolCookingPot" quality="1,6"/>
+			<item name="DementiveStationToolCookingGrill" quality="1,6"/>
+			<item name="DementiveStationToolBeaker"/>
+		</trader_item_group>
+	</insertBefore>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='workstations']">
+		<item group="groupDementiveTraderStations" prob="0.055"/>
+	</append>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='tools']">
+		<item group="groupDementiveTraderStationTools" prob="0.055"/>
+	</append>
+
+</Dementive>

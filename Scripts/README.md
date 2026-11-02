@@ -63,6 +63,14 @@ Other checks:
 
 - `AmmoExpanded\gen_ammo.py <game> AmmoExpanded AmmoExpanded-SERVERSIDE`: writes the whole mod from the `AMMO` table: each ammo type copies its vanilla parent's effect groups with edited stats and its signature effect group, plus its schematic, recipe, the ammo list patches, loot, traders, localization, the recolored icons and the server-side copy.
 
+## StationsExpanded
+
+- `StationsExpanded\gen_stations.py <game> StationsExpanded`: writes the Config from the `STATIONS` table: each named station extends its vanilla station (model, recipes, window, tool slots) and carries its bonuses as block properties the mod's DLL reads, plus the station's recipe tabs (ui_display.xml), localization and the painted icons (`ICONS`). No server-side copy: crafting time is worked out on the client, so the DLL has to be there.
+
+## FortificationsExpanded
+
+- `FortificationsExpanded\gen_fortifications.py [FortificationsExpanded]`: writes the Config from the family tables (`SANDBAG`): each piece's empty, half and full blocks with their fill upgrades, health, damage-stage meshes and repairs, the family's helper item and recipe, the material and localization. The models come from the mod's own `src\build-models.bat`.
+
 ## QuestMaker
 
 `QuestMaker\jinja2.py` is a minimal stand-in for the parts of jinja2 that QuestsExpanded's QuestMaker uses, so it runs without installing jinja2:

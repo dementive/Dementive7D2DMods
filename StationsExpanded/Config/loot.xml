@@ -1,0 +1,84 @@
+<Dementive>
+
+	<append xpath="/lootcontainers/lootprobtemplates">
+		<!-- Chance per container opened that one named station, collector or tool drops -->
+		<lootprobtemplate name="DementiveStationRaresT1">
+			<loot level="1,999999" prob="0.005"/>  <!-- 1 / 200 -->
+		</lootprobtemplate>
+		<lootprobtemplate name="DementiveStationRaresT2">
+			<loot level="1,999999" prob="0.01"/>  <!-- 1 / 100 -->
+		</lootprobtemplate>
+		<lootprobtemplate name="DementiveStationRaresT3">
+			<loot level="1,999999" prob="0.02"/>  <!-- 1 / 50 -->
+		</lootprobtemplate>
+		<lootprobtemplate name="DementiveStationRaresT4">
+			<loot level="1,999999" prob="0.04"/>  <!-- 1 / 25 -->
+		</lootprobtemplate>
+		<lootprobtemplate name="DementiveStationRaresT5">
+			<loot level="1,999999" prob="0.05"/>  <!-- 1 / 20 -->
+		</lootprobtemplate>
+
+		<!-- Quest rewards: the reward "value" is the quest tier. At tiers 4-6 about 1 in 20 quests offer one
+		     instead of a schematic -->
+		<lootprobtemplate name="DementiveStationQuestRewards">
+			<loot level="0,3" prob="0"/>
+			<loot level="4,7" prob="0.06"/>
+		</lootprobtemplate>
+	</append>
+
+	<insertBefore xpath="/lootcontainers/lootgroup[@name='groupScrapCommon']">
+		<lootgroup name="groupDementiveStationsAll" count="1" loot_quality_template="qualBaseTemplate">
+			<item name="DementiveStationWorkbench"/>
+			<item name="DementiveStationForge"/>
+			<item name="DementiveStationChemistry"/>
+			<item name="DementiveStationCementMixer"/>
+			<item name="DementiveStationCampfire"/>
+			<item name="DementiveStationDewCollector"/>
+			<item name="DementiveStationApiary"/>
+			<item name="DementiveStationChickenCoop"/>
+			<item name="DementiveStationToolAnvil" quality="1,6"/>
+			<item name="DementiveStationToolBellows" quality="1,6"/>
+			<item name="DementiveStationToolCrucible"/>
+			<item name="DementiveStationToolCookingPot" quality="1,6"/>
+			<item name="DementiveStationToolCookingGrill" quality="1,6"/>
+			<item name="DementiveStationToolBeaker"/>
+		</lootgroup>
+	</insertBefore>
+
+	<!-- Wall and picture safes -->
+	<append xpath="//lootgroup[@name='groupSmallSafeLoot']">
+		<item group="groupDementiveStationsAll" loot_prob_template="DementiveStationRaresT2" force_prob="true"/>
+	</append>
+	<!-- Locked Iron Chest -->
+	<append xpath="//lootgroup[@name='groupReinforcedChestT3']">
+		<item group="groupDementiveStationsAll" loot_prob_template="DementiveStationRaresT3" force_prob="true"/>
+	</append>
+	<!-- Locked Small Hardened Chest -->
+	<append xpath="//lootgroup[@name='groupHardenedChestT4']">
+		<item group="groupDementiveStationsAll" loot_prob_template="DementiveStationRaresT4" force_prob="true"/>
+	</append>
+	<!-- Locked Large Hardened Chest -->
+	<append xpath="//lootgroup[@name='groupHardenedChestT5']">
+		<item group="groupDementiveStationsAll" loot_prob_template="DementiveStationRaresT5" force_prob="true"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupZpackBoss']">
+		<item group="groupDementiveStationsAll" loot_prob_template="DementiveStationRaresT3" force_prob="true"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupZpackStrong']">
+		<item group="groupDementiveStationsAll" loot_prob_template="DementiveStationRaresT2" force_prob="true"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupZpackReg']">
+		<item group="groupDementiveStationsAll" loot_prob_template="DementiveStationRaresT1" force_prob="true"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupHiddenStash']">
+		<item group="groupDementiveStationsAll" loot_prob_template="DementiveStationRaresT2" force_prob="true"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupBuriedTreasure']">
+		<item group="groupDementiveStationsAll" loot_prob_template="DementiveStationRaresT3" force_prob="true"/>
+	</append>
+
+	<append xpath="/lootcontainers/lootgroup[@name='groupQuestSchematics']">
+		<item group="groupDementiveStationsAll" loot_prob_template="DementiveStationQuestRewards"/>
+	</append>
+
+</Dementive>
