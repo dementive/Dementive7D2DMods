@@ -1,0 +1,41 @@
+<configs>
+	<append xpath="/recipes">
+		<recipe name="DementiveFortSandbag" count="1" tags="packMuleCrafting">
+			<ingredient name="resourceCloth" count="10"/>
+		</recipe>
+		<recipe name="DementiveFortPalisade" count="1" tags="packMuleCrafting">
+			<ingredient name="resourceWood" count="25"/>
+			<ingredient name="resourceYuccaFibers" count="4"/>
+		</recipe>
+		<recipe name="DementiveFortPalisadeGate" count="1" tags="packMuleCrafting">
+			<ingredient name="resourceWood" count="60"/>
+			<ingredient name="resourceYuccaFibers" count="10"/>
+			<ingredient name="resourceNail" count="20"/>
+		</recipe>
+		<recipe name="DementiveFortChainLink" count="1" craft_area="workbench" tags="workbenchCrafting">
+			<ingredient name="resourceScrapIron" count="6"/>
+			<ingredient name="resourceDuctTape" count="1"/>
+		</recipe>
+		<recipe name="DementiveFortChainLinkGate" count="1" craft_area="workbench" tags="workbenchCrafting">
+			<ingredient name="resourceScrapIron" count="20"/>
+			<ingredient name="resourceDuctTape" count="2"/>
+			<ingredient name="resourceMechanicalParts" count="2"/>
+		</recipe>
+		<recipe name="DementiveFortHesco" count="1" craft_area="workbench" tags="workbenchCrafting">
+			<ingredient name="resourceForgedIron" count="4"/>
+			<ingredient name="resourceCloth" count="6"/>
+		</recipe>
+		<recipe name="DementiveFortTankTraps" count="1" craft_area="workbench" tags="workbenchCrafting">
+			<ingredient name="resourceForgedIron" count="12"/>
+		</recipe>
+		<recipe name="DementiveFortContainer" count="1" craft_area="workbench" tags="workbenchCrafting">
+			<ingredient name="resourceForgedSteel" count="30"/>
+			<ingredient name="resourceForgedIron" count="10"/>
+		</recipe>
+		<recipe name="DementiveFortContainerGate" count="1" craft_area="workbench" tags="workbenchCrafting">
+			<ingredient name="resourceForgedSteel" count="20"/>
+			<ingredient name="resourceForgedIron" count="10"/>
+			<ingredient name="resourceMechanicalParts" count="4"/>
+		</recipe>
+	</append>
+</configs>

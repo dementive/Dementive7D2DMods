@@ -1,0 +1,58 @@
+<configs>
+	<append xpath="/materials">
+		<!-- Sandbags: earth, so cops, boulders, pipe bombs and grenades do nothing and demolishers a tenth, and half
+		     of every blast is soaked (explosionresistance 0.5; concrete is 0.1, steel 0.5). -->
+		<material id="MsandbagDEM">
+			<property name="damage_category" value="earth"/>
+			<property name="surface_category" value="earth"/>
+			<property name="Hardness" type="float" value="1"/>
+			<property name="stepsound" value="sand"/>
+			<property name="stability_glue" value="40"/>
+			<property name="Mass" type="int" value="10"/>
+			<property name="MaxDamage" value="2000"/>
+			<property name="explosionresistance" value="0.5"/>
+			<property name="Experience" value="2"/>
+		</material>
+		<!-- Hesco: packed earth like the sandbags (blast resistance 0.2, like concrete), and every single hit is
+		     capped at 100 (MaxIncomingDamage; explosions aren't capped): ferals hit for about 24 and are unaffected,
+		     charged (150) and infernal (250) zombies are cut down. -->
+		<material id="MhescoDEM">
+			<property name="damage_category" value="earth"/>
+			<property name="surface_category" value="earth"/>
+			<property name="Hardness" type="float" value="1"/>
+			<property name="stepsound" value="gravel"/>
+			<property name="stability_glue" value="60"/>
+			<property name="Mass" type="int" value="10"/>
+			<property name="MaxDamage" value="5000"/>
+			<property name="explosionresistance" value="0.2"/>
+			<property name="MaxIncomingDamage" value="100"/>
+			<property name="Experience" value="2"/>
+		</material>
+		<!-- Tank traps: welded structural steel (blast resistance 0.4, like the vanilla hard metals) -->
+		<material id="MtankTrapDEM">
+			<property name="damage_category" value="metal"/>
+			<property name="surface_category" value="metal"/>
+			<property name="forge_category" value="iron"/>
+			<property name="Hardness" type="float" value="1"/>
+			<property name="stepsound" value="metal"/>
+			<property name="stability_glue" value="200"/>
+			<property name="Mass" type="int" value="20"/>
+			<property name="MaxDamage" value="6000"/>
+			<property name="explosionresistance" value="0.4"/>
+			<property name="Experience" value="4"/>
+		</material>
+		<!-- Container walls: container steel (blast resistance 0.5) -->
+		<material id="McontainerDEM">
+			<property name="damage_category" value="metal"/>
+			<property name="surface_category" value="metal"/>
+			<property name="forge_category" value="iron"/>
+			<property name="Hardness" type="float" value="1"/>
+			<property name="stepsound" value="metal"/>
+			<property name="stability_glue" value="300"/>
+			<property name="Mass" type="int" value="20"/>
+			<property name="MaxDamage" value="25000"/>
+			<property name="explosionresistance" value="0.5"/>
+			<property name="Experience" value="4"/>
+		</material>
+	</append>
+</configs>

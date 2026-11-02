@@ -1,0 +1,17 @@
+# Unity regenerates everything here except the sources, the package list and the editor version
+Library/
+Temp/
+Logs/
+UserSettings/
+obj/
+Build/
+*.csproj
+*.sln
+Packages/packages-lock.json
+ProjectSettings/*
+!ProjectSettings/ProjectVersion.txt
+# Written by blender/<family>.py and FortBuilder; src\build-models.bat rebuilds them
+Assets/FortificationsExpanded/
+Assets/FortificationsExpanded.meta
+# FortBuilder's list of the models it staged
+staged-models.txt
