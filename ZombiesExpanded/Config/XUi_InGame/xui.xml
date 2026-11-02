@@ -1,0 +1,8 @@
+<configs>
+
+	<!-- The champion bar opens with the HUD, with the game's own target bar -->
+	<append xpath="/xui/window_group[@name='compass']">
+		<window name="windowZedChampion" />
+	</append>
+
+</configs>

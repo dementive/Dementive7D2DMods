@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Zombies Expanded settings. Gameplay settings count on the server (in single player and for the host, that's this
+	game); look and sound settings count for each player on their own game. `ze set <name> <value>` in the console
+	changes one for the session; `ze` lists them all.
+-->
+<ZombiesExpanded>
+	<!-- Gameplay (server) -->
+	<!-- Standard plays about as hard as vanilla. Brutal: mutations and champions 1.5 times as common, a body-shot kill
+	     sometimes gets back up as a crawler (double tap), and zombies breaking blocks together hit them harder -->
+	<Setting name="Preset" value="Standard"/>
+	<!-- Each zombie's own size, body shape, walk style and speed -->
+	<Setting name="Individuals" value="true"/>
+	<!-- Hidden temperament: sluggish, normal, restless or relentless -->
+	<Setting name="Temperament" value="true"/>
+	<!-- Zombies hear your gunshots, explosions and breaking blocks, see your flashlight at night, alert each other
+	     and search for you -->
+	<Setting name="Senses" value="true"/>
+	<!-- Zombies spread around you, herds keep together, a short burst at a target backing away, dozing by day -->
+	<Setting name="Crowd" value="true"/>
+	<!-- Poise and stumbles, leg trips, head dazes, double melee damage on downed zombies, lost arms, blades sever -->
+	<Setting name="HitLocations" value="true"/>
+	<!-- The 14 mutations, and strains shared by zombies that spawn together -->
+	<Setting name="Mutations" value="true"/>
+	<!-- Helmets and armor some zombies wear, knocked off when they're used up -->
+	<Setting name="Gear" value="true"/>
+	<!-- Named champions, and champion rooms in POIs -->
+	<Setting name="Champions" value="true"/>
+	<!-- The Blood Moon Alpha -->
+	<Setting name="Alpha" value="true"/>
+	<!-- Multiply how often zombies get a mutation, are champions or wear gear (1 = as designed) -->
+	<Setting name="MutationRate" value="1"/>
+	<Setting name="ChampionRate" value="1"/>
+	<Setting name="GearRate" value="1"/>
+	<!-- Remnants: the props that tell who a zombie was (a knife in its shoulder, a cast, a cap). RemnantRate multiplies
+	     how many carry one -->
+	<Setting name="Remnants" value="true"/>
+	<Setting name="RemnantRate" value="1"/>
+
+	<!-- Looks and sounds (each player) -->
+	<!-- All of the looks below at once -->
+	<Setting name="Looks" value="true"/>
+	<!-- Mud, dust, frost rime, soot or ash from where the zombie walked, and how old it is -->
+	<Setting name="Weathering" value="true"/>
+	<!-- Wounds where you hit them -->
+	<Setting name="Wounds" value="true"/>
+	<!-- Blood dripping from badly hurt zombies -->
+	<Setting name="BloodDrips" value="true"/>
+	<!-- Eyes that catch your light in the dark -->
+	<Setting name="Eyeshine" value="true"/>
+	<!-- Each zombie's voice pitched its own way -->
+	<Setting name="Voices" value="true"/>
+	<!-- Distant moans from where a horde is -->
+	<Setting name="HordeAudio" value="true"/>
+	<!-- A line about each mutation, gear piece or champion the first time you see one -->
+	<Setting name="Tips" value="true"/>
+	<!-- A champion's name and health at the top of the screen -->
+	<Setting name="ChampionBar" value="true"/>
+</ZombiesExpanded>

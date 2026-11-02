@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+	<Name value="ZombiesExpanded"/>
+	<DisplayName value="Zombies Expanded" />
+	<Description value="Every zombie, vanilla or modded, becomes an individual: its own body, voice, temperament and weathering, and wounds that stay where you hit. Plus mutations with their own models and AI, gear you knock off, named champions and a Blood Moon Alpha. For 7 Days to Die V3.4."/>
+	<Author value="Dementive"/>
+	<Version value="0.1.0.0" />
+	<Website value="" />
+	<SkipWithAntiCheat value="true" />
+</xml>

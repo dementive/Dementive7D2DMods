@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Zombies Expanded buffs.
+	Zombie side: the stat half of each mutation's trade (the rest is in the mod's code), the champion and Alpha ranks
+	and heavy gear. The mod adds them on the server when the zombie spawns; they last its life.
+	Player side: what mutated zombies do to you (grabbed, poisoned, chilled, nausea).
+-->
+<configs>
+	<append xpath="/buffs">
+
+		<!-- ============================================================ zombies -->
+
+		<buff name="buffZedBloater" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="WalkSpeed" operation="perc_add" value="-0.25"/>
+				<passive_effect name="RunSpeed" operation="perc_add" value="-0.25"/>
+				<passive_effect name="CrouchSpeed" operation="perc_add" value="-0.25"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffZedSprinter" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="HealthMax" operation="perc_add" value="-0.4"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffZedSpiked" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<!-- Its arms are heavy with bone: attacks a little slower -->
+				<passive_effect name="AttacksPerMinute" operation="perc_add" value="-0.2"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffZedGrabber" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="EntityDamage" operation="perc_add" value="-0.3"/>
+				<passive_effect name="WalkSpeed" operation="perc_add" value="-0.2"/>
+				<passive_effect name="RunSpeed" operation="perc_add" value="-0.2"/>
+				<passive_effect name="CrouchSpeed" operation="perc_add" value="-0.2"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffZedScreecher" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="HealthMax" operation="perc_add" value="-0.5"/>
+				<passive_effect name="EntityDamage" operation="perc_add" value="-0.5"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffZedFrostbitten" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="WalkSpeed" operation="perc_add" value="-0.15"/>
+				<passive_effect name="RunSpeed" operation="perc_add" value="-0.15"/>
+				<passive_effect name="CrouchSpeed" operation="perc_add" value="-0.15"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffZedSmoldering" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="HealthMax" operation="perc_add" value="-0.3"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffZedLeaper" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="HealthMax" operation="perc_add" value="-0.3"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffZedRegenerator" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="WalkSpeed" operation="perc_add" value="-0.3"/>
+				<passive_effect name="RunSpeed" operation="perc_add" value="-0.3"/>
+				<passive_effect name="CrouchSpeed" operation="perc_add" value="-0.3"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffZedToxic" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="HealthMax" operation="perc_add" value="-0.25"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffZedVolatile" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="WalkSpeed" operation="perc_add" value="-0.1"/>
+				<passive_effect name="RunSpeed" operation="perc_add" value="-0.1"/>
+				<passive_effect name="CrouchSpeed" operation="perc_add" value="-0.1"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffZedHulking" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="HealthMax" operation="perc_add" value="1"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value="0.5"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffZedStalker" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="HealthMax" operation="perc_add" value="-0.4"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffZedBrood" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="HealthMax" operation="perc_add" value="-0.4"/>
+				<passive_effect name="WalkSpeed" operation="perc_add" value="-0.2"/>
+				<passive_effect name="RunSpeed" operation="perc_add" value="-0.2"/>
+				<passive_effect name="CrouchSpeed" operation="perc_add" value="-0.2"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffZedLurker" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="HealthMax" operation="perc_add" value="-0.3"/>
+			</effect_group>
+		</buff>
+
+		<!-- Its one fake death is the extra life it pays for -->
+		<buff name="buffZedPossum" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="HealthMax" operation="perc_add" value="-0.25"/>
+			</effect_group>
+		</buff>
+
+		<!-- A thief, not a fighter: half health, and it never does any damage -->
+		<buff name="buffZedSnatcher" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="HealthMax" operation="perc_add" value="-0.5"/>
+				<passive_effect name="EntityDamage" operation="perc_set" value="0"/>
+				<passive_effect name="BlockDamage" operation="perc_set" value="0"/>
+			</effect_group>
+		</buff>
+
+		<!-- The two crawlers a Brood bursts into: half a crawler's health each -->
+		<buff name="buffZedWeakBrood" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="HealthMax" operation="perc_add" value="-0.5"/>
+				<passive_effect name="ExperienceGain" operation="perc_add" value="-0.5"/>
+			</effect_group>
+		</buff>
+
+		<!-- Champions: triple health and XP (with their mutations' own trades on top) -->
+		<buff name="buffZedChampion" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="HealthMax" operation="perc_add" value="2"/>
+				<passive_effect name="ExperienceGain" operation="perc_add" value="2"/>
+			</effect_group>
+		</buff>
+
+		<!-- The Alpha: five times the health with its Hulking (+100%), five times the XP -->
+		<buff name="buffZedAlpha" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="HealthMax" operation="perc_add" value="3"/>
+				<passive_effect name="ExperienceGain" operation="perc_add" value="4"/>
+			</effect_group>
+		</buff>
+
+		<!-- Body armor is heavy -->
+		<buff name="buffZedGear" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="WalkSpeed" operation="perc_add" value="-0.1"/>
+				<passive_effect name="RunSpeed" operation="perc_add" value="-0.1"/>
+				<passive_effect name="CrouchSpeed" operation="perc_add" value="-0.1"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffZedHeavyGear" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="WalkSpeed" operation="perc_add" value="-0.2"/>
+				<passive_effect name="RunSpeed" operation="perc_add" value="-0.2"/>
+				<passive_effect name="CrouchSpeed" operation="perc_add" value="-0.2"/>
+			</effect_group>
+		</buff>
+
+		<!-- A shield on one arm: slower, and slower to swing -->
+		<buff name="buffZedShield" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="WalkSpeed" operation="perc_add" value="-0.15"/>
+				<passive_effect name="RunSpeed" operation="perc_add" value="-0.15"/>
+				<passive_effect name="CrouchSpeed" operation="perc_add" value="-0.15"/>
+				<passive_effect name="AttacksPerMinute" operation="perc_add" value="-0.2"/>
+			</effect_group>
+		</buff>
+
+		<!-- A bear trap clamped on its ankle: it limps -->
+		<buff name="buffZedBearTrap" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="WalkSpeed" operation="perc_add" value="-0.15"/>
+				<passive_effect name="RunSpeed" operation="perc_add" value="-0.15"/>
+				<passive_effect name="CrouchSpeed" operation="perc_add" value="-0.15"/>
+			</effect_group>
+		</buff>
+
+		<!-- ============================================================ players -->
+
+		<!-- A Grabber has hold of you: no sprinting or jumping, 80% slower. Any hit on it breaks the hold. -->
+		<buff name="buffZedGrabbed" name_key="buffZedGrabbedName" description_key="buffZedGrabbedDesc" icon="ui_game_symbol_stunned" icon_color="255,128,0">
+			<stack_type value="replace"/>
+			<duration value="2"/>
+			<effect_group>
+				<passive_effect name="RunSpeed" operation="perc_add" value="-0.8"/>
+				<passive_effect name="WalkSpeed" operation="perc_add" value="-0.8"/>
+				<passive_effect name="CrouchSpeed" operation="perc_add" value="-0.8"/>
+				<passive_effect name="JumpStrength" operation="perc_set" value="0"/>
+				<passive_effect name="StaminaLoss" operation="perc_add" value="5" tags="sprinting"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffRemove" action="AddBuff" buff="buffZedGrabImmune"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffZedGrabImmune" hidden="true">
+			<stack_type value="replace"/>
+			<duration value="8"/>
+		</buff>
+
+		<!-- A Toxic zombie's hit: 2 damage a second for 6 seconds -->
+		<buff name="buffZedPoisoned" name_key="buffZedPoisonedName" description_key="buffZedPoisonedDesc" icon="ui_game_symbol_infection" icon_color="120,255,60">
+			<damage_type value="toxic"/>
+			<stack_type value="replace"/>
+			<duration value="6"/>
+			<effect_group>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" value="2"/>
+			</effect_group>
+		</buff>
+
+		<!-- A Frostbitten zombie's hits: each one 20% slower and half stamina regen for 6 seconds, up to twice -->
+		<buff name="buffZedChilled1" name_key="buffZedChilledName" description_key="buffZedChilledDesc" icon="ui_game_symbol_cold" icon_color="120,190,255">
+			<stack_type value="replace"/>
+			<duration value="6"/>
+			<effect_group>
+				<passive_effect name="RunSpeed" operation="perc_add" value="-0.2"/>
+				<passive_effect name="WalkSpeed" operation="perc_add" value="-0.2"/>
+				<passive_effect name="StaminaGain" operation="perc_add" value="-0.5"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffZedChilled2" name_key="buffZedChilledName" description_key="buffZedChilledDesc" icon="ui_game_symbol_cold" icon_color="80,150,255">
+			<stack_type value="replace"/>
+			<duration value="6"/>
+			<effect_group>
+				<passive_effect name="RunSpeed" operation="perc_add" value="-0.2"/>
+				<passive_effect name="WalkSpeed" operation="perc_add" value="-0.2"/>
+			</effect_group>
+		</buff>
+
+		<!-- A Bloater's bile cloud: blurred vision and 2 damage a second while you're in it (and a moment after) -->
+		<buff name="buffZedNausea" name_key="buffZedNauseaName" description_key="buffZedNauseaDesc" icon="ui_game_symbol_infection" icon_color="200,220,60">
+			<stack_type value="replace"/>
+			<duration value="2"/>
+			<effect_group>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" value="2"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Blur" intensity=".5" fade="0.5"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Blur" intensity="0" fade="1.5"/>
+				<triggered_effect trigger="onSelfDied" action="ModifyScreenEffect" effect_name="Blur" intensity="0" fade="0"/>
+			</effect_group>
+		</buff>
+
+	</append>
+</configs>

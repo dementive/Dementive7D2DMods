@@ -1,0 +1,19 @@
+# Unity regenerates everything here except the sources, the package list and the editor version
+Library/
+Temp/
+Logs/
+UserSettings/
+obj/
+Build/
+*.csproj
+*.sln
+Packages/packages-lock.json
+ProjectSettings/*
+!ProjectSettings/ProjectVersion.txt
+
+# Written by ZombiesBuilder; src\build-bundle.bat rebuilds them
+Assets/ZombiesExpanded/Generated/
+Assets/ZombiesExpanded/Generated.meta
+# Written by blender/<model>.py; src\build-models.bat rebuilds them (the built bundle ships in Resources)
+Assets/ZombiesExpanded/Models/
+Assets/ZombiesExpanded/Models.meta

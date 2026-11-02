@@ -1,0 +1,17 @@
+<configs>
+
+	<!-- The champion bar: a champion's (or the Alpha's) name and health, in the game's boss bar art, while it's after
+	     you or you've hit it. Shown and hidden by its controller (XUiC_ZedChampionBar). Placed under the compass. -->
+	<append xpath="/windows">
+		<window name="windowZedChampion" controller="ZedChampionBar, ZombiesExpanded" anchor="Top">
+			<rect pos="-267,-135" width="725" height="25">
+				<sprite pos="60,-45" width="448" depth="1" name="border" color="0,0,0,255" type="sliced" globalopacitymod="0"/>
+				<sprite pos="60,-45" width="448" depth="2" name="BarContent" type="filled" fillspritepad="true" fill="{zedfill}" globalopacitymod="0" sprite="ui_game_symbol_twitch_boss_bar_HP"/>
+				<sprite depth="3" name="Icon" size="64,64" pos="45,-42" pivot="center" sprite="ui_game_symbol_skull" color="200,40,30,255" globalopacitymod="0"/>
+				<sprite depth="4" name="overlay" width="517" height="84" type="sliced" globalopacitymod="0" sprite="ui_game_symbol_twitch_boss_bar"/>
+				<label depth="5" name="TextContent" pos="100,-13" font_size="30" color="[white]" justify="left" pivot="topleft" text="{zedname}" height="30" effect="Outline8" effect_color="0,0,0,255" effect_distance="2,2"/>
+			</rect>
+		</window>
+	</append>
+
+</configs>
