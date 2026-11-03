@@ -232,8 +232,12 @@
 				<passive_effect name="DamageFalloffRange" operation="perc_add" value="-.2,.2" tags="perkDemolitionsExpert"/> <!-- random effective rng -->
 				<passive_effect name="EntityDamage" operation="perc_add" value="-.08,.08" tags="perkDemolitionsExpert"/> <!-- random EntityDmg -->
 				<passive_effect name="EntityDamage" operation="perc_add" value=".25,1.25" tier="2,6" tags="perkDemolitionsExpert"/> <!-- tier bonus -->
+				<passive_effect name="ExplosionEntityDamage" operation="perc_add" value="-.08,.08" tags="perkDemolitionsExpert"/> <!-- random EntityDmg -->
+				<passive_effect name="ExplosionEntityDamage" operation="perc_add" value=".25,1.25" tier="2,6" tags="perkDemolitionsExpert"/> <!-- tier bonus -->
 				<passive_effect name="BlockDamage" operation="perc_add" value="-.08,.08" tags="perkDemolitionsExpert"/> <!-- random BlockDmg -->
 				<passive_effect name="BlockDamage" operation="perc_add" value=".25,1.25" tier="2,6" tags="perkDemolitionsExpert"/> <!-- tier bonus -->
+				<passive_effect name="ExplosionBlockDamage" operation="perc_add" value="-.08,.08" tags="perkDemolitionsExpert"/> <!-- random BlockDmg -->
+				<passive_effect name="ExplosionBlockDamage" operation="perc_add" value=".25,1.25" tier="2,6" tags="perkDemolitionsExpert"/> <!-- tier bonus -->
 				<passive_effect name="ProjectileVelocity" operation="perc_add" value="-.08,.08" tags="perkDemolitionsExpert"/> <!-- random Veloc -->
 				<passive_effect name="DegradationMax" operation="perc_add" value="-.2,.2" tags="perkDemolitionsExpert"/> <!-- random DegMax -->
 				<passive_effect name="WeaponHandling" operation="perc_add" value="-.08,.08" tags="perkDemolitionsExpert"/> <!-- random WeaponHandling -->
@@ -1149,7 +1153,7 @@
 			<property name="EconomicValue" value="1500"/>
 			<property name="TraderStageTemplate" value="baseTier3"/>
 			<property name="UnlockedBy" value="craftingHandguns"/>
-			<property name="Tags" value="weapon,ranged,holdBreathAiming,reloadPenalty,gun,shortRange,revolver,barrelAttachments,sideAttachments,smallTopAttachments,attAgility,perkGunslinger,attachmentsIncluded,canHaveCosmetic,handgunSkill"/>
+			<property name="Tags" value="T2,weapon,ranged,holdBreathAiming,reloadPenalty,gun,shortRange,revolver,44enforcer,barrelAttachments,sideAttachments,smallTopAttachments,attAgility,perkGunslinger,attachmentsIncluded,canHaveCosmetic,handgunSkill,rangerDamage,enforcerReload"/>
 
 			<stats>
 				<!-- Base_Random_Roll -->
@@ -2064,7 +2068,7 @@
 			<property name="EconomicValue" value="1500"/>
 			<property name="TraderStageTemplate" value="baseTier3"/>
 			<property name="UnlockedBy" value="craftingShotguns"/>
-			<property name="Tags" value="weapon,ranged,holdBreathAiming,reloadPenalty,gun,shotgun,shortRange,barrelAttachments,sideAttachments,smallTopAttachments,noScopes,stock,bottomAttachments,attStrength,perkBoomstick,modGunShotgunTubeExtenderMagazine,attachmentsIncluded,canHaveCosmetic,shotgunSkill"/>
+			<property name="Tags" value="T2,weapon,ranged,holdBreathAiming,reloadPenalty,gun,shotgun,shortRange,barrelAttachments,sideAttachments,smallTopAttachments,noScopes,stock,bottomAttachments,attStrength,perkBoomstick,modGunShotgunTubeExtenderMagazine,attachmentsIncluded,canHaveCosmetic,shotgunSkill"/>
 
 			<stats>
 				<!-- Base_Random_Roll -->
@@ -3680,6 +3684,8 @@
 
 			<!-- Grand Slam: power attacks launch what they hit and can knock it down -->
 			<effect_group name="DementivemeleeWpnClubGrandSlam home run" tiered="false">
+				<requirement name="!EntityTagCompare" target="other" tags="trader"/>
+				<requirement name="IsAlive" target="other"/>
 				<triggered_effect trigger="onSelfSecondaryActionRayHit" action="Ragdoll" target="other" duration="2" force="400"/>
 				<triggered_effect trigger="onSelfSecondaryActionRayHit" action="AddBuff" target="other" buff="buffInjuryKnockdown01">
 					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="30"/>
@@ -3783,8 +3789,10 @@
 
 			<!-- Bloodletter: every hit on a living target heals the wielder, kills heal more -->
 			<effect_group name="DementivemeleeWpnSledgeBloodletter life steal" tiered="false">
-				<triggered_effect trigger="onSelfAttackedOther" action="ModifyStats" stat="Health" operation="add" value="8"/>
-				<triggered_effect trigger="onSelfKilledOther" action="ModifyStats" stat="Health" operation="add" value="15"/>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyStats" stat="Health" operation="add" value="8">
+					<requirement name="IsAlive" target="other"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyStats" stat="Health" operation="add" value="23"/><!-- the hit heal skips the killing blow (the target is dead by then), so 8 + 15 -->
 			</effect_group>
 		</item>
 
@@ -3892,6 +3900,7 @@
 			     so the bow gives a buff while held and the buff sets targets on fire -->
 			<effect_group name="DementivegunBowHellfire fire arrows" tiered="false">
 				<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="buffDementiveHellfire"/>
+				<triggered_effect trigger="onSelfPrimaryActionStart" action="AddBuff" buff="buffDementiveHellfire"/>
 				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffDementiveHellfire"/>
 			</effect_group>
 		</item>

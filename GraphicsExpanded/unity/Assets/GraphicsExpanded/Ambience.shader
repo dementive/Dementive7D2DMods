@@ -36,6 +36,7 @@ Shader "GraphicsExpanded/Ambience"
             float4 _GfxAmbSunColor;         // rgb: its light
             float4 _GfxAmbGround;           // x: the ground under the player (Unity y), y: unused, z: debug (1 magenta)
             float4 _GfxAmbWind;             // xy: the game's wind direction (world x, z), z: how windy, 0 to 1
+            float4 _GfxAmbDrift;            // xyz: how far the wind has carried the motes, added up each frame, wrapped to the box
 
             struct appdata
             {
@@ -96,10 +97,9 @@ Shader "GraphicsExpanded/Ambience"
                 float3 size = float3(_GfxAmbMotes.z, _GfxAmbMotes.w, _GfxAmbMotes.z);
                 float t = _Time.y;
                 // Drifts with the wind and wanders a little of its own; ash and ice crystals sink
-                float3 wind = float3(_GfxAmbWind.x, 0, _GfxAmbWind.y) * (0.3 + 0.7 * _GfxAmbWind.z);
                 float sink = kind > 1.5 ? 0.3 : 0.03;
                 float3 wander = float3(sin(t * (0.3 + 0.2 * h.y) + h.x * 40), 0.6 * sin(t * (0.25 + 0.2 * h.z) + h.y * 40), cos(t * (0.3 + 0.2 * h.x) + h.z * 40)) * 0.7;
-                float3 p = h * size + wind * t - float3(0, sink * t, 0) + wander;
+                float3 p = h * size + _GfxAmbDrift.xyz - float3(0, sink * t, 0) + wander;
                 // From a little below the eye to well above it
                 float3 center = eye + float3(0, size.y * 0.5 - 2.5, 0);
                 p = Wrap(p, center, size);

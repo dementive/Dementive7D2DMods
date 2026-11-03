@@ -30,6 +30,7 @@ public static class GfxAmbience
     private static int drawn = -1;
 
     private static float motes, leaves;             // how much each shows now, eased
+    private static Vector3 drift;                   // how far the wind has carried the motes, within the box
     private static int moteKind = Pollen;
     private static readonly Vector4[] trees = new Vector4[MaxTrees];
     private static int treeCount;
@@ -79,6 +80,12 @@ public static class GfxAmbience
         }
         float ease = 1f - Mathf.Exp(-Time.deltaTime / EaseSeconds);
 
+        // The motes' drift along the wind, added up here: worked out in the shader as wind times the time since the
+        // game started, every change of wind would throw them by the change times hours
+        Vector4 wind = Wind();
+        drift += new Vector3(wind.x, 0f, wind.y) * ((0.3f + 0.7f * wind.z) * Time.deltaTime);
+        drift = new Vector3(Mathf.Repeat(drift.x, MoteBox), 0f, Mathf.Repeat(drift.z, MoteBox));
+
         // What's around: the biome underfoot, the weather, the sun
         biomeName = player.biomeStandingOn?.m_sBiomeName ?? "";
         float calm = 1f - Smooth(0.03f, 0.25f, Mathf.Max(GfxMood.RainAmount, GfxMood.SnowAmount));
@@ -126,7 +133,8 @@ public static class GfxAmbience
         material.SetVector("_GfxAmbSun", new Vector4(toSun.x, toSun.y, toSun.z, sunUp));
         material.SetVector("_GfxAmbSunColor", new Vector4(sunLight.r, sunLight.g, sunLight.b, 0f));
         material.SetVector("_GfxAmbGround", new Vector4(player.transform.position.y, 0f, Debug ? 1f : 0f, 0f));
-        material.SetVector("_GfxAmbWind", Wind());
+        material.SetVector("_GfxAmbWind", wind);
+        material.SetVector("_GfxAmbDrift", drift);
         Graphics.DrawMeshInstancedIndirect(quad, 0, material, new Bounds(playerCamera.transform.position, Vector3.one * 1000f), args, 0, null,
             ShadowCastingMode.Off, false, 0, playerCamera, LightProbeUsage.Off);
         state = string.Format("{0} {1:0%}, leaves {2:0%} from {3} broadleaf trees", MoteName(moteKind), motes, leaves, treeCount);

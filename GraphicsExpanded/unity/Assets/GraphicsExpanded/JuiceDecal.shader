@@ -45,7 +45,6 @@ Shader "GraphicsExpanded/JuiceDecal"
         struct v2f
         {
             float4 pos : SV_POSITION;
-            float4 screen : TEXCOORD0;
             float3 ray : TEXCOORD1;         // from the camera to this point of the box
             nointerpolation uint id : TEXCOORD2;
         };
@@ -79,7 +78,9 @@ Shader "GraphicsExpanded/JuiceDecal"
             float3 b = cross(n, a);
             float c = cos(d.normal.w), si = sin(d.normal.w);
             t = a * c + b * si;
-            s = cross(n, t);
+            // (t, n, s) must be right-handed: mirrored, the box turns inside out and Cull Front draws its near side,
+            // so a mark would vanish with the camera inside its box
+            s = cross(t, n);
         }
 
         // Half the box's depth, along the normal. A pool hugs the ground, so grass blades and the body lying in it
@@ -98,7 +99,6 @@ Shader "GraphicsExpanded/JuiceDecal"
             float3 local = v.vertex.xyz * 2;
             float3 world = d.place.xyz + (t * local.x + s * local.z) * d.place.w + n * local.y * Depth(d);
             o.pos = mul(UNITY_MATRIX_VP, float4(world, 1));
-            o.screen = ComputeScreenPos(o.pos);
             o.ray = world - _WorldSpaceCameraPos;
             o.id = v.id;
             return o;
@@ -156,7 +156,9 @@ Shader "GraphicsExpanded/JuiceDecal"
             Frame(d, t, s, n);
 
             // The scene point behind this pixel, and where it lies in the mark's box
-            float2 uv = i.screen.xy / i.screen.w;
+            // By pixel, like the rain wetness pass: ComputeScreenPos goes by _ProjectionParams' flip, which can't be
+            // trusted in a command buffer drawing into the G-buffers
+            float2 uv = i.pos.xy / _ScreenParams.xy;
             float eye = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, uv));
             float3 forward = -UNITY_MATRIX_V[2].xyz;
             float3 world = _WorldSpaceCameraPos + i.ray * (eye / dot(i.ray, forward));

@@ -27,6 +27,7 @@ public static class ZedClient
         if (player == null)
         {
             BarZombie = null;
+            hitByMe.Clear();
             return;
         }
         float now = Time.time;

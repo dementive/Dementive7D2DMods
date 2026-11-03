@@ -229,6 +229,7 @@ DefendWavesDEM_incoming_boss_horde,UI,Quest,,,,"The horde is here, and its leade
 PlaceFlagDEM_keyword,UI,Quest,,,,Plant the White River flag,,,,,,,,,,,,,
 PlaceFlagDEM_keyword_poi,UI,Quest,,,,Hang the outpost banner inside,,,,,,,,,,,,,
 PlaceFlagDEM_too_far,UI,Quest,,,,Not here. Pick the flag up and plant it closer to the marker (an outpost banner goes inside the building).,,,,,,,,,,,,,
+PlaceFlagDEM_replaced,UI,Quest,,,,Lost your quest flag? A new one is in your pack.,,,,,,,,,,,,,
 BuildPhaseDEM_keyword,UI,Quest,,,,Build your defenses,,,,,,,,,,,,,
 BuildPhaseDEM_start,UI,Quest,,,,Build your defenses! The zombies come in {0} minutes.,,,,,,,,,,,,,
 BuildPhaseDEM_warning,UI,Quest,,,,The zombies come in {0} seconds! Get to your defenses.,,,,,,,,,,,,,

@@ -110,15 +110,12 @@ public abstract class TrapControllerDEM : MonoBehaviour
             Cooldown = 1f;
             return;
         }
-        Cooldown = 0f;
+        // The idle wait goes in first (Act may set a longer one itself: out of ammo, unlit), so a use that throws
+        // waits like an idle look instead of running again every frame
+        Cooldown = IdleDelay;
         if (Act(world))
         {
             Cooldown = ActDelay / SpeedMult(world);
-        }
-        else if (Cooldown <= 0f)
-        {
-            // Act may set a longer wait itself (out of ammo, unlit)
-            Cooldown = IdleDelay;
         }
     }
 

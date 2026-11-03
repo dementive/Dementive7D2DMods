@@ -64,7 +64,8 @@ does 5 damage a second, weaker than a molotov's on purpose.
 
 When a Blood Moon ends, everyone gets a report window (and a chat summary): zombies killed by traps and by players, kills
 by kind of trap, the MVP trap, level-ups, combos (soaked shocks, Infernos, freezes, shatters), traps destroyed, and the
-world's records. On the morning of Blood Moon day a radio message in chat forecasts the horde for the players' game
+world's records. The window waits until it's safe to open (you're alive, no awake zombie within 30 m, no other window
+open). On the morning of Blood Moon day a radio message in chat forecasts the horde for the players' game
 stage from the game's own spawn tables, with the special zombies to expect. Records live in the save folder
 (`TrapsExpanded/bloodmoon.dat`, with the traps' levels and ammo in `traps.dat`).
 

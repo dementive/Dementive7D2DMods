@@ -162,9 +162,13 @@ PIECES = [
     dict(
         name="DementiveArmorWildcatterHat", title="Wildcatter's Hard Hat", parent="armorMinerHelmet", set="Miner",
         weight="Heavy", tint="#FFA500",
+        # Both only while holding a mining tool, like the vanilla Miner helmet's bonus (oreWoodHarvest also tags
+        # tree wood and dug clay). Swing stamina is asked for with the action tags only
         signature="""
-<passive_effect name="HarvestCount" operation="perc_add" value=".25" tags="oreWoodHarvest"/>
-<passive_effect name="StaminaLoss" operation="perc_add" value="-.25">
+<passive_effect name="HarvestCount" operation="perc_add" value=".25" tags="oreWoodHarvest">
+	<requirement name="HoldingItemHasTags" tags="miningTool"/>
+</passive_effect>
+<passive_effect name="StaminaLoss" operation="perc_add" value="-.25" tags="primary,secondary">
 	<requirement name="HoldingItemHasTags" tags="miningTool"/>
 </passive_effect>""",
         lore="A dented hard hat from a wildcat miner who struck it rich more than once. It has a nose for ore.",

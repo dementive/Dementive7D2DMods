@@ -75,6 +75,12 @@ public class StationBonusDEM
         return chance > 0f && quality > 0 && quality < MaxQuality && Random.value < chance ? quality + 1 : quality;
     }
 
+    /// <summary>Whether a second copy fits in the same stack: a quality anvil or a car battery stacks to one.</summary>
+    public static bool FitsTwice(ItemClass item, int count)
+    {
+        return item != null && item.Stacknumber.Value >= count * 2;
+    }
+
     /// <summary>Whether a finished craft comes out twice: the station's chance and its tools' chances each roll.</summary>
     public static bool RollExtra(StationBonusDEM station, ItemStack[] tools, Recipe recipe)
     {

@@ -92,6 +92,39 @@ public static class TrapStatusDEM
         return type == EnumDamageTypes.Heat;
     }
 
+    /// <summary>The game counts buff time in ticks: BuffValue.DurationInSeconds is DurationInTicks / 20.</summary>
+    private const float BuffTicksPerSecond = 20f;
+
+    /// <summary>
+    /// Server: puts a timed status on this zombie alone, for `seconds`. AddBuff's own duration can't do that: it sets
+    /// BuffClass.DurationMax, which every entity with the buff shares, so one Sprinkler's soak would end every other
+    /// zombie's. Instead each timed buff's XML duration is its longest variant (upgrade and top level) and this winds
+    /// the zombie's own timer forward so `seconds` are left. A zombie with more time left keeps it (a plain Sprinkler
+    /// doesn't cut a Deluge soak short); the time left is read first, since re-adding a buff restarts its timer.
+    /// Clients run their copy for the full XML duration, so these buffs remove themselves on finish (buffs.xml), which
+    /// the game syncs. Returns whether the buff went on.
+    /// </summary>
+    public static bool AddTimed(EntityAlive e, string buff, float seconds, int instigator)
+    {
+        EntityBuffs buffs = e.Buffs;
+        BuffValue had = buffs.GetBuff(buff);
+        float left = had != null && had.BuffClass != null && !had.Remove
+            ? had.BuffClass.DurationMax - had.DurationInSeconds : 0f;
+        if (buffs.AddBuff(buff, instigator, true, false) != EntityBuffs.BuffStatus.Added)
+        {
+            return false;
+        }
+        BuffValue bv = buffs.GetBuff(buff);
+        float max = bv?.BuffClass != null ? bv.BuffClass.DurationMax : 0f;
+        if (max <= 0f)
+        {
+            return true;
+        }
+        float wanted = Mathf.Clamp(Mathf.Max(seconds, left), 0f, max);
+        bv.DurationInTicks = (uint)Mathf.RoundToInt((max - wanted) * BuffTicksPerSecond);
+        return true;
+    }
+
     /// <summary>
     /// Server: tars a zombie for `seconds`. The strongest tar on it wins while it lasts (level 1 normal, 2 Deep Grease,
     /// 3 Sticky Tar), and so do Volatile's stronger, wider Infernos. A tarred zombie that's already burning goes up
@@ -107,7 +140,7 @@ public static class TrapStatusDEM
             had ? Mathf.Max(buffs.GetCustomVar(InfernoPowerVar), volatileInferno ? 2 : 1) : volatileInferno ? 2 : 1);
         buffs.SetCustomVar(InfernoSpreadVar,
             had ? Mathf.Max(buffs.GetCustomVar(InfernoSpreadVar), wideSpread ? 2 : 1) : wideSpread ? 2 : 1);
-        buffs.AddBuff(Tarred, instigator, true, false, seconds);
+        AddTimed(e, Tarred, seconds, instigator);
         if (IsBurning(e) && !IsSoaked(e) && !buffs.HasBuff(Inferno))
         {
             StartInferno(e, instigator);
@@ -129,7 +162,7 @@ public static class TrapStatusDEM
         }
         if (!e.Buffs.HasBuff(Inferno))
         {
-            e.Buffs.AddBuff(Burning, instigator, true, false, seconds);
+            AddTimed(e, Burning, seconds, instigator);
         }
         return true;
     }
@@ -159,12 +192,12 @@ public static class TrapStatusDEM
         {
             buffs.RemoveBuff(Chilled);
             buffs.SetCustomVar(ChillVar, 0f);
-            buffs.AddBuff(Frozen, instigator, true, false, freezeSeconds);
-            buffs.AddBuff(FrozenImmune, instigator, true, false, freezeSeconds + 6f);
+            AddTimed(e, Frozen, freezeSeconds, instigator);
+            AddTimed(e, FrozenImmune, freezeSeconds + 6f, instigator);
             return true;
         }
         buffs.SetCustomVar(ChillVar, Mathf.Clamp(next, 1f, Mathf.Max(1, freezeAt - 1)));
-        buffs.AddBuff(Chilled, instigator, true, false, chillSeconds);
+        AddTimed(e, Chilled, chillSeconds, instigator);
         return false;
     }
 

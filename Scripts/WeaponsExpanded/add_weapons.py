@@ -79,6 +79,8 @@ WEAPONS = [
         signature=[
             "<!-- Grand Slam: power attacks launch what they hit and can knock it down -->",
             eg("DementivemeleeWpnClubGrandSlam home run", """
+<requirement name="!EntityTagCompare" target="other" tags="trader"/>
+<requirement name="IsAlive" target="other"/>
 <triggered_effect trigger="onSelfSecondaryActionRayHit" action="Ragdoll" target="other" duration="2" force="400"/>
 <triggered_effect trigger="onSelfSecondaryActionRayHit" action="AddBuff" target="other" buff="buffInjuryKnockdown01">
 	<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="30"/>
@@ -100,8 +102,10 @@ WEAPONS = [
         signature=[
             "<!-- Bloodletter: every hit on a living target heals the wielder, kills heal more -->",
             eg("DementivemeleeWpnSledgeBloodletter life steal", """
-<triggered_effect trigger="onSelfAttackedOther" action="ModifyStats" stat="Health" operation="add" value="8"/>
-<triggered_effect trigger="onSelfKilledOther" action="ModifyStats" stat="Health" operation="add" value="15"/>"""),
+<triggered_effect trigger="onSelfAttackedOther" action="ModifyStats" stat="Health" operation="add" value="8">
+	<requirement name="IsAlive" target="other"/>
+</triggered_effect>
+<triggered_effect trigger="onSelfKilledOther" action="ModifyStats" stat="Health" operation="add" value="23"/><!-- the hit heal skips the killing blow (the target is dead by then), so 8 + 15 -->"""),
         ],
         lore="A heavy iron sledge with dried blood caked into every groove. Nobody knows who made it, but every swing that lands seems to give a little life back to whoever is holding it.",
         ability="Each hit heals you 8 health. Kills heal 15 more.",
@@ -120,6 +124,7 @@ WEAPONS = [
             "     so the bow gives a buff while held and the buff sets targets on fire -->",
             eg("DementivegunBowHellfire fire arrows", """
 <triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="buffDementiveHellfire"/>
+<triggered_effect trigger="onSelfPrimaryActionStart" action="AddBuff" buff="buffDementiveHellfire"/>
 <triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffDementiveHellfire"/>"""),
         ],
         lore="Carved from a tree that burned for forty days and never fell. Arrows loosed from this bow have a habit of bursting into flames when they hit.",

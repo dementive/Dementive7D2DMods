@@ -221,14 +221,16 @@ public class ZedLook : MonoBehaviour
         embers = embersBase;
     }
 
-    /// <summary>The zombie's skinned meshes that take the overlay: not the eyes, and not hair or anything else with
-    /// see-through parts (the overlay would cover the whole card).</summary>
+    /// <summary>The zombie's skinned meshes that take the overlay: not the eyes, not hair or anything else with
+    /// see-through parts (the overlay would cover the whole card), and not a mesh of several parts (an extra material
+    /// draws only the last part, which may not be skin).</summary>
     private void FindRenderers(Transform model)
     {
         foreach (SkinnedMeshRenderer r in model.GetComponentsInChildren<SkinnedMeshRenderer>(true))
         {
             Material m = r.sharedMaterial;
-            if (m == null || r.name.IndexOf("eye", System.StringComparison.OrdinalIgnoreCase) >= 0
+            if (m == null || r.sharedMesh == null || r.sharedMesh.subMeshCount > 1
+                || r.name.IndexOf("eye", System.StringComparison.OrdinalIgnoreCase) >= 0
                 || m.renderQueue >= 2450 || m.IsKeywordEnabled("_ALPHATEST_ON") || m.IsKeywordEnabled("_ALPHABLEND_ON")
                 || m.shader.name.IndexOf("Hair", System.StringComparison.OrdinalIgnoreCase) >= 0)
             {

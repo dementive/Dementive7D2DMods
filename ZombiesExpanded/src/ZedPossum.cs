@@ -6,10 +6,11 @@ using UnityEngine;
 /// dead instead, on a quarter of its health. It lies in one of the game's sleeper poses (silent, eyes dark) until a
 /// player comes within 2.5 m, or turns their back on it within 8 m, after it has lain still for 5 s; then it gets up
 /// and lunges at them. One in four Possums that spawn in the open start out lying "dead". A hit while it lies there
-/// gets it up too (or kills it).
+/// gets it up too (or kills it); a bleeding or burning tick doesn't.
 ///
 /// The hit rule runs on every game from the same hit (ZedCombat), so everyone sees it drop; lying down happens a
-/// moment later on every game; the server decides when it gets up and the game's own sleeper wake-up tells everyone.
+/// moment later on every game; the server decides when it gets up and its profile tells everyone (the game's own
+/// wake-ups are held back while it lies there, see ZedPossumWakePatch).
 /// A sleeping zombie never despawns in the game, so one lying in the open with nobody near goes the way spawns that
 /// wander off do.
 /// </summary>
@@ -33,6 +34,7 @@ public static class ZedPossum
     private static readonly Dictionary<int, Senses> senses = new Dictionary<int, Senses>();
     private static readonly Dictionary<int, float> spawnCheck = new Dictionary<int, float>();
     private static float tick;
+    private static bool waking;
 
     /// <summary>Every game, from ZedCombat: whether this hit makes it fake its death, with the hit changed to suit
     /// (it keeps a quarter of its health and falls flat).</summary>
@@ -70,13 +72,39 @@ public static class ZedPossum
         return true;
     }
 
-    /// <summary>Server: a hit on it while it lies there gets it up, at whoever hit it (not the hit that dropped it).</summary>
+    /// <summary>Every game, from ZedCombat: a hit on it while it lies there (not the hit that dropped it, and not a
+    /// bleeding or burning tick) gets it up. The server stands it up at whoever hit it; a player's game lets the game's
+    /// own wake-up from that hit through, as the server does.</summary>
     public static void Hit(EntityAlive z, ZedProfile p, EntityAlive attacker)
     {
         if (p.PlayingDead && lying.TryGetValue(z.entityId, out Lying l) && l.Posed)
         {
             lying.Remove(z.entityId);
-            GetUp(z, p, attacker as EntityPlayer ?? Nearest(z));
+            if (ZedStore.IsServer)
+            {
+                GetUp(z, p, attacker as EntityPlayer ?? Nearest(z));
+            }
+        }
+    }
+
+    /// <summary>Whether the game may wake this zombie. The game wakes a sleeper on every hit, damage-over-time ticks
+    /// included, and from a few other places (a fall, a target task starting): a Possum lying "dead" stays down until
+    /// ZedPossum gets it up.</summary>
+    public static bool MayWake(EntityAlive z)
+    {
+        return waking || !lying.TryGetValue(z.entityId, out Lying l) || !l.Posed;
+    }
+
+    private static void Wake(EntityAlive z)
+    {
+        waking = true;
+        try
+        {
+            z.ConditionalTriggerSleeperWakeUp();
+        }
+        finally
+        {
+            waking = false;
         }
     }
 
@@ -108,9 +136,17 @@ public static class ZedPossum
     /// server says it's up and this game still has it lying (waking locally sends nothing).</summary>
     public static void Received(EntityAlive z, ZedProfile p)
     {
-        if (p.PlayingDead && !z.IsSleeping && !lying.ContainsKey(z.entityId))
+        if (p.PlayingDead && !lying.ContainsKey(z.entityId))
         {
-            LieDown(z, 0.2f);
+            if (z.IsSleeping)
+            {
+                // Already lying there (this game started tracking it late): only the server gets it up
+                lying[z.entityId] = new Lying { Since = Time.time, Posed = true };
+            }
+            else
+            {
+                LieDown(z, 0.2f);
+            }
         }
         else if (!p.PlayingDead)
         {
@@ -351,7 +387,7 @@ public static class ZedPossum
     private static void GetUp(EntityAlive z, ZedProfile p, EntityPlayer at)
     {
         p.PlayingDead = false;
-        z.ConditionalTriggerSleeperWakeUp();
+        Wake(z);
         if (senses.TryGetValue(z.entityId, out Senses s))
         {
             senses.Remove(z.entityId);
@@ -367,5 +403,16 @@ public static class ZedPossum
         }
         ZedBrain.Of(z)?.Lunge();
         ZedStore.Changed(z);
+    }
+}
+
+/// <summary>The game's sleeper wake-up, on every game: not for a Possum lying "dead" unless ZedPossum is getting it
+/// up (or this game was told it's up).</summary>
+[HarmonyLib.HarmonyPatch(typeof(EntityAlive), nameof(EntityAlive.ConditionalTriggerSleeperWakeUp))]
+public class ZedPossumWakePatch
+{
+    public static bool Prefix(EntityAlive __instance)
+    {
+        return ZedPossum.MayWake(__instance);
     }
 }

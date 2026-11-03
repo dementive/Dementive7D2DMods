@@ -39,7 +39,7 @@
 			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveCoffeeCake"/>
 			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveMushroomPie"/>
 			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveYuccaPie"/>
-			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveYuccaPie"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveSnowberryGin"/>
 			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveSnowberryPie"/>
 
 			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="70,100" value="1" tags="DementiveMeatPie"/>

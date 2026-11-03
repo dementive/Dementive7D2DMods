@@ -78,7 +78,7 @@ public class SprinklerControllerDEM : TrapControllerDEM
             {
                 continue;
             }
-            alive.Buffs.AddBuff(sprinkler.SoakBuff, owner, true, false, seconds);
+            TrapStatusDEM.AddTimed(alive, sprinkler.SoakBuff, seconds, owner);
             Touch(alive, false);
             if (washer)
             {

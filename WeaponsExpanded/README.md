@@ -59,7 +59,7 @@ Each of these has a special ability on top of better stats.
 
 31. Stalker's Harvester (meleeWpnBladeT1HuntingKnife) - 25% chance to cause bleeding, +50% harvest from corpses, 6x sneak attack damage
 32. Grand Slam (meleeWpnClubT1BaseballBat) - power attacks send zombies flying and have a 30% chance to knock them down
-33. Bloodletter (meleeWpnSledgeT1IronSledgehammer) - each hit heals you 8 health, kills heal 15 more
+33. Bloodletter (meleeWpnSledgeT1IronSledgehammer) - each hit on a living enemy heals you 8 health, kills heal 15 more
 34. Hellfire (gunBowT1WoodenBow) - 35% chance to set targets on fire
 35. Whisper (gunBowT1IronCrossbow) - 5x sneak attack damage, reloads 40% faster
 36. Chain Reaction (gunRifleT0PipeRifle) - anything it kills explodes, hurting everything within 4 meters (including you)
@@ -107,3 +107,5 @@ The chances are set by the five `DementiveRares` templates at the top of `Config
 - Server-side version: weapons use their vanilla icons with a color tint again (the last update had switched them to the custom icons, which players without the client mod don't have)
 - Axes and the Gravedigger auger get the V3.4 Strength Mastery healing effect, the Legendary War Hammer gets the V3.4 second-power-attack tracking, and Golden Knuckles use the V3.4 left-hand knuckle attachment
 - Chain Reaction's kill explosions now work in multiplayer and on dedicated servers for every player. Before, only the host's kills exploded: the game only runs explosions on the server, and other players' kills are detected on their own machines
+- The Finale's quality bonus now also raises its rockets' explosion damage, like the vanilla rocket launcher's. Before, it only raised the small direct-hit damage, so its blast was weaker than a vanilla launcher's of the same quality
+- Joe's Golden Magnum and the Super Pump have all their vanilla tags back (tier, Ranger and Enforcer armor set bonuses), so armor and perk bonuses that look for those tags apply to them again

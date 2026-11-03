@@ -30,7 +30,8 @@ into it.
       won't set a soaked zombie on fire.
 - [ ] **Tar Sprayer** (5 W, load Tar): every 2 s it lobs a glob at the nearest zombie within 10 m, and the 2 m splash
       tars them.
-- [ ] **Salvage Hopper**: zombies your traps kill within 10 m add 1 to 3 scrap iron. **Unload** gives you the haul.
+- [ ] **Salvage Hopper**: zombies your traps kill within 10 m add 1 to 3 scrap iron. The haul is in its bin: open it like a
+      storage box (the hopper takes no ammo, so it has no Load or Unload).
 - [ ] **Tesla Coil** (30 W): a quick check that it still zaps and jumps to 2 more zombies.
 - [ ] **Cryo Vent** (20 W): zombies on the grate slow down with each pulse, and 3 pulses freeze them for 2 s.
 - [ ] **Ram** (15 W): every 2 s it punches zombies within 2 m for 60 damage and knocks them back about 4 m.
@@ -68,7 +69,8 @@ Check the day count first: by default the Blood Moon is day 7.
 
 - [ ] `settime 7 6 59`: at 07:00 a radio forecast of the horde appears in chat.
 - [ ] `settime 7 21 55`: let the traps fight the horde. At dawn a report window and a chat summary should show kills
-      by trap, the MVP trap and combos.
+      by trap, the MVP trap and combos. The window waits until no awake zombie is within 30 m (and no other window
+      is open); the chat summary comes at once.
 
 ## Skipped
 

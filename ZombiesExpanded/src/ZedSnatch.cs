@@ -4,19 +4,40 @@ using UnityEngine;
 /// <summary>
 /// The Snatcher's theft. Each player's inventory lives on their own game, so the server asks the victim's game to
 /// take the held item out (NetPackageZedSnatch) and that game hands it back (NetPackageZedStolen). The server only
-/// takes an answer it asked for, once. The Snatcher carries the item (kept with its profile on the server, and saved
-/// with it) until it's killed (it drops it) or gets away (it's gone, and so is the item).
+/// takes an answer it asked for, once, and gives up on one that doesn't come within 10 s. The Snatcher carries the
+/// item (kept with its profile on the server, and saved with it) until it's killed (it drops it) or gets away (it's
+/// gone, and so is the item).
 /// </summary>
 public static class ZedSnatch
 {
     /// <summary>Server: grabs waiting for the victim's game to answer (Snatcher id to victim id).</summary>
     private static readonly Dictionary<int, int> pending = new Dictionary<int, int>();
+    /// <summary>Server: grabs it gave up waiting on; an answer that still comes drops its item at the victim's feet.</summary>
+    private static readonly Dictionary<int, int> late = new Dictionary<int, int>();
 
     public static bool Pending(int zombieId) => pending.ContainsKey(zombieId);
 
     public static void Clear()
     {
         pending.Clear();
+        late.Clear();
+    }
+
+    /// <summary>Server: the victim's game didn't answer in time (it left, or the message was lost): the grab came to
+    /// nothing, and the Snatcher may try again in a moment.</summary>
+    public static void GiveUp(EntityAlive z)
+    {
+        if (pending.TryGetValue(z.entityId, out int victim))
+        {
+            pending.Remove(z.entityId);
+            late[z.entityId] = victim;
+        }
+        ZedBrain brain = ZedBrain.Of(z);
+        if (brain != null)
+        {
+            brain.Waiting = -1f;
+            brain.SnatchAgain = Time.time + 2f;
+        }
     }
 
     /// <summary>Server: whether it can reach what `player` is holding: within 1.8 m, on the same level, nothing
@@ -89,12 +110,21 @@ public static class ZedSnatch
     /// the Snatcher is gone by now, or somehow already carries something, it falls at the victim's feet.</summary>
     public static void Stolen(int zombieId, int playerId, ItemStack stack)
     {
+        World world = GameManager.Instance.World;
         if (!pending.TryGetValue(zombieId, out int victim) || victim != playerId)
         {
+            if (late.TryGetValue(zombieId, out int lateVictim) && lateVictim == playerId)
+            {
+                // It gave up waiting: what came falls back at the victim's feet
+                late.Remove(zombieId);
+                if (stack != null && !stack.IsEmpty() && world?.GetEntity(playerId) is Entity lateVictimEntity)
+                {
+                    GameManager.Instance.ItemDropServer(stack, lateVictimEntity.position + Vector3.up, Vector3.zero, -1, 1200f, false);
+                }
+            }
             return;
         }
         pending.Remove(zombieId);
-        World world = GameManager.Instance.World;
         EntityAlive z = world?.GetEntity(zombieId) as EntityAlive;
         ZedBrain brain = ZedBrain.Of(z);
         ZedProfile p = ZedStore.Get(zombieId);
@@ -156,7 +186,7 @@ public class EAIZedSnatch : EAIBase
     public override bool CanExecute()
     {
         ZedProfile p = Profile;
-        if (p == null || !p.Has(ZedMutation.Snatcher))
+        if (p == null || !p.Has(ZedMutation.Snatcher) || theEntity.IsSleeping)
         {
             return false;
         }
@@ -171,7 +201,7 @@ public class EAIZedSnatch : EAIBase
 
     public override bool Continue()
     {
-        return target != null && !target.IsDead() && theEntity.GetAttackTarget() == target;
+        return target != null && !target.IsDead() && !theEntity.IsSleeping && theEntity.GetAttackTarget() == target;
     }
 
     public override void Update()
@@ -183,11 +213,15 @@ public class EAIZedSnatch : EAIBase
             return;
         }
         float now = Time.time;
-        if (ZedSnatch.Pending(theEntity.entityId) && now - brain.Waiting < 10f)
+        if (ZedSnatch.Pending(theEntity.entityId))
         {
-            // Waiting for the player's game to hand it over
-            theEntity.moveHelper.Stop();
-            return;
+            if (now - brain.Waiting < 10f)
+            {
+                // Waiting for the player's game to hand it over
+                theEntity.moveHelper.Stop();
+                return;
+            }
+            ZedSnatch.GiveUp(theEntity);
         }
         Vector3 away = theEntity.position - target.position;
         away.y = 0f;
@@ -285,14 +319,11 @@ public class NetPackageZedSnatch : NetPackage
 
     public override void ProcessPackage(World _world, GameManager _callbacks)
     {
+        // Always answers (empty-handed when there's nothing to take), so the server isn't left waiting
         EntityPlayerLocal player = _world?.GetPrimaryPlayer();
-        if (player == null || player.IsDead())
-        {
-            return;
-        }
-        ItemStack stolen = ZedSnatch.Take(player);
+        ItemStack stolen = player != null && !player.IsDead() ? ZedSnatch.Take(player) : ItemStack.Empty.Clone();
         SingletonMonoBehaviour<ConnectionManager>.Instance.SendToServer(
-            NetPackageManager.GetPackage<NetPackageZedStolen>().Setup(zombieId, player.entityId, stolen));
+            NetPackageManager.GetPackage<NetPackageZedStolen>().Setup(zombieId, player != null ? player.entityId : -1, stolen));
     }
 }
 
@@ -330,9 +361,10 @@ public class NetPackageZedStolen : NetPackage
 
     public override void ProcessPackage(World _world, GameManager _callbacks)
     {
-        if (_world != null && Sender != null && Sender.entityId == playerId)
+        // The answer counts for the player who sent it (one whose player wasn't in the world sends -1)
+        if (_world != null && Sender != null && (playerId == -1 || Sender.entityId == playerId))
         {
-            ZedSnatch.Stolen(zombieId, playerId, stack);
+            ZedSnatch.Stolen(zombieId, Sender.entityId, stack);
         }
     }
 }

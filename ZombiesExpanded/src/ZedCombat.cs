@@ -127,6 +127,11 @@ public static class ZedCombat
         {
             Locations(z, p, ref dr, blunt, shotgun, explosion, head, legs, type);
         }
+        if (p != null && dr.Source.BuffClass == null)
+        {
+            // A hit gets a Possum lying "dead" up, even one its gear took whole; bleeding and burning ticks aren't hits
+            ZedPossum.Hit(z, p, z.world.GetEntity(dr.Source.getEntityId()) as EntityAlive);
+        }
         if (p != null && ZedPossum.FakeDeath(z, p, ref dr))
         {
             // A Possum drops as if dead instead (see ZedPossum)
@@ -324,7 +329,6 @@ public static class ZedCombat
             }
         }
         EntityAlive attacker = z.world.GetEntity(dr.Source.getEntityId()) as EntityAlive;
-        ZedPossum.Hit(z, p, attacker);
         if (attacker is EntityPlayer && melee && !attacker.IsDead())
         {
             bool reach = dr.Source.ItemClass != null && dr.Source.ItemClass.HasAnyTags(ReachTag);
@@ -449,7 +453,7 @@ public class ZedHitPatch
     public static IEnumerable<MethodBase> TargetMethods()
     {
         yield return AccessTools.Method(typeof(EntityAlive), nameof(EntityAlive.ProcessDamageResponseLocal));
-        foreach (Type t in new[] { typeof(EntityHuman), typeof(EntityZombieCop), typeof(EntityPlayer), typeof(EntityPlayerLocal) })
+        foreach (Type t in new[] { typeof(EntityHuman), typeof(EntityZombieCop), typeof(EntityPlayerLocal) })
         {
             MethodInfo m = AccessTools.DeclaredMethod(t, nameof(EntityAlive.ProcessDamageResponseLocal));
             if (m != null)

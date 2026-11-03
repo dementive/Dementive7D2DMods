@@ -471,8 +471,10 @@
 			</effect_group>
 
 			<effect_group name="Wildcatter's Hard Hat" tiered="false">
-				<passive_effect name="HarvestCount" operation="perc_add" value=".25" tags="oreWoodHarvest"/>
-				<passive_effect name="StaminaLoss" operation="perc_add" value="-.25">
+				<passive_effect name="HarvestCount" operation="perc_add" value=".25" tags="oreWoodHarvest">
+					<requirement name="HoldingItemHasTags" tags="miningTool"/>
+				</passive_effect>
+				<passive_effect name="StaminaLoss" operation="perc_add" value="-.25" tags="primary,secondary">
 					<requirement name="HoldingItemHasTags" tags="miningTool"/>
 				</passive_effect>
 			</effect_group>

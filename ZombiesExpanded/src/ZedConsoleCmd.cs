@@ -260,7 +260,7 @@ public class ZedForce
     }
 
     /// <summary>Mutations, gear and rank asked for (after the rolls, which they replace).</summary>
-    public void ApplyRank(ZedProfile p, System.Random rng, int gs)
+    public void ApplyRank(ZedProfile p, System.Random rng, int gs, string family)
     {
         if (Mutations.Count > 0)
         {
@@ -292,11 +292,11 @@ public class ZedForce
         }
         if (Champion && !p.Champion)
         {
-            ZedRoll.Champion(p, rng, System.Math.Max(gs, 50));
+            ZedRoll.Champion(p, rng, System.Math.Max(gs, 50), family);
         }
         if (Alpha && !p.Alpha)
         {
-            ZedRoll.Alpha(p, rng, System.Math.Max(gs, 60));
+            ZedRoll.Alpha(p, rng, System.Math.Max(gs, 60), family);
         }
     }
 

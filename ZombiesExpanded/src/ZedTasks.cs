@@ -168,7 +168,8 @@ public abstract class EAIZedKeepAway : EAIBase
     public override bool CanExecute()
     {
         target = theEntity.GetAttackTarget() as EntityPlayer;
-        return target != null && !target.IsDead() && Wants();
+        // Not while it lies "dead" (a Possum in its sleeper pose)
+        return target != null && !target.IsDead() && !theEntity.IsSleeping && Wants();
     }
 
     public override void Start()
@@ -188,7 +189,8 @@ public abstract class EAIZedKeepAway : EAIBase
 
     public override bool Continue()
     {
-        return !cornered && target != null && !target.IsDead() && theEntity.GetAttackTarget() == target && Wants();
+        return !cornered && target != null && !target.IsDead() && !theEntity.IsSleeping && theEntity.GetAttackTarget() == target
+            && Wants();
     }
 
     public override void Update()
@@ -340,7 +342,7 @@ public class EAIZedStalk : EAIBase
     public override bool CanExecute()
     {
         ZedProfile p = Profile;
-        if (p == null || p.Revealed || !p.Has(ZedMutation.Stalker))
+        if (p == null || p.Revealed || !p.Has(ZedMutation.Stalker) || theEntity.IsSleeping)
         {
             return false;
         }
@@ -366,7 +368,8 @@ public class EAIZedStalk : EAIBase
     public override bool Continue()
     {
         ZedProfile p = Profile;
-        return p != null && !p.Revealed && target != null && !target.IsDead() && theEntity.GetAttackTarget() == target && Distance() > 8f;
+        return p != null && !p.Revealed && target != null && !target.IsDead() && !theEntity.IsSleeping && theEntity.GetAttackTarget() == target
+            && Distance() > 8f;
     }
 
     public override void Update()
@@ -404,7 +407,7 @@ public class EAIZedStalk : EAIBase
     public override void Reset()
     {
         ZedProfile p = Profile;
-        if (p != null && !p.Revealed && target != null && Distance() <= 8.5f)
+        if (p != null && !p.Revealed && target != null && !theEntity.IsSleeping && Distance() <= 8.5f)
         {
             Reveal();
         }

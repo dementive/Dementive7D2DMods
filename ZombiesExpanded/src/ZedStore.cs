@@ -196,7 +196,7 @@ public static class ZedStore
             return;
         }
         List<ZedMutation> before = new List<ZedMutation>(p.Mutations);
-        ZedRoll.Champion(p, rng, Math.Max(50, ZedRoll.Gamestage(zombie)));
+        ZedRoll.Champion(p, rng, Math.Max(50, ZedRoll.Gamestage(zombie)), ZedRoll.Family(zombie.EntityClass.entityClassName));
         zombie.OverrideSize = (zombie.OverrideSize > 0f ? zombie.OverrideSize : zombie.EntityClass.SizeScale) * 1.15f;
         zombie.SetScale(zombie.OverrideSize);
         List<ZedMutation> added = p.Mutations.FindAll(m => !before.Contains(m));

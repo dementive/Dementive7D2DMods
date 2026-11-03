@@ -14,5 +14,6 @@ public class StationsExpanded : IModApi
     private static void GameStartDone(ref ModEvents.SGameStartDoneData _data)
     {
         StationBonusDEM.Reset();
+        CraftingPatchesDEM.Reset();
     }
 }

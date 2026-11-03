@@ -429,21 +429,54 @@ public static class BloodMoonDEM
     }
 }
 
-/// <summary>Client: shows the Blood Moon report in the mod's report window (the vanilla tip window if it's
-/// missing).</summary>
+/// <summary>
+/// Client: shows the Blood Moon report in the mod's report window (the vanilla tip window if it's missing). The window
+/// is modal (it takes the mouse and stops the player), and dawn often still has zombies about, so a report waits
+/// until it's safe: the player is alive, no other modal window is open and no awake enemy is within SafeRange. It's
+/// checked every second and opens once.
+/// </summary>
 public static class BloodMoonReportDEM
 {
     private const string WindowGroup = "dementiveTrapReport";
+    private const float SafeRange = 30f;
 
+    private static string pendingTitle;
+    private static string pendingText;
+    private static float nextCheck;
+    private static readonly List<Entity> near = new List<Entity>();
+
+    /// <summary>A report to show as soon as it's safe (a newer one replaces one still waiting).</summary>
     public static void Show(string title, string text)
     {
-        EntityPlayerLocal player = GameManager.Instance.World?.GetPrimaryPlayer();
-        if (player == null)
+        pendingTitle = title;
+        pendingText = text;
+        nextCheck = 0f;
+    }
+
+    /// <summary>Every game update: opens a waiting report once it's safe.</summary>
+    public static void Update()
+    {
+        if (pendingText == null || Time.time < nextCheck)
+        {
+            return;
+        }
+        nextCheck = Time.time + 1f;
+        World world = GameManager.Instance.World;
+        EntityPlayerLocal player = world?.GetPrimaryPlayer();
+        if (player == null || player.IsDead())
         {
             return;
         }
         LocalPlayerUI ui = LocalPlayerUI.GetUIForPlayer(player);
-        XUiC_TipWindow window = ui?.xui?.FindWindowGroupByName(WindowGroup)?.GetChildByType<XUiC_TipWindow>();
+        if (ui == null || ui.windowManager == null || ui.windowManager.IsModalWindowOpen() || EnemyNear(world, player))
+        {
+            return;
+        }
+        string title = pendingTitle;
+        string text = pendingText;
+        pendingTitle = null;
+        pendingText = null;
+        XUiC_TipWindow window = ui.xui?.FindWindowGroupByName(WindowGroup)?.GetChildByType<XUiC_TipWindow>();
         if (window == null)
         {
             XUiC_TipWindow.ShowTip(text, title, player, null);
@@ -452,5 +485,31 @@ public static class BloodMoonReportDEM
         window.TipText = text;
         window.TipTitle = title;
         ui.windowManager.Open(WindowGroup, true);
+    }
+
+    /// <summary>A living, awake enemy within SafeRange (sleepers in a POI nearby don't keep the report back).</summary>
+    private static bool EnemyNear(World world, EntityPlayerLocal player)
+    {
+        near.Clear();
+        world.GetEntitiesInBounds(typeof(EntityEnemy), new Bounds(player.position, Vector3.one * (SafeRange * 2f)), near);
+        bool found = false;
+        foreach (Entity e in near)
+        {
+            if (e is EntityAlive a && a.IsAlive() && !a.IsSleeping
+                && (a.position - player.position).sqrMagnitude <= SafeRange * SafeRange)
+            {
+                found = true;
+                break;
+            }
+        }
+        near.Clear();
+        return found;
+    }
+
+    /// <summary>The world closed: a report still waiting goes with it.</summary>
+    public static void Clear()
+    {
+        pendingTitle = null;
+        pendingText = null;
     }
 }

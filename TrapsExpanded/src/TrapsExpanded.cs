@@ -15,12 +15,14 @@ public class TrapsExpanded : IModApi
     {
         TrapStoreDEM.Update();
         BloodMoonDEM.Update();
+        BloodMoonReportDEM.Update();
     }
 
     private static void WorldShuttingDown(ref ModEvents.SWorldShuttingDownData _data)
     {
         TrapStoreDEM.Shutdown();
         BloodMoonDEM.Shutdown();
+        BloodMoonReportDEM.Clear();
         TrapKillsDEM.Clear();
     }
 }

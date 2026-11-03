@@ -55,6 +55,10 @@ public static class ReadAllBooksCore
             }
         }
 
+        // Like the Read button: the slots' counts redraw (a stack read down to its known copies would show the old count)
+        if (read > 0)
+            window.SetAllChildrenDirty();
+
         if (read == 0 && known == 0)
             GameManager.ShowTooltip(player, Localization.Get("xuiReadAllBooksNone"));
         else if (known == 0)

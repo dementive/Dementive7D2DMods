@@ -116,6 +116,7 @@ public static class ZedRoll
             }
         }
         bool snatcher = p.Has(ZedMutation.Snatcher);
+        string family = Family(zombie.EntityClass.entityClassName);
 
         if (ZedSettings.Gear && !snatcher && rng.NextDouble() < GearChance(gs))
         {
@@ -124,17 +125,17 @@ public static class ZedRoll
 
         if (ZedSettings.Champions && !snatcher && rng.NextDouble() < ChampionChance(gs))
         {
-            Champion(p, rng, gs);
+            Champion(p, rng, gs, family);
         }
 
         if (ZedSettings.Alpha && bloodMoon && !snatcher && AlphaDue(zombie))
         {
-            Alpha(p, rng, gs);
+            Alpha(p, rng, gs, family);
         }
 
         if (force != null)
         {
-            force.ApplyRank(p, rng, gs);
+            force.ApplyRank(p, rng, gs, family);
         }
 
         if (ZedSettings.Remnants && (force == null || force.Remnants.Count == 0))
@@ -439,7 +440,9 @@ public static class ZedRoll
         { ZedMutation.Possum, "the Possum" }, { ZedMutation.Snatcher, "the Snatcher" },
     };
 
-    public static void Champion(ZedProfile p, System.Random rng, int gs)
+    /// <summary>Makes it a champion: more mutations, none of them on a spot its gear, remnants or other mutations
+    /// already take (`family` is its class's, see Used).</summary>
+    public static void Champion(ZedProfile p, System.Random rng, int gs, string family)
     {
         p.Champion = true;
         int count = gs >= 150 ? 3 : 2;
@@ -449,7 +452,7 @@ public static class ZedRoll
         {
             ZedMutation m = allowed[rng.Next(allowed.Count)];
             allowed.Remove(m);
-            if (!Clashes(p, m))
+            if (!Clashes(p, m) && !Crowded(p, m, family))
             {
                 p.Mutations.Add(m);
             }
@@ -458,7 +461,7 @@ public static class ZedRoll
         p.Name = Name(p, rng);
     }
 
-    public static void Alpha(ZedProfile p, System.Random rng, int gs)
+    public static void Alpha(ZedProfile p, System.Random rng, int gs, string family)
     {
         p.Alpha = true;
         p.Champion = false;
@@ -474,7 +477,7 @@ public static class ZedRoll
         {
             ZedMutation m = allowed[rng.Next(allowed.Count)];
             allowed.Remove(m);
-            if (!Clashes(p, m))
+            if (!Clashes(p, m) && !Crowded(p, m, family))
             {
                 p.Mutations.Add(m);
             }
@@ -487,6 +490,12 @@ public static class ZedRoll
     private static bool Clashes(ZedProfile p, ZedMutation m)
     {
         return (m == ZedMutation.Lurker && p.Has(ZedMutation.Stalker)) || (m == ZedMutation.Stalker && p.Has(ZedMutation.Lurker));
+    }
+
+    /// <summary>A mutation whose model would sit on a spot something on the zombie already takes.</summary>
+    private static bool Crowded(ZedProfile p, ZedMutation m, string family)
+    {
+        return (ZedMutationInfo.All[m].Slots & Used(p, family)) != 0;
     }
 
     private static string Name(ZedProfile p, System.Random rng)

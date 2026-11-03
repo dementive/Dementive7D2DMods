@@ -15,6 +15,12 @@ public static class CraftingPatchesDEM
     /// <summary>The named station whose window this client has open, if any.</summary>
     private static StationBonusDEM openStation;
 
+    /// <summary>A new world: a window left open when the last one closed doesn't count any more.</summary>
+    public static void Reset()
+    {
+        openStation = null;
+    }
+
     /// <summary>Set while the server finishes queued crafts for a station that has bonuses or tools with them.</summary>
     [System.ThreadStatic]
     private static TileEntityWorkstation finishing;
@@ -88,14 +94,16 @@ public static class CraftingPatchesDEM
                     __instance.outputQuality = quality;
                 }
             }
-            if (StationBonusDEM.RollExtra(station, tools, __instance.recipe))
+            if (StationBonusDEM.FitsTwice(item, __instance.recipe.count) && StationBonusDEM.RollExtra(station, tools, __instance.recipe))
             {
                 __state.Count = __instance.recipe.count;
                 __instance.recipe.count *= 2;
             }
         }
 
-        private static void Postfix(XUiC_RecipeStack __instance, State __state)
+        // A finalizer, so the recipe's count is put back even if something in outputStack throws: left doubled, the
+        // next extra roll would double it again
+        private static void Finalizer(XUiC_RecipeStack __instance, State __state)
         {
             if (__state.Quality >= 0)
             {
@@ -145,7 +153,7 @@ public static class CraftingPatchesDEM
                     _itemStack.itemValue = new ItemValue(item.type, quality, quality, false, null, 1f);
                 }
             }
-            if (StationBonusDEM.RollExtra(station, te.tools, recipe))
+            if (StationBonusDEM.FitsTwice(item.ItemClass, _itemStack.count) && StationBonusDEM.RollExtra(station, te.tools, recipe))
             {
                 _itemStack.count *= 2;
             }

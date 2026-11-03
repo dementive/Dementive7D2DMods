@@ -148,7 +148,7 @@ public class BearTrapControllerDEM : TrapControllerDEM
         if (Hit(victim, bear.HitDamage * DamageMult, EnumDamageTypes.Piercing, Vector3.down, owner, 0.1f))
         {
             float hold = heavy ? bear.HeavyHoldSeconds : big ? bear.BigHoldSeconds : bear.HoldSeconds;
-            victim.Buffs.AddBuff(TrapStatusDEM.Held, owner, true, false, hold);
+            TrapStatusDEM.AddTimed(victim, TrapStatusDEM.Held, hold, owner);
         }
         Touch(victim, false);
         BlockPlainTrapDEM.SetState(world, BlockPos, true);

@@ -47,6 +47,30 @@ public static class WaveDirectorDEM
     public static void Init()
     {
         ModEvents.GameUpdate.RegisterHandler(Update);
+        ModEvents.WorldShuttingDown.RegisterHandler(WorldShuttingDown);
+    }
+
+    /// <summary>
+    /// The world is closing (this fires before the world and the players are saved): every defense ends the way it
+    /// does when its players leave (its zombies are removed, an outpost under attack falls), and none carries over
+    /// into the next world loaded in this session.
+    /// </summary>
+    private static void WorldShuttingDown(ref ModEvents.SWorldShuttingDownData data)
+    {
+        foreach (Defense defense in new List<Defense>(defenses.Values))
+        {
+            try
+            {
+                defense.Abandon();
+            }
+            catch (System.Exception e)
+            {
+                Log.Exception(e);
+            }
+        }
+        defenses.Clear();
+        won.Clear();
+        cleanUpTimer = CleanUpSeconds;
     }
 
     /// <summary>

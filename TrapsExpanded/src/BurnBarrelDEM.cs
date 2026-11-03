@@ -166,7 +166,8 @@ public class BurnBarrelControllerDEM : TrapControllerDEM
             stateRefresh = 0.3f;
             World world = GameManager.Instance.World;
             bool lit = world != null && BlockPlainTrapDEM.GetState(world.GetBlock(BlockPos));
-            if (lit != shownLit)
+            // Also relights a fire effect that removed itself (vanilla effects may time out)
+            if (lit != shownLit || (lit && fire == null && !GameManager.IsDedicatedServer))
             {
                 shownLit = lit;
                 ShowFire(lit);

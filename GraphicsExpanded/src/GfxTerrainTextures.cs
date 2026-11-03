@@ -34,6 +34,7 @@ public static class GfxTerrainTextures
     private static Texture2D tiledNear, tiledFar;   // copies with the replaced layers tiled by tiledFor and tiledFarFor
     private static float tiledFor, tiledFarFor;
     private static Material near, far;
+    private static Material failed;                 // a terrain whose arrays weren't there, not tried again
     private static bool building;
     private static int replaced;
     private static string state = "not started";
@@ -52,6 +53,10 @@ public static class GfxTerrainTextures
     public static void Update(EntityPlayerLocal player)
     {
         Material terrain = TerrainMaterial(out Material distant);
+        // The Prefab Editor and Playtesting worlds have no splat map, so their terrain (Game/Terrain Surface) has no
+        // texture arrays to swap: treated like no world, so the pack still builds in the next real one
+        if (terrain != null && !terrain.HasProperty(Properties[0]))
+            terrain = null;
         bool wanted = bundlePath != null && GfxSettings.TerrainTextures == GfxTerrainTexturePack.Photoscanned;
         if (!wanted || player == null || terrain == null)
         {
@@ -65,7 +70,7 @@ public static class GfxTerrainTextures
 
         if (built == null)
         {
-            if (!building)
+            if (!building && terrain != failed)
                 GameManager.Instance.StartCoroutine(Build(terrain));
             return;
         }
@@ -93,97 +98,116 @@ public static class GfxTerrainTextures
     {
         building = true;
         state = "loading the texture pack";
-        AssetBundleCreateRequest load = AssetBundle.LoadFromFileAsync(bundlePath);
-        yield return load;
-        AssetBundle bundle = load.assetBundle;
-        if (bundle == null)
-        {
-            Log.Warning("[GraphicsExpanded] Couldn't load " + bundlePath + "; the terrain keeps the game's textures");
-            state = "the texture pack didn't load (see the log)";
-            bundlePath = null;
-            building = false;
-            yield break;
-        }
-        AssetBundleRequest all = bundle.LoadAllAssetsAsync<Texture2D>();
-        yield return all;
-
+        AssetBundle bundle = null;
         Texture2DArray[] arrays = new Texture2DArray[Properties.Length];
-        bool[] layers = null;
-        replaced = 0;
-        bool ok = true;
-        for (int p = 0; p < Properties.Length && ok; p++)
+        bool kept = false;
+        // Leaving the world while this loads destroys the terrain material: the finally still frees the bundle and
+        // lets the next world build again
+        try
         {
-            Texture2DArray game = terrain.GetTexture(Properties[p]) as Texture2DArray;
-            if (game == null)
+            AssetBundleCreateRequest load = AssetBundle.LoadFromFileAsync(bundlePath);
+            yield return load;
+            bundle = load.assetBundle;
+            if (bundle == null)
             {
-                Log.Warning("[GraphicsExpanded] The terrain has no " + Properties[p] + " array; keeping the game's textures");
-                ok = false;
-                break;
+                Log.Warning("[GraphicsExpanded] Couldn't load " + bundlePath + "; the terrain keeps the game's textures");
+                state = "the texture pack didn't load (see the log)";
+                bundlePath = null;
+                yield break;
             }
-            Texture2DArray array = new Texture2DArray(game.width, game.height, game.depth, game.graphicsFormat, TextureCreationFlags.MipChain, game.mipmapCount)
-            {
-                name = "GraphicsExpanded" + Properties[p],
-                filterMode = game.filterMode,
-                anisoLevel = game.anisoLevel,
-                wrapMode = game.wrapMode,
-                mipMapBias = game.mipMapBias,
-                hideFlags = HideFlags.HideAndDontSave,
-            };
-            // On the graphics card only: every layer is copied in there
-            array.Apply(false, true);
-            int count = 0;
-            if (layers == null)
-                layers = new bool[game.depth];
-            for (int layer = 0; layer < game.depth; layer++)
-            {
-                Texture2D replacement = bundle.LoadAsset<Texture2D>("L" + layer + Suffixes[p]);
-                bool fits = replacement != null && replacement.width == game.width && replacement.height == game.height
-                    && replacement.mipmapCount == game.mipmapCount && GraphicsFormatUtility.GetBlockSize(replacement.graphicsFormat)
-                        == GraphicsFormatUtility.GetBlockSize(game.graphicsFormat);
-                if (replacement != null && !fits)
-                    Log.Warning(string.Format("[GraphicsExpanded] Terrain texture L{0}{1} is {2}x{3} {4} with {5} mips, the game's are {6}x{7} {8} with {9}; keeping the game's layer",
-                        layer, Suffixes[p], replacement.width, replacement.height, replacement.graphicsFormat, replacement.mipmapCount,
-                        game.width, game.height, game.graphicsFormat, game.mipmapCount));
-                for (int mip = 0; mip < game.mipmapCount; mip++)
-                {
-                    if (fits)
-                        Graphics.CopyTexture(replacement, 0, mip, array, layer, mip);
-                    else
-                        Graphics.CopyTexture(game, layer, mip, array, layer, mip);
-                }
-                if (fits)
-                {
-                    count++;
-                    // Tiled by the color's layers: that's what shows
-                    if (p == 0)
-                        layers[layer] = true;
-                }
-            }
-            arrays[p] = array;
-            replaced = Mathf.Max(replaced, count);
-            yield return null;
-        }
-        // The copies live on the graphics card now; the bundle's own textures can go
-        bundle.Unload(true);
+            AssetBundleRequest all = bundle.LoadAllAssetsAsync<Texture2D>();
+            yield return all;
 
-        if (!ok)
-        {
-            foreach (Texture2DArray array in arrays)
+            bool[] layers = null;
+            replaced = 0;
+            bool ok = true;
+            for (int p = 0; p < Properties.Length && ok; p++)
             {
-                if (array != null)
-                    Object.Destroy(array);
+                if (terrain == null)
+                {
+                    state = "no world";
+                    yield break;
+                }
+                Texture2DArray game = terrain.GetTexture(Properties[p]) as Texture2DArray;
+                if (game == null)
+                {
+                    Log.Warning("[GraphicsExpanded] The terrain has no " + Properties[p] + " array; keeping the game's textures");
+                    ok = false;
+                    break;
+                }
+                Texture2DArray array = new Texture2DArray(game.width, game.height, game.depth, game.graphicsFormat, TextureCreationFlags.MipChain, game.mipmapCount)
+                {
+                    name = "GraphicsExpanded" + Properties[p],
+                    filterMode = game.filterMode,
+                    anisoLevel = game.anisoLevel,
+                    wrapMode = game.wrapMode,
+                    mipMapBias = game.mipMapBias,
+                    hideFlags = HideFlags.HideAndDontSave,
+                };
+                // On the graphics card only: every layer is copied in there
+                array.Apply(false, true);
+                int count = 0;
+                if (layers == null)
+                    layers = new bool[game.depth];
+                for (int layer = 0; layer < game.depth; layer++)
+                {
+                    Texture2D replacement = bundle.LoadAsset<Texture2D>("L" + layer + Suffixes[p]);
+                    bool fits = replacement != null && replacement.width == game.width && replacement.height == game.height
+                        && replacement.mipmapCount == game.mipmapCount && GraphicsFormatUtility.GetBlockSize(replacement.graphicsFormat)
+                            == GraphicsFormatUtility.GetBlockSize(game.graphicsFormat);
+                    if (replacement != null && !fits)
+                        Log.Warning(string.Format("[GraphicsExpanded] Terrain texture L{0}{1} is {2}x{3} {4} with {5} mips, the game's are {6}x{7} {8} with {9}; keeping the game's layer",
+                            layer, Suffixes[p], replacement.width, replacement.height, replacement.graphicsFormat, replacement.mipmapCount,
+                            game.width, game.height, game.graphicsFormat, game.mipmapCount));
+                    for (int mip = 0; mip < game.mipmapCount; mip++)
+                    {
+                        if (fits)
+                            Graphics.CopyTexture(replacement, 0, mip, array, layer, mip);
+                        else
+                            Graphics.CopyTexture(game, layer, mip, array, layer, mip);
+                    }
+                    if (fits)
+                    {
+                        count++;
+                        // Tiled by the color's layers: that's what shows
+                        if (p == 0)
+                            layers[layer] = true;
+                    }
+                }
+                arrays[p] = array;
+                replaced = Mathf.Max(replaced, count);
+                yield return null;
             }
-            state = "the terrain's arrays weren't there (see the log)";
-            bundlePath = null;
+
+            if (!ok)
+            {
+                state = "the terrain's arrays weren't there (see the log)";
+                failed = terrain;
+            }
+            else
+            {
+                built = arrays;
+                ours = layers;
+                kept = true;
+                Log.Out(string.Format("[GraphicsExpanded] Terrain texture pack ready: {0} of {1} layers replaced ({2}, {3} mips)",
+                    replaced, arrays[0].depth, arrays[0].graphicsFormat, arrays[0].mipmapCount));
+            }
         }
-        else
+        finally
         {
-            built = arrays;
-            ours = layers;
-            Log.Out(string.Format("[GraphicsExpanded] Terrain texture pack ready: {0} of {1} layers replaced ({2}, {3} mips)",
-                replaced, arrays[0].depth, arrays[0].graphicsFormat, arrays[0].mipmapCount));
+            // The copies live on the graphics card now; the bundle's own textures can go
+            if (bundle != null)
+                bundle.Unload(true);
+            if (!kept)
+            {
+                foreach (Texture2DArray array in arrays)
+                {
+                    if (array != null)
+                        Object.Destroy(array);
+                }
+            }
+            building = false;
         }
-        building = false;
     }
 
     private static void Apply(Material terrain, Material distant)
@@ -202,8 +226,15 @@ public static class GfxTerrainTextures
         }
         for (int p = 0; p < Properties.Length; p++)
         {
-            if (terrain.GetTexture(Properties[p]) != built[p])
+            Texture current = terrain.GetTexture(Properties[p]);
+            if (current != built[p])
+            {
+                // The game puts new arrays on when Texture Quality changes (and unloads the old ones): they're the
+                // ones to put back now
+                if (current != null)
+                    originals[p] = current;
                 terrain.SetTexture(Properties[p], built[p]);
+            }
             if (distant != null && distant.HasProperty(Properties[p]) && distant.GetTexture(Properties[p]) != built[p])
                 distant.SetTexture(Properties[p], built[p]);
         }

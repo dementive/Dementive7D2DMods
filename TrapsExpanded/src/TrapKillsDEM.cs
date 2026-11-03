@@ -108,9 +108,8 @@ public static class TrapKillsDEM
         if (!weapon && touched.TryGetValue(victim.entityId, out Mark m) && m.Name != null)
         {
             float age = Time.time - m.Time;
-            if (age <= TouchWindow || (m.Fire && age <= FireWindow))
+            if ((age <= TouchWindow || (m.Fire && age <= FireWindow)) && Credit(victim, m.Pos, m.Name))
             {
-                Credit(victim, m.Pos, m.Name);
                 return;
             }
         }
@@ -121,16 +120,24 @@ public static class TrapKillsDEM
         }
     }
 
-    private static void Credit(EntityAlive victim, Vector3i pos, string name)
+    /// <summary>The kill goes to the trap at pos, if it's still there: a trap picked up (or swapped for another)
+    /// since it touched the zombie gets nothing, since crediting it would replace the record of whatever stands there
+    /// now. Returns whether it was credited.</summary>
+    private static bool Credit(EntityAlive victim, Vector3i pos, string name)
     {
+        World world = GameManager.Instance.World;
+        if (world == null || world.GetBlock(pos).Block?.GetBlockName() != name)
+        {
+            return false;
+        }
         TrapStoreDEM.AddKill(pos, name);
         BloodMoonDEM.TrapKill(pos, name);
-        World world = GameManager.Instance.World;
-        if (world != null && world.GetBlock(pos).Block is BlockTrapDEM)
+        if (world.GetBlock(pos).Block is BlockTrapDEM)
         {
             OverchargerControllerDEM.ShareKill(world, pos);
         }
         SalvageHopperControllerDEM.TrapKill(world, victim);
+        return true;
     }
 
     private static void Prune()

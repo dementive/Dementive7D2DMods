@@ -211,6 +211,8 @@ public static class GfxJuiceEffects
             return;
         if (response.Source.BuffClass != null)
             return;     // bleeding and burning ticks
+        if (response.Source.GetSource() == EnumDamageSource.Internal)
+            return;     // falls, suffocation and other mods' nudges (a 1-point stagger) with nothing hitting the body
         Vector3 at = response.Source.getHitTransformPosition();
         if (at.sqrMagnitude < 1e-4f)
             at = victim.position + Vector3.up * victim.height * 0.6f;

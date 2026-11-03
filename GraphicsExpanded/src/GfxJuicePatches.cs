@@ -147,6 +147,8 @@ public class GfxPatch_JuiceGunfire
 [HarmonyPatch(typeof(GameManager), nameof(GameManager.ChangeBlocks))]
 public class GfxPatch_JuiceBlockChanges
 {
+    private const int HeavyHit = 20;
+
     static void Prefix(GameManager __instance, List<BlockChangeInfo> _blocksToChange)
     {
         if (_blocksToChange == null || _blocksToChange.Count == 0 || _blocksToChange.Count > 8 || !GfxJuice.On(GfxJuice.Area.Breaking))
@@ -159,7 +161,8 @@ public class GfxPatch_JuiceBlockChanges
                 if (!change.bChangeBlockValue && !change.bChangeDamage || !change.blockValueRef.TryGetBlockPos(out Vector3i pos))
                     continue;
                 BlockValue old = world.GetBlock(pos);
-                if (!old.isair && old.type == change.blockValue.type && change.blockValue.damage > old.damage)
+                // Something heavy: a zombie's swing is 100, while a few points at a time are wear (a trap working)
+                if (!old.isair && old.type == change.blockValue.type && change.blockValue.damage >= old.damage + HeavyHit)
                     GfxJuiceEffects.BlockDamaged(pos.ToVector3() + new Vector3(0.5f, 0.5f, 0.5f));
             }
         }

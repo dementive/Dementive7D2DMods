@@ -3,7 +3,12 @@
 		<!-- The traps' statuses on zombies. The mod's C# picks the buff and its duration (traps' levels lengthen
 		     them) and sets the cvars that choose a buff's strength; the buffs do the rest on the server and sync like
 		     vanilla ones. Big zombies (tag boss) get half the slows. Effects the game's particle list doesn't have
-		     (dripping water and tar, frost) are attached by the C#. -->
+		     (dripping water and tar, frost) are attached by the C#.
+		     Timed statuses (Soaked, Tarred, Burning, Chilled, Frozen, FrozenImmune, Held): a duration passed to AddBuff
+		     would be shared by every zombie, so their duration here is the longest any trap sets (upgrade and level 5)
+		     and TrapStatusDEM.AddTimed winds each zombie's own timer forward. Clients run their copy for this full
+		     duration, so each one removes itself when it finishes (the game syncs that removal). Raise these if a
+		     trap's duration properties go up. -->
 
 		<!-- Tesla Coil jolt: a one-second near stop, with the vanilla shock sparks. No damage of its own. The coil also
 		     starts the vanilla electrocute flinch (EntityAlive.Electrocuted) when it adds this. -->
@@ -24,10 +29,10 @@
 
 		<!-- Soaked (Sprinkler): 15% slower (half that on big zombies), can't catch fire (vanilla fire, the traps' fire
 		     or an Inferno), and the Tesla Coil hits it harder (see the coil's Soaked properties). Being soaked again
-		     restarts it. -->
+		     restarts it. 10 s, Deluge 20 s, levels up to x1.4: 28 s here. -->
 		<buff name="buffDementiveTrapsSoaked" hidden="true">
 			<stack_type value="replace"/>
-			<duration value="10"/>
+			<duration value="28"/>
 			<effect_group>
 				<requirement name="!EntityTagCompare" tags="boss"/>
 				<passive_effect name="RunSpeed" operation="perc_subtract" value=".15"/>
@@ -43,6 +48,7 @@
 			<effect_group>
 				<passive_effect name="BuffResistance" operation="base_set" value="1" tags="buffBurningZombie,buffBurningElement,buffBurningEnvironment,buffBurningFlamingArrow,buffBurningMolotov,buffIsOnFire,buffDementiveTrapsBurning,buffDementiveTrapsInferno"/>
 				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffBurningZombie,buffBurningElement,buffBurningEnvironment,buffBurningFlamingArrow,buffBurningMolotov,buffIsOnFire,buffDementiveTrapsBurning,buffDementiveTrapsInferno"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveBuff" buff="buffDementiveTrapsSoaked"/>
 			</effect_group>
 		</buff>
 
@@ -70,10 +76,14 @@
 
 		<!-- Tarred (Grease Slick, Tar Sprayer): 35% slower; cvar dementiveTarLevel 2 (Deep Grease) 55%, 3 (Sticky Tar)
 		     60%; half that on big zombies. Any fire turns it into an Inferno (unless it's soaked): the traps' fire does
-		     it in the C#, vanilla fire (molotovs, flaming arrows, burning ground) here within a second. -->
+		     it in the C#, vanilla fire (molotovs, flaming arrows, burning ground) here within a second. 12 s, levels up
+		     to x1.4: 16.8 s here. -->
 		<buff name="buffDementiveTrapsTarred" hidden="true">
 			<stack_type value="replace"/>
-			<duration value="12"/>
+			<duration value="16.8"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveBuff" buff="buffDementiveTrapsTarred"/>
+			</effect_group>
 			<effect_group>
 				<requirement name="!EntityTagCompare" tags="boss"/>
 				<requirement name="CVarCompare" cvar="dementiveTarLevel" operation="LT" value="2"/>
@@ -125,15 +135,17 @@
 		</buff>
 
 		<!-- The traps' own fire (Burn Barrel, Flame Vent, Napalm): 5 damage a second for as long as the trap sets
-		     (8 s from a Burn Barrel). Weaker than a molotov's fire on purpose: these traps are cheap and run all night. -->
+		     (8 s from a Burn Barrel). Weaker than a molotov's fire on purpose: these traps are cheap and run all night.
+		     Burn Barrel 8 s with up to x1.32 from levels: 10.6 s here. -->
 		<buff name="buffDementiveTrapsBurning" hidden="true">
 			<damage_type value="heat"/>
 			<stack_type value="replace"/>
-			<duration value="8"/>
+			<duration value="10.6"/>
 			<effect_group>
 				<passive_effect name="HealthChangeOT" operation="base_subtract" value="5"/>
 				<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_onFire" parent_transform=".body" shape_mesh="true"/>
 				<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_onFire"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveBuff" buff="buffDementiveTrapsBurning"/>
 				<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_onFire"/>
 				<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="p_onFire"/>
 			</effect_group>
@@ -183,11 +195,14 @@
 		</buff>
 
 		<!-- Chilled (Cryo Vent): cvar dementiveChill stacks, 20% slower each (half on big zombies). The vent freezes
-		     the zombie when enough stacks build up. -->
+		     the zombie when enough stacks build up. 4 s, Frost Field 9 s, levels up to x1.4: 12.6 s here. -->
 		<buff name="buffDementiveTrapsChilled" hidden="true">
 			<damage_type value="cold"/>
 			<stack_type value="replace"/>
-			<duration value="4"/>
+			<duration value="12.6"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveBuff" buff="buffDementiveTrapsChilled"/>
+			</effect_group>
 			<effect_group>
 				<requirement name="!EntityTagCompare" tags="boss"/>
 				<requirement name="CVarCompare" cvar="dementiveChill" operation="LT" value="2"/>
@@ -219,34 +234,41 @@
 		</buff>
 
 		<!-- Frozen (Cryo Vent): frozen stiff for as long as the vent sets (2 s, 3 with Deep Freeze). Blunt and crushing
-		     hits do double damage to it (in the C#). Big zombies never freeze. -->
+		     hits do double damage to it (in the C#). Big zombies never freeze. Deep Freeze 3 s, levels up to x1.4: 4.2 s
+		     here. -->
 		<buff name="buffDementiveTrapsFrozen" hidden="true">
 			<damage_type value="cold"/>
 			<stack_type value="ignore"/>
-			<duration value="2"/>
+			<duration value="4.2"/>
 			<effect_group>
 				<passive_effect name="RunSpeed" operation="perc_subtract" value="1"/>
 				<passive_effect name="WalkSpeed" operation="perc_subtract" value="1"/>
 				<passive_effect name="CrouchSpeed" operation="perc_subtract" value="1"/>
 				<passive_effect name="JumpStrength" operation="perc_subtract" value="1"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveBuff" buff="buffDementiveTrapsFrozen"/>
 			</effect_group>
 		</buff>
 
-		<!-- After a freeze: can't freeze again until this ends (the freeze plus 6 s; the vent sets it). -->
+		<!-- After a freeze: can't freeze again until this ends (the freeze plus 6 s; the vent sets it, so the longest
+		     freeze plus 6 here). -->
 		<buff name="buffDementiveTrapsFrozenImmune" hidden="true">
 			<stack_type value="ignore"/>
-			<duration value="8"/>
+			<duration value="10.2"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveBuff" buff="buffDementiveTrapsFrozenImmune"/>
+			</effect_group>
 		</buff>
 
-		<!-- Held (Bear Trap): can't move for as long as the trap sets. -->
+		<!-- Held (Bear Trap): can't move for as long as the trap sets (3 s, big zombies 1 s, Heavy Jaws 5 s here). -->
 		<buff name="buffDementiveTrapsHeld" hidden="true">
 			<stack_type value="ignore"/>
-			<duration value="3"/>
+			<duration value="5"/>
 			<effect_group>
 				<passive_effect name="RunSpeed" operation="perc_subtract" value="1"/>
 				<passive_effect name="WalkSpeed" operation="perc_subtract" value="1"/>
 				<passive_effect name="CrouchSpeed" operation="perc_subtract" value="1"/>
 				<passive_effect name="JumpStrength" operation="perc_subtract" value="1"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveBuff" buff="buffDementiveTrapsHeld"/>
 			</effect_group>
 		</buff>
 

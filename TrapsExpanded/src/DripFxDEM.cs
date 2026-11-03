@@ -112,6 +112,11 @@ public static class FxDEM
     public static Transform Vanilla(string name, Vector3 worldPos, Quaternion rotation, float seconds,
         Transform parent = null)
     {
+        // The game files its particle effects without their prefabs' p_ (p_burning_barrel is "burning_barrel")
+        if (name != null && name.StartsWith("p_"))
+        {
+            name = name.Substring(2);
+        }
         if (GameManager.IsDedicatedServer || !ParticleEffect.IsAvailable(name))
         {
             return null;

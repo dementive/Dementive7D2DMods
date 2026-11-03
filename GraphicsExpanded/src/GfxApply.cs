@@ -44,23 +44,24 @@ public static class GfxApply
     {
         if (GameManager.IsDedicatedServer)
             return;
+        // Each part on its own, so one that breaks is logged once and doesn't stop the others
+        EntityPlayerLocal player = Player();
+        Camera camera = PlayerCamera();
+        try { GfxInput.Update(); } catch (Exception e) { Failed("input", e); }
+        try { GfxTerrain.Update(player); } catch (Exception e) { Failed("far terrain", e); }
+        try { GfxTerrainTextures.Update(player); } catch (Exception e) { Failed("ground textures", e); }
+        try { GfxForest.Update(player, camera); } catch (Exception e) { Failed("distant trees", e); }
+        try { GfxFarShadows.Update(player, camera); } catch (Exception e) { Failed("far shadows", e); }
+        try { GfxDistantGrass.Update(player, camera); } catch (Exception e) { Failed("distant grass", e); }
+        try { GfxAmbience.Update(player, camera); } catch (Exception e) { Failed("ambient life", e); }
+        try { GfxDetailSwaps.Update(); } catch (Exception e) { Failed("plant detail", e); }
+        try { GfxWeather.Update(player, camera, Time.deltaTime); } catch (Exception e) { Failed("weather", e); }
+        try { GfxAtmosphere.Update(player, camera); } catch (Exception e) { Failed("sunbeams and fog", e); }
+        try { GfxHaze.Update(player, camera); } catch (Exception e) { Failed("haze", e); }
+        try { GfxWater.Update(player); } catch (Exception e) { Failed("water", e); }
+        try { GfxJuice.Update(player, camera); } catch (Exception e) { Failed("juice", e); }
         try
         {
-            GfxInput.Update();
-
-            Camera camera = PlayerCamera();
-            GfxTerrain.Update(Player());
-            GfxTerrainTextures.Update(Player());
-            GfxForest.Update(Player(), camera);
-            GfxFarShadows.Update(Player(), camera);
-            GfxDistantGrass.Update(Player(), camera);
-            GfxAmbience.Update(Player(), camera);
-            GfxDetailSwaps.Update();
-            GfxWeather.Update(Player(), camera, Time.deltaTime);
-            GfxAtmosphere.Update(Player(), camera);
-            GfxHaze.Update(Player(), camera);
-            GfxWater.Update(Player());
-            GfxJuice.Update(Player(), camera);
             GfxSettings.Effective = GfxMood.Apply(GfxSettings.CurrentLook, Time.deltaTime);
             if (camera != lookCamera || !lookApplied || !GfxSettings.Effective.SameAs(lookValues))
                 ApplyColor(camera);
@@ -98,8 +99,16 @@ public static class GfxApply
         }
         catch (Exception e)
         {
-            Log.Error("[GraphicsExpanded] " + e);
+            Failed("look, shadows and distances", e);
         }
+    }
+
+    private static readonly System.Collections.Generic.HashSet<string> failing = new System.Collections.Generic.HashSet<string>();
+
+    private static void Failed(string part, Exception e)
+    {
+        if (failing.Add(part))
+            Log.Error("[GraphicsExpanded] " + part + " failed (logged once; it keeps trying every frame): " + e);
     }
 
     /// <summary>
