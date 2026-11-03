@@ -147,7 +147,8 @@ public class ZedGearInfo
     public ZedSlot Slots;
     /// <summary>The first gamestage it's worn at.</summary>
     public int FromGamestage;
-    /// <summary>Taken out after review: never rolled (kept so saved zombies still load).</summary>
+    /// <summary>Taken out after review: never rolled (kept so saved zombies still load). All gear is cut now: the last
+    /// helmets went because there's no telling what another mod's zombie already wears on its head.</summary>
     public bool Cut;
     /// <summary>Rigid body armor: only fits a regular build (not fat, not female).</summary>
     public bool BodyArmor;
@@ -155,10 +156,10 @@ public class ZedGearInfo
     public static readonly Dictionary<ZedGearKind, ZedGearInfo> All = new Dictionary<ZedGearKind, ZedGearInfo>
     {
         { ZedGearKind.HardHat, Dropped(Helmet(ZedGearKind.HardHat, "HardHat", 30f)) },
-        { ZedGearKind.WeldingMask, Helmet(ZedGearKind.WeldingMask, "WeldingMask", 40f, sight: 0.7f, face: true) },
+        { ZedGearKind.WeldingMask, Dropped(Helmet(ZedGearKind.WeldingMask, "WeldingMask", 40f, sight: 0.7f, face: true)) },
         { ZedGearKind.FootballHelmet, Dropped(Helmet(ZedGearKind.FootballHelmet, "FootballHelmet", 60f, face: true)) },
-        { ZedGearKind.MotorcycleHelmet, Helmet(ZedGearKind.MotorcycleHelmet, "MotorcycleHelmet", 80f, hearing: 0.7f, face: true) },
-        { ZedGearKind.RiotHelmet, Helmet(ZedGearKind.RiotHelmet, "RiotHelmet", 100f, hearing: 0.7f, face: true) },
+        { ZedGearKind.MotorcycleHelmet, Dropped(Helmet(ZedGearKind.MotorcycleHelmet, "MotorcycleHelmet", 80f, hearing: 0.7f, face: true)) },
+        { ZedGearKind.RiotHelmet, Dropped(Helmet(ZedGearKind.RiotHelmet, "RiotHelmet", 100f, hearing: 0.7f, face: true)) },
         { ZedGearKind.MilitaryHelmet, Dropped(Helmet(ZedGearKind.MilitaryHelmet, "MilitaryHelmet", 100f)) },
         { ZedGearKind.KevlarVest, new ZedGearInfo { Id = ZedGearKind.KevlarVest, Model = "KevlarVest", Cut = true, Parts = new[] { "Spine2" },
             Covers = EnumBodyPartHit.Torso, Soak = 150f, Takes = 0.5f, Speed = 0.9f, Slots = ZedSlot.Chest | ZedSlot.Back, BodyArmor = true } },

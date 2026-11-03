@@ -22,16 +22,13 @@
 	<Setting name="HitLocations" value="true"/>
 	<!-- The 14 mutations, and strains shared by zombies that spawn together -->
 	<Setting name="Mutations" value="true"/>
-	<!-- Helmets and armor some zombies wear, knocked off when they're used up -->
-	<Setting name="Gear" value="true"/>
 	<!-- Named champions, and champion rooms in POIs -->
 	<Setting name="Champions" value="true"/>
 	<!-- The Blood Moon Alpha -->
 	<Setting name="Alpha" value="true"/>
-	<!-- Multiply how often zombies get a mutation, are champions or wear gear (1 = as designed) -->
+	<!-- Multiply how often zombies get a mutation or are champions (1 = as designed) -->
 	<Setting name="MutationRate" value="1"/>
 	<Setting name="ChampionRate" value="1"/>
-	<Setting name="GearRate" value="1"/>
 	<!-- Remnants: the props that tell who a zombie was (a knife in its shoulder, a cast, a cap). RemnantRate multiplies
 	     how many carry one -->
 	<Setting name="Remnants" value="true"/>
@@ -52,7 +49,7 @@
 	<Setting name="Voices" value="true"/>
 	<!-- Distant moans from where a horde is -->
 	<Setting name="HordeAudio" value="true"/>
-	<!-- A line about each mutation, gear piece or champion the first time you see one -->
+	<!-- A line about each mutation or champion the first time you see one -->
 	<Setting name="Tips" value="true"/>
 	<!-- A champion's name and health at the top of the screen -->
 	<Setting name="ChampionBar" value="true"/>

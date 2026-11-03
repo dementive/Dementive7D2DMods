@@ -16,15 +16,13 @@
 	<append xpath="/lootcontainers/lootgroup[@name='modGunT2']">
 		<item name="DementiveModHeadhunter"/>
 		<item name="DementiveModKnockEmDown"/>
+		<item name="DementiveModRabbitsFoot"/>
 	</append>
 	<append xpath="/lootcontainers/lootgroup[@name='modGunT1']">
 		<item name="DementiveModSpeedLoader"/>
 	</append>
 	<append xpath="/lootcontainers/lootgroup[@name='modGunT3']">
 		<item name="DementiveModSpotterTags"/>
-	</append>
-	<append xpath="/lootcontainers/lootgroup[@name='modGunMeleeT2']">
-		<item name="DementiveModRabbitsFoot"/>
 	</append>
 	<append xpath="/lootcontainers/lootgroup[@name='modArmorT2']">
 		<item name="DementiveModThorns"/>

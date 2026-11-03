@@ -2,8 +2,8 @@
 
 Every zombie in the game, vanilla or from another mod, becomes an individual. It gets its own body, voice,
 temperament and weathering, senses that react to your noise and your light, and wounds that stay where you hit it.
-It may carry a mutation or the gear it died in, and now and then it's a named champion. No new zombie types. Balanced
-to play about as hard as vanilla: mutations and gear trade a strength for a weakness. The design is in PLAN.md.
+It may carry a mutation or a remnant of who it was, and now and then it's a named champion. No new zombie types.
+Balanced to play about as hard as vanilla: mutations trade a strength for a weakness. The design is in PLAN.md.
 
 Has a DLL and a model bundle, so it has to be installed on the server and on every client, with EAC off. Settings
 are in `Settings.xml`.
@@ -72,20 +72,13 @@ from everyone, or stays out of everyone's sight for 20 s, it's gone, and so is t
 hangs about 5 to 9 m off, waiting. Half health, no attack, never breaks blocks.
 
 A mutated zombie gives the same XP as a normal one. Models never pile onto the same spot: a zombie with a growth on
-its back gets no axe in it, a helmet and a cap never meet.
+its back gets no axe in it, two hats never meet.
 
 ## Gear
 
-From gamestage 20, 15% of zombies (25% from 100) wear gear that fits their job (vanilla zombies) or anything (other
-zombies); zombies whose model already wears a hat or helmet get no helmet. Gear takes its share of each hit on
-what it covers until its soak runs out, then it's knocked off as a tumbling prop. Blunt hits wear it 50% faster,
-armor-piercing rounds go through, explosions strip it.
-
-| Gear | Covers | Takes | Soak | Cost |
-|---|---|---|---|---|
-| Welding mask | head | all | 40 | sees 30% less far |
-| Motorcycle helmet | head | all | 80 | hears 30% less far |
-| Riot helmet | head | all | 100 | hears 30% less far |
+None. Zombies used to wear armor and helmets that soaked hits until knocked off; all of it was cut. The last helmets
+went because there's no telling what another mod's zombie already wears on its head. The code is still there (`ze
+spawn ... gear=` puts a cut piece on for testing), so saved zombies with gear still load.
 
 ## Remnants
 
@@ -126,7 +119,7 @@ another adds 15% block damage, up to 60%).
 ## Also
 
 - **Horde audio:** with 8 or more zombies within 40 m, you hear distant moans from where they are.
-- **Tips:** the first time you see a mutation, gear or a champion, a line tells you what it is and what works.
+- **Tips:** the first time you see a mutation or a champion, a line tells you what it is and what works.
 
 ## Testing
 
@@ -135,7 +128,7 @@ The `ze` console command (F1):
 - `ze spawn [class] [k=v ...]` spawns a zombie 5 m ahead (zombieJoe if no class) with parts of its profile set:
   `body=`, `temper=`, `walk=`, `size=`, `speed=`, `pitch=`, `age=`, `biome=`, `mutation=Toxic,Grabber`,
   `gear=KevlarVest,HardHat`, `remnant=Axe,Sunglasses`, `dead=1` (a Possum lying "dead"), `champion=1`, `alpha=1`,
-  `plain=1`. Example: `ze spawn zombieJoe mutation=Volatile gear=RiotHelmet`.
+  `plain=1`. Example: `ze spawn zombieJoe mutation=Volatile remnant=Axe`.
 - `ze info` shows the profile of the zombie you're looking at.
 - `ze debug` shows every nearby zombie's profile and the AI tasks it's running above it.
 - `ze set <name> <value>` changes a setting for the session; `ze` lists them.

@@ -75,7 +75,9 @@ PIECES = [
         weight="Light", tint="#00BFFF",
         # The fall damage part is in buffs.xml: buffPlayerFallingDamage checks for buffDementiveArmorMarathonRunners
         signature="""
-<passive_effect name="StaminaChangeOT" operation="perc_add" value=".3" tags="running,swimmingRun"/>
+<!-- 30% of the drain: sprinting is 10 x (1 - 1.45) = -4.5 a second and fast swimming 10 x (1 - 1.9) = -9 -->
+<passive_effect name="StaminaChangeOT" operation="perc_add" value=".135" tags="running"/>
+<passive_effect name="StaminaChangeOT" operation="perc_add" value=".27" tags="swimmingRun"/>
 <passive_effect name="JumpStrength" operation="perc_add" value=".3"/>
 <triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="buffDementiveArmorMarathonRunners"/>
 <triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffDementiveArmorMarathonRunners"/>""",

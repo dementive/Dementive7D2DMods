@@ -139,7 +139,7 @@ MODS = [
          ability="Whatever you hit is marked through walls for every player for 4 to 12 seconds (by quality)."),
 
     # --- Weapons and tools ---
-    dict(name="DementiveModRabbitsFoot", title="Rabbit's Foot", slot="weapon,tool", trader="modsTier2", loot="modGunMeleeT2", shop="groupMeleeMods",
+    dict(name="DementiveModRabbitsFoot", title="Rabbit's Foot", slot="weapon,tool", trader="modsTier2", loot="modGunT2", shop="groupMeleeMods",
          icon="modGunMeleeTheHunter", tint="#9ACD32",
          recipe=[("resourceLeather", 4), ("resourceCloth", 3), ("resourceGlue", 2)],
          effects=[group(f"""
