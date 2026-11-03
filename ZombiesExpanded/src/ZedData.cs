@@ -294,6 +294,17 @@ public enum ZedRemnant : byte
     FannyPack,
     Handcuffs,
     AnkleMonitor,
+    // Round 4: more things stuck in them, one per spot on the body (saved by number: only ever add at the end)
+    Spear,
+    Shovel,
+    Cleaver,
+    Hatchet,
+    Crowbar,
+    SkiPole,
+    PoolCue,
+    Fishhook,
+    Nails,
+    PadlockChain,
 }
 
 /// <summary>
@@ -360,6 +371,17 @@ public class ZedRemnantInfo
         R(ZedRemnant.FannyPack, ZedSlot.Waist, cut: true);
         R(ZedRemnant.Handcuffs, ZedSlot.RightHand, anyone: false, cut: true);
         R(ZedRemnant.AnkleMonitor, ZedSlot.RightLeg, anyone: false);
+        R(ZedRemnant.Spear, ZedSlot.Belly);
+        R(ZedRemnant.Shovel, ZedSlot.Back);
+        R(ZedRemnant.Cleaver, ZedSlot.LeftShoulder);
+        R(ZedRemnant.Hatchet, ZedSlot.RightLeg);
+        R(ZedRemnant.Crowbar, ZedSlot.Chest);
+        R(ZedRemnant.SkiPole, ZedSlot.LeftLeg, cut: true);
+        R(ZedRemnant.PoolCue, ZedSlot.RightShoulder, cut: true);
+        R(ZedRemnant.Fishhook, ZedSlot.RightArm, cut: true);
+        R(ZedRemnant.Nails, ZedSlot.LeftArm);
+        // On the forearm bone at the wrist
+        R(ZedRemnant.PadlockChain, ZedSlot.LeftHand);
     }
 
     /// <summary>What fits a vanilla zombie's job, by its family (zombies not listed pick from the anyone ones).</summary>
@@ -368,14 +390,14 @@ public class ZedRemnantInfo
         { "zombieNurse", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.ArmCast, ZedRemnant.Headphones } },
         { "zombieLab", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.GasMask } },
         { "zombieBusinessMan", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.KitchenKnife, ZedRemnant.ChainNecklace } },
-        { "zombieInmate", new[] { ZedRemnant.AnkleMonitor, ZedRemnant.Screwdriver, ZedRemnant.KitchenKnife, ZedRemnant.Noose } },
-        { "zombieJanitor", new[] { ZedRemnant.Screwdriver, ZedRemnant.GlassShards } },
-        { "zombieUtilityWorker", new[] { ZedRemnant.Rebar, ZedRemnant.BarbedWire } },
-        { "zombieBoe", new[] { ZedRemnant.Rebar, ZedRemnant.Screwdriver } },
-        { "zombieMoe", new[] { ZedRemnant.Rebar, ZedRemnant.GlassShards } },
-        { "zombieLumberjack", new[] { ZedRemnant.Axe, ZedRemnant.BarbedWire, ZedRemnant.BearTrap } },
-        { "zombieRancher", new[] { ZedRemnant.Pitchfork, ZedRemnant.BearTrap, ZedRemnant.BarbedWire, ZedRemnant.Arrows } },
-        { "zombieTomClark", new[] { ZedRemnant.Pitchfork, ZedRemnant.BearTrap, ZedRemnant.BarbedWire } },
+        { "zombieInmate", new[] { ZedRemnant.AnkleMonitor, ZedRemnant.Screwdriver, ZedRemnant.KitchenKnife, ZedRemnant.Noose, ZedRemnant.PadlockChain } },
+        { "zombieJanitor", new[] { ZedRemnant.Screwdriver, ZedRemnant.GlassShards, ZedRemnant.Crowbar } },
+        { "zombieUtilityWorker", new[] { ZedRemnant.Rebar, ZedRemnant.BarbedWire, ZedRemnant.Crowbar, ZedRemnant.Nails } },
+        { "zombieBoe", new[] { ZedRemnant.Rebar, ZedRemnant.Screwdriver, ZedRemnant.Nails } },
+        { "zombieMoe", new[] { ZedRemnant.Rebar, ZedRemnant.GlassShards, ZedRemnant.Crowbar } },
+        { "zombieLumberjack", new[] { ZedRemnant.Axe, ZedRemnant.BarbedWire, ZedRemnant.BearTrap, ZedRemnant.Hatchet } },
+        { "zombieRancher", new[] { ZedRemnant.Pitchfork, ZedRemnant.BearTrap, ZedRemnant.BarbedWire, ZedRemnant.Arrows, ZedRemnant.Shovel } },
+        { "zombieTomClark", new[] { ZedRemnant.Pitchfork, ZedRemnant.BearTrap, ZedRemnant.BarbedWire, ZedRemnant.Shovel, ZedRemnant.Hatchet } },
         { "zombieSkateboarder", new[] { ZedRemnant.Headphones, ZedRemnant.ArmCast } },
         { "zombieYo", new[] { ZedRemnant.Headphones, ZedRemnant.Sunglasses, ZedRemnant.ChainNecklace } },
         { "zombieSteve", new[] { ZedRemnant.Headphones, ZedRemnant.Sunglasses } },
@@ -383,7 +405,7 @@ public class ZedRemnantInfo
         { "zombieMarlene", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.ChainNecklace } },
         { "zombieDarlene", new[] { ZedRemnant.Sunglasses, ZedRemnant.ArmCast } },
         { "zombieArlene", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.ChainNecklace } },
-        { "zombieBiker", new[] { ZedRemnant.ChainNecklace, ZedRemnant.Sunglasses, ZedRemnant.BarbedWire, ZedRemnant.Wristwatch } },
+        { "zombieBiker", new[] { ZedRemnant.ChainNecklace, ZedRemnant.Sunglasses, ZedRemnant.BarbedWire, ZedRemnant.Wristwatch, ZedRemnant.PadlockChain } },
         { "zombieSoldier", new[] { ZedRemnant.GasMask, ZedRemnant.ChainNecklace, ZedRemnant.CrossbowBolt, ZedRemnant.Arrows } },
         { "zombieFatHawaiian", new[] { ZedRemnant.Sunglasses, ZedRemnant.Headphones } },
         { "zombieFatCop", new[] { ZedRemnant.Sunglasses, ZedRemnant.Wristwatch, ZedRemnant.Arrows, ZedRemnant.KitchenKnife } },

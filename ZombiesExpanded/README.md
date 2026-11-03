@@ -90,7 +90,9 @@ zombie with one clamped on its ankle limps (15% slower).
 
 - **Stuck in them:** arrows, a crossbow bolt, a kitchen knife, a screwdriver, an axe, a machete, a snapped pitchfork,
   rebar through the chest, glass shards, a bear trap, barbed wire (on the forearm, a leg or round the waist, a
-  different mix on each zombie), a cut noose.
+  different mix on each zombie), a cut noose; and on the body only (so another mod's zombie never wears them oddly), a
+  homemade spear in the belly, a garden spade in the back, a meat cleaver in the shoulder, a hatchet in the thigh, a
+  crowbar hooked in the ribs, a line of nail-gun nails up an arm and a padlocked chain on a wrist.
 - **Worn:** an arm cast, cracked glasses, sunglasses, headphones, a gas mask, a chain necklace, an
   ankle monitor.
 

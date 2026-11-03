@@ -128,3 +128,26 @@ project):
 These renders are what counts: the vanilla zombies are slimmer than the stand-in at the front of the chest, the neck
 and the limbs, and the game's shader shows pale, glossy or saturated materials brighter and flatter than Blender
 does. The nurse's hair shows pink in the editor (it can't draw the game's hair shader); ignore that.
+
+## Round 4: stuck in them, part two (2026-11-03)
+
+The "stuck in them" props survived the first review best, so ten more in the same grim style. **Body only, never the
+head or face:** other mods' zombies may wear something of their own up there. Each sits on its own spot (the slot in
+brackets), so they spread round the body instead of piling onto the back. Same rules as above: sink 3 to 4 cm past the
+stand-in, show the wound as drying blood and gore on the object, dark and dirty, small props up to 1,500 triangles at
+512.
+
+| Name | Script | Parts | What |
+|---|---|---|---|
+| Spear | spear.py | `Spine1#Spear` | [Belly] A homemade spear (a big kitchen knife lashed to a broom handle with grimy duct tape) driven into the belly a little left of center, from the front and slightly below; the tip doesn't come out the back. The handle is snapped about 45 cm out, the splintered end drooping a little. |
+| Shovel | shovel.py | `Spine2#Shovel` | [Back] A garden spade's blade driven into the upper right back (across from the axe's left shoulder blade), the ash shaft snapped about 50 cm out and angled up and back. Rusty blade, the shaft dark with handling. |
+| Cleaver | cleaver.py | `LeftShoulder#Cleaver` | [LeftShoulder] A heavy meat cleaver chopped down into the top of the left shoulder, between the neck and the shoulder joint, the blade sunk to half its height, the wooden handle sticking up and out to the side. |
+| Hatchet | hatchet.py | `RightUpLeg#Hatchet` | [RightLeg] A small camp hatchet buried in the front-outside of the right thigh, the handle out and down. |
+| Crowbar | crowbar.py | `Spine1#Crowbar` | [Chest] A rusty crowbar with its hooked claw end caught in under the right lower ribs at the side, the straight bar hanging down and out past the right hip (not crossing in front of the thigh, which swings when it walks). |
+| SkiPole | ski_pole.py | `LeftLeg#Pole` | [LeftLeg] The top half of a snapped aluminum ski pole driven into the back of the left calf, the grip and its strap out behind and slightly down, the bent, snapped tube end in the body. |
+| PoolCue | pool_cue.py | `RightShoulder#Cue` | [RightShoulder] The thick half of a snapped pool cue jabbed into the back of the right shoulder (behind the joint), splintered end in the body, the butt with its wrap and rubber bumper sticking out about 45 cm behind and up. |
+| Fishhook | fishhook.py | `RightForeArm#Hook` | [RightArm] A big treble fishhook through the outside of the right forearm, 20 to 30 cm of torn line hanging (keep it short and rigid, hanging down with the body upright) with a battered, faded fishing lure on the end. |
+| Nails | nails.py | `LeftArm#Nails`, `LeftForeArm#Nails` | [LeftArm] A line of 6 to 10 framing nails from a nail gun driven into the outside of the left upper arm and forearm, heads 1 to 2 cm proud, a couple bent over, a scrap of the paper collation strip on one, rust and blood. |
+| PadlockChain | padlock_chain.py | `LeftForeArm#Chain` | [LeftHand] Two loops of heavy rusty chain locked round the left wrist with a big padlock, and a short torn length (15 to 20 cm) hanging. On the forearm bone, close to the wrist. |
+
+**After the review (2026-11-03):** kept Spear, Shovel, Cleaver, Hatchet, Crowbar, Nails and PadlockChain. Cut (scripts moved to `blender/cut/`, not built): SkiPole, PoolCue and Fishhook.
