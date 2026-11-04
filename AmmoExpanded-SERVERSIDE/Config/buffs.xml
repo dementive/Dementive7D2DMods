@@ -23,6 +23,35 @@
 				<triggered_effect trigger="onSelfBuffStack" action="RemoveBuff" buff="buffDementiveAmmoExplosiveTipKill"/>
 			</effect_group>
 		</buff>
+
+		<!-- Incendiary Rocket: the blast adds this to everything it hits (on the server). Zombies, animals and bandits
+		     catch the vanilla flaming arrow burn; players and anything else are left alone -->
+		<buff name="buffDementiveAmmoRocketIncendiary" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			<effect_group>
+				<requirement name="EntityTagCompare" target="self" tags="zombie,animal,bandit"/>
+				<requirement name="CVarCompare" target="self" cvar="_underwater" operation="LT" value="0.3"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" target="self" cvar="$buffBurningFlamingArrowDuration" operation="set" value="14"/>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="self" buff="buffBurningFlamingArrow"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffDementiveAmmoRocketIncendiary"/>
+			</effect_group>
+		</buff>
+
+		<!-- Concussion Rocket: the same, with the vanilla knockdown (the bean bag's) instead of fire -->
+		<buff name="buffDementiveAmmoRocketConcussion" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			<effect_group>
+				<requirement name="EntityTagCompare" target="self" tags="zombie,animal,bandit"/>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="self" buff="buffInjuryKnockdown01"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffDementiveAmmoRocketConcussion"/>
+			</effect_group>
+		</buff>
 	</append>
 
 </Dementive>

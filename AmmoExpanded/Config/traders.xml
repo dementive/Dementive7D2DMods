@@ -17,6 +17,8 @@
 		<item name="DementiveAmmo44Explosive" count="7,30" prob="0.3"/>
 		<item name="DementiveAmmoShotgunDragonsBreath" count="7,50" prob="0.3"/>
 		<item name="DementiveAmmoShotgunFlechette" count="7,50" prob="0.3"/>
+		<item name="DementiveAmmoRocketIncendiary" count="1,2" prob="0.3"/>
+		<item name="DementiveAmmoRocketConcussion" count="1,2" prob="0.3"/>
 	</append>
 	<append xpath="/traders/trader_item_groups/trader_item_group[@name='ammoArrowsBolts']">
 		<item name="DementiveAmmoArrowBarbed" count="10,30" prob="0.3"/>
@@ -40,6 +42,8 @@
 		<item name="DementiveAmmoBoltBarbed" count="10,30" prob="0.3"/>
 		<item name="DementiveAmmoArrowBlunt" count="10,30" prob="0.3"/>
 		<item name="DementiveAmmoBoltBlunt" count="10,30" prob="0.3"/>
+		<item name="DementiveAmmoRocketIncendiary" count="1,2" prob="0.3"/>
+		<item name="DementiveAmmoRocketConcussion" count="1,2" prob="0.3"/>
 	</append>
 
 	<insertBefore xpath="/traders/trader_item_groups/trader_item_group[@name='schematicsModsCommon']">
@@ -59,6 +63,8 @@
 			<item name="DementiveAmmoBoltBarbedSchematic"/>
 			<item name="DementiveAmmoArrowBluntSchematic"/>
 			<item name="DementiveAmmoBoltBluntSchematic"/>
+			<item name="DementiveAmmoRocketIncendiarySchematic"/>
+			<item name="DementiveAmmoRocketConcussionSchematic"/>
 		</trader_item_group>
 	</insertBefore>
 	<append xpath="/traders/trader_item_groups/trader_item_group[@name='schematicsModsCommon']">

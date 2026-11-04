@@ -2,8 +2,8 @@
 
 Usage: python gen_ammo.py <game dir> <AmmoExpanded dir> [<AmmoExpanded-SERVERSIDE dir>]
 Each ammo type Extends a vanilla ammo item and carries copies of its effect groups (those are not inherited), with
-edited damage and a signature effect group, plus a schematic that unlocks its recipe. Every gun, bow and crossbow
-whose ammo list is the vanilla list for that caliber gets the new ammo appended. Rewrites Config/items.xml,
+edited damage and a signature effect group, plus a schematic that unlocks its recipe. Every gun, bow, crossbow and
+rocket launcher whose ammo list is the vanilla list for that caliber gets the new ammo appended. Rewrites Config/items.xml,
 buffs.xml, recipes.xml, loot.xml, traders.xml and Localization.csv, and paints the vanilla icons into
 UIAtlases/ItemIconAtlas with Scripts/bin/IconTool.exe (ICONS). The server-side copy uses the vanilla icons with a color tint.
 """
@@ -28,6 +28,8 @@ CALIBERS = {
     "shotgun": dict(list="ammoShotgunShell,ammoShotgunSlug,ammoShotgunBreachingSlug", loot="groupShotgunShell", trader="15,100"),
     "arrow": dict(list="ammoArrowStone,ammoArrowIron,ammoArrowSteelAP,ammoArrowFlaming,ammoArrowExploding", loot="groupArrow", trader="20,60"),
     "bolt": dict(list="ammoCrossbowBoltStone,ammoCrossbowBoltIron,ammoCrossbowBoltSteelAP,ammoCrossbowBoltFlaming,ammoCrossbowBoltExploding", loot="groupCrossbowBolt", trader="20,60"),
+    # Rockets have one loot group, not Small/Medium/Large ones
+    "rocket": dict(list="ammoRocketHE,ammoRocketFrag", loot_groups=["groupAmmoRocket"], trader="1,4"),
 }
 
 # Hit trigger: guns fire the selected ammo's events with the gun's own (ItemValue.FireEvent), arrows and bolts on impact
@@ -83,6 +85,11 @@ def block(v):
 
 def prop(name, v):
     return (r'(name="%s" operation="base_set" value=")[\d.]+(")' % name, r"\g<1>%s\2" % v)
+
+
+def disp(name, v):
+    """A display_value in the copied effect group (rockets show their blast this way)."""
+    return (r'(<display_value name="%s" value=")[\d.]+(")' % name, r"\g<1>%s\2" % v)
 
 
 AMMO = [
@@ -183,6 +190,24 @@ AMMO = [
          recipe=[("resourceWood", 2), ("resourceFeather", 1), ("resourceCloth", 1)],
          lore="A crossbow bolt with a heavy padded head. It won't pierce much, but it lands like a punch.",
          ability="50% chance to knock the target down."),
+    # --- Rockets: the blast's Buff goes to every entity it hits (Explosion.AttackEntites, on the server), and the
+    #     buff (buffs.xml) passes the burn or knockdown on to zombies, animals and bandits only ---
+    dict(name="DementiveAmmoRocketIncendiary", title="Incendiary Rocket", parent="ammoRocketHE", caliber="rocket", tier=3,
+         value=500, craft_time=30,
+         explosion=dict(EntityDamage=300, BlockDamage=800, RadiusBlocks=3, RadiusEntities=5, Buff="buffDementiveAmmoRocketIncendiary"),
+         edits=[block(50), disp("dExRadius", 5), disp("dExBlockDamage", 800), disp("dExEntityDamage", 300)],
+         signature=[], tint="#FF5A00",
+         recipe=[("resourceRocketTip", 1), ("resourceGunPowder", 10), ("resourceDuctTape", 2), ("ammoGasCan", 750), ("resourceRocketCasing", 1)],
+         lore="A rocket with a thermite and fuel warhead. Less punch than a high explosive one, but everything caught in it burns.",
+         ability="300 damage within 5 meters, and every zombie and animal it hits catches fire. 800 block damage, a third of a high explosive rocket's."),
+    dict(name="DementiveAmmoRocketConcussion", title="Concussion Rocket", parent="ammoRocketHE", caliber="rocket", tier=3,
+         value=500, craft_time=30,
+         explosion=dict(EntityDamage=60, BlockDamage=15, RadiusBlocks=2, RadiusEntities=6, Buff="buffDementiveAmmoRocketConcussion"),
+         edits=[block(5), disp("dExRadius", 6), disp("dExBlockDamage", 15), disp("dExEntityDamage", 60)],
+         signature=[], tint="#4FB0FF",
+         recipe=[("resourceRocketTip", 1), ("resourceGunPowder", 10), ("resourceDuctTape", 2), ("resourceScrapPolymers", 4), ("resourceRocketCasing", 1)],
+         lore="A rocket with a blast-wave warhead and almost no shrapnel. It flattens everything around it and barely scratches the walls.",
+         ability="Knocks down every zombie and animal within 6 meters, for 60 damage. Only 15 block damage, so it's safe to fire at zombies on your own walls."),
 ]
 
 # Icon recipes for IconTool.exe fx (see the ops in Scripts/WeaponsExpanded/IconTool.cs), in the style of the
@@ -192,6 +217,7 @@ BRASS = "map:#2a1500,#a8742a,#ffe2a0"
 GUNMETAL = "map:#0d0d10,#5a5a66,#d0d0dc"
 GOLD = "map:#2a1800,#d4a017,#fff4c0"
 TIP9, TIP44, TIP762, ARROWHEAD = "zone=45/0.6/0.7", "zone=45/0.62/0.72", "zone=45/0.7/0.78", "zone=45/0.5/0.6"
+WARHEAD = "zone=45/0.45/0.55"
 
 
 def incendiary_icon(tip, seed):
@@ -220,6 +246,13 @@ ICONS = {
     "DementiveAmmoBoltBarbed": [GUNMETAL, "sheen:0.4", f"pattern:splatter,c1=#7a0000,scale=6,amount=0.5,seed=4,shade=0.6,{ARROWHEAD}", "rim:#ff2020,2,0.35"],
     "DementiveAmmoArrowBlunt": ["map:#1a0f05,#8b5a2b,#e0b47a", "pattern:woodgrain,c1=#c08850,c2=#5a3415,scale=4,angle=45,op=0.6", f"map:#050505,#2a2a2a,#7a7a7a,{ARROWHEAD}"],
     "DementiveAmmoBoltBlunt": ["map:#1a0f05,#8b5a2b,#e0b47a", "pattern:woodgrain,c1=#c08850,c2=#5a3415,scale=4,angle=45,op=0.6", f"map:#050505,#2a2a2a,#7a7a7a,{ARROWHEAD}"],
+    # The vanilla rocket points up and right, its warhead the upper half
+    "DementiveAmmoRocketIncendiary": ["map:#1a0500,#8a2a0a,#ffb070", "sheen:0.35",
+                                      f"pattern:flames,c1=#ffe94d,c2=#ff3a00,c3=#140000,op=0.9,reach=0.5,count=5,seed=4,shade=0.4,{WARHEAD}",
+                                      f"emissive:#ff5a00,0.25,0.9,{WARHEAD}", "embers:#ff8a1a,10,1.8,6"],
+    "DementiveAmmoRocketConcussion": ["map:#05101c,#2f6fa6,#d8f0ff", "sheen:0.6",
+                                      f"pattern:hazard,c1=#e8f6ff,c2=#14324f,scale=7,angle=-45,op=0.75,{WARHEAD}",
+                                      "rim:#8fd8ff,2,0.6", "glow:#4fb0ff,6,0.5"],
 }
 
 BUFFS = """<Dementive>
@@ -245,6 +278,35 @@ BUFFS = """<Dementive>
 			<effect_group>
 				<triggered_effect trigger="onSelfBuffStack" action="Explode" blast_power="0" block_damage="5" block_radius="1" entity_damage="50" entity_radius="2" damage_type="Heat"/>
 				<triggered_effect trigger="onSelfBuffStack" action="RemoveBuff" buff="buffDementiveAmmoExplosiveTipKill"/>
+			</effect_group>
+		</buff>
+
+		<!-- Incendiary Rocket: the blast adds this to everything it hits (on the server). Zombies, animals and bandits
+		     catch the vanilla flaming arrow burn; players and anything else are left alone -->
+		<buff name="buffDementiveAmmoRocketIncendiary" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			<effect_group>
+				<requirement name="EntityTagCompare" target="self" tags="zombie,animal,bandit"/>
+				<requirement name="CVarCompare" target="self" cvar="_underwater" operation="LT" value="0.3"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" target="self" cvar="$buffBurningFlamingArrowDuration" operation="set" value="14"/>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="self" buff="buffBurningFlamingArrow"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffDementiveAmmoRocketIncendiary"/>
+			</effect_group>
+		</buff>
+
+		<!-- Concussion Rocket: the same, with the vanilla knockdown (the bean bag's) instead of fire -->
+		<buff name="buffDementiveAmmoRocketConcussion" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			<effect_group>
+				<requirement name="EntityTagCompare" target="self" tags="zombie,animal,bandit"/>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="self" buff="buffInjuryKnockdown01"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffDementiveAmmoRocketConcussion"/>
 			</effect_group>
 		</buff>
 	</append>
@@ -284,7 +346,7 @@ def trader_template(a):
 def build(a):
     v = van_item(a["parent"])
     # Price like the vanilla HP/AP round (or steel/flaming arrow) of the same caliber
-    value = int(van_prop(a["parent"], "EconomicValue")) * (2 if a["tier"] == 2 else 3)
+    value = a.get("value") or int(van_prop(a["parent"], "EconomicValue")) * (2 if a["tier"] == 2 else 3)
     head = [
         f"\t\t<!-- {a['title']} -->",
         f'\t\t<item name="{a["name"]}">',
@@ -295,6 +357,11 @@ def build(a):
         f'\t\t\t<property name="TraderStageTemplate" value="{trader_template(a)}"/>',
         f'\t\t\t<property name="UnlockedBy" value="{a["name"]}Schematic"/>',
     ]
+    if a.get("explosion"):
+        # Merged into the parent's Action1 Explosion (Extends), like vanilla's frag rocket does
+        head.append('\t\t\t<property class="Action1">\n\t\t\t\t<property class="Explosion">')
+        head += [f'\t\t\t\t\t<property name="{k}" value="{v}"/>' for k, v in a["explosion"].items()]
+        head.append("\t\t\t\t</property>\n\t\t\t</property>")
     blocks = re.findall(r'\n(\t<effect_group.*?\n\t</effect_group>)', v, re.S)
     blocks = [b for b in blocks if not any(f'name="{g}"' in b.split("\n")[0] for g in a.get("drop_groups", []))]
     body = "\n".join("\n".join("\t\t" + l if l else l for l in b.split("\n")) for b in blocks)
@@ -304,7 +371,7 @@ def build(a):
         if n != 1:
             raise SystemExit(f"{a['name']}: edit {pattern!r} matched nothing")
     sig = "\n".join(eg(f"{a['title']}{' ' + suffix if suffix else ''}", b) for suffix, b in a["signature"])
-    return "\n".join(head) + "\n\n" + body + "\n\n" + sig + "\n\t\t</item>\n"
+    return "\n".join(head) + "\n\n" + body + ("\n\n" + sig if sig else "") + "\n\t\t</item>\n"
 
 
 def schematic(a):
@@ -326,7 +393,7 @@ def recipe(a):
     if a.get("packmule"):
         tag = 'craft_time="2.4" tags="learnable,packMuleCrafting"'
     else:
-        tag = f'craft_time="{3.6 if a["tier"] == 2 else 4.8}" craft_area="workbench" tags="learnable,workbenchCrafting"'
+        tag = f'craft_time="{a.get("craft_time") or (3.6 if a["tier"] == 2 else 4.8)}" craft_area="workbench" tags="learnable,workbenchCrafting"'
     ings = "\n".join(f'\t\t\t<ingredient name="{n}" count="{c}"/>' for n, c in a["recipe"])
     return f'\t\t<recipe name="{a["name"]}" count="1" {tag}>\n{ings}\n\t\t</recipe>'
 
@@ -391,8 +458,7 @@ for group in ("T1", "T2"):
                 f'\t\t<item group="groupDementiveAmmoSchematics{group}" prob="3"/>\n\t</append>')
 loot.append("")
 for cal, c in CALIBERS.items():
-    for size in ("Small", "Medium", "Large"):
-        group = c["loot"] + size
+    for group in c.get("loot_groups") or [c["loot"] + size for size in ("Small", "Medium", "Large")]:
         members = [a for a in AMMO if a["caliber"] == cal]
         loot.append(f"\t<append xpath=\"/lootcontainers/lootgroup[@name='{group}']\">")
         for a in members:

@@ -1,6 +1,6 @@
 # Ammo Expanded
 
-Adds 15 special ammo types for the vanilla guns, bows and crossbows, in the same style as the base game. Each one shows up in the gun's ammo wheel next to the vanilla ammo.
+Adds 17 special ammo types for the vanilla guns, bows, crossbows and rocket launcher, in the same style as the base game. Each one shows up in the gun's ammo wheel next to the vanilla ammo.
 
 Each ammo type is unlocked by its own schematic, found in loot alongside the vanilla mod schematics and sold by traders. They are crafted at the workbench (arrows and bolts in your backpack) and cost a bit more than the AP round of their caliber. Loose rounds also turn up in ammo loot and trader stock, rarer than HP and AP rounds.
 
@@ -25,10 +25,12 @@ Adds new icons so has to be installed on server and client. `AmmoExpanded-SERVER
 | Barbed Crossbow Bolt | crossbows | 56 (Iron 59) | Always causes bleeding |
 | Blunt Arrow | bows | 30 | 40% chance to knock the target down |
 | Blunt Crossbow Bolt | crossbows | 45 | 50% chance to knock the target down |
+| Incendiary Rocket | rocket launcher | 300 within 5 m (HE 420 within 4 m) | Every zombie and animal it hits catches fire. 800 block damage (HE 2500) |
+| Concussion Rocket | rocket launcher | 60 within 6 m | Knocks down every zombie and animal it hits. Only 15 block damage, so you can fire it at zombies on your own walls |
 
 Fire is the vanilla flaming arrow burn, so the fire perks apply and burns don't stack. Bleeding and knockdowns are the vanilla effects too.
 
-Incendiary, frangible, bean bag, barbed and blunt ammo show up at the same trader stage as HP rounds and steel arrows; match grade, explosive tip, dragon's breath and flechette at the AP tier.
+Incendiary, frangible, bean bag, barbed and blunt ammo show up at the same trader stage as HP rounds and steel arrows; match grade, explosive tip, dragon's breath, flechette and the rockets at the AP tier. The rockets are crafted at the workbench like vanilla rockets (30 seconds each) and each turns up in about one rocket loot pick in ten once the loot stage reaches the AP tier.
 
 ## Guns from other mods
 
@@ -36,7 +38,7 @@ The new ammo is added to every gun whose ammo list is the vanilla list for its c
 
 ## Multiplayer
 
-Everything works in co-op and on dedicated servers. The explosive tip's blast is set off by the server, so it works for every player.
+Everything works in co-op and on dedicated servers. The explosive tip's blast is set off by the server, so it works for every player. The rockets' fire and knockdown come from the blast, which the server runs. They only land on zombies, animals and bandits, though the blast itself still hurts you like any rocket.
 
 ## Generating the mod
 
