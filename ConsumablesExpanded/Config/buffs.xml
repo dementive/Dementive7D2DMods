@@ -79,9 +79,71 @@
 				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$buffAppleMegaCrushDuration" operation="set" value="0"/>
 			</effect_group>
 
+			<!-- The search and lockpick cuts are shares of the time the perks (and a vanilla helmet) leave, like vanilla's
+			     own cuts, which stop at 99%: a flat cut on top of them pushed the time to zero or below, and then the
+			     search or lockpick never finishes. .DementiveScavHelmet is the helmet's cut (items.xml) -->
 			<effect_group>
-					<passive_effect name="ScavengingTime" operation="perc_subtract" value=".5"/>
-					<passive_effect name="LockPickTime" operation="perc_add" value="-.25"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".DementiveScavCandy" operation="set" value="1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".DementiveScavCandy" operation="subtract" value=".1">
+					<requirement name="ProgressionLevel" progression_name="perkLuckyLooter" operation="Equals" value="1"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".DementiveScavCandy" operation="subtract" value=".2">
+					<requirement name="ProgressionLevel" progression_name="perkLuckyLooter" operation="Equals" value="2"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".DementiveScavCandy" operation="subtract" value=".4">
+					<requirement name="ProgressionLevel" progression_name="perkLuckyLooter" operation="Equals" value="3"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".DementiveScavCandy" operation="subtract" value=".6">
+					<requirement name="ProgressionLevel" progression_name="perkLuckyLooter" operation="Equals" value="4"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".DementiveScavCandy" operation="subtract" value=".79">
+					<requirement name="ProgressionLevel" progression_name="perkLuckyLooter" operation="Equals" value="5"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".DementiveScavCandy" operation="subtract" value="@.DementiveScavHelmet"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".DementiveScavCandy" operation="set" value="0">
+					<requirement name="CVarCompare" cvar=".DementiveScavCandy" operation="LT" value="0"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".DementiveScavCandy" operation="multiply" value="-.5"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveScavCandy" operation="set" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveScavCandy" operation="subtract" value=".1">
+					<requirement name="ProgressionLevel" progression_name="perkLuckyLooter" operation="Equals" value="1"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveScavCandy" operation="subtract" value=".2">
+					<requirement name="ProgressionLevel" progression_name="perkLuckyLooter" operation="Equals" value="2"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveScavCandy" operation="subtract" value=".4">
+					<requirement name="ProgressionLevel" progression_name="perkLuckyLooter" operation="Equals" value="3"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveScavCandy" operation="subtract" value=".6">
+					<requirement name="ProgressionLevel" progression_name="perkLuckyLooter" operation="Equals" value="4"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveScavCandy" operation="subtract" value=".79">
+					<requirement name="ProgressionLevel" progression_name="perkLuckyLooter" operation="Equals" value="5"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveScavCandy" operation="subtract" value="@.DementiveScavHelmet"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveScavCandy" operation="set" value="0">
+					<requirement name="CVarCompare" cvar=".DementiveScavCandy" operation="LT" value="0"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveScavCandy" operation="multiply" value="-.5"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".DementiveScavCandy" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".DementiveLockCandy" operation="set" value="1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".DementiveLockCandy" operation="subtract" value=".17">
+					<requirement name="ProgressionLevel" progression_name="perkLockPicking" operation="Equals" value="1"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".DementiveLockCandy" operation="subtract" value=".2725">
+					<requirement name="ProgressionLevel" progression_name="perkLockPicking" operation="Equals" value="2"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".DementiveLockCandy" operation="subtract" value=".375">
+					<requirement name="ProgressionLevel" progression_name="perkLockPicking" operation="Equals" value="3"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".DementiveLockCandy" operation="subtract" value=".167">
+					<requirement name="ProgressionLevel" progression_name="perkGreatHeistComplete" operation="Equals" value="1"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".DementiveLockCandy" operation="set" value="0">
+					<requirement name="CVarCompare" cvar=".DementiveLockCandy" operation="LT" value="0"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".DementiveLockCandy" operation="multiply" value="-.25"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveLockCandy" operation="set" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveLockCandy" operation="subtract" value=".17">
+					<requirement name="ProgressionLevel" progression_name="perkLockPicking" operation="Equals" value="1"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveLockCandy" operation="subtract" value=".2725">
+					<requirement name="ProgressionLevel" progression_name="perkLockPicking" operation="Equals" value="2"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveLockCandy" operation="subtract" value=".375">
+					<requirement name="ProgressionLevel" progression_name="perkLockPicking" operation="Equals" value="3"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveLockCandy" operation="subtract" value=".167">
+					<requirement name="ProgressionLevel" progression_name="perkGreatHeistComplete" operation="Equals" value="1"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveLockCandy" operation="set" value="0">
+					<requirement name="CVarCompare" cvar=".DementiveLockCandy" operation="LT" value="0"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveLockCandy" operation="multiply" value="-.25"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".DementiveLockCandy" operation="set" value="0"/>
+			</effect_group>
+
+			<effect_group>
+					<passive_effect name="ScavengingTime" operation="perc_add" value="@.DementiveScavCandy"/>
+					<passive_effect name="LockPickTime" operation="perc_add" value="@.DementiveLockCandy"/>
 					<passive_effect name="LootStage" operation="base_add" value="10"/>
 					<passive_effect name="LootStage" operation="perc_add" value=".1"/>
 				<passive_effect name="WaterLossPerStaminaPointGained" operation="perc_add" value="1.2"/> <!-- regening stamina costs you water -->
