@@ -4498,6 +4498,951 @@
 			</effect_group>
 		</item>
 
+		<!-- Old Faithful -->
+		<item name="DementivegunBowOldFaithful">
+			<property name="Extends" value="gunBowT0PrimitiveBow"/>
+			<property name="CustomIcon" value="gunBowT0PrimitiveBow"/>
+			<property name="CustomIconTint" value="#FFB030"/>
+			<property name="EconomicValue" value="2500"/>
+			<property name="TraderStageTemplate" value="bowsTier2"/>
+
+			<stats>
+				<!-- Base_Random_Roll -->
+				<stat name="EntityDamage"			value="0,0,1,0,.1"/>
+				<stat name="ProjectileVelocity" 	value="0,0,1,0,.1"/>
+				<stat name="DamageFalloffRange" 	value="0,0,1,0,.1"/>
+				<stat name="DegradationMax" 		value="0,0,1,0,.1"/>
+				<!-- Q1_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="1,0,.3,.1,.5"/>
+				<stat name="ProjectileVelocity" 	value="1,0,.3,.1,.5"/>
+				<stat name="DamageFalloffRange" 	value="1,0,.3,.1,.5"/>
+				<stat name="DegradationMax" 		value="1,0,.3,.1,.5"/>
+				<!-- Q2_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="2,10,.3,.1,.5"/>
+				<stat name="ProjectileVelocity" 	value="2,10,.3,.1,.5"/>
+				<stat name="DamageFalloffRange" 	value="2,10,.3,.1,.5"/>
+				<stat name="DegradationMax" 		value="2,10,.3,.1,.5"/>
+				<!-- Q3_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="3,11,.3,.1,.5"/>
+				<stat name="ProjectileVelocity" 	value="3,11,.3,.1,.5"/>
+				<stat name="DamageFalloffRange" 	value="3,11,.3,.1,.5"/>
+				<stat name="DegradationMax" 		value="3,11,.3,.1,.5"/>
+				<!-- Q4_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="4,12,.3,.1,.5"/>
+				<stat name="ProjectileVelocity" 	value="4,12,.3,.1,.5"/>
+				<stat name="DamageFalloffRange" 	value="4,12,.3,.1,.5"/>
+				<stat name="DegradationMax" 		value="4,12,.3,.1,.5"/>
+				<!-- Q5_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="5,14,.3,.1,.5"/>
+				<stat name="ProjectileVelocity" 	value="5,14,.3,.1,.5"/>
+				<stat name="DamageFalloffRange" 	value="5,14,.3,.1,.5"/>
+				<stat name="DegradationMax" 		value="5,14,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,16,.3,.1,.5"/>
+				<stat name="ProjectileVelocity" 	value="6,16,.3,.1,.5"/>
+				<stat name="DamageFalloffRange" 	value="6,16,.3,.1,.5"/>
+				<stat name="DegradationMax" 		value="6,16,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,20,.3,.5,.7"/>
+				<stat name="ProjectileVelocity" 	value="6,20,.3,.5,1"/>
+				<stat name="DamageFalloffRange" 	value="6,20,.3,.5,.7"/>
+				<stat name="DegradationMax" 		value="6,20,.3,.5,.7"/>
+			</stats>
+			<effect_group name="DementivegunBowOldFaithful">
+				<passive_effect name="ProjectileVelocity" operation="perc_add" value="-.15" tags="perkArchery"/>
+				<passive_effect name="DamageFalloffRange" operation="base_set" value="20" tags="perkArchery"/>
+				<passive_effect name="MaxRange" operation="base_set" value="100" tags="perkArchery"/>
+				<passive_effect name="MagazineSize" operation="base_set" value="1" tags="perkArchery"/>
+				<passive_effect name="EntityDamage" operation="base_add" value="10" tags="perkArchery"/> <!-- damage offset, 45 with ammoArrowStone -->
+				<passive_effect name="EntityDamage" operation="perc_add" value=".07,.35" tier="2,6" tags="perkArchery"/> <!-- tier bonus -->
+				<passive_effect name="BlockDamage" operation="perc_add" value=".15,.75" tier="2,6" tags="perkArchery"/> <!-- tier bonus -->
+
+				<passive_effect name="SpreadDegreesVertical" operation="base_set" value="2.8" tags="perkArchery"/>
+				<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="2.8" tags="perkArchery"/>
+				<passive_effect name="SpreadMultiplierAiming" operation="base_set" value=".1" tags="perkArchery"/>
+				<passive_effect name="SpreadMultiplierCrouching" operation="base_set" value=".8" tags="perkArchery"/>
+				<passive_effect name="SpreadMultiplierWalking" operation="base_set" value="1.5" tags="perkArchery"/>
+				<passive_effect name="SpreadMultiplierRunning" operation="base_set" value="2.2" tags="perkArchery"/>
+
+				<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="2" tags="perkArchery"/>
+				<passive_effect name="WeaponHandling" operation="base_set" value=".9" tags="perkArchery"/> <!-- crosshair reset speed -->
+
+				<passive_effect name="RoundsPerMinute" operation="base_set" value="75" tags="perkArchery,bowDrawPenalty"/>
+				<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value="1.1" tags="perkArchery"/>
+
+				<!-- <passive_effect name="AttacksPerMinute" operation="perc_add" value="15"/> -->
+				<!-- <passive_effect name="AttacksPerMinute" operation="base_set" value="166"/> -->
+				<!-- AttacksPerMinute, RoundsPerMinute do NOT affect bow rate of fire -->
+
+				<passive_effect name="BurstRoundCount" operation="base_set" value="1" tags="perkArchery"/>
+				<passive_effect name="KickDegreesVerticalMin" operation="base_set" value=".5" tags="perkArchery"/>
+				<passive_effect name="KickDegreesVerticalMax" operation="base_set" value=".5" tags="perkArchery"/>
+				<passive_effect name="KickDegreesHorizontalMin" operation="base_set" value="-.2" tags="perkArchery"/>
+				<passive_effect name="KickDegreesHorizontalMax" operation="base_set" value=".2" tags="perkArchery"/>
+
+				<passive_effect name="DegradationMax" operation="base_set" value="400,700" tier="1,6" tags="perkArchery"/>
+				<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkArchery"/>
+				<passive_effect name="ModSlots" operation="base_set" value="4,4,4,4,4,4" tier="1,2,3,4,5,6"/>
+				<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+			</effect_group>
+			<effect_group name="sneak damage bonus">
+				<requirement name="CVarCompare" cvar="_crouching" operation="Equals" value="1"/>
+				<requirement name="CVarCompare" cvar="_notAlerted" operation="GT" value="0" target="other"/>
+					<passive_effect name="DamageBonus" operation="base_add" value="2"/>
+					<passive_effect name="EntityDamage" operation="perc_add" value="2" tags="perkArchery"/>
+					<display_value name="dEntityDamageSneak" value="2"/>
+			</effect_group>
+
+			<!-- Old Faithful: an arrow sticks (and can be picked up) instead of breaking when a roll is under ProjectileStickChance,
+			     which ProjectileMoveScript reads with the bow's ItemValue, so the bow's own base_set applies (after the player's .5).
+			     Flaming and exploding arrows still perc_set it to 0, and the player's glass penalty still breaks arrows on glass -->
+			<effect_group name="DementivegunBowOldFaithful arrow recovery" tiered="false">
+				<passive_effect name="ProjectileStickChance" operation="base_set" value="1"/>
+			</effect_group>
+		</item>
+
+		<!-- The Persuader -->
+		<item name="DementivemeleeWpnClubPersuader">
+			<property name="Extends" value="meleeWpnClubT0WoodenClub"/>
+			<property name="CustomIcon" value="meleeWpnClubT0WoodenClub"/>
+			<property name="CustomIconTint" value="#FFCC00"/>
+			<property name="EconomicValue" value="2500"/>
+			<property name="TraderStageTemplate" value="baseTier2"/>
+
+			<stats>
+				<!-- Base_Random_Roll -->
+				<stat name="EntityDamage"			value="0,0,1,0,.1"/>
+				<stat name="BlockDamage" 			value="0,0,1,0,.1"/>
+				<stat name="AttacksPerMinute" 		value="0,0,1,0,.02"/>
+				<stat name="StaminaLoss" 			value="0,0,1,-.01,0"/>
+				<stat name="DegradationMax" 		value="0,0,1,0,.1"/>
+				<!-- Q1_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="1,0,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="1,0,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="1,0,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="1,0,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="1,0,.3,.1,.5"/>
+				<!-- Q2_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="2,10,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="2,10,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="2,10,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="2,10,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="2,10,.3,.1,.5"/>
+				<!-- Q3_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="3,11,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="3,11,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="3,11,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="3,11,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="3,11,.3,.1,.5"/>
+				<!-- Q4_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="4,12,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="4,12,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="4,12,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="4,12,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="4,12,.3,.1,.5"/>
+				<!-- Q5_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="5,14,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="5,14,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="5,14,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="5,14,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="5,14,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,16,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="6,16,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="6,16,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="6,16,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="6,16,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,20,.3,.5,.7"/>
+				<stat name="BlockDamage" 			value="6,20,.3,.5,.7"/>
+				<stat name="AttacksPerMinute" 		value="6,20,.3,.1,.2"/>
+				<stat name="StaminaLoss" 			value="6,20,.3,-.1,-.05"/>
+				<stat name="DegradationMax" 		value="6,20,.3,.5,.7"/>
+			</stats>
+			<effect_group name="DementivemeleeWpnClubPersuader">
+				<passive_effect name="AttacksPerMinute" operation="base_set" value="61" tags="perkPummelPete,perkFlurryOfStrength"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="17.4" tags="primary"/>
+				<passive_effect name="DegradationMax" operation="base_set" value="400,700" tier="1,6" tags="perkPummelPete"/>
+				<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkPummelPete"/>
+				<passive_effect name="MaxRange" operation="base_set" value="2.4" tags="perkPummelPete"/>
+				<passive_effect name="BlockRange" operation="base_set" value="3" tags="perkPummelPete"/>
+				<passive_effect name="ModSlots" operation="base_set" value="4,4,4,4,4,4" tier="1,2,3,4,5,6"/>
+				<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+				<passive_effect name="EntityDamage" operation="base_set" value="18"/> <!-- meleeWpnClubT0WoodenClub -->
+				<passive_effect name="EntityDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkPummelPete"/> <!-- tier bonus -->
+				<passive_effect name="BlockDamage" operation="base_set" value="16"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkPummelPete"/> <!-- tier bonus -->
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.5" tags="earth"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.5" tags="stone"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.5" tags="metal"/>
+				<!-- <passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="allHarvest"/> -->
+				<passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="allToolsHarvest"/>
+				<passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="oreWoodHarvest"/>
+			</effect_group>
+			<effect_group name="Power Attack">
+				<passive_effect name="EntityDamage" operation="perc_add" value="1" tags="secondary"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value="1" tags="secondary"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="26.1" tags="secondary"/>
+			</effect_group>
+
+			<!-- The Persuader: hits that leave a zombie or animal alive have a 25% chance to daze it with vanilla's 2-second stun
+			     (buffInjuryStunned00: slower movement and attacks, wearing off over the 2 seconds, then a short stun cooldown) -->
+			<effect_group name="DementivemeleeWpnClubPersuader daze" tiered="false">
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="25"/>
+				<requirement name="IsAlive" target="other"/>
+					<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" target_tags="zombie,animal" buff="buffInjuryStunned00"/>
+			</effect_group>
+		</item>
+
+		<!-- Lead Pipe Larry -->
+		<item name="DementivemeleeWpnBatonLeadPipeLarry">
+			<property name="Extends" value="meleeWpnBatonT0PipeBaton"/>
+			<property name="CustomIcon" value="meleeWpnBatonT0PipeBaton"/>
+			<property name="CustomIconTint" value="#FF6A10"/>
+			<property name="EconomicValue" value="2500"/>
+			<property name="TraderStageTemplate" value="baseTier2"/>
+
+			<stats>
+				<!-- Base_Random_Roll -->
+				<stat name="EntityDamage"			value="0,0,1,0,.1"/>
+				<stat name="BlockDamage" 			value="0,0,1,0,.1"/>
+				<stat name="AttacksPerMinute" 		value="0,0,1,0,.02"/>
+				<stat name="StaminaLoss" 			value="0,0,1,-.01,0"/>
+				<stat name="DegradationMax" 		value="0,0,1,0,.1"/>
+				<!-- Q1_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="1,0,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="1,0,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="1,0,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="1,0,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="1,0,.3,.1,.5"/>
+				<!-- Q2_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="2,10,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="2,10,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="2,10,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="2,10,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="2,10,.3,.1,.5"/>
+				<!-- Q3_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="3,11,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="3,11,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="3,11,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="3,11,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="3,11,.3,.1,.5"/>
+				<!-- Q4_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="4,12,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="4,12,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="4,12,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="4,12,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="4,12,.3,.1,.5"/>
+				<!-- Q5_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="5,14,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="5,14,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="5,14,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="5,14,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="5,14,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,16,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="6,16,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="6,16,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="6,16,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="6,16,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,20,.3,.5,.7"/>
+				<stat name="BlockDamage" 			value="6,20,.3,.5,.7"/>
+				<stat name="AttacksPerMinute" 		value="6,20,.3,.1,.2"/>
+				<stat name="StaminaLoss" 			value="6,20,.3,-.1,-.05"/>
+				<stat name="DegradationMax" 		value="6,20,.3,.5,.7"/>
+			</stats>
+			<effect_group name="DementivemeleeWpnBatonLeadPipeLarry">
+				<passive_effect name="AttacksPerMinute" operation="base_set" value="66" tags="perkElectrocutioner,perkFlurryOfIntellect"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="14.8" tags="primary"/>
+				<passive_effect name="DegradationMax" operation="base_set" value="400,800" tier="1,6" tags="perkElectrocutioner"/>
+				<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkElectrocutioner"/>
+				<passive_effect name="MaxRange" operation="base_set" value="2.4" tags="perkElectrocutioner"/>
+				<passive_effect name="BlockRange" operation="base_set" value="3" tags="perkElectrocutioner"/>
+				<passive_effect name="ModSlots" operation="base_set" value="4,4,4,4,4,4" tier="1,2,3,4,5,6"/>
+				<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+				<passive_effect name="EntityDamage" operation="base_set" value="18"/> <!-- also .DementiveLarryBonus below -->
+				<passive_effect name="EntityDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkElectrocutioner"/> <!-- tier bonus -->
+				<passive_effect name="BlockDamage" operation="base_set" value="18"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkElectrocutioner"/> <!-- tier bonus -->
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.5" tags="earth"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.5" tags="stone"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.5" tags="metal"/>
+				<!-- <passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="allHarvest"/> -->
+				<passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="allToolsHarvest"/>
+				<passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="oreWoodHarvest"/>
+			</effect_group>
+			<effect_group name="Power Attack">
+				<passive_effect name="EntityDamage" operation="perc_add" value="1" tags="secondary"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value="1" tags="secondary"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="23.0" tags="secondary"/>
+			</effect_group>
+
+			<!-- Lead Pipe Larry: hits on living targets count up in .DementiveLarryHits, and buffDementiveLeadPipeLarry (buffs.xml)
+			     resets the count 3 seconds after the last one. RayHit fires right before that hit's damage is worked out, so the
+			     third hit in a row sets .DementiveLarryBonus to the base damage (18) for that one hit, which doubles it before every
+			     percentage bonus. The bonus is cleared again by the next hit, graze, landed attack or swing end -->
+			<effect_group name="DementivemeleeWpnBatonLeadPipeLarry combo" tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionRayHit" action="ModifyCVar" cvar=".DementiveLarryBonus" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionRayHit" action="ModifyCVar" cvar=".DementiveLarryHits" operation="add" value="1">
+					<requirement name="IsAlive" target="other"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionRayHit" action="AddBuff" buff="buffDementiveLeadPipeLarry">
+					<requirement name="IsAlive" target="other"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionRayHit" action="ModifyCVar" cvar=".DementiveLarryBonus" operation="set" value="18">
+					<requirement name="CVarCompare" cvar=".DementiveLarryHits" operation="GTE" value="3"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionRayHit" action="ModifyCVar" cvar=".DementiveLarryHits" operation="set" value="0">
+					<requirement name="CVarCompare" cvar=".DementiveLarryHits" operation="GTE" value="3"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionGrazeHit" action="ModifyCVar" cvar=".DementiveLarryBonus" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DementiveLarryBonus" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfSecondaryActionRayHit" action="ModifyCVar" cvar=".DementiveLarryBonus" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfSecondaryActionRayHit" action="ModifyCVar" cvar=".DementiveLarryHits" operation="add" value="1">
+					<requirement name="IsAlive" target="other"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfSecondaryActionRayHit" action="AddBuff" buff="buffDementiveLeadPipeLarry">
+					<requirement name="IsAlive" target="other"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfSecondaryActionRayHit" action="ModifyCVar" cvar=".DementiveLarryBonus" operation="set" value="18">
+					<requirement name="CVarCompare" cvar=".DementiveLarryHits" operation="GTE" value="3"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfSecondaryActionRayHit" action="ModifyCVar" cvar=".DementiveLarryHits" operation="set" value="0">
+					<requirement name="CVarCompare" cvar=".DementiveLarryHits" operation="GTE" value="3"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfSecondaryActionGrazeHit" action="ModifyCVar" cvar=".DementiveLarryBonus" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="ModifyCVar" cvar=".DementiveLarryBonus" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar=".DementiveLarryBonus" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar=".DementiveLarryHits" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar=".DementiveLarryBonus" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffDementiveLeadPipeLarry"/>
+				<passive_effect name="EntityDamage" operation="base_add" value="@.DementiveLarryBonus" tags="perkElectrocutioner"/>
+			</effect_group>
+		</item>
+
+		<!-- Caveman -->
+		<item name="DementivemeleeWpnSledgeCaveman">
+			<property name="Extends" value="meleeWpnSledgeT0StoneSledgehammer"/>
+			<property name="CustomIcon" value="meleeWpnSledgeT0StoneSledgehammer"/>
+			<property name="CustomIconTint" value="#FF8C1A"/>
+			<property name="EconomicValue" value="2500"/>
+			<property name="TraderStageTemplate" value="baseTier2"/>
+
+			<stats>
+				<!-- Base_Random_Roll -->
+				<stat name="EntityDamage"			value="0,0,1,0,.1"/>
+				<stat name="BlockDamage" 			value="0,0,1,0,.1"/>
+				<stat name="AttacksPerMinute" 		value="0,0,1,0,.02"/>
+				<stat name="StaminaLoss" 			value="0,0,1,-.01,0"/>
+				<stat name="DegradationMax" 		value="0,0,1,0,.1"/>
+				<!-- Q1_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="1,0,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="1,0,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="1,0,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="1,0,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="1,0,.3,.1,.5"/>
+				<!-- Q2_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="2,10,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="2,10,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="2,10,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="2,10,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="2,10,.3,.1,.5"/>
+				<!-- Q3_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="3,11,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="3,11,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="3,11,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="3,11,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="3,11,.3,.1,.5"/>
+				<!-- Q4_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="4,12,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="4,12,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="4,12,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="4,12,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="4,12,.3,.1,.5"/>
+				<!-- Q5_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="5,14,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="5,14,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="5,14,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="5,14,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="5,14,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,16,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="6,16,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="6,16,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="6,16,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="6,16,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,20,.3,.5,.7"/>
+				<stat name="BlockDamage" 			value="6,20,.3,.5,.7"/>
+				<stat name="AttacksPerMinute" 		value="6,20,.3,.1,.2"/>
+				<stat name="StaminaLoss" 			value="6,20,.3,-.1,-.05"/>
+				<stat name="DegradationMax" 		value="6,20,.3,.5,.7"/>
+			</stats>
+			<effect_group name="DementivemeleeWpnSledgeCaveman">
+				<passive_effect name="AttacksPerMinute" operation="base_set" value="55" tags="perkSkullCrusher,perkFlurryOfStrength"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="22.3" tags="primary"/>
+				<passive_effect name="DegradationMax" operation="base_set" value="400,700" tier="1,6" tags="perkSkullCrusher"/>
+				<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkSkullCrusher"/>
+				<passive_effect name="MaxRange" operation="base_set" value="2.6" tags="perkSkullCrusher"/>
+				<passive_effect name="BlockRange" operation="base_set" value="3.5" tags="perkSkullCrusher"/>
+				<passive_effect name="DismemberChance" operation="base_add" value=".1" tags="perkSkullCrusher,primary"/>
+				<passive_effect name="ModSlots" operation="base_set" value="4,4,4,4,4,4" tier="1,2,3,4,5,6"/>
+				<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+				<passive_effect name="EntityDamage" operation="base_set" value="27" tags="perkSkullCrusher"/> <!-- meleeWpnSledgeT0StoneSledgehammer -->
+				<passive_effect name="EntityDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkSkullCrusher"/> <!-- tier bonus -->
+				<passive_effect name="BlockDamage" operation="base_set" value="42" tags="perkSkullCrusher"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkSkullCrusher"/> <!-- tier bonus -->
+				<!-- <passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="allHarvest"/> -->
+				<passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="allToolsHarvest"/>
+				<passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="oreWoodHarvest"/>
+			</effect_group>
+			<effect_group name="Power Attack">
+				<passive_effect name="EntityDamage" operation="perc_add" value="1.25" tags="secondary"/>
+				<passive_effect name="GrazeDamageMultiplier" operation="base_set" value=".1" tags="secondary"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value="1.25" tags="secondary"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="44.7" tags="secondary"/>
+				<passive_effect name="DismemberChance" operation="base_add" value=".3" tags="secondary"/>
+			</effect_group>
+			<effect_group name="crippled morale"><!-- SLEDGE_SAGA_VOLUME_03_CRIPPLED_MORALE -->
+				<!-- initialize metadata for "sledge2ndHit" on sledges, don't change value if already exists -->
+				<triggered_effect trigger="onSelfEquipStart" action="SetItemMetaFloat" change="0" relative="true" key="sledge2ndHit"/>
+
+				<triggered_effect trigger="onSelfSecondaryActionRayHit" action="SetItemMetaFloat" change="1" relative="false" key="sledge2ndHit">
+					<requirement name="IsAlive" target="other"/>
+					<requirement name="!EntityTagCompare" target="other" tags="trader"/>
+				</triggered_effect>
+			</effect_group>
+
+			<!-- Caveman: power attacks on a living target knock down every zombie and animal within 2 m of it (a box, the way
+			     otherAOE searches), the one hit included, like vanilla Skull Crusher's smaller one. Players and traders don't have
+			     those tags. buffInjuryKnockdown01 keeps its own cooldown, so a zombie that just got up can't go down again for 5 s -->
+			<effect_group name="DementivemeleeWpnSledgeCaveman ground pound" tiered="false">
+				<requirement name="IsAlive" target="other"/>
+					<triggered_effect trigger="onSelfSecondaryActionRayHit" action="AddBuff" target="otherAOE" range="2" target_tags="zombie,animal" buff="buffInjuryKnockdown01"/>
+			</effect_group>
+		</item>
+
+		<!-- Femur -->
+		<item name="DementivemeleeWpnBladeFemur">
+			<property name="Extends" value="meleeWpnBladeT0BoneKnife"/>
+			<property name="CustomIcon" value="meleeWpnBladeT0BoneKnife"/>
+			<property name="CustomIconTint" value="#A00000"/>
+			<property name="EconomicValue" value="2500"/>
+			<property name="TraderStageTemplate" value="baseTier2"/>
+
+			<stats>
+				<!-- Base_Random_Roll -->
+				<stat name="EntityDamage"			value="0,0,1,0,.1"/>
+				<stat name="BlockDamage" 			value="0,0,1,0,.1"/>
+				<stat name="AttacksPerMinute" 		value="0,0,1,0,.02"/>
+				<stat name="StaminaLoss" 			value="0,0,1,-.01,0"/>
+				<stat name="DegradationMax" 		value="0,0,1,0,.1"/>
+				<!-- Q1_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="1,0,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="1,0,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="1,0,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="1,0,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="1,0,.3,.1,.5"/>
+				<!-- Q2_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="2,10,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="2,10,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="2,10,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="2,10,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="2,10,.3,.1,.5"/>
+				<!-- Q3_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="3,11,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="3,11,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="3,11,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="3,11,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="3,11,.3,.1,.5"/>
+				<!-- Q4_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="4,12,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="4,12,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="4,12,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="4,12,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="4,12,.3,.1,.5"/>
+				<!-- Q5_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="5,14,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="5,14,.3,.1,1"/>
+				<stat name="AttacksPerMinute" 		value="5,14,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="5,14,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="5,14,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,16,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="6,16,.3,.1,1"/>
+				<stat name="AttacksPerMinute" 		value="6,16,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="6,16,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="6,16,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,20,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="6,20,.3,.1,1"/>
+				<stat name="AttacksPerMinute" 		value="6,20,.3,.04,.05"/>
+				<stat name="StaminaLoss" 			value="6,20,.3,-.5,-.4"/>
+				<stat name="DegradationMax" 		value="6,20,.3,.1,.5"/>
+			</stats>
+			<effect_group name="DementivemeleeWpnBladeFemur">
+				<passive_effect name="AttacksPerMinute" operation="base_set" value="130" tags="perkDeepCuts,perkFlurryOfAgility"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="7.3" tags="primary"/>
+				<passive_effect name="DegradationMax" operation="base_set" value="600,1000" tier="1,6" tags="perkDeepCuts"/>
+				<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkDeepCuts"/>
+				<passive_effect name="MaxRange" operation="base_set" value="2.0" tags="perkDeepCuts"/>
+				<passive_effect name="BlockRange" operation="base_set" value="2.5" tags="perkDeepCuts"/>
+				<passive_effect name="ModSlots" operation="base_set" value="4,4,4,4,4,4" tier="1,2,3,4,5,6"/>
+				<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+				<passive_effect name="EntityDamage" operation="base_set" value="7.5" tags="perkDeepCuts,knife"/> <!-- meleeWpnBladeT0BoneKnife -->
+				<passive_effect name="EntityDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkDeepCuts"/> <!-- tier bonus -->
+				<passive_effect name="BlockDamage" operation="base_set" value="6" tags="perkDeepCuts"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkDeepCuts"/> <!-- tier bonus -->
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="earth"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="stone"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="metal"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value=".6" tags="organic"/>
+				<passive_effect name="HarvestCount" operation="base_set" value="1" tags="butcherHarvest"/>
+			</effect_group>
+			<effect_group name="Power Attack">
+				<passive_effect name="EntityDamage" operation="base_add" value="5.1" tags="secondary"/>
+				<passive_effect name="EntityDamage" operation="perc_add" value="1" tags="secondary"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value="1" tags="secondary"/>
+				<passive_effect name="AttacksPerMinute" operation="base_add" value="-60" tags="secondary"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="10.9" tags="secondary"/> <!-- using perc_add here increases StaminaOT for no obvious reason -->
+			</effect_group>
+			<effect_group name="sneak damage bonus">
+				<requirement name="CVarCompare" cvar="_crouching" operation="Equals" value="1"/>
+				<requirement name="CVarCompare" cvar="_notAlerted" operation="GT" value="0" target="other"/>
+					<passive_effect name="DamageBonus" operation="base_add" value="4"/>
+					<passive_effect name="EntityDamage" operation="perc_add" value="4" tags="perkDeepCuts"/>
+					<display_value name="dEntityDamageSneak" value="4"/>
+			</effect_group>
+
+			<!-- Femur: every hit on a living zombie or animal adds a bleed stack (up to the wielder's maximum, like the Serrated
+			     Blade mod) and makes it bleed -->
+			<effect_group name="DementivemeleeWpnBladeFemur bleed stack" tiered="false">
+				<requirement name="IsAlive" target="other"/>
+				<requirement name="CVarCompare" cvar="bleedCounter" operation="LT" value="@$maxBleedCounter" target="other"/>
+					<triggered_effect trigger="onSelfPrimaryActionRayHit" action="ModifyCVar" target="other" target_tags="zombie,animal" cvar="bleedCounter" operation="add" value="1"/>
+					<triggered_effect trigger="onSelfSecondaryActionRayHit" action="ModifyCVar" target="other" target_tags="zombie,animal" cvar="bleedCounter" operation="add" value="1"/>
+			</effect_group>
+			<effect_group name="DementivemeleeWpnBladeFemur bleed" tiered="false">
+				<requirement name="IsAlive" target="other"/>
+				<requirement name="CVarCompare" cvar="bleedCounter" operation="GT" value="0" target="other"/>
+					<triggered_effect trigger="onSelfPrimaryActionRayHit" action="AddBuff" target="other" target_tags="zombie,animal" buff="buffInjuryBleeding"/>
+					<triggered_effect trigger="onSelfSecondaryActionRayHit" action="AddBuff" target="other" target_tags="zombie,animal" buff="buffInjuryBleeding"/>
+			</effect_group>
+		</item>
+
+		<!-- Bar Fight -->
+		<item name="DementivemeleeWpnKnucklesBarFight">
+			<property name="Extends" value="meleeWpnKnucklesT0LeatherKnuckles"/>
+			<property name="CustomIcon" value="meleeWpnKnucklesT0LeatherKnuckles"/>
+			<property name="CustomIconTint" value="#B0202A"/>
+			<property name="EconomicValue" value="2500"/>
+			<property name="TraderStageTemplate" value="baseTier2"/>
+
+			<stats>
+				<!-- Base_Random_Roll -->
+				<stat name="EntityDamage"			value="0,0,1,0,.1"/>
+				<stat name="BlockDamage" 			value="0,0,1,0,.1"/>
+				<stat name="AttacksPerMinute" 		value="0,0,1,0,.02"/>
+				<stat name="StaminaLoss" 			value="0,0,1,-.01,0"/>
+				<stat name="DegradationMax" 		value="0,0,1,0,.1"/>
+				<!-- Q1_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="1,0,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="1,0,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="1,0,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="1,0,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="1,0,.3,.1,.5"/>
+				<!-- Q2_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="2,10,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="2,10,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="2,10,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="2,10,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="2,10,.3,.1,.5"/>
+				<!-- Q3_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="3,11,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="3,11,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="3,11,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="3,11,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="3,11,.3,.1,.5"/>
+				<!-- Q4_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="4,12,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="4,12,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="4,12,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="4,12,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="4,12,.3,.1,.5"/>
+				<!-- Q5_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="5,14,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="5,14,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="5,14,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="5,14,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="5,14,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,16,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="6,16,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="6,16,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="6,16,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="6,16,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,20,.3,.5,.7"/>
+				<stat name="BlockDamage" 			value="6,20,.3,.5,.7"/>
+				<stat name="AttacksPerMinute" 		value="6,20,.3,.1,.2"/>
+				<stat name="StaminaLoss" 			value="6,20,.3,-.1,-.05"/>
+				<stat name="DegradationMax" 		value="6,20,.3,.5,.7"/>
+			</stats>
+			<effect_group name="DementivemeleeWpnKnucklesBarFight">
+				<passive_effect name="AttacksPerMinute" operation="base_set" value="110" tags="perkBrawler,perkFlurryOfFortitude"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="9.1" tags="primary"/>
+				<passive_effect name="DegradationMax" operation="base_set" value="400,800" tier="1,6" tags="perkBrawler"/>
+				<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkBrawler"/>
+				<passive_effect name="MaxRange" operation="base_set" value="2.0" tags="perkBrawler"/>
+				<passive_effect name="BlockRange" operation="base_set" value="3" tags="perkBrawler"/>
+				<passive_effect name="ModSlots" operation="base_set" value="4,4,4,4,4,4" tier="1,2,3,4,5,6"/>
+				<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+				<passive_effect name="EntityDamage" operation="base_set" value="10.5" tags="perkBrawler"/>
+				<passive_effect name="EntityDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkBrawler"/> <!-- tier bonus -->
+				<passive_effect name="BlockDamage" operation="base_set" value="3.3" tags="perkBrawler"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkBrawler"/> <!-- tier bonus -->
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.5" tags="earth"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.5" tags="stone"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.5" tags="metal"/>
+
+				<triggered_effect trigger="onSelfEquipStart" action="AddPart" part="LeftKnuckles" prefab="@:Other/Items/Weapons/Melee/KnuckleWraps/knuckleWrapsLeft_Prefab.prefab" parentTransform="LeftWeapon" localPos="0,0,0" localRot="0,0,0" colorTint="true"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemovePart" part="LeftKnuckles"/>
+				<triggered_effect trigger="onSelfChangedView" action="RemovePart" part="LeftKnuckles"/>
+				<triggered_effect trigger="onSelfChangedView" action="AddPart" part="LeftKnuckles" prefab="@:Other/Items/Weapons/Melee/KnuckleWraps/knuckleWrapsLeft_Prefab.prefab" parentTransform="LeftWeapon" localPos="0,0,0" localRot="0,0,0" colorTint="true"/>
+			</effect_group>
+			<effect_group name="Power Attack">
+				<passive_effect name="EntityDamage" operation="perc_add" value="1" tags="secondary"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value="1" tags="secondary"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="15.5" tags="secondary"/>
+			</effect_group>
+
+			<!-- Bar Fight: each hit on a living target adds 8% attack speed (.DementiveBarFight, 5 times at most), and
+			     buffDementiveBarFight (buffs.xml) resets it 2 seconds after the last hit or when the knuckles are put away -->
+			<effect_group name="DementivemeleeWpnKnucklesBarFight combo" tiered="false">
+				<requirement name="IsAlive" target="other"/>
+					<triggered_effect trigger="onSelfPrimaryActionRayHit" action="ModifyCVar" cvar=".DementiveBarFight" operation="add" value=".08">
+						<requirement name="CVarCompare" cvar=".DementiveBarFight" operation="LT" value=".35"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfPrimaryActionRayHit" action="AddBuff" buff="buffDementiveBarFight"/>
+					<triggered_effect trigger="onSelfSecondaryActionRayHit" action="ModifyCVar" cvar=".DementiveBarFight" operation="add" value=".08">
+						<requirement name="CVarCompare" cvar=".DementiveBarFight" operation="LT" value=".35"/>
+					</triggered_effect>
+					<triggered_effect trigger="onSelfSecondaryActionRayHit" action="AddBuff" buff="buffDementiveBarFight"/>
+			</effect_group>
+			<effect_group name="DementivemeleeWpnKnucklesBarFight speed" tiered="false">
+				<passive_effect name="AttacksPerMinute" operation="perc_add" value="@.DementiveBarFight" tags="perkBrawler"/>
+				<triggered_effect trigger="onSelfEquipStart" action="ModifyCVar" cvar=".DementiveBarFight" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffDementiveBarFight"/>
+			</effect_group>
+		</item>
+
+		<!-- Brass Tacks -->
+		<item name="DementivemeleeWpnKnucklesBrassTacks">
+			<property name="Extends" value="meleeWpnKnucklesT1IronKnuckles"/>
+			<property name="CustomIcon" value="meleeWpnKnucklesT1IronKnuckles"/>
+			<property name="CustomIconTint" value="#D4A017"/>
+			<property name="EconomicValue" value="2500"/>
+			<property name="TraderStageTemplate" value="baseTier2"/>
+			<property name="UnlockedBy" value="craftingKnuckles"/>
+
+			<stats>
+				<!-- Base_Random_Roll -->
+				<stat name="EntityDamage"			value="0,0,1,0,.1"/>
+				<stat name="BlockDamage" 			value="0,0,1,0,.1"/>
+				<stat name="AttacksPerMinute" 		value="0,0,1,0,.02"/>
+				<stat name="StaminaLoss" 			value="0,0,1,-.01,0"/>
+				<stat name="DegradationMax" 		value="0,0,1,0,.1"/>
+				<!-- Q1_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="1,0,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="1,0,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="1,0,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="1,0,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="1,0,.3,.1,.5"/>
+				<!-- Q2_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="2,10,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="2,10,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="2,10,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="2,10,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="2,10,.3,.1,.5"/>
+				<!-- Q3_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="3,11,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="3,11,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="3,11,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="3,11,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="3,11,.3,.1,.5"/>
+				<!-- Q4_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="4,12,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="4,12,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="4,12,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="4,12,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="4,12,.3,.1,.5"/>
+				<!-- Q5_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="5,14,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="5,14,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="5,14,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="5,14,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="5,14,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,16,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="6,16,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="6,16,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="6,16,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="6,16,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,20,.3,.5,.7"/>
+				<stat name="BlockDamage" 			value="6,20,.3,.5,.7"/>
+				<stat name="AttacksPerMinute" 		value="6,20,.3,.1,.2"/>
+				<stat name="StaminaLoss" 			value="6,20,.3,-.1,-.05"/>
+				<stat name="DegradationMax" 		value="6,20,.3,.5,.7"/>
+			</stats>
+			<effect_group name="DementivemeleeWpnKnucklesBrassTacks">
+				<passive_effect name="AttacksPerMinute" operation="base_set" value="110" tags="perkBrawler,perkFlurryOfFortitude"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="9.6" tags="primary"/>
+				<passive_effect name="DegradationMax" operation="base_set" value="700,1200" tier="1,6" tags="perkBrawler"/>
+				<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkBrawler"/>
+				<passive_effect name="MaxRange" operation="base_set" value="2.0" tags="perkBrawler"/>
+				<passive_effect name="BlockRange" operation="base_set" value="3" tags="perkBrawler"/>
+				<passive_effect name="ModSlots" operation="base_set" value="4,4,4,4,4,4" tier="1,2,3,4,5,6"/>
+				<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+				<passive_effect name="EntityDamage" operation="base_set" value="17" tags="perkBrawler"/>
+				<passive_effect name="EntityDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkBrawler"/> <!-- tier bonus -->
+				<passive_effect name="BlockDamage" operation="base_set" value="5" tags="perkBrawler"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkBrawler"/> <!-- tier bonus -->
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.5" tags="earth"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.5" tags="stone"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.5" tags="metal"/>
+
+				<triggered_effect trigger="onSelfEquipStart" action="AddPart" part="LeftKnuckles" prefab="@:Other/Items/Weapons/Melee/Knuckles/knucklesLeft_Prefab.prefab" parentTransform="LeftWeapon" localPos="0,0,0" localRot="0,0,0" colorTint="true"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemovePart" part="LeftKnuckles"/>
+				<triggered_effect trigger="onSelfChangedView" action="RemovePart" part="LeftKnuckles"/>
+				<triggered_effect trigger="onSelfChangedView" action="AddPart" part="LeftKnuckles" prefab="@:Other/Items/Weapons/Melee/Knuckles/knucklesLeft_Prefab.prefab" parentTransform="LeftWeapon" localPos="0,0,0" localRot="0,0,0" colorTint="true"/>
+			</effect_group>
+			<effect_group name="Power Attack">
+				<passive_effect name="EntityDamage" operation="perc_add" value="1" tags="secondary"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value="1" tags="secondary"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="16.3" tags="secondary"/>
+			</effect_group>
+
+			<!-- Brass Tacks: every kill gives back stamina and health (onSelfKilledOther only fires for the hit that kills) -->
+			<effect_group name="DementivemeleeWpnKnucklesBrassTacks second wind" tiered="false">
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyStats" stat="Stamina" operation="add" value="15"/>
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyStats" stat="Health" operation="add" value="5"/>
+			</effect_group>
+		</item>
+
+		<!-- First Blood -->
+		<item name="DementivemeleeWpnSpearFirstBlood">
+			<property name="Extends" value="meleeWpnSpearT0StoneSpear"/>
+			<property name="CustomIcon" value="meleeWpnSpearT0StoneSpear"/>
+			<property name="CustomIconTint" value="#D00000"/>
+			<property name="EconomicValue" value="2500"/>
+			<property name="TraderStageTemplate" value="baseTier2"/>
+
+			<stats>
+				<!-- Base_Random_Roll -->
+				<stat name="EntityDamage"			value="0,0,1,0,.1"/>
+				<stat name="BlockDamage" 			value="0,0,1,0,.1"/>
+				<stat name="AttacksPerMinute" 		value="0,0,1,0,.02"/>
+				<stat name="StaminaLoss" 			value="0,0,1,-.01,0"/>
+				<stat name="DegradationMax" 		value="0,0,1,0,.1"/>
+				<!-- Q1_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="1,0,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="1,0,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="1,0,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="1,0,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="1,0,.3,.1,.5"/>
+				<!-- Q2_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="2,10,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="2,10,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="2,10,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="2,10,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="2,10,.3,.1,.5"/>
+				<!-- Q3_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="3,11,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="3,11,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="3,11,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="3,11,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="3,11,.3,.1,.5"/>
+				<!-- Q4_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="4,12,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="4,12,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="4,12,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="4,12,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="4,12,.3,.1,.5"/>
+				<!-- Q5_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="5,14,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="5,14,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="5,14,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="5,14,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="5,14,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,16,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="6,16,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="6,16,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="6,16,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="6,16,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,20,.3,.5,.7"/>
+				<stat name="BlockDamage" 			value="6,20,.3,.5,.7"/>
+				<stat name="AttacksPerMinute" 		value="6,20,.3,.1,.2"/>
+				<stat name="StaminaLoss" 			value="6,20,.3,-.1,-.05"/>
+				<stat name="DegradationMax" 		value="6,20,.3,.5,.7"/>
+			</stats>
+			<effect_group name="DementivemeleeWpnSpearFirstBlood">
+				<passive_effect name="TargetArmor" operation="perc_add" value="-.3" tags="perkJavelinMaster"/>
+				<display_value name="dTargetArmor" value="-.3"/>
+				<passive_effect name="AttacksPerMinute" operation="base_set" value="61" tags="perkJavelinMaster,perkFlurryOfPerception"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="18.5" tags="primary"/>
+				<passive_effect name="DegradationMax" operation="base_set" value="400,700" tier="1,6" tags="perkJavelinMaster"/>
+				<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkJavelinMaster"/>
+				<passive_effect name="BlockRange" operation="base_set" value="3.5" tags="perkJavelinMaster"/>
+				<passive_effect name="ModSlots" operation="base_set" value="4,4,4,4,4,4" tier="1,2,3,4,5,6"/>
+				<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+				<passive_effect name="EntityDamage" operation="base_set" value="18" tags="perkJavelinMaster"/> <!-- meleeWpnSpearT0StoneSpear -->
+				<passive_effect name="EntityDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkJavelinMaster"/> <!-- tier bonus -->
+				<passive_effect name="BlockDamage" operation="base_set" value="7.5" tags="perkJavelinMaster"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkJavelinMaster"/> <!-- tier bonus -->
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="wood"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.9" tags="stone"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.9" tags="metal"/>
+				<!-- <passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="allHarvest"/> -->
+				<passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="allToolsHarvest"/>
+				<passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="oreWoodHarvest"/>
+			</effect_group>
+			<effect_group name="Power Attack">
+				<passive_effect name="EntityDamage" operation="perc_add" value="1" tags="secondary"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value="1" tags="secondary"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="26.1" tags="secondary"/>
+
+				<passive_effect name="EntityPenetrationCount" operation="base_set" value="1" tags="perkJavelinMaster">
+					<requirement name="ItemHasTags" tags="perkJavelinMaster"/>
+					<requirement name="IsSecondaryAttack"/>
+					<requirement name="ProgressionLevel" progression_name="perkSpearHunter6PenetratingShaft" operation="Equals" value="1"/>
+				</passive_effect>
+
+				<passive_effect name="BlockPenetrationFactor" operation="base_set" value="10000" tags="perkJavelinMaster"/>
+			</effect_group>
+
+			<!-- First Blood: V3.4 spears can't be thrown (vanilla left the throw action commented out), so the spear's power
+			     attack, its long lunge, deals the double damage: adding the base damage (18) again doubles it before every
+			     percentage bonus. Only power attacks query EntityDamage with the secondary tag -->
+			<effect_group name="DementivemeleeWpnSpearFirstBlood lunge" tiered="false">
+				<passive_effect name="EntityDamage" operation="base_add" value="18" tags="secondary"/>
+			</effect_group>
+		</item>
+
+		<!-- Pig Sticker -->
+		<item name="DementivemeleeWpnSpearPigSticker">
+			<property name="Extends" value="meleeWpnSpearT1IronSpear"/>
+			<property name="CustomIcon" value="meleeWpnSpearT1IronSpear"/>
+			<property name="CustomIconTint" value="#E0507A"/>
+			<property name="EconomicValue" value="2500"/>
+			<property name="TraderStageTemplate" value="baseTier2"/>
+			<property name="UnlockedBy" value="craftingSpears"/>
+
+			<stats>
+				<!-- Base_Random_Roll -->
+				<stat name="EntityDamage"			value="0,0,1,0,.1"/>
+				<stat name="BlockDamage" 			value="0,0,1,0,.1"/>
+				<stat name="AttacksPerMinute" 		value="0,0,1,0,.02"/>
+				<stat name="StaminaLoss" 			value="0,0,1,-.01,0"/>
+				<stat name="DegradationMax" 		value="0,0,1,0,.1"/>
+				<!-- Q1_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="1,0,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="1,0,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="1,0,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="1,0,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="1,0,.3,.1,.5"/>
+				<!-- Q2_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="2,10,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="2,10,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="2,10,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="2,10,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="2,10,.3,.1,.5"/>
+				<!-- Q3_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="3,11,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="3,11,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="3,11,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="3,11,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="3,11,.3,.1,.5"/>
+				<!-- Q4_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="4,12,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="4,12,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="4,12,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="4,12,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="4,12,.3,.1,.5"/>
+				<!-- Q5_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="5,14,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="5,14,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="5,14,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="5,14,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="5,14,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,16,.3,.1,.5"/>
+				<stat name="BlockDamage" 			value="6,16,.3,.1,.5"/>
+				<stat name="AttacksPerMinute" 		value="6,16,.3,.02,.1"/>
+				<stat name="StaminaLoss" 			value="6,16,.3,-.5,-.1"/>
+				<stat name="DegradationMax" 		value="6,16,.3,.1,.5"/>
+				<!-- Q6_Boosted_Rolls -->
+				<stat name="EntityDamage" 			value="6,20,.3,.5,.7"/>
+				<stat name="BlockDamage" 			value="6,20,.3,.5,.7"/>
+				<stat name="AttacksPerMinute" 		value="6,20,.3,.1,.2"/>
+				<stat name="StaminaLoss" 			value="6,20,.3,-.1,-.05"/>
+				<stat name="DegradationMax" 		value="6,20,.3,.5,.7"/>
+			</stats>
+			<effect_group name="DementivemeleeWpnSpearPigSticker">
+				<passive_effect name="TargetArmor" operation="perc_add" value="-.4" tags="perkJavelinMaster"/>
+				<display_value name="dTargetArmor" value="-.4"/>
+				<passive_effect name="AttacksPerMinute" operation="base_set" value="61" tags="perkJavelinMaster,perkFlurryOfPerception"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="20.3" tags="primary"/>
+				<passive_effect name="DegradationMax" operation="base_set" value="600,900" tier="1,6" tags="perkJavelinMaster"/>
+				<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="perkJavelinMaster"/>
+				<passive_effect name="BlockRange" operation="base_set" value="3.5" tags="perkJavelinMaster"/>
+				<passive_effect name="ModSlots" operation="base_set" value="4,4,4,4,4,4" tier="1,2,3,4,5,6"/>
+				<passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+				<passive_effect name="EntityDamage" operation="base_set" value="30" tags="perkJavelinMaster"/> <!-- meleeWpnSpearT1IronSpear -->
+				<passive_effect name="EntityDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkJavelinMaster"/> <!-- tier bonus -->
+				<passive_effect name="BlockDamage" operation="base_set" value="12" tags="perkJavelinMaster"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkJavelinMaster"/> <!-- tier bonus -->
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.8" tags="wood"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.9" tags="stone"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.9" tags="metal"/>
+				<!-- <passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="allHarvest"/> -->
+				<passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="allToolsHarvest"/>
+				<passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="oreWoodHarvest"/>
+			</effect_group>
+			<effect_group name="Power Attack">
+				<passive_effect name="EntityDamage" operation="perc_add" value="1" tags="secondary"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value="1" tags="secondary"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="35.6" tags="secondary"/>
+
+				<passive_effect name="EntityPenetrationCount" operation="base_set" value="1" tags="perkJavelinMaster">
+					<requirement name="ItemHasTags" tags="perkJavelinMaster"/>
+					<requirement name="IsSecondaryAttack"/>
+					<requirement name="ProgressionLevel" progression_name="perkSpearHunter6PenetratingShaft" operation="Equals" value="1"/>
+				</passive_effect>
+
+				<passive_effect name="BlockPenetrationFactor" operation="base_set" value="10000" tags="perkJavelinMaster"/>
+			</effect_group>
+
+			<!-- Pig Sticker: hits that leave a zombie or animal alive have a 30% chance to pin it (buffDementivePigSticker in buffs.xml) -->
+			<effect_group name="DementivemeleeWpnSpearPigSticker pin" tiered="false">
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="30"/>
+				<requirement name="IsAlive" target="other"/>
+					<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" target_tags="zombie,animal" buff="buffDementivePigSticker"/>
+			</effect_group>
+		</item>
+
 	</append>
 
 </Dementive>

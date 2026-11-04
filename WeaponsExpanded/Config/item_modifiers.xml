@@ -495,6 +495,9 @@
 		<item_property_overrides name="DementivemeleeWpnClubGrandSlam">
 			<property name="Meshfile" value="@:Other/Items/Weapons/Melee/Bat/batBarbed_Prefab.prefab"/>
 		</item_property_overrides>
+		<item_property_overrides name="DementivemeleeWpnClubPersuader">
+			<property name="Meshfile" value="@:Other/Items/Weapons/Melee/ClubWood/clubWoodBarbPrefab.prefab"/>
+		</item_property_overrides>
 	</append>
 
 	<append xpath="/item_modifiers/item_modifier[@name='modMeleeClubMetalSpikes']">
@@ -504,6 +507,9 @@
 		<item_property_overrides name="DementivemeleeWpnClubGrandSlam">
 			<property name="Meshfile" value="@:Other/Items/Weapons/Melee/Bat/batSpikes_Prefab.prefab"/>
 		</item_property_overrides>
+		<item_property_overrides name="DementivemeleeWpnClubPersuader">
+			<property name="Meshfile" value="@:Other/Items/Weapons/Melee/ClubWood/clubWoodSpikePrefab.prefab"/>
+		</item_property_overrides>
 	</append>
 
 	<append xpath="/item_modifiers/item_modifier[@name='modMeleeClubMetalChain']">
@@ -512,6 +518,9 @@
 		</item_property_overrides>
 		<item_property_overrides name="DementivemeleeWpnClubGrandSlam">
 			<property name="Meshfile" value="@:Other/Items/Weapons/Melee/Bat/batChained_Prefab.prefab"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivemeleeWpnClubPersuader">
+			<property name="Meshfile" value="@:Other/Items/Weapons/Melee/ClubWood/clubWoodChainPrefab.prefab"/>
 		</item_property_overrides>
 	</append>
 
@@ -545,6 +554,18 @@
 		</item_property_overrides>
 		<item_property_overrides name="DementivemeleeToolPickProspector">
 			<property name="FlameEffect" value="@:ItemModEffects/mod_SteelPickaxe_flamePrefab.prefab"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivemeleeWpnClubPersuader">
+			<property name="FlameEffect" value="@:ItemModEffects/mod_woodenClub_flamePrefab.prefab"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivemeleeWpnSledgeCaveman">
+			<property name="FlameEffect" value="@:ItemModEffects/mod_stone_sledge_flamePrefab.prefab"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivemeleeWpnSpearFirstBlood">
+			<property name="FlameEffect" value="@:ItemModEffects/mod_spear_flamePrefab.prefab"/>
+		</item_property_overrides>
+		<item_property_overrides name="DementivemeleeWpnSpearPigSticker">
+			<property name="FlameEffect" value="@:ItemModEffects/mod_spear_iron_flamePrefab.prefab"/>
 		</item_property_overrides>
 	</append>
 

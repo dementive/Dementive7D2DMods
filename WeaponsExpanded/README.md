@@ -1,6 +1,6 @@
 # Weapons Expanded
 
-Mod that adds 40 very rare weapons that can only be looted or bought from traders. All weapons are based on base game items so there will be no out of place icons, or unbalanced buffs.
+Mod that adds 49 very rare weapons that can only be looted or bought from traders. All weapons are based on base game items so there will be no out of place icons, or unbalanced buffs.
 
 **v3.0 Compatible** - Updated for 7 Days to Die v3.0 with modern stats blocks, DualSense/Xbox trigger effects, UnlockedBy progression, and v3.0 perk conventions.
 
@@ -67,6 +67,15 @@ Each of these has a special ability on top of better stats.
 38. The Prospector (meleeToolPickT2SteelPickaxe) - +50% ore and stone from mining
 39. Rampage (gunMGT0PipeMachineGun) - each kill gives 6 seconds of +25% fire rate, faster reloads and faster movement
 40. Lucky Seven (gunHandgunT0PipePistol) - every shot has a 7% chance to hit for up to 7x damage
+41. Old Faithful (gunBowT0PrimitiveBow) - stone, iron and steel arrows never break unless they hit glass, so you can always pick them back up
+42. The Persuader (meleeWpnClubT0WoodenClub) - hits have a 25% chance to daze zombies and animals for 2 seconds
+43. Lead Pipe Larry (meleeWpnBatonT0PipeBaton) - every third hit in a row deals double damage (the count resets after 3 seconds without a hit)
+44. Caveman (meleeWpnSledgeT0StoneSledgehammer) - power attacks knock down every zombie and animal within 2 meters of what you hit
+45. Femur (meleeWpnBladeT0BoneKnife) - every hit makes zombies and animals bleed
+46. Bar Fight (meleeWpnKnucklesT0LeatherKnuckles) - each hit in a row makes your swings 8% faster, up to 40%; stop for 2 seconds and it resets
+47. Brass Tacks (meleeWpnKnucklesT1IronKnuckles) - every kill restores 15 stamina and 5 health
+48. First Blood (meleeWpnSpearT0StoneSpear) - power attacks deal double damage (spears can't be thrown in V3.4, so the lunge gets the bonus)
+49. Pig Sticker (meleeWpnSpearT1IronSpear) - hits have a 30% chance to pin zombies and animals, slowing them by 60% for 3 seconds
 
 ## Where to Find Them
 
@@ -109,3 +118,4 @@ The chances are set by the five `DementiveRares` templates at the top of `Config
 - Chain Reaction's kill explosions now work in multiplayer and on dedicated servers for every player. Before, only the host's kills exploded: the game only runs explosions on the server, and other players' kills are detected on their own machines
 - The Finale's quality bonus now also raises its rockets' explosion damage, like the vanilla rocket launcher's. Before, it only raised the small direct-hit damage, so its blast was weaker than a vanilla launcher's of the same quality
 - Joe's Golden Magnum and the Super Pump have all their vanilla tags back (tier, Ranger and Enforcer armor set bonuses), so armor and perk bonuses that look for those tags apply to them again
+- Nine early signature weapons (41-49) on primitive and tier 1 weapons, each with one ability, found and sold like the other signature weapons

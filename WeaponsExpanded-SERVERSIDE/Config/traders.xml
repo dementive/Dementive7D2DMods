@@ -33,6 +33,7 @@
 			<item name="DementivegunBotWarden" quality="1,6"/>
 			<item name="DementivegunMGRampage" quality="1,6"/>
 			<item name="DementivegunHandgunLuckySeven" quality="1,6"/>
+			<item name="DementivegunBowOldFaithful" quality="1,6"/>
 		</trader_item_group>
 		<trader_item_group name="groupDementiveTraderMelee" count="1">
 			<item name="DementivemeleeWpnBladeHellHound" quality="1,6"/>
@@ -44,6 +45,14 @@
 			<item name="DementivemeleeWpnBladeStalkersHarvester" quality="1,6"/>
 			<item name="DementivemeleeWpnClubGrandSlam" quality="1,6"/>
 			<item name="DementivemeleeWpnSledgeBloodletter" quality="1,6"/>
+			<item name="DementivemeleeWpnClubPersuader" quality="1,6"/>
+			<item name="DementivemeleeWpnBatonLeadPipeLarry" quality="1,6"/>
+			<item name="DementivemeleeWpnSledgeCaveman" quality="1,6"/>
+			<item name="DementivemeleeWpnBladeFemur" quality="1,6"/>
+			<item name="DementivemeleeWpnKnucklesBarFight" quality="1,6"/>
+			<item name="DementivemeleeWpnKnucklesBrassTacks" quality="1,6"/>
+			<item name="DementivemeleeWpnSpearFirstBlood" quality="1,6"/>
+			<item name="DementivemeleeWpnSpearPigSticker" quality="1,6"/>
 		</trader_item_group>
 		<trader_item_group name="groupDementiveTraderTools" count="1">
 			<item name="DementivemeleeToolAxeT1IronFireaxe" quality="1,6"/>

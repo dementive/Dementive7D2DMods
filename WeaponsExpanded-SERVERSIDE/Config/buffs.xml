@@ -54,6 +54,40 @@
 				<triggered_effect trigger="onSelfBuffStack" action="Explode" blast_power="0" block_damage="0" block_radius="1" entity_damage="120" entity_radius="4" damage_type="Heat"/>
 			</effect_group>
 		</buff>
+
+		<!-- Lead Pipe Larry's hit count: every hit refreshes it, so it runs out 3 seconds after the last hit (or is removed
+		     when the pipe is put away) and the count starts over -->
+		<buff name="buffDementiveLeadPipeLarry" hidden="true">
+			<stack_type value="replace"/>
+			<duration value="3"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".DementiveLarryHits" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".DementiveLarryBonus" operation="set" value="0"/>
+			</effect_group>
+		</buff>
+
+		<!-- Bar Fight's attack speed bonus: every hit refreshes it, so it runs out 2 seconds after the last hit (or is
+		     removed when the knuckles are put away) and the bonus resets -->
+		<buff name="buffDementiveBarFight" hidden="true">
+			<stack_type value="replace"/>
+			<duration value="2"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".DementiveBarFight" operation="set" value="0"/>
+			</effect_group>
+		</buff>
+
+		<!-- Applied by the Pig Sticker spear -->
+		<buff name="buffDementivePigSticker" name_key="buffDementivePigStickerName" description_key="buffDementivePigStickerDesc" icon="ui_game_symbol_spear" icon_color="200,90,60">
+			<stack_type value="replace"/>
+			<duration value="3"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".6"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".6"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".6"/>
+				<passive_effect name="JumpStrength" operation="perc_subtract" value=".6"/>
+			</effect_group>
+		</buff>
 	</append>
 
 </Dementive>

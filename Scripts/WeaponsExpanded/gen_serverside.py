@@ -29,6 +29,11 @@ TINTS = {
     "DementivemeleeWpnSledgeBloodletter": "#8B0000", "DementivegunBowHellfire": "#FF5A00", "DementivegunBowWhisper": "#8A2BE2",
     "DementivegunRifleChainReaction": "#FFD000", "DementivegunShotgunFrostbite": "#7FDBFF", "DementivemeleeToolPickProspector": "#FFC125",
     "DementivegunMGRampage": "#E0115F", "DementivegunHandgunLuckySeven": "#2ECC40",
+    "DementivegunBowOldFaithful": "#FFB030", "DementivemeleeWpnClubPersuader": "#FFCC00",
+    "DementivemeleeWpnBatonLeadPipeLarry": "#FF6A10", "DementivemeleeWpnSledgeCaveman": "#FF8C1A",
+    "DementivemeleeWpnBladeFemur": "#A00000", "DementivemeleeWpnKnucklesBarFight": "#B0202A",
+    "DementivemeleeWpnKnucklesBrassTacks": "#D4A017", "DementivemeleeWpnSpearFirstBlood": "#D00000",
+    "DementivemeleeWpnSpearPigSticker": "#E0507A",
 }
 DEFAULT_TINT = "#DE7501"
 

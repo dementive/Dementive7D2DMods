@@ -1,4 +1,4 @@
-"""Paint the icons of the WeaponsExpanded signature weapons (the 10 added in 2026) from their vanilla icons.
+"""Paint the icons of the WeaponsExpanded signature weapons (the 19 added in 2026) from their vanilla icons.
 
 Usage: python make_icons.py <game dir> <WeaponsExpanded dir> [weapon ...]
 Each weapon gets a chain of IconTool.exe fx effects (ops listed at the top of IconTool.cs) that matches its ability,
@@ -54,6 +54,43 @@ ICONS = {
     # 7% lucky shots: gold with a green glow and glints
     "DementivegunHandgunLuckySeven": ("gunHandgunT0PipePistol", [
         GOLD, "sheen:0.7", "rim:#2ecc40,2,0.7", "glow:#2ecc40,7,0.7", "sparkle:#ffffff,5,10,7", "embers:#7dff8a,10,1.4,9"]),
+    # Arrows never break: honey-colored wood with a warm, faithful golden glow
+    "DementivegunBowOldFaithful": ("gunBowT0PrimitiveBow", [
+        "map:#1a0c02,#9a5a20,#ffd9a0", "pattern:woodgrain,c1=#f0c080,c2=#7a4a1a,scale=5,angle=45,op=0.6", "sheen:0.4",
+        "rim:#ffe6a0,2,0.7", "glow:#ffb030,8,0.8,noise=10", "embers:#ffd070,12,1.4,8", "sparkle:#fff6d0,4,10,5"]),
+    # Dazes what it hits: a bloodied club with stars spinning around it
+    "DementivemeleeWpnClubPersuader": ("meleeWpnClubT0WoodenClub", [
+        "map:#120a05,#6a4020,#e0b080", "pattern:splatter,c1=#6a0000,scale=7,amount=0.45,seed=3,shade=0.6,zone=45/0.55/0.65",
+        "rim:#ffd84a,2,0.6", "glow:#ffcc00,8,0.7,noise=10", "sparkle:#fffbd0,7,12,4"]),
+    # Every third hit doubles: a lead pipe glowing hot through its cracks, three afterimages and three glints
+    "DementivemeleeWpnBatonLeadPipeLarry": ("meleeWpnBatonT0PipeBaton", [
+        "map:#06080c,#3c4656,#c8d4e8", "sheen:0.8", "pattern:cracks,c1=#ff9a30,scale=10,width=0.08,op=1,bloom=1,seed=7",
+        "trail:#ffa040,135,3,12,1", "glow:#ff6a10,10,0.9,noise=10", "rim:#ffc070,2,0.7", "sparkle:#fff0c0,3,13,7"]),
+    # Power attacks knock everything down: a stone head split by glowing cracks, throwing up embers
+    "DementivemeleeWpnSledgeCaveman": ("meleeWpnSledgeT0StoneSledgehammer", [
+        "map:#100a06,#6a5a48,#d8c8b0", "pattern:cracks,c1=#ffb347,scale=10,width=0.06,op=1,bloom=0.8,seed=4,zone=45/0.5/0.6",
+        "glow:#ff8c1a,8,0.6,noise=10", "embers:#ffb060,14,1.6,3,zone=45/0.5/0.6"]),
+    # Every hit bleeds: bleached bone dripping blood
+    "DementivemeleeWpnBladeFemur": ("meleeWpnBladeT0BoneKnife", [
+        "map:#1a1410,#b8a888,#fff8e8", "pattern:splatter,c1=#8a0000,scale=7,amount=0.55,seed=6,shade=0.6,zone=45/0.35/0.45",
+        "rim:#ff2020,2,0.5", "glow:#a00000,7,0.6", "embers:#ff2a2a,12,1.6,4"]),
+    # Hits speed up: barroom flannel wraps throwing a flurry of punches
+    "DementivemeleeWpnKnucklesBarFight": ("meleeWpnKnucklesT0LeatherKnuckles", [
+        "map:#100804,#6a3a1a,#e8b888", "pattern:plaid,c1=#b0202a,c2=#202020,scale=10,op=0.7", "sheen:0.3",
+        "rim:#ffb070,2,0.6", "trail:#ffb070,0,3,14,0.8", "glow:#ff6a1a,8,0.7,noise=10"]),
+    # Kills restore health and stamina: polished brass studded with tacks, a warm red glow
+    "DementivemeleeWpnKnucklesBrassTacks": ("meleeWpnKnucklesT1IronKnuckles", [
+        "map:#1a1000,#b08a2a,#fff0b0", "sheen:0.8", "pattern:speckle,c1=#fff8d0,scale=4,amount=0.6,op=0.8,seed=3",
+        "glow:#ff3030,7,0.6", "sparkle:#ffffff,6,10,2", "embers:#ff8080,10,1.4,5"]),
+    # Power attacks hit twice as hard: a blood-soaked tip glowing red, lunging forward
+    "DementivemeleeWpnSpearFirstBlood": ("meleeWpnSpearT0StoneSpear", [
+        "map:#0e0805,#6a4a30,#e0c8a8", "pattern:splatter,c1=#9a0000,scale=7,amount=0.5,seed=2,shade=0.6,zone=45/0.45/0.55",
+        "pattern:cracks,c1=#ff2a1a,scale=9,width=0.07,op=1,bloom=0.9,seed=5,zone=45/0.68/0.75",
+        "trail:#ff6a50,45,3,12,1", "rim:#ff3a2a,2,0.6", "glow:#d00000,8,0.7,noise=10"]),
+    # Pins what it hits: polished steel, a bloody tip and a hog-pink glow
+    "DementivemeleeWpnSpearPigSticker": ("meleeWpnSpearT1IronSpear", [
+        "map:#05070a,#5a6270,#e8eef8", "sheen:0.7", "pattern:splatter,c1=#7a0010,scale=7,amount=0.5,seed=5,shade=0.6,zone=45/0.65/0.75",
+        "rim:#ff8aa0,2,0.6", "glow:#e0507a,7,0.6,noise=10", "sparkle:#ffe0ea,3,10,6"]),
 }
 
 atlas = os.path.join(mod, "UIAtlases", "ItemIconAtlas")

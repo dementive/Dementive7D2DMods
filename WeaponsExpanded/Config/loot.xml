@@ -69,6 +69,15 @@
 			<item name="DementivemeleeToolPickProspector"/>
 			<item name="DementivegunMGRampage"/>
 			<item name="DementivegunHandgunLuckySeven"/>
+			<item name="DementivegunBowOldFaithful"/>
+			<item name="DementivemeleeWpnClubPersuader"/>
+			<item name="DementivemeleeWpnBatonLeadPipeLarry"/>
+			<item name="DementivemeleeWpnSledgeCaveman"/>
+			<item name="DementivemeleeWpnBladeFemur"/>
+			<item name="DementivemeleeWpnKnucklesBarFight"/>
+			<item name="DementivemeleeWpnKnucklesBrassTacks"/>
+			<item name="DementivemeleeWpnSpearFirstBlood"/>
+			<item name="DementivemeleeWpnSpearPigSticker"/>
 		</lootgroup>
 
 		<lootgroup name="groupDementiveRanged" count="1" >
@@ -94,6 +103,7 @@
 			<item name="DementivegunShotgunFrostbite"/>
 			<item name="DementivegunMGRampage"/>
 			<item name="DementivegunHandgunLuckySeven"/>
+			<item name="DementivegunBowOldFaithful"/>
 		</lootgroup>
 
 		<lootgroup name="groupDementiveBots" count="1" >
@@ -117,6 +127,14 @@
 			<item name="DementivemeleeWpnBladeStalkersHarvester"/>
 			<item name="DementivemeleeWpnClubGrandSlam"/>
 			<item name="DementivemeleeWpnSledgeBloodletter"/>
+			<item name="DementivemeleeWpnClubPersuader"/>
+			<item name="DementivemeleeWpnBatonLeadPipeLarry"/>
+			<item name="DementivemeleeWpnSledgeCaveman"/>
+			<item name="DementivemeleeWpnBladeFemur"/>
+			<item name="DementivemeleeWpnKnucklesBarFight"/>
+			<item name="DementivemeleeWpnKnucklesBrassTacks"/>
+			<item name="DementivemeleeWpnSpearFirstBlood"/>
+			<item name="DementivemeleeWpnSpearPigSticker"/>
 		</lootgroup>
 
 		<lootgroup name="groupDementiveTools" count="1">
