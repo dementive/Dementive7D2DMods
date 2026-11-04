@@ -101,6 +101,20 @@ TOOLS = [
               "paper and the like) are made 25% faster, with a 15% chance to come out twice."),
 ]
 
+# Text the DLL shows: the status line under a station's use prompt (StationStatusDEM; {0} {1} {2} are filled in by
+# the code) and the message when crafting from storage fails (StorageCraftingDEM)
+UI_TEXT = [
+    ("DementiveStationStatusIdle", "Idle"),
+    ("DementiveStationStatusCrafting", "Making {0} x{1}, next one in {2}"),
+    ("DementiveStationStatusCraftingPaused", "Making {0} x{1}"),
+    ("DementiveStationStatusInUse", "Making {0} (someone is using it)"),
+    ("DementiveStationStatusMore", "{0} (+{1} more in the queue)"),
+    ("DementiveStationStatusFuel", "Fuel: {0} left"),
+    ("DementiveStationStatusFuelOff", "Fuel: {0} left (fire is out)"),
+    ("DementiveStationStatusNoFuel", "Out of fuel"),
+    ("DementiveStorageCraftFailed", "Couldn't take the items from nearby storage. Someone may be using it."),
+]
+
 # Icon recipes for IconTool.exe fx (see the ops in Scripts/WeaponsExpanded/IconTool.cs), painted over the vanilla
 # icons in the style of the hand-made Weapons Expanded icons.
 ICONS = {
@@ -322,6 +336,8 @@ def localization():
         kind = ("blocks", "Workstation") if x not in TOOLS else ("items", "Item")
         rows.append("%s,%s,%s,,,,%s%s" % (x["name"], kind[0], kind[1], csv_field(x["title"]), "," * 13))
         rows.append("%sDesc,%s,%s,,,,%s%s" % (x["name"], kind[0], kind[1], csv_field(x["desc"] + REPAIR), "," * 13))
+    for key, text in UI_TEXT:
+        rows.append("%s,UI,HUD,,,,%s%s" % (key, csv_field(text), "," * 13))
     return "\n".join(rows) + "\n"
 
 

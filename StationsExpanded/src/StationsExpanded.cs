@@ -10,10 +10,13 @@ public class StationsExpanded : IModApi
         Debug.Log("[StationsExpanded] Loaded");
     }
 
-    /// <summary>Each world loads its own blocks and items, so the bonuses read from the last one are dropped.</summary>
+    /// <summary>Each world loads its own blocks and items, so the bonuses read from the last one are dropped, and so
+    /// is anything left from crafting there.</summary>
     private static void GameStartDone(ref ModEvents.SGameStartDoneData _data)
     {
         StationBonusDEM.Reset();
         CraftingPatchesDEM.Reset();
+        StorageCraftingDEM.Reset();
+        StationStatusDEM.Reset();
     }
 }

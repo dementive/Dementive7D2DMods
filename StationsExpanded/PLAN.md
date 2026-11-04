@@ -111,3 +111,23 @@ A named tool in a named station stacks with it. Numbers are first passes, to tun
 1. Looks: vanilla models, painted icons (the user's call, 2026-11-01).
 2. Grandpa's Workbench quality bump: 10%.
 3. Names: as listed.
+
+## Added 2026-11-03: crafting from storage and station status
+
+Both approved by the user and built (untested in game). They apply to every workstation, not just the named ones.
+
+- **Crafting from storage** (`StorageCraftingDEM`): with a workstation window open, recipes also count player
+  storage within 10 m of the station (storage whose grid is `PlayerOwned`, set when a player places it, the flag the
+  game's own server-side container actions use). Locked containers the player can't open and containers someone has
+  open (`LockManager.IsLockedServer`) are skipped. Only items without quality or mods. The backpack and toolbelt are
+  used first. The server takes the items (directly on a host or in single player, through
+  `NetPackageStorageRequestDEM`/`ReplyDEM` from a client) and hands them to the player as a credit that vanilla's
+  `RemoveItems` uses after the backpack and toolbelt; leftovers go to the backpack. The forge with smelting crafts
+  from its material grid only (`ItemActionEntryCraft.OnActivated`), so storage doesn't apply there.
+- **Station status** (`StationStatusDEM`): a line under the use prompt with the item being made, the count left in
+  its queue slot and the time left on the current one, other queued slots, fuel burn time, or Idle. Engine facts:
+  while nobody has a station open, the server works it once a second and sends the whole station (queue, times, fuel)
+  to nearby clients; while someone has it open, their game crafts and sends the queue only when crafting starts or
+  stops (`syncTEfromUI`), and the server never sets `bUserAccessing` for a remote player. So the time is shown only
+  when the fire is lit, the time is above 0 and nobody has the station open; a client asks the server about the last
+  part (`NetPackageStationOpenDEM`) about once a second while it looks at the station.
