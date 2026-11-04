@@ -30,6 +30,7 @@ public class ZedConsoleCmd : ConsoleCmdAbstract
             + "                           walk=<walk type>  size=<factor>  speed=<factor>  pitch=<factor>  age=<0-1>\n"
             + "                           biome=forest|desert|snow|burnt|wasteland  mutation=Bloater,Toxic,...  gear=KevlarVest,...\n"
             + "                           remnant=Axe,Sunglasses,...  dead=1 (a Possum lying \"dead\")\n"
+            + "                           injury=none|LimpArm|DraggedFoot|LolledHead|TwistedBack[,left|right]\n"
             + "                           champion=1  alpha=1  plain=1 (no mutations, gear, remnants or rank)\n"
             + "  ze info                - the profile of the zombie you're looking at (within 30 m)\n"
             + "  ze set <name> <value>  - change a setting for this session (see the list from 'ze')\n"
@@ -185,6 +186,8 @@ public class ZedForce
     public ZedBiome? Biome;
     public int? Walk;
     public float? Size, Speed, Pitch, Age;
+    public ZedInjury? Injury;
+    public bool? InjuryLeft;
 
     public bool Set(string key, string value)
     {
@@ -211,6 +214,19 @@ public class ZedForce
                 return Number(value, ref Pitch);
             case "age":
                 return Number(value, ref Age);
+            case "injury":
+                // A name and optionally its side: LimpArm,left
+                string[] injury = value.Split(',');
+                if (injury.Length > 1)
+                {
+                    string side = injury[1].Trim().ToLowerInvariant();
+                    if (side != "left" && side != "right")
+                    {
+                        return false;
+                    }
+                    InjuryLeft = side == "left";
+                }
+                return Enum(injury[0].Trim(), ref Injury);
             case "mutation":
             case "mutations":
                 foreach (string m in value.Split(','))

@@ -11,6 +11,9 @@
 	<Setting name="Preset" value="Standard"/>
 	<!-- Each zombie's own size, body shape, walk style and speed -->
 	<Setting name="Individuals" value="true"/>
+	<!-- The percent of zombies with an old injury that shows in how they hold themselves: a limp arm, a dragged foot,
+	     a lolled head or a twisted back (pose only; 0 for none) -->
+	<Setting name="InjuryShare" value="33"/>
 	<!-- Hidden temperament: sluggish, normal, restless or relentless -->
 	<Setting name="Temperament" value="true"/>
 	<!-- Zombies hear your gunshots, explosions and breaking blocks, see your flashlight at night, alert each other

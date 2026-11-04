@@ -97,6 +97,7 @@ public static class ZedStore
                 {
                     p.Body = ZedBody.Hunched;
                 }
+                ZedProfile.RollInjury(zombie, p, rng);
                 entry = new Entry { Profile = p, Class = zombie.EntityClass.entityClassName };
                 entries[zombie.entityId] = entry;
             }

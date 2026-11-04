@@ -16,6 +16,7 @@ public static class ZedSettings
         // Gameplay (server)
         { "Preset", "Standard" },
         { "Individuals", "true" },
+        { "InjuryShare", "33" },
         { "Temperament", "true" },
         { "Senses", "true" },
         { "Crowd", "true" },

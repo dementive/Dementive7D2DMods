@@ -29,13 +29,24 @@ public enum ZedBiome : byte
     Wasteland,
 }
 
+/// <summary>An old injury that shows in how a zombie holds itself (pose only; see ZedInjuryPose).</summary>
+public enum ZedInjury : byte
+{
+    None,
+    LimpArm,
+    DraggedFoot,
+    LolledHead,
+    TwistedBack,
+}
+
 /// <summary>
 /// What makes one zombie different from the next, rolled once by the server when it spawns and sent to every player
-/// who sees it: size, body, gait, speed, voice, weathering, age and temperament. Saved with zombies the game saves.
+/// who sees it: size, body, gait, speed, voice, weathering, age, temperament and an old injury. Saved with zombies the
+/// game saves.
 /// </summary>
 public class ZedProfile
 {
-    private const byte Version = 3;
+    private const byte Version = 4;
 
     /// <summary>Drives every random detail drawn from the profile (the look's noise, which wounds look how).</summary>
     public int Seed;
@@ -52,6 +63,9 @@ public class ZedProfile
     public ZedTemper Temper;
     /// <summary>A humanoid zombie (the shared zombie skeleton), not a zombie animal.</summary>
     public bool Humanoid;
+    /// <summary>An old injury (pose only), and whether it's on the left side (else the right).</summary>
+    public ZedInjury Injury;
+    public bool InjuryLeft;
 
     // Mutations, gear and rank (rolled after the rest; see ZedRoll)
     public readonly List<ZedMutation> Mutations = new List<ZedMutation>();
@@ -131,6 +145,8 @@ public class ZedProfile
         w.Write(FakedDeath);
         w.Write(DeadPose);
         w.Write(Carrying);
+        w.Write((byte)Injury);
+        w.Write(InjuryLeft);
     }
 
     public static ZedProfile Read(BinaryReader r)
@@ -186,6 +202,12 @@ public class ZedProfile
         p.FakedDeath = r.ReadBoolean();
         p.DeadPose = r.ReadByte();
         p.Carrying = r.ReadBoolean();
+        if (version < 4)
+        {
+            return p;
+        }
+        p.Injury = (ZedInjury)r.ReadByte();
+        p.InjuryLeft = r.ReadBoolean();
         return p;
     }
 
@@ -258,6 +280,53 @@ public class ZedProfile
         return ZedBody.Hunched;
     }
 
+    /// <summary>Once the rest of the profile is rolled (its remnants and its final body): a share of the humanoid
+    /// zombies (InjuryShare percent, a third) carry an old injury on one side. Never a crawler. A limp arm goes on an arm
+    /// it still has, and never on the right with a prop hanging at the right hip (the crowbar, the hatchet's handle)
+    /// for the arm to hang into.</summary>
+    public static void RollInjury(EntityAlive e, ZedProfile p, System.Random rng)
+    {
+        ZedForce force = ForceNext;
+        if (force != null && force.Injury.HasValue)
+        {
+            p.Injury = force.Injury.Value;
+            p.InjuryLeft = force.InjuryLeft ?? rng.NextDouble() < 0.5;
+            return;
+        }
+        if (!ZedSettings.Individuals || !p.Humanoid || e.IsWalkTypeACrawl()
+            || rng.NextDouble() * 100.0 >= ZedSettings.Float("InjuryShare", 33f))
+        {
+            return;
+        }
+        p.Injury = (ZedInjury)(1 + rng.Next(4));
+        p.InjuryLeft = rng.NextDouble() < 0.5;
+        if (p.Injury == ZedInjury.LimpArm)
+        {
+            bool leftFree = ArmFree(e, p, true);
+            bool rightFree = ArmFree(e, p, false);
+            if (!leftFree && !rightFree)
+            {
+                // One of the others instead
+                p.Injury = (ZedInjury)(2 + rng.Next(3));
+            }
+            else if (!(p.InjuryLeft ? leftFree : rightFree))
+            {
+                p.InjuryLeft = !p.InjuryLeft;
+            }
+        }
+    }
+
+    /// <summary>Whether a limp arm can hang on that side: the arm is still there, with nothing hanging at that hip.</summary>
+    private static bool ArmFree(EntityAlive e, ZedProfile p, bool left)
+    {
+        uint lost = left ? BodyDamage.cNoArmLUpper | BodyDamage.cNoArmLLower : BodyDamage.cNoArmRUpper | BodyDamage.cNoArmRLower;
+        if ((e.bodyDamage.Flags & lost) != 0)
+        {
+            return false;
+        }
+        return left || (!p.Remnants.Contains(ZedRemnant.Crowbar) && !p.Remnants.Contains(ZedRemnant.Hatchet));
+    }
+
     public static ZedBiome BiomeAt(Entity e)
     {
         BiomeDefinition biome = e.world?.GetBiome(Mathf.FloorToInt(e.position.x), Mathf.FloorToInt(e.position.z));
@@ -289,6 +358,10 @@ public class ZedProfile
     public override string ToString()
     {
         string extra = "";
+        if (Injury != ZedInjury.None)
+        {
+            extra += ", " + Injury + (InjuryLeft ? " (left)" : " (right)");
+        }
         if (Mutations.Count > 0)
         {
             extra += ", " + string.Join("+", Mutations);

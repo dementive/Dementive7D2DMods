@@ -14,6 +14,7 @@ are in `Settings.xml`.
 |---|---|
 | Size | 93% to 107% |
 | Body | Normal, gaunt, bulky, bloated or hunched, by reshaping its skeleton (heavy zombies are never gaunt or bloated). Needs the standard zombie skeleton, which most zombie packs share |
+| Injury | A third of them (`InjuryShare`) carry an old injury on one side that shows in how they move: a limp arm hanging dead (it still attacks, with a weaker swing), a foot turned in and dragged on a stiff leg, a lolled head, or a twisted back leaning to one side. Pose only; never on crawlers. Needs the standard skeleton |
 | Walk | Half of them get another walk style their body can use |
 | Speed | ±8% |
 | Voice | Groans, screams and footsteps pitched ±12%, so a crowd doesn't sound like one voice |
@@ -129,8 +130,9 @@ The `ze` console command (F1):
 
 - `ze spawn [class] [k=v ...]` spawns a zombie 5 m ahead (zombieJoe if no class) with parts of its profile set:
   `body=`, `temper=`, `walk=`, `size=`, `speed=`, `pitch=`, `age=`, `biome=`, `mutation=Toxic,Grabber`,
-  `gear=KevlarVest,HardHat`, `remnant=Axe,Sunglasses`, `dead=1` (a Possum lying "dead"), `champion=1`, `alpha=1`,
-  `plain=1`. Example: `ze spawn zombieJoe mutation=Volatile remnant=Axe`.
+  `gear=KevlarVest,HardHat`, `remnant=Axe,Sunglasses`, `injury=LimpArm` (or `DraggedFoot`, `LolledHead`,
+  `TwistedBack`, `none`; `injury=LimpArm,left` picks the side), `dead=1` (a Possum lying "dead"), `champion=1`,
+  `alpha=1`, `plain=1`. Example: `ze spawn zombieJoe mutation=Volatile remnant=Axe`.
 - `ze info` shows the profile of the zombie you're looking at.
 - `ze debug` shows every nearby zombie's profile and the AI tasks it's running above it.
 - `ze set <name> <value>` changes a setting for the session; `ze` lists them.
@@ -149,4 +151,7 @@ The `ze` console command (F1):
   then `src\build-bundle.bat`, which builds `Resources\zombiesexpanded.unity3d` with Unity 2022.3.62f2 and renders
   previews: `unity\Build\looks-*.png` (the looks), `unity\Build\models\*.png` (each model on vanilla Joe, Cop and
   Nurse) and `unity\Build\effects.png`.
+- `Unity -batchmode -quit -projectPath unity -executeMethod InjuryPreview.Run` (after `src\build.bat`) renders the old
+  injuries on vanilla zombies posed from the game's walk, attack and crouch animations, with the pose code from the
+  built DLL: `unity\Build\injuries\*.png` and the measurements in `injuries.txt`.
 - `research\` holds the notes on how the game's zombies work (engine code, XML, every zombie class).

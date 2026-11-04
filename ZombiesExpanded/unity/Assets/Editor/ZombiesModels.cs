@@ -348,7 +348,7 @@ public static class ZombiesModels
         }
     }
 
-    private static Material ToGame(Shader game, Material src)
+    public static Material ToGame(Shader game, Material src)
     {
         Material m = new Material(game) { name = src.name + " (game)" };
         m.SetFloat("_Tint", 0f);

@@ -55,6 +55,7 @@ Every zombie rolls these when it spawns.
 |---|---|
 | Size | 93% to 107% |
 | Body | normal, gaunt, bulky, bloated or hunched, by reshaping the skeleton (heavy zombies skip gaunt and bloated) |
+| Old injury | a third: a limp arm, a dragged foot, a lolled head or a twisted back, on one side, as a pose on top of the animation (no stat change) |
 | Gait and speed | a walk style its body can use, speed ±8% (averaging vanilla) |
 | Voice | groans, screams and footsteps pitched ±12%, so a horde sounds like a crowd, not one voice repeated |
 | Weathering | by biome: mud and moss (forest), dust and sun-bleach (desert), frost rime (snow), soot (burnt forest), ash (wasteland); wet in the rain |
