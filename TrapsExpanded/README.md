@@ -10,6 +10,19 @@ Has a DLL and new models, so it has to be installed on the server and on every c
 
 - Hold **E** on a trap for its radial menu: **Load** takes its ammo or fuel from your inventory, **Unload** gives it
   back, and traps add their own commands (light the Burn Barrel, re-arm the Bear Trap).
+- **Load all nearby** (on every trap that takes ammo or fuel) does a Load on each Traps Expanded trap within 15 m of
+  you, closest first, until you run out of what they take. A tooltip says how many traps it loaded.
+- **Supply crates:** the six traps that take ammo or fuel refill themselves every 3 seconds from any storage you've
+  placed within 3 blocks of them, above, below or to the side: a chest, crate or box, or the Salvage Hopper's bin.
+  Each takes only what its Load takes (the Trip Bow's arrows, the Bolt Thrower's rebar bolts, the Grease Slick's
+  animal fat, the Burn Barrel's wood, the Tar Sprayer's tar, the Flame Vent's gas cans), up to what it holds, from
+  the nearest container first, whether it's powered or not. POI loot containers never count. A container is left
+  alone while someone has it open, so are slots you've locked in it, and a locked container (keypad or lock) only
+  feeds traps placed by a player it lets in, while that player is in the game. A Burn Barrel that burned out still
+  has to be lit again. Vanilla turrets and dart traps don't use supply crates.
+- In co-op anyone can Load, Load all nearby or Unload any trap (unloaded ammo goes to whoever unloads it) and anyone
+  can fill a supply crate. The server does the loading, so everyone sees the trap's ammo and the container's
+  contents change.
 - Looking at a trap shows its level, kills, upgrade and what's loaded.
 - Traps that wear (the Tesla Coil, Swinging Log, Cryo Vent, Ram) lose a little health each use and stop at their last
   5% until repaired. Powered ones blink their lamp when worn out.

@@ -4,8 +4,9 @@ using UnityEngine;
 /// <summary>
 /// Base for the component on each trap's model. On the server it calls Act whenever the trap is on (powered, or always
 /// for unpowered traps), isn't worn out and its cooldown is up; Act does the trap's work and reports the entities
-/// involved with Broadcast, which plays the trap's effects here and on nearby clients (PlayFx). Every game that draws
-/// the trap also runs the power lamp: lit while powered, blinking when worn out.
+/// involved with Broadcast, which plays the trap's effects here and on nearby clients (PlayFx), and it refills a trap's
+/// store from supply crates nearby (TrapSupplyDEM). Every game that draws the trap also runs the power lamp: lit while
+/// powered, blinking when worn out.
 ///
 /// Levels (from the trap's kills) make it hit harder (DamageMult) and act faster; an Overcharger nearby makes a powered
 /// trap act faster still and wear faster. Damage goes through Hit so kills are credited to the trap.
@@ -27,6 +28,7 @@ public abstract class TrapControllerDEM : MonoBehaviour
     private float overchargeRefresh;
     private float overSpeed = 1f;
     private float overWear = 1f;
+    private float supplyTimer;
 
     protected static readonly List<Entity> Found = new List<Entity>();
 
@@ -62,8 +64,9 @@ public abstract class TrapControllerDEM : MonoBehaviour
         renderers = GetComponentsInChildren<MeshRenderer>(true);
         lampRefresh = 0f;
         overchargeRefresh = 0f;
-        // Spread neighbouring traps out instead of firing in lockstep
+        // Spread neighbouring traps out instead of firing (or refilling) in lockstep
         Cooldown = Random.Range(0.1f, ActDelay);
+        supplyTimer = Random.Range(0.5f, TrapSupplyDEM.Interval);
         if (!Active.Contains(this))
         {
             Active.Add(this);
@@ -91,7 +94,12 @@ public abstract class TrapControllerDEM : MonoBehaviour
             return;
         }
         UpdateLamp(Time.deltaTime);
-        if (!IsOn || !SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer)
+        if (!SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer)
+        {
+            return;
+        }
+        Resupply(Time.deltaTime);
+        if (!IsOn)
         {
             return;
         }
@@ -198,6 +206,28 @@ public abstract class TrapControllerDEM : MonoBehaviour
 
     /// <summary>Server: whether any ammo is loaded.</summary>
     protected bool HasAmmo => Record.AmmoTotal > 0;
+
+    /// <summary>Server: every few seconds a trap with a store that isn't full refills from the supply crates around
+    /// it (TrapSupplyDEM), powered or not. The wait is set first, so a refill that throws waits like any other.</summary>
+    private void Resupply(float dt)
+    {
+        if (!Settings.UsesAmmo)
+        {
+            return;
+        }
+        supplyTimer -= dt;
+        if (supplyTimer > 0f)
+        {
+            return;
+        }
+        supplyTimer = TrapSupplyDEM.Interval;
+        World world = GameManager.Instance.World;
+        if (world == null || Record.AmmoTotal >= Settings.AmmoCapacity)
+        {
+            return;
+        }
+        TrapSupplyDEM.Refill(world, BlockPos, Settings, Owner(world));
+    }
 
     // ------------------------------------------------------------------ helpers
 

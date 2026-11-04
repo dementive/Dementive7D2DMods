@@ -8,8 +8,8 @@ About 30 minutes. Note anything broken, too strong, too weak or odd-looking, wit
       on debug mode, and **F6** then spawns zombies at your crosshair. `settime day` makes it daytime.
 - [ ] From the creative menu, search `Dementive`: take all 14 traps, Tar and Rebar Bolts.
 - [ ] Also take: `generatorbank`, `ammoGasCan` (two stacks), `meleeToolWireTool`, `resourceAnimalFat`, `resourceWood`,
-      `ammoArrowStone`, `ammoArrowFlaming`, `thrownAmmoMolotovCocktail`, a club or sledgehammer, and
-      `resourceRepairKit`.
+      `ammoArrowStone`, `ammoArrowFlaming`, `thrownAmmoMolotovCocktail`, a club or sledgehammer,
+      `resourceRepairKit` and two `cntWoodWritableCrate` (storage crates).
 - [ ] Place the generator bank, fuel it and switch it on. Wire every powered trap to it.
 
 For each trap: place it, hold **E** and use **Load** where it takes ammo, then spawn 2 or 3 zombies (F6) that walk
@@ -49,6 +49,21 @@ into it.
       burns hard, and the fire spreads to other tarred zombies within 3 m.
 - [ ] **Frozen then blunt** (Ram, Swinging Log, club): a **Shatter** does double damage.
 - [ ] Optional: a demolisher never freezes and is held only briefly.
+
+## Supply crates and Load all nearby
+
+- [ ] Place a storage crate within 3 blocks of the Trip Bow (try one a block lower or higher) with stone arrows and
+      something else in it. Within 3 s the bow fills to 30 (look at it) and the crate loses only the arrows it took.
+- [ ] Take the arrows out of the crate and Unload the bow. Open the crate, put arrows back in and keep it open for
+      10 s: the bow stays empty. Close it: the bow fills within 3 s. Lock the arrows' slot in the crate (unload the
+      bow again): the bow leaves that slot alone.
+- [ ] A crate 4 blocks away isn't used, and neither is a POI's loot container (a cupboard or trash pile).
+- [ ] Switch the generator off and Unload the Flame Vent: it still refills from gas cans in a crate next to it.
+- [ ] Put arrows, gas cans and wood in your inventory, stand among three or more traps that take them and use
+      **Load all nearby**: the closest traps fill first, until your ammo runs out, and a tooltip says how many traps
+      it loaded. With every trap full it says there's nothing to load.
+- [ ] Optional, co-op: as a client, Load all nearby and a supply crate both work, nothing is duplicated or lost, and the
+      other player sees the crate's contents go down as a trap refills.
 
 ## Everything else
 

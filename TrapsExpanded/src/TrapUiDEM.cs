@@ -4,16 +4,26 @@ using UnityEngine;
 
 /// <summary>
 /// What every trap shows when you look at it (level, kills, upgrade, loaded ammo) and the commands it adds to its
-/// radial menu: Load and Unload for traps that use ammo or fuel, the two upgrades once it reaches level 3, and its
-/// own (re-arm, light). The radial labels are the localization keys blockcommand_&lt;command&gt;.
+/// radial menu: Load, Load all nearby and Unload for traps that use ammo or fuel, the two upgrades once it reaches
+/// level 3, and its own (re-arm, light). The radial labels are the localization keys blockcommand_&lt;command&gt;.
 /// </summary>
 public static class TrapUiDEM
 {
     public const string CmdLoad = "dem_load";
+    public const string CmdLoadAll = "dem_loadall";
     public const string CmdUnload = "dem_unload";
     public const string CmdUpgradeA = "dem_upgradeA";
     public const string CmdUpgradeB = "dem_upgradeB";
     private const string UpgradePrefix = "dem_up_";
+
+    /// <summary>How far Load all nearby reaches from the player, in meters.</summary>
+    public const float LoadAllRange = 15f;
+
+    /// <summary>The most traps one Load all nearby loads (its package counts them in a byte).</summary>
+    private const int LoadAllMax = 255;
+
+    /// <summary>Client: until when a Load all nearby waits for the server's answer before another one can go.</summary>
+    private static float loadAllWait;
 
     /// <summary>The radial command for one of a trap's upgrades (its label names the upgrade).</summary>
     public static string UpgradeCommand(string blockName, char upgrade)
@@ -47,6 +57,8 @@ public static class TrapUiDEM
         {
             bool full = rec != null && rec.AmmoTotal >= s.AmmoCapacity;
             list.Add(new BlockActivationCommand(CmdLoad, "add", !full && HasAmmo(focusing as EntityPlayerLocal, s)));
+            list.Add(new BlockActivationCommand(CmdLoadAll, "store_all_down",
+                HasAmmoNearby(focusing as EntityPlayerLocal)));
             list.Add(new BlockActivationCommand(CmdUnload, "backpack", rec != null && rec.AmmoTotal > 0));
         }
         trap.ExtraCommands(list, world, bv, pos, rec);
@@ -76,7 +88,12 @@ public static class TrapUiDEM
         }
         if (command == CmdLoad)
         {
-            Load(trap.Settings, pos, player);
+            Load(trap.Settings, pos, player, true);
+            return true;
+        }
+        if (command == CmdLoadAll)
+        {
+            LoadAll(player);
             return true;
         }
         TrapStoreDEM.Command(pos, command, null, player);
@@ -178,13 +195,14 @@ public static class TrapUiDEM
     }
 
     /// <summary>Client: takes the trap's ammo from the player's inventory, up to what fits, and sends it to the
-    /// server (which hands back anything that didn't fit after all).</summary>
-    private static void Load(TrapSettingsDEM s, Vector3i pos, EntityPlayerLocal player)
+    /// server (which hands back anything that didn't fit after all). False if there was nothing to load (said in a
+    /// tooltip if `tell` is set).</summary>
+    private static bool Load(TrapSettingsDEM s, Vector3i pos, EntityPlayerLocal player, bool tell)
     {
         XUiM_PlayerInventory inv = Inventory(player);
         if (inv == null)
         {
-            return;
+            return false;
         }
         TrapRecordDEM rec = TrapStoreDEM.View(pos);
         int room = s.AmmoCapacity - (rec?.AmmoTotal ?? 0);
@@ -211,11 +229,139 @@ public static class TrapUiDEM
         }
         if (loaded.Count == 0)
         {
-            GameManager.ShowTooltip(player, string.Format(Localization.Get("dem_trapNoAmmo"), AmmoNames(s)),
-                string.Empty, "ui_denied");
-            return;
+            if (tell)
+            {
+                GameManager.ShowTooltip(player, string.Format(Localization.Get("dem_trapNoAmmo"), AmmoNames(s)),
+                    string.Empty, "ui_denied");
+            }
+            return false;
         }
         TrapStoreDEM.Command(pos, CmdLoad, loaded, player);
+        return true;
+    }
+
+    /// <summary>
+    /// Load all nearby: Load on every one of the mod's traps with a store within LoadAllRange of the player, closest
+    /// first, until the inventory runs out. Each load is a plain Load (items taken here, sent to the server, anything
+    /// that didn't fit handed back). The host's records are the server's own, so it loads at once. A client's copies
+    /// are only kept fresh for the trap it's looking at, so it first asks the server for the others
+    /// (NetPackageTrapLoadAllDEM) and loads them when they come (LoadAllReceived), so it takes only what fits.
+    /// </summary>
+    private static void LoadAll(EntityPlayerLocal player)
+    {
+        List<Vector3i> traps = NearbyStores(player);
+        if (traps.Count == 0 || TrapStoreDEM.IsServer)
+        {
+            LoadEach(player, traps);
+            return;
+        }
+        // Still waiting for the last answer: a second one would load from the same old records
+        if (Time.time < loadAllWait)
+        {
+            return;
+        }
+        loadAllWait = Time.time + 3f;
+        SingletonMonoBehaviour<ConnectionManager>.Instance.SendToServer(
+            NetPackageManager.GetPackage<NetPackageTrapLoadAllDEM>().Setup(traps));
+    }
+
+    /// <summary>Client: the server sent the records a Load all nearby asked for (already in the cache): load the traps
+    /// now.</summary>
+    public static void LoadAllReceived(List<Vector3i> traps)
+    {
+        loadAllWait = 0f;
+        EntityPlayerLocal player = GameManager.Instance.World?.GetPrimaryPlayer();
+        if (player != null)
+        {
+            LoadEach(player, traps);
+        }
+    }
+
+    private static void LoadEach(EntityPlayerLocal player, List<Vector3i> traps)
+    {
+        World world = GameManager.Instance.World;
+        if (world == null)
+        {
+            return;
+        }
+        int loaded = 0;
+        foreach (Vector3i pos in traps)
+        {
+            BlockValue bv = world.GetBlock(pos);
+            if (!bv.ischild && bv.Block is ITrapDEM trap && trap.Settings.UsesAmmo
+                && Load(trap.Settings, pos, player, false))
+            {
+                loaded++;
+            }
+        }
+        if (loaded == 0)
+        {
+            GameManager.ShowTooltip(player, Localization.Get("dem_trapLoadAllNone"), string.Empty, "ui_denied");
+            return;
+        }
+        GameManager.ShowTooltip(player, string.Format(Localization.Get("dem_trapLoadAllDone"), loaded));
+    }
+
+    /// <summary>Whether the player carries ammo or fuel for any of the traps Load all nearby would load.</summary>
+    private static bool HasAmmoNearby(EntityPlayerLocal player)
+    {
+        if (Inventory(player) == null)
+        {
+            return true;
+        }
+        World world = GameManager.Instance.World;
+        foreach (Vector3i pos in NearbyStores(player))
+        {
+            if (world.GetBlock(pos).Block is ITrapDEM trap && HasAmmo(player, trap.Settings))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /// <summary>The mod's traps with a store within LoadAllRange of the player, closest first. Found through the trap
+    /// models loaded here (TrapControllerDEM.Active), which every game that draws them has, client or host.</summary>
+    private static List<Vector3i> NearbyStores(EntityPlayerLocal player)
+    {
+        List<Vector3i> found = new List<Vector3i>();
+        World world = GameManager.Instance.World;
+        if (world == null || player == null)
+        {
+            return found;
+        }
+        List<float> dists = new List<float>();
+        Vector3 at = player.position;
+        foreach (TrapControllerDEM c in TrapControllerDEM.Active)
+        {
+            if (c == null)
+            {
+                continue;
+            }
+            Vector3i pos = c.Position;
+            float d = (pos.ToVector3() + new Vector3(0.5f, 0.5f, 0.5f) - at).sqrMagnitude;
+            if (d > LoadAllRange * LoadAllRange || found.Contains(pos))
+            {
+                continue;
+            }
+            BlockValue bv = world.GetBlock(pos);
+            if (bv.ischild || !(bv.Block is ITrapDEM trap) || !trap.Settings.UsesAmmo)
+            {
+                continue;
+            }
+            int i = 0;
+            while (i < dists.Count && dists[i] <= d)
+            {
+                i++;
+            }
+            dists.Insert(i, d);
+            found.Insert(i, pos);
+        }
+        if (found.Count > LoadAllMax)
+        {
+            found.RemoveRange(LoadAllMax, found.Count - LoadAllMax);
+        }
+        return found;
     }
 
     /// <summary>A player gets items back from a trap: into the inventory, or dropped if it's full.</summary>

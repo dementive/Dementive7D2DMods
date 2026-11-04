@@ -196,8 +196,9 @@ public class TrapRecordDEM
 
 /// <summary>
 /// The server's records of every placed trap, saved in the world's save folder. Clients see a copy of a trap's
-/// record while they look at it (requested from the server every couple of seconds) and send their commands (load,
-/// unload, upgrade, re-arm, light) to the server, which does them and replies with the new state.
+/// record while they look at it (requested from the server every couple of seconds; Load all nearby asks for all of
+/// its traps' at once) and send their commands (load, unload, upgrade, re-arm, light) to the server, which does them
+/// and replies with the new state. Supply crates (TrapSupplyDEM) add to a record on the server.
 /// </summary>
 public static class TrapStoreDEM
 {
@@ -419,6 +420,21 @@ public static class TrapStoreDEM
             return;
         }
         client.SendPackage(NetPackageManager.GetPackage<NetPackageTrapStateDEM>().Setup(pos, Find(pos)?.Copy()));
+    }
+
+    /// <summary>Server: a client's Load all nearby asked for these traps' records; it loads them once they come.</summary>
+    public static void LoadAllRequest(List<Vector3i> traps, ClientInfo client)
+    {
+        if (client == null || traps == null)
+        {
+            return;
+        }
+        List<TrapRecordDEM> recs = new List<TrapRecordDEM>(traps.Count);
+        foreach (Vector3i pos in traps)
+        {
+            recs.Add(Find(pos)?.Copy());
+        }
+        client.SendPackage(NetPackageManager.GetPackage<NetPackageTrapLoadAllStateDEM>().Setup(traps, recs));
     }
 
     /// <summary>A player used one of the trap's commands. `items` are what they loaded (already taken from their

@@ -110,6 +110,92 @@ public class NetPackageTrapCommandDEM : NetPackage
     }
 }
 
+/// <summary>Client to server: Load all nearby. Send me these traps' records (closest first), so I can load them.</summary>
+public class NetPackageTrapLoadAllDEM : NetPackage
+{
+    private List<Vector3i> traps = new List<Vector3i>();
+
+    public override NetPackageDirection PackageDirection => NetPackageDirection.ToServer;
+
+    public NetPackageTrapLoadAllDEM Setup(List<Vector3i> _traps)
+    {
+        traps = new List<Vector3i>(_traps ?? new List<Vector3i>());
+        return this;
+    }
+
+    public override void read(PooledBinaryReader _br)
+    {
+        traps = TrapItemsIO.ReadPositions(_br);
+    }
+
+    public override void write(PooledBinaryWriter _bw)
+    {
+        base.write(_bw);
+        TrapItemsIO.WritePositions(_bw, traps);
+    }
+
+    public override void ProcessPackage(World _world, GameManager _callbacks)
+    {
+        if (_world != null)
+        {
+            TrapStoreDEM.LoadAllRequest(traps, Sender);
+        }
+    }
+}
+
+/// <summary>Server to a client: the records a Load all nearby asked for. The client then loads those traps.</summary>
+public class NetPackageTrapLoadAllStateDEM : NetPackage
+{
+    private List<Vector3i> traps = new List<Vector3i>();
+    private List<TrapRecordDEM> records = new List<TrapRecordDEM>();
+
+    public override NetPackageDirection PackageDirection => NetPackageDirection.ToClient;
+
+    /// <summary>One record (or null: none yet) per trap.</summary>
+    public NetPackageTrapLoadAllStateDEM Setup(List<Vector3i> _traps, List<TrapRecordDEM> _records)
+    {
+        traps = new List<Vector3i>(_traps);
+        records = new List<TrapRecordDEM>(_records);
+        return this;
+    }
+
+    public override void read(PooledBinaryReader _br)
+    {
+        traps = TrapItemsIO.ReadPositions(_br);
+        records = new List<TrapRecordDEM>(traps.Count);
+        for (int i = 0; i < traps.Count; i++)
+        {
+            records.Add(_br.ReadBoolean() ? TrapRecordDEM.Read(_br) : null);
+        }
+    }
+
+    public override void write(PooledBinaryWriter _bw)
+    {
+        base.write(_bw);
+        TrapItemsIO.WritePositions(_bw, traps);
+        int count = System.Math.Min(traps.Count, 255);
+        for (int i = 0; i < count; i++)
+        {
+            TrapRecordDEM rec = i < records.Count ? records[i] : null;
+            _bw.Write(rec != null);
+            rec?.Write(_bw);
+        }
+    }
+
+    public override void ProcessPackage(World _world, GameManager _callbacks)
+    {
+        if (_world == null)
+        {
+            return;
+        }
+        for (int i = 0; i < traps.Count; i++)
+        {
+            TrapStoreDEM.Receive(traps[i], records[i]);
+        }
+        TrapUiDEM.LoadAllReceived(traps);
+    }
+}
+
 /// <summary>Server to a client: items handed back to the player (unloaded ammo, or what didn't fit).</summary>
 public class NetPackageTrapGiveDEM : NetPackage
 {
@@ -201,6 +287,28 @@ public static class TrapItemsIO
         {
             w.Write(list[i].Item ?? "");
             w.Write(list[i].Count);
+        }
+    }
+
+    public static List<Vector3i> ReadPositions(PooledBinaryReader r)
+    {
+        int count = r.ReadByte();
+        List<Vector3i> list = new List<Vector3i>(count);
+        for (int i = 0; i < count; i++)
+        {
+            list.Add(StreamUtils.ReadVector3i(r));
+        }
+        return list;
+    }
+
+    /// <summary>Up to 255 positions (the rest are left off).</summary>
+    public static void WritePositions(PooledBinaryWriter w, List<Vector3i> list)
+    {
+        int count = list == null ? 0 : System.Math.Min(list.Count, 255);
+        w.Write((byte)count);
+        for (int i = 0; i < count; i++)
+        {
+            StreamUtils.Write(w, list[i]);
         }
     }
 }
