@@ -35,6 +35,358 @@
 			<duration value="120"/>
 			<display_value value="duration"/>
 		</buff>
+
+		<!-- Rooftop Runners: the landing after a fall is silent to zombies (buffs come last, so this is the total) -->
+		<buff name="buffDementiveArmorRooftopRunners" hidden="true">
+			<stack_type value="replace"/>
+			<duration value="1"/>
+			<effect_group>
+				<passive_effect name="NoiseMultiplier" operation="perc_set" value="0"/>
+			</effect_group>
+		</buff>
+
+		<!-- Varsity Jacket: worn marker that keeps buffDementiveArmorVarsitySprint on while sprinting. Only the owner
+		     knows; the flag syncs to the server, which works out the damage -->
+		<buff name="buffDementiveArmorVarsityJacket" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<update_rate value=".25"/>
+			<effect_group>
+				<requirement name="IsLocalPlayer"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorVarsitySprint">
+					<requirement name="EntityHasMovementTag" tags="running"/>
+					<requirement name="!HasBuff" buff="buffDementiveArmorVarsitySprint"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveArmorVarsitySprint">
+					<requirement name="!EntityHasMovementTag" tags="running"/>
+					<requirement name="HasBuff" buff="buffDementiveArmorVarsitySprint"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		<buff name="buffDementiveArmorVarsitySprint" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+		</buff>
+
+		<!-- The Don's Pinstripes: after a .44 Magnum or Desert Vulture kill -->
+		<buff name="buffDementiveArmorDonsPinstripes" name_key="buffDementiveArmorDonsPinstripesName" description_key="buffDementiveArmorDonsPinstripesDesc" icon="ui_game_symbol_pistol" icon_color="178,34,34">
+			<stack_type value="replace"/>
+			<duration value="5"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<passive_effect name="EntityDamage" operation="perc_add" value=".25"/>
+			</effect_group>
+		</buff>
+
+		<!-- Knuckle Dusters: up while melee hits keep coming within 2 seconds; the streak is in .DementiveKnuckleStreak -->
+		<buff name="buffDementiveArmorKnuckleDusters" name_key="buffDementiveArmorKnuckleDustersName" description_key="buffDementiveArmorKnuckleDustersDesc" icon="ui_game_symbol_boxer" icon_color="255,69,0">
+			<stack_type value="replace"/>
+			<duration value="2"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<passive_effect name="EntityDamage" operation="perc_add" value="@.DementiveKnuckleStreak" tags="melee"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar=".DementiveKnuckleStreak" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".DementiveKnuckleStreak" operation="set" value="0"/>
+			</effect_group>
+		</buff>
+
+		<!-- Lawman's Stetson: after a headshot kill -->
+		<buff name="buffDementiveArmorLawmansStetson" name_key="buffDementiveArmorLawmansStetsonName" description_key="buffDementiveArmorLawmansStetsonDesc" icon="ui_game_symbol_run" icon_color="205,133,63">
+			<stack_type value="replace"/>
+			<duration value="5"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<passive_effect name="ReloadSpeedMultiplier" operation="perc_add" value=".2"/>
+				<passive_effect name="RunSpeed" operation="perc_add" value=".15"/>
+			</effect_group>
+		</buff>
+
+		<!-- Long Rider Duster and Trail Boots: while aiming down sights -->
+		<buff name="buffDementiveArmorLongRiderDuster" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="GeneralDamageResist" operation="base_add" value=".15"/>
+			</effect_group>
+		</buff>
+		<buff name="buffDementiveArmorTrailBoots" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<!-- Aiming stops a sprint, so moving while aiming is walking (or crouch-walking) -->
+				<passive_effect name="WalkSpeed" operation="perc_add" value=".25"/>
+				<passive_effect name="CrouchSpeed" operation="perc_add" value=".25"/>
+			</effect_group>
+		</buff>
+
+		<!-- Jump Boots: after a kill -->
+		<buff name="buffDementiveArmorJumpBoots" name_key="buffDementiveArmorJumpBootsName" description_key="buffDementiveArmorJumpBootsDesc" icon="ui_game_symbol_run" icon_color="60,179,113">
+			<stack_type value="replace"/>
+			<duration value="4"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<passive_effect name="RunSpeed" operation="perc_add" value=".15"/>
+			</effect_group>
+		</buff>
+
+		<!-- Lab Coat: on the zombie (zombie buffs run on the server). Any electrical buff starts the electrocuted
+		     stagger, and each electrical damage tick (every half second) restarts it, like buffShocked but 2 seconds -->
+		<buff name="buffDementiveArmorLabCoatShock" hidden="true">
+			<damage_type value="electrical"/>
+			<stack_type value="replace"/>
+			<duration value="2"/>
+			<effect_group>
+				<passive_effect name="HealthChangeOT" operation="base_add" value="-2"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".9"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".9"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".9"/>
+				<passive_effect name="JumpStrength" operation="perc_subtract" value=".9"/>
+				<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_electric_shock" parent_transform="Spine1" local_offset="0,-.2,0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="electric_fence_impact"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+				<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+			</effect_group>
+		</buff>
+
+		<!-- Kinetic Sneakers: worn marker that counts seconds of sprinting on the owner's machine (where the hit's
+		     damage is worked out too), then the charge, used up by the next hit -->
+		<buff name="buffDementiveArmorKineticSneakers" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<update_rate value="1"/>
+			<effect_group>
+				<requirement name="IsLocalPlayer"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveKineticSprint" operation="add" value="1">
+					<requirement name="EntityHasMovementTag" tags="running"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveKineticSprint" operation="set" value="0">
+					<requirement name="!EntityHasMovementTag" tags="running"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorKineticCharge">
+					<requirement name="CVarCompare" cvar=".DementiveKineticSprint" operation="GTE" value="5"/>
+					<requirement name="!HasBuff" buff="buffDementiveArmorKineticCharge"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		<buff name="buffDementiveArmorKineticCharge" name_key="buffDementiveArmorKineticChargeName" description_key="buffDementiveArmorKineticChargeDesc" icon="ui_game_symbol_electric_power" icon_color="30,144,255">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<!-- DamageModifier multiplies the finished damage (the player class sets it to 1), so +1 doubles it -->
+				<passive_effect name="DamageModifier" operation="perc_add" value="1" tags="entity"/>
+				<triggered_effect trigger="onSelfAttackedOther" action="RemoveBuff" buff="buffDementiveArmorKineticCharge"/>
+			</effect_group>
+		</buff>
+
+		<!-- War Crown: one buff per stack. Each kill refreshes the stacks there are and adds the next one -->
+		<buff name="buffDementiveArmorWarCrown1" name_key="buffDementiveArmorWarCrownName" description_key="buffDementiveArmorWarCrownDesc" icon="ui_game_symbol_armor_iron" icon_color="220,20,60">
+			<stack_type value="replace"/>
+			<duration value="3"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<passive_effect name="GeneralDamageResist" operation="base_add" value=".1"/>
+			</effect_group>
+		</buff>
+		<buff name="buffDementiveArmorWarCrown2" hidden="true">
+			<stack_type value="replace"/>
+			<duration value="3"/>
+			<effect_group>
+				<passive_effect name="GeneralDamageResist" operation="base_add" value=".1"/>
+			</effect_group>
+		</buff>
+		<buff name="buffDementiveArmorWarCrown3" hidden="true">
+			<stack_type value="replace"/>
+			<duration value="3"/>
+			<effect_group>
+				<passive_effect name="GeneralDamageResist" operation="base_add" value=".1"/>
+			</effect_group>
+		</buff>
+
+		<!-- Spiked Gauntlets: after a melee kill -->
+		<buff name="buffDementiveArmorSpikedGauntlets" name_key="buffDementiveArmorSpikedGauntletsName" description_key="buffDementiveArmorSpikedGauntletsDesc" icon="ui_game_symbol_boxer" icon_color="220,20,60">
+			<stack_type value="replace"/>
+			<duration value="3"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<passive_effect name="AttacksPerMinute" operation="perc_add" value=".3" tags="melee"/>
+			</effect_group>
+		</buff>
+
+		<!-- Divine Intervention (Preacher named set) -->
+		<buff name="buffDementiveArmorDivineIntervention" name_key="buffDementiveArmorDivineInterventionName" description_key="buffDementiveArmorDivineInterventionDesc" icon="ui_game_symbol_add" icon_color="255,215,0">
+			<stack_type value="ignore"/>
+			<duration value="3"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<passive_effect name="GeneralDamageResist" operation="base_add" value="1"/>
+				<passive_effect name="FallDamageReduction" operation="base_subtract" value="1"/>
+			</effect_group>
+		</buff>
+		<buff name="buffDementiveArmorDivineInterventionCooldown" name_key="buffDementiveArmorDivineInterventionCooldownName" description_key="buffDementiveArmorDivineInterventionCooldownDesc" icon="ui_game_symbol_clock" icon_color="128,128,128" remove_on_death="false">
+			<stack_type value="ignore"/>
+			<duration value="1200"/>
+			<display_value value="duration"/>
+		</buff>
+
+		<!-- Second Wind (Athletic named set) -->
+		<buff name="buffDementiveArmorSecondWindCooldown" name_key="buffDementiveArmorSecondWindCooldownName" description_key="buffDementiveArmorSecondWindCooldownDesc" icon="ui_game_symbol_clock" icon_color="128,128,128">
+			<stack_type value="ignore"/>
+			<duration value="60"/>
+			<display_value value="duration"/>
+		</buff>
+
+		<!-- Named-set bonuses, given by buffStatusCheck02 below -->
+		<!-- Paul's Crew (Lumberjack) -->
+		<buff name="buffDementiveArmorSetLumberjack" name_key="buffDementiveArmorSetLumberjackName" description_key="buffDementiveArmorSetLumberjackDesc" icon="ui_game_symbol_armor_iron" icon_color="192,57,43">
+			<stack_type value="ignore"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyStats" stat="Health" operation="add" value="10">
+					<requirement name="ItemHasTags" tags="axe,chainsaw"/>
+					<requirement name="EntityTagCompare" target="other" tags="zombie,animal"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		<!-- Divine Intervention (Preacher) -->
+		<buff name="buffDementiveArmorSetPreacher" name_key="buffDementiveArmorSetPreacherName" description_key="buffDementiveArmorSetPreacherDesc" icon="ui_game_symbol_armor_iron" icon_color="255,215,0">
+			<stack_type value="ignore"/>
+			<update_rate value=".5"/>
+			<effect_group>
+				<requirement name="IsLocalPlayer"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorDivineInterventionCooldown"/>
+				<requirement name="StatComparePercCurrentToMax" stat="health" operation="LT" value=".15"/>
+				<triggered_effect trigger="onOtherDamagedSelf" action="ModifyStats" stat="Health" operation="add" value="50"/>
+				<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" buff="buffDementiveArmorDivineIntervention"/>
+				<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" buff="buffDementiveArmorDivineInterventionCooldown"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="50"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorDivineIntervention"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorDivineInterventionCooldown"/>
+			</effect_group>
+		</buff>
+		<!-- Master Thief (Rogue) -->
+		<buff name="buffDementiveArmorSetRogue" name_key="buffDementiveArmorSetRogueName" description_key="buffDementiveArmorSetRogueDesc" icon="ui_game_symbol_armor_iron" icon_color="138,43,226">
+			<stack_type value="ignore"/>
+			<effect_group>
+				<passive_effect name="LockPickBreakChance" operation="perc_add" value="-2"/>
+				<passive_effect name="LockPickTime" operation="perc_add" value="@.DementiveLockThief"/>
+			</effect_group>
+		</buff>
+		<!-- Second Wind (Athletic) -->
+		<buff name="buffDementiveArmorSetAthletic" name_key="buffDementiveArmorSetAthleticName" description_key="buffDementiveArmorSetAthleticDesc" icon="ui_game_symbol_armor_iron" icon_color="0,191,255">
+			<stack_type value="ignore"/>
+			<update_rate value=".1"/>
+			<effect_group>
+				<requirement name="IsLocalPlayer"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorSecondWindCooldown"/>
+				<requirement name="StatCompareCurrent" stat="Stamina" operation="LT" value="3"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Stamina" operation="set" value="9999"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Stamina" operation="multiply" value=".5"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorSecondWindCooldown"/>
+			</effect_group>
+		</buff>
+		<!-- Made Man (Enforcer) -->
+		<buff name="buffDementiveArmorSetEnforcer" name_key="buffDementiveArmorSetEnforcerName" description_key="buffDementiveArmorSetEnforcerDesc" icon="ui_game_symbol_armor_iron" icon_color="178,34,34">
+			<stack_type value="ignore"/>
+			<effect_group>
+				<passive_effect name="TraderStage" operation="base_add" value="50"/>
+				<passive_effect name="BarteringBuying" operation="base_add" value=".1"/>
+				<passive_effect name="BarteringSelling" operation="base_add" value=".1"/>
+			</effect_group>
+		</buff>
+		<!-- Green Thumb (Farmer) -->
+		<buff name="buffDementiveArmorSetFarmer" name_key="buffDementiveArmorSetFarmerName" description_key="buffDementiveArmorSetFarmerDesc" icon="ui_game_symbol_armor_iron" icon_color="107,142,35">
+			<stack_type value="ignore"/>
+			<effect_group>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="GTE" value="75"/>
+				<passive_effect name="HarvestCount" operation="base_add" value="2" tags="farmerBonusHarvest"/>
+			</effect_group>
+		</buff>
+		<!-- Outlaw (Biker) -->
+		<buff name="buffDementiveArmorSetBiker" name_key="buffDementiveArmorSetBikerName" description_key="buffDementiveArmorSetBikerDesc" icon="ui_game_symbol_armor_iron" icon_color="255,69,0">
+			<stack_type value="ignore"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyStats" stat="Health" operation="add" value="15">
+					<requirement name="ItemHasTags" tags="melee"/>
+					<requirement name="StatComparePercCurrentToMax" stat="health" operation="LT" value=".5"/>
+					<requirement name="EntityTagCompare" target="other" tags="zombie,animal"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		<!-- Scrap King (Scavenger) -->
+		<buff name="buffDementiveArmorSetScavenger" name_key="buffDementiveArmorSetScavengerName" description_key="buffDementiveArmorSetScavengerDesc" icon="ui_game_symbol_armor_iron" icon_color="218,165,32">
+			<stack_type value="ignore"/>
+			<effect_group>
+				<passive_effect name="HarvestCount" operation="perc_add" value=".25" tags="salvageHarvest"/>
+			</effect_group>
+		</buff>
+		<!-- Dead Eye (Ranger) -->
+		<buff name="buffDementiveArmorSetRanger" name_key="buffDementiveArmorSetRangerName" description_key="buffDementiveArmorSetRangerDesc" icon="ui_game_symbol_armor_iron" icon_color="205,133,63">
+			<stack_type value="ignore"/>
+			<effect_group>
+				<requirement name="HoldingItemHasTags" tags="gun"/>
+				<passive_effect name="HeadshotDamageModifier" operation="perc_add" value=".25" tags="head"/>
+			</effect_group>
+		</buff>
+		<!-- Lock and Load (Commando) -->
+		<buff name="buffDementiveArmorSetCommando" name_key="buffDementiveArmorSetCommandoName" description_key="buffDementiveArmorSetCommandoDesc" icon="ui_game_symbol_armor_iron" icon_color="60,179,113">
+			<stack_type value="ignore"/>
+			<effect_group>
+				<passive_effect name="MagazineSize" operation="perc_add" value=".2" tags="gun"/>
+			</effect_group>
+		</buff>
+		<!-- Shadow Strike (Assassin) -->
+		<buff name="buffDementiveArmorSetAssassin" name_key="buffDementiveArmorSetAssassinName" description_key="buffDementiveArmorSetAssassinDesc" icon="ui_game_symbol_armor_iron" icon_color="123,104,238">
+			<stack_type value="ignore"/>
+			<effect_group>
+				<passive_effect name="EntityDamage" operation="perc_add" value=".75">
+					<requirement name="CVarCompare" cvar="_crouching" operation="Equals" value="1"/>
+					<requirement name="CVarCompare" cvar="_notAlerted" operation="GT" value="0" target="other"/>
+				</passive_effect>
+			</effect_group>
+		</buff>
+		<!-- Mother Lode (Miner) -->
+		<buff name="buffDementiveArmorSetMiner" name_key="buffDementiveArmorSetMinerName" description_key="buffDementiveArmorSetMinerDesc" icon="ui_game_symbol_armor_iron" icon_color="255,165,0">
+			<stack_type value="ignore"/>
+			<effect_group>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="10"/>
+				<passive_effect name="HarvestCount" operation="base_add" value="2" tags="DementiveArmorOre"/>
+			</effect_group>
+		</buff>
+		<!-- Hard Traveler (Nomad) -->
+		<buff name="buffDementiveArmorSetNomad" name_key="buffDementiveArmorSetNomadName" description_key="buffDementiveArmorSetNomadDesc" icon="ui_game_symbol_armor_iron" icon_color="210,180,140">
+			<stack_type value="ignore"/>
+			<effect_group>
+				<passive_effect name="FoodChangeOT" operation="perc_add" value="-.25"/>
+				<passive_effect name="WaterChangeOT" operation="perc_add" value="-.25"/>
+			</effect_group>
+		</buff>
+		<!-- Genius (Nerd) -->
+		<buff name="buffDementiveArmorSetNerd" name_key="buffDementiveArmorSetNerdName" description_key="buffDementiveArmorSetNerdDesc" icon="ui_game_symbol_armor_iron" icon_color="30,144,255">
+			<stack_type value="ignore"/>
+			<effect_group>
+				<passive_effect name="DegradationPerUse" operation="perc_add" value="-.3" tags="tool,weapon"/>
+			</effect_group>
+		</buff>
+		<!-- Warlord (Raider) -->
+		<buff name="buffDementiveArmorSetRaider" name_key="buffDementiveArmorSetRaiderName" description_key="buffDementiveArmorSetRaiderDesc" icon="ui_game_symbol_armor_iron" icon_color="220,20,60">
+			<stack_type value="ignore"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfKilledOther" action="ModifyCVar" cvar=".DementiveWarlordRoll" operation="set" value="randomint(1,100)">
+					<requirement name="ItemHasTags" tags="melee"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfKilledOther" action="AddBuff" target="selfAOE" range="3" target_tags="zombie" buff="buffInjuryKnockdown01">
+					<requirement name="ItemHasTags" tags="melee"/>
+					<requirement name="CVarCompare" target="self" cvar=".DementiveWarlordRoll" operation="LTE" value="30"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		<!-- Living Off the Land (Primitive) -->
+		<buff name="buffDementiveArmorSetPrimitive" name_key="buffDementiveArmorSetPrimitiveName" description_key="buffDementiveArmorSetPrimitiveDesc" icon="ui_game_symbol_armor_iron" icon_color="32,178,170">
+			<stack_type value="ignore"/>
+			<effect_group>
+				<passive_effect name="HarvestCount" operation="perc_add" value=".25" tags="oreWoodHarvest,lumberjackHarvest,cropHarvest,wildCropsHarvest,butcherHarvest"/>
+			</effect_group>
+		</buff>
 	</append>
 
 	<!-- Marathon Runners: falls hurt as if they were 4 m shorter (vanilla boots use the same impact speed units:
@@ -43,6 +395,171 @@
 		<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".impactSpeed" operation="subtract" value=".05656">
 			<requirement name="HasBuff" buff="buffDementiveArmorMarathonRunners"/>
 		</triggered_effect>
+	</append>
+
+	<!-- Named-set bonuses: the same check vanilla uses for its full set bonuses. ArmorGroupCount counts what is worn
+	     (rebuilt on every equipment change), so equipping, unequipping and loading can't leave it wrong -->
+	<append xpath="/buffs/buff[@name='buffStatusCheck02']">
+		<effect_group> <!-- Paul's Crew -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveArmorSetLumberjack">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedLumberjack" operation="LTE" value="3"/>
+				<requirement name="HasBuff" buff="buffDementiveArmorSetLumberjack"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorSetLumberjack">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedLumberjack" operation="Equals" value="4"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorSetLumberjack"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group> <!-- Divine Intervention -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveArmorSetPreacher">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedPreacher" operation="LTE" value="3"/>
+				<requirement name="HasBuff" buff="buffDementiveArmorSetPreacher"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorSetPreacher">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedPreacher" operation="Equals" value="4"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorSetPreacher"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group> <!-- Master Thief -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveArmorSetRogue">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedRogue" operation="LTE" value="3"/>
+				<requirement name="HasBuff" buff="buffDementiveArmorSetRogue"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorSetRogue">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedRogue" operation="Equals" value="4"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorSetRogue"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group> <!-- Second Wind -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveArmorSetAthletic">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedAthletic" operation="LTE" value="3"/>
+				<requirement name="HasBuff" buff="buffDementiveArmorSetAthletic"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorSetAthletic">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedAthletic" operation="Equals" value="4"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorSetAthletic"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group> <!-- Made Man -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveArmorSetEnforcer">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedEnforcer" operation="LTE" value="3"/>
+				<requirement name="HasBuff" buff="buffDementiveArmorSetEnforcer"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorSetEnforcer">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedEnforcer" operation="Equals" value="4"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorSetEnforcer"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group> <!-- Green Thumb -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveArmorSetFarmer">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedFarmer" operation="LTE" value="3"/>
+				<requirement name="HasBuff" buff="buffDementiveArmorSetFarmer"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorSetFarmer">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedFarmer" operation="Equals" value="4"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorSetFarmer"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group> <!-- Outlaw -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveArmorSetBiker">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedBiker" operation="LTE" value="3"/>
+				<requirement name="HasBuff" buff="buffDementiveArmorSetBiker"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorSetBiker">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedBiker" operation="Equals" value="4"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorSetBiker"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group> <!-- Scrap King -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveArmorSetScavenger">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedScavenger" operation="LTE" value="3"/>
+				<requirement name="HasBuff" buff="buffDementiveArmorSetScavenger"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorSetScavenger">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedScavenger" operation="Equals" value="4"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorSetScavenger"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group> <!-- Dead Eye -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveArmorSetRanger">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedRanger" operation="LTE" value="3"/>
+				<requirement name="HasBuff" buff="buffDementiveArmorSetRanger"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorSetRanger">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedRanger" operation="Equals" value="4"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorSetRanger"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group> <!-- Lock and Load -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveArmorSetCommando">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedCommando" operation="LTE" value="3"/>
+				<requirement name="HasBuff" buff="buffDementiveArmorSetCommando"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorSetCommando">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedCommando" operation="Equals" value="4"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorSetCommando"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group> <!-- Shadow Strike -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveArmorSetAssassin">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedAssassin" operation="LTE" value="3"/>
+				<requirement name="HasBuff" buff="buffDementiveArmorSetAssassin"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorSetAssassin">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedAssassin" operation="Equals" value="4"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorSetAssassin"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group> <!-- Mother Lode -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveArmorSetMiner">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedMiner" operation="LTE" value="3"/>
+				<requirement name="HasBuff" buff="buffDementiveArmorSetMiner"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorSetMiner">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedMiner" operation="Equals" value="4"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorSetMiner"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group> <!-- Hard Traveler -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveArmorSetNomad">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedNomad" operation="LTE" value="3"/>
+				<requirement name="HasBuff" buff="buffDementiveArmorSetNomad"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorSetNomad">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedNomad" operation="Equals" value="4"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorSetNomad"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group> <!-- Genius -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveArmorSetNerd">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedNerd" operation="LTE" value="3"/>
+				<requirement name="HasBuff" buff="buffDementiveArmorSetNerd"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorSetNerd">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedNerd" operation="Equals" value="4"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorSetNerd"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group> <!-- Warlord -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveArmorSetRaider">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedRaider" operation="LTE" value="3"/>
+				<requirement name="HasBuff" buff="buffDementiveArmorSetRaider"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorSetRaider">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedRaider" operation="Equals" value="4"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorSetRaider"/>
+			</triggered_effect>
+		</effect_group>
+		<effect_group> <!-- Living Off the Land -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveArmorSetPrimitive">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedPrimitive" operation="LTE" value="3"/>
+				<requirement name="HasBuff" buff="buffDementiveArmorSetPrimitive"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveArmorSetPrimitive">
+				<requirement name="ArmorGroupCount" group_name="groupDementiveNamedPrimitive" operation="Equals" value="4"/>
+				<requirement name="!HasBuff" buff="buffDementiveArmorSetPrimitive"/>
+			</triggered_effect>
+		</effect_group>
 	</append>
 
 </Dementive>

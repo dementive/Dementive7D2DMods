@@ -1,25 +1,28 @@
 <Dementive>
 
 	<append xpath="/lootcontainers/lootprobtemplates">
-		<!-- Chance per container opened that one armor piece drops -->
+		<!-- Chance per container opened that one armor piece drops. With 64 pieces each piece is half as likely as
+		     each of the first 15 was (0.005 to 0.05), so a piece turns up 64 / 30 times as often overall. Every
+		     group these go in is count="all" with 2.5 or more picks, so it stays under 1% of a group's picks -->
 		<lootprobtemplate name="DementiveArmorRaresT1">
-			<loot level="1,999999" prob="0.005"/>  <!-- 1 / 200 -->
+			<loot level="1,999999" prob="0.0107"/>  <!-- 1 / 94 -->
 		</lootprobtemplate>
 		<lootprobtemplate name="DementiveArmorRaresT2">
-			<loot level="1,999999" prob="0.01"/>  <!-- 1 / 100 -->
+			<loot level="1,999999" prob="0.0213"/>  <!-- 1 / 47 -->
 		</lootprobtemplate>
 		<lootprobtemplate name="DementiveArmorRaresT3">
-			<loot level="1,999999" prob="0.02"/>  <!-- 1 / 50 -->
+			<loot level="1,999999" prob="0.0427"/>  <!-- 1 / 23 -->
 		</lootprobtemplate>
 		<lootprobtemplate name="DementiveArmorRaresT4">
-			<loot level="1,999999" prob="0.04"/>  <!-- 1 / 25 -->
+			<loot level="1,999999" prob="0.0853"/>  <!-- 1 / 12 -->
 		</lootprobtemplate>
 		<lootprobtemplate name="DementiveArmorRaresT5">
-			<loot level="1,999999" prob="0.05"/>  <!-- 1 / 20 -->
+			<loot level="1,999999" prob="0.1067"/>  <!-- 1 / 9 -->
 		</lootprobtemplate>
 
 		<!-- Quest rewards: the reward "value" is the quest tier. At tiers 4-6 roughly 3% of schematic rewards
-		     (about 1 in 20 quests) offer one of the armor pieces instead -->
+		     (about 1 in 20 quests) offer one of the armor pieces instead. This stays as it was with 15 pieces: any
+		     more would be over 3% of the group's picks -->
 		<lootprobtemplate name="DementiveArmorQuestRewards">
 			<loot level="0,3" prob="0"/>
 			<loot level="4,7" prob="0.06"/>
@@ -28,21 +31,70 @@
 
 	<insertBefore xpath="/lootcontainers/lootgroup[@name='groupScrapCommon']">
 		<lootgroup name="groupDementiveArmorAll" count="1" loot_quality_template="armorQualityTemplate">
+			<item name="DementiveArmorBigJimsEarflaps"/>
+			<item name="DementiveArmorRedFlannel"/>
 			<item name="DementiveArmorTimberGloves"/>
+			<item name="DementiveArmorLogrollers"/>
+			<item name="DementiveArmorReverendsHat"/>
 			<item name="DementiveArmorSundayBest"/>
+			<item name="DementiveArmorLayingOnOfHands"/>
+			<item name="DementiveArmorPilgrimsShoes"/>
+			<item name="DementiveArmorSecondStoryCap"/>
+			<item name="DementiveArmorGetawayJacket"/>
 			<item name="DementiveArmorPickpocketGloves"/>
+			<item name="DementiveArmorRooftopRunners"/>
+			<item name="DementiveArmorCoachsVisor"/>
+			<item name="DementiveArmorVarsityJacket"/>
+			<item name="DementiveArmorGripTapeGloves"/>
 			<item name="DementiveArmorMarathonRunners"/>
 			<item name="DementiveArmorDonsShades"/>
+			<item name="DementiveArmorDonsPinstripes"/>
+			<item name="DementiveArmorWheelmansGloves"/>
+			<item name="DementiveArmorTwoToneWingtips"/>
+			<item name="DementiveArmorSunBonnet"/>
+			<item name="DementiveArmorSundayOveralls"/>
+			<item name="DementiveArmorOldBessiesGloves"/>
 			<item name="DementiveArmorMuckBoots"/>
+			<item name="DementiveArmorSkullLid"/>
 			<item name="DementiveArmorRoadCaptainsCut"/>
+			<item name="DementiveArmorKnuckleDusters"/>
+			<item name="DementiveArmorSteelToeStompers"/>
 			<item name="DementiveArmorJunkRatGoggles"/>
+			<item name="DementiveArmorPackRatParka"/>
+			<item name="DementiveArmorKnuckleBusterMitts"/>
+			<item name="DementiveArmorDumpsterDivers"/>
+			<item name="DementiveArmorLawmansStetson"/>
+			<item name="DementiveArmorLongRiderDuster"/>
 			<item name="DementiveArmorMarshalsGloves"/>
+			<item name="DementiveArmorTrailBoots"/>
+			<item name="DementiveArmorBlastHelmet"/>
 			<item name="DementiveArmorFlakVest"/>
+			<item name="DementiveArmorTriggerDiscipline"/>
+			<item name="DementiveArmorJumpBoots"/>
 			<item name="DementiveArmorGhostsHood"/>
+			<item name="DementiveArmorShroud"/>
+			<item name="DementiveArmorSilentHands"/>
+			<item name="DementiveArmorGhostSteps"/>
 			<item name="DementiveArmorWildcatterHat"/>
+			<item name="DementiveArmorBlastingCoveralls"/>
+			<item name="DementiveArmorRockSplitters"/>
+			<item name="DementiveArmorCanaryBoots"/>
+			<item name="DementiveArmorSandVeil"/>
 			<item name="DementiveArmorWanderersWraps"/>
+			<item name="DementiveArmorGeigerGloves"/>
+			<item name="DementiveArmorLongWalkBoots"/>
 			<item name="DementiveArmorThinkingCap"/>
+			<item name="DementiveArmorLabCoat"/>
+			<item name="DementiveArmorSolderingGloves"/>
+			<item name="DementiveArmorKineticSneakers"/>
+			<item name="DementiveArmorWarCrown"/>
+			<item name="DementiveArmorScrapPlate"/>
+			<item name="DementiveArmorSpikedGauntlets"/>
 			<item name="DementiveArmorJuggernautBoots"/>
+			<item name="DementiveArmorCastawaysHeadband"/>
+			<item name="DementiveArmorLuckyRags"/>
+			<item name="DementiveArmorWrappedFists"/>
+			<item name="DementiveArmorBareWraps"/>
 		</lootgroup>
 	</insertBefore>
 
