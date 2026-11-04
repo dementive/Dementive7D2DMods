@@ -6,6 +6,11 @@ Each family is one craftable helper item whose radial picks the piece, plus gate
 between stages the vanilla way: UpgradeBlock (fill a sandbag or Hesco, band a palisade, re-tension chain-link,
 re-weld a tank trap) and DowngradeBlock (what a piece breaks down to: stumps, a spilled mound, a sagging fence).
 Filled stages swap damage-stage meshes (DMG0..DMG2 in the model) as they lose health.
+
+Every block carries its family (FortFamily) and the stages a fill or restore moves on carry the stage's name
+(FortStage), for the DLL: one fill, restore or repair hit also does the same to the touching pieces of the family
+(FortRunDEM). Upgrades to a stronger material (banding a palisade, heavy chain-link) have no FortStage and stay one at
+a time.
 """
 import os
 import sys
@@ -90,14 +95,15 @@ def mesh_damage(health):
 
 def piece(name, model, health, material, dim=(1, 1, 1), dmg=False, solid=False, collide=None, upgrade=None,
           downgrade=None, repair=None, harvest=None, tint=None, gate=False, sounds=("", ""), upgrade_sound=None,
-          offset=None, support=False, door_sounds=None):
+          offset=None, support=False, door_sounds=None, stage=None):
     """One block. upgrade = (to, item, count); downgrade = the block this one breaks down to (leftover damage carries
     down the chain, and zombies count the whole chain's health when deciding whether to break through). support: other
-    blocks can be built on it (filled walls). door_sounds: a gate's (open, close, locked) sounds."""
+    blocks can be built on it (filled walls). door_sounds: a gate's (open, close, locked) sounds. stage: the upgrade is
+    a fill or restore that runs along the wall, to the touching pieces of the family at the same stage."""
     return dict(name=PREFIX + name, model=model, health=health, material=material, dim=dim, dmg=dmg, solid=solid,
                 collide=collide, upgrade=upgrade, downgrade=downgrade, repair=repair or {}, harvest=harvest or {},
                 tint=tint, gate=gate, sounds=sounds, upgrade_sound=upgrade_sound, offset=offset, support=support,
-                door_sounds=door_sounds)
+                door_sounds=door_sounds, stage=stage)
 
 
 def block_xml(p, family):
@@ -141,7 +147,8 @@ def block_xml(p, family):
     lines += ['\t\t\t<property name="StabilitySupport" value="%s" />' % ("true" if p["support"] else "false"),
               '\t\t\t<property name="WaterFlow" value="permitted" />',
               '\t\t\t<property name="ImposterDontBlock" value="true" />',
-              '\t\t\t<property name="MaxDamage" value="%d" />' % p["health"]]
+              '\t\t\t<property name="MaxDamage" value="%d" />' % p["health"],
+              '\t\t\t<property name="FortFamily" value="%s" />' % family.get("run", family["family"])]
     if p["solid"]:
         lines.append('\t\t\t<property name="Path" value="solid" />')
     if p["collide"]:
@@ -165,6 +172,8 @@ def block_xml(p, family):
                   '\t\t\t\t<property name="ItemCount" value="%d" />' % count,
                   '\t\t\t\t<property name="UpgradeHitCount" value="4" />',
                   "\t\t\t</property>"]
+        if p["stage"]:
+            lines.append('\t\t\t<property name="FortStage" value="%s" />' % p["stage"])
         if p["upgrade_sound"]:
             lines.append('\t\t\t<property name="UpgradeSound" value="%s" />' % p["upgrade_sound"])
     if p["downgrade"]:
@@ -201,7 +210,8 @@ def sandbag_family():
                 harvest["resourceCrushedSand"] = fill * i // 2
             pieces.append(piece("Sandbag%s%s" % (name, stage), model + stage, healths[i], "MsandbagDEM",
                                 dim=(1, height, 1), dmg=i > 0, solid=i == 2, upgrade=nxt, repair=repair,
-                                harvest=harvest, sounds=sounds, upgrade_sound="sandbags_place", support=i == 2))
+                                harvest=harvest, sounds=sounds, upgrade_sound="sandbags_place", support=i == 2,
+                                stage=stage if nxt else None))
     return dict(family="Sandbag", icon=PREFIX + "SandbagWall", pieces=pieces,
                 helper=["SandbagWallEmpty", "SandbagLowEmpty", "SandbagCornerEmpty", "SandbagEndEmpty"],
                 recipe=dict(items=[("resourceCloth", 10)], area=None), gates=[],
@@ -240,10 +250,10 @@ def palisade_family():
         # What's left: 1 m stumps zombies can climb; hammer it back into a section (or corner) with wood
         piece("PalisadeStumps", "PalisadeStumps", 300, wood, dim=(1, 3, 1),
               upgrade=("PalisadeSection", "resourceWood", 15), repair={"resourceWood": 5},
-              harvest={"resourceWood": 4}, upgrade_sound="place_block_wood"),
+              harvest={"resourceWood": 4}, upgrade_sound="place_block_wood", stage="Stumps"),
         piece("PalisadeCornerStumps", "PalisadeStumps", 300, wood, dim=(1, 3, 1),
               upgrade=("PalisadeCorner", "resourceWood", 15), repair={"resourceWood": 5},
-              harvest={"resourceWood": 4}, upgrade_sound="place_block_wood"),
+              harvest={"resourceWood": 4}, upgrade_sound="place_block_wood", stage="Stumps"),
     ]
     gate = piece("PalisadeGate", "PalisadeGate", 2500, wood, dim=(3, 3, 1), gate=True,
                  repair={"resourceWood": 20, "resourceNail": 4}, harvest={"resourceWood": 20},
@@ -279,9 +289,12 @@ def chainlink_family():
                     up = ("ChainLink%s%s%s" % (shape, weight, stages[i - 1]), "resourceScrapIron", 3)
                 down = "ChainLink%s%s%s" % (shape, weight, stages[i + 1]) if i < 2 else None
                 repair = {"resourceScrapIron": 3} if weight == "Light" else {"resourceScrapIron": 3, "resourceForgedIron": 1}
+                # Pulling a sagging or torn fence back up runs along it (light and heavy alike); the heavy upgrade
+                # doesn't
                 pieces.append(piece(name, model + weight + stage, round(base[i] * scale), "Mmetal",
                                     dim=(1, height, 1), solid=True, collide=SHOOT_THROUGH, upgrade=up, downgrade=down,
-                                    repair=repair, harvest={"resourceScrapIron": 3}, upgrade_sound="place_block_metal"))
+                                    repair=repair, harvest={"resourceScrapIron": 3}, upgrade_sound="place_block_metal",
+                                    stage=stage if i else None))
     gate = piece("ChainLinkGate", "ChainLinkGate", 1500, "Mmetal", dim=(3, 2, 1), gate=True, collide=SHOOT_THROUGH,
                  repair={"resourceScrapIron": 10}, harvest={"resourceScrapIron": 8},
                  door_sounds=("gate_chainlink_open", "gate_chainlink_close", "gate_chainlink_locked"))
@@ -319,12 +332,12 @@ def hesco_family():
                                 upgrade=up, downgrade="Hesco%sMound" % shape if i > 0 else None,
                                 repair={"resourceClayLump": fill // 2, "resourceCloth": 2} if i else {"resourceCloth": 3},
                                 harvest={"resourceClayLump": fill * i // 2} if i else {"resourceScrapIron": 4},
-                                upgrade_sound="sandbags_place", support=i > 0))
+                                upgrade_sound="sandbags_place", support=i > 0, stage=stage if up else None))
         # A breach spills into a 1 m mound zombies can climb; shovel it back in with clay
         pieces.append(piece("Hesco%sMound" % shape, model + "Mound", healths[1] // 3, "MhescoDEM", dim=dim,
                             upgrade=("Hesco%sThird" % shape, "resourceClayLump", fill),
                             repair={"resourceClayLump": fill // 2}, harvest={"resourceClayLump": fill // 2},
-                            upgrade_sound="sandbags_place"))
+                            upgrade_sound="sandbags_place", stage="Mound"))
     names = {"": "Hesco Barrier"}
     for shape, label in [("", "Hesco Barrier"), ("Double", "Double Hesco Barrier")]:
         for stage, word in [("Empty", " (empty)"), ("Third", " (a third full)"), ("TwoThirds", " (two thirds full)"),
@@ -350,12 +363,13 @@ def tank_traps_family():
               harvest={"resourceScrapIron": 20}),
         piece("TankTrapHedgehogBent", "TankTrapHedgehogBent", 2000, m, dim=(2, 2, 2), solid=True,
               collide=SHOOT_THROUGH, upgrade=("TankTrapHedgehog", "resourceForgedIron", 6),
-              repair={"resourceForgedIron": 3}, harvest={"resourceScrapIron": 15}, upgrade_sound="place_block_metal"),
+              repair={"resourceForgedIron": 3}, harvest={"resourceScrapIron": 15}, upgrade_sound="place_block_metal",
+              stage="Bent"),
         piece("TankTrapLine", "TankTrapLine", 5000, m, dim=(3, 2, 1), dmg=True, solid=True, collide=SHOOT_THROUGH,
               downgrade="TankTrapLineBent", repair={"resourceForgedIron": 6}, harvest={"resourceScrapIron": 20}),
         piece("TankTrapLineBent", "TankTrapLineBent", 1500, m, dim=(3, 2, 1), solid=True, collide=SHOOT_THROUGH,
               upgrade=("TankTrapLine", "resourceForgedIron", 6), repair={"resourceForgedIron": 3},
-              harvest={"resourceScrapIron": 15}, upgrade_sound="place_block_metal"),
+              harvest={"resourceScrapIron": 15}, upgrade_sound="place_block_metal", stage="Bent"),
     ]
     return dict(family="TankTraps", icon=PREFIX + "TankTraps", pieces=pieces,
                 helper=["TankTrapHedgehog", "TankTrapLine"],
@@ -420,7 +434,8 @@ def blocks_xml():
         for p in f["pieces"]:
             out += block_xml(p, f)
         for gate, _, _, _ in f["gates"]:
-            out += block_xml(gate, dict(f, family=gate["name"][len(PREFIX):]))
+            # A gate has its own description but belongs to its family's runs
+            out += block_xml(gate, dict(f, family=gate["name"][len(PREFIX):], run=f["family"]))
         first = PREFIX + f["helper"][0]
         out += ['\t\t<block name="%s%s">' % (PREFIX, f["family"]),
                 '\t\t\t<property name="Extends" value="%s" />' % first,

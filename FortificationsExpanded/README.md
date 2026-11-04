@@ -21,20 +21,38 @@ doors (open, close, lock).
 | Container Wall | workbench: 30 forged steel, 10 forged iron | Late wall in one placement | Wall (3 by 3), corner (1 by 3), red/blue/green/rust; gate (3 by 3) | 25000 (corner 8000) |
 
 - **Log Palisade:** zombies can't climb 3 m. A broken section leaves 1 m stumps they can climb over; hammer the stumps
-  back into a section with 15 wood.
+  back into a section with 15 wood, which restores the touching stumps along with it. Banding stays one section at a
+  time.
 - **Sandbag Wall:** place the empty bags, then fill them twice with a hammer or nail gun and crushed sand (10 a fill,
-  5 for the low wall). Earth with blast resistance 0.5: cops, boulders, pipe bombs and grenades do nothing, and a full
+  5 for the low wall); each fill also fills the touching bags at the same stage. Any repair tool that takes clay takes
+  crushed sand too. Earth with blast resistance 0.5: cops, boulders, pipe bombs and grenades do nothing, and a full
   wall survives about four point-blank demolisher blasts (concrete barely survives one). Rockets and dynamite still
   wreck it.
 - **Chain-Link:** stops zombies, but bullets and arrows pass through and zombies can see you through it. It sags, then
-  tears; hammer it back up a stage with 3 scrap iron.
-- **Hesco Barrier:** fill it three times with clay (10 a fill, 20 for the double). Earth: ignores small explosives.
-  Every single hit on it is capped at 100, so charged and infernal zombies struggle with it. A breach spills into a
-  1 m mound zombies can climb; refill it with clay.
+  tears; hammer it back up a stage with 3 scrap iron, which pulls the touching fence at that stage up with it. The
+  heavy upgrade stays one panel at a time.
+- **Hesco Barrier:** fill it three times with clay (10 a fill, 20 for the double); each fill also fills the touching
+  barriers at the same fill. Earth: ignores small explosives. Every single hit on it is capped at 100, so charged and
+  infernal zombies struggle with it. A breach spills into a 1 m mound zombies can climb; refill it with clay, which
+  refills the touching mounds too.
 - **Tank Traps:** zombies can't climb them and would rather walk a long way around than break them; bullets, arrows
-  and sight pass between the beams. A wrecked trap bends but stays a barrier; re-weld it with 6 forged iron.
+  and sight pass between the beams. A wrecked trap bends but stays a barrier; re-weld it with 6 forged iron, which
+  re-welds the touching bent traps too.
 - **Container Wall:** placed whole, with no upgrade hits, and blast resistance 0.5. One pool of health: when it
-  breaks, the whole 3 by 3 goes at once, and a blast counts once for every cell it covers.
+  breaks, the whole 3 by 3 goes at once, and a blast counts once for every cell it covers. Repairs run along touching
+  container walls, corners and gates like every family's.
+
+## Whole runs
+
+One fill, restore or repair hit on a piece also does the same to the rest of its run: every piece of the same family
+joined to it through touching pieces of that family (gates included, any colour of container). A fill or restore
+reaches the undamaged pieces at the same stage (repair a damaged one first); a repair reaches every damaged piece, as
+long as the piece you hit still needs repairing. Up to 32 more pieces, nearest first. Each one takes its own
+materials, exactly as a hit on it would, and the run stops at the first piece you can't pay for. It's still one swing
+for the tool's wear. Vanilla blocks are never touched.
+
+In co-op it runs where a vanilla repair does, on the client of the player holding the tool, taking that player's
+materials, and the block changes sync through the server like any other repair.
 
 ## Building the models
 

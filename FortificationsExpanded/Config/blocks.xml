@@ -22,6 +22,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="200" />
+			<property name="FortFamily" value="Sandbag" />
 			<property class="RepairItems">
 				<property name="resourceCloth" value="5" />
 			</property>
@@ -31,6 +32,7 @@
 				<property name="ItemCount" value="10" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Empty" />
 			<property name="UpgradeSound" value="sandbags_place" />
 			<drop event="Harvest" name="resourceCloth" count="4" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -56,6 +58,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="1000" />
+			<property name="FortFamily" value="Sandbag" />
 			<property name="MeshDamage" value="DMG0,1000,DMG1,650,DMG2,300" />
 			<property class="RepairItems">
 				<property name="resourceCrushedSand" value="5" />
@@ -67,6 +70,7 @@
 				<property name="ItemCount" value="10" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Half" />
 			<property name="UpgradeSound" value="sandbags_place" />
 			<drop event="Harvest" name="resourceCloth" count="4" tag="allHarvest,perkJunkMiner" />
 			<drop event="Harvest" name="resourceCrushedSand" count="5" tag="allHarvest,perkJunkMiner" />
@@ -93,6 +97,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="2000" />
+			<property name="FortFamily" value="Sandbag" />
 			<property name="Path" value="solid" />
 			<property name="MeshDamage" value="DMG0,2000,DMG1,1300,DMG2,600" />
 			<property class="RepairItems">
@@ -122,6 +127,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="100" />
+			<property name="FortFamily" value="Sandbag" />
 			<property class="RepairItems">
 				<property name="resourceCloth" value="5" />
 			</property>
@@ -131,6 +137,7 @@
 				<property name="ItemCount" value="5" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Empty" />
 			<property name="UpgradeSound" value="sandbags_place" />
 			<drop event="Harvest" name="resourceCloth" count="4" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -154,6 +161,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="500" />
+			<property name="FortFamily" value="Sandbag" />
 			<property name="MeshDamage" value="DMG0,500,DMG1,325,DMG2,150" />
 			<property class="RepairItems">
 				<property name="resourceCrushedSand" value="2" />
@@ -165,6 +173,7 @@
 				<property name="ItemCount" value="5" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Half" />
 			<property name="UpgradeSound" value="sandbags_place" />
 			<drop event="Harvest" name="resourceCloth" count="4" tag="allHarvest,perkJunkMiner" />
 			<drop event="Harvest" name="resourceCrushedSand" count="2" tag="allHarvest,perkJunkMiner" />
@@ -189,6 +198,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="1000" />
+			<property name="FortFamily" value="Sandbag" />
 			<property name="Path" value="solid" />
 			<property name="MeshDamage" value="DMG0,1000,DMG1,650,DMG2,300" />
 			<property class="RepairItems">
@@ -220,6 +230,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="200" />
+			<property name="FortFamily" value="Sandbag" />
 			<property class="RepairItems">
 				<property name="resourceCloth" value="5" />
 			</property>
@@ -229,6 +240,7 @@
 				<property name="ItemCount" value="10" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Empty" />
 			<property name="UpgradeSound" value="sandbags_place" />
 			<drop event="Harvest" name="resourceCloth" count="4" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -254,6 +266,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="1000" />
+			<property name="FortFamily" value="Sandbag" />
 			<property name="MeshDamage" value="DMG0,1000,DMG1,650,DMG2,300" />
 			<property class="RepairItems">
 				<property name="resourceCrushedSand" value="5" />
@@ -265,6 +278,7 @@
 				<property name="ItemCount" value="10" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Half" />
 			<property name="UpgradeSound" value="sandbags_place" />
 			<drop event="Harvest" name="resourceCloth" count="4" tag="allHarvest,perkJunkMiner" />
 			<drop event="Harvest" name="resourceCrushedSand" count="5" tag="allHarvest,perkJunkMiner" />
@@ -291,6 +305,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="2000" />
+			<property name="FortFamily" value="Sandbag" />
 			<property name="Path" value="solid" />
 			<property name="MeshDamage" value="DMG0,2000,DMG1,1300,DMG2,600" />
 			<property class="RepairItems">
@@ -322,6 +337,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="200" />
+			<property name="FortFamily" value="Sandbag" />
 			<property class="RepairItems">
 				<property name="resourceCloth" value="5" />
 			</property>
@@ -331,6 +347,7 @@
 				<property name="ItemCount" value="10" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Empty" />
 			<property name="UpgradeSound" value="sandbags_place" />
 			<drop event="Harvest" name="resourceCloth" count="4" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -356,6 +373,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="1000" />
+			<property name="FortFamily" value="Sandbag" />
 			<property name="MeshDamage" value="DMG0,1000,DMG1,650,DMG2,300" />
 			<property class="RepairItems">
 				<property name="resourceCrushedSand" value="5" />
@@ -367,6 +385,7 @@
 				<property name="ItemCount" value="10" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Half" />
 			<property name="UpgradeSound" value="sandbags_place" />
 			<drop event="Harvest" name="resourceCloth" count="4" tag="allHarvest,perkJunkMiner" />
 			<drop event="Harvest" name="resourceCrushedSand" count="5" tag="allHarvest,perkJunkMiner" />
@@ -393,6 +412,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="2000" />
+			<property name="FortFamily" value="Sandbag" />
 			<property name="Path" value="solid" />
 			<property name="MeshDamage" value="DMG0,2000,DMG1,1300,DMG2,600" />
 			<property class="RepairItems">
@@ -434,6 +454,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="1500" />
+			<property name="FortFamily" value="Palisade" />
 			<property name="Path" value="solid" />
 			<property name="MeshDamage" value="DMG0,1500,DMG1,975,DMG2,450" />
 			<property class="RepairItems">
@@ -470,6 +491,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="3000" />
+			<property name="FortFamily" value="Palisade" />
 			<property name="Path" value="solid" />
 			<property name="MeshDamage" value="DMG0,3000,DMG1,1950,DMG2,900" />
 			<property class="RepairItems">
@@ -501,6 +523,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="1500" />
+			<property name="FortFamily" value="Palisade" />
 			<property name="Path" value="solid" />
 			<property name="MeshDamage" value="DMG0,1500,DMG1,975,DMG2,450" />
 			<property class="RepairItems">
@@ -537,6 +560,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="3000" />
+			<property name="FortFamily" value="Palisade" />
 			<property name="Path" value="solid" />
 			<property name="MeshDamage" value="DMG0,3000,DMG1,1950,DMG2,900" />
 			<property class="RepairItems">
@@ -568,6 +592,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="300" />
+			<property name="FortFamily" value="Palisade" />
 			<property class="RepairItems">
 				<property name="resourceWood" value="5" />
 			</property>
@@ -577,6 +602,7 @@
 				<property name="ItemCount" value="15" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Stumps" />
 			<property name="UpgradeSound" value="place_block_wood" />
 			<drop event="Harvest" name="resourceWood" count="4" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -600,6 +626,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="300" />
+			<property name="FortFamily" value="Palisade" />
 			<property class="RepairItems">
 				<property name="resourceWood" value="5" />
 			</property>
@@ -609,6 +636,7 @@
 				<property name="ItemCount" value="15" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Stumps" />
 			<property name="UpgradeSound" value="place_block_wood" />
 			<drop event="Harvest" name="resourceWood" count="4" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -641,6 +669,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="2500" />
+			<property name="FortFamily" value="Palisade" />
 			<property name="MeshDamage" value="Door/DMG0,2500" />
 			<property class="RepairItems">
 				<property name="resourceWood" value="20" />
@@ -678,6 +707,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="400" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -714,6 +744,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="300" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -725,6 +756,7 @@
 				<property name="ItemCount" value="3" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Sagging" />
 			<property name="UpgradeSound" value="place_block_metal" />
 			<property name="DowngradeBlock" value="DementiveFortChainLinkPanelLightTorn" />
 			<property name="PassThroughDamage" value="true" />
@@ -750,6 +782,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="200" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -761,6 +794,7 @@
 				<property name="ItemCount" value="3" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Torn" />
 			<property name="UpgradeSound" value="place_block_metal" />
 			<drop event="Harvest" name="resourceScrapIron" count="3" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -784,6 +818,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="800" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -814,6 +849,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="600" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -826,6 +862,7 @@
 				<property name="ItemCount" value="3" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Sagging" />
 			<property name="UpgradeSound" value="place_block_metal" />
 			<property name="DowngradeBlock" value="DementiveFortChainLinkPanelHeavyTorn" />
 			<property name="PassThroughDamage" value="true" />
@@ -851,6 +888,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="400" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -863,6 +901,7 @@
 				<property name="ItemCount" value="3" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Torn" />
 			<property name="UpgradeSound" value="place_block_metal" />
 			<drop event="Harvest" name="resourceScrapIron" count="3" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -886,6 +925,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="600" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -922,6 +962,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="450" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -933,6 +974,7 @@
 				<property name="ItemCount" value="3" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Sagging" />
 			<property name="UpgradeSound" value="place_block_metal" />
 			<property name="DowngradeBlock" value="DementiveFortChainLinkTallLightTorn" />
 			<property name="PassThroughDamage" value="true" />
@@ -958,6 +1000,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="300" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -969,6 +1012,7 @@
 				<property name="ItemCount" value="3" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Torn" />
 			<property name="UpgradeSound" value="place_block_metal" />
 			<drop event="Harvest" name="resourceScrapIron" count="3" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -992,6 +1036,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="1200" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -1022,6 +1067,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="900" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -1034,6 +1080,7 @@
 				<property name="ItemCount" value="3" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Sagging" />
 			<property name="UpgradeSound" value="place_block_metal" />
 			<property name="DowngradeBlock" value="DementiveFortChainLinkTallHeavyTorn" />
 			<property name="PassThroughDamage" value="true" />
@@ -1059,6 +1106,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="600" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -1071,6 +1119,7 @@
 				<property name="ItemCount" value="3" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Torn" />
 			<property name="UpgradeSound" value="place_block_metal" />
 			<drop event="Harvest" name="resourceScrapIron" count="3" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -1094,6 +1143,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="400" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -1130,6 +1180,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="300" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -1141,6 +1192,7 @@
 				<property name="ItemCount" value="3" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Sagging" />
 			<property name="UpgradeSound" value="place_block_metal" />
 			<property name="DowngradeBlock" value="DementiveFortChainLinkCornerLightTorn" />
 			<property name="PassThroughDamage" value="true" />
@@ -1166,6 +1218,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="200" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -1177,6 +1230,7 @@
 				<property name="ItemCount" value="3" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Torn" />
 			<property name="UpgradeSound" value="place_block_metal" />
 			<drop event="Harvest" name="resourceScrapIron" count="3" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -1200,6 +1254,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="800" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -1230,6 +1285,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="600" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -1242,6 +1298,7 @@
 				<property name="ItemCount" value="3" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Sagging" />
 			<property name="UpgradeSound" value="place_block_metal" />
 			<property name="DowngradeBlock" value="DementiveFortChainLinkCornerHeavyTorn" />
 			<property name="PassThroughDamage" value="true" />
@@ -1267,6 +1324,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="400" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -1279,6 +1337,7 @@
 				<property name="ItemCount" value="3" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Torn" />
 			<property name="UpgradeSound" value="place_block_metal" />
 			<drop event="Harvest" name="resourceScrapIron" count="3" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -1311,6 +1370,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="1500" />
+			<property name="FortFamily" value="ChainLink" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property name="MeshDamage" value="Door/DMG0,1500" />
 			<property class="RepairItems">
@@ -1348,6 +1408,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="300" />
+			<property name="FortFamily" value="Hesco" />
 			<property class="RepairItems">
 				<property name="resourceCloth" value="3" />
 			</property>
@@ -1357,6 +1418,7 @@
 				<property name="ItemCount" value="10" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Empty" />
 			<property name="UpgradeSound" value="sandbags_place" />
 			<drop event="Harvest" name="resourceScrapIron" count="4" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -1380,6 +1442,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="1500" />
+			<property name="FortFamily" value="Hesco" />
 			<property name="MeshDamage" value="DMG0,1500,DMG1,975,DMG2,450" />
 			<property class="RepairItems">
 				<property name="resourceClayLump" value="5" />
@@ -1391,6 +1454,7 @@
 				<property name="ItemCount" value="10" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Third" />
 			<property name="UpgradeSound" value="sandbags_place" />
 			<property name="DowngradeBlock" value="DementiveFortHescoMound" />
 			<property name="PassThroughDamage" value="true" />
@@ -1416,6 +1480,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="3000" />
+			<property name="FortFamily" value="Hesco" />
 			<property name="MeshDamage" value="DMG0,3000,DMG1,1950,DMG2,900" />
 			<property class="RepairItems">
 				<property name="resourceClayLump" value="5" />
@@ -1427,6 +1492,7 @@
 				<property name="ItemCount" value="10" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="TwoThirds" />
 			<property name="UpgradeSound" value="sandbags_place" />
 			<property name="DowngradeBlock" value="DementiveFortHescoMound" />
 			<property name="PassThroughDamage" value="true" />
@@ -1452,6 +1518,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="5000" />
+			<property name="FortFamily" value="Hesco" />
 			<property name="Path" value="solid" />
 			<property name="MeshDamage" value="DMG0,5000,DMG1,3250,DMG2,1500" />
 			<property class="RepairItems">
@@ -1482,6 +1549,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="500" />
+			<property name="FortFamily" value="Hesco" />
 			<property class="RepairItems">
 				<property name="resourceClayLump" value="5" />
 			</property>
@@ -1491,6 +1559,7 @@
 				<property name="ItemCount" value="10" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Mound" />
 			<property name="UpgradeSound" value="sandbags_place" />
 			<drop event="Harvest" name="resourceClayLump" count="5" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -1514,6 +1583,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="600" />
+			<property name="FortFamily" value="Hesco" />
 			<property class="RepairItems">
 				<property name="resourceCloth" value="3" />
 			</property>
@@ -1523,6 +1593,7 @@
 				<property name="ItemCount" value="20" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Empty" />
 			<property name="UpgradeSound" value="sandbags_place" />
 			<drop event="Harvest" name="resourceScrapIron" count="4" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -1546,6 +1617,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="3000" />
+			<property name="FortFamily" value="Hesco" />
 			<property name="MeshDamage" value="DMG0,3000,DMG1,1950,DMG2,900" />
 			<property class="RepairItems">
 				<property name="resourceClayLump" value="10" />
@@ -1557,6 +1629,7 @@
 				<property name="ItemCount" value="20" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Third" />
 			<property name="UpgradeSound" value="sandbags_place" />
 			<property name="DowngradeBlock" value="DementiveFortHescoDoubleMound" />
 			<property name="PassThroughDamage" value="true" />
@@ -1582,6 +1655,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="6000" />
+			<property name="FortFamily" value="Hesco" />
 			<property name="MeshDamage" value="DMG0,6000,DMG1,3900,DMG2,1800" />
 			<property class="RepairItems">
 				<property name="resourceClayLump" value="10" />
@@ -1593,6 +1667,7 @@
 				<property name="ItemCount" value="20" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="TwoThirds" />
 			<property name="UpgradeSound" value="sandbags_place" />
 			<property name="DowngradeBlock" value="DementiveFortHescoDoubleMound" />
 			<property name="PassThroughDamage" value="true" />
@@ -1618,6 +1693,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="10000" />
+			<property name="FortFamily" value="Hesco" />
 			<property name="Path" value="solid" />
 			<property name="MeshDamage" value="DMG0,10000,DMG1,6500,DMG2,3000" />
 			<property class="RepairItems">
@@ -1648,6 +1724,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="1000" />
+			<property name="FortFamily" value="Hesco" />
 			<property class="RepairItems">
 				<property name="resourceClayLump" value="10" />
 			</property>
@@ -1657,6 +1734,7 @@
 				<property name="ItemCount" value="20" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Mound" />
 			<property name="UpgradeSound" value="sandbags_place" />
 			<drop event="Harvest" name="resourceClayLump" count="10" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -1690,6 +1768,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="6000" />
+			<property name="FortFamily" value="TankTraps" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property name="MeshDamage" value="DMG0,6000,DMG1,3900,DMG2,1800" />
@@ -1720,6 +1799,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="2000" />
+			<property name="FortFamily" value="TankTraps" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -1731,6 +1811,7 @@
 				<property name="ItemCount" value="6" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Bent" />
 			<property name="UpgradeSound" value="place_block_metal" />
 			<drop event="Harvest" name="resourceScrapIron" count="15" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -1754,6 +1835,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="5000" />
+			<property name="FortFamily" value="TankTraps" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property name="MeshDamage" value="DMG0,5000,DMG1,3250,DMG2,1500" />
@@ -1784,6 +1866,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="1500" />
+			<property name="FortFamily" value="TankTraps" />
 			<property name="Path" value="solid" />
 			<property name="Collide" value="movement,melee,rocket" />
 			<property class="RepairItems">
@@ -1795,6 +1878,7 @@
 				<property name="ItemCount" value="6" />
 				<property name="UpgradeHitCount" value="4" />
 			</property>
+			<property name="FortStage" value="Bent" />
 			<property name="UpgradeSound" value="place_block_metal" />
 			<drop event="Harvest" name="resourceScrapIron" count="15" tag="allHarvest,perkJunkMiner" />
 			<drop event="Destroy" count="0" />
@@ -1828,6 +1912,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="25000" />
+			<property name="FortFamily" value="Container" />
 			<property name="Path" value="solid" />
 			<property name="TintColor" value="8A2E22" />
 			<property name="MeshDamage" value="DMG0,25000,DMG1,16250,DMG2,7500" />
@@ -1857,6 +1942,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="8000" />
+			<property name="FortFamily" value="Container" />
 			<property name="Path" value="solid" />
 			<property name="TintColor" value="8A2E22" />
 			<property name="MeshDamage" value="DMG0,8000,DMG1,5200,DMG2,2400" />
@@ -1886,6 +1972,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="25000" />
+			<property name="FortFamily" value="Container" />
 			<property name="Path" value="solid" />
 			<property name="TintColor" value="2A4C78" />
 			<property name="MeshDamage" value="DMG0,25000,DMG1,16250,DMG2,7500" />
@@ -1915,6 +2002,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="8000" />
+			<property name="FortFamily" value="Container" />
 			<property name="Path" value="solid" />
 			<property name="TintColor" value="2A4C78" />
 			<property name="MeshDamage" value="DMG0,8000,DMG1,5200,DMG2,2400" />
@@ -1944,6 +2032,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="25000" />
+			<property name="FortFamily" value="Container" />
 			<property name="Path" value="solid" />
 			<property name="TintColor" value="3E5A34" />
 			<property name="MeshDamage" value="DMG0,25000,DMG1,16250,DMG2,7500" />
@@ -1973,6 +2062,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="8000" />
+			<property name="FortFamily" value="Container" />
 			<property name="Path" value="solid" />
 			<property name="TintColor" value="3E5A34" />
 			<property name="MeshDamage" value="DMG0,8000,DMG1,5200,DMG2,2400" />
@@ -2002,6 +2092,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="25000" />
+			<property name="FortFamily" value="Container" />
 			<property name="Path" value="solid" />
 			<property name="TintColor" value="7A4A2A" />
 			<property name="MeshDamage" value="DMG0,25000,DMG1,16250,DMG2,7500" />
@@ -2031,6 +2122,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="8000" />
+			<property name="FortFamily" value="Container" />
 			<property name="Path" value="solid" />
 			<property name="TintColor" value="7A4A2A" />
 			<property name="MeshDamage" value="DMG0,8000,DMG1,5200,DMG2,2400" />
@@ -2068,6 +2160,7 @@
 			<property name="WaterFlow" value="permitted" />
 			<property name="ImposterDontBlock" value="true" />
 			<property name="MaxDamage" value="15000" />
+			<property name="FortFamily" value="Container" />
 			<property name="TintColor" value="8A2E22" />
 			<property name="MeshDamage" value="Door/DMG0,15000" />
 			<property class="RepairItems">
