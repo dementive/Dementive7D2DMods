@@ -3,3 +3,6 @@ xuiReadAllBooksTooltip,UI,Tooltip,,,,Read all books and schematics in this conta
 xuiReadAllBooksNone,UI,Tooltip,,,,No books or schematics to read in this container.,,,,,,,,,,,,,
 xuiReadAllBooksDone,UI,Tooltip,,,,Read {0} books and schematics.,,,,,,,,,,,,,
 xuiReadAllBooksDoneKnown,UI,Tooltip,,,,Read {0} books and schematics. Left {1} you already know in the container.,,,,,,,,,,,,,
+xuiReadAllBooksBackpackTooltip,UI,Tooltip,,,,Read all books and schematics in your backpack you don't know yet (F2),,,,,,,,,,,,,
+xuiReadAllBooksBackpackNone,UI,Tooltip,,,,No books or schematics to read in your backpack.,,,,,,,,,,,,,
+xuiReadAllBooksBackpackDoneKnown,UI,Tooltip,,,,Read {0} books and schematics. Left {1} you already know in your backpack.,,,,,,,,,,,,,

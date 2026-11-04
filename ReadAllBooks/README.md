@@ -1,13 +1,18 @@
 # ReadAllBooks
 
-Adds a "Read All Books" button to the loot window. Open any loot container (chest, crate, backpack, ...) and click
-the book icon on the right of the window's title bar, or press **F2**: every book and schematic in the container that
-you don't know yet is read, exactly as if you'd taken it and pressed Read. Perks, recipes, the reading experience and
-challenge progress all count, and the books are used up.
+Adds a "Read All Books" button to the loot window and to your backpack. Open any loot container (chest, crate,
+dropped backpack, ...) and click the book icon on the right of the window's title bar, or press **F2**: every book and
+schematic in the container that you don't know yet is read, exactly as if you'd taken it and pressed Read. Perks,
+recipes, the reading experience and challenge progress all count, and the books are used up.
 
-- Books and schematics you already know stay in the container, so you can sell them. If a stack has several copies,
+The backpack (inventory) window has the same button in its title bar, left of your money. It reads the unread books
+and schematics in your backpack (not the toolbelt). **F2** does the same whenever the backpack is open without a loot
+container, for example in the inventory, at a workbench or trader, or next to a vehicle's storage; with a loot
+container open, F2 reads the container.
+
+- Books and schematics you already know stay where they are, so you can sell them. If a stack has several copies,
   one is read and the rest stay.
-- Slots you've locked in the container are left alone.
+- Slots you've locked (in the container or the backpack) are left alone.
 - Skill magazines are not included.
 - A message says how many were read, and how many you already knew.
 
@@ -15,7 +20,8 @@ challenge progress all count, and the books are used up.
 
 Drop the `ReadAllBooks` folder into `7 Days To Die/Mods/`. It needs EasyAntiCheat off (it has C# code) and uses the
 game's own `0_TFP_Harmony`. It runs on the client: in multiplayer, each player who wants the button installs it, and
-the container updates for everyone like it does when you take an item out.
+the container updates for everyone like it does when you take an item out. Reading from your own backpack is local,
+like the inventory's Read button.
 
 ## Configuration
 

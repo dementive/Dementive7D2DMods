@@ -1,11 +1,13 @@
+using System;
 using UnityEngine;
 
 /// <summary>
-/// Reads every book and schematic in the open loot container, the same way the inventory's Read button reads one:
-/// each copy goes through the item's own action (ItemActionEat.ExecuteInstantAction) with the container slot it is
-/// in, so its effects fire as normal (perks, recipes, experience, challenges) and the slot updates the container
-/// like taking an item out does, which also keeps it in sync in multiplayer.
-/// Books the player already knows are left in the container (they're worth selling), and so are the spare copies
+/// Reads every book and schematic in the open loot container, or in the player's backpack, the same way the
+/// inventory's Read button reads one: each copy goes through the item's own action (ItemActionEat.ExecuteInstantAction)
+/// with the slot it is in, so its effects fire as normal (perks, recipes, experience, challenges) and the slot updates
+/// its container like taking an item out does (the loot container stays in sync in multiplayer, the backpack saves
+/// to the player's bag).
+/// Books the player already knows are left where they are (they're worth selling), and so are the spare copies
 /// once one copy has been read. Slots the player has locked are skipped.
 /// </summary>
 public static class ReadAllBooksCore
@@ -14,14 +16,37 @@ public static class ReadAllBooksCore
 
     public static void ReadAll(XUiC_LootWindow window)
     {
+        Read(window, window?.lootContainer, "xuiReadAllBooksNone", "xuiReadAllBooksDoneKnown");
+    }
+
+    // Only the backpack's own grid: the toolbelt is a separate window
+    public static void ReadAll(XUiC_BackpackWindow window)
+    {
+        Read(window, window?.backpackGrid, "xuiReadAllBooksBackpackNone", "xuiReadAllBooksBackpackDoneKnown");
+    }
+
+    // Called from button presses and the hotkey patches, so an error is logged instead of breaking the window
+    static void Read(XUiController window, XUiC_ItemStackGrid grid, string noneKey, string doneKnownKey)
+    {
+        try
+        {
+            ReadGrid(window, grid, noneKey, doneKnownKey);
+        }
+        catch (Exception e)
+        {
+            Debug.Log("[ReadAllBooks] Failed to read books: " + e);
+        }
+    }
+
+    static void ReadGrid(XUiController window, XUiC_ItemStackGrid grid, string noneKey, string doneKnownKey)
+    {
         EntityPlayerLocal player = window?.xui?.playerUI?.entityPlayer;
-        XUiC_LootContainer container = window?.lootContainer;
-        if (player == null || container == null || player.IsDead())
+        if (player == null || grid == null || player.IsDead())
             return;
 
         int read = 0;
         int known = 0;
-        foreach (XUiC_ItemStack slot in container.GetItemStackControllers())
+        foreach (XUiC_ItemStack slot in grid.GetItemStackControllers())
         {
             if (slot == null || slot.UserLockedSlot || slot.IsLocked)
                 continue;
@@ -37,6 +62,7 @@ public static class ReadAllBooksCore
             int copies = stack.count;
             for (int i = 0; i < copies; i++)
             {
+                // Re-read every copy: in the backpack each read rebuilds the grid's stacks from the bag
                 ItemStack current = slot.ItemStack;
                 if (current == null || current.IsEmpty() || current.itemValue.type != type)
                     break;
@@ -60,10 +86,10 @@ public static class ReadAllBooksCore
             window.SetAllChildrenDirty();
 
         if (read == 0 && known == 0)
-            GameManager.ShowTooltip(player, Localization.Get("xuiReadAllBooksNone"));
+            GameManager.ShowTooltip(player, Localization.Get(noneKey));
         else if (known == 0)
             GameManager.ShowTooltip(player, string.Format(Localization.Get("xuiReadAllBooksDone"), read));
         else
-            GameManager.ShowTooltip(player, string.Format(Localization.Get("xuiReadAllBooksDoneKnown"), read, known));
+            GameManager.ShowTooltip(player, string.Format(Localization.Get(doneKnownKey), read, known));
     }
 }
