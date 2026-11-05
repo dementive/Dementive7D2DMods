@@ -1,0 +1,1288 @@
+<configs>
+	<append xpath="/blocks">
+		<!-- Every Nature Expanded plant: a model block placed by world generation (biomes.xml) and harvested
+		     like grass. The DLL (PlantDEM) moves its model to the game's plant shader. -->
+		<block name="DementiveNaturePlantMaster">
+			<property name="CreativeMode" value="None"/>
+			<property name="Class" value="PlantDEM, NatureExpanded"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Poppy"/>
+			<property name="Material" value="Mplants"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="LightOpacity" value="0"/>
+			<property name="WaterFlow" value="permitted"/>
+			<property name="Collide" value="melee"/>
+			<property name="IsTerrainDecoration" value="true"/>
+			<property name="IsDecoration" value="true"/>
+			<property name="CanDecorateOnSlopes" value="true"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="HarvestOverdamage" value="false"/>
+			<property name="DisplayInfo" value="Name"/>
+			<property name="CustomIcon" value="treeForestGrassDiagonal"/>
+			<property name="VehicleHitScale" value=".1"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="resourceYuccaFibers" count="0" prob="1" stick_chance="0"/>
+			<property name="FilterTags" value="MC_outdoor,SC_decor"/>
+			<property name="SortOrder1" value="M205"/>
+		</block>
+
+		<block name="DementiveNaturePoppy">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Poppy"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureLupine">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Lupine"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureCornflower">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Cornflower"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureOxeyeDaisy">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?OxeyeDaisy"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNaturePaintbrush">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Paintbrush"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureBlackEyedSusan">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?BlackEyedSusan"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureConeflower">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Coneflower"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureQueenAnnesLace">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?QueenAnnesLace"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureRedClover">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?RedClover"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureBergamot">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Bergamot"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureChicory">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Chicory"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureFern">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Fern"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureFlyAgaric">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?FlyAgaric"/>
+			<property name="DescriptionKey" value="DementiveNatureToadstoolDesc"/>
+			<property name="Material" value="Mmushrooms"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="1" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureBolete">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Bolete"/>
+			<property name="DescriptionKey" value="DementiveNatureMushroomDesc"/>
+			<property name="Material" value="Mmushrooms"/>
+			<drop event="Harvest" name="foodCropMushrooms" count="1" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureTrillium">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Trillium"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureWildStrawberry">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?WildStrawberry"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureFoxglove">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Foxglove"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<property name="MultiBlockDim" value="1,2,1"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureWildRose">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?WildRose"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="4" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureElderberry">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Elderberry"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<property name="MultiBlockDim" value="1,2,1"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="4" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureSumac">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Sumac"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<property name="MultiBlockDim" value="1,2,1"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="4" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureMossyLog">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?MossyLog"/>
+			<property name="DescriptionKey" value="DementiveNatureLogDesc"/>
+			<property name="Material" value="MtreeWoodSmall"/>
+			<drop event="Harvest" name="resourceWood" count="8" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureCattail">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Cattail"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<property name="MultiBlockDim" value="1,2,1"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureReeds">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Reeds"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<property name="MultiBlockDim" value="1,2,1"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureBlueFlagIris">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?BlueFlagIris"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureMarshMarigold">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?MarshMarigold"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureFireweed">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Fireweed"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<property name="MultiBlockDim" value="1,2,1"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureCharredShrub">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?CharredShrub"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="4" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureMorels">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Morels"/>
+			<property name="DescriptionKey" value="DementiveNatureMushroomDesc"/>
+			<property name="Material" value="Mmushrooms"/>
+			<drop event="Harvest" name="foodCropMushrooms" count="1" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNaturePricklyPear">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?PricklyPear"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<property name="Material" value="Mcactus"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="3" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureBarrelCactus">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?BarrelCactus"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<property name="Material" value="Mcactus"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="3" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureOcotillo">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Ocotillo"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<property name="MultiBlockDim" value="1,3,1"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="4" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureAgaveBloom">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?AgaveBloom"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<property name="Material" value="Mcactus"/>
+			<property name="MultiBlockDim" value="1,3,1"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="3" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureDesertMarigold">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?DesertMarigold"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureGlobemallow">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Globemallow"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureSagebrush">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Sagebrush"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="4" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureEveningPrimrose">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?EveningPrimrose"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureAlpineAster">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?AlpineAster"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureHeather">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Heather"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureWinterberry">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Winterberry"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<property name="MultiBlockDim" value="1,2,1"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="4" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureSnowdrop">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Snowdrop"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureFrostedJuniper">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?FrostedJuniper"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="4" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureThistle">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?Thistle"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureSilverSage">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?SilverSage"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureWildMustard">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?WildMustard"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureCurlyDock">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?CurlyDock"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="2" tag="allHarvest"/>
+		</block>
+
+		<block name="DementiveNatureDeadBrush">
+			<property name="Extends" value="DementiveNaturePlantMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded.unity3d?DeadBrush"/>
+			<property name="DescriptionKey" value="DementiveNaturePlantDesc"/>
+			<drop event="Harvest" name="resourceYuccaFibers" count="4" tag="allHarvest"/>
+		</block>
+
+		<!-- Grasses drawn like vanilla's tall grass, from tiles the DLL (GrassSheetDEM) adds to the game's grass
+		     texture sheet (ids in blender/grass/grasses.txt) -->
+		<block name="DementiveNatureGrassHairGrass">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="600"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassOrchardGrass">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="611"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassWildOats">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="601"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassFoxtail">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="602"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassSedge">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="603"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassTimothy">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="604"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassBracken">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="605"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassRedtop">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="606"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassClover">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="607"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassDryBunchgrass">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="608"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassHorsetail">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="609"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassSheepSorrel">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="610"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassBlueGrama">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="612"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassNeedlegrass">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="613"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassCottonGrass">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="614"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassFrostTussock">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="615"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassBurntStubble">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="616"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassGreenShoots">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="617"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassCheatgrass">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="618"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassFoxtailBarley">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="619"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassBlueFescue">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="600"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+		<block name="DementiveNatureGrassWheatgrass">
+			<property name="Extends" value="treeGrassMaster" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Class" value="Tallgrass"/>
+			<property name="Texture" value="611"/>
+			<property name="CustomIcon" value="treeTallGrassDiagonal"/>
+		</block>
+
+		<!-- Trees: like vanilla's (treeMaster), from Resources/natureexpanded-trees.unity3d (SpeedTree
+		     materials built in); the DLL (TreeShaderDEM) links their colliders and feeds them the wind -->
+		<block name="DementiveNatureTreeBirch01">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeBirch01"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,20,1"/>
+			<property name="Material" value="MtreeWoodLarge"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+			<drop event="Harvest" name="resourceWood" count="90" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeBirchSeed" count="2"/>
+		</block>
+		<block name="DementiveNatureTreeBirch02">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeBirch02"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,19,1"/>
+			<property name="Material" value="MtreeWoodLarge"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+			<drop event="Harvest" name="resourceWood" count="90" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeBirchSeed" count="2"/>
+		</block>
+		<block name="DementiveNatureTreeBirch03">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeBirch03"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,20,1"/>
+			<property name="Material" value="MtreeWoodLarge"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+			<drop event="Harvest" name="resourceWood" count="90" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeBirchSeed" count="2"/>
+		</block>
+		<block name="DementiveNatureTreeBirch04">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeBirch04"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,14,1"/>
+			<property name="Material" value="MtreeWoodMedium"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+			<drop event="Harvest" name="resourceWood" count="60" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeBirchSeed" count="1"/>
+		</block>
+
+		<!-- Birch seeds, dropped by every Paper Birch felled, and the trees they grow into -->
+		<block name="DementiveNatureTreeBirchSeed">
+			<property name="Extends" value="treeMasterGrowing" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Player"/>
+			<property name="FallOver" value="false"/>
+			<property name="PlaceAsRandomRotation" value="true"/>
+			<property class="PlantGrowing">
+				<property name="Next" value="DementiveNatureTreePlantedBirch04"/>
+			</property>
+			<property name="DescriptionKey" value="treePlantedSeed1mDesc"/>
+			<property name="Material" value="Mplants"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeBirchSapling"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="ParticleOnDeath" value="treeGib_sapling"/>
+			<property name="Collide" value="melee"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="EconomicValue" value="12"/>
+			<property name="EconomicBundleSize" value="5"/>
+			<property name="SellableToTrader" value="false"/>
+			<property name="MaxDamage" value="10"/>
+			<property name="ActivationDistance" value="4"/>
+			<dropextendsoff/>
+			<drop event="Destroy" name="DementiveNatureTreeBirchSeed" count="1"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0001"/>
+			<property name="Group" value="Resources"/>
+			<property name="SoundPickup" value="seeds_cone_grab"/>
+			<property name="SoundPlace" value="seeds_cone_place"/>
+		</block>
+		<block name="DementiveNatureTreePlantedBirch04">
+			<property name="Extends" value="treeMasterGrowing"/>
+			<property name="CreativeMode" value="Player"/>
+			<property class="PlantGrowing">
+				<property name="Next" value="DementiveNatureTreePlantedBirch01"/>
+				<property name="FertileLevel" value="3"/>
+			</property>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeBirch04"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,14,1"/>
+			<property name="Material" value="MtreeWoodMedium"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+			<drop event="Harvest" name="resourceWood" count="60" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeBirchSeed" count="1"/>
+			<property name="CustomIcon" value="DementiveNatureTreeBirchSeed"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0002"/>
+		</block>
+		<block name="DementiveNatureTreePlantedBirch01">
+			<property name="Extends" value="DementiveNatureTreeBirch01"/>
+			<property name="CreativeMode" value="Player"/>
+			<property class="PlantGrowing">
+				<property name="FertileLevel" value="5"/>
+			</property>
+			<property name="CustomIcon" value="DementiveNatureTreeBirchSeed"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0003"/>
+		</block>
+		<block name="DementiveNatureTreeMaple01">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeMaple01"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,19,1"/>
+			<property name="Material" value="MtreeWoodLarge"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+			<drop event="Harvest" name="resourceWood" count="90" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeMapleSeed" count="2"/>
+		</block>
+		<block name="DementiveNatureTreeMaple02">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeMaple02"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,17,1"/>
+			<property name="Material" value="MtreeWoodMedium"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+			<drop event="Harvest" name="resourceWood" count="60" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeMapleSeed" count="2"/>
+		</block>
+		<block name="DementiveNatureTreeMaple03">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeMaple03"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,15,1"/>
+			<property name="Material" value="MtreeWoodMedium"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+			<drop event="Harvest" name="resourceWood" count="60" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeMapleSeed" count="1"/>
+		</block>
+		<block name="DementiveNatureTreeMaple04">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeMaple04"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,8,1"/>
+			<property name="Material" value="MtreeWoodSmall"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+			<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeMapleSeed" count="1"/>
+		</block>
+
+		<!-- Maple seeds, dropped by every Sugar Maple felled, and the trees they grow into -->
+		<block name="DementiveNatureTreeMapleSeed">
+			<property name="Extends" value="treeMasterGrowing" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Player"/>
+			<property name="FallOver" value="false"/>
+			<property name="PlaceAsRandomRotation" value="true"/>
+			<property class="PlantGrowing">
+				<property name="Next" value="DementiveNatureTreePlantedMaple04"/>
+			</property>
+			<property name="DescriptionKey" value="treePlantedSeed1mDesc"/>
+			<property name="Material" value="Mplants"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeMapleSapling"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="ParticleOnDeath" value="treeGib_sapling"/>
+			<property name="Collide" value="melee"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="EconomicValue" value="12"/>
+			<property name="EconomicBundleSize" value="5"/>
+			<property name="SellableToTrader" value="false"/>
+			<property name="MaxDamage" value="10"/>
+			<property name="ActivationDistance" value="4"/>
+			<dropextendsoff/>
+			<drop event="Destroy" name="DementiveNatureTreeMapleSeed" count="1"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0001"/>
+			<property name="Group" value="Resources"/>
+			<property name="SoundPickup" value="seeds_cone_grab"/>
+			<property name="SoundPlace" value="seeds_cone_place"/>
+		</block>
+		<block name="DementiveNatureTreePlantedMaple04">
+			<property name="Extends" value="treeMasterGrowing"/>
+			<property name="CreativeMode" value="Player"/>
+			<property class="PlantGrowing">
+				<property name="Next" value="DementiveNatureTreePlantedMaple03"/>
+			</property>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeMaple04"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,8,1"/>
+			<property name="Material" value="MtreeWoodSmall"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+			<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeMapleSeed" count="1"/>
+			<property name="CustomIcon" value="DementiveNatureTreeMapleSeed"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0002"/>
+		</block>
+		<block name="DementiveNatureTreePlantedMaple03">
+			<property name="Extends" value="treeMasterGrowing"/>
+			<property name="CreativeMode" value="Player"/>
+			<property class="PlantGrowing">
+				<property name="Next" value="DementiveNatureTreePlantedMaple01"/>
+				<property name="FertileLevel" value="3"/>
+			</property>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeMaple03"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,15,1"/>
+			<property name="Material" value="MtreeWoodMedium"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+			<drop event="Harvest" name="resourceWood" count="60" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeMapleSeed" count="1"/>
+			<property name="CustomIcon" value="DementiveNatureTreeMapleSeed"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0003"/>
+		</block>
+		<block name="DementiveNatureTreePlantedMaple01">
+			<property name="Extends" value="DementiveNatureTreeMaple01"/>
+			<property name="CreativeMode" value="Player"/>
+			<property class="PlantGrowing">
+				<property name="FertileLevel" value="5"/>
+			</property>
+			<property name="CustomIcon" value="DementiveNatureTreeMapleSeed"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0004"/>
+		</block>
+		<block name="DementiveNatureTreeDouglasFir01">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeDouglasFir01"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,20,1"/>
+			<property name="Material" value="MtreeWoodLarge"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+			<drop event="Harvest" name="resourceWood" count="90" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeDouglasFirSeed" count="2"/>
+		</block>
+		<block name="DementiveNatureTreeDouglasFir02">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeDouglasFir02"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,20,1"/>
+			<property name="Material" value="MtreeWoodLarge"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+			<drop event="Harvest" name="resourceWood" count="90" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeDouglasFirSeed" count="2"/>
+		</block>
+		<block name="DementiveNatureTreeDouglasFir03">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeDouglasFir03"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,20,1"/>
+			<property name="Material" value="MtreeWoodLarge"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+			<drop event="Harvest" name="resourceWood" count="90" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeDouglasFirSeed" count="2"/>
+		</block>
+		<block name="DementiveNatureTreeDouglasFir04">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeDouglasFir04"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,11,1"/>
+			<property name="Material" value="MtreeWoodSmall"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+			<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeDouglasFirSeed" count="1"/>
+		</block>
+
+		<!-- DouglasFir seeds, dropped by every Douglas Fir felled, and the trees they grow into -->
+		<block name="DementiveNatureTreeDouglasFirSeed">
+			<property name="Extends" value="treeMasterGrowing" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Player"/>
+			<property name="FallOver" value="false"/>
+			<property name="PlaceAsRandomRotation" value="true"/>
+			<property class="PlantGrowing">
+				<property name="Next" value="DementiveNatureTreePlantedDouglasFir04"/>
+			</property>
+			<property name="DescriptionKey" value="treePlantedSeed1mDesc"/>
+			<property name="Material" value="Mplants"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeDouglasFirSapling"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="ParticleOnDeath" value="treeGib_sapling"/>
+			<property name="Collide" value="melee"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="EconomicValue" value="12"/>
+			<property name="EconomicBundleSize" value="5"/>
+			<property name="SellableToTrader" value="false"/>
+			<property name="MaxDamage" value="10"/>
+			<property name="ActivationDistance" value="4"/>
+			<dropextendsoff/>
+			<drop event="Destroy" name="DementiveNatureTreeDouglasFirSeed" count="1"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0001"/>
+			<property name="Group" value="Resources"/>
+			<property name="SoundPickup" value="seeds_cone_grab"/>
+			<property name="SoundPlace" value="seeds_cone_place"/>
+		</block>
+		<block name="DementiveNatureTreePlantedDouglasFir04">
+			<property name="Extends" value="treeMasterGrowing"/>
+			<property name="CreativeMode" value="Player"/>
+			<property class="PlantGrowing">
+				<property name="Next" value="DementiveNatureTreePlantedDouglasFir02"/>
+			</property>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeDouglasFir04"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,11,1"/>
+			<property name="Material" value="MtreeWoodSmall"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+			<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeDouglasFirSeed" count="1"/>
+			<property name="CustomIcon" value="DementiveNatureTreeDouglasFirSeed"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0002"/>
+		</block>
+		<block name="DementiveNatureTreePlantedDouglasFir02">
+			<property name="Extends" value="treeMasterGrowing"/>
+			<property name="CreativeMode" value="Player"/>
+			<property class="PlantGrowing">
+				<property name="Next" value="DementiveNatureTreePlantedDouglasFir01"/>
+				<property name="FertileLevel" value="3"/>
+			</property>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeDouglasFir02"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,20,1"/>
+			<property name="Material" value="MtreeWoodLarge"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_dead_01"/>
+			<drop event="Harvest" name="resourceWood" count="90" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeDouglasFirSeed" count="2"/>
+			<property name="CustomIcon" value="DementiveNatureTreeDouglasFirSeed"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0003"/>
+		</block>
+		<block name="DementiveNatureTreePlantedDouglasFir01">
+			<property name="Extends" value="DementiveNatureTreeDouglasFir01"/>
+			<property name="CreativeMode" value="Player"/>
+			<property class="PlantGrowing">
+				<property name="FertileLevel" value="5"/>
+			</property>
+			<property name="CustomIcon" value="DementiveNatureTreeDouglasFirSeed"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0004"/>
+		</block>
+		<block name="DementiveNatureTreeSubalpineFir01">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeSubalpineFir01"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,20,1"/>
+			<property name="Material" value="MtreeWoodLarge"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_winter02"/>
+			<drop event="Harvest" name="resourceWood" count="90" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeSubalpineFirSeed" count="2"/>
+		</block>
+		<block name="DementiveNatureTreeSubalpineFir02">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeSubalpineFir02"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,16,1"/>
+			<property name="Material" value="MtreeWoodMedium"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_winter01"/>
+			<drop event="Harvest" name="resourceWood" count="60" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeSubalpineFirSeed" count="2"/>
+		</block>
+		<block name="DementiveNatureTreeSubalpineFir03">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeSubalpineFir03"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,4,1"/>
+			<property name="Material" value="MtreeWoodSmall"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_winter_small"/>
+			<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeSubalpineFirSeed" count="1"/>
+		</block>
+		<block name="DementiveNatureTreeSubalpineFir04">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeSubalpineFir04"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,7,1"/>
+			<property name="Material" value="MtreeWoodSmall"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_winter_small"/>
+			<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeSubalpineFirSeed" count="1"/>
+		</block>
+
+		<!-- SubalpineFir seeds, dropped by every Subalpine Fir felled, and the trees they grow into -->
+		<block name="DementiveNatureTreeSubalpineFirSeed">
+			<property name="Extends" value="treeMasterGrowing" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Player"/>
+			<property name="FallOver" value="false"/>
+			<property name="PlaceAsRandomRotation" value="true"/>
+			<property class="PlantGrowing">
+				<property name="Next" value="DementiveNatureTreePlantedSubalpineFir04"/>
+			</property>
+			<property name="DescriptionKey" value="treePlantedSeed1mDesc"/>
+			<property name="Material" value="Mplants"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeSubalpineFirSapling"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="ParticleOnDeath" value="treeGib_sapling"/>
+			<property name="Collide" value="melee"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="EconomicValue" value="12"/>
+			<property name="EconomicBundleSize" value="5"/>
+			<property name="SellableToTrader" value="false"/>
+			<property name="MaxDamage" value="10"/>
+			<property name="ActivationDistance" value="4"/>
+			<dropextendsoff/>
+			<drop event="Destroy" name="DementiveNatureTreeSubalpineFirSeed" count="1"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0001"/>
+			<property name="Group" value="Resources"/>
+			<property name="SoundPickup" value="seeds_cone_grab"/>
+			<property name="SoundPlace" value="seeds_cone_place"/>
+		</block>
+		<block name="DementiveNatureTreePlantedSubalpineFir04">
+			<property name="Extends" value="treeMasterGrowing"/>
+			<property name="CreativeMode" value="Player"/>
+			<property class="PlantGrowing">
+				<property name="Next" value="DementiveNatureTreePlantedSubalpineFir02"/>
+			</property>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeSubalpineFir04"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,7,1"/>
+			<property name="Material" value="MtreeWoodSmall"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_winter_small"/>
+			<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeSubalpineFirSeed" count="1"/>
+			<property name="CustomIcon" value="DementiveNatureTreeSubalpineFirSeed"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0002"/>
+		</block>
+		<block name="DementiveNatureTreePlantedSubalpineFir02">
+			<property name="Extends" value="treeMasterGrowing"/>
+			<property name="CreativeMode" value="Player"/>
+			<property class="PlantGrowing">
+				<property name="Next" value="DementiveNatureTreePlantedSubalpineFir01"/>
+				<property name="FertileLevel" value="3"/>
+			</property>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeSubalpineFir02"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,16,1"/>
+			<property name="Material" value="MtreeWoodMedium"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_winter01"/>
+			<drop event="Harvest" name="resourceWood" count="60" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeSubalpineFirSeed" count="2"/>
+			<property name="CustomIcon" value="DementiveNatureTreeSubalpineFirSeed"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0003"/>
+		</block>
+		<block name="DementiveNatureTreePlantedSubalpineFir01">
+			<property name="Extends" value="DementiveNatureTreeSubalpineFir01"/>
+			<property name="CreativeMode" value="Player"/>
+			<property class="PlantGrowing">
+				<property name="FertileLevel" value="5"/>
+			</property>
+			<property name="CustomIcon" value="DementiveNatureTreeSubalpineFirSeed"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0004"/>
+		</block>
+		<block name="DementiveNatureTreeCharredSnag01">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeCharredSnag01"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,15,1"/>
+			<property name="Material" value="MtreeWoodMedium"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_burnt_55m"/>
+			<drop event="Harvest" name="resourceWood" count="60" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Harvest" name="resourceCoal" count="6,12" tag="oreWoodHarvest"/>
+			<drop event="Harvest" name="resourceCoal" count="6,12" tag="coalHarvest"/>
+			<drop event="Destroy" name="treePlantedMountainPine1m" count="1"/>
+		</block>
+		<block name="DementiveNatureTreeCharredSnag02">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeCharredSnag02"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,6,1"/>
+			<property name="Material" value="MtreeWoodSmall"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_burnt_small"/>
+			<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Harvest" name="resourceCoal" count="3,6" tag="oreWoodHarvest"/>
+			<drop event="Harvest" name="resourceCoal" count="3,6" tag="coalHarvest"/>
+			<drop event="Destroy" name="treePlantedMountainPine1m" count="1"/>
+		</block>
+		<block name="DementiveNatureTreeCharredSnag03">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeCharredSnag03"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,11,1"/>
+			<property name="Material" value="MtreeWoodSmall"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_burnt_55m"/>
+			<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Harvest" name="resourceCoal" count="6,12" tag="oreWoodHarvest"/>
+			<drop event="Harvest" name="resourceCoal" count="6,12" tag="coalHarvest"/>
+			<drop event="Destroy" name="treePlantedMountainPine1m" count="1"/>
+		</block>
+		<block name="DementiveNatureTreeCharredSnag04">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeCharredSnag04"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,13,1"/>
+			<property name="Material" value="MtreeWoodMedium"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_burnt_55m"/>
+			<drop event="Harvest" name="resourceWood" count="60" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Harvest" name="resourceCoal" count="6,12" tag="oreWoodHarvest"/>
+			<drop event="Harvest" name="resourceCoal" count="6,12" tag="coalHarvest"/>
+			<drop event="Destroy" name="treePlantedMountainPine1m" count="1"/>
+		</block>
+		<block name="DementiveNatureTreeJoshuaTree01">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeJoshuaTree01"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,7,1"/>
+			<property name="Material" value="MtreeWoodSmall"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_small_dust"/>
+			<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeJoshuaTreeSeed" count="1"/>
+		</block>
+		<block name="DementiveNatureTreeJoshuaTree02">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeJoshuaTree02"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,6,1"/>
+			<property name="Material" value="MtreeWoodSmall"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_small_dust"/>
+			<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeJoshuaTreeSeed" count="1"/>
+		</block>
+		<block name="DementiveNatureTreeJoshuaTree03">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeJoshuaTree03"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,5,1"/>
+			<property name="Material" value="MtreeWoodSmall"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_small_dust"/>
+			<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeJoshuaTreeSeed" count="1"/>
+		</block>
+		<block name="DementiveNatureTreeJoshuaTree04">
+			<property name="Extends" value="treeMaster"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeJoshuaTree04"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,3,1"/>
+			<property name="Material" value="MtreeWoodSmall"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_small_dust"/>
+			<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeJoshuaTreeSeed" count="1"/>
+		</block>
+
+		<!-- JoshuaTree seeds, dropped by every Joshua Tree felled, and the trees they grow into -->
+		<block name="DementiveNatureTreeJoshuaTreeSeed">
+			<property name="Extends" value="treeMasterGrowing" param1="CustomIcon"/>
+			<property name="CreativeMode" value="Player"/>
+			<property name="FallOver" value="false"/>
+			<property name="PlaceAsRandomRotation" value="true"/>
+			<property class="PlantGrowing">
+				<property name="Next" value="DementiveNatureTreePlantedJoshuaTree04"/>
+			</property>
+			<property name="DescriptionKey" value="treePlantedSeed1mDesc"/>
+			<property name="Material" value="Mplants"/>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeJoshuaTreeSapling"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="ParticleOnDeath" value="treeGib_sapling"/>
+			<property name="Collide" value="melee"/>
+			<property name="StabilitySupport" value="false"/>
+			<property name="EconomicValue" value="12"/>
+			<property name="EconomicBundleSize" value="5"/>
+			<property name="SellableToTrader" value="false"/>
+			<property name="MaxDamage" value="10"/>
+			<property name="ActivationDistance" value="4"/>
+			<dropextendsoff/>
+			<drop event="Destroy" name="DementiveNatureTreeJoshuaTreeSeed" count="1"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0001"/>
+			<property name="Group" value="Resources"/>
+			<property name="SoundPickup" value="seeds_cone_grab"/>
+			<property name="SoundPlace" value="seeds_cone_place"/>
+		</block>
+		<block name="DementiveNatureTreePlantedJoshuaTree04">
+			<property name="Extends" value="treeMasterGrowing"/>
+			<property name="CreativeMode" value="Player"/>
+			<property class="PlantGrowing">
+				<property name="Next" value="DementiveNatureTreePlantedJoshuaTree03"/>
+			</property>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeJoshuaTree04"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,3,1"/>
+			<property name="Material" value="MtreeWoodSmall"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_small_dust"/>
+			<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeJoshuaTreeSeed" count="1"/>
+			<property name="CustomIcon" value="DementiveNatureTreeJoshuaTreeSeed"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0002"/>
+		</block>
+		<block name="DementiveNatureTreePlantedJoshuaTree03">
+			<property name="Extends" value="treeMasterGrowing"/>
+			<property name="CreativeMode" value="Player"/>
+			<property class="PlantGrowing">
+				<property name="Next" value="DementiveNatureTreePlantedJoshuaTree02"/>
+			</property>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeJoshuaTree03"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,5,1"/>
+			<property name="Material" value="MtreeWoodSmall"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_small_dust"/>
+			<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeJoshuaTreeSeed" count="1"/>
+			<property name="CustomIcon" value="DementiveNatureTreeJoshuaTreeSeed"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0003"/>
+		</block>
+		<block name="DementiveNatureTreePlantedJoshuaTree02">
+			<property name="Extends" value="treeMasterGrowing"/>
+			<property name="CreativeMode" value="Player"/>
+			<property class="PlantGrowing">
+				<property name="Next" value="DementiveNatureTreePlantedJoshuaTree01"/>
+				<property name="FertileLevel" value="3"/>
+			</property>
+			<property name="Model" value="#@modfolder:Resources/natureexpanded-trees.unity3d?NatureTreeJoshuaTree02"/>
+			<property name="ModelOffset" value="0,-0.5,0"/>
+			<property name="MultiBlockDim" value="1,6,1"/>
+			<property name="Material" value="MtreeWoodSmall"/>
+			<property name="Path" value="solid"/>
+			<property name="BigDecorationRadius" value="3"/>
+			<property name="ParticleOnDeath" value="treeGib_small_dust"/>
+			<drop event="Harvest" name="resourceWood" count="30" tag="oreWoodHarvest,lumberjackHarvest"/>
+			<drop event="Destroy" name="DementiveNatureTreeJoshuaTreeSeed" count="1"/>
+			<property name="CustomIcon" value="DementiveNatureTreeJoshuaTreeSeed"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0004"/>
+		</block>
+		<block name="DementiveNatureTreePlantedJoshuaTree01">
+			<property name="Extends" value="DementiveNatureTreeJoshuaTree01"/>
+			<property name="CreativeMode" value="Player"/>
+			<property class="PlantGrowing">
+				<property name="FertileLevel" value="5"/>
+			</property>
+			<property name="CustomIcon" value="DementiveNatureTreeJoshuaTreeSeed"/>
+			<property name="SortOrder1" value="B904"/>
+			<property name="SortOrder2" value="0005"/>
+		</block>
+	</append>
+</configs>

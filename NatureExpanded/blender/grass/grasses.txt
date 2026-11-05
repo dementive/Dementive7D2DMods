@@ -1,0 +1,27 @@
+# Nature Expanded's grasses, drawn like vanilla grass from the game's own grass texture sheet (ta_grass): the DLL
+# (GrassSheetDEM) copies each tile into the sheet's empty block, 5 across and 4 up from (1536, 2048), in this order.
+# One line per grass: texture id (600 + its place here), name, smoothness (0-255) and translucency (0-255) for the
+# sheet's third texture (vanilla's tall grass is about 12 and 60), and optionally how far (0-1) the tile is shaded
+# toward the ground like vanilla's (dark and unlit at the base: see NatureGrassBuilder.Surface; 0 if left out).
+# grass_tiles.py renders them, NatureGrassBuilder turns the renders into tiles, gen_nature.py writes their blocks
+# and where they grow. At most 20.
+600 HairGrass 12 65 1
+601 WildOats 10 55 1
+602 Foxtail 12 65 1
+603 Sedge 40 45 1
+604 Timothy 12 60 1
+605 Bracken 16 70 1
+606 Redtop 10 60 1
+607 Clover 18 55 1
+608 DryBunchgrass 8 45 1
+609 Horsetail 30 50 1
+610 SheepSorrel 10 55 1
+611 OrchardGrass 14 65 1
+612 BlueGrama 8 45
+613 Needlegrass 8 45
+614 CottonGrass 12 60
+615 FrostTussock 24 40
+616 BurntStubble 6 30
+617 GreenShoots 14 70
+618 Cheatgrass 10 55
+619 FoxtailBarley 12 60

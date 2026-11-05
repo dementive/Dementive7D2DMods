@@ -1,0 +1,25 @@
+# Unity regenerates everything here except the sources, the package list and the editor version
+Library/
+Temp/
+Logs/
+UserSettings/
+obj/
+Build/
+*.csproj
+*.sln
+Packages/packages-lock.json
+ProjectSettings/*
+!ProjectSettings/ProjectVersion.txt
+
+# Written by NatureBuilder; src\build-bundle.bat rebuilds them
+Assets/NatureExpanded/Prefabs/
+Assets/NatureExpanded/Prefabs.meta
+# Written by blender/<plant>.py (see blender/FLORA.md); the built bundle ships in Resources
+Assets/NatureExpanded/Models/
+Assets/NatureExpanded/Models.meta
+# Written by blender/trees/<tree>.py (see blender/TREES.md)
+Assets/NatureExpanded/Trees/
+Assets/NatureExpanded/Trees.meta
+# Written by NatureGrassBuilder from blender/grass/grass_tiles.py's renders; src\build-grass.bat rebuilds them
+Assets/NatureExpanded/GrassTiles/
+Assets/NatureExpanded/GrassTiles.meta
