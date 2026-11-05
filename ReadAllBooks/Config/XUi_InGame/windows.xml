@@ -1,16 +1,17 @@
 <configs>
 
-	<!-- The Read All Books button, on the right of the loot window's header (vanilla leaves that space free) -->
+	<!-- The Read All Books button, on the right of the loot window's header (vanilla leaves that space free). Its
+	     controller (XUiC_ReadAllBooksButton in the mod's DLL) handles the click and the hotkey. -->
 	<append xpath="/windows/window[@name='windowLooting']/rect[@name='header']">
 		<rect name="readAllBooks" depth="3" pos="0,0" anchor_left="scrollbarborder,1,-42" anchor_right="scrollbarborder,1,0">
-			<button depth="3" name="btnReadAllBooks" sprite="ui_game_symbol_book" tooltip_key="xuiReadAllBooksTooltip" pos="20,-21" style="icon30px, press, hover" pivot="center" sound="[paging_click]"/>
+			<button depth="3" name="btnReadAllBooks" controller="ReadAllBooksButton, ReadAllBooks" sprite="ui_game_symbol_book" tooltip_key="xuiReadAllBooksTooltip" pos="20,-21" style="icon30px, press, hover" pivot="center" sound="[paging_click]"/>
 		</rect>
 	</append>
 
 	<!-- The same button in the backpack window's header, left of the money and above the lock button (the free space
 	     between the title and the money; vanilla's creative-only Clear Inventory button sits further left, at 380) -->
 	<append xpath="/windows/window[@name='windowBackpack']/rect[@name='header']">
-		<button depth="3" name="btnReadAllBooks" sprite="ui_game_symbol_book" tooltip_key="xuiReadAllBooksBackpackTooltip" pos="461,-22" style="icon30px, press, hover" pivot="center" sound="[paging_click]"/>
+		<button depth="3" name="btnReadAllBooks" controller="ReadAllBooksButton, ReadAllBooks" sprite="ui_game_symbol_book" tooltip_key="xuiReadAllBooksBackpackTooltip" pos="461,-22" style="icon30px, press, hover" pivot="center" sound="[paging_click]"/>
 	</append>
 
 </configs>

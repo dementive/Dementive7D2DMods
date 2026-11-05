@@ -1,9 +1,8 @@
 using System;
 using System.IO;
-using System.Reflection;
-using HarmonyLib;
 using UnityEngine;
 
+// The buttons are XUiC_ReadAllBooksButton controllers (Config/XUi_InGame/windows.xml), so nothing is patched here
 public class ReadAllBooks : IModApi
 {
     public static string ModPath;
@@ -14,9 +13,7 @@ public class ReadAllBooks : IModApi
     {
         ModPath = _modInstance.Path;
         LoadHotkey();
-
-        var harmony = new HarmonyLib.Harmony("com.dementive.ReadAllBooks");
-        harmony.PatchAll(Assembly.GetExecutingAssembly());
+        Log.Out("[ReadAllBooks] Loaded, hotkey " + Hotkey);
     }
 
     static void LoadHotkey()
@@ -34,7 +31,7 @@ public class ReadAllBooks : IModApi
         }
         catch (Exception e)
         {
-            Debug.Log("[ReadAllBooks] Failed to load keybinding: " + e);
+            Log.Error("[ReadAllBooks] Failed to load keybinding: " + e);
         }
         finally
         {

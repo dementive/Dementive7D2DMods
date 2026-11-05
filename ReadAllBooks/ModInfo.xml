@@ -2,7 +2,7 @@
 <xml>
 	<Name value="ReadAllBooks" />
 	<DisplayName value="Read All Books" />
-	<Description value="Adds a button (and F2 hotkey) to the loot window and the backpack that reads every book and schematic in the open container, or in your backpack, that you don't know yet. Updated for 7 Days to Die V3.4." />
+	<Description value="Adds a button (and F2 hotkey) to the loot window and the backpack that reads every book, skill magazine and schematic in the open container, or in your backpack, that you don't know yet. Updated for 7 Days to Die V3.4." />
 	<Author value="Dementive" />
 	<Version value="2.0.0.0" />
 	<Website value="" />

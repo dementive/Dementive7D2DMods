@@ -34,14 +34,10 @@
   <ItemGroup>
     <Compile Include="InitMod.cs" />
     <Compile Include="ReadAllBooksCore.cs" />
-    <Compile Include="ReadAllBooksPatches.cs" />
+    <Compile Include="XUiC_ReadAllBooksButton.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>..\..\..\0_TFP_Harmony\0Harmony.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\7DaysToDie_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>

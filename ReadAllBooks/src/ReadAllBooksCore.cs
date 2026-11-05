@@ -1,51 +1,77 @@
 using System;
-using UnityEngine;
 
 /// <summary>
-/// Reads every book and schematic in the open loot container, or in the player's backpack, the same way the
-/// inventory's Read button reads one: each copy goes through the item's own action (ItemActionEat.ExecuteInstantAction)
-/// with the slot it is in, so its effects fire as normal (perks, recipes, experience, challenges) and the slot updates
-/// its container like taking an item out does (the loot container stays in sync in multiplayer, the backpack saves
-/// to the player's bag).
+/// Reads every book, skill magazine and schematic in the open loot container, or in the player's backpack, the same
+/// way the inventory's Read button reads one: each copy goes through the item's own action
+/// (ItemActionEat.ExecuteInstantAction) with the slot it is in, so its effects fire as normal (perks, recipes, crafting
+/// skill levels, experience, challenges) and the slot updates its container like taking an item out does (the loot
+/// container stays in sync in multiplayer, the backpack saves to the player's bag).
 /// Books the player already knows are left where they are (they're worth selling), and so are the spare copies
-/// once one copy has been read. Slots the player has locked are skipped.
+/// once one copy has been read. Magazines are read copy by copy until their crafting skill is maxed (that's when the
+/// game counts them as known). Slots the player has locked are skipped.
 /// </summary>
 public static class ReadAllBooksCore
 {
-    static readonly FastTags<TagGroup.Global> BookTags = FastTags<TagGroup.Global>.Parse("books");
+    // "books": books and schematics; "csm": skill magazines, including BooksExpanded's, which extend them
+    static readonly FastTags<TagGroup.Global> BookTags = FastTags<TagGroup.Global>.Parse("books,csm");
 
-    public static void ReadAll(XUiC_LootWindow window)
+    public static void ReadAll(XUiC_LootWindow window, string source)
     {
-        Read(window, window?.lootContainer, "xuiReadAllBooksNone", "xuiReadAllBooksDoneKnown");
+        int read = Read(window, window?.lootContainer, "container", source, "xuiReadAllBooksNone", "xuiReadAllBooksDoneKnown");
+        // Like Take All: when the books were all that was in it, the container closes (the game's own way, a frame later)
+        if (read > 0 && IsEmpty(window.lootContainer))
+        {
+            Log.Out("[ReadAllBooks] " + source + ": the container is empty now, closing it");
+            ThreadManager.StartCoroutine(window.closeInventoryLater());
+        }
     }
 
     // Only the backpack's own grid: the toolbelt is a separate window
-    public static void ReadAll(XUiC_BackpackWindow window)
+    public static void ReadAll(XUiC_BackpackWindow window, string source)
     {
-        Read(window, window?.backpackGrid, "xuiReadAllBooksBackpackNone", "xuiReadAllBooksBackpackDoneKnown");
+        Read(window, window?.backpackGrid, "backpack", source, "xuiReadAllBooksBackpackNone", "xuiReadAllBooksBackpackDoneKnown");
     }
 
-    // Called from button presses and the hotkey patches, so an error is logged instead of breaking the window
-    static void Read(XUiController window, XUiC_ItemStackGrid grid, string noneKey, string doneKnownKey)
+    // Called from the button and the hotkey, so an error is logged instead of breaking the window. Returns how many
+    // copies were read
+    static int Read(XUiController window, XUiC_ItemStackGrid grid, string gridName, string source, string noneKey,
+        string doneKnownKey)
     {
         try
         {
-            ReadGrid(window, grid, noneKey, doneKnownKey);
+            return ReadGrid(window, grid, gridName, source, noneKey, doneKnownKey);
         }
         catch (Exception e)
         {
-            Debug.Log("[ReadAllBooks] Failed to read books: " + e);
+            Log.Error("[ReadAllBooks] Failed to read books: " + e);
+            return 0;
         }
     }
 
-    static void ReadGrid(XUiController window, XUiC_ItemStackGrid grid, string noneKey, string doneKnownKey)
+    static bool IsEmpty(XUiC_ItemStackGrid grid)
+    {
+        foreach (XUiC_ItemStack slot in grid.GetItemStackControllers())
+        {
+            if (slot?.ItemStack != null && !slot.ItemStack.IsEmpty())
+                return false;
+        }
+        return true;
+    }
+
+    static int ReadGrid(XUiController window, XUiC_ItemStackGrid grid, string gridName, string source, string noneKey,
+        string doneKnownKey)
     {
         EntityPlayerLocal player = window?.xui?.playerUI?.entityPlayer;
         if (player == null || grid == null || player.IsDead())
-            return;
+        {
+            Log.Warning("[ReadAllBooks] " + source + " in the " + gridName + ": nothing to read from (player "
+                + (player == null ? "missing" : player.IsDead() ? "dead" : "ok") + ", grid " + (grid == null ? "missing" : "ok") + ")");
+            return 0;
+        }
 
         int read = 0;
         int known = 0;
+        int filled = 0;
         foreach (XUiC_ItemStack slot in grid.GetItemStackControllers())
         {
             if (slot == null || slot.UserLockedSlot || slot.IsLocked)
@@ -53,6 +79,7 @@ public static class ReadAllBooksCore
             ItemStack stack = slot.ItemStack;
             if (stack == null || stack.IsEmpty())
                 continue;
+            filled++;
             ItemClass itemClass = stack.itemValue.ItemClass;
             if (itemClass == null || !itemClass.HasAnyTags(BookTags) || itemClass.Actions == null
                 || itemClass.Actions.Length == 0 || itemClass.Actions[0] == null)
@@ -85,11 +112,15 @@ public static class ReadAllBooksCore
         if (read > 0)
             window.SetAllChildrenDirty();
 
+        Log.Out("[ReadAllBooks] " + source + " in the " + gridName + ": read " + read + ", already known " + known
+            + " (" + filled + " unlocked slots with items)");
+
         if (read == 0 && known == 0)
             GameManager.ShowTooltip(player, Localization.Get(noneKey));
         else if (known == 0)
             GameManager.ShowTooltip(player, string.Format(Localization.Get("xuiReadAllBooksDone"), read));
         else
             GameManager.ShowTooltip(player, string.Format(Localization.Get(doneKnownKey), read, known));
+        return read;
     }
 }

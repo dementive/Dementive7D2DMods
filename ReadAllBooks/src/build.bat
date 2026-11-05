@@ -6,7 +6,6 @@ setlocal
 set "SRC=%~dp0"
 set "GAME=%SRC%..\..\..\.."
 set "MANAGED=%GAME%\7DaysToDie_Data\Managed"
-set "HARMONY=%GAME%\Mods\0_TFP_Harmony"
 set "OUT=%SRC%..\ReadAllBooks.dll"
 
 set "CSC="
@@ -22,8 +21,8 @@ rem C# 9 is the newest language version Unity 2022 (the game's runtime) official
     -r:"%MANAGED%\mscorlib.dll" -r:"%MANAGED%\System.dll" -r:"%MANAGED%\System.Core.dll" ^
     -r:"%MANAGED%\netstandard.dll" -r:"%MANAGED%\Assembly-CSharp.dll" -r:"%MANAGED%\LogLibrary.dll" ^
     -r:"%MANAGED%\UnityEngine.dll" -r:"%MANAGED%\UnityEngine.CoreModule.dll" ^
-    -r:"%MANAGED%\UnityEngine.InputLegacyModule.dll" -r:"%HARMONY%\0Harmony.dll" ^
-    "%SRC%InitMod.cs" "%SRC%ReadAllBooksCore.cs" "%SRC%ReadAllBooksPatches.cs"
+    -r:"%MANAGED%\UnityEngine.InputLegacyModule.dll" ^
+    "%SRC%InitMod.cs" "%SRC%ReadAllBooksCore.cs" "%SRC%XUiC_ReadAllBooksButton.cs"
 if errorlevel 1 exit /b 1
 
 echo Built ReadAllBooks.dll.
