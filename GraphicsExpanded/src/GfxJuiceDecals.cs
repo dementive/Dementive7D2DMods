@@ -19,9 +19,10 @@ public static class GfxJuiceDecals
     private const float FadeSeconds = 30f;
     private const float RainWash = 7f;      // how much faster blood ages out in the rain under open sky
 
-    private static readonly Color WetBlood = new Color(0.17f, 0.004f, 0.004f);
-    private static readonly Color DryBlood = new Color(0.075f, 0.018f, 0.012f);
-    // Pooled blood is thick, so much darker: deep maroon wet, near black-brown dry
+    // Splatters are thinner than pools, so only a touch lighter: dark red wet, brown-black dry (brighter read as paint)
+    private static readonly Color WetBlood = new Color(0.08f, 0.005f, 0.004f);
+    private static readonly Color DryBlood = new Color(0.042f, 0.014f, 0.011f);
+    // Pooled blood is thick, so darker still: deep maroon wet, near black-brown dry
     private static readonly Color WetPool = new Color(0.07f, 0.006f, 0.005f);
     private static readonly Color DryPool = new Color(0.038f, 0.013f, 0.01f);
     private static readonly Color ScorchColor = new Color(0.018f, 0.016f, 0.014f);

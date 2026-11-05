@@ -308,7 +308,7 @@ gfxe juice shot <what>          the same 3 seconds later (close the console), wi
 
 ## Credits
 
-The photoscanned ground textures are from [Poly Haven](https://polyhaven.com) (CC0): asphalt_02, brown_mud_rocks_01,
+The photoscanned ground textures are from [Poly Haven](https://polyhaven.com) (CC0): asphalt_07, brown_mud_rocks_01,
 burned_ground_01, dry_ground_rocks, forest_ground_04, forest_leaves_02, gravel_road, gravelly_sand,
 red_laterite_soil_stones, road_damaged, rock_06, rock_face_03, rock_ground, rocks_ground_06, sandy_gravel_02,
 snow_02 and tiger_rock.

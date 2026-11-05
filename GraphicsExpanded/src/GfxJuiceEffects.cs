@@ -23,8 +23,8 @@ public static class GfxJuiceEffects
     private static readonly Color Ember = new Color(4f, 1.4f, 0.3f), EmberCool = new Color(0.9f, 0.12f, 0f);
     private static readonly Color MuzzleFlash = new Color(7f, 4.5f, 2f);
     private static readonly Color Tracer = new Color(4f, 2.6f, 1.1f);
-    private static readonly Color Blood = new Color(0.15f, 0.01f, 0.008f, 1f);
-    private static readonly Color BloodMist = new Color(0.2f, 0.012f, 0.01f, 0.4f);
+    private static readonly Color Blood = new Color(0.08f, 0.006f, 0.005f, 1f);
+    private static readonly Color BloodMist = new Color(0.1f, 0.008f, 0.006f, 0.4f);
     private static readonly Color Brass = new Color(0.78f, 0.56f, 0.24f), ShellRed = new Color(0.55f, 0.06f, 0.05f);
     private static readonly Color GunSmoke = new Color(0.62f, 0.6f, 0.58f, 0.32f);
     private static readonly Color Gold = new Color(1.6f, 1.15f, 0.45f);

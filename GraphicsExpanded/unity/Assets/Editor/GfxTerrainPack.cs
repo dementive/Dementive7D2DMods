@@ -36,7 +36,7 @@ public static class GfxTerrainPack
         "rock_face_03",             // 1 dark cliff rock
         "forest_leaves_02",         // 2 green forest floor
         "rock_face_03",             // 3 red layered sandstone (the colors match the game's, so one rock can play several)
-        "asphalt_02",               // 4 road asphalt
+        "asphalt_07",               // 4 road asphalt (even grain: asphalt_02's long cracks tiled into stripes down the roads)
         "gravel_road",              // 5 gravel road
         null,                       // 6 plain grey, flat
         "red_laterite_soil_stones", // 7 desert dirt with weeds

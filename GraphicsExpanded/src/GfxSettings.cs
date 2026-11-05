@@ -194,8 +194,9 @@ public static class GfxSettings
         // A little more contrast and color, a touch warmer, less grey haze; half-strength dynamic grading
         { GfxPreset.Natural, new GfxLook(GfxTonemapping.Vanilla, 0f, 8, 6, 3, Color.white, 0.85f, Color.white,
             0f, 0f, 1f, 0.5f, 0.5f, 1f) },
-        // Filmic tonemapping, warmer, with a slight amber tint, a film finish and full dynamic grading
-        { GfxPreset.Cinematic, new GfxLook(GfxTonemapping.ACES, 0.25f, 12, 4, 6, new Color32(255, 246, 235, 255), 0.9f, Color.white,
+        // Filmic tonemapping, warmer, with a slight amber tint, a film finish and full dynamic grading. ACES darkens the
+        // midtones, so the exposure is raised and the contrast kept low (tuned in game)
+        { GfxPreset.Cinematic, new GfxLook(GfxTonemapping.ACES, 0.32f, 4, 4, 6, new Color32(255, 246, 235, 255), 0.9f, Color.white,
             0.25f, 0.15f, 1.3f, 1f, 1f, 1f) },
     };
 

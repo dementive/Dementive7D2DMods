@@ -8,7 +8,7 @@ $ErrorActionPreference = "Stop"
 $ProgressPreference = "SilentlyContinue"
 
 $sets = @(
-    "snow_02", "rock_face_03", "forest_leaves_02", "asphalt_02", "gravel_road", "red_laterite_soil_stones",
+    "snow_02", "rock_face_03", "forest_leaves_02", "asphalt_07", "gravel_road", "red_laterite_soil_stones",
     "forest_ground_04", "burned_ground_01", "sandy_gravel_02", "tiger_rock", "brown_mud_rocks_01", "gravelly_sand",
     "rock_ground", "road_damaged", "dry_ground_rocks", "rock_06", "rocks_ground_06"
 )
