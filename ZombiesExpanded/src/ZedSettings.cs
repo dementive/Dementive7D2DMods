@@ -36,7 +36,6 @@ public static class ZedSettings
         { "Weathering", "true" },
         { "Wounds", "true" },
         { "BloodDrips", "true" },
-        { "Eyeshine", "true" },
         { "Swing", "true" },
         { "Flies", "true" },
         { "Breath", "true" },
@@ -66,7 +65,6 @@ public static class ZedSettings
     public static bool Weathering => Looks && Bool("Weathering");
     public static bool Wounds => Looks && Bool("Wounds");
     public static bool BloodDrips => Looks && Bool("BloodDrips");
-    public static bool Eyeshine => Looks && Bool("Eyeshine");
     public static bool Swing => Looks && Bool("Swing");
     public static bool Flies => Looks && Bool("Flies");
     public static bool Breath => Looks && Bool("Breath");

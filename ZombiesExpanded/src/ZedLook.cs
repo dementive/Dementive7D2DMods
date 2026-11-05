@@ -4,8 +4,8 @@ using UnityEngine;
 /// <summary>
 /// How a zombie looks on a player's screen, drawn by an extra overlay material on its own mesh (so it works whatever
 /// shader the zombie uses): weathering from where it walked (mud, dust, frost rime, soot, ash), how old it is, wet
-/// in the rain, wounds where it was hit that move with the body, charring from fire, frost from cold, blood dripping
-/// from badly hurt zombies, and eyes that catch your light in the dark. Nothing here affects play.
+/// in the rain, wounds where it was hit that move with the body, charring from fire, frost from cold, and blood dripping
+/// from badly hurt zombies. Nothing here affects play.
 /// </summary>
 public class ZedLook : MonoBehaviour
 {
@@ -21,7 +21,6 @@ public class ZedLook : MonoBehaviour
     private const float FarAway = 80f;
 
     private static Material overlay;
-    private static Material eyeMaterial;
     private static GameObject dripTemplate;
     private static bool loaded;
 
@@ -39,7 +38,6 @@ public class ZedLook : MonoBehaviour
     private static readonly int WoundsId = Shader.PropertyToID("_Wounds");
     private static readonly int WoundCountId = Shader.PropertyToID("_WoundCount");
     private static readonly int SeedId = Shader.PropertyToID("_Seed");
-    private static readonly int IntensityId = Shader.PropertyToID("_Intensity");
 
     private EntityAlive zombie;
     private ZedProfile profile;
@@ -56,10 +54,6 @@ public class ZedLook : MonoBehaviour
     private Color grimeColor, settleColor;
     private float wet, charAmount, frost;
 
-    private Transform head;
-    private Renderer eyeLeft, eyeRight;
-    private bool lurker;
-    private MaterialPropertyBlock eyeBlock;
     private GameObject drip;
     private float slowTimer, skyTimer, checkTimer;
     private bool openSky = true;
@@ -85,7 +79,6 @@ public class ZedLook : MonoBehaviour
         if (look != null)
         {
             look.profile = p;
-            look.lurker = p.Has(ZedMutation.Lurker);
             look.charBase = look.frostBase = look.bleach = 0f;
             look.Weathering(p);
         }
@@ -108,7 +101,6 @@ public class ZedLook : MonoBehaviour
         }
         loaded = true;
         overlay = ZedAssets.Get<Material>("ZombieOverlay");
-        eyeMaterial = ZedAssets.Get<Material>("ZombieEyeshine");
         dripTemplate = ZedAssets.Get<GameObject>("BloodDrip");
     }
 
@@ -128,11 +120,6 @@ public class ZedLook : MonoBehaviour
         }
         Weathering(p);
         FindRenderers(model);
-        lurker = p.Has(ZedMutation.Lurker);
-        if (p.Humanoid && eyeMaterial != null && !p.Has(ZedMutation.Stalker))
-        {
-            MakeEyes();
-        }
         Apply();
     }
 
@@ -261,44 +248,6 @@ public class ZedLook : MonoBehaviour
         mats.CopyTo(more, 0);
         more[mats.Length] = overlay;
         r.sharedMaterials = more;
-    }
-
-    private void MakeEyes()
-    {
-        head = zombie.emodel.GetHeadTransform();
-        if (head == null && !bones.TryGetValue("Head", out head))
-        {
-            return;
-        }
-        eyeBlock = new MaterialPropertyBlock();
-        eyeLeft = MakeEye("LeftBrow", -1f);
-        eyeRight = MakeEye("RightBrow", 1f);
-    }
-
-    /// <summary>An eye's glint, just under its brow bone, on the head bone so it follows the head (and goes with it).</summary>
-    private Renderer MakeEye(string brow, float side)
-    {
-        Vector3 local;
-        if (bones.TryGetValue(brow, out Transform b))
-        {
-            local = head.InverseTransformPoint(b.position - zombie.transform.up * 0.026f + zombie.transform.forward * 0.004f);
-            local.x *= 0.9f;
-        }
-        else
-        {
-            local = new Vector3(side * 0.032f, 0.045f, 0.09f);
-        }
-        GameObject eye = new GameObject("ZedEye");
-        eye.transform.SetParent(head, false);
-        eye.transform.localPosition = local;
-        eye.transform.localScale = Vector3.one * 0.03f;
-        eye.AddComponent<MeshFilter>().sharedMesh = ZedAssets.Quad();
-        MeshRenderer r = eye.AddComponent<MeshRenderer>();
-        r.sharedMaterial = eyeMaterial;
-        r.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-        r.receiveShadows = false;
-        r.enabled = false;
-        return r;
     }
 
     // ------------------------------------------------------------------ hits
@@ -450,11 +399,6 @@ public class ZedLook : MonoBehaviour
             {
                 Apply();
             }
-            Eyes(cam, dist);
-        }
-        else if (eyeLeft != null && eyeLeft.enabled)
-        {
-            eyeLeft.enabled = eyeRight.enabled = false;
         }
     }
 
@@ -570,64 +514,6 @@ public class ZedLook : MonoBehaviour
             block.SetFloat(SeedId, (profile.Seed & 0x3ff) * 0.137f);
             r.SetPropertyBlock(block, index);
         }
-    }
-
-    /// <summary>Eyes shine only in the dark, only when your own light is on them, and only when it faces you (a
-    /// Lurker's always glint faintly when it faces you).</summary>
-    private void Eyes(Camera cam, float dist)
-    {
-        if (eyeLeft == null)
-        {
-            return;
-        }
-        float intensity = 0f;
-        if ((ZedStore.Get(zombie.entityId) ?? profile).PlayingDead)
-        {
-            // A Possum playing dead: dark eyes
-            eyeLeft.enabled = eyeRight.enabled = false;
-            return;
-        }
-        if (ZedSettings.Eyeshine && cam != null && !zombie.IsDead() && dist < 45f && PlayerLightOn(zombie.world))
-        {
-            Vector3 toEyes = eyeLeft.transform.position - cam.transform.position;
-            float d = toEyes.magnitude;
-            Vector3 dir = toEyes / Mathf.Max(d, 0.01f);
-            float beam = Mathf.InverseLerp(Mathf.Cos(22f * Mathf.Deg2Rad), Mathf.Cos(6f * Mathf.Deg2Rad), Vector3.Dot(cam.transform.forward, dir));
-            float range = 1f - Mathf.InverseLerp(25f, 45f, d);
-            float facing = Mathf.InverseLerp(0.2f, 0.7f, Vector3.Dot(zombie.transform.forward, -dir));
-            float dark = 1f - Mathf.Clamp01(zombie.GetLightBrightness() * 1.5f);
-            intensity = beam * range * facing * dark;
-        }
-        if (lurker && ZedSettings.Looks && cam != null && !zombie.IsDead() && dist < 45f)
-        {
-            // A Lurker's eyes catch the light whatever the light: a faint glint whenever it faces you
-            Vector3 dir = (eyeLeft.transform.position - cam.transform.position).normalized;
-            float facing = Mathf.InverseLerp(0.3f, 0.8f, Vector3.Dot(zombie.transform.forward, -dir));
-            intensity = Mathf.Max(intensity, 0.45f * facing * (1f - Mathf.InverseLerp(30f, 45f, dist)));
-        }
-        bool show = intensity > 0.01f;
-        eyeLeft.enabled = eyeRight.enabled = show;
-        if (show)
-        {
-            eyeBlock.SetFloat(IntensityId, intensity);
-            eyeLeft.SetPropertyBlock(eyeBlock);
-            eyeRight.SetPropertyBlock(eyeBlock);
-        }
-    }
-
-    private static int lightFrame = -1;
-    private static bool lightOn;
-
-    /// <summary>Whether your flashlight, headlamp or another light you carry is on (checked once a frame).</summary>
-    private static bool PlayerLightOn(World world)
-    {
-        if (lightFrame != Time.frameCount)
-        {
-            lightFrame = Time.frameCount;
-            EntityPlayerLocal player = world?.GetPrimaryPlayer();
-            lightOn = player != null && player.GetLightLevel() > 0.01f;
-        }
-        return lightOn;
     }
 
     private void OnDestroy()

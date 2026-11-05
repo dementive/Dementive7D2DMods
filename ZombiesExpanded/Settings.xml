@@ -49,8 +49,6 @@
 	<Setting name="Wounds" value="true"/>
 	<!-- Blood dripping from badly hurt zombies -->
 	<Setting name="BloodDrips" value="true"/>
-	<!-- Eyes that catch your light in the dark -->
-	<Setting name="Eyeshine" value="true"/>
 	<!-- Loose ends that swing as they walk: dog tags, a gut loop, a cut noose, a torn chain, a harpoon's rope -->
 	<Setting name="Swing" value="true"/>
 	<!-- Flies buzzing round the rotten ones -->

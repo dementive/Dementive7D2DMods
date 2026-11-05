@@ -41,7 +41,7 @@ It should play about as hard as vanilla: more varied, not more punishing.
 | Feature | Any zombie | Needs a standard skeleton (vanilla bone names, which most zombie packs share) |
 |---|---|---|
 | Everything gameplay: senses, movement, combat, mutation effects, strains, gear protection, champions | yes | |
-| Looks and sounds: weathering, wounds, char and frost, eyeshine, voices, horde audio | yes | |
+| Looks and sounds: weathering, wounds, char and frost, voices, horde audio | yes | |
 | Body reshaping; gear and growth models | | yes. Without the bones a zombie still gets the effect, shown by the overlay instead of a model |
 
 Bosses (the `boss` tag, like the Demolisher) never get mutations, gear or strains, so scripted fights stay as
@@ -74,8 +74,7 @@ All on the server, built on the game's own stealth system (noise, light, sight),
   follows loudness: pistols about 40 m, rifles 60, shotguns 50, explosions 80, a suppressor cuts it to 10. Vanilla
   mostly turns these sounds into "heat" for later spawns; here the zombies already nearby come.
 - **Lights give you away at night:** a flashlight, headlamp or torch pointed at a zombie within 35 m makes it notice
-  you. The game already counts how lit you are; this adds the beam. With eyeshine (section 7) it cuts both ways: your
-  light shows you their eyes and shows them you.
+  you. The game already counts how lit you are; this adds the beam.
 - **Herd alert:** when a zombie spots you, others within 12 m that can see it turn toward you too.
 
 ## 3. Moving as a crowd
@@ -133,7 +132,7 @@ most one (champions more). Strains (section 8) decide which zombies get them.
 | Toxic | 75 | Green glowing veins, dripping ooze | Its hits poison you (2/s for 6 s); melee hits on it splash you with acid (3) | 25% less health | Range |
 | Volatile | 75 | A dented propane tank ratchet-strapped to its chest, hissing | If its chest takes 60 damage or it catches fire, the tank blows 1.5 s later: 4 m, 60 to players, 300 to zombies, some to blocks | 10% slower; a headshot kill just drops the tank | Headshot it, or shoot the chest when it's in a crowd and away from you |
 | Hulking | 90 | 15% bigger, broad shoulders and arms | Double health and poise; knocks you back 1.5 m; 50% more block damage | Never runs; 50% more damage from headshots | Headshots; crippling a leg drops it for 4 s |
-| Stalker | 100 | Dark and matte, no eyeshine | Silent; crouch-walks while you're not looking at it. Within 8 m, or once you look at it, it stands and sprints | 40% less health | Check behind you; light on it |
+| Stalker | 100 | Dark and matte | Silent; crouch-walks while you're not looking at it. Within 8 m, or once you look at it, it stands and sprints | 40% less health | Check behind you; light on it |
 | Brood | 120 | A writhing sac on its belly | On death two weak crawlers (half a crawler's health) burst out | 40% less health; 20% slower. A fire or explosion kill burns the brood | Fire, explosives |
 
 ## 6. Gear they died in
@@ -161,8 +160,6 @@ rounds go through it, explosions strip it.
   the body.
 - **Badly hurt zombies drip blood** (below a third of their health), so you can follow one that got away.
 - **Fire chars them** (glowing embers while they burn), **cold frosts them**, **shocks scorch them.** It fades slowly.
-- **Eyeshine:** in the dark, zombies' eyes catch your flashlight, headlamp or torch. You see pairs of eyes before you
-  see bodies.
 
 All of this is drawn as an extra layer over the zombie's own material (tested on vanilla zombies:
 `unity/Build/look-test.png`), so it works whatever shader another mod's zombie uses.
@@ -250,7 +247,7 @@ optional debug readout (off by default) shows what each zombie is doing.
 
 - **Server** (XML in `Config`, plus a console command): the preset (Standard or Brutal) and each feature on or off
   with its rates.
-- **Each player**, through Gears if installed: weathering, wounds, eyeshine, voices, horde audio, blood drips and tips.
+- **Each player**, through Gears if installed: weathering, wounds, voices, horde audio, blood drips and tips.
 
 ## How it's built
 
@@ -274,7 +271,7 @@ optional debug readout (off by default) shows what each zombie is doing.
 
 1. **Core and individuals:** spawn roll, sync and save, size, body, gait, voice, temperament; the spawn command and
    AI debug readout.
-2. **Looks:** overlay (weathering, wounds, fire and frost, blood drips), eyeshine.
+2. **Looks:** overlay (weathering, wounds, fire and frost, blood drips).
 3. **Senses and the crowd:** sound, light, herd alert, surround, herds with leaders, lunge, dormant by day, searching.
 4. **Where you hit them:** poise, legs, arms, head, downed, impact; double tap and crowd pressure for Brutal.
 5. **Mutations without new models, with their behaviors, and strain packs:** Sprinter, Screecher, Hulking, Stalker,

@@ -23,7 +23,7 @@ are in `Settings.xml`.
 **Looks** (drawn over the zombie's own material, so they work whatever shader it uses; each player's choice):
 weathering by biome (mud, dust and sun-bleach, frost rime, soot, ash) settling on what faces up; fresh or rotten; wet
 in the rain; wounds where you hit, moving with the body; charring while it burns; frost from cold;
-blood dripping below a third of its health; eyes that catch your flashlight in the dark.
+blood dripping below a third of its health.
 
 **Signs of (un)life** (each player's game, near you): flies buzzing round the rotten ones (you hear the swarm before
 you see it); breath clouding when it's cold out or in the snow; blood and drool flung from the jaw as they attack;
@@ -64,7 +64,7 @@ have none. The total matches rolling each zombie alone.
 | Regenerator | 60 | Heals 2% of its health a second, 3 s after it was last hit | 30% slower; fire stops the healing and does 50% more | Runs off below 40% health to heal |
 | Toxic | 75 | Its hits poison (2/s for 6 s); melee hits on it splash you with acid (3) | 25% less health | |
 | Volatile | 75 | A propane tank on its chest: 60 damage to the chest or any fire, and it blows 1.5 s later (4 m; 60 to players, 300 to zombies, some to blocks) | 10% slower; a kill before that just drops the tank | |
-| Lurker | 80 | Comes at you a third faster while nobody's looking at it; hunched, eyes that always catch the light | 30% less health | Until it's in a fight, runs when any player looks at it (from 25 m off it stands and stares) and comes again when they look away. Within 2.5 m of you, hitting or hit, or cornered, it fights like any zombie |
+| Lurker | 80 | Comes at you a third faster while nobody's looking at it; hunched | 30% less health | Until it's in a fight, runs when any player looks at it (from 25 m off it stands and stares) and comes again when they look away. Within 2.5 m of you, hitting or hit, or cornered, it fights like any zombie |
 | Hulking | 90 | 15% bigger, double health and poise, 50% more block damage, knocks you back | Never runs; 50% more damage from headshots; crippling a leg drops it for 4 s | Charges across open ground (a short sprint) |
 | Stalker | 100 | Silent until seen | 40% less health | Creeps up crouched behind you, freezing while you look at it; watched for 1.5 s or within 8 m, it stands and sprints |
 | Brood | 120 | Two weak crawlers burst out on death (not from a fire or explosion kill) | 40% less health, 20% slower | |

@@ -18,7 +18,7 @@ zedTipVolatile,UI,Tip,,,,Volatile: a propane tank on its chest. Shoot the chest 
 zedTipHulking,UI,Tip,,,,"Hulking: huge and broad. Double health, knocks you back and charges, but never runs. Aim for the head, or cripple a leg to drop it.",,,,,,,,,,,,,
 zedTipStalker,UI,Tip,,,,Stalker: dark and silent. It creeps up while you're not looking and freezes when you are. Check behind you.,,,,,,,,,,,,,
 zedTipBrood,UI,Tip,,,,"Brood: a writhing sac on its belly. Two crawlers burst out when it dies, unless fire or an explosion gets them.",,,,,,,,,,,,,
-zedTipLurker,UI,Tip,,,,"Lurker: hunched, eyes that always catch the light. It only comes at you while you look away, and runs when you look at it. Once it reaches you, or anyone hits it, it fights.",,,,,,,,,,,,,
+zedTipLurker,UI,Tip,,,,"Lurker: hunched. It only comes at you while you look away, and runs when you look at it. Once it reaches you, or anyone hits it, it fights.",,,,,,,,,,,,,
 zedTipHelmet,UI,Tip,,,,Helmet: it soaks your headshots until it's knocked off. Blunt hits wear it down faster; armor-piercing rounds go through.,,,,,,,,,,,,,
 zedTipKevlarVest,UI,Tip,,,,"Kevlar vest: it takes half of every body hit until it breaks, and slows the zombie. Aim for the head or the limbs.",,,,,,,,,,,,,
 zedTipScrapArmor,UI,Tip,,,,"Scrap armor: plates wired on, front, back and shoulders, each breaking off on its own. Heavy: it slows the zombie down.",,,,,,,,,,,,,
