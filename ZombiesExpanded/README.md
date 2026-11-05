@@ -22,8 +22,12 @@ are in `Settings.xml`.
 
 **Looks** (drawn over the zombie's own material, so they work whatever shader it uses; each player's choice):
 weathering by biome (mud, dust and sun-bleach, frost rime, soot, ash) settling on what faces up; fresh or rotten; wet
-in the rain; wounds where you hit, moving with the body; charring with glowing cracks while it burns; frost from cold;
+in the rain; wounds where you hit, moving with the body; charring while it burns; frost from cold;
 blood dripping below a third of its health; eyes that catch your flashlight in the dark.
+
+**Signs of (un)life** (each player's game, near you): flies buzzing round the rotten ones (you hear the swarm before
+you see it); breath clouding when it's cold out or in the snow; blood and drool flung from the jaw as they attack;
+loose ends that swing as they walk (dog tags, a gut loop, a cut noose, a torn chain, a harpoon's rope).
 
 **Senses:** a player's gunshots, explosions and breaking blocks send zombies within range (from about 40 m for a pistol
 to 80 for explosions; a suppressor is too quiet) to look. At night, a flashlight pointed at a zombie within 35 m gives
@@ -49,7 +53,6 @@ have none. The total matches rolling each zombie alone.
 
 | Mutation | From | Stronger | Weaker | Behavior |
 |---|---|---|---|---|
-| Bloater | 0 | Bursts into a 3 m bile cloud on death (nausea: blur, 2 damage/s) | 25% slower; a burning kill burns the gas off | |
 | Sprinter | 0 | Runs fast even by day | 40% less health; doubles over for 3 s after 8 s of running | |
 | Spiked | 30 | 25% of its hits make you bleed; melee hits on it scratch you (3, 20% bleed) except reach weapons | 50% more damage from blunt hits; attacks 20% slower | |
 | Grabber | 30 | 20% per hit to hold you 2 s (no sprint or jump, 80% slower); any hit on it frees you; 8 s immunity after | 30% less damage, 20% slower | Goes for the player with the most zombies on them |
@@ -96,14 +99,26 @@ zombie with one clamped on its ankle limps (15% slower).
   crowbar hooked in the ribs, a line of nail-gun nails up an arm and a padlocked chain on a wrist.
 - **Worn:** an arm cast, cracked glasses, sunglasses, headphones, a gas mask, a chain necklace, an
   ankle monitor.
+- **Eyewear** (one pair a face): aviators, round "Lennon" shades, taped-up nerd glasses, cardboard 3D glasses, star
+  and heart party glasses, shutter shades; and on bare heads, ski goggles, a pirate eye patch or welding goggles
+  pushed up on the forehead.
+- **Accessories:** a half-smoked cigar in the mouth (goes with any glasses), Mardi Gras beads, a wilted flower lei,
+  a bow tie, dog tags.
+- **How they died:** a compound fracture through the forearm, a torn-open belly with a loop of gut hanging out, ribs
+  showing through a torn side, the spine showing through a torn back, a calf chewed to the bone. The torso and calf
+  wounds only turn up on regular builds (a fat belly buries them, a woman's build hides or lifts them).
 
-Some models come in parts that vary from zombie to zombie (the Bloater's pustules, the Regenerator's fungus, the barbed
+**Showpieces:** about 1 zombie in 40 (`ShowpieceRate`) is one you'll remember: a STOP sign rammed through the gut, a
+cinder block chained to an ankle and dragged scraping along the ground behind it (20% slower), a harpoon through the
+chest trailing its rope, or a pincushion of eight arrows from someone's last stand.
+
+Some models come in parts that vary from zombie to zombie (the Regenerator's fungus, the barbed
 wire): each zombie shows its own mix, the same for every player.
 
 ## Champions and the Alpha
 
 - **Champions:** from gamestage 50, 1% of zombies (2% from 150). Two mutations (three from 150), 15% bigger, triple
-  health and XP, a name ("Earl the Bloater"). Once, below 30% health, it roars and pulls nearby zombies in. A bar with
+  health and XP, a name ("Earl the Leaper"). Once, below 30% health, it roars and pulls nearby zombies in. A bar with
   its name and health shows at the top of the screen while it's after you or for 20 s after you hit it. Drops a strong
   loot bag.
 - **Champion rooms:** a POI's final room (where the game puts its "badass" sleepers) has a 25% chance that its first

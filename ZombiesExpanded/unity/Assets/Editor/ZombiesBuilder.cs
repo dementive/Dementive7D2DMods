@@ -54,8 +54,10 @@ public static class ZombiesBuilder
             MakeMaterial("ZombieOverlay", "Dementive/ZombieOverlay", 3000),
             MakeMaterial("ZombieEyeshine", "Dementive/ZombieEyeshine", 3010),
             BloodDrip(),
-            BileCloud(),
             GoreBurst(),
+            FlySwarm(),
+            BreathPuff(),
+            JawSpatter(),
         };
         assets.AddRange(ZombiesModels.BuildAll());
         AssetDatabase.SaveAssets();
@@ -202,35 +204,6 @@ public static class ZombiesBuilder
         return new ParticleSystem.MinMaxGradient(g);
     }
 
-    /// <summary>The Bloater's bile cloud: a sickly yellow-green haze about 3 m across that hangs for 5 s.</summary>
-    private static string BileCloud()
-    {
-        Color bile = new Color(0.55f, 0.6f, 0.18f, 1f);
-        GameObject go = new GameObject("BileCloud");
-        ParticleSystem ps = Particles(go, ParticleMaterial("Bile", bile, 0.1f), ParticleSystemRenderMode.Billboard);
-        ParticleSystem.MainModule main = ps.main;
-        main.duration = 5f;
-        main.startLifetime = new ParticleSystem.MinMaxCurve(2.5f, 4f);
-        main.startSpeed = new ParticleSystem.MinMaxCurve(0.1f, 0.6f);
-        main.startSize = new ParticleSystem.MinMaxCurve(1.2f, 2.4f);
-        main.startRotation = new ParticleSystem.MinMaxCurve(0f, 6.28f);
-        main.gravityModifier = -0.02f;
-        main.maxParticles = 60;
-        ParticleSystem.EmissionModule emission = ps.emission;
-        emission.rateOverTime = 6f;
-        emission.SetBursts(new[] { new ParticleSystem.Burst(0f, 18) });
-        ParticleSystem.ShapeModule shape = ps.shape;
-        shape.shapeType = ParticleSystemShapeType.Sphere;
-        shape.radius = 1.2f;
-        ParticleSystem.ColorOverLifetimeModule col = ps.colorOverLifetime;
-        col.enabled = true;
-        col.color = Fade(bile, 0.45f);
-        ParticleSystem.SizeOverLifetimeModule size = ps.sizeOverLifetime;
-        size.enabled = true;
-        size.size = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Linear(0f, 0.7f, 1f, 1.3f));
-        return Save(go);
-    }
-
     /// <summary>The Brood's sac bursting: a spray of dark blood and bits.</summary>
     private static string GoreBurst()
     {
@@ -256,6 +229,96 @@ public static class ZombiesBuilder
         return Save(go);
     }
 
+    /// <summary>Flies round a rotten zombie's chest: a loose cloud of black specks darting about, following it.</summary>
+    private static string FlySwarm()
+    {
+        Color fly = new Color(0.02f, 0.02f, 0.02f, 1f);
+        GameObject go = new GameObject("FlySwarm");
+        ParticleSystem ps = Particles(go, ParticleMaterial("Fly", fly, 0.6f), ParticleSystemRenderMode.Billboard);
+        ParticleSystem.MainModule main = ps.main;
+        main.simulationSpace = ParticleSystemSimulationSpace.Local;
+        main.loop = true;
+        main.prewarm = true;
+        main.duration = 4f;
+        main.startLifetime = new ParticleSystem.MinMaxCurve(2f, 4f);
+        main.startSpeed = new ParticleSystem.MinMaxCurve(0.2f, 0.6f);
+        main.startSize = new ParticleSystem.MinMaxCurve(0.008f, 0.013f);
+        main.startColor = fly;
+        main.maxParticles = 22;
+        ParticleSystem.EmissionModule emission = ps.emission;
+        emission.rateOverTime = 6f;
+        ParticleSystem.ShapeModule shape = ps.shape;
+        shape.shapeType = ParticleSystemShapeType.Sphere;
+        shape.radius = 0.35f;
+        ParticleSystem.NoiseModule noise = ps.noise;
+        noise.enabled = true;
+        noise.strength = 1.6f;
+        noise.frequency = 2.2f;
+        noise.scrollSpeed = 1.5f;
+        noise.octaveCount = 2;
+        ParticleSystem.ColorOverLifetimeModule col = ps.colorOverLifetime;
+        col.enabled = true;
+        col.color = Fade(fly, 1f);
+        return Save(go);
+    }
+
+    /// <summary>Breath in the cold: a soft pale puff out of the mouth that drifts forward and fades.</summary>
+    private static string BreathPuff()
+    {
+        Color breath = new Color(0.75f, 0.77f, 0.8f, 1f);
+        GameObject go = new GameObject("BreathPuff");
+        ParticleSystem ps = Particles(go, ParticleMaterial("Breath", breath, 0.1f), ParticleSystemRenderMode.Billboard);
+        ParticleSystem.MainModule main = ps.main;
+        main.duration = 0.4f;
+        main.startLifetime = new ParticleSystem.MinMaxCurve(0.9f, 1.5f);
+        main.startSpeed = new ParticleSystem.MinMaxCurve(0.2f, 0.4f);
+        main.startSize = new ParticleSystem.MinMaxCurve(0.05f, 0.09f);
+        main.startRotation = new ParticleSystem.MinMaxCurve(0f, 6.28f);
+        main.gravityModifier = -0.02f;
+        main.maxParticles = 8;
+        ParticleSystem.EmissionModule emission = ps.emission;
+        emission.rateOverTime = 0f;
+        emission.SetBursts(new[] { new ParticleSystem.Burst(0f, 3, 5) });
+        ParticleSystem.ShapeModule shape = ps.shape;
+        shape.shapeType = ParticleSystemShapeType.Cone;
+        shape.angle = 15f;
+        shape.radius = 0.01f;
+        ParticleSystem.ColorOverLifetimeModule col = ps.colorOverLifetime;
+        col.enabled = true;
+        col.color = Fade(breath, 0.14f);
+        ParticleSystem.SizeOverLifetimeModule size = ps.sizeOverLifetime;
+        size.enabled = true;
+        size.size = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Linear(0f, 1f, 1f, 3.5f));
+        return Save(go);
+    }
+
+    /// <summary>Blood and drool flung from the jaw as it lunges: a few dark drops arcing forward and down.</summary>
+    private static string JawSpatter()
+    {
+        Color spit = new Color(0.12f, 0.015f, 0.012f, 1f);
+        GameObject go = new GameObject("JawSpatter");
+        ParticleSystem ps = Particles(go, ParticleMaterial("Spit", spit, 0.85f), ParticleSystemRenderMode.Stretch);
+        ParticleSystemRenderer r = go.GetComponent<ParticleSystemRenderer>();
+        r.lengthScale = 1.5f;
+        r.velocityScale = 0.04f;
+        ParticleSystem.MainModule main = ps.main;
+        main.duration = 0.2f;
+        main.startLifetime = new ParticleSystem.MinMaxCurve(0.5f, 0.9f);
+        main.startSpeed = new ParticleSystem.MinMaxCurve(0.8f, 2.2f);
+        main.startSize = new ParticleSystem.MinMaxCurve(0.006f, 0.015f);
+        main.startColor = spit;
+        main.gravityModifier = 1f;
+        main.maxParticles = 16;
+        ParticleSystem.EmissionModule emission = ps.emission;
+        emission.rateOverTime = 0f;
+        emission.SetBursts(new[] { new ParticleSystem.Burst(0f, 5, 10) });
+        ParticleSystem.ShapeModule shape = ps.shape;
+        shape.shapeType = ParticleSystemShapeType.Cone;
+        shape.angle = 30f;
+        shape.radius = 0.02f;
+        return Save(go);
+    }
+
     private static string Save(GameObject go)
     {
         string path = Generated + "/" + go.name + ".prefab";
@@ -264,22 +327,25 @@ public static class ZombiesBuilder
         return path;
     }
 
-    /// <summary>Build/effects.png: the bile cloud and gore burst half a second and a second in.</summary>
+    /// <summary>Build/effects.png: the gore burst, a fly swarm, a breath puff and a jaw spatter, a moment in.</summary>
     public static void EffectsPreview()
     {
         EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
         Day();
-        string[] names = { "BileCloud", "GoreBurst" };
+        string[] names = { "GoreBurst", "FlySwarm", "BreathPuff", "JawSpatter" };
+        float[] times = { 0.35f, 2f, 0.6f, 0.3f };
         for (int i = 0; i < names.Length; i++)
         {
             GameObject fx = Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(Generated + "/" + names[i] + ".prefab"));
-            fx.transform.position = new Vector3(i * 4f - 2f, 1.2f, 0f);
+            fx.transform.position = new Vector3((i - 1.5f) * 1.2f, 1.2f, 0f);
+            // Breath and spatter fly toward the camera's right, as they would from a zombie facing that way
+            fx.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
             foreach (ParticleSystem ps in fx.GetComponentsInChildren<ParticleSystem>())
             {
-                ps.Simulate(i == 0 ? 1.5f : 0.35f, true, true);
+                ps.Simulate(times[i], true, true);
             }
         }
-        Render(Path.Combine(Directory.GetCurrentDirectory(), "Build/effects.png"), new Vector3(0f, 1.6f, -9f), 30f, new Vector3(0f, 1.1f, 0f));
+        Render(Path.Combine(Directory.GetCurrentDirectory(), "Build/effects.png"), new Vector3(0f, 1.3f, -4.2f), 40f, new Vector3(0f, 1.1f, 0f));
     }
 
     private static Texture2D Dot()
@@ -309,7 +375,7 @@ public static class ZombiesBuilder
     private class Look
     {
         public string Prefab;
-        public float Grime, Settle, Bleach, Wet, Char, Embers, Frost, Blood;
+        public float Grime, Settle, Bleach, Wet, Char, Frost, Blood;
         public Color GrimeColor = new Color(0.24f, 0.19f, 0.12f), SettleColor = new Color(0.2f, 0.22f, 0.12f);
         public bool Wounds;
         public bool Plain;
@@ -334,7 +400,7 @@ public static class ZombiesBuilder
                 new Look { Prefab = "zcop.prefab", Grime = 0.24f, GrimeColor = new Color(0.22f, 0.2f, 0.18f), Settle = 0.5f,
                     SettleColor = new Color(0.88f, 0.92f, 0.97f), Bleach = 0.1f, Blood = 0.28f },
                 new Look { Prefab = "zcop.prefab", Grime = 0.5f, GrimeColor = new Color(0.06f, 0.05f, 0.045f), Settle = 0.4f,
-                    SettleColor = new Color(0.08f, 0.07f, 0.06f), Char = 0.6f, Embers = 1f },
+                    SettleColor = new Color(0.08f, 0.07f, 0.06f), Char = 0.6f },
                 new Look { Prefab = "zjoe.prefab", Grime = 0.62f, GrimeColor = new Color(0.27f, 0.28f, 0.22f), Settle = 0.45f,
                     SettleColor = new Color(0.45f, 0.45f, 0.43f), Bleach = 0.15f, Wet = 0.8f, Blood = 0.04f },
             };
@@ -356,6 +422,13 @@ public static class ZombiesBuilder
             Day();
             Render(Path.Combine(output, "looks-day.png"), new Vector3(0f, 1.25f, -8f), 26f);
             Render(Path.Combine(output, "looks-close.png"), new Vector3(1.95f, 1.9f, -3.4f), 30f, new Vector3(1.95f, 1.15f, 0f));
+            // The left three under a roof, out of the sun: the dressed ones must be no brighter than the plain one
+            // beside them (lit on its own, the overlay used to take the sun through the roof)
+            GameObject roof = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            roof.transform.position = new Vector3(-2.6f, 2.5f, -3f);
+            roof.transform.localScale = new Vector3(4.6f, 0.2f, 10f);
+            Render(Path.Combine(output, "looks-shade.png"), new Vector3(0f, 1.25f, -8f), 26f);
+            Object.DestroyImmediate(roof);
             foreach (GameObject z in zombies)
             {
                 Object.DestroyImmediate(z);
@@ -367,7 +440,7 @@ public static class ZombiesBuilder
             {
                 new Look { Prefab = "zjoe.prefab", Grime = 0.8f },
                 new Look { Prefab = "zjoe.prefab", Settle = 0.8f, SettleColor = new Color(0.88f, 0.92f, 0.97f) },
-                new Look { Prefab = "zjoe.prefab", Char = 0.8f, Embers = 1f },
+                new Look { Prefab = "zjoe.prefab", Char = 0.8f },
                 new Look { Prefab = "zjoe.prefab", Frost = 0.6f },
                 new Look { Prefab = "zjoe.prefab", Blood = 0.8f, Wounds = true },
                 new Look { Prefab = "zjoe.prefab", Wet = 1f },
@@ -436,14 +509,9 @@ public static class ZombiesBuilder
             r.sharedMaterials = r.sharedMaterials.Concat(new[] { overlay }).ToArray();
             MaterialPropertyBlock b = new MaterialPropertyBlock();
             Texture albedo = m.HasProperty("_Albedo") ? m.GetTexture("_Albedo") : m.mainTexture;
-            Texture normal = m.HasProperty("_Normal") ? m.GetTexture("_Normal") : null;
             if (albedo != null)
             {
                 b.SetTexture("_BaseAlbedo", albedo);
-            }
-            if (normal != null)
-            {
-                b.SetTexture("_BaseNormal", normal);
             }
             b.SetFloat("_HasBase", albedo != null ? 1f : 0f);
             b.SetFloat("_Grime", look.Grime);
@@ -453,7 +521,6 @@ public static class ZombiesBuilder
             b.SetFloat("_Bleach", look.Bleach);
             b.SetFloat("_Wet", look.Wet);
             b.SetFloat("_Char", look.Char);
-            b.SetFloat("_Embers", look.Embers);
             b.SetFloat("_Frost", look.Frost);
             b.SetFloat("_Blood", look.Blood);
             b.SetVectorArray("_Wounds", wounds);

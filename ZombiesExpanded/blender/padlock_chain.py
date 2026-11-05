@@ -9,8 +9,9 @@ The loops rest on the back of the wrist (up and out in the bind pose) and hang l
 lock. They are sized for a wrist 12% thicker than Joe's (4.0 x 3.0 cm in radius rather than 3.2 x 2.4) so they don't
 sink into the fat cop's or the nurse's wrist once the game sizes the part to them; on Joe they ride half a centimeter
 proud. The lock and the torn end hang between straight down and along the forearm (22 degrees off straight down in
-the bind pose), so they still hang about right when the arm swings in to the side. One part on the forearm bone:
-"LeftForeArm#Chain".
+the bind pose), so they still hang about right when the arm swings in to the side. Two parts on the forearm bone:
+"LeftForeArm#Chain" (the loops and the padlock) and "LeftForeArm#ChainSwing" (the torn length, which swings in game
+about its pivot where its first link hangs through the loop's link).
 
     blender -b --factory-startup --python padlock_chain.py -- <unity models folder> <preview folder>
 """
@@ -605,11 +606,17 @@ pieces += loop1 + loop2
 # The torn end hangs from loop 1's link next to the bottom one on the pinky side, behind the lock
 k_tail = 1
 tail_from = c1[k_tail] + HANG * 0.006
-pieces += torn_end(tail_from)
+tail = torn_end(tail_from)
 pieces += [lock_body(), shackle(), keyway()]
-for p in pieces:
+for p in pieces + tail:
     depth_attr(p, skin)
+for p in pieces:
     zk.on(p, "LeftForeArm", "Chain")
+# The torn length swings about where its first link hangs through the loop's link
+for p in tail:
+    zk.on(p, "LeftForeArm", "ChainSwing", pivot=tail_from)
+print("[%s] ChainSwing pivot where it leaves the loop (%.3f, %.3f, %.3f)" % ((SCRIPT,) + tuple(tail_from)))
+pieces += tail
 
 
 # ---------------------------------------------------------------- export, checks and previews

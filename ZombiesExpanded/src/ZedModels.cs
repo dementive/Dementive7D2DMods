@@ -152,6 +152,12 @@ public class ZedModels : MonoBehaviour
             {
                 continue;
             }
+            if (piece.name.EndsWith("Drag"))
+            {
+                // Dragged along the ground behind the zombie (the cinder block and its chain), not carried on the bone
+                parts[key] = ZedDrag.Add(zombie, bone, piece);
+                continue;
+            }
             float s = Fit(boneName, out Vector3? center);
             if (acrossLimb && Mathf.Abs(s - 1f) > 0.01f && AlongLimb(bone, boneName, out int axis))
             {
@@ -166,6 +172,7 @@ public class ZedModels : MonoBehaviour
                 inner.transform.localRotation = piece.localRotation;
                 inner.transform.localScale = piece.localScale;
                 ZedGameShader.Apply(inner.transform);
+                Swing(inner, piece.name);
                 parts[key] = holder;
                 continue;
             }
@@ -175,16 +182,62 @@ public class ZedModels : MonoBehaviour
             {
                 pos = center.Value + (piece.localPosition - jc) * s;
             }
-            p.transform.localPosition = pos;
+            p.transform.localPosition = pos + Settle(bone, boneName);
             p.transform.localRotation = piece.localRotation;
             p.transform.localScale = piece.localScale * s;
             ZedGameShader.Apply(p.transform);
+            Swing(p, piece.name);
             parts[key] = p;
             if (piece.name.EndsWith("#Sac"))
             {
                 sac = p.transform;
                 sacScale = p.transform.localScale;
             }
+        }
+    }
+
+    /// <summary>
+    /// How much further a Neck or Jaw part sits on this zombie than on Joe, in the bone's own space. Those are sized by
+    /// the head but weren't moved like head and chest parts, so on the fat cop (throat and chest 6 to 10 cm forward of
+    /// Joe's, his face higher on the jaw) beads, a lei or a bow tie sank into him and a cigar stuck out of his jowl.
+    /// Neck parts come forward with the front of the chest (never back, at most 12 cm); Jaw parts move with the
+    /// head's hit box.
+    /// </summary>
+    private Vector3 Settle(Transform bone, string boneName)
+    {
+        if (boneName == "Neck" && bones.TryGetValue("Spine2", out Transform chest) && chest != null)
+        {
+            // The chest hit box's front along the model's forward (+Z on the standard skeleton), against Joe's. A fat
+            // zombie's body runs well past its hit box (the fat cop's sphere is 3 cm out, his chest and throat 6 to
+            // 10 cm), so for them it's at least 8 cm
+            Collider c = chest.GetComponent<Collider>();
+            float front = c is CapsuleCollider cc ? cc.center.z + cc.radius : c is SphereCollider sc ? sc.center.z + sc.radius : 0f;
+            float forward = front > 0f ? front - (JoeCenter["Spine2"].z + JoeRadius["Spine2"]) : 0f;
+            if (zombie != null && zombie.GetWalkType() == EntityAlive.cWalkTypeFat)
+            {
+                forward = Mathf.Max(forward, 0.08f);
+            }
+            forward = Mathf.Clamp(forward, 0f, 0.12f);
+            return bone.InverseTransformVector(chest.TransformVector(new Vector3(0f, 0f, forward)));
+        }
+        if (boneName == "Jaw" && bones.TryGetValue("Head", out Transform head) && head != null)
+        {
+            Collider c = head.GetComponent<Collider>();
+            Vector3? at = c is CapsuleCollider hc ? hc.center : c is SphereCollider hs ? hs.center : (Vector3?)null;
+            if (at.HasValue)
+            {
+                return bone.InverseTransformVector(head.TransformVector(at.Value - JoeCenter["Head"]));
+            }
+        }
+        return Vector3.zero;
+    }
+
+    /// <summary>A part built to hang ("...Swing", with its origin where it hangs from) swings as the zombie moves.</summary>
+    private static void Swing(GameObject part, string name)
+    {
+        if (name.EndsWith("Swing") && ZedSettings.Swing)
+        {
+            part.AddComponent<ZedSwing>();
         }
     }
 

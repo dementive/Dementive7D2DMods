@@ -176,7 +176,12 @@ public class ZedProfile
         int mutations = r.ReadByte();
         for (int i = 0; i < mutations; i++)
         {
-            p.Mutations.Add((ZedMutation)r.ReadByte());
+            // A mutation that's since been removed (the Bloater) is dropped
+            ZedMutation m = (ZedMutation)r.ReadByte();
+            if (ZedMutationInfo.All.ContainsKey(m))
+            {
+                p.Mutations.Add(m);
+            }
         }
         int gear = r.ReadByte();
         for (int i = 0; i < gear; i++)

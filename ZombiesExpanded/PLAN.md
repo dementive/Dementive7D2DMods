@@ -121,7 +121,7 @@ most one (champions more). Strains (section 8) decide which zombies get them.
 
 | Mutation | From GS | Look | Stronger | Weaker | Answer |
 |---|---|---|---|---|---|
-| Bloater | 0 | Swollen belly, pustule sacs on the back and shoulders, sloshing | On death bursts into a 3 m bile cloud for 5 s: nausea (blurred vision) and 2 damage/s | 25% slower. Killed by fire, the gas burns off harmlessly | Kill it at range, or with fire |
+| ~~Bloater~~ (removed 2026-11-03: its death cloud caught you unawares) | 0 | Swollen belly, pustule sacs on the back and shoulders, sloshing | On death bursts into a 3 m bile cloud for 5 s: nausea (blurred vision) and 2 damage/s | 25% slower. Killed by fire, the gas burns off harmlessly | Kill it at range, or with fire |
 | Sprinter | 0 | Pulsing red veins, panting | Runs at feral speed even by day | 40% less health; after 8 s of running it doubles over for 3 s | Sidestep and punish the stagger |
 | Spiked | 30 | Bone spurs from the spine, shoulders and forearms | 25% of its hits make you bleed; every melee hit on it scratches you for 3, except spears | Brittle: 50% more damage from blunt hits; attacks 20% slower | A club ends it fast but costs scratches; or guns, bows, spears |
 | Grabber | 30 | Long gnarled hands | 20% per hit to grab you for 2 s: no sprint or jump, 80% slower. Any hit on it, yours or a teammate's, breaks the grab; then 8 s immune | Its hits do 30% less damage; 20% slower | Keep distance, keep a melee weapon ready |
@@ -450,3 +450,34 @@ Seasonal pieces (masks at Halloween, Santa hats) were dropped.
 The same pipeline as the gear and growths: one Blender script per model, bolted to bones, checked on Joe, the fat cop
 and the nurse before it goes in. That's about 35 remnants plus 6 mutation models. They're built in batches by
 parallel agents, starting with the ones that show most (things stuck in them, hospital, headwear).
+
+---
+
+# Round 5: personality (approved 2026-11-03, building)
+
+After playtesting, the user said the variety "makes a huge difference": the Sunglasses and the lumberjack's Axe were
+favorites, and they asked for more that gives each zombie its own flavor. From the pitch they picked gore, things that
+move and rare showpieces, plus "a whole bunch of interesting and fun sunglasses or other types of glasses or
+accessories like that". Not chosen: lights in the dark (a taped flashlight, a road flare, glow sticks, a ringing phone)
+and painted survivors' marks.
+
+- **Eyewear and accessories** (everyday remnants): Aviators, RoundShades, TapedGlasses, Glasses3D, StarShades,
+  HeartShades, ShutterShades, SkiGoggles, EyePatch, WeldingGoggles; Cigar (a new Mouth slot, so it goes with glasses),
+  MardiGrasBeads, FlowerLei, BowTie, DogTags. Added to the vanilla jobs they fit.
+- **How they died** (everyday remnants): CompoundFracture, GutLoop, ExposedRibs, ExposedSpine, TurningBite,
+  ChewedCalf.
+- **Showpieces** (their own roll, 2.5% of zombies): StopSign, CinderBlock (dragged on the ground by ZedDrag, 20%
+  slower), Harpoon, Pincushion, Bumper.
+- **Things that move** (ZedLife, ZedSwing; looks only): flies and the game's `flies_lp` loop round zombies whose age
+  is past 0.85, within 18 m; breath puffs every few seconds in the snow or below 40 F; a spatter from the jaw as an
+  attack starts; parts named `...Swing` swing about their pivot (dog tags, gut loop, the noose's rope end, the padlock
+  chain's torn length, the harpoon's rope).
+
+Model specs are in `blender/REMNANTS.md` (Round 5).
+
+**Glows removed (2026-11-03).** The user found the Sprinter's red glowing veins "horrible" at night and asked to get
+rid of anything like it (after the Bloater's yellow vein lines earlier). The overlay's whole vein layer (the Sprinter's
+red and the Toxic's green, lines and glow) and its embers (the glowing cracks on Smoldering and burning zombies) are
+gone, and with them the overlay's additive glow pass. Smoldering and burning zombies still char black. The Sprinter
+and the Toxic no longer have a look of their own. Don't bring back glowing skin, veins or cracks.
+

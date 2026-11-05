@@ -26,7 +26,6 @@ public class ZedLook : MonoBehaviour
     private static bool loaded;
 
     private static readonly int BaseAlbedo = Shader.PropertyToID("_BaseAlbedo");
-    private static readonly int BaseNormal = Shader.PropertyToID("_BaseNormal");
     private static readonly int HasBase = Shader.PropertyToID("_HasBase");
     private static readonly int GrimeId = Shader.PropertyToID("_Grime");
     private static readonly int GrimeColorId = Shader.PropertyToID("_GrimeColor");
@@ -35,22 +34,17 @@ public class ZedLook : MonoBehaviour
     private static readonly int BleachId = Shader.PropertyToID("_Bleach");
     private static readonly int WetId = Shader.PropertyToID("_Wet");
     private static readonly int CharId = Shader.PropertyToID("_Char");
-    private static readonly int EmbersId = Shader.PropertyToID("_Embers");
     private static readonly int FrostId = Shader.PropertyToID("_Frost");
     private static readonly int BloodId = Shader.PropertyToID("_Blood");
     private static readonly int WoundsId = Shader.PropertyToID("_Wounds");
     private static readonly int WoundCountId = Shader.PropertyToID("_WoundCount");
     private static readonly int SeedId = Shader.PropertyToID("_Seed");
-    private static readonly int VeinsId = Shader.PropertyToID("_Veins");
-    private static readonly int VeinColorId = Shader.PropertyToID("_VeinColor");
-    private static readonly int VeinGlowId = Shader.PropertyToID("_VeinGlow");
     private static readonly int IntensityId = Shader.PropertyToID("_Intensity");
 
     private EntityAlive zombie;
     private ZedProfile profile;
     private readonly List<SkinnedMeshRenderer> renderers = new List<SkinnedMeshRenderer>();
     private readonly List<Texture> albedos = new List<Texture>();
-    private readonly List<Texture> normals = new List<Texture>();
     private readonly List<int> overlayIndex = new List<int>();
     private MaterialPropertyBlock block;
     private readonly Dictionary<string, Transform> bones = new Dictionary<string, Transform>();
@@ -58,9 +52,9 @@ public class ZedLook : MonoBehaviour
     private readonly Vector4[] woundArray = new Vector4[MaxWounds];
     private System.Random rng;
 
-    private float grime, settle, bleach, blood, charBase, frostBase, embersBase, veins, veinGlow;
-    private Color grimeColor, settleColor, veinColor;
-    private float wet, charAmount, embers, frost;
+    private float grime, settle, bleach, blood, charBase, frostBase;
+    private Color grimeColor, settleColor;
+    private float wet, charAmount, frost;
 
     private Transform head;
     private Renderer eyeLeft, eyeRight;
@@ -92,7 +86,7 @@ public class ZedLook : MonoBehaviour
         {
             look.profile = p;
             look.lurker = p.Has(ZedMutation.Lurker);
-            look.veins = look.veinGlow = look.charBase = look.frostBase = look.embersBase = look.bleach = 0f;
+            look.charBase = look.frostBase = look.bleach = 0f;
             look.Weathering(p);
         }
     }
@@ -187,21 +181,13 @@ public class ZedLook : MonoBehaviour
         grimeColor = Color.Lerp(grimeColor, new Color(0.22f, 0.24f, 0.16f), p.Age * 0.4f);
         blood = 0.4f * (1f - p.Age);
 
-        // What mutations show on the skin
+        // What mutations show on the skin (nothing that glows: glowing veins and embers looked bad at night)
         foreach (ZedMutation m in p.Mutations)
         {
-            ZedMutationInfo info = ZedMutationInfo.All[m];
-            if (info.Veins.a > 0f)
-            {
-                veins = Mathf.Max(veins, 0.75f);
-                veinColor = info.Veins;
-                veinGlow = Mathf.Max(veinGlow, info.VeinGlow);
-            }
             switch (m)
             {
                 case ZedMutation.Smoldering:
                     charBase = 0.55f;
-                    embersBase = 0.6f;
                     break;
                 case ZedMutation.Frostbitten:
                     frostBase = 0.45f;
@@ -218,7 +204,6 @@ public class ZedLook : MonoBehaviour
         }
         charAmount = charBase;
         frost = frostBase;
-        embers = embersBase;
     }
 
     /// <summary>The zombie's skinned meshes that take the overlay: not the eyes, not hair or anything else with
@@ -238,7 +223,6 @@ public class ZedLook : MonoBehaviour
             }
             renderers.Add(r);
             albedos.Add(Tex(m, "_Albedo", "_MainTex"));
-            normals.Add(Tex(m, "_Normal", "_BumpMap"));
             AddOverlay(r);
             overlayIndex.Add(OverlayIndex(r));
         }
@@ -481,11 +465,9 @@ public class ZedLook : MonoBehaviour
         if (burning)
         {
             charAmount = Mathf.Min(0.9f, charAmount + 0.08f * dt);
-            embers = 1f;
         }
         else
         {
-            embers = Mathf.Max(embersBase, embers - 0.25f * dt);
             charAmount = Mathf.Max(charBase, charAmount - 0.003f * dt);
         }
         frost = Mathf.Max(frostBase, frost - 0.01f * dt);
@@ -573,10 +555,6 @@ public class ZedLook : MonoBehaviour
             {
                 block.SetTexture(BaseAlbedo, albedos[i]);
             }
-            if (normals[i] != null)
-            {
-                block.SetTexture(BaseNormal, normals[i]);
-            }
             block.SetFloat(HasBase, albedos[i] != null ? 1f : 0f);
             block.SetFloat(GrimeId, on && weathering ? grime : 0f);
             block.SetColor(GrimeColorId, grimeColor);
@@ -585,15 +563,11 @@ public class ZedLook : MonoBehaviour
             block.SetFloat(BleachId, on && weathering ? bleach : 0f);
             block.SetFloat(WetId, on ? wet : 0f);
             block.SetFloat(CharId, on ? charAmount : 0f);
-            block.SetFloat(EmbersId, on ? embers : 0f);
             block.SetFloat(FrostId, on ? frost : 0f);
             block.SetFloat(BloodId, on && weathering ? blood : 0f);
             block.SetVectorArray(WoundsId, woundArray);
             block.SetFloat(WoundCountId, on ? count : 0);
             block.SetFloat(SeedId, (profile.Seed & 0x3ff) * 0.137f);
-            block.SetFloat(VeinsId, on ? veins : 0f);
-            block.SetColor(VeinColorId, veinColor);
-            block.SetFloat(VeinGlowId, veinGlow);
             r.SetPropertyBlock(block, index);
         }
     }

@@ -89,10 +89,6 @@ public static class ZedStore
                     p.Size *= 1.15f;
                     p.Body = ZedBody.Bulky;
                 }
-                else if (p.Has(ZedMutation.Bloater) && p.Body != ZedBody.Bulky)
-                {
-                    p.Body = ZedBody.Bloated;
-                }
                 else if (p.Has(ZedMutation.Lurker))
                 {
                     p.Body = ZedBody.Hunched;
@@ -317,6 +313,7 @@ public static class ZedStore
         {
             ZedLook.Attach(zombie, p);
             ZedModels.Attach(zombie, p);
+            ZedLife.Attach(zombie, p);
         }
     }
 

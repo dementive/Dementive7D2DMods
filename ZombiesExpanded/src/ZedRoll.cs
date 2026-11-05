@@ -140,6 +140,7 @@ public static class ZedRoll
 
         if (ZedSettings.Remnants && (force == null || force.Remnants.Count == 0))
         {
+            Showpiece(zombie, p, rng);
             Remnants(zombie, p, rng);
         }
     }
@@ -294,7 +295,7 @@ public static class ZedRoll
             options.AddRange(ZedGearInfo.All.Keys);
         }
         // Scrap armor's rigid chest plate would sink into a fat zombie's belly
-        bool fat = zombie.GetWalkType() == EntityAlive.cWalkTypeFat || p.Body == ZedBody.Bloated || p.Has(ZedMutation.Bloater);
+        bool fat = zombie.GetWalkType() == EntityAlive.cWalkTypeFat || p.Body == ZedBody.Bloated;
         // Rigid body armor only sits right on a regular build: on a fat or female body it rode up or sank in
         bool regular = !fat && !Female(zombie);
         options.RemoveAll(k => ZedGearInfo.All[k].Cut || (ZedGearInfo.All[k].Slots & used) != 0 || gs < ZedGearInfo.All[k].FromGamestage
@@ -349,9 +350,33 @@ public static class ZedRoll
         }
         if (Array.IndexOf(ZedRemnantInfo.FaceCovered, family) >= 0)
         {
-            used |= ZedSlot.Face;
+            used |= ZedSlot.Face | ZedSlot.Mouth;
         }
         return used;
+    }
+
+    /// <summary>About 1 zombie in 40 (ShowpieceRate) is a showpiece: a STOP sign through the gut, a cinder block
+    /// chained to an ankle, a harpoon, a pincushion of arrows. Rolled before the everyday remnants,
+    /// which then keep off its spots.</summary>
+    private static void Showpiece(EntityAlive zombie, ZedProfile p, System.Random rng)
+    {
+        if (rng.NextDouble() >= 0.025 * ZedSettings.Float("ShowpieceRate", 1f))
+        {
+            return;
+        }
+        ZedSlot used = Used(p, Family(zombie.EntityClass.entityClassName));
+        List<ZedRemnant> options = new List<ZedRemnant>();
+        foreach (ZedRemnantInfo info in ZedRemnantInfo.All.Values)
+        {
+            if (info.Showpiece && !info.Cut && (info.Slots & used) == 0)
+            {
+                options.Add(info.Id);
+            }
+        }
+        if (options.Count > 0)
+        {
+            p.Remnants.Add(options[rng.Next(options.Count)]);
+        }
     }
 
     // ------------------------------------------------------------------ remnants
@@ -367,9 +392,13 @@ public static class ZedRoll
         }
         string family = Family(zombie.EntityClass.entityClassName);
         int count = rng.NextDouble() < 0.2 ? 2 : 1;
+        // A fat zombie's puffy face buries a cigar (its face sits well off where its head hit box says)
+        ZedSlot fat = zombie.GetWalkType() == EntityAlive.cWalkTypeFat ? ZedSlot.Mouth : ZedSlot.None;
+        // The wounds sit on a regular build's skin
+        bool regular = fat == ZedSlot.None && p.Body != ZedBody.Bloated && !Female(zombie);
         for (int i = 0; i < count; i++)
         {
-            ZedSlot used = Used(p, family);
+            ZedSlot used = Used(p, family) | fat;
             List<ZedRemnant> options = new List<ZedRemnant>();
             if (ZedRemnantInfo.Jobs.TryGetValue(family, out ZedRemnant[] job) && rng.NextDouble() < 0.67)
             {
@@ -385,7 +414,8 @@ public static class ZedRoll
                     }
                 }
             }
-            options.RemoveAll(r => ZedRemnantInfo.All[r].Cut || p.Remnants.Contains(r) || (ZedRemnantInfo.All[r].Slots & used) != 0);
+            options.RemoveAll(r => ZedRemnantInfo.All[r].Cut || ZedRemnantInfo.All[r].Showpiece || p.Remnants.Contains(r)
+                || (ZedRemnantInfo.All[r].Slots & used) != 0 || (ZedRemnantInfo.All[r].Skin && !regular));
             if (options.Count == 0)
             {
                 return;
@@ -432,7 +462,7 @@ public static class ZedRoll
 
     private static readonly Dictionary<ZedMutation, string> Epithets = new Dictionary<ZedMutation, string>
     {
-        { ZedMutation.Bloater, "the Bloater" }, { ZedMutation.Sprinter, "the Sprinter" }, { ZedMutation.Spiked, "the Thorn" },
+        { ZedMutation.Sprinter, "the Sprinter" }, { ZedMutation.Spiked, "the Thorn" },
         { ZedMutation.Grabber, "the Grabber" }, { ZedMutation.Screecher, "the Screecher" }, { ZedMutation.Frostbitten, "the Frozen" },
         { ZedMutation.Smoldering, "the Smoldering" }, { ZedMutation.Leaper, "the Leaper" }, { ZedMutation.Regenerator, "the Undying" },
         { ZedMutation.Toxic, "the Toxic" }, { ZedMutation.Volatile, "the Volatile" }, { ZedMutation.Hulking, "the Hulk" },

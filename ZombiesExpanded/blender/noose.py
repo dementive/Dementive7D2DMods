@@ -5,7 +5,8 @@ frayed into its three strands, about 25 cm below the neck. Old three-strand hemp
 fibers showing, darker where it gripped the neck, a few drops of blood.
 
 The loop clears Joe's neck by half a centimeter (round a 5.5 cm neck) and stays below the jaw, which opens; the knot
-and the hanging rope lie a few millimeters off the chest hit box. One part on Neck: "Neck#Noose".
+and the hanging rope lie a few millimeters off the chest hit box. Two parts on Neck: "Neck#Noose" (the loop and the
+knot) and "Neck#RopeSwing" (the cut end, which swings in game about its pivot at the bottom of the knot).
 
     blender -b --factory-startup --python noose.py -- <unity models folder> <preview folder>
 """
@@ -665,9 +666,10 @@ def knot():
 
 
 def standing_part():
-    """The rope out of the knot's bottom, hanging down the chest, cut and frayed into its three strands."""
+    """The rope out of the knot's bottom, hanging down the chest, cut and frayed into its three strands. It starts
+    only 1.2 cm up inside the wraps, so its hidden end stays inside them as it swings about the knot's bottom."""
     z0, z_end = K_BOT.z + 0.004, 1.315
-    ctrl = [K_BOT - KD * 0.02]
+    ctrl = [K_BOT - KD * 0.012]
     for k in range(5):
         z = z0 - (z0 - z_end) * k / 4
         ctrl.append(on_chest(0.047 + 0.009 * k / 4 + 0.002 * math.sin(k * 1.7), z, CLEAR + RR))
@@ -699,10 +701,17 @@ def standing_part():
 
 
 loop_obj, LOOP = loop()
-pieces = [loop_obj] + knot() + standing_part()
+noose_pieces = [loop_obj] + knot()
+rope_pieces = standing_part()
+pieces = noose_pieces + rope_pieces
 for p in pieces:
     depth_attr(p, sdf)
+for p in noose_pieces:
     zk.on(p, "Neck", "Noose")
+# The cut end swings about the knot's bottom, where it hangs from
+for p in rope_pieces:
+    zk.on(p, "Neck", "RopeSwing", pivot=K_BOT)
+print("[%s] RopeSwing pivot at the knot's bottom (%.3f, %.3f, %.3f)" % ((SCRIPT,) + tuple(K_BOT)))
 
 neck_gap = min(math.hypot(p.x - NECK.x, p.y - NECK.y) - RR - R_NECK for p in LOOP if p.z > 1.53)
 print("[%s] loop clears the neck by %.1f mm at least" % (SCRIPT, neck_gap * 1000))

@@ -36,6 +36,9 @@
 	     how many carry one -->
 	<Setting name="Remnants" value="true"/>
 	<Setting name="RemnantRate" value="1"/>
+	<!-- Multiply how often a zombie is a rare showpiece (about 1 in 40: a STOP sign through the gut, a cinder block
+	     chained to an ankle, a harpoon, a pincushion of arrows) -->
+	<Setting name="ShowpieceRate" value="1"/>
 
 	<!-- Looks and sounds (each player) -->
 	<!-- All of the looks below at once -->
@@ -48,6 +51,14 @@
 	<Setting name="BloodDrips" value="true"/>
 	<!-- Eyes that catch your light in the dark -->
 	<Setting name="Eyeshine" value="true"/>
+	<!-- Loose ends that swing as they walk: dog tags, a gut loop, a cut noose, a torn chain, a harpoon's rope -->
+	<Setting name="Swing" value="true"/>
+	<!-- Flies buzzing round the rotten ones -->
+	<Setting name="Flies" value="true"/>
+	<!-- Breath clouding in the cold -->
+	<Setting name="Breath" value="true"/>
+	<!-- Blood and drool flung from the jaw as they attack -->
+	<Setting name="Drool" value="true"/>
 	<!-- Each zombie's voice pitched its own way -->
 	<Setting name="Voices" value="true"/>
 	<!-- Distant moans from where a horde is -->

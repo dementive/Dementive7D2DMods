@@ -108,7 +108,9 @@ public static class ZombiesModels
             GameObject piece = new GameObject(mf.name);
             piece.transform.SetParent(root.transform, false);
             piece.transform.localPosition = Quaternion.Inverse(bq) * (mf.transform.position - bp);
-            piece.transform.localRotation = Quaternion.Inverse(bq) * mf.transform.rotation;
+            // A part the game drags along the ground (ZedDrag: the cinder block and its chain) keeps its rotation in
+            // the zombie model's own space (facing +Z, up +Y), so the game can stand it the way it was built
+            piece.transform.localRotation = mf.name.EndsWith("Drag") ? mf.transform.rotation : Quaternion.Inverse(bq) * mf.transform.rotation;
             piece.transform.localScale = mf.transform.lossyScale;
             piece.AddComponent<MeshFilter>().sharedMesh = mf.sharedMesh;
             MeshRenderer r = piece.AddComponent<MeshRenderer>();
@@ -258,6 +260,21 @@ public static class ZombiesModels
             {
                 continue;
             }
+            if (piece.name.EndsWith("Drag"))
+            {
+                // As ZedDrag does in game: in the zombie's own frame, the chain from the shackle where it was built,
+                // and the block where it was built but down on the ground
+                GameObject d = Object.Instantiate(piece.gameObject, zombie, false);
+                Vector3 at = zombie.InverseTransformPoint(bone.TransformPoint(piece.localPosition));
+                if (piece.name.EndsWith("BlockDrag"))
+                {
+                    at.y = 0.1f;
+                }
+                d.transform.localPosition = at;
+                d.transform.localRotation = piece.localRotation;
+                placed.Add(d);
+                continue;
+            }
             GameObject p = Object.Instantiate(piece.gameObject, bone, false);
             float s = Fit(zombie, boneName);
             Vector3 pos = piece.localPosition * s;
@@ -267,12 +284,46 @@ public static class ZombiesModels
                 // Joe's head (or chest) mapped onto this zombie's: same place relative to the hit box, scaled
                 pos = Center(c) + (piece.localPosition - jc) * s;
             }
-            p.transform.localPosition = pos;
+            p.transform.localPosition = pos + Settle(all, bone, boneName);
             p.transform.localRotation = piece.localRotation;
             p.transform.localScale = piece.localScale * s;
             placed.Add(p);
         }
         return placed;
+    }
+
+    /// <summary>As ZedModels.Settle does in game: Neck parts come forward with the front of the chest (the fat cop's is
+    /// 6 to 10 cm out from Joe's), Jaw parts move with the head's hit box.</summary>
+    private static Vector3 Settle(Transform[] all, Transform bone, string boneName)
+    {
+        if (boneName == "Neck")
+        {
+            Transform chest = all.FirstOrDefault(t => t.name == "Spine2");
+            if (chest != null)
+            {
+                Collider c = chest.GetComponent<Collider>();
+                float front = c is CapsuleCollider cc ? cc.center.z + cc.radius : c is SphereCollider sc ? sc.center.z + sc.radius : 0f;
+                float forward = front > 0f ? front - (JoeCenter["Spine2"].z + JoeRadius["Spine2"]) : 0f;
+                // The game's fat zombies (fat walk) get at least 8 cm; in the preview, the one with a round (sphere)
+                // chest hit box, the fat cop
+                if (c is SphereCollider)
+                {
+                    forward = Mathf.Max(forward, 0.08f);
+                }
+                forward = Mathf.Clamp(forward, 0f, 0.12f);
+                return bone.InverseTransformVector(chest.TransformVector(new Vector3(0f, 0f, forward)));
+            }
+        }
+        if (boneName == "Jaw")
+        {
+            Transform head = all.FirstOrDefault(t => t.name == "Head");
+            Collider c = head != null ? head.GetComponent<Collider>() : null;
+            if (c != null)
+            {
+                return bone.InverseTransformVector(head.TransformVector(Center(c) - JoeCenter["Head"]));
+            }
+        }
+        return Vector3.zero;
     }
 
     private static Vector3 Center(Collider c)

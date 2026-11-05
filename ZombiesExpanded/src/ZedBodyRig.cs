@@ -99,12 +99,13 @@ public class ZedBodyRig : MonoBehaviour
                 Scale(root, "RightUpLeg", new Vector3(0.82f, 1f, 0.82f));
                 break;
             case ZedBody.Bulky:
-                // A broad chest that pushes the shoulders out, thick arms of the usual length
-                ScaleKeep(root, "Spine2", new Vector3(1.15f, 1.04f, 1.12f), "Neck");
-                Scale(root, "LeftShoulder", new Vector3(1f / 1.15f, 1f, 1f));
-                Scale(root, "RightShoulder", new Vector3(1f / 1.15f, 1f, 1f));
-                Scale(root, "LeftArm", new Vector3(1f, 1.22f, 1.22f));
-                Scale(root, "RightArm", new Vector3(1f, 1.22f, 1.22f));
+                // A broad chest that pushes the shoulders out. The shoulders take back their whole size, so none of the
+                // chest's shape reaches the arms (it used to, and made the hands huge)
+                ScaleKeep(root, "Spine2", new Vector3(1.15f, 1.04f, 1.12f), "Neck", "LeftShoulder", "RightShoulder");
+                // Thick arms, scaled evenly: an arm scaled thicker but not longer skews the forearm and hand whenever
+                // the elbow bends. The hands are put back to their own size
+                ScaleKeep(root, "LeftArm", Vector3.one * 1.1f, "LeftHand");
+                ScaleKeep(root, "RightArm", Vector3.one * 1.1f, "RightHand");
                 break;
             case ZedBody.Bloated:
                 // A swollen belly only
@@ -120,9 +121,10 @@ public class ZedBodyRig : MonoBehaviour
             switch (m)
             {
                 case ZedMutation.Grabber:
-                    // Hands grown too big
-                    Scale(root, "LeftHand", new Vector3(1.35f, 1.12f, 1.12f));
-                    Scale(root, "RightHand", new Vector3(1.35f, 1.12f, 1.12f));
+                    // Hands grown a little big, evenly (stretching them longer skewed the fingers as they curled); the
+                    // gnarled hands model does the rest
+                    Scale(root, "LeftHand", Vector3.one * 1.12f);
+                    Scale(root, "RightHand", Vector3.one * 1.12f);
                     break;
                 case ZedMutation.Leaper:
                     Pose(root, "Spine3", Quaternion.Euler(12f, 0f, 0f));

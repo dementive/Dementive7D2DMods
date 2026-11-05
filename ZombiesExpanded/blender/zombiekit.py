@@ -171,15 +171,21 @@ def stage():
 
 # ---------------------------------------------------------------- pieces and export
 
-def on(obj, bone, piece=None):
+def on(obj, bone, piece=None, pivot=None):
     """Marks a piece as riding on `bone` (it moves and turns with it in game). Pieces on the same bone are baked
     and exported as one, unless they're given a `piece` name: then each is its own part ("Spine2#Chest",
-    "Spine2#Back"), which the game can knock off or drop on its own."""
+    "Spine2#Back"), which the game can knock off or drop on its own. `pivot` (a world point, with a `piece` name)
+    puts the part's origin there instead of at the bone's pivot: a part named "...Swing" swings about it in game (put
+    it where the hanging thing is held), and a "...Drag" part is placed by it."""
     if not joe().has(bone):
         raise ValueError("Joe has no bone " + bone)
+    if pivot is not None and piece is None:
+        raise ValueError("A pivot needs a piece name")
     label = bone if piece is None else bone + "#" + piece
     tk.mark_part(obj, label)
     obj["zbone"] = label
+    if pivot is not None:
+        obj["zpivot"] = tuple(pivot)
     return obj
 
 
@@ -188,16 +194,19 @@ def export(name, pieces, out_dir, size=1024):
     piece name) with the origin at the bone's pivot, and writes <name>.fbx: an empty root named <name> with one child
     per part, named "<Bone>" or "<Bone>#<Piece>". Returns the split parts (with the baked material, for previews)."""
     bones = []
+    pivots = {}
     for p in pieces:
         if p["zbone"] not in bones:
             bones.append(p["zbone"])
+        if "zpivot" in p:
+            pivots[p["zbone"]] = Vector(p["zpivot"])
     atlas = tk.triangulate(tk.join(pieces, name))
     tk.smart_uvs(atlas)
     paths = tk.bake_atlas(atlas, out_dir, name, size=size)
     baked = tk.baked_material(name, paths, emission_strength=4.0)
     atlas.data.materials.clear()
     atlas.data.materials.append(baked)
-    parts = [tk.split_part(atlas, b, joe().pos(b.split("#")[0])) for b in bones]
+    parts = [tk.split_part(atlas, b, pivots.get(b, joe().pos(b.split("#")[0]))) for b in bones]
     for p in parts:
         if "trap_part" in p.data.attributes:
             p.data.attributes.remove(p.data.attributes["trap_part"])

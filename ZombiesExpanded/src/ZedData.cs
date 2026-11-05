@@ -4,6 +4,8 @@ using UnityEngine;
 
 public enum ZedMutation : byte
 {
+    /// <summary>Removed (its bile cloud on death was no fun); kept so the numbers saved for the others stay put.
+    /// Never rolled, and dropped from profiles saved before the removal.</summary>
     Bloater,
     Sprinter,
     Spiked,
@@ -57,6 +59,7 @@ public enum ZedSlot
     Waist = 4096,
     LeftLeg = 8192,
     RightLeg = 16384,
+    Mouth = 32768,
 }
 
 /// <summary>What a mutation is: when it starts appearing, where, the model that shows it, the overlay it adds,
@@ -69,8 +72,6 @@ public class ZedMutationInfo
     /// <summary>The bundle model bolted on (null: shown by the overlay and the body only).</summary>
     public string Model;
     public string Buff;
-    public Color Veins = Color.clear;
-    public float VeinGlow;
     /// <summary>Where its model sits.</summary>
     public ZedSlot Slots;
     /// <summary>Rolled on its own, never in strains, champions or the Alpha (the Snatcher).</summary>
@@ -78,11 +79,7 @@ public class ZedMutationInfo
 
     public static readonly Dictionary<ZedMutation, ZedMutationInfo> All = new Dictionary<ZedMutation, ZedMutationInfo>
     {
-        { ZedMutation.Bloater, new ZedMutationInfo { Id = ZedMutation.Bloater, FromGamestage = 0, Model = "Pustules", Buff = "buffZedBloater",
-            Veins = new Color(0.55f, 0.6f, 0.15f), VeinGlow = 0f,
-            Slots = ZedSlot.Back | ZedSlot.LeftShoulder | ZedSlot.RightShoulder | ZedSlot.LeftArm | ZedSlot.RightArm } },
-        { ZedMutation.Sprinter, new ZedMutationInfo { Id = ZedMutation.Sprinter, FromGamestage = 0, Buff = "buffZedSprinter",
-            Veins = new Color(1f, 0.08f, 0.05f), VeinGlow = 1.2f } },
+        { ZedMutation.Sprinter, new ZedMutationInfo { Id = ZedMutation.Sprinter, FromGamestage = 0, Buff = "buffZedSprinter" } },
         { ZedMutation.Spiked, new ZedMutationInfo { Id = ZedMutation.Spiked, FromGamestage = 30, Model = "BoneSpurs", Buff = "buffZedSpiked",
             Slots = ZedSlot.Back | ZedSlot.LeftShoulder | ZedSlot.RightShoulder | ZedSlot.LeftArm | ZedSlot.RightArm } },
         { ZedMutation.Grabber, new ZedMutationInfo { Id = ZedMutation.Grabber, FromGamestage = 30, Model = "GnarledHands", Buff = "buffZedGrabber",
@@ -96,8 +93,7 @@ public class ZedMutationInfo
             Slots = ZedSlot.LeftHand | ZedSlot.RightHand } },
         { ZedMutation.Regenerator, new ZedMutationInfo { Id = ZedMutation.Regenerator, FromGamestage = 60, Model = "Fungus", Buff = "buffZedRegenerator",
             Slots = ZedSlot.Face | ZedSlot.Back | ZedSlot.LeftShoulder | ZedSlot.LeftArm } },
-        { ZedMutation.Toxic, new ZedMutationInfo { Id = ZedMutation.Toxic, FromGamestage = 75, Buff = "buffZedToxic",
-            Veins = new Color(0.35f, 1f, 0.2f), VeinGlow = 2.2f } },
+        { ZedMutation.Toxic, new ZedMutationInfo { Id = ZedMutation.Toxic, FromGamestage = 75, Buff = "buffZedToxic" } },
         { ZedMutation.Volatile, new ZedMutationInfo { Id = ZedMutation.Volatile, FromGamestage = 75, Model = "PropaneTank", Buff = "buffZedVolatile",
             Slots = ZedSlot.Chest | ZedSlot.Back } },
         { ZedMutation.Hulking, new ZedMutationInfo { Id = ZedMutation.Hulking, FromGamestage = 90, Buff = "buffZedHulking" } },
@@ -115,7 +111,6 @@ public class ZedMutationInfo
     {
         new[] { ZedMutation.Screecher, ZedMutation.Sprinter },
         new[] { ZedMutation.Grabber, ZedMutation.Toxic },
-        new[] { ZedMutation.Bloater, ZedMutation.Brood },
         new[] { ZedMutation.Stalker, ZedMutation.Leaper },
     };
 
@@ -305,6 +300,33 @@ public enum ZedRemnant : byte
     Fishhook,
     Nails,
     PadlockChain,
+    // Round 5: eyewear and accessories with some personality, gore that shows how they died, and rare showpieces
+    Aviators,
+    RoundShades,
+    TapedGlasses,
+    Glasses3D,
+    StarShades,
+    HeartShades,
+    ShutterShades,
+    SkiGoggles,
+    EyePatch,
+    WeldingGoggles,
+    Cigar,
+    MardiGrasBeads,
+    FlowerLei,
+    BowTie,
+    DogTags,
+    CompoundFracture,
+    GutLoop,
+    ExposedRibs,
+    ExposedSpine,
+    TurningBite,
+    ChewedCalf,
+    StopSign,
+    CinderBlock,
+    Harpoon,
+    Pincushion,
+    Bumper,
 }
 
 /// <summary>
@@ -322,14 +344,22 @@ public class ZedRemnantInfo
     public string Buff;
     /// <summary>Taken out after review: never rolled or shown (kept so saved zombies still load).</summary>
     public bool Cut;
+    /// <summary>A rare showpiece (a STOP sign through the gut): rolled on its own, about 1 zombie in 40, never as an
+    /// everyday remnant.</summary>
+    public bool Showpiece;
+    /// <summary>A wound built on a regular build's skin: a fat zombie's belly buries it and a woman's slimmer or wider
+    /// build hides it or leaves it standing off, so it only goes on regular builds.</summary>
+    public bool Skin;
 
     public string Model => Id.ToString();
 
     public static readonly Dictionary<ZedRemnant, ZedRemnantInfo> All = new Dictionary<ZedRemnant, ZedRemnantInfo>();
 
-    private static void R(ZedRemnant id, ZedSlot slots, bool anyone = true, bool bareHead = false, string buff = null, bool cut = false)
+    private static void R(ZedRemnant id, ZedSlot slots, bool anyone = true, bool bareHead = false, string buff = null, bool cut = false,
+        bool showpiece = false, bool skin = false)
     {
-        All[id] = new ZedRemnantInfo { Id = id, Slots = slots, Anyone = anyone, BareHead = bareHead, Buff = buff, Cut = cut };
+        All[id] = new ZedRemnantInfo { Id = id, Slots = slots, Anyone = anyone, BareHead = bareHead, Buff = buff, Cut = cut, Showpiece = showpiece,
+            Skin = skin };
     }
 
     static ZedRemnantInfo()
@@ -382,33 +412,67 @@ public class ZedRemnantInfo
         R(ZedRemnant.Nails, ZedSlot.LeftArm);
         // On the forearm bone at the wrist
         R(ZedRemnant.PadlockChain, ZedSlot.LeftHand);
+
+        // Eyewear: one pair per face. The goggles and the eye patch have a strap round the head, so they take the head
+        // too (no hat of its own)
+        R(ZedRemnant.Aviators, ZedSlot.Face);
+        R(ZedRemnant.RoundShades, ZedSlot.Face);
+        R(ZedRemnant.TapedGlasses, ZedSlot.Face);
+        R(ZedRemnant.Glasses3D, ZedSlot.Face);
+        R(ZedRemnant.StarShades, ZedSlot.Face);
+        R(ZedRemnant.HeartShades, ZedSlot.Face);
+        R(ZedRemnant.ShutterShades, ZedSlot.Face);
+        R(ZedRemnant.SkiGoggles, ZedSlot.Face | ZedSlot.Head, bareHead: true);
+        R(ZedRemnant.EyePatch, ZedSlot.Face | ZedSlot.Head, bareHead: true);
+        R(ZedRemnant.WeldingGoggles, ZedSlot.Face | ZedSlot.Head, bareHead: true);
+        // Accessories: a cigar in the mouth goes with any glasses; one thing round the neck
+        R(ZedRemnant.Cigar, ZedSlot.Mouth);
+        R(ZedRemnant.MardiGrasBeads, ZedSlot.Neck);
+        R(ZedRemnant.FlowerLei, ZedSlot.Neck);
+        R(ZedRemnant.BowTie, ZedSlot.Neck);
+        R(ZedRemnant.DogTags, ZedSlot.Neck);
+        // How they died. The torso and calf wounds sit on a regular build's skin; the fracture is on the bare forearm
+        R(ZedRemnant.CompoundFracture, ZedSlot.RightArm);
+        R(ZedRemnant.GutLoop, ZedSlot.Belly, skin: true);
+        R(ZedRemnant.ExposedRibs, ZedSlot.Chest, skin: true);
+        R(ZedRemnant.ExposedSpine, ZedSlot.Back, skin: true);
+        // Read as a pale lump on the shoulder, not a bite
+        R(ZedRemnant.TurningBite, ZedSlot.LeftShoulder, skin: true, cut: true);
+        R(ZedRemnant.ChewedCalf, ZedSlot.RightLeg, skin: true);
+        // Rare showpieces
+        R(ZedRemnant.StopSign, ZedSlot.Belly | ZedSlot.Back, showpiece: true);
+        R(ZedRemnant.CinderBlock, ZedSlot.RightLeg | ZedSlot.LeftLeg, buff: "buffZedCinderBlock", showpiece: true);
+        R(ZedRemnant.Harpoon, ZedSlot.Chest | ZedSlot.Back, showpiece: true);
+        R(ZedRemnant.Pincushion, ZedSlot.Back | ZedSlot.Chest | ZedSlot.LeftArm | ZedSlot.RightLeg, showpiece: true);
+        // Read as a box strapped to the back, not a bumper
+        R(ZedRemnant.Bumper, ZedSlot.Chest | ZedSlot.Belly, showpiece: true, cut: true);
     }
 
     /// <summary>What fits a vanilla zombie's job, by its family (zombies not listed pick from the anyone ones).</summary>
     public static readonly Dictionary<string, ZedRemnant[]> Jobs = new Dictionary<string, ZedRemnant[]>
     {
         { "zombieNurse", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.ArmCast, ZedRemnant.Headphones } },
-        { "zombieLab", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.GasMask } },
-        { "zombieBusinessMan", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.KitchenKnife, ZedRemnant.ChainNecklace } },
+        { "zombieLab", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.GasMask, ZedRemnant.TapedGlasses } },
+        { "zombieBusinessMan", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.KitchenKnife, ZedRemnant.ChainNecklace, ZedRemnant.Aviators, ZedRemnant.BowTie, ZedRemnant.Cigar } },
         { "zombieInmate", new[] { ZedRemnant.AnkleMonitor, ZedRemnant.Screwdriver, ZedRemnant.KitchenKnife, ZedRemnant.Noose, ZedRemnant.PadlockChain } },
-        { "zombieJanitor", new[] { ZedRemnant.Screwdriver, ZedRemnant.GlassShards, ZedRemnant.Crowbar } },
-        { "zombieUtilityWorker", new[] { ZedRemnant.Rebar, ZedRemnant.BarbedWire, ZedRemnant.Crowbar, ZedRemnant.Nails } },
-        { "zombieBoe", new[] { ZedRemnant.Rebar, ZedRemnant.Screwdriver, ZedRemnant.Nails } },
-        { "zombieMoe", new[] { ZedRemnant.Rebar, ZedRemnant.GlassShards, ZedRemnant.Crowbar } },
-        { "zombieLumberjack", new[] { ZedRemnant.Axe, ZedRemnant.BarbedWire, ZedRemnant.BearTrap, ZedRemnant.Hatchet } },
-        { "zombieRancher", new[] { ZedRemnant.Pitchfork, ZedRemnant.BearTrap, ZedRemnant.BarbedWire, ZedRemnant.Arrows, ZedRemnant.Shovel } },
-        { "zombieTomClark", new[] { ZedRemnant.Pitchfork, ZedRemnant.BearTrap, ZedRemnant.BarbedWire, ZedRemnant.Shovel, ZedRemnant.Hatchet } },
-        { "zombieSkateboarder", new[] { ZedRemnant.Headphones, ZedRemnant.ArmCast } },
-        { "zombieYo", new[] { ZedRemnant.Headphones, ZedRemnant.Sunglasses, ZedRemnant.ChainNecklace } },
-        { "zombieSteve", new[] { ZedRemnant.Headphones, ZedRemnant.Sunglasses } },
-        { "zombiePartyGirl", new[] { ZedRemnant.Sunglasses, ZedRemnant.ChainNecklace } },
-        { "zombieMarlene", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.ChainNecklace } },
-        { "zombieDarlene", new[] { ZedRemnant.Sunglasses, ZedRemnant.ArmCast } },
-        { "zombieArlene", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.ChainNecklace } },
-        { "zombieBiker", new[] { ZedRemnant.ChainNecklace, ZedRemnant.Sunglasses, ZedRemnant.BarbedWire, ZedRemnant.Wristwatch, ZedRemnant.PadlockChain } },
-        { "zombieSoldier", new[] { ZedRemnant.GasMask, ZedRemnant.ChainNecklace, ZedRemnant.CrossbowBolt, ZedRemnant.Arrows } },
-        { "zombieFatHawaiian", new[] { ZedRemnant.Sunglasses, ZedRemnant.Headphones } },
-        { "zombieFatCop", new[] { ZedRemnant.Sunglasses, ZedRemnant.Wristwatch, ZedRemnant.Arrows, ZedRemnant.KitchenKnife } },
+        { "zombieJanitor", new[] { ZedRemnant.Screwdriver, ZedRemnant.GlassShards, ZedRemnant.Crowbar, ZedRemnant.TapedGlasses } },
+        { "zombieUtilityWorker", new[] { ZedRemnant.Rebar, ZedRemnant.BarbedWire, ZedRemnant.Crowbar, ZedRemnant.Nails, ZedRemnant.WeldingGoggles } },
+        { "zombieBoe", new[] { ZedRemnant.Rebar, ZedRemnant.Screwdriver, ZedRemnant.Nails, ZedRemnant.WeldingGoggles, ZedRemnant.Cigar } },
+        { "zombieMoe", new[] { ZedRemnant.Rebar, ZedRemnant.GlassShards, ZedRemnant.Crowbar, ZedRemnant.WeldingGoggles } },
+        { "zombieLumberjack", new[] { ZedRemnant.Axe, ZedRemnant.BarbedWire, ZedRemnant.BearTrap, ZedRemnant.Hatchet, ZedRemnant.ChewedCalf, ZedRemnant.Cigar } },
+        { "zombieRancher", new[] { ZedRemnant.Pitchfork, ZedRemnant.BearTrap, ZedRemnant.BarbedWire, ZedRemnant.Arrows, ZedRemnant.Shovel, ZedRemnant.Cigar } },
+        { "zombieTomClark", new[] { ZedRemnant.Pitchfork, ZedRemnant.BearTrap, ZedRemnant.BarbedWire, ZedRemnant.Shovel, ZedRemnant.Hatchet, ZedRemnant.Cigar } },
+        { "zombieSkateboarder", new[] { ZedRemnant.Headphones, ZedRemnant.ArmCast, ZedRemnant.ShutterShades, ZedRemnant.Glasses3D, ZedRemnant.CompoundFracture } },
+        { "zombieYo", new[] { ZedRemnant.Headphones, ZedRemnant.Sunglasses, ZedRemnant.ChainNecklace, ZedRemnant.ShutterShades, ZedRemnant.Aviators } },
+        { "zombieSteve", new[] { ZedRemnant.Headphones, ZedRemnant.Sunglasses, ZedRemnant.Glasses3D, ZedRemnant.TapedGlasses } },
+        { "zombiePartyGirl", new[] { ZedRemnant.Sunglasses, ZedRemnant.ChainNecklace, ZedRemnant.HeartShades, ZedRemnant.StarShades, ZedRemnant.MardiGrasBeads, ZedRemnant.FlowerLei } },
+        { "zombieMarlene", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.ChainNecklace, ZedRemnant.RoundShades } },
+        { "zombieDarlene", new[] { ZedRemnant.Sunglasses, ZedRemnant.ArmCast, ZedRemnant.HeartShades } },
+        { "zombieArlene", new[] { ZedRemnant.CrackedGlasses, ZedRemnant.ChainNecklace, ZedRemnant.RoundShades } },
+        { "zombieBiker", new[] { ZedRemnant.ChainNecklace, ZedRemnant.Sunglasses, ZedRemnant.BarbedWire, ZedRemnant.Wristwatch, ZedRemnant.PadlockChain, ZedRemnant.Aviators, ZedRemnant.Cigar } },
+        { "zombieSoldier", new[] { ZedRemnant.GasMask, ZedRemnant.ChainNecklace, ZedRemnant.CrossbowBolt, ZedRemnant.Arrows, ZedRemnant.DogTags, ZedRemnant.Aviators, ZedRemnant.Cigar } },
+        { "zombieFatHawaiian", new[] { ZedRemnant.Sunglasses, ZedRemnant.Headphones, ZedRemnant.FlowerLei, ZedRemnant.StarShades } },
+        { "zombieFatCop", new[] { ZedRemnant.Sunglasses, ZedRemnant.Wristwatch, ZedRemnant.Arrows, ZedRemnant.KitchenKnife, ZedRemnant.Aviators } },
         { "zombieMaleHazmat", new[] { ZedRemnant.GasMask } },
         { "zombieDemolition", new[] { ZedRemnant.Rebar } },
     };

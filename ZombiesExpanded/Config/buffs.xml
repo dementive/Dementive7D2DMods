@@ -3,22 +3,12 @@
 	Zombies Expanded buffs.
 	Zombie side: the stat half of each mutation's trade (the rest is in the mod's code), the champion and Alpha ranks
 	and heavy gear. The mod adds them on the server when the zombie spawns; they last its life.
-	Player side: what mutated zombies do to you (grabbed, poisoned, chilled, nausea).
+	Player side: what mutated zombies do to you (grabbed, poisoned, chilled).
 -->
 <configs>
 	<append xpath="/buffs">
 
 		<!-- ============================================================ zombies -->
-
-		<buff name="buffZedBloater" hidden="true">
-			<stack_type value="ignore"/>
-			<duration value="0"/>
-			<effect_group>
-				<passive_effect name="WalkSpeed" operation="perc_add" value="-0.25"/>
-				<passive_effect name="RunSpeed" operation="perc_add" value="-0.25"/>
-				<passive_effect name="CrouchSpeed" operation="perc_add" value="-0.25"/>
-			</effect_group>
-		</buff>
 
 		<buff name="buffZedSprinter" hidden="true">
 			<stack_type value="ignore"/>
@@ -241,6 +231,17 @@
 			</effect_group>
 		</buff>
 
+		<!-- A cinder block chained to its ankle, dragged behind it: it plods -->
+		<buff name="buffZedCinderBlock" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group>
+				<passive_effect name="WalkSpeed" operation="perc_add" value="-0.2"/>
+				<passive_effect name="RunSpeed" operation="perc_add" value="-0.2"/>
+				<passive_effect name="CrouchSpeed" operation="perc_add" value="-0.2"/>
+			</effect_group>
+		</buff>
+
 		<!-- ============================================================ players -->
 
 		<!-- A Grabber has hold of you: no sprinting or jumping, 80% slower. Any hit on it breaks the hold. -->
@@ -291,18 +292,6 @@
 			<effect_group>
 				<passive_effect name="RunSpeed" operation="perc_add" value="-0.2"/>
 				<passive_effect name="WalkSpeed" operation="perc_add" value="-0.2"/>
-			</effect_group>
-		</buff>
-
-		<!-- A Bloater's bile cloud: blurred vision and 2 damage a second while you're in it (and a moment after) -->
-		<buff name="buffZedNausea" name_key="buffZedNauseaName" description_key="buffZedNauseaDesc" icon="ui_game_symbol_infection" icon_color="200,220,60">
-			<stack_type value="replace"/>
-			<duration value="2"/>
-			<effect_group>
-				<passive_effect name="HealthChangeOT" operation="base_subtract" value="2"/>
-				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Blur" intensity=".5" fade="0.5"/>
-				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Blur" intensity="0" fade="1.5"/>
-				<triggered_effect trigger="onSelfDied" action="ModifyScreenEffect" effect_name="Blur" intensity="0" fade="0"/>
 			</effect_group>
 		</buff>
 

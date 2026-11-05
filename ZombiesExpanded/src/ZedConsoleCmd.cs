@@ -28,7 +28,7 @@ public class ZedConsoleCmd : ConsoleCmdAbstract
             + "  ze spawn [class] [k=v ...] - spawn a zombie 5 m ahead (default zombieJoe) with parts of its profile set:\n"
             + "                           body=normal|gaunt|bulky|bloated|hunched  temper=normal|sluggish|restless|relentless\n"
             + "                           walk=<walk type>  size=<factor>  speed=<factor>  pitch=<factor>  age=<0-1>\n"
-            + "                           biome=forest|desert|snow|burnt|wasteland  mutation=Bloater,Toxic,...  gear=KevlarVest,...\n"
+            + "                           biome=forest|desert|snow|burnt|wasteland  mutation=Sprinter,Toxic,...  gear=KevlarVest,...\n"
             + "                           remnant=Axe,Sunglasses,...  dead=1 (a Possum lying \"dead\")\n"
             + "                           injury=none|LimpArm|DraggedFoot|LolledHead|TwistedBack[,left|right]\n"
             + "                           champion=1  alpha=1  plain=1 (no mutations, gear, remnants or rank)\n"
@@ -231,7 +231,7 @@ public class ZedForce
             case "mutations":
                 foreach (string m in value.Split(','))
                 {
-                    if (!System.Enum.TryParse(m, true, out ZedMutation mu))
+                    if (!System.Enum.TryParse(m, true, out ZedMutation mu) || !ZedMutationInfo.All.ContainsKey(mu))
                     {
                         return false;
                     }

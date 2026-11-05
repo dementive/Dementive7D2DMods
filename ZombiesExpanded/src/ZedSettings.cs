@@ -30,12 +30,17 @@ public static class ZedSettings
         { "GearRate", "1" },
         { "Remnants", "true" },
         { "RemnantRate", "1" },
+        { "ShowpieceRate", "1" },
         // Looks and sounds (each player)
         { "Looks", "true" },
         { "Weathering", "true" },
         { "Wounds", "true" },
         { "BloodDrips", "true" },
         { "Eyeshine", "true" },
+        { "Swing", "true" },
+        { "Flies", "true" },
+        { "Breath", "true" },
+        { "Drool", "true" },
         { "Voices", "true" },
         { "HordeAudio", "true" },
         { "Tips", "true" },
@@ -62,6 +67,10 @@ public static class ZedSettings
     public static bool Wounds => Looks && Bool("Wounds");
     public static bool BloodDrips => Looks && Bool("BloodDrips");
     public static bool Eyeshine => Looks && Bool("Eyeshine");
+    public static bool Swing => Looks && Bool("Swing");
+    public static bool Flies => Looks && Bool("Flies");
+    public static bool Breath => Looks && Bool("Breath");
+    public static bool Drool => Looks && Bool("Drool");
     public static bool Voices => Bool("Voices");
     public static bool Brutal => string.Equals(values["Preset"], "Brutal", StringComparison.OrdinalIgnoreCase);
 

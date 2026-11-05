@@ -151,3 +151,84 @@ stand-in, show the wound as drying blood and gore on the object, dark and dirty,
 | PadlockChain | padlock_chain.py | `LeftForeArm#Chain` | [LeftHand] Two loops of heavy rusty chain locked round the left wrist with a big padlock, and a short torn length (15 to 20 cm) hanging. On the forearm bone, close to the wrist. |
 
 **After the review (2026-11-03):** kept Spear, Shovel, Cleaver, Hatchet, Crowbar, Nails and PadlockChain. Cut (scripts moved to `blender/cut/`, not built): SkiPole, PoolCue and Fishhook.
+
+## Round 5: personality, gore and showpieces (2026-11-03)
+
+The user's playtest favorites were the Sunglasses and the lumberjack's Axe: props that give each zombie its own
+flavor. This round adds lots more eyewear and fun accessories, gore that shows how they died, and rare showpieces.
+Same rules as above, plus these:
+
+- **Fun is the point.** The eyewear and accessories may be playful (heart and star party glasses, 3D glasses), but
+  they're still on a corpse: scuffed, grimy, a scratch or a crack, maybe a speck of blood. Keep colors a step darker
+  and dirtier than new, or they read as flat cut-outs in game (see `MODELS.md`).
+- **Lenses are opaque** (the game's model shader has no transparency): a dark glossy lens with a painted reflection
+  gradient (a lighter streak across the top) and low roughness reads as glass.
+- **Eyewear sits on the face** like `sunglasses.py` and `cracked_glasses.py` (read both, and reuse their fitting):
+  temples run back over the ears and tuck into the hair. Use the face numbers in "Rules for every remnant".
+- **Swinging parts.** Anything that should swing as the zombie moves is its own part whose name ends in `Swing`,
+  with a `pivot` where it hangs from: `zk.on(obj, "Spine1", "GutSwing", pivot=(x, y, z))`. Model it hanging
+  straight down (Joe is upright), at most 40 cm long. In game it swings about the pivot, up to about 35 degrees.
+- **Gore is never a flat patch.** A wound is a torn hole with thickness: a ragged rim of torn skin and cloth that
+  curls outward 0.5 to 1.5 cm, wet dark-red flesh sunk inside it, yellowed bone where bone shows, and a dark, ragged
+  outer edge, so it reads as torn through the clothes, not laid on top. Wet (low roughness) inside, dull outside.
+  Dark like the zombies: deep maroon and brown, never pink or bright red. End with `tk.grade(...)` like the growths
+  (`fungus.py`, `brood_sac.py` and `throat_sacs.py` show flesh materials).
+- **Budget:** eyewear and small accessories up to 1,500 triangles at 512; gore up to 2,500 at 1024; showpieces up to
+  3,500 at 1024.
+
+### Eyewear (all on `Head`, slot Face; only one per zombie)
+
+| Name | Script | Parts | What |
+|---|---|---|---|
+| Aviators | aviators.py | `Head#Glasses` | Classic pilot sunglasses: a thin gold wire frame worn to brass at the edges, teardrop lenses, a double bridge, mirrored lenses (dark at the top fading to a warm amber-blue sheen). One lens chipped at the corner. |
+| RoundShades | round_shades.py | `Head#Glasses` | Small round wire-rim "John Lennon" sunglasses, dark green-brown lenses, the thin frame slightly bent so they sit a touch crooked. |
+| TapedGlasses | taped_glasses.py | `Head#Glasses` | Thick black plastic nerd glasses broken at the bridge and held together with a wad of grimy white tape; dark glossy lenses. |
+| Glasses3D | glasses_3d.py | `Head#Glasses` | Cardboard 3D movie glasses: a flat folded card frame (dirty white, a smudged cinema logo), one red and one cyan lens (dulled and dark, not neon), one arm bent. |
+| StarShades | star_shades.py | `Head#Glasses` | Novelty party sunglasses with big five-pointed star frames, faded glittery gold or pink plastic, dark lenses, one point snapped off. |
+| HeartShades | heart_shades.py | `Head#Glasses` | Heart-shaped plastic sunglasses, a faded red frame, dark red lenses, scuffed. |
+| ShutterShades | shutter_shades.py | `Head#Glasses` | Shutter shades: a plastic frame with horizontal slats instead of lenses, dirty white, one slat broken. |
+| SkiGoggles | ski_goggles.py | `Head#Goggles` | Big ski goggles over the eyes, an orange-to-gold mirrored lens, a foam rim, and a wide elastic strap round the back of the head kept 2 cm off the head hit box (Joe's hair). Bare-headed zombies only. |
+| EyePatch | eye_patch.py | `Head#Patch` | A black leather pirate eye patch over the right eye, its thin cord running diagonally round the head (2 cm off the hit box at the back). Bare-headed zombies only. |
+| WeldingGoggles | welding_goggles.py | `Head#Goggles` | Round dark welding goggles pushed up on the forehead (not over the eyes), riveted metal cups, a leather strap round the head 2 cm off the hit box. Bare-headed zombies only. |
+
+### Accessories
+
+| Name | Script | Parts | What |
+|---|---|---|---|
+| Cigar | cigar.py | `Jaw#Cigar` | A fat half-smoked cigar clamped in the right corner of the mouth, angled down and out about 20 degrees, its tip a dim orange glowing ember (emission) inside grey ash. On the Jaw bone, so it moves when the mouth opens. Slot Mouth. |
+| MardiGrasBeads | mardi_gras_beads.py | `Neck#Beads` | Three or four strands of cheap shiny plastic beads (purple, gold, green; tarnished and grimy) round the neck, hanging to different lengths on the chest. Slot Neck. |
+| FlowerLei | flower_lei.py | `Neck#Lei` | A Hawaiian lei of wilted, faded fabric flowers (dull magenta, orange, white gone grey) round the neck and down the chest. Slot Neck. |
+| BowTie | bow_tie.py | `Neck#BowTie` | A black or dark red bow tie at the collar under the chin, crooked. Clear of the jaw, which opens. Slot Neck. |
+| DogTags | dog_tags.py | `Neck#Chain`, `Neck#TagsSwing` | Military dog tags: a ball chain round the neck (`Neck#Chain`), and the two stamped steel tags hanging on the upper chest as a swing part (`Neck#TagsSwing`, pivot where the chain meets them; on the Neck bone so it moves with the chain on bigger zombies). Slot Neck. |
+
+### Retrofits (swing)
+
+| Name | Script | Change |
+|---|---|---|
+| Noose | noose.py | Split the hanging cut rope end into its own part `Neck#RopeSwing` (pivot at the knot, where it hangs from). `Neck#Noose` keeps the rest. |
+| PadlockChain | padlock_chain.py | Split the hanging torn length of chain (and nothing else) into `LeftForeArm#ChainSwing` (pivot where it leaves the loops). `LeftForeArm#Chain` keeps the loops and the padlock. |
+
+### How they died (gore; any zombie)
+
+| Name | Script | Parts | What |
+|---|---|---|---|
+| CompoundFracture | compound_fracture.py | `RightForeArm#Fracture` | A compound fracture of the right forearm: the jagged, splintered end of the broken bone (yellowed, marrow showing, blood dried on it) sticking 4 to 6 cm out through a torn hole on the outer side a little above the wrist, with torn skin and sleeve flaps round it. Slot RightArm. |
+| GutLoop | gut_loop.py | `Spine1#Gash`, `Spine1#GutSwing` | A torn-open wound low on the belly, left of center: the ragged gash with its curled rim (`Spine1#Gash`), and a loop of dark grey-purple intestine hanging out of it 20 to 25 cm (`Spine1#GutSwing`, pivot at the gash where it comes out). Slot Belly. |
+| ExposedRibs | exposed_ribs.py | `Spine2#Ribs` | The left side of the chest torn open from under the armpit down about 18 cm: three or four ribs showing, yellowed and wet, dark flesh between them, a torn rim of skin and shirt. Slot Chest. |
+| ExposedSpine | exposed_spine.py | `Spine2#Vertebrae`, `Spine1#Vertebrae` | A long tear down the middle of the back with the knobbly spine showing through: five or six vertebra knuckles, dark wet flesh either side, a torn shirt rim. Split across Spine2 and Spine1 so it bends with the back. Slot Back. |
+| TurningBite | turning_bite.py | `LeftShoulder#Bite` | The bite that turned them: a mouth-sized chunk torn out where the neck meets the left shoulder, a ring of human tooth marks round the rim, dark wet flesh, and a bruised, infected edge (dark purple-green spreading 2 to 3 cm). Slot LeftShoulder. |
+| ChewedCalf | chewed_calf.py | `RightLeg#Calf` | The back of the right calf chewed away: a ragged hollow down to the shin bone (a strip of yellowed bone showing), short rigid torn strips of muscle hanging, dark blood down the leg. Slot RightLeg. |
+
+### Rare showpieces (about 1 zombie in 40; any zombie)
+
+| Name | Script | Parts | What |
+|---|---|---|---|
+| StopSign | stop_sign.py | `Spine1#Sign` | A STOP sign on its bent steel U-channel post, rammed through the belly from the front and out the back: the octagon (faded red, dented, two bullet holes, the white letters dirty) about 35 cm in front of the belly, tilted down and sideways; the post through the body; its torn bottom end 30 cm out the back with a clump of concrete still on it. Slots Belly, Back. |
+| CinderBlock | cinder_block.py | `RightLeg#Cuff`, `RightLeg#ChainDrag`, `RightLeg#BlockDrag` | A rusty shackle locked round the right ankle (`RightLeg#Cuff`, near the bottom of the shin bone, clear of the foot). The chain (`RightLeg#ChainDrag`): exactly 1.0 m of heavy rusty chain, straight and horizontal, running from its pivot at the shackle's ring straight back along +Y (behind the zombie); the game stretches it and aims it at the block. The block (`RightLeg#BlockDrag`): a cracked, chipped grey cinder block with the chain's last link through one of its holes, upright as it would lie on the ground, its pivot where the chain enters it, exactly 10 cm above the block's bottom face. The game drags it along the ground behind the zombie. Slots RightLeg, LeftLeg. |
+| Harpoon | harpoon.py | `Spine2#Harpoon`, `Spine2#RopeSwing` | A speargun harpoon through the chest from behind: the barbed steel head out the front right of center, the shaft out the back about 40 cm, and a short tail of frayed yellow-grey rope hanging off its end (`Spine2#RopeSwing`, pivot at the shaft end, about 30 cm long). Slots Chest, Back. |
+| Pincushion | pincushion.py | `Spine2#Arrows`, `Spine1#Arrows`, `LeftArm#Arrows`, `RightUpLeg#Arrows` | Someone's last stand: eight arrows (reuse `arrows.py`'s arrow, with a mix of fletching colors and a couple snapped): three in the upper back, two in the lower back, one in the left upper arm, one in the right thigh, one in the chest from the front. Slots Back, Chest, LeftArm, RightLeg. |
+| Bumper | bumper.py | `Spine1#Bumper` | A torn-off half of a rusty chrome car bumper (a corner and part of the face, bent, the chrome peeling) wedged into the right side under the ribs, the jagged torn end buried in the body, the rest jutting out and back about 50 cm. Slots Chest, Belly. |
+
+**After the review (2026-11-03):** kept every eyewear, accessory and showpiece model except the Bumper (from every angle it read as a box strapped to the lower back; cut). Fat zombies never get a Cigar: their puffy faces bury it wherever it goes. DogTags hang from the Neck bone so they move with their chain, and the C# moves Neck parts forward with the chest (at least 8 cm on fat zombies).
+
+**Gore review (2026-11-03):** each wound is a raised torn hole built on the skin measured on Joe (a sunk hole would vanish under the zombie's own mesh). Kept the fracture, gut loop, ribs, spine and chewed calf. Cut the TurningBite: from the front it read as a pale lump on the shoulder, not a bite. The torso and calf wounds only go on regular builds. A fat zombie's belly, side and back sit 3 to 8 cm outside a scaled piece and bury them. A woman's chest side hides the ribs and her slimmer calf leaves that wound standing off.

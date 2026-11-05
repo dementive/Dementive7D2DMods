@@ -4,30 +4,18 @@ using HarmonyLib;
 using UnityEngine;
 
 /// <summary>
-/// What mutated and ranked zombies leave behind when they die, and the Volatile's tank. On the server: the
-/// Bloater's bile cloud (unless it burned), the Brood's crawlers (unless it burned or blew up), the Smoldering's
-/// flare, the Volatile's tank (dropped, or blown if its fuse was lit), champions' and the Alpha's loot, the Alpha's
+/// What mutated and ranked zombies leave behind when they die, and the Volatile's tank. On the server: the Brood's
+/// crawlers (unless it burned or blew up), the Smoldering's flare, the Volatile's tank (dropped, or blown if its fuse was lit), champions' and the Alpha's loot, the Alpha's
 /// fall staggering everyone near it, a herd's leader leaving it milling. On each player's game: the effects you see.
 /// </summary>
 public static class ZedDeath
 {
-    private class Area
-    {
-        public Vector3 Position;
-        public float Radius;
-        public float Until;
-        public string Buff;
-        public int Instigator;
-        public float Next;
-    }
-
     private class Later
     {
         public float At;
         public Action Run;
     }
 
-    private static readonly List<Area> areas = new List<Area>();
     private static readonly List<Later> later = new List<Later>();
     private static float auraTick;
 
@@ -47,10 +35,6 @@ public static class ZedDeath
 
         if (ZedStore.DrawsLooks)
         {
-            if (p.Has(ZedMutation.Bloater) && !burned)
-            {
-                ZedModels.Effect("BileCloud", chest, 6f);
-            }
             if (p.Has(ZedMutation.Brood) && !burned && !exploded)
             {
                 ZedModels.Effect("GoreBurst", chest - Vector3.up * 0.2f, 3f);
@@ -63,10 +47,6 @@ public static class ZedDeath
         ZedBrain brain = ZedBrain.Of(z);
         brain?.Release();
         ZedSnatch.Drop(z);
-        if (p.Has(ZedMutation.Bloater) && !burned)
-        {
-            areas.Add(new Area { Position = chest, Radius = 3f, Until = Time.time + 5f, Buff = "buffZedNausea", Instigator = z.entityId });
-        }
         if (p.Has(ZedMutation.Brood) && !burned && !exploded)
         {
             Vector3 pos = z.position;
@@ -212,27 +192,6 @@ public static class ZedDeath
             }
         }
         World world = GameManager.Instance.World;
-        for (int i = areas.Count - 1; i >= 0; i--)
-        {
-            Area a = areas[i];
-            if (now > a.Until)
-            {
-                areas.RemoveAt(i);
-                continue;
-            }
-            if (now < a.Next)
-            {
-                continue;
-            }
-            a.Next = now + 0.5f;
-            foreach (EntityPlayer p in world.Players.list)
-            {
-                if (!p.IsDead() && (p.getChestPosition() - a.Position).sqrMagnitude < a.Radius * a.Radius)
-                {
-                    p.Buffs.AddBuff(a.Buff, a.Instigator);
-                }
-            }
-        }
         if (now >= auraTick)
         {
             auraTick = now + 1f;
@@ -243,7 +202,6 @@ public static class ZedDeath
 
     public static void Clear()
     {
-        areas.Clear();
         later.Clear();
     }
 }
