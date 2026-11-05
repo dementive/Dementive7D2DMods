@@ -2,9 +2,9 @@
 <xml>
 	<Name value="ConsumablesExpanded"/>
 	<DisplayName value="Consumables Expanded" />
-	<Description value="More consumables in the same style as the base game. Updated for 7 Days to Die V3.4."/>
+	<Description value="Realistic new foods and drinks at vanilla strength, and a line of powerful chems with a dangerous Crash. For 7 Days to Die V3.4."/>
 	<Author value="Dementive"/>
-	<Version value="2.0.0.0" />
+	<Version value="3.0.0.0" />
 	<Website value="" />
 	<SkipWithAntiCheat value="false" />
 </xml>

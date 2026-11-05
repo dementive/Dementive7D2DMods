@@ -2,146 +2,94 @@
 	<append xpath="/items">
 		<!-- Foods -->
 
-		<item name="DementiveSnowberryPie">
-			<property name="Extends" value="foodVegetableStew"/>
-			<property name="CustomIcon" value="DementiveSnowberryPie"/>
-			<effect_group tiered="false" name="Food Tier 2">
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="31"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="15"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="15">
-					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="20"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="20"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="20">
-					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-			</effect_group>
-		</item>
-
-		<item name="DementiveYuccaPie">
-			<property name="Extends" value="foodVegetableStew"/>
-			<property name="CustomIcon" value="DementiveYuccaPie"/>
-			<effect_group tiered="false" name="Food Tier 2">
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="31"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="15"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="15">
-					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="20"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="20"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="20">
-					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-			</effect_group>
-		</item>
-
-		<item name="DementiveMushroomPie">
-			<property name="Extends" value="foodVegetableStew"/>
-			<property name="CustomIcon" value="DementiveMushroomPie"/>
-			<effect_group tiered="false" name="Food Tier 2">
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="31"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="15"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="15">
-					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="20"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="20"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="20">
-					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-			</effect_group>
-		</item>
-
-		<item name="DementiveMeatPie">
-			<property name="Extends" value="foodShepardsPie"/>
-			<property name="CustomIcon" value="DementiveMeatPie"/>
-			<effect_group tiered="false" name="Food Tier 4">
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="104"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="52"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="52">
-					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="40"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="40">
-					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-			</effect_group>
-		</item>
-
-		<item name="DementiveMashPotato">
-			<property name="Tags" value="food,foodSkill,farmerFoodBonus"/>
-			<property name="CustomIcon" value="DementiveMashPotato"/>
-			<property name="HoldType" value="31"/>
+		<item name="DementiveCornHardtack">
+			<property name="Extends" value="foodCornBread"/>
+			<property name="CustomIcon" value="DementiveCornHardtack"/>
+			<property name="DescriptionKey" value="DementiveCornHardtackDesc"/>
 			<property name="DisplayType" value="foodWater"/>
-			<property name="Meshfile" value="@:Other/Items/Food/parcelGenericPrefab.prefab"/>
-			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-			<property name="Material" value="Morganic"/>
-			<property name="Stacknumber" value="10"/>
-			<property name="EconomicValue" value="102"/>
+			<property name="EconomicValue" value="30"/>
+			<property name="Stacknumber" value="50"/>
 			<property name="UnlockedBy" value="craftingFood"/>
 			<property class="Action0">
-				<property name="Class" value="Eat"/>
-				<property name="Delay" value="1.0"/>
-				<property name="Sound_start" value="player_drinking"/>
+				<property name="SmellUse" value="0"/>
 			</property>
-			<property name="Group" value="Food/Cooking,CFFood/Cooking"/>
-
-			<effect_group tiered="false" name="Food Tier 2">
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="25"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="15"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="15">
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="15"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="5">
 					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="15"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="15">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-5"/>
+				<display_value name="$waterAmountAdd" value="-5"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="10"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="10">
 					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+				<display_value name="dSmellUse" value="0"/>
 			</effect_group>
 		</item>
 
-		<item name="DementiveOmlet">
-			<property name="Tags" value="food,foodSkill,farmerFoodBonus"/>
-			<property name="CustomIcon" value="DementiveOmlet"/>
-			<property name="HoldType" value="31"/>
-			<property name="DisplayType" value="food"/>
-			<property name="Meshfile" value="@:Other/Items/Food/parcelGenericPrefab.prefab"/>
-			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-			<property name="Material" value="Morganic"/>
-			<property name="Stacknumber" value="10"/>
+		<item name="DementiveSmokedJerky">
+			<property name="Extends" value="foodBaconAndEggs"/>
+			<property name="CustomIcon" value="DementiveSmokedJerky"/>
+			<property name="DescriptionKey" value="DementiveSmokedJerkyDesc"/>
+			<property name="DisplayType" value="foodWater"/>
 			<property name="EconomicValue" value="45"/>
+			<property name="Stacknumber" value="30"/>
+			<property name="UnlockedBy" value="craftingFood"/>
 			<property class="Action0">
-				<property name="Class" value="Eat"/>
-				<property name="Delay" value="2.0"/>
-				<property name="Sound_start" value="player_eating"/>
+				<property name="SmellUse" value="10"/>
 			</property>
-			<property name="Group" value="Food/Cooking,CFFood/Cooking"/>
-
-			<effect_group tiered="false" name="Food Tier 0/1">
+			<effect_group tiered="false" name="Food">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="20"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="10"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="10">
 					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-5"/>
+				<display_value name="$waterAmountAdd" value="-5"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="10"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="10">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+				<display_value name="dSmellUse" value="10"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveFryBread">
+			<property name="Extends" value="foodBaconAndEggs"/>
+			<property name="CustomIcon" value="DementiveFryBread"/>
+			<property name="DescriptionKey" value="DementiveFryBreadDesc"/>
+			<property name="DisplayType" value="food"/>
+			<property name="EconomicValue" value="20"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<property class="Action0">
+				<property name="SmellUse" value="25"/>
+			</property>
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="15"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="7"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="7">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="15"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="15">
 					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+				<display_value name="dSmellUse" value="25"/>
 			</effect_group>
 		</item>
 
 		<item name="DementiveFriedEgg">
-			<property name="Tags" value="food,foodSkill,farmerFoodBonus"/>
+			<property name="Extends" value="foodBaconAndEggs"/>
 			<property name="CustomIcon" value="DementiveFriedEgg"/>
-			<property name="HoldType" value="31"/>
+			<property name="DescriptionKey" value="DementiveFriedEggDesc"/>
 			<property name="DisplayType" value="food"/>
-			<property name="Meshfile" value="@:Other/Items/Food/parcelGenericPrefab.prefab"/>
-			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-			<property name="Material" value="Morganic"/>
-			<property name="Stacknumber" value="10"/>
 			<property name="EconomicValue" value="30"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="UnlockedBy" value="craftingFood"/>
 			<property class="Action0">
-				<property name="Class" value="Eat"/>
-				<property name="Delay" value="2.0"/>
-				<property name="Sound_start" value="player_eating"/>
+				<property name="SmellUse" value="25"/>
 			</property>
-			<property name="Group" value="Food/Cooking,CFFood/Cooking"/>
-
-			<effect_group tiered="false" name="Food Tier 0/1">
+			<effect_group tiered="false" name="Food">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="10"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="5">
@@ -150,79 +98,740 @@
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="10">
 					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+				<display_value name="dSmellUse" value="25"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveOmlet">
+			<property name="Extends" value="foodBaconAndEggs"/>
+			<property name="CustomIcon" value="DementiveOmlet"/>
+			<property name="DescriptionKey" value="DementiveOmletDesc"/>
+			<property name="DisplayType" value="food"/>
+			<property name="EconomicValue" value="60"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<property class="Action0">
+				<property name="SmellUse" value="50"/>
+			</property>
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="30"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="15"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="15">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="15"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="15">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+				<display_value name="dSmellUse" value="50"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveBiscuitsGravy">
+			<property name="Extends" value="foodCornBread"/>
+			<property name="CustomIcon" value="DementiveBiscuitsGravy"/>
+			<property name="DescriptionKey" value="DementiveBiscuitsGravyDesc"/>
+			<property name="DisplayType" value="dementiveFoodFilling"/>
+			<property name="EconomicValue" value="90"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<property class="Action0">
+				<property name="SmellUse" value="50"/>
+			</property>
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="40"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="20"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="20">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="20"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="20">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<display_value name="dEfficientDigestion" value=".15"/>
+				<display_value name="dDuration" value="360"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveFillingDuration" operation="add" value="363"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveFillingDuration" operation="set" value="1083">
+					<requirement name="CVarCompare" cvar="$buffDementiveFillingDuration" operation="GT" value="1083"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveFilling"/>
+				<display_value name="dSmellUse" value="50"/>
 			</effect_group>
 		</item>
 
 		<item name="DementiveCornGrits">
-			<property name="Tags" value="food,foodSkill,farmerFoodBonus"/>
+			<property name="Extends" value="foodBaconAndEggs"/>
 			<property name="CustomIcon" value="DementiveCornGrits"/>
-			<property name="HoldType" value="31"/>
-			<property name="DisplayType" value="foodWater"/>
-			<property name="Meshfile" value="@:Other/Items/Food/parcelGenericPrefab.prefab"/>
-			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-			<property name="Material" value="Morganic"/>
-			<property name="Stacknumber" value="10"/> <!-- STK food -->
-			<property name="EconomicValue" value="102"/>
-			<property name="UnlockedBy" value="craftingFood"/><!-- perkMasterChef,foodVegetableStewSchematic, -->
+			<property name="DescriptionKey" value="DementiveCornGritsDesc"/>
+			<property name="DisplayType" value="dementiveFoodEnergy"/>
+			<property name="EconomicValue" value="110"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="UnlockedBy" value="craftingFood"/>
 			<property class="Action0">
-				<property name="Class" value="Eat"/>
-				<property name="Delay" value="1.0"/>
-				<property name="Sound_start" value="player_drinking"/>
-				<!-- jar from cooking food <property name="Create_item" value="drinkJarEmpty"/> -->
+				<property name="SmellUse" value="50"/>
 			</property>
-			<property name="Group" value="Food/Cooking,CFFood/Cooking"/>
-
-			<effect_group tiered="false" name="Food Tier 2">
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="35"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="15"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="15">
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="45"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="22"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="22">
 					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="20"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="25"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="25">
 					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+				<display_value name="dStaminaRegen" value=".15"/>
+				<display_value name="dDuration" value="180"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveEnergyDuration" operation="add" value="183"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveEnergyDuration" operation="set" value="543">
+					<requirement name="CVarCompare" cvar="$buffDementiveEnergyDuration" operation="GT" value="543"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveEnergy"/>
+				<display_value name="dSmellUse" value="50"/>
 			</effect_group>
 		</item>
 
 		<item name="DementiveCoffeeCake">
-			<property name="Tags" value="food,foodSkill,farmerFoodBonus"/>
+			<property name="Extends" value="foodBaconAndEggs"/>
 			<property name="CustomIcon" value="DementiveCoffeeCake"/>
-			<property name="HoldType" value="31"/>
-			<property name="DisplayType" value="food"/>
-			<property name="Meshfile" value="@:Other/Items/Food/parcelGenericPrefab.prefab"/>
-			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-			<property name="Material" value="Mplants"/>
+			<property name="DescriptionKey" value="DementiveCoffeeCakeDesc"/>
+			<property name="DisplayType" value="dementiveFoodEnergy"/>
+			<property name="EconomicValue" value="120"/>
 			<property name="Stacknumber" value="10"/>
-			<property name="EconomicValue" value="250"/>
-			<property name="EconomicBundleSize" value="1"/>
-			<property name="CraftingIngredientTime" value="10"/>
 			<property name="UnlockedBy" value="craftingFood"/>
 			<property class="Action0">
-				<property name="Class" value="Eat"/>
-				<property name="Delay" value="1.0"/>
-				<property name="Sound_start" value="player_eating"/>
+				<property name="SmellUse" value="25"/>
 			</property>
-			<property name="Group" value="Food/Cooking,CFFood/Cooking"/>
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="40"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="20"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="20">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="20"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="20">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<display_value name="dStaminaRegen" value=".15"/>
+				<display_value name="dDuration" value="180"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveEnergyDuration" operation="add" value="183"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveEnergyDuration" operation="set" value="543">
+					<requirement name="CVarCompare" cvar="$buffDementiveEnergyDuration" operation="GT" value="543"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveEnergy"/>
+				<display_value name="dSmellUse" value="25"/>
+			</effect_group>
+		</item>
 
-			<effect_group tiered="false" name="Food Tier 4">
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="90"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="45"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="45">
+		<item name="DementiveBoneBroth">
+			<property name="Extends" value="foodVegetableStew"/>
+			<property name="CustomIcon" value="DementiveBoneBroth"/>
+			<property name="DescriptionKey" value="DementiveBoneBrothDesc"/>
+			<property name="DisplayType" value="dementiveFoodWaterHot"/>
+			<property name="EconomicValue" value="40"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<property class="Action0">
+				<property name="SmellUse" value="25"/>
+			</property>
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="10"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="20"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="20">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="30"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="5"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="5">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<display_value name="dHypothermalResist" value="10"/>
+				<display_value name="dDuration" value="300"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="add" value="303"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="set" value="903">
+					<requirement name="CVarCompare" cvar="$buffDementiveHotDuration" operation="GT" value="903"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveHot"/>
+				<display_value name="dSmellUse" value="25"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveCornChowder">
+			<property name="Extends" value="foodVegetableStew"/>
+			<property name="CustomIcon" value="DementiveCornChowder"/>
+			<property name="DescriptionKey" value="DementiveCornChowderDesc"/>
+			<property name="DisplayType" value="dementiveFoodWaterHot"/>
+			<property name="EconomicValue" value="100"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<property class="Action0">
+				<property name="SmellUse" value="50"/>
+			</property>
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="35"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="17"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="17">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="20"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="20"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="20">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<display_value name="dHypothermalResist" value="10"/>
+				<display_value name="dDuration" value="300"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="add" value="303"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="set" value="903">
+					<requirement name="CVarCompare" cvar="$buffDementiveHotDuration" operation="GT" value="903"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveHot"/>
+				<display_value name="dSmellUse" value="50"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivePumpkinSoup">
+			<property name="Extends" value="foodVegetableStew"/>
+			<property name="CustomIcon" value="DementivePumpkinSoup"/>
+			<property name="DescriptionKey" value="DementivePumpkinSoupDesc"/>
+			<property name="DisplayType" value="dementiveFoodWaterHot"/>
+			<property name="EconomicValue" value="100"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<property class="Action0">
+				<property name="SmellUse" value="25"/>
+			</property>
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="35"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="17"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="17">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="20"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="15"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="15">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<display_value name="dHypothermalResist" value="10"/>
+				<display_value name="dDuration" value="300"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="add" value="303"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="set" value="903">
+					<requirement name="CVarCompare" cvar="$buffDementiveHotDuration" operation="GT" value="903"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveHot"/>
+				<display_value name="dSmellUse" value="25"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveChickenNoodleSoup">
+			<property name="Extends" value="foodVegetableStew"/>
+			<property name="CustomIcon" value="DementiveChickenNoodleSoup"/>
+			<property name="DescriptionKey" value="DementiveChickenNoodleSoupDesc"/>
+			<property name="DisplayType" value="dementiveFoodWaterHot"/>
+			<property name="EconomicValue" value="150"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<property class="Action0">
+				<property name="SmellUse" value="50"/>
+			</property>
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="45"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="35"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="35">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="25"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="20"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="20">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<display_value name="dHypothermalResist" value="10"/>
+				<display_value name="dDuration" value="300"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="add" value="303"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="set" value="903">
+					<requirement name="CVarCompare" cvar="$buffDementiveHotDuration" operation="GT" value="903"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveHot"/>
+				<display_value name="dSmellUse" value="50"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveTamales">
+			<property name="Extends" value="foodFishTacos"/>
+			<property name="CustomIcon" value="DementiveTamales"/>
+			<property name="DescriptionKey" value="DementiveTamalesDesc"/>
+			<property name="DisplayType" value="food"/>
+			<property name="EconomicValue" value="110"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<property class="Action0">
+				<property name="SmellUse" value="25"/>
+			</property>
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="45"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="22"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="22">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="25"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="25">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+				<display_value name="dSmellUse" value="25"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveCampfireChili">
+			<property name="Extends" value="foodShepardsPie"/>
+			<property name="CustomIcon" value="DementiveCampfireChili"/>
+			<property name="DescriptionKey" value="DementiveCampfireChiliDesc"/>
+			<property name="DisplayType" value="dementiveFoodWaterHot"/>
+			<property name="EconomicValue" value="140"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<property class="Action0">
+				<property name="SmellUse" value="50"/>
+			</property>
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="55"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="28"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="28">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="water" operation="add" value="-5"/>
+				<display_value name="$waterAmountAdd" value="-5"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="30"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="30">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<display_value name="dHypothermalResist" value="10"/>
+				<display_value name="dDuration" value="300"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="add" value="303"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="set" value="903">
+					<requirement name="CVarCompare" cvar="$buffDementiveHotDuration" operation="GT" value="903"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveHot"/>
+				<display_value name="dSmellUse" value="50"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveChiliMac">
+			<property name="Extends" value="foodShepardsPie"/>
+			<property name="CustomIcon" value="DementiveChiliMac"/>
+			<property name="DescriptionKey" value="DementiveChiliMacDesc"/>
+			<property name="DisplayType" value="dementiveFoodHot"/>
+			<property name="EconomicValue" value="170"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<property class="Action0">
+				<property name="SmellUse" value="50"/>
+			</property>
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="60"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="30"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="30">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="30"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="30">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<display_value name="dHypothermalResist" value="10"/>
+				<display_value name="dDuration" value="300"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="add" value="303"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="set" value="903">
+					<requirement name="CVarCompare" cvar="$buffDementiveHotDuration" operation="GT" value="903"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveHot"/>
+				<display_value name="dSmellUse" value="50"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveSnowberryPie">
+			<property name="Extends" value="foodBlueberryPie"/>
+			<property name="CustomIcon" value="DementiveSnowberryPie"/>
+			<property name="DescriptionKey" value="DementiveSnowberryPieDesc"/>
+			<property name="DisplayType" value="dementiveFoodWaterCool"/>
+			<property name="EconomicValue" value="124"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<property class="Action0">
+				<property name="SmellUse" value="25"/>
+			</property>
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="45"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="22"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="22">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="10"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="20"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="20">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<display_value name="dHyperthermalResist" value="10"/>
+				<display_value name="dDuration" value="300"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveCoolDuration" operation="add" value="303"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveCoolDuration" operation="set" value="903">
+					<requirement name="CVarCompare" cvar="$buffDementiveCoolDuration" operation="GT" value="903"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveCool"/>
+				<display_value name="dSmellUse" value="25"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveYuccaPie">
+			<property name="Extends" value="foodBlueberryPie"/>
+			<property name="CustomIcon" value="DementiveYuccaPie"/>
+			<property name="DescriptionKey" value="DementiveYuccaPieDesc"/>
+			<property name="DisplayType" value="dementiveFoodWaterCool"/>
+			<property name="EconomicValue" value="124"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<property class="Action0">
+				<property name="SmellUse" value="25"/>
+			</property>
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="45"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="22"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="22">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="10"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="20"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="20">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<display_value name="dHyperthermalResist" value="10"/>
+				<display_value name="dDuration" value="300"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveCoolDuration" operation="add" value="303"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveCoolDuration" operation="set" value="903">
+					<requirement name="CVarCompare" cvar="$buffDementiveCoolDuration" operation="GT" value="903"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveCool"/>
+				<display_value name="dSmellUse" value="25"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveMushroomPie">
+			<property name="Extends" value="foodBlueberryPie"/>
+			<property name="CustomIcon" value="DementiveMushroomPie"/>
+			<property name="DescriptionKey" value="DementiveMushroomPieDesc"/>
+			<property name="DisplayType" value="food"/>
+			<property name="EconomicValue" value="124"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<property class="Action0">
+				<property name="SmellUse" value="25"/>
+			</property>
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="45"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="22"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="22">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="20"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="20">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+				<display_value name="dSmellUse" value="25"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveMeatPie">
+			<property name="Extends" value="foodShepardsPie"/>
+			<property name="CustomIcon" value="DementiveMeatPie"/>
+			<property name="DescriptionKey" value="DementiveMeatPieDesc"/>
+			<property name="DisplayType" value="dementiveFoodFilling"/>
+			<property name="EconomicValue" value="250"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<property class="Action0">
+				<property name="SmellUse" value="50"/>
+			</property>
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="104"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="52"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="52">
 					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="40"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="40">
 					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-				<display_value name="dStaminaRegen" value=".2"/>
-				<display_value name="dHypothermalResist" value="5"/>
-				<display_value name="dDuration" value="180"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffCoffeeDuration" operation="add" value="183"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffCoffeeDuration" operation="set" value="543">
-					<requirement name="CVarCompare" cvar="$buffCoffeeDuration" operation="GT" value="543"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffCoffee"/>
+				<display_value name="dEfficientDigestion" value=".15"/>
+				<display_value name="dDuration" value="360"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveFillingDuration" operation="add" value="363"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveFillingDuration" operation="set" value="1083">
+					<requirement name="CVarCompare" cvar="$buffDementiveFillingDuration" operation="GT" value="1083"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveFilling"/>
+				<display_value name="dSmellUse" value="50"/>
 			</effect_group>
 		</item>
+
+		<item name="DementiveBlueberryJam">
+			<property name="CustomIcon" value="DementiveBlueberryJam"/>
+			<property name="DescriptionKey" value="DementiveBlueberryJamDesc"/>
+			<property name="DisplayType" value="dementiveFoodEnergy"/>
+			<property name="EconomicValue" value="90"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="Tags" value="food,foodSkill,fitness,farmerFoodBonus"/>
+			<property name="HoldType" value="3"/>
+			<property name="Meshfile" value="@:Other/Items/Food/masonJarHoneyTeaPrefab.prefab"/>
+			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="Mglass"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<property name="Group" value="Food/Cooking,CFFood/Cooking"/>
+			<property class="Action0">
+				<property name="Class" value="Eat"/>
+				<property name="Delay" value="1.0"/>
+				<property name="Sound_start" value="player_eating"/>
+				<property name="SmellUse" value="0"/>
+			</property>
+			<effect_group tiered="false" name="Food">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="15"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="5"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="5">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".foodStaminaBonusAdd" operation="add" value="15"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodStaminaFarmer" operation="set" value="15">
+					<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
+				<display_value name="dStaminaRegen" value=".15"/>
+				<display_value name="dDuration" value="180"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveEnergyDuration" operation="add" value="183"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveEnergyDuration" operation="set" value="543">
+					<requirement name="CVarCompare" cvar="$buffDementiveEnergyDuration" operation="GT" value="543"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveEnergy"/>
+				<display_value name="dSmellUse" value="0"/>
+			</effect_group>
+		</item>
+
+		<!-- Drinks -->
+
+		<item name="DementivePineTea">
+			<property name="Extends" value="drinkJarRedTea"/>
+			<property name="CustomIcon" value="DementivePineTea"/>
+			<property name="DescriptionKey" value="DementivePineTeaDesc"/>
+			<property name="DisplayType" value="dementiveDrinkHot"/>
+			<property name="EconomicValue" value="52"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<effect_group tiered="false" name="Drink">
+				<requirement name="!HasBuff" buff="buffIsOnFire"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="24"/>
+				<display_value name="dHypothermalResist" value="10"/>
+				<display_value name="dDuration" value="300"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="add" value="303"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="set" value="903">
+					<requirement name="CVarCompare" cvar="$buffDementiveHotDuration" operation="GT" value="903"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveHot"/>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="HasBuff" buff="buffIsOnFire"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffExtinguishFire"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveAcornCoffee">
+			<property name="Extends" value="drinkJarCoffee"/>
+			<property name="CustomIcon" value="DementiveAcornCoffee"/>
+			<property name="DescriptionKey" value="DementiveAcornCoffeeDesc"/>
+			<property name="DisplayType" value="dementiveDrinkEnergy"/>
+			<property name="EconomicValue" value="60"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<effect_group tiered="false" name="Drink">
+				<requirement name="!HasBuff" buff="buffIsOnFire"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="24"/>
+				<display_value name="dStaminaRegen" value=".15"/>
+				<display_value name="dDuration" value="180"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveEnergyDuration" operation="add" value="183"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveEnergyDuration" operation="set" value="543">
+					<requirement name="CVarCompare" cvar="$buffDementiveEnergyDuration" operation="GT" value="543"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveEnergy"/>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="HasBuff" buff="buffIsOnFire"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffExtinguishFire"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveBerryTea">
+			<property name="Extends" value="drinkJarRedTea"/>
+			<property name="CustomIcon" value="DementiveBerryTea"/>
+			<property name="DescriptionKey" value="DementiveBerryTeaDesc"/>
+			<property name="DisplayType" value="dementiveDrinkFilling"/>
+			<property name="EconomicValue" value="52"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<effect_group tiered="false" name="Drink">
+				<requirement name="!HasBuff" buff="buffIsOnFire"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="24"/>
+				<display_value name="dEfficientDigestion" value=".15"/>
+				<display_value name="dDuration" value="360"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveFillingDuration" operation="add" value="363"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveFillingDuration" operation="set" value="1083">
+					<requirement name="CVarCompare" cvar="$buffDementiveFillingDuration" operation="GT" value="1083"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveFilling"/>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="HasBuff" buff="buffIsOnFire"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffExtinguishFire"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveAloeJuice">
+			<property name="Extends" value="drinkJarYuccaJuice"/>
+			<property name="CustomIcon" value="DementiveAloeJuice"/>
+			<property name="DescriptionKey" value="DementiveAloeJuiceDesc"/>
+			<property name="DisplayType" value="dementiveDrinkCool"/>
+			<property name="EconomicValue" value="60"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<effect_group tiered="false" name="Drink">
+				<requirement name="!HasBuff" buff="buffIsOnFire"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="30"/>
+				<display_value name="dHyperthermalResist" value="10"/>
+				<display_value name="dDuration" value="300"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveCoolDuration" operation="add" value="303"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveCoolDuration" operation="set" value="903">
+					<requirement name="CVarCompare" cvar="$buffDementiveCoolDuration" operation="GT" value="903"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveCool"/>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="HasBuff" buff="buffIsOnFire"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffExtinguishFire"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveBlueberrySoda">
+			<property name="Extends" value="drinkJarYuccaJuice"/>
+			<property name="CustomIcon" value="DementiveBlueberrySoda"/>
+			<property name="DescriptionKey" value="DementiveBlueberrySodaDesc"/>
+			<property name="DisplayType" value="dementiveDrinkEnergy"/>
+			<property name="EconomicValue" value="100"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<effect_group tiered="false" name="Drink">
+				<requirement name="!HasBuff" buff="buffIsOnFire"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="34"/>
+				<display_value name="dStaminaRegen" value=".15"/>
+				<display_value name="dDuration" value="180"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveEnergyDuration" operation="add" value="183"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveEnergyDuration" operation="set" value="543">
+					<requirement name="CVarCompare" cvar="$buffDementiveEnergyDuration" operation="GT" value="543"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveEnergy"/>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="HasBuff" buff="buffIsOnFire"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffExtinguishFire"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveSnowberryGin">
+			<property name="Extends" value="drinkJarBeer"/>
+			<property name="CustomIcon" value="DementiveSnowberryGin"/>
+			<property name="DescriptionKey" value="DementiveSnowberryGinDesc"/>
+			<property name="DisplayType" value="dementiveDrinkHot"/>
+			<property name="EconomicValue" value="100"/>
+			<property name="UnlockedBy" value="craftingFood"/>
+			<effect_group tiered="false" name="Drink">
+				<requirement name="!HasBuff" buff="buffIsOnFire"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="15"/>
+				<display_value name="dHypothermalResist" value="10"/>
+				<display_value name="dDuration" value="300"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="add" value="303"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="set" value="903">
+					<requirement name="CVarCompare" cvar="$buffDementiveHotDuration" operation="GT" value="903"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveHot,buffDementiveGinSway"/>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="HasBuff" buff="buffIsOnFire"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffExtinguishFire"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivePumpkinAle">
+			<property name="Extends" value="drinkJarBeer"/>
+			<property name="CustomIcon" value="DementivePumpkinAle"/>
+			<property name="DescriptionKey" value="DementivePumpkinAleDesc"/>
+			<property name="DisplayType" value="waterBeer"/>
+			<property name="EconomicValue" value="110"/>
+			<effect_group tiered="false" name="Drink">
+				<requirement name="!HasBuff" buff="buffIsOnFire"/>
+				<display_value name="dStaminaRegen" value=".4"/>
+				<display_value name="dEntityDamageBrawling" value="3"/>
+				<display_value name="dStunResist" value="1"/>
+				<display_value name="dDuration" value="60"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffBeerDuration" operation="add" value="63"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffBeerDuration" operation="set" value="183">
+					<requirement name="CVarCompare" cvar="$buffBeerDuration" operation="GT" value="183"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffBeer"/>
+			</effect_group>
+			<effect_group tiered="false">
+				<requirement name="HasBuff" buff="buffIsOnFire"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffExtinguishFire"/>
+			</effect_group>
+		</item>
+
+		<!-- Chems -->
+
+		<item name="DementiveLongHaul">
+			<property name="Extends" value="drugRecog"/>
+			<property name="CustomIcon" value="DementiveLongHaul"/>
+			<property name="DescriptionKey" value="DementiveLongHaulDesc"/>
+			<property name="DisplayType" value="dementiveChem"/>
+			<property name="EconomicValue" value="200"/>
+			<property name="UnlockedBy" value="craftingMedical"/>
+			<effect_group tiered="false" name="Dose">
+				<requirement name="!HasBuff" buff="buffDementiveCrash"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDementiveLongHaul"/>
+			</effect_group>
+			<effect_group tiered="false" name="Overdose">
+				<requirement name="HasBuff" buff="buffDementiveCrash"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDementiveOverdose"/>
+			</effect_group>
+			<effect_group tiered="false" name="Display">
+				<display_value name="dDuration" value="60"/>
+			</effect_group>
+		</item>
+
+		<item name="DementivePossumPills">
+			<property name="Extends" value="drugRecog"/>
+			<property name="CustomIcon" value="DementivePossumPills"/>
+			<property name="DescriptionKey" value="DementivePossumPillsDesc"/>
+			<property name="DisplayType" value="dementiveChem"/>
+			<property name="EconomicValue" value="300"/>
+			<property name="UnlockedBy" value="craftingMedical"/>
+			<effect_group tiered="false" name="Dose">
+				<requirement name="!HasBuff" buff="buffDementiveCrash"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDementivePossum"/>
+			</effect_group>
+			<effect_group tiered="false" name="Overdose">
+				<requirement name="HasBuff" buff="buffDementiveCrash"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDementiveOverdose"/>
+			</effect_group>
+			<effect_group tiered="false" name="Display">
+				<display_value name="dDuration" value="8"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveOnMyTab">
+			<property name="Extends" value="drugFortBites"/>
+			<property name="CustomIcon" value="DementiveOnMyTab"/>
+			<property name="DescriptionKey" value="DementiveOnMyTabDesc"/>
+			<property name="DisplayType" value="dementiveChem"/>
+			<property name="EconomicValue" value="400"/>
+			<property name="UnlockedBy" value="craftingMedical"/>
+			<effect_group tiered="false" name="Dose">
+				<requirement name="!HasBuff" buff="buffDementiveCrash"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDementiveOnMyTab"/>
+			</effect_group>
+			<effect_group tiered="false" name="Overdose">
+				<requirement name="HasBuff" buff="buffDementiveCrash"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDementiveOverdose"/>
+			</effect_group>
+			<effect_group tiered="false" name="Display">
+				<display_value name="dDuration" value="15"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveNickOfTime">
+			<property name="Extends" value="drugRecog"/>
+			<property name="CustomIcon" value="DementiveNickOfTime"/>
+			<property name="DescriptionKey" value="DementiveNickOfTimeDesc"/>
+			<property name="DisplayType" value="dementiveChem"/>
+			<property name="EconomicValue" value="500"/>
+			<property name="UnlockedBy" value="craftingMedical"/>
+			<effect_group tiered="false" name="Dose">
+				<requirement name="!HasBuff" buff="buffDementiveCrash"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="DementiveNickOfTime, ConsumablesExpanded"/>
+			</effect_group>
+			<effect_group tiered="false" name="Overdose">
+				<requirement name="HasBuff" buff="buffDementiveCrash"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDementiveOverdose"/>
+			</effect_group>
+			<effect_group tiered="false" name="Display">
+				<display_value name="dDuration" value="8"/>
+			</effect_group>
+		</item>
+
+		<item name="DementiveDeadMansSwitch">
+			<property name="Extends" value="drugSteroids"/>
+			<property name="CustomIcon" value="DementiveDeadMansSwitch"/>
+			<property name="DescriptionKey" value="DementiveDeadMansSwitchDesc"/>
+			<property name="DisplayType" value="dementiveChem"/>
+			<property name="EconomicValue" value="1500"/>
+			<effect_group tiered="false" name="Dose">
+				<requirement name="!HasBuff" buff="buffDementiveCrash"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDementiveDeadMansSwitch"/>
+			</effect_group>
+			<effect_group tiered="false" name="Overdose">
+				<requirement name="HasBuff" buff="buffDementiveCrash"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDementiveOverdose"/>
+			</effect_group>
+			<effect_group tiered="false" name="Display">
+				<display_value name="dDuration" value="1800"/>
+			</effect_group>
+		</item>
+
+		<!-- Mega Crush, Herbal Painkillers and snowberries: copied from kept/ -->
 
 	    <item name="foodCropSnowberry">
 	        <property name="Extends" value="foodCropBlueberries"/>
@@ -241,100 +850,6 @@
 		        <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
 	        </effect_group>
         </item>
-
-		<!-- Drinks -->
-
-		<item name="DementiveAcornCoffee">
-			<property name="Extends" value="drinkJarCoffee"/>
-			<property name="CustomIcon" value="DementiveAcornCoffee"/>
-			<effect_group tiered="false" name="Drink Tier 1">
-				<requirement name="NotHasBuff" buff="buffIsOnFire"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="24"/>
-				<display_value name="dStaminaRegen" value=".2"/>
-				<display_value name="dHypothermalResist" value="5"/>
-				<display_value name="dDuration" value="180"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffCoffeeDuration" operation="add" value="183"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffCoffeeDuration" operation="set" value="543">
-					<requirement name="CVarCompare" cvar="$buffCoffeeDuration" operation="GT" value="543"/></triggered_effect>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffCoffee"/>
-			</effect_group>
-
-			<effect_group tiered="false">
-				<requirement name="HasBuff" buff="buffIsOnFire"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffExtinguishFire"/>
-			</effect_group>
-		</item>
-
-		<item name="DementivePineTea">
-			<property name="Extends" value="drinkJarRedTea"/>
-			<property name="CustomIcon" value="DementivePineTea"/>
-			<effect_group tiered="false" name="Drink Tier 1">
-				<requirement name="NotHasBuff" buff="buffIsOnFire"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="24"/>
-					<display_value name="dStaminaRegen" value=".15"/>
-					<display_value name="dEfficientDigestion" value=".15"/>
-					<display_value name="dDuration" value="360"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffRedTeaDuration" operation="add" value="363"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffRedTeaDuration" operation="set" value="1083">
-						<requirement name="CVarCompare" cvar="$buffRedTeaDuration" operation="GT" value="1083"/></triggered_effect>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffRedTea"/>
-			</effect_group>
-
-			<effect_group tiered="false">
-				<requirement name="HasBuff" buff="buffIsOnFire"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffExtinguishFire"/>
-			</effect_group>
-		</item>
-
-		<item name="DementiveGrapeDrink">
-			<property name="Extends" value="drinkJarPureMineralWater"/>
-			<property name="CustomIcon" value="DementiveGrapeDrink"/>
-			<effect_group tiered="false" name="Drink Tier Found">
-				<requirement name="NotHasBuff" buff="buffIsOnFire"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="60"/>
-					<display_value name="dStaminaRegen" value=".15"/>
-					<display_value name="dEfficientDigestion" value=".15"/>
-					<display_value name="dDuration" value="360"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffRedTeaDuration" operation="add" value="363"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffRedTeaDuration" operation="set" value="1083">
-						<requirement name="CVarCompare" cvar="$buffRedTeaDuration" operation="GT" value="1083"/></triggered_effect>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffRedTea"/>
-
-					<display_value name="dCureDysentery" value=".2"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDysenteryAddCurePerc" operation="add" value="20"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDysenteryAddCure"/>
-			</effect_group>
-
-			<effect_group tiered="false">
-				<requirement name="HasBuff" buff="buffIsOnFire"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffExtinguishFire"/>
-			</effect_group>
-		</item>
-
-		<item name="DementiveGlowingGreenJuice">
-			<property name="Extends" value="drinkJarPureMineralWater"/>
-			<property name="CustomIcon" value="DementiveGlowingGreenJuice"/>
-			<effect_group tiered="false" name="Drink Tier Found">
-				<requirement name="NotHasBuff" buff="buffIsOnFire"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="60"/>
-					<display_value name="dStaminaRegen" value=".15"/>
-					<display_value name="dEfficientDigestion" value=".15"/>
-					<display_value name="dDuration" value="360"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffRedTeaDuration" operation="add" value="363"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffRedTeaDuration" operation="set" value="1083">
-						<requirement name="CVarCompare" cvar="$buffRedTeaDuration" operation="GT" value="1083"/></triggered_effect>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffRedTea"/>
-
-					<display_value name="dCureDysentery" value=".2"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDysenteryAddCurePerc" operation="add" value="20"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDysenteryAddCure"/>
-			</effect_group>
-
-			<effect_group tiered="false">
-				<requirement name="HasBuff" buff="buffIsOnFire"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffExtinguishFire"/>
-			</effect_group>
-		</item>
 
 		<item name="DementiveGrapeMegaCrush">
 			<property name="Tags" value="drinks,foodSkill"/>
@@ -450,148 +965,6 @@
 			</effect_group>
 		</item>
 
-
-		<item name="DementiveBerryTea">
-			<property name="Tags" value="drinks,foodSkill"/>
-			<property name="CustomIcon" value="DementiveBerryTea"/>
-			<property name="HoldType" value="3"/>
-			<property name="DisplayType" value="waterRedTea"/>
-			<property name="Meshfile" value="@:Other/Items/Food/masonJarRedTeaPrefab.prefab"/>
-			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-			<property name="Material" value="Mglass"/>
-			<!-- <property name="Weight" value="10"/> -->
-			<property name="Stacknumber" value="10"/>
-			<property name="EconomicValue" value="52"/>
-			<property name="UnlockedBy" value="craftingFood"/>
-			<property class="Action0">
-				<property name="Class" value="Eat"/>
-				<property name="Delay" value="1.0"/>
-				<property name="Sound_start" value="player_drinking"/>
-			</property>
-			<property name="Group" value="Food/Cooking,CFDrink/Cooking"/>
-
-			<effect_group tiered="false" name="Drink Tier 1">
-				<requirement name="NotHasBuff" buff="buffIsOnFire"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="24"/>
-					<display_value name="dStaminaRegen" value=".15"/>
-					<display_value name="dEfficientDigestion" value=".15"/>
-					<display_value name="dDuration" value="360"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveBerryTeaDuration" operation="add" value="363"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffDementiveBerryTeaDuration" operation="set" value="1083">
-						<requirement name="CVarCompare" cvar="$buffDementiveBerryTeaDuration" operation="GT" value="1083"/></triggered_effect>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffDementiveBerryTea"/>
-			</effect_group>
-
-			<effect_group tiered="false">
-				<requirement name="HasBuff" buff="buffIsOnFire"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffExtinguishFire"/>
-			</effect_group>
-		</item>
-
-		<item name="DementiveBlueberryJam">
-			<property name="Tags" value="drinks,foodSkill,farmerFoodBonus"/>
-			<property name="CustomIcon" value="DementiveBlueberryJam"/>
-			<property name="HoldType" value="3"/>
-			<property name="DisplayType" value="drinkYuccaSmoothie"/>
-			<property name="Meshfile" value="@:Other/Items/Food/masonJarHoneyTeaPrefab.prefab"/>
-			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-			<property name="Material" value="Mglass"/>
-			<property name="Stacknumber" value="10"/>
-			<property name="EconomicValue" value="200"/>
-			<property name="UnlockedBy" value="craftingFood"/>
-			<property class="Action0">
-				<property name="Class" value="Eat"/>
-				<property name="Delay" value="1.0"/>
-				<property name="Sound_start" value="player_drinking"/>
-				<!-- <property name="Create_item" value="drinkJarEmpty"/> -->
-			</property>
-			<property name="Group" value="Food/Cooking,CFDrink/Cooking"/>
-			<effect_group tiered="false" name="Drink Tier 3">
-				<requirement name="NotHasBuff" buff="buffIsOnFire"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="25"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthAmount" operation="add" value="15"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="foodHealthFarmer" operation="set" value="15">
-						<requirement name="HasBuff" buff="buffFarmerSetBonus"/></triggered_effect>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="90"/>
-					<display_value name="dStaminaRegen" value=".15"/>
-					<display_value name="dHypothermalResist" value="30"/>
-					<display_value name="dDuration" value="360"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffYuccaJuiceSmoothieDuration" operation="add" value="363"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffYuccaJuiceSmoothieDuration" operation="set" value="2703">
-					<requirement name="CVarCompare" cvar="$buffYuccaJuiceSmoothieDuration" operation="GT" value="2703"/></triggered_effect>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables,buffYuccaJuiceSmoothie"/>
-			</effect_group>
-
-			<effect_group tiered="false">
-				<requirement name="HasBuff" buff="buffIsOnFire"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffExtinguishFire"/>
-			</effect_group>
-		</item>
-
-		<item name="DementiveBlueberrySoda">
-			<property name="Tags" value="drinks,foodSkill"/>
-			<property name="CustomIcon" value="DementiveBlueberrySoda"/>
-			<property name="HoldType" value="3"/>
-			<property name="DisplayType" value="water"/>
-			<property name="Meshfile" value="@:Other/Items/Food/masonJarYuccaJuicePrefab.prefab"/>
-			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-			<property name="Material" value="Mglass"/>
-			<property name="Stacknumber" value="10"/> <!-- STK drink -->
-			<!-- <property name="Weight" value="10"/> -->
-			<property name="EconomicValue" value="100"/>
-			<property name="UnlockedBy" value="craftingFood"/>
-			<property class="Action0">
-				<property name="Class" value="Eat"/>
-				<property name="Delay" value="1.0"/>
-				<property name="Sound_start" value="player_drinking"/>
-				<!-- <property name="Create_item" value="drinkJarEmpty"/> -->
-			</property>
-			<property name="Group" value="Food/Cooking,CFDrink/Cooking"/>
-			<effect_group tiered="false" name="Drink Tier 0/1">
-				<requirement name="NotHasBuff" buff="buffIsOnFire"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="34"/>
-					<display_value name="dStaminaRegen" value=".15"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-			</effect_group>
-
-			<effect_group tiered="false">
-				<requirement name="HasBuff" buff="buffIsOnFire"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffExtinguishFire"/>
-			</effect_group>
-		</item>
-
-		<item name="DementiveSnowberryGin">
-			<property name="Tags" value="drinks,foodSkill"/>
-			<property name="CustomIcon" value="DementiveSnowberryGin"/>
-			<property name="HoldType" value="3"/>
-			<property name="DisplayType" value="water"/>
-			<property name="Meshfile" value="@:Other/Items/Food/masonJarBeerPrefab.prefab"/>
-			<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
-			<property name="Material" value="Mglass"/>
-			<property name="Stacknumber" value="10"/> <!-- STK drink -->
-			<property name="EconomicValue" value="100"/>
-			<property name="UnlockedBy" value="craftingFood"/>
-			<property class="Action0">
-				<property name="Class" value="Eat"/>
-				<property name="Delay" value="1.0"/>
-				<property name="Sound_start" value="player_drinking"/>
-			</property>
-			<property name="Group" value="Food/Cooking,CFDrink/Cooking"/>
-			<effect_group tiered="false" name="Drink Tier 0/1">
-				<requirement name="NotHasBuff" buff="buffIsOnFire"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$waterAmountAdd" operation="add" value="45"/>
-					<display_value name="dStaminaRegen" value=".15"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
-			</effect_group>
-
-			<effect_group tiered="false">
-				<requirement name="HasBuff" buff="buffIsOnFire"/>
-					<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffExtinguishFire"/>
-			</effect_group>
-		</item>
-
-		<!-- Drugs -->
-
 		<item name="drugHerbalPainkillers">
 	        <property name="Tags" value="medical,medicalSkill"/>
 	        <property name="DisplayType" value="medicalPainkillers"/>
@@ -625,20 +998,7 @@
 		        <triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffDrugHerbalPainkillers"/>
 	        </effect_group>
 	    </item>
-
 	</append>
-
-	<append xpath="/items/item[@name='drugAtomJunkies']"> <property name="CustomIcon" value="DementiveAtomJunkies"/> </append>
-	<append xpath="/items/item[@name='drugCovertCats']"> <property name="CustomIcon" value="DementiveCovertCats"/> </append>
-	<append xpath="/items/item[@name='drugEyeKandy']"> <property name="CustomIcon" value="DementiveEyeKandy"/> </append>
-	<append xpath="/items/item[@name='drugHackers']"> <property name="CustomIcon" value="DementiveHackers"/> </append>
-	<append xpath="/items/item[@name='drugHealthBar']"> <property name="CustomIcon" value="DementiveHealthBar"/> </append>
-	<append xpath="/items/item[@name='drugJailBreakers']"> <property name="CustomIcon" value="drugJailBreakers"/> </append>
-	<append xpath="/items/item[@name='drugNerdTats']"> <property name="CustomIcon" value="DementiveNerdTats"/> </append>
-	<append xpath="/items/item[@name='drugOhShitzDrops']"> <property name="CustomIcon" value="DementiveOhShitzDrops"/> </append>
-	<append xpath="/items/item[@name='drugRockBusters']"> <property name="CustomIcon" value="DementiveRockBusters"/> </append>
-	<append xpath="/items/item[@name='drugSkullCrushers']"> <property name="CustomIcon" value="DementiveSkullCrushers"/> </append>
-	<append xpath="/items/item[@name='drugSugarButts']"> <property name="CustomIcon" value="DementiveSugarButts"/> </append>
 
 	<!-- Apple Mega Crush: the search time cut of the vanilla helmets that have one (their tiered values), so the
 	     candy's cut is a share of what's left (buffs.xml). Pieces of Armor Expanded set the same cvar the same way -->

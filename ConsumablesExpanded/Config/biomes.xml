@@ -1,0 +1,12 @@
+<Dementive>
+
+	<!-- Vanilla scatters wild snowberries like grass (up to 1 block in 10 in one snow sub-biome). As harvestable berry
+	     bushes (blocks.xml) that is far too many, so every spawn rate is cut to a twentieth: the densest spot now matches
+	     the wild blueberries beside it. Only affects chunks generated after the change.
+	     Smallest first, so a rate already cut (.02 to .001) isn't matched and cut again. -->
+	<set xpath="//decoration[@blockname='plantedSnowberry3Harvest' and @prob='.001']/@prob">.00005</set>
+	<set xpath="//decoration[@blockname='plantedSnowberry3Harvest' and @prob='.002']/@prob">.0001</set>
+	<set xpath="//decoration[@blockname='plantedSnowberry3Harvest' and @prob='.02']/@prob">.001</set>
+	<set xpath="//decoration[@blockname='plantedSnowberry3Harvest' and @prob='.1']/@prob">.005</set>
+
+</Dementive>

@@ -7,7 +7,7 @@
 //     (paint jobs, decals, glows). Each op is "name:arg,arg,key=value,..." (see the Op* methods below):
 //       map:#dark,#mid,#light[,strength][,zone=...]   gradient map by brightness (gold, chrome, leather, ...)
 //       pattern:<type>,c1=#..,c2=#..,c3=#..,op=1,scale=24,seed=1,angle=45,zone=...,bloom=0,shade=1
-//         types: stripes, hazard, flames, camo, plaid, cracks, splatter, speckle, circuit, woodgrain
+//         types: stripes, hazard, flames, camo, plaid, cracks, splatter, speckle, circuit, woodgrain, dimples
 //       glow:#color,radius,strength[,noise=scale]       outer glow behind the item
 //       rim:#color,width,strength                        light along the inside of the silhouette
 //       emissive:#color,threshold,strength[,zone=...]    bright parts glow (with bloom)
@@ -17,17 +17,33 @@
 //       trail:#color,angle,count,spacing,strength        fading afterimages behind an item moving toward "angle"
 //       adjust:sat=1,bright=1,contrast=1
 //       bloom:radius,strength                            how far emissive light spreads (default 4,1)
+//     Ops for building a new item out of vanilla art (a food icon from parts of others):
+//       hue:from,to,shift[,sat=1,val=1,min=.1]           turns colors with hue from..to by shift degrees, keeping shading
+//       over:icon,x,y,width[,height=,rot=0,op=1,src=x0/y0/x1/y1,flip=1]
+//                                                        lays another icon on top, x,y = its top left corner; icon is
+//                                                        a path or a name next to the input icon; src crops it first
+//       erase                                            deletes the selected part of the item (give it a selection)
+//       place:cx,cy,scale[,sx=1,sy=1,rot=0]              moves the item's center to cx,cy, scales and turns it
+//       fill:#color[,grain=.03,shade=0]                  paints the selection flat, keeping shade parts of its shading
+//       text:words,cx,cy,size,#color[,font=Georgia,bold=1,italic=1,rot=0]   prints on the item (no commas in the words)
+//       blur:radius                                      smooths the selection, melting chunks into a surface
 //     zone=angle/start/end limits an op to part of the item: positions along the direction "angle" (degrees, 0 =
 //     right, 90 = up) are scaled 0..1 across the item, and the op fades in from start to end. A negative start
 //     flips it, so zone=45/-0.6/0.7 covers everything up to 0.6 and fades out by 0.7. Five values make a band:
 //     zone=45/0.4/0.45/0.6/0.65 fades in from 0.4 to 0.45 and out from 0.6 to 0.65.
+//     These also limit an op to part of the icon, in pixels, and can be combined with zone and each other:
+//       box=x0/y0/x1/y1, ell=cx/cy/rx/ry, poly=x/y/x/y/... (soft=1.5 feathers their edges)
+//       hsel=from/to[/minsat/maxsat] by hue, lsel=min/max by brightness, invert=1 flips the selection
 //   IconTool.exe sheet <out.png> <in1.png> <in2.png> ...
 //     Lays icons side by side for review.
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Drawing.Text;
 using System.Globalization;
+using System.IO;
 using System.Runtime.InteropServices;
 
 class IconTool
@@ -104,9 +120,11 @@ class Fx
     float bloomRadius = 4, bloomStrength = 1;
     // Item bounds, for zones and patterns
     int minX, minY, maxX, maxY;
+    readonly string iconDir;
 
     public Fx(string path)
     {
+        iconDir = Path.GetDirectoryName(Path.GetFullPath(path));
         using (var src = new Bitmap(path))
         {
             W = src.Width; H = src.Height;
@@ -161,6 +179,13 @@ class Fx
                 case "embers": OpEmbers(a); break;
                 case "trail": OpTrail(a); break;
                 case "adjust": OpAdjust(a); break;
+                case "hue": OpHue(a); break;
+                case "over": OpOver(a); break;
+                case "erase": OpErase(a); break;
+                case "place": OpPlace(a); break;
+                case "fill": OpFill(a); break;
+                case "text": OpText(a); break;
+                case "blur": OpBlur(a); break;
                 case "bloom": bloomRadius = a.F(0, 4); bloomStrength = a.F(1, 1); break;
                 default: throw new Exception("unknown op " + name);
             }
@@ -311,6 +336,14 @@ class Fx
                     m = 1;
                     break;
                 }
+                case "dimples":
+                {
+                    // Rows of small pressed holes, like the dock marks in a cracker
+                    float fx = Frac(u / scale) - 0.5f, fy = Frac(v / scale) - 0.5f;
+                    float r = a.NF("size", 0.14f);
+                    m = 1 - Smooth(r * 0.6f, r, (float)Math.Sqrt(fx * fx + fy * fy));
+                    break;
+                }
                 default: throw new Exception("unknown pattern " + type);
             }
             float w = m * opacity * zw;
@@ -429,7 +462,7 @@ class Fx
             float px = minX - pad + (float)rng.NextDouble() * (maxX - minX + 2 * pad);
             float py = minY - pad + (float)rng.NextDouble() * (maxY - minY + 2 * pad);
             int pi = Math.Min(H - 1, Math.Max(0, (int)py)) * W + Math.Min(W - 1, Math.Max(0, (int)px));
-            if (a.Has("zone") && Zone(a, pi) <= 0.05f) continue;
+            if ((a.Has("zone") || a.Has("box") || a.Has("ell") || a.Has("poly")) && Zone(a, pi) <= 0.05f) continue;
             k++;
             float r = size * (0.5f + (float)rng.NextDouble());
             float bright = 0.6f + 0.6f * (float)rng.NextDouble();
@@ -480,6 +513,155 @@ class Fx
             float r = l + (R[i] - l) * sat, g = l + (G[i] - l) * sat, b = l + (B[i] - l) * sat;
             r = (r - 0.5f) * contrast + 0.5f; g = (g - 0.5f) * contrast + 0.5f; b = (b - 0.5f) * contrast + 0.5f;
             R[i] = Clamp01(r * bright); G[i] = Clamp01(g * bright); B[i] = Clamp01(b * bright);
+        }
+    }
+
+    void OpHue(Args a)
+    {
+        float from = a.F(0, 0), to = a.F(1, 360), shift = a.F(2, 0);
+        float sat = a.NF("sat", 1), val = a.NF("val", 1), min = a.NF("min", 0.1f);
+        for (int i = 0; i < R.Length; i++)
+        {
+            if (Mask[i] <= 0) continue;
+            ToHsv(R[i], G[i], B[i], out float h, out float s, out float v);
+            if (s <= min || !InHue(h, from, to)) continue;
+            float w = Zone(a, i);
+            if (w <= 0) continue;
+            Mix(i, FromHsv(h + shift, Clamp01(s * sat), Clamp01(v * val)), w);
+        }
+    }
+
+    void OpOver(Args a)
+    {
+        string name = a.S(0, "");
+        string path = File.Exists(name) ? name : Path.Combine(iconDir, name + ".png");
+        float x = a.F(1, 0), y = a.F(2, 0), w = a.F(3, W), rot = a.NF("rot", 0), op = a.NF("op", 1);
+        using (var src = new Bitmap(path))
+        {
+            var box = new RectangleF(0, 0, src.Width, src.Height);
+            if (a.Has("src"))
+            {
+                var c = a.Named["src"].Split('/');
+                box = RectangleF.FromLTRB(P(c[0]), P(c[1]), P(c[2]), P(c[3]));
+            }
+            float h = a.NF("height", w * box.Height / box.Width);
+            using (var layer = new Bitmap(W, H, PixelFormat.Format32bppArgb))
+            {
+                using (var g = Graphics.FromImage(layer))
+                {
+                    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    g.PixelOffsetMode = PixelOffsetMode.Half;
+                    g.TranslateTransform(x + w / 2, y + h / 2);
+                    g.RotateTransform(rot);
+                    if (a.Has("flip")) g.ScaleTransform(-1, 1);
+                    g.DrawImage(src, new RectangleF(-w / 2, -h / 2, w, h), box, GraphicsUnit.Pixel);
+                }
+                var bytes = Pixels(layer);
+                for (int i = 0; i < R.Length; i++)
+                {
+                    float ta = bytes[i * 4 + 3] / 255f * op * Zone(a, i, true);
+                    if (ta <= 0) continue;
+                    float oa = ta + A[i] * (1 - ta);
+                    float k = ta / oa;
+                    R[i] += (bytes[i * 4 + 2] / 255f - R[i]) * k;
+                    G[i] += (bytes[i * 4 + 1] / 255f - G[i]) * k;
+                    B[i] += (bytes[i * 4] / 255f - B[i]) * k;
+                    A[i] = Mask[i] = oa;
+                }
+            }
+        }
+        Bounds();
+    }
+
+    void OpErase(Args a)
+    {
+        for (int i = 0; i < R.Length; i++)
+        {
+            if (Mask[i] <= 0) continue;
+            A[i] *= 1 - Zone(a, i);
+            Mask[i] = A[i];
+        }
+        Bounds();
+    }
+
+    void OpPlace(Args a)
+    {
+        float cx = a.F(0, W / 2f), cy = a.F(1, H / 2f), scale = a.F(2, 1);
+        float sx = scale * a.NF("sx", 1), sy = scale * a.NF("sy", 1);
+        float rot = a.NF("rot", 0) * (float)Math.PI / 180, ca = (float)Math.Cos(rot), sa = (float)Math.Sin(rot);
+        float ox = (minX + maxX) / 2f, oy = (minY + maxY) / 2f;
+        int n = W * H;
+        var nr = new float[n]; var ng = new float[n]; var nb = new float[n]; var na = new float[n];
+        for (int y = 0; y < H; y++)
+        for (int x = 0; x < W; x++)
+        {
+            float dx = x - cx, dy = y - cy;
+            float px = (dx * ca + dy * sa) / sx + ox, py = (-dx * sa + dy * ca) / sy + oy;
+            int x0 = (int)Math.Floor(px), y0 = (int)Math.Floor(py);
+            float fx = px - x0, fy = py - y0, sum = 0, tr = 0, tg = 0, tb = 0;
+            for (int j = 0; j < 2; j++)
+            for (int k = 0; k < 2; k++)
+            {
+                int qx = x0 + k, qy = y0 + j;
+                if (qx < 0 || qy < 0 || qx >= W || qy >= H) continue;
+                int q = qy * W + qx;
+                float wt = (k == 0 ? 1 - fx : fx) * (j == 0 ? 1 - fy : fy) * A[q];
+                sum += wt; tr += R[q] * wt; tg += G[q] * wt; tb += B[q] * wt;
+            }
+            if (sum <= 0) continue;
+            int i = y * W + x;
+            nr[i] = tr / sum; ng[i] = tg / sum; nb[i] = tb / sum; na[i] = sum;
+        }
+        Array.Copy(nr, R, n); Array.Copy(ng, G, n); Array.Copy(nb, B, n); Array.Copy(na, A, n); Array.Copy(na, Mask, n);
+        Bounds();
+    }
+
+    void OpFill(Args a)
+    {
+        var c = a.C(0);
+        float grain = a.NF("grain", 0.03f), shade = a.NF("shade", 0);
+        for (int i = 0; i < R.Length; i++)
+        {
+            if (Mask[i] <= 0) continue;
+            float w = Zone(a, i);
+            if (w <= 0) continue;
+            float k = 1 + (Lum(i) - 0.5f) * shade + (Hash(i % W, i / W, 7) - 0.5f) * 2 * grain;
+            Mix(i, new[] { c[0] * k, c[1] * k, c[2] * k }, w);
+        }
+    }
+
+    void OpText(Args a)
+    {
+        var c = a.C(4);
+        var style = (a.NF("bold", 0) > 0 ? FontStyle.Bold : FontStyle.Regular) | (a.NF("italic", 0) > 0 ? FontStyle.Italic : FontStyle.Regular);
+        using (var layer = new Bitmap(W, H, PixelFormat.Format32bppArgb))
+        {
+            using (var g = Graphics.FromImage(layer))
+            using (var font = new Font(a.Named.ContainsKey("font") ? a.Named["font"] : "Georgia", a.F(3, 12), style, GraphicsUnit.Pixel))
+            using (var format = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
+            {
+                g.TextRenderingHint = TextRenderingHint.AntiAlias;
+                g.TranslateTransform(a.F(1, W / 2f), a.F(2, H / 2f));
+                g.RotateTransform(a.NF("rot", 0));
+                g.DrawString(a.S(0, ""), font, Brushes.White, 0, 0, format);
+            }
+            var bytes = Pixels(layer);
+            for (int i = 0; i < R.Length; i++)
+                if (Mask[i] > 0) Mix(i, c, bytes[i * 4 + 3] / 255f * Zone(a, i));
+        }
+    }
+
+    void OpBlur(Args a)
+    {
+        float radius = a.F(0, 3);
+        var br = Blur((float[])R.Clone(), radius);
+        var bg = Blur((float[])G.Clone(), radius);
+        var bb = Blur((float[])B.Clone(), radius);
+        for (int i = 0; i < R.Length; i++)
+        {
+            if (Mask[i] <= 0) continue;
+            float w = Zone(a, i);
+            if (w > 0) Mix(i, new[] { br[i], bg[i], bb[i] }, w);
         }
     }
 
@@ -546,7 +728,45 @@ class Fx
         return (p - p0) / Math.Max(1, p1 - p0);
     }
 
-    float Zone(Args a, int i)
+    // How much of an op applies to a pixel: zone=, the pixel selections and the color selections, all multiplied.
+    // skipColor leaves out the color selections, which read this item's pixels and mean nothing for a layer laid over it
+    float Zone(Args a, int i, bool skipColor = false)
+    {
+        float w = Along(a, i);
+        int x = i % W, y = i / W;
+        float soft = a.NF("soft", 1.5f);
+        if (a.Has("box"))
+        {
+            var b = a.Named["box"].Split('/');
+            w *= Smooth(0, soft, Math.Min(Math.Min(x - P(b[0]), P(b[2]) - x), Math.Min(y - P(b[1]), P(b[3]) - y)));
+        }
+        if (a.Has("ell"))
+        {
+            var e = a.Named["ell"].Split('/');
+            float rx = P(e[2]), ry = P(e[3]);
+            float d = (1 - Dist((x - P(e[0])) / rx, (y - P(e[1])) / ry, 0, 0)) * Math.Min(rx, ry);
+            w *= Smooth(0, soft, d);
+        }
+        if (a.Has("poly")) w *= Smooth(0, soft, InsidePoly(a.Named["poly"], x, y));
+        if (!skipColor)
+        {
+            if (a.Has("hsel"))
+            {
+                var hs = a.Named["hsel"].Split('/');
+                ToHsv(R[i], G[i], B[i], out float h, out float s, out float v);
+                if (!InHue(h, P(hs[0]), P(hs[1])) || s < (hs.Length > 2 ? P(hs[2]) : 0.1f) || s > (hs.Length > 3 ? P(hs[3]) : 1)) w = 0;
+            }
+            if (a.Has("lsel"))
+            {
+                var ls = a.Named["lsel"].Split('/');
+                float l = Lum(i);
+                if (l < P(ls[0]) || l > P(ls[1])) w = 0;
+            }
+        }
+        return a.Has("invert") ? 1 - w : w;
+    }
+
+    float Along(Args a, int i)
     {
         if (!a.Has("zone")) return 1;
         var z = a.Named["zone"].Split('/');
@@ -555,6 +775,66 @@ class Fx
         if (z.Length == 5) return Smooth(start, end, t) * (1 - Smooth(P(z[3]), P(z[4]), t));
         if (start < 0) return 1 - Smooth(-start, end, t);
         return Smooth(start, end, t);
+    }
+
+    // Distance of a point inside a polygon from its nearest edge, negative outside
+    static float InsidePoly(string poly, float x, float y)
+    {
+        var v = poly.Split('/');
+        int n = v.Length / 2;
+        bool inside = false;
+        float best = float.MaxValue;
+        for (int i = 0, j = n - 1; i < n; j = i++)
+        {
+            float xi = P(v[i * 2]), yi = P(v[i * 2 + 1]), xj = P(v[j * 2]), yj = P(v[j * 2 + 1]);
+            if ((yi > y) != (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside;
+            float ex = xj - xi, ey = yj - yi;
+            float t = Clamp01(((x - xi) * ex + (y - yi) * ey) / Math.Max(0.0001f, ex * ex + ey * ey));
+            best = Math.Min(best, Dist(x, y, xi + ex * t, yi + ey * t));
+        }
+        return inside ? best : -best;
+    }
+
+    void Bounds()
+    {
+        minX = W; minY = H; maxX = 0; maxY = 0;
+        for (int i = 0; i < A.Length; i++)
+            if (A[i] > 0.1f)
+            {
+                int x = i % W, y = i / W;
+                minX = Math.Min(minX, x); maxX = Math.Max(maxX, x); minY = Math.Min(minY, y); maxY = Math.Max(maxY, y);
+            }
+    }
+
+    byte[] Pixels(Bitmap bmp)
+    {
+        var data = bmp.LockBits(new Rectangle(0, 0, W, H), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+        var bytes = new byte[W * H * 4];
+        Marshal.Copy(data.Scan0, bytes, 0, bytes.Length);
+        bmp.UnlockBits(data);
+        return bytes;
+    }
+
+    static bool InHue(float h, float from, float to) => from <= to ? h >= from && h <= to : h >= from || h <= to;
+
+    static void ToHsv(float r, float g, float b, out float h, out float s, out float v)
+    {
+        float max = Math.Max(r, Math.Max(g, b)), min = Math.Min(r, Math.Min(g, b)), d = max - min;
+        v = max; s = max > 0 ? d / max : 0; h = 0;
+        if (d <= 0) return;
+        if (max == r) h = 60 * (((g - b) / d) % 6);
+        else if (max == g) h = 60 * ((b - r) / d + 2);
+        else h = 60 * ((r - g) / d + 4);
+        if (h < 0) h += 360;
+    }
+
+    static float[] FromHsv(float h, float s, float v)
+    {
+        h = (h % 360 + 360) % 360;
+        float c = v * s, x = c * (1 - Math.Abs(h / 60 % 2 - 1)), m = v - c;
+        float[] rgb = h < 60 ? new[] { c, x, 0f } : h < 120 ? new[] { x, c, 0f } : h < 180 ? new[] { 0f, c, x }
+            : h < 240 ? new[] { 0f, x, c } : h < 300 ? new[] { x, 0f, c } : new[] { c, 0f, x };
+        return new[] { rgb[0] + m, rgb[1] + m, rgb[2] + m };
     }
 
     float[] Blur(float[] src, float radius)

@@ -1,31 +1,242 @@
 <Dementive>
-
 	<append xpath="/buffs">
-		<buff name="buffDementiveBerryTea" name_key="buffDementiveBerryTea" description_key="buffDementiveBerryTeaDesc" icon="ui_game_symbol_stomach">
+		<buff name="buffDementiveHot" name_key="buffDementiveHot" description_key="buffDementiveHotDesc" icon="ui_game_symbol_campfire">
 			<stack_type value="replace"/>
 			<duration value="0"/>
-			<display_value value=".buffDementiveBerryTeaDisplay"/>
+			<display_value value=".buffDementiveHotDisplay"/>
 			<display_value_format value="time"/>
 
 			<effect_group>
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$buffDementiveBerryTeaDuration" operation="subtract" value="@$MetabolismDuration"/>
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffDementiveBerryTeaDisplay" operation="set" value="@$buffDementiveBerryTeaDuration"/>
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffDementiveBerryTeaDisplay" operation="divide" value="@$MetabolismDuration"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="subtract" value="@$MetabolismDuration"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffDementiveHotDisplay" operation="set" value="@$buffDementiveHotDuration"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffDementiveHotDisplay" operation="divide" value="@$MetabolismDuration"/>
 			</effect_group>
 
 			<effect_group>
-				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveBerryTea">
-					<requirement name="CVarCompare" cvar="$buffDementiveBerryTeaDuration" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveHot">
+					<requirement name="CVarCompare" cvar="$buffDementiveHotDuration" operation="LTE" value="0"/>
 				</triggered_effect>
-				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".buffDementiveBerryTeaDisplay" operation="set" value="0"/>
-				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$buffDementiveBerryTeaDuration" operation="set" value="0"/>
-				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$buffDementiveBerryTeaEffectDisplay" operation="set" value="-15"/>
-				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$buffDementiveBerryTeaEffectDisplay" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".buffDementiveHotDisplay" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$buffDementiveHotDuration" operation="set" value="0"/>
+			</effect_group>
+
+			<effect_group>
+				<passive_effect name="HypothermalResist" operation="base_add" value="10"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffDementiveCool" name_key="buffDementiveCool" description_key="buffDementiveCoolDesc" icon="ui_game_symbol_water">
+			<stack_type value="replace"/>
+			<duration value="0"/>
+			<display_value value=".buffDementiveCoolDisplay"/>
+			<display_value_format value="time"/>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$buffDementiveCoolDuration" operation="subtract" value="@$MetabolismDuration"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffDementiveCoolDisplay" operation="set" value="@$buffDementiveCoolDuration"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffDementiveCoolDisplay" operation="divide" value="@$MetabolismDuration"/>
+			</effect_group>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveCool">
+					<requirement name="CVarCompare" cvar="$buffDementiveCoolDuration" operation="LTE" value="0"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".buffDementiveCoolDisplay" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$buffDementiveCoolDuration" operation="set" value="0"/>
+			</effect_group>
+
+			<effect_group>
+				<passive_effect name="HyperthermalResist" operation="base_add" value="10"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffDementiveFilling" name_key="buffDementiveFilling" description_key="buffDementiveFillingDesc" icon="ui_game_symbol_stomach">
+			<stack_type value="replace"/>
+			<duration value="0"/>
+			<display_value value=".buffDementiveFillingDisplay"/>
+			<display_value_format value="time"/>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$buffDementiveFillingDuration" operation="subtract" value="@$MetabolismDuration"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffDementiveFillingDisplay" operation="set" value="@$buffDementiveFillingDuration"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffDementiveFillingDisplay" operation="divide" value="@$MetabolismDuration"/>
+			</effect_group>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveFilling">
+					<requirement name="CVarCompare" cvar="$buffDementiveFillingDuration" operation="LTE" value="0"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".buffDementiveFillingDisplay" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$buffDementiveFillingDuration" operation="set" value="0"/>
 			</effect_group>
 
 			<effect_group>
 				<passive_effect name="FoodLossPerStaminaPointGained" operation="perc_add" value="-.15"/>
 				<passive_effect name="WaterLossPerStaminaPointGained" operation="perc_add" value="-.15"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffDementiveEnergy" name_key="buffDementiveEnergy" description_key="buffDementiveEnergyDesc" icon="ui_game_symbol_coffee">
+			<stack_type value="replace"/>
+			<duration value="0"/>
+			<display_value value=".buffDementiveEnergyDisplay"/>
+			<display_value_format value="time"/>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$buffDementiveEnergyDuration" operation="subtract" value="@$MetabolismDuration"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffDementiveEnergyDisplay" operation="set" value="@$buffDementiveEnergyDuration"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffDementiveEnergyDisplay" operation="divide" value="@$MetabolismDuration"/>
+			</effect_group>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveEnergy">
+					<requirement name="CVarCompare" cvar="$buffDementiveEnergyDuration" operation="LTE" value="0"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".buffDementiveEnergyDisplay" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$buffDementiveEnergyDuration" operation="set" value="0"/>
+			</effect_group>
+
+			<effect_group>
+				<passive_effect name="StaminaChangeOT" operation="perc_add" value=".15"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffDementiveCrash" name_key="buffDementiveCrash" description_key="buffDementiveCrashDesc" icon="ui_game_symbol_pills" icon_color="255,128,0">
+			<stack_type value="replace"/>
+			<duration value="120"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<passive_effect name="StaminaChangeOT" operation="perc_add" value="-.5"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Blur" intensity=".35" fade="2"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="Blur" intensity=".35" fade="2"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Blur" intensity="0" fade="2"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffDementiveOverdose" name_key="buffDementiveOverdose" description_key="buffDementiveOverdoseDesc" icon="ui_game_symbol_skull" icon_color="255,0,0">
+			<stack_type value="ignore"/>
+			<duration value="3"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<passive_effect name="RunSpeed" operation="perc_set" value="0"/>
+				<passive_effect name="WalkSpeed" operation="perc_set" value="0"/>
+				<passive_effect name="CrouchSpeed" operation="perc_set" value="0"/>
+				<passive_effect name="JumpStrength" operation="perc_set" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="Ragdoll" duration="2.5"/>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="player#painlg"/>
+				<triggered_effect trigger="onSelfBuffStart" action="DementiveOverdose, ConsumablesExpanded"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffDementiveCrash"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffDementiveLongHaul" name_key="DementiveLongHaul" description_key="buffDementiveLongHaulDesc" icon="ui_game_symbol_run">
+			<stack_type value="replace"/>
+			<duration value="60"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<passive_effect name="StaminaLoss" operation="base_set" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Stamina" operation="set" value="500"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffDementiveCrash"/>
+			</effect_group>
+		</buff>
+
+		<!-- The cvar is what the C# reads, on the server too: see ChemPossumDEM -->
+		<buff name="buffDementivePossum" name_key="DementivePossumPills" description_key="buffDementivePossumDesc" icon="ui_game_symbol_near_death_trauma">
+			<stack_type value="replace"/>
+			<duration value="8"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<passive_effect name="DisableMovement" operation="base_set" value="1"/>
+				<passive_effect name="Mobility" operation="base_set" value="0"/>
+				<passive_effect name="RunSpeed" operation="perc_set" value="0"/>
+				<passive_effect name="WalkSpeed" operation="perc_set" value="0"/>
+				<passive_effect name="CrouchSpeed" operation="perc_set" value="0"/>
+				<passive_effect name="JumpStrength" operation="perc_set" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="%dementivePlayingDead" operation="set" value="1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="Ragdoll" duration="7.5"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Greyscale" intensity=".8" fade="1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Dark" intensity=".5" fade="1"/>
+				<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" buff="buffDementiveCrash"/>
+				<triggered_effect trigger="onSelfAttackedOther" action="RemoveBuff" buff="buffDementivePossum"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffDementiveCrash"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="%dementivePlayingDead" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Greyscale" intensity="0" fade="1"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Dark" intensity="0" fade="1"/>
+				<triggered_effect trigger="onSelfLeaveGame" action="RemoveBuff" buff="buffDementivePossum"/>
+			</effect_group>
+		</buff>
+
+		<!-- The C# absorbs the hits and keeps the bill: see ChemDamageDEM -->
+		<buff name="buffDementiveOnMyTab" name_key="DementiveOnMyTab" description_key="buffDementiveOnMyTabDesc" icon="ui_game_symbol_armor_iron">
+			<stack_type value="replace"/>
+			<duration value="15"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$dementiveTabOwed" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="%dementiveOnTab" operation="set" value="1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Greyscale" intensity=".35" fade="1"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="DementiveTabBill, ConsumablesExpanded"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffDementiveCrash"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="%dementiveOnTab" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Greyscale" intensity="0" fade="1"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffDementiveDeadMansSwitch" name_key="DementiveDeadMansSwitch" description_key="buffDementiveDeadMansSwitchDesc" icon="ui_game_symbol_critical">
+			<stack_type value="replace"/>
+			<duration value="1800"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="%dementiveSwitchLoaded" operation="set" value="1"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="%dementiveSwitchLoaded" operation="set" value="0"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffDementiveSwitchFired" name_key="buffDementiveSwitchFired" description_key="buffDementiveSwitchFiredDesc" icon="ui_game_symbol_critical" icon_color="255,0,0">
+			<stack_type value="replace"/>
+			<duration value="3"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="%dementiveShielded" operation="set" value="1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="player#painlg"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ShowToolbeltMessage" message_key="buffDementiveSwitchFiredMessage"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Greyscale" intensity=".6" fade=".2"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffDementiveCrash"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="%dementiveShielded" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Greyscale" intensity="0" fade="1"/>
+			</effect_group>
+		</buff>
+
+		<!-- About 8 real seconds: buff time runs on game time, which is at 35% here. The slowdown itself is in ChemTimeDEM -->
+		<buff name="buffDementiveNickSolo" name_key="DementiveNickOfTime" description_key="buffDementiveNickSoloDesc" icon="ui_game_symbol_clock">
+			<stack_type value="replace"/>
+			<duration value="2.8"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Greyscale" intensity=".5" fade=".2"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffDementiveCrash"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Greyscale" intensity="0" fade=".5"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffDementiveNickCoop" name_key="DementiveNickOfTime" description_key="buffDementiveNickCoopDesc" icon="ui_game_symbol_clock">
+			<stack_type value="replace"/>
+			<duration value="8"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<passive_effect name="RunSpeed" operation="perc_add" value=".6"/>
+				<passive_effect name="WalkSpeed" operation="perc_add" value=".6"/>
+				<passive_effect name="ReloadSpeedMultiplier" operation="perc_add" value=".6"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffDementiveCrash"/>
+			</effect_group>
+		</buff>
+
+		<buff name="buffDementiveGinSway" hidden="true">
+			<stack_type value="replace"/>
+			<duration value="90"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Drunk" intensity=".3" fade="4"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="Drunk" intensity=".3" fade="4"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Drunk" intensity="0" fade="4"/>
 			</effect_group>
 		</buff>
 
@@ -59,6 +270,7 @@
 			    <passive_effect name="BuffResistance" operation="base_add" value=".5" tags="buffInjuryStunned01CHTrigger,buffInjuryStunned00,buffInjuryStunned01,buffInjuryStunned01Shotgun,buffInjuryStunned02,buffInjuryStunned02Shotgun,buffInjuryStunned03,buffInjuryStunned03Shotgun"/>
 		    </effect_group>
 	    </buff>
+
 		<buff name="buffAppleMegaCrush" name_key="buffAppleMegaCrush" description_key="buffAppleMegaCrushDesc" icon="ui_game_symbol_candy_eye_candy">
 			<stack_type value="replace"/>
 			<duration value="0"/>
@@ -150,7 +362,7 @@
 				<!--<passive_effect name="StaminaLossMaxMult" operation="perc_add" value="1.2"/> --><!-- regening stamina costs food, blacks out the stamina bar -->
 			</effect_group>
 		</buff>
-		
+
 		<buff name="buffFruitPunchMegaCrush" name_key="buffFruitPunchMegaCrush" description_key="buffFruitPunchMegaCrushDesc" icon="ui_game_symbol_candy_rock_busters">
 			<stack_type value="replace"/>
 			<duration value="0"/>
@@ -207,7 +419,8 @@
 				<!--<passive_effect name="StaminaLossMaxMult" operation="perc_add" value="1.2"/> --><!-- regening stamina costs food, blacks out the stamina bar -->
 			</effect_group>
 		</buff>
-	
 	</append>
-	
-</Dementive> 
+
+	<!-- Fall damage takes health straight down, so it never reaches the C# that blocks every other hit -->
+	<set xpath="/buffs/buff[@name='buffPlayerFallingDamage']/effect_group/triggered_effect[@action='ModifyStats' and @stat='Health']/requirement[@name='!HasBuff']/@buff">buffDrugOhShitzDrops,buffTwitchDontBreakLeg,buffDontBreakMyLeg,god,buffDementiveOnMyTab,buffDementiveSwitchFired</set>
+</Dementive>

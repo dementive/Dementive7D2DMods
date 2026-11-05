@@ -1,68 +1,120 @@
 <Dementive>
-	
 	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingFood']">
-		<display_entry icon="DementiveBerryTea,DementiveAcornCoffee,DementivePineTea" name_key="foodT1-3" has_quality="false" unlock_level="6" >
-			<unlock_entry item="DementiveBerryTea" unlock_tier="1" />
-			<unlock_entry item="DementiveAcornCoffee" unlock_tier="1" />
-			<unlock_entry item="DementivePineTea" unlock_tier="1" />
+		<display_entry icon="DementiveFryBread,DementiveFriedEgg" name_key="dem_food2" has_quality="false" unlock_level="2">
+			<unlock_entry item="DementiveFryBread" unlock_tier="1"/>
+			<unlock_entry item="DementiveFriedEgg" unlock_tier="1"/>
 		</display_entry>
-
-		<display_entry icon="DementiveCornGrits,DementiveMashPotato" name_key="foodT1-4" has_quality="false" unlock_level="22" >
-			<unlock_entry item="DementiveCornGrits" unlock_tier="1" />
-			<unlock_entry item="DementiveMashPotato" unlock_tier="1" />
+		<display_entry icon="DementiveCornHardtack" name_key="dem_food4" has_quality="false" unlock_level="4">
+			<unlock_entry item="DementiveCornHardtack" unlock_tier="1"/>
 		</display_entry>
-
-		<display_entry icon="DementiveBlueberryJam,DementiveBlueberrySoda,DementiveCoffeeCake,DementiveMushroomPie,DementiveYuccaPie,DementiveSnowberryGin,DementiveSnowberryPie" name_key="foodT1-4" has_quality="false" unlock_level="27" >
-			<unlock_entry item="DementiveBlueberryJam" unlock_tier="1" />
-			<unlock_entry item="DementiveBlueberrySoda" unlock_tier="1" />
-			<unlock_entry item="DementiveCoffeeCake" unlock_tier="1" />
-			<unlock_entry item="DementiveMushroomPie" unlock_tier="1" />
-			<unlock_entry item="DementiveYuccaPie" unlock_tier="1" />
-			<unlock_entry item="DementiveSnowberryGin" unlock_tier="1" />
-			<unlock_entry item="DementiveSnowberryPie" unlock_tier="1" />
+		<display_entry icon="DementiveBoneBroth,DementivePineTea,DementiveAcornCoffee,DementiveBerryTea" name_key="dem_food6" has_quality="false" unlock_level="6">
+			<unlock_entry item="DementiveBoneBroth" unlock_tier="1"/>
+			<unlock_entry item="DementivePineTea" unlock_tier="1"/>
+			<unlock_entry item="DementiveAcornCoffee" unlock_tier="1"/>
+			<unlock_entry item="DementiveBerryTea" unlock_tier="1"/>
 		</display_entry>
-
-		<display_entry icon="DementiveMeatPie" name_key="foodT1-4" has_quality="false" unlock_level="70" >
-			<unlock_entry item="DementiveMeatPie" unlock_tier="1" />
+		<display_entry icon="DementiveSmokedJerky" name_key="dem_food8" has_quality="false" unlock_level="8">
+			<unlock_entry item="DementiveSmokedJerky" unlock_tier="1"/>
 		</display_entry>
-
+		<display_entry icon="DementiveOmlet" name_key="dem_food10" has_quality="false" unlock_level="10">
+			<unlock_entry item="DementiveOmlet" unlock_tier="1"/>
+		</display_entry>
+		<display_entry icon="DementiveAloeJuice" name_key="dem_food11" has_quality="false" unlock_level="11">
+			<unlock_entry item="DementiveAloeJuice" unlock_tier="1"/>
+		</display_entry>
+		<display_entry icon="DementiveCornChowder" name_key="dem_food14" has_quality="false" unlock_level="14">
+			<unlock_entry item="DementiveCornChowder" unlock_tier="1"/>
+		</display_entry>
+		<display_entry icon="DementiveBiscuitsGravy,DementivePumpkinSoup" name_key="dem_food18" has_quality="false" unlock_level="18">
+			<unlock_entry item="DementiveBiscuitsGravy" unlock_tier="1"/>
+			<unlock_entry item="DementivePumpkinSoup" unlock_tier="1"/>
+		</display_entry>
+		<display_entry icon="DementiveCornGrits,DementiveTamales,DementivePumpkinAle" name_key="dem_food22" has_quality="false" unlock_level="22">
+			<unlock_entry item="DementiveCornGrits" unlock_tier="1"/>
+			<unlock_entry item="DementiveTamales" unlock_tier="1"/>
+			<unlock_entry item="DementivePumpkinAle" unlock_tier="1"/>
+		</display_entry>
+		<display_entry icon="DementiveCoffeeCake,DementiveCampfireChili,DementiveSnowberryPie,DementiveYuccaPie,DementiveMushroomPie,DementiveBlueberryJam,DementiveBlueberrySoda,DementiveSnowberryGin" name_key="dem_food27" has_quality="false" unlock_level="27">
+			<unlock_entry item="DementiveCoffeeCake" unlock_tier="1"/>
+			<unlock_entry item="DementiveCampfireChili" unlock_tier="1"/>
+			<unlock_entry item="DementiveSnowberryPie" unlock_tier="1"/>
+			<unlock_entry item="DementiveYuccaPie" unlock_tier="1"/>
+			<unlock_entry item="DementiveMushroomPie" unlock_tier="1"/>
+			<unlock_entry item="DementiveBlueberryJam" unlock_tier="1"/>
+			<unlock_entry item="DementiveBlueberrySoda" unlock_tier="1"/>
+			<unlock_entry item="DementiveSnowberryGin" unlock_tier="1"/>
+		</display_entry>
+		<display_entry icon="DementiveChickenNoodleSoup" name_key="dem_food35" has_quality="false" unlock_level="35">
+			<unlock_entry item="DementiveChickenNoodleSoup" unlock_tier="1"/>
+		</display_entry>
+		<display_entry icon="DementiveChiliMac" name_key="dem_food43" has_quality="false" unlock_level="43">
+			<unlock_entry item="DementiveChiliMac" unlock_tier="1"/>
+		</display_entry>
+		<display_entry icon="DementiveMeatPie" name_key="dem_food60" has_quality="false" unlock_level="60">
+			<unlock_entry item="DementiveMeatPie" unlock_tier="1"/>
+		</display_entry>
 		<effect_group>
-			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="6,100" value="1" tags="DementiveBerryTea"/>
-			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="6,100" value="1" tags="DementiveAcornCoffee"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="2,100" value="1" tags="DementiveFryBread"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="2,100" value="1" tags="DementiveFriedEgg"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="4,100" value="1" tags="DementiveCornHardtack"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="6,100" value="1" tags="DementiveBoneBroth"/>
 			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="6,100" value="1" tags="DementivePineTea"/>
-
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="6,100" value="1" tags="DementiveAcornCoffee"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="6,100" value="1" tags="DementiveBerryTea"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="8,100" value="1" tags="DementiveSmokedJerky"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="DementiveOmlet"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="11,100" value="1" tags="DementiveAloeJuice"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="14,100" value="1" tags="DementiveCornChowder"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="18,100" value="1" tags="DementiveBiscuitsGravy"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="18,100" value="1" tags="DementivePumpkinSoup"/>
 			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="22,100" value="1" tags="DementiveCornGrits"/>
-			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="22,100" value="1" tags="DementiveMashPotato"/>
-
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="22,100" value="1" tags="DementiveTamales"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="22,100" value="1" tags="DementivePumpkinAle"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveCoffeeCake"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveCampfireChili"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveSnowberryPie"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveYuccaPie"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveMushroomPie"/>
 			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveBlueberryJam"/>
 			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveBlueberrySoda"/>
-			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveCoffeeCake"/>
-			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveMushroomPie"/>
-			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveYuccaPie"/>
 			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveSnowberryGin"/>
-			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="27,100" value="1" tags="DementiveSnowberryPie"/>
-
-			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="70,100" value="1" tags="DementiveMeatPie"/>
-		</effect_group>	
-
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="DementiveChickenNoodleSoup"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="43,100" value="1" tags="DementiveChiliMac"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="60,100" value="1" tags="DementiveMeatPie"/>
+		</effect_group>
 	</append>
 
-    <append xpath="/progression/crafting_skills/crafting_skill[@name='craftingSeeds']">
-	    <display_entry icon="plantedSnowberry1" name_key="seedsT1-2" has_quality="false" unlock_level="4" >
-			<unlock_entry item="plantedSnowberry1" unlock_tier="1" />
+	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingSeeds']">
+		<display_entry icon="plantedSnowberry1" name_key="dem_seeds4" has_quality="false" unlock_level="4">
+			<unlock_entry item="plantedSnowberry1" unlock_tier="1"/>
 		</display_entry>
-	    <effect_group>
-	        <passive_effect name="RecipeTagUnlocked" operation="base_set" level="4,100" value="1" tags="plantedSnowberry1"/>
-		</effect_group>	
+		<effect_group>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="4,100" value="1" tags="plantedSnowberry1"/>
+		</effect_group>
 	</append>
-	
+
 	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingMedical']">
-	    <display_entry icon="drugHerbalPainkillers" name_key="medicalT1-2" has_quality="false" unlock_level="10" >
-			<unlock_entry item="drugHerbalPainkillers" unlock_tier="1" />
+		<display_entry icon="drugHerbalPainkillers" name_key="dem_medical10" has_quality="false" unlock_level="10">
+			<unlock_entry item="drugHerbalPainkillers" unlock_tier="1"/>
 		</display_entry>
-	    <effect_group>
-	        <passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="drugHerbalPainkillers"/>
-		</effect_group>	
+		<display_entry icon="DementiveLongHaul" name_key="dem_medical15" has_quality="false" unlock_level="15">
+			<unlock_entry item="DementiveLongHaul" unlock_tier="1"/>
+		</display_entry>
+		<display_entry icon="DementivePossumPills" name_key="dem_medical30" has_quality="false" unlock_level="30">
+			<unlock_entry item="DementivePossumPills" unlock_tier="1"/>
+		</display_entry>
+		<display_entry icon="DementiveOnMyTab" name_key="dem_medical50" has_quality="false" unlock_level="50">
+			<unlock_entry item="DementiveOnMyTab" unlock_tier="1"/>
+		</display_entry>
+		<display_entry icon="DementiveNickOfTime" name_key="dem_medical75" has_quality="false" unlock_level="75">
+			<unlock_entry item="DementiveNickOfTime" unlock_tier="1"/>
+		</display_entry>
+		<effect_group>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="10,100" value="1" tags="drugHerbalPainkillers"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="DementiveLongHaul"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="30,100" value="1" tags="DementivePossumPills"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="50,100" value="1" tags="DementiveOnMyTab"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="75,100" value="1" tags="DementiveNickOfTime"/>
+		</effect_group>
 	</append>
-
 </Dementive>

@@ -51,6 +51,11 @@ Other checks:
 
 - `ArmorExpanded\gen_armor.py <game> ArmorExpanded ArmorExpanded-SERVERSIDE`: writes the whole mod from the `PIECES` table: each named piece copies its vanilla piece's effect groups (they aren't inherited through `Extends`) with the armor and durability boost and its signature effect group, plus buffs, loot, traders, localization, the recolored icons and the server-side copy (tinted vanilla icons).
 
+## ConsumablesExpanded
+
+- `ConsumablesExpanded\gen_consumables.py ConsumablesExpanded`: writes the mod's Config from the tables at the top of the script: foods, drinks, chems, their buffs, recipes, unlocks, loot, traders and localization. Mega Crush, Herbal Painkillers and snowberries aren't generated: they're copied as they are from `ConsumablesExpanded\kept`. `blocks.xml` and `biomes.xml` are hand-written.
+- `ConsumablesExpanded\make_icons.py <game> ConsumablesExpanded`: builds the icons from vanilla art (a recipe per item in `ICONS`).
+
 ## ToolsExpanded
 
 - `ToolsExpanded\gen_tools.py <game> ToolsExpanded ToolsExpanded-SERVERSIDE`: writes the whole mod from the `TOOLS` table: each named tool copies its vanilla tool's stats, effect groups and any action it changes (they aren't inherited through `Extends`) with the block damage and durability boost and its signature effect group, plus the block patches its harvest bonuses need, the player's harvest tag defaults, buffs, mod overrides, loot, traders, localization, the painted icons and the server-side copy (tinted vanilla icons). Rerun after a game update: the car, tree and salvage patches are worked out from the vanilla blocks.

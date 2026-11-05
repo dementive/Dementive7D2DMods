@@ -166,7 +166,7 @@ def effects(e, stack, mod):
         for v in split(e.get(a)):
             if v not in prog_names:
                 bad(mod, stack, f"{e.tag} {a} '{v}' does not exist in progression.xml")
-    if e.tag == "triggered_effect" and e.get("action") == "PlaySound" and e.get("sound") not in sounds:
+    if e.tag == "triggered_effect" and e.get("action") == "PlaySound" and e.get("sound", "").replace("#", "1") not in sounds:  # "#" is the player's voice set
         bad(mod, stack, f"sound '{e.get('sound')}' does not exist")
     if e.tag == "passive_effect":
         n = e.get("name")
@@ -174,7 +174,7 @@ def effects(e, stack, mod):
             bad(mod, stack, f"unknown passive_effect '{n}'")
     if e.tag == "triggered_effect":
         a = e.get("action")
-        if a and ("MinEventAction" + a) not in types and a not in types:
+        if a and not known_type("MinEventAction", a):
             bad(mod, stack, f"unknown triggered_effect action '{a}'")
         for b in split(e.get("buff")):
             if b not in buffs:

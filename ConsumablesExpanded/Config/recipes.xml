@@ -1,28 +1,118 @@
 <Dementive>
-
 <append xpath="/recipes">
-	
-	<!-- Foods -->
+
+	<recipe name="DementiveCornHardtack" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="foodCornMeal" count="3"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveSmokedJerky" count="1" craft_area="campfire" craft_tool="toolCookingGrill" tags="perkMasterChef,learnable,grill">
+		<ingredient name="foodRawMeat" count="5"/>
+		<ingredient name="resourceCoal" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveFryBread" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="foodCornMeal" count="2"/>
+		<ingredient name="resourceAnimalFat" count="2"/>
+	</recipe>
+
+	<recipe name="DementiveFriedEgg" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="foodEgg" count="1"/>
+		<ingredient name="resourceAnimalFat" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveOmlet" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="foodEgg" count="3"/>
+		<ingredient name="foodCropMushrooms" count="2"/>
+		<ingredient name="resourceAnimalFat" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveBiscuitsGravy" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="foodCornMeal" count="2"/>
+		<ingredient name="foodGrilledMeat" count="1"/>
+		<ingredient name="resourceAnimalFat" count="1"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveCornGrits" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="foodCropPotato" count="3"/>
+		<ingredient name="foodCropCorn" count="2"/>
+		<ingredient name="foodGrilledMeat" count="1"/>
+		<ingredient name="resourceAnimalFat" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveCoffeeCake" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="resourceCropCoffeeBeans" count="3"/>
+		<ingredient name="foodCornMeal" count="2"/>
+		<ingredient name="foodEgg" count="1"/>
+		<ingredient name="resourceAnimalFat" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveBoneBroth" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="resourceBone" count="5"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveCornChowder" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="foodCropCorn" count="3"/>
+		<ingredient name="foodCropPotato" count="2"/>
+		<ingredient name="resourceAnimalFat" count="1"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+	</recipe>
+
+	<recipe name="DementivePumpkinSoup" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="foodCropPumpkin" count="2"/>
+		<ingredient name="resourceAnimalFat" count="1"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveChickenNoodleSoup" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="foodCanChicken" count="1"/>
+		<ingredient name="foodCanPasta" count="1"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveTamales" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="foodCornMeal" count="3"/>
+		<ingredient name="foodGrilledMeat" count="1"/>
+		<ingredient name="resourceAnimalFat" count="1"/>
+		<ingredient name="resourceYuccaFibers" count="5"/>
+	</recipe>
+
+	<recipe name="DementiveCampfireChili" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="foodCanChili" count="1"/>
+		<ingredient name="foodGrilledMeat" count="1"/>
+		<ingredient name="foodCropCorn" count="2"/>
+	</recipe>
+
+	<recipe name="DementiveChiliMac" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="foodCanChili" count="1"/>
+		<ingredient name="foodCanPasta" count="1"/>
+		<ingredient name="resourceAnimalFat" count="1"/>
+	</recipe>
 
 	<recipe name="DementiveSnowberryPie" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
-		<ingredient name="foodCropSnowberry" count="10"/>
-		<ingredient name="foodCropPotato" count="3"/>
-		<ingredient name="resourceAnimalFat" count="3"/>
+		<ingredient name="foodCropSnowberry" count="5"/>
 		<ingredient name="foodEgg" count="1"/>
+		<ingredient name="foodCornMeal" count="1"/>
+		<ingredient name="resourceAnimalFat" count="1"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
 	</recipe>
 
 	<recipe name="DementiveYuccaPie" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
-		<ingredient name="foodCropYuccaFruit" count="10"/>
-		<ingredient name="foodCropPotato" count="3"/>
-		<ingredient name="resourceAnimalFat" count="3"/>
+		<ingredient name="foodCropYuccaFruit" count="5"/>
 		<ingredient name="foodEgg" count="1"/>
+		<ingredient name="foodCornMeal" count="1"/>
+		<ingredient name="resourceAnimalFat" count="1"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
 	</recipe>
 
-	<recipe name="DementiveMushroomPie" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,cookingPotFood">
-		<ingredient name="foodCropMushrooms" count="10"/>
-		<ingredient name="foodCropPotato" count="3"/>
-		<ingredient name="resourceAnimalFat" count="3"/>
+	<recipe name="DementiveMushroomPie" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="foodCropMushrooms" count="5"/>
 		<ingredient name="foodEgg" count="1"/>
+		<ingredient name="foodCornMeal" count="1"/>
+		<ingredient name="resourceAnimalFat" count="1"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
 	</recipe>
 
 	<recipe name="DementiveMeatPie" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
@@ -32,53 +122,21 @@
 		<ingredient name="foodCanLamb" count="1"/>
 		<ingredient name="foodCanBeef" count="1"/>
 		<ingredient name="foodEgg" count="1"/>
-		<effect_group>
-			<passive_effect name="CraftingIngredientCount" level="1,3" operation="base_add" value="-1,-2" tags="resourceAnimalFat"/>
-		</effect_group>
 	</recipe>
 
-	<recipe name="DementiveMashPotato" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
-		<ingredient name="foodCropPotato" count="5"/>
-		<ingredient name="resourceAnimalFat" count="1"/>
-	</recipe>
-
-	<recipe name="DementiveOmlet" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,cookingPotFood">
-		<ingredient name="foodEgg" count="3"/>
-		<ingredient name="resourceAnimalFat" count="1"/>
-	</recipe>
-
-	<recipe name="DementiveFriedEgg" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,cookingPotFood">
-		<ingredient name="foodEgg" count="1"/>
-		<ingredient name="resourceAnimalFat" count="1"/>
-	</recipe>
-
-	<recipe name="DementiveCornGrits" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
-		<ingredient name="foodCropCorn" count="5"/>
-		<ingredient name="foodCropPotato" count="2"/>
-		<ingredient name="foodCornMeal" count="2"/>
-		<ingredient name="drinkJarBoiledWater" count="1"/>
-	</recipe>
-
-	<recipe name="DementiveCoffeeCake" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
-		<ingredient name="resourceCropCoffeeBeans" count="5"/>
-		<ingredient name="foodCornMeal" count="2"/>
-		<ingredient name="resourceAnimalFat" count="1"/>
-		<ingredient name="foodShamSandwich" count="1"/>
-		<effect_group>
-			<passive_effect name="CraftingIngredientCount" level="1,3" operation="base_add" value="-1,-2" tags="resourceAnimalFat"/>
-		</effect_group>
-	</recipe>
-
-	<!-- Drinks -->
-
-	<recipe name="DementiveAcornCoffee" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
-		<ingredient name="treePlantedOak1m" count="2"/>
-		<ingredient name="resourceCropCoffeeBeans" count="1"/>
-		<ingredient name="drinkJarBoiledWater" count="1"/>
+	<recipe name="DementiveBlueberryJam" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="foodCropBlueberries" count="5"/>
+		<ingredient name="foodHoney" count="1"/>
 	</recipe>
 
 	<recipe name="DementivePineTea" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
 		<ingredient name="treePlantedMountainPine1m" count="5"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveAcornCoffee" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="treePlantedOak1m" count="2"/>
+		<ingredient name="resourceCropCoffeeBeans" count="1"/>
 		<ingredient name="drinkJarBoiledWater" count="1"/>
 	</recipe>
 
@@ -87,42 +145,64 @@
 		<ingredient name="drinkJarBoiledWater" count="1"/>
 	</recipe>
 
-	<recipe name="DementiveBlueberryJam" count="1" tags="perkMasterChef,learnable">
-		<ingredient name="foodCropBlueberries" count="10"/>
-		<ingredient name="foodCropYuccaFruit" count="5"/>
+	<recipe name="DementiveAloeJuice" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
+		<ingredient name="resourceCropAloeLeaf" count="2"/>
 		<ingredient name="drinkJarBoiledWater" count="1"/>
-		<effect_group>
-			<passive_effect name="CraftingIngredientCount" level="1,3" operation="base_add" value="-1,-2" tags="foodCropYuccaFruit,foodCropBlueberries"/>
-		</effect_group>
 	</recipe>
 
 	<recipe name="DementiveBlueberrySoda" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
-		<ingredient name="foodCropBlueberries" count="10"/>
-		<ingredient name="drinkJarBoiledWater" count="1"/>
-		<ingredient name="foodEgg" count="1"/>
-		<ingredient name="foodCornMeal" count="1"/>
+		<ingredient name="foodCropBlueberries" count="5"/>
 		<ingredient name="resourceAcid" count="1"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
 	</recipe>
 
 	<recipe name="DementiveSnowberryGin" count="1" craft_area="campfire" craft_tool="toolCookingPot" tags="perkMasterChef,learnable,cookingPotFood">
-		<ingredient name="foodCropSnowberry" count="10"/>
+		<ingredient name="foodCropSnowberry" count="5"/>
 		<ingredient name="resourceSnowBall" count="2"/>
 		<ingredient name="drinkJarBoiledWater" count="1"/>
 	</recipe>
 
-		
-    <recipe name="plantedSnowberry1" count="1" craft_time="1" tags="learnable,packMuleCrafting">
-        <ingredient name="foodCropSnowberry" count="2"/>
-    </recipe>
-	
+	<recipe name="DementivePumpkinAle" count="1" craft_area="chemistryStation" tags="perkMasterChef,learnable,chemStationCrafting">
+		<ingredient name="foodCropPumpkin" count="1"/>
+		<ingredient name="resourceCropHopsFlower" count="4"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveLongHaul" count="1" craft_area="chemistryStation" tags="learnable,chemStationCrafting">
+		<ingredient name="resourceCropCoffeeBeans" count="5"/>
+		<ingredient name="resourceAcid" count="1"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+	</recipe>
+
+	<recipe name="DementivePossumPills" count="1" craft_area="chemistryStation" tags="learnable,chemStationCrafting">
+		<ingredient name="drugPainkillers" count="2"/>
+		<ingredient name="resourceCropChrysanthemumPlant" count="5"/>
+		<ingredient name="resourceAcid" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveOnMyTab" count="1" craft_area="chemistryStation" tags="learnable,chemStationCrafting">
+		<ingredient name="drugPainkillers" count="2"/>
+		<ingredient name="drugSteroids" count="1"/>
+		<ingredient name="resourceAcid" count="1"/>
+	</recipe>
+
+	<recipe name="DementiveNickOfTime" count="1" craft_area="chemistryStation" tags="learnable,chemStationCrafting">
+		<ingredient name="drugRecog" count="1"/>
+		<ingredient name="resourceCropCoffeeBeans" count="5"/>
+		<ingredient name="resourceAcid" count="1"/>
+	</recipe>
+
+	<recipe name="plantedSnowberry1" count="1" craft_time="1" tags="learnable,packMuleCrafting">
+		<ingredient name="foodCropSnowberry" count="2"/>
+	</recipe>
+
 	<recipe name="drugHerbalPainkillers" count="1" craft_area="chemistryStation" tags="learnable,chemStationCrafting">
-        <ingredient name="drinkJarBoiledWater" count="1"/>
-        <ingredient name="foodCropSnowberry" count="2"/>
+		<ingredient name="drinkJarBoiledWater" count="1"/>
+		<ingredient name="foodCropSnowberry" count="2"/>
 		<ingredient name="resourceCropAloeLeaf" count="2"/>
 		<ingredient name="resourceCropGoldenrodPlant" count="2"/>
-        <ingredient name="resourceCropChrysanthemumPlant" count="2"/>
-    </recipe>
+		<ingredient name="resourceCropChrysanthemumPlant" count="2"/>
+	</recipe>
 
 </append>
-
 </Dementive>

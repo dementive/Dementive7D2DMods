@@ -3,7 +3,7 @@
 		<item_display_info display_type="grapeCrush" display_group="groupConsumables">
 			<display_entry name="$waterAmountAdd" title_key="statWaterAmount"/>		
 			<display_entry name="dStaminaRegen" title_key="statStaminaRegen" display_type="Percent"/>			
-			<display_entry name="dDysenteryRisk" title_key="statJumpDistance" display_leading_plus="true"/>
+			<display_entry name="dDysenteryRisk" title_key="dem_statJump" display_leading_plus="true"/>
 			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>			
 		</item_display_info>
 		<item_display_info display_type="appleCrush" display_group="groupConsumables">
@@ -11,18 +11,83 @@
 			<display_entry name="dStaminaRegen" title_key="statStaminaRegen" display_type="Percent"/>
 			<display_entry name="dLootStageFlat" title_key="statLootStage" display_leading_plus="true"/>
 			<display_entry name="dLootStagePerc" title_key="statLootStage" display_type="Percent" display_leading_plus="true"/>			
-			<display_entry name="dStopsConcussion" title_key="statLockpickTime" display_type="Percent" display_leading_plus="true"/>
-			<display_entry name="dDysenteryRisk" title_key="Looting Speed" display_type="Percent" display_leading_plus="true"/>
+			<display_entry name="dStopsConcussion" title_key="dem_statLockpickTime" display_type="Percent" display_leading_plus="true"/>
+			<display_entry name="dDysenteryRisk" title_key="dem_statSearchTime" display_type="Percent" display_leading_plus="true"/>
 			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>
 		</item_display_info>
 		<item_display_info display_type="fruitCrush" display_group="groupConsumables">
 			<display_entry name="$waterAmountAdd" title_key="statWaterAmount"/>
 			<display_entry name="dStaminaRegen" title_key="statStaminaRegen" display_type="Percent"/>		
-			<display_entry name="dDysenteryRisk" title_key="statHarvestQuantityOre" display_type="Percent" display_leading_plus="true"/>
-			<display_entry name="dDysenteryRisk" title_key="statHarvestQuantityWood" display_type="Percent" display_leading_plus="true"/>
-			<display_entry name="dDysenteryRisk" title_key="statHarvestQuantitySalvage" display_type="Percent" display_leading_plus="true"/>
-			<display_entry name="dDysenteryRisk" title_key="statHarvestQuantityMeat" display_type="Percent" display_leading_plus="true"/>
+			<display_entry name="dDysenteryRisk" title_key="dem_statHarvestOre" display_type="Percent" display_leading_plus="true"/>
+			<display_entry name="dDysenteryRisk" title_key="dem_statHarvestWood" display_type="Percent" display_leading_plus="true"/>
+			<display_entry name="dDysenteryRisk" title_key="dem_statHarvestSalvage" display_type="Percent" display_leading_plus="true"/>
+			<display_entry name="dDysenteryRisk" title_key="dem_statHarvestMeat" display_type="Percent" display_leading_plus="true"/>
 			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>			
+		</item_display_info>
+		<item_display_info display_type="dementiveFoodFilling" display_group="groupConsumables">
+			<display_entry name="$foodAmountAdd" title_key="statFoodAmount"/>
+			<display_entry name="foodHealthAmount" title_key="statHealthAmount"/>
+			<display_entry name=".foodStaminaBonusAdd" title_key="statFoodStaminaBonus"/>
+			<display_entry name="dEfficientDigestion" title_key="statEfficientDigestion" display_type="Percent" display_leading_plus="true"/>
+			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>
+			<display_entry name="dSmellUse" title_key="statFoodSmell"/>
+		</item_display_info>
+		<item_display_info display_type="dementiveFoodEnergy" display_group="groupConsumables">
+			<display_entry name="$foodAmountAdd" title_key="statFoodAmount"/>
+			<display_entry name="foodHealthAmount" title_key="statHealthAmount"/>
+			<display_entry name=".foodStaminaBonusAdd" title_key="statFoodStaminaBonus"/>
+			<display_entry name="dStaminaRegen" title_key="statStaminaRegen" display_type="Percent"/>
+			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>
+			<display_entry name="dSmellUse" title_key="statFoodSmell"/>
+		</item_display_info>
+		<item_display_info display_type="dementiveFoodWaterHot" display_group="groupConsumables">
+			<display_entry name="$foodAmountAdd" title_key="statFoodAmount"/>
+			<display_entry name="$waterAmountAdd" title_key="statWaterAmount"/>
+			<display_entry name="foodHealthAmount" title_key="statHealthAmount"/>
+			<display_entry name=".foodStaminaBonusAdd" title_key="statFoodStaminaBonus"/>
+			<display_entry name="dHypothermalResist" title_key="statHypothermalResist"/>
+			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>
+			<display_entry name="dSmellUse" title_key="statFoodSmell"/>
+		</item_display_info>
+		<item_display_info display_type="dementiveFoodHot" display_group="groupConsumables">
+			<display_entry name="$foodAmountAdd" title_key="statFoodAmount"/>
+			<display_entry name="foodHealthAmount" title_key="statHealthAmount"/>
+			<display_entry name=".foodStaminaBonusAdd" title_key="statFoodStaminaBonus"/>
+			<display_entry name="dHypothermalResist" title_key="statHypothermalResist"/>
+			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>
+			<display_entry name="dSmellUse" title_key="statFoodSmell"/>
+		</item_display_info>
+		<item_display_info display_type="dementiveFoodWaterCool" display_group="groupConsumables">
+			<display_entry name="$foodAmountAdd" title_key="statFoodAmount"/>
+			<display_entry name="$waterAmountAdd" title_key="statWaterAmount"/>
+			<display_entry name="foodHealthAmount" title_key="statHealthAmount"/>
+			<display_entry name=".foodStaminaBonusAdd" title_key="statFoodStaminaBonus"/>
+			<display_entry name="dHyperthermalResist" title_key="statHyperthermalResist"/>
+			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>
+			<display_entry name="dSmellUse" title_key="statFoodSmell"/>
+		</item_display_info>
+		<item_display_info display_type="dementiveDrinkHot" display_group="groupConsumables">
+			<display_entry name="$waterAmountAdd" title_key="statWaterAmount"/>
+			<display_entry name="dHypothermalResist" title_key="statHypothermalResist"/>
+			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>
+		</item_display_info>
+		<item_display_info display_type="dementiveDrinkEnergy" display_group="groupConsumables">
+			<display_entry name="$waterAmountAdd" title_key="statWaterAmount"/>
+			<display_entry name="dStaminaRegen" title_key="statStaminaRegen" display_type="Percent"/>
+			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>
+		</item_display_info>
+		<item_display_info display_type="dementiveDrinkFilling" display_group="groupConsumables">
+			<display_entry name="$waterAmountAdd" title_key="statWaterAmount"/>
+			<display_entry name="dEfficientDigestion" title_key="statEfficientDigestion" display_type="Percent" display_leading_plus="true"/>
+			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>
+		</item_display_info>
+		<item_display_info display_type="dementiveDrinkCool" display_group="groupConsumables">
+			<display_entry name="$waterAmountAdd" title_key="statWaterAmount"/>
+			<display_entry name="dHyperthermalResist" title_key="statHyperthermalResist"/>
+			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>
+		</item_display_info>
+		<item_display_info display_type="dementiveChem" display_group="groupConsumables">
+			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>
 		</item_display_info>
 	</append>
 </Dementive>
