@@ -93,3 +93,11 @@ live in groups (turkeys, javelinas, hares, wolves) spawning together.
 1. Flora: kit, models, blocks, biome drifts. (Fixes the fields first.)
 2. Ambient creatures and the soundscape.
 3. Huntable animals and the wildlife rate.
+
+## Ground cover, camps and finds (2026-11-06)
+
+Ground cover: 25 walk-through patches in the plants' pipeline (`blender/groundcover/SPEC_*.md`), own bundle
+`natureexpanded-ground.unity3d` (textures at their baked 1024 and 2048). Low rates in `gen_nature.py` `COVER` (about 1 block
+in 450 of open ground, a few times that under the pine forest's trees), never on slopes; stones, sticks, cones and
+tumbleweeds, and scrap pick up for a little stone, wood, plant fiber or scrap iron. River stones and driftwood come from
+the DLL along shores. Camps and 12 single finds: see FEATURES.md.

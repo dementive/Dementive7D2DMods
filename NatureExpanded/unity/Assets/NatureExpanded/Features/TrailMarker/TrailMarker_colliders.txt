@@ -1,0 +1,4 @@
+# colliders for TrailMarker, Blender coordinates (see unity/Assets/Editor/NatureFeatureBuilder.cs)
+texture 1024
+capsule 0.006 0.011 -0.700 -0.053 -0.094 1.177 0.040
+box 0.042 -0.150 0.956 0.620 0.020 0.140 0.9921 0.0087 -0.1251 -0.0127 0.9994 -0.0308 0.1248 0.0321 0.9917

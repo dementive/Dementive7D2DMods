@@ -107,3 +107,12 @@ with `NatureExpanded/unity/Assets/NatureExpanded/Models` and `NatureExpanded/uni
 | Globemallow | globemallow.py | 6 to 8 upright wands 40 to 70 cm crowded with small apricot-orange cup flowers (30+), grey-green crinkled leaves. |
 | Sagebrush | sagebrush.py | A twisted silver-grey woody shrub 60 to 90 cm, footprint up to 0.7: shaggy bark at the base, fine silver three-lobed leaves in dense tufts. |
 | EveningPrimrose | evening_primrose.py | A low sprawl 15 to 25 cm of 10+ large white four-petal flowers 6 to 8 cm across (a couple fading to pink), long narrow leaves. |
+
+## Ground cover (2026-11-06)
+
+The 25 ground-cover models (leaf litters, needle mat, moss, twigs, cones, acorns, stones, pebbles, mud, ash, ice, gravel, rust,
+tumbleweed; specs in `blender/groundcover/SPEC_forest.md`, `SPEC_stones.md`, `SPEC_harsh.md`) are plants for the pipeline
+but not for the rules above: patches 0.8 to 1 m across lying on the ground, no taller than a few centimetres (the tumbleweed
+40), their textures keep the size they were baked at (the bundle's 512 cap is for flowers) and they go in
+`natureexpanded-ground.unity3d`. NatureBuilder and NatureShaderDEM carry the name list (`GroundCover`, `Leafy`): they don't
+sway, and only leaves, needles, moss and stems let light through.

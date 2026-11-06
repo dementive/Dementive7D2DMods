@@ -50,9 +50,15 @@ public static class NatureTreeBuilder
     // most of them 19 to 27): birches 15 m in Blender would read as saplings among them
     private static readonly Dictionary<string, float> Scales = new Dictionary<string, float> { ["Birch"] = 1.35f };
 
+    // Species whose wind sway is scaled down (a saguaro's flesh is stiff): the branch weight times this
+    private static readonly Dictionary<string, float> WindScales = new Dictionary<string, float> { ["Saguaro"] = 0.18f };
+
+    // Species whose leaves flutter harder than an oak's (aspen: "quaking"): the leaf cards' ripple times this
+    private static readonly Dictionary<string, float> FlutterScales = new Dictionary<string, float> { ["Aspen"] = 2.4f, ["Cottonwood"] = 1.7f };
+
     private struct Info
     {
-        public float Height, TrunkRadius, CrownRadius;
+        public float Height, TrunkRadius, CrownRadius, Wind, Flutter;
         // Each trunk's centre line from just under the ground up past the crown's start, (x, y, z, radius) in the
         // FBX meshes' own coordinates before the species' scale (Trees/trunks.txt, blender/trees treekit.write_trunks)
         public List<List<Vector4>> Trunks;
@@ -86,6 +92,8 @@ public static class NatureTreeBuilder
                 i.Height *= scale;
                 i.TrunkRadius *= scale;
                 i.CrownRadius *= scale;
+                i.Wind = WindScales.TryGetValue(Path.GetFileName(folder), out float ws) ? ws : 1f;
+                i.Flutter = FlutterScales.TryGetValue(Path.GetFileName(folder), out float fs) ? fs : 1f;
                 i.Trunks = trunks.TryGetValue(variant, out List<List<Vector4>> t) ? t : null;
                 prefabs.Add(MakeTree(folder, variant, i, scale, sizes));
             }
@@ -274,7 +282,8 @@ public static class NatureTreeBuilder
         CapsuleCollider capsule = col.AddComponent<CapsuleCollider>();
         capsule.direction = 1;
         capsule.radius = Mathf.Max(0.12f, radius);
-        capsule.height = shape.Height * 0.75f;
+        // a tall tree's capsule runs nearly its whole height: the falling tree's own capsule is 0.9 of the longest one
+        capsule.height = shape.Height * (shape.Height > 30f ? 0.95f : 0.75f);
         capsule.center = new Vector3(0f, capsule.height * 0.5f, 0f);
         bool chains = lines.Count > 0 && shape.Height >= 3f;
         capsule.enabled = !chains;
@@ -296,7 +305,8 @@ public static class NatureTreeBuilder
                 + " m, capsule radius " + knee.r.ToString("F2"));
             for (int a = 0; a < line.Count - 1;)
             {
-                float want = line[a].p.y < 3f ? 1f : 3f;
+                // (a bristlecone's trunk is a corkscrew all the way up: a metre everywhere, so no chord cuts into it)
+                float want = line[a].p.y < 3f || name.StartsWith("NatureTreeBristlecone") ? 1f : 3f;
                 int b = a + 1;
                 float run = Vector3.Distance(line[a].p, line[b].p);
                 while (b < line.Count - 1 && run < want)
@@ -425,6 +435,20 @@ public static class NatureTreeBuilder
         {
             shape = Measure(v, leaf, info);
         }
+        // Hanging strands (a willow's curtain: a leaf card over 1.4 m tall and at least 2.5 times as tall as wide) sway
+        // from their top like a rope, not from the middle: the sway weight and the flutter grow down the card from 0,
+        // and the whole card sways in the direction of its top. Everything else is untouched.
+        Dictionary<int, (float top, float height, Vector3 topPoint)> hanging = new Dictionary<int, (float, float, Vector3)>();
+        foreach (IGrouping<int, int> g in Enumerable.Range(0, v.Count).Where(i => leaf[i]).GroupBy(Find))
+        {
+            float top = g.Max(i => v[i].y), bottom = g.Min(i => v[i].y);
+            float wide = Mathf.Max(g.Max(i => v[i].x) - g.Min(i => v[i].x), g.Max(i => v[i].z) - g.Min(i => v[i].z));
+            if (top - bottom > 1.4f && top - bottom > 2.5f * wide)
+            {
+                List<Vector3> upper = g.Where(i => v[i].y > top - 0.02f).Select(i => v[i]).ToList();
+                hanging[g.Key] = (top, top - bottom, upper.Aggregate(Vector3.zero, (a, p) => a + p) / upper.Count);
+            }
+        }
 
         List<Vector4> uv0 = new List<Vector4>(), uv1 = new List<Vector4>(), uv2 = new List<Vector4>(), uv3 = new List<Vector4>();
         List<Color> colors = new List<Color>();
@@ -435,13 +459,23 @@ public static class NatureTreeBuilder
             float up01 = Mathf.Clamp01(p.y / (shape.Height * 0.3f));
             float weight = Mathf.Clamp01(0.46f * Mathf.Pow(out01, 0.8f) * up01 + 0.06f * Mathf.Clamp01(p.y / shape.Height) + (leaf[i] ? 0.04f : 0f));
             Vector3 anchor = card[i] >= 0 ? cards[card[i]].center : p;
-            float ripple = card[i] >= 0 ? Mathf.Clamp01((p - cards[card[i]].center).magnitude / cards[card[i]].reach) * 0.6f : 0f;
+            float ripple = card[i] >= 0 ? Mathf.Clamp01((p - cards[card[i]].center).magnitude / cards[card[i]].reach) * 0.6f * (info.Flutter > 0f ? info.Flutter : 1f) : 0f;
             // Ambient occlusion: dark deep in the crown, light at its surface and on the open trunk below it
             Vector3 d = p - shape.CrownCenter;
             float depth = Mathf.Clamp01(new Vector3(d.x / shape.CrownRadius, d.y / shape.CrownHalfHeight, d.z / shape.CrownRadius).magnitude);
             float below = Mathf.Clamp01((shape.CrownCenter.y - shape.CrownHalfHeight - p.y) / 2f);
             float ao = Mathf.Lerp(leaf[i] ? 0.69f : 0.72f, 1f, Mathf.Max(Mathf.Pow(depth, 1.2f), below * 0.9f));
-            uv0.Add(new Vector4(uv.Length > i ? uv[i].x : 0f, uv.Length > i ? uv[i].y : 0f, weight, Pack(SwayDirection(p))));
+            Vector3 swayAt = p;
+            if (card[i] >= 0 && hanging.TryGetValue(card[i], out (float top, float height, Vector3 topPoint) hang))
+            {
+                float down = Mathf.Clamp01((hang.top - p.y) / hang.height);
+                float topWeight = Mathf.Clamp01(0.46f * Mathf.Pow(Mathf.Clamp01(new Vector2(hang.topPoint.x - shape.Base.x, hang.topPoint.z - shape.Base.z).magnitude / shape.CrownRadius), 0.8f) + 0.1f);
+                weight = Mathf.Clamp01(0.4f * topWeight + 0.28f * Mathf.Pow(down, 1.2f));
+                ripple = down * 0.6f;
+                swayAt = hang.topPoint;
+            }
+            weight *= info.Wind > 0f ? info.Wind : 1f;
+            uv0.Add(new Vector4(uv.Length > i ? uv[i].x : 0f, uv.Length > i ? uv[i].y : 0f, weight, Pack(SwayDirection(swayAt))));
             uv1.Add(new Vector4(0f, 0f, anchor.x, anchor.y));
             uv2.Add(new Vector4(p.x, p.y, p.z, anchor.z));
             uv3.Add(new Vector4(0f, ripple, 0f, 1f));
@@ -641,28 +675,32 @@ public static class NatureTreeBuilder
                 NatureBuilder.Stage(160f);
                 GameObject tree = Spawn(prefab, Vector3.zero, 0f);
                 float h = Mathf.Max(4f, tree.GetComponentInChildren<MeshRenderer>().bounds.size.y);
-                Place(pine, new Vector3(-14f, 0f, 4f), 40f);
-                Place(oak, new Vector3(12f, 0f, 3f), 0f);
+                // A tall tree (a 55 m sequoia) needs every shot's distances stretched, the vanilla pine and oak beside it
+                // staying their own size: tall is 1 up to a 28 m tree
+                float tall = Mathf.Max(1f, h / 28f);
+                float trunkR = Mathf.Max(0.25f, tree.GetComponentsInChildren<CapsuleCollider>(true).Select(c => c.radius).DefaultIfEmpty(0.25f).Max());
+                Place(pine, new Vector3(-14f * tall, 0f, 4f), 40f);
+                Place(oak, new Vector3(12f * tall, 0f, 3f), 0f);
                 const int width = 1600, height = 900;
-                Save(NatureBuilder.Shot(new Vector3(4f, 6f, -46f), new Vector3(0f, 9f, 0f), 42f, width, height), output, name + ".png");
-                Save(NatureBuilder.Shot(new Vector3(-3f, 2f, -18f), new Vector3(0f, h * 0.55f, 0f), 55f, width, height), output, name + "_near.png");
+                Save(NatureBuilder.Shot(new Vector3(4f * tall, 6f, -46f * tall), new Vector3(0f, 9f * tall, 0f), 42f, width, height), output, name + ".png");
+                Save(NatureBuilder.Shot(new Vector3(-3f * tall, 2f, -18f * tall), new Vector3(0f, h * 0.55f, 0f), 55f, width, height), output, name + "_near.png");
                 // Its LODs in a row, near to far detail, and the bark close up
                 Object.DestroyImmediate(tree);
                 for (int lod = 0; lod < 4; lod++)
                 {
-                    GameObject copy = Spawn(prefab, new Vector3(-21f + lod * 14f, 0f, 40f), 30f);
+                    GameObject copy = Spawn(prefab, new Vector3((-21f + lod * 14f) * tall, 0f, 40f), 30f);
                     copy.GetComponent<LODGroup>().ForceLOD(lod);
                 }
-                Save(NatureBuilder.Shot(new Vector3(0f, 8f, -16f), new Vector3(0f, h * 0.45f, 40f), 50f, width, height), output, name + "_lods.png");
+                Save(NatureBuilder.Shot(new Vector3(0f, 8f, 40f - 56f * tall), new Vector3(0f, h * 0.45f, 40f), 50f, width, height), output, name + "_lods.png");
                 Spawn(prefab, new Vector3(0f, 0f, -60f), 200f).GetComponent<LODGroup>().ForceLOD(0);
-                Save(NatureBuilder.Shot(new Vector3(0.4f, 1.6f, -63.2f), new Vector3(0f, 1.8f, -60f), 50f, 1000, 900), output, name + "_bark.png");
+                Save(NatureBuilder.Shot(new Vector3(0.4f, 1.6f, -60f - trunkR - 3f), new Vector3(0f, 1.8f, -60f), 50f, 1000, 900), output, name + "_bark.png");
                 // As the player sees it walking up: an arm's length off, the foot changing to the white bark
-                Save(NatureBuilder.Shot(new Vector3(0.35f, 1.55f, -61.25f), new Vector3(0f, 1.15f, -60f), 55f, 1000, 900), output, name + "_bark_close.png");
+                Save(NatureBuilder.Shot(new Vector3(0.35f, 1.55f, -60f - trunkR - 1f), new Vector3(0f, 1.15f, -60f), 55f, 1000, 900), output, name + "_bark_close.png");
                 // The game's fade on a felled tree (EntityFallingTree turns on ENABLE_FADEOUT and runs _FadeOut down to
                 // 0): whole, two thirds and a third left
                 for (int k = 0; k < 3; k++)
                 {
-                    GameObject faded = Spawn(prefab, new Vector3(-14f + k * 14f, 0f, 120f), 0f);
+                    GameObject faded = Spawn(prefab, new Vector3((-14f + k * 14f) * tall, 0f, 120f), 0f);
                     faded.GetComponent<LODGroup>().ForceLOD(0);
                     foreach (MeshRenderer r in faded.GetComponentsInChildren<MeshRenderer>())
                     {
@@ -675,7 +713,7 @@ public static class NatureTreeBuilder
                         }).ToArray();
                     }
                 }
-                Save(NatureBuilder.Shot(new Vector3(0f, 9f, 80f), new Vector3(0f, 9f, 120f), 60f, width, height), output, name + "_fade.png");
+                Save(NatureBuilder.Shot(new Vector3(0f, 9f, 120f - 40f * tall), new Vector3(0f, 9f * tall, 120f), 60f, width, height), output, name + "_fade.png");
                 // The whole tree filling the frame, whatever its size (a seedling is lost in the other shots)
                 GameObject whole = Spawn(prefab, new Vector3(0f, 0f, 160f), 30f);
                 whole.GetComponent<LODGroup>().ForceLOD(0);

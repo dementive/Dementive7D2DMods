@@ -1,0 +1,4 @@
+# colliders for Antlers, Blender coordinates (see unity/Assets/Editor/NatureFeatureBuilder.cs)
+texture 1024
+box -0.040 -0.087 -0.470 0.512 0.451 0.140
+box 0.079 0.260 -0.485 0.396 0.200 0.110

@@ -1,0 +1,4 @@
+# colliders for GiantStump01, Blender coordinates (see unity/Assets/Editor/NatureFeatureBuilder.cs)
+texture 2048
+box 0 0 0.425 1.222 1.222 2.350 1 0 0 0 1 0 0 0 1
+box 0 0 0.425 1.222 1.222 2.350 0.7071 0.7071 0 -0.7071 0.7071 0 0 0 1

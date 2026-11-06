@@ -82,15 +82,18 @@ public static class NatureShaderDEM
         m.SetColor("_TintColor", new Color(1f, 1f, 1f, 0f));
         m.SetColor("_SSSColor", new Color(0f, 0f, 0f, 0f));
         m.SetFloat("_Cutoff", 0.5f);
-        m.SetFloat("_Translucency", 2f);
+        // Rock and bone ("Feature_" materials, see FEATURES.md) let no light through, as vanilla's boulders
+        // (and so do ground cover that is stone, ice, ash, mud, wood or metal; leaves, needles, moss and stems do)
+        bool feature = IsFeature(src.name) || (GroundCover(src.name) && !Leafy(src.name));
+        m.SetFloat("_Translucency", feature ? 0f : 2f);
         m.SetFloat("_TransNormalDistortion", 0.1f);
         m.SetFloat("_TransScattering", 2f);
-        m.SetFloat("_TransDirect", 1f);
-        m.SetFloat("_TransAmbient", 0.2f);
+        m.SetFloat("_TransDirect", feature ? 0f : 1f);
+        m.SetFloat("_TransAmbient", feature ? 0f : 0.2f);
         m.SetFloat("_TransShadow", 1f);
         // Leaves and petals are built back to back (the shader lights a back face with its front's normal, so a single
         // sheet seen from behind is black): cull the back faces. Solid plants draw both sides of their few thin bits
-        m.SetFloat("_Cull", Solid(src.name) ? 0f : 2f);
+        m.SetFloat("_Cull", Solid(src.name) && !IsFeature(src.name) ? 0f : 2f);
         m.SetFloat("_WindStartY", 0f);
         m.SetFloat("_WindStrength", Wind(src.name));
         m.renderQueue = 2450;
@@ -114,6 +117,15 @@ public static class NatureShaderDEM
     /// Matches NatureBuilder.Wind.</summary>
     public static float Wind(string plant)
     {
+        if (IsFeature(plant))
+        {
+            return 0f;
+        }
+        if (GroundCover(plant))
+        {
+            // Patches lying on the ground do not stir; a dead tumbleweed's thin stems just tremble
+            return plant == "DeadTumbleweed" ? 0.25f : 0f;
+        }
         switch (plant)
         {
             case "MossyLog": case "FlyAgaric": case "Bolete": case "Morels": case "BarrelCactus": case "PricklyPear":
@@ -124,6 +136,44 @@ public static class NatureShaderDEM
             default:
                 return 1f;
         }
+    }
+
+    /// <summary>The ground cover: walk-through patches of leaf litter, stones, ash and the like lying on the ground, in
+    /// their own bundle (natureexpanded-ground.unity3d). Matches NatureBuilder.GroundCover.</summary>
+    public static bool GroundCover(string plant)
+    {
+        switch (plant)
+        {
+            case "PineNeedleMat": case "BirchLeafLitter": case "MapleLeafLitter": case "OakLeafLitter": case "MossPatch":
+            case "TwigPile": case "PineconeCluster": case "AcornScatter": case "LichenStone": case "PebblesA":
+            case "PebblesB": case "PebblesC": case "FlatStones": case "Driftwood": case "RiverStones": case "CrackedMud":
+            case "ShaleChips": case "BleachedBranch": case "IceCrust": case "FrostHeavedStones": case "AshPatch":
+            case "CharredSticks": case "GravelPatch": case "RustFlakes": case "DeadTumbleweed":
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    /// <summary>Ground cover made of leaves, needles, moss and thin stems, which let light through like a plant's
+    /// leaves; the rest (stone, wood, ice, ash, mud, metal) does not. Matches NatureBuilder.Leafy.</summary>
+    public static bool Leafy(string plant)
+    {
+        switch (plant)
+        {
+            case "PineNeedleMat": case "BirchLeafLitter": case "MapleLeafLitter": case "OakLeafLitter": case "MossPatch":
+            case "AcornScatter": case "DeadTumbleweed":
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    /// <summary>The solid natural features (boulders, rock formations, cairns, bones; NatureFeatureBuilder names their
+    /// materials "Feature_&lt;Name&gt;"): closed meshes, drawn with back faces culled, no wind, no translucency.</summary>
+    public static bool IsFeature(string material)
+    {
+        return material != null && material.StartsWith("Feature_", System.StringComparison.Ordinal);
     }
 
     private static Shader Find()

@@ -1,2 +1,6 @@
-# About 165 MB, over GitHub's file limit: build it with src/build-trees.bat
+# About 550 MB, over GitHub's file limit: build it with src/build-trees.bat
 Resources/natureexpanded-trees.unity3d
+# About 385 MB (the feature models' textures), over GitHub's file limit: build it with src/build-features.bat
+Resources/natureexpanded-features.unity3d
+# Ground cover textures (kept at 1024 and 2048): 87 MB, under the limit but not worth the history, build it with src/build-bundle.bat
+Resources/natureexpanded-ground.unity3d

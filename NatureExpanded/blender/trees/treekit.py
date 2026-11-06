@@ -1533,6 +1533,13 @@ def _tube(m, tree, br, lod):
                 fade = math.exp(-max(0.0, p.z) / max(spec.flare_height, 1e-3))
                 swell = 0.65 * math.cos(lobes[0] * a) + 0.35 * math.cos((lobes[0] + 2) * a + 1.3)
                 rr *= 1.0 + lobes[1] * fade * swell
+            flutes = getattr(spec, "flutes", None)
+            if flutes and br.level == 0:
+                # Spiral ridges and hollows (bristlecone): (count, depth, phase per unit of length over radius), the
+                # ridges turning with the grain as BarkUV's twist does
+                nf, depth, rate = flutes
+                fa = k / sides * TAU
+                rr *= 1.0 + depth * (0.65 * math.cos(nf * fa + rate * acc[i]) + 0.35 * math.cos((nf + 1) * fa - 0.7 * rate * acc[i] + 1.1))
             ring.append(m.v(p + (nr * math.cos(a) + bn * math.sin(a)) * rr))
         rings.append(ring)
     for i in range(len(rings) - 1):

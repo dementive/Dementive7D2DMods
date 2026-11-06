@@ -1,0 +1,6 @@
+# colliders for HollowTrunk02, Blender coordinates (see unity/Assets/Editor/NatureFeatureBuilder.cs)
+texture 2048
+rect
+capsule -1.130 0.026 -0.057 -1.003 0.020 -0.059 0.470
+capsule -0.087 -0.041 -0.077 0.086 -0.046 -0.080 0.448
+capsule 0.958 -0.028 -0.097 1.176 -0.013 -0.102 0.425

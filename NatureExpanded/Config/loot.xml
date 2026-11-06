@@ -1,0 +1,34 @@
+<configs>
+	<!-- The hollow trunk cache of Nature Expanded: a modest forest stash. Written by gen_nature.py. Respawn follows the
+	     server's loot respawn setting like every other world container. -->
+	<append xpath="/lootcontainers">
+		<lootgroup name="groupDementiveHollowFood">
+			<item name="foodCharredMeat"/>
+			<item name="foodBoiledMeat"/>
+			<item name="foodCornBread"/>
+			<item name="foodCanPears"/>
+			<item name="foodCanSoup"/>
+			<item name="drinkJarRiverWater"/>
+		</lootgroup>
+		<lootgroup name="groupDementiveHollowAmmo">
+			<item name="ammoArrowStone" count="5,10"/>
+			<item name="ammo9mmBulletBall" count="4,9"/>
+			<item name="ammoShotgunShell" count="2,5"/>
+		</lootgroup>
+		<lootgroup name="groupDementiveHollowTool">
+			<item name="meleeToolRepairT0StoneAxe"/>
+			<item name="meleeToolShovelT0StoneShovel"/>
+			<item name="meleeToolFlashlight02"/>
+		</lootgroup>
+		<lootgroup name="groupDementiveHollowCache" count="all">
+			<item group="groupDementiveHollowFood" count="1,2" loot_prob_template="high" force_prob="true"/>
+			<item name="resourceYuccaFibers" count="3,8" loot_prob_template="high" force_prob="true"/>
+			<item name="medicalBandage" count="1,2" loot_prob_template="medHigh" force_prob="true"/>
+			<item group="groupDementiveHollowAmmo" loot_prob_template="med" force_prob="true"/>
+			<item group="groupDementiveHollowTool" loot_prob_template="lower" force_prob="true"/>
+		</lootgroup>
+		<lootcontainer name="dementiveHollowCache" count="1" size="6,2" sound_open="UseActions/open_backpack" sound_close="UseActions/close_backpack" loot_quality_template="qualBaseTemplate">
+			<item group="groupDementiveHollowCache"/>
+		</lootcontainer>
+	</append>
+</configs>

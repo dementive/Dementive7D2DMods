@@ -27,6 +27,9 @@ using UnityEngine.Rendering;
 public static class NatureBuilder
 {
     private const string BundleName = "natureexpanded.unity3d";
+    // The ground cover (leaf litter, stones, ash, ...): walk-through patches with textures baked at 1024 and 2048, which
+    // the plants' 512 cap would smear and which would make the plants bundle too big to keep in git
+    private const string GroundBundleName = "natureexpanded-ground.unity3d";
     private const string Models = "Assets/NatureExpanded/Models";
     private const string Prefabs = "Assets/NatureExpanded/Prefabs";
     private const string GameShader = "Game/EntityTintMaskSSS";
@@ -96,8 +99,17 @@ public static class NatureBuilder
         Directory.CreateDirectory(output);
         // What the block XML needs from each plant (its height in blocks), for gen-blocks to read
         File.WriteAllLines(Path.Combine(output, "plant-sizes.txt"), sizes);
-        AssetBundleBuild bundle = new AssetBundleBuild { assetBundleName = BundleName, assetNames = prefabs.ToArray() };
-        AssetBundleManifest manifest = BuildPipeline.BuildAssetBundles(output, new[] { bundle },
+        AssetBundleBuild bundle = new AssetBundleBuild
+        {
+            assetBundleName = BundleName,
+            assetNames = prefabs.Where(p => !GroundCover(Path.GetFileNameWithoutExtension(p))).ToArray(),
+        };
+        AssetBundleBuild ground = new AssetBundleBuild
+        {
+            assetBundleName = GroundBundleName,
+            assetNames = prefabs.Where(p => GroundCover(Path.GetFileNameWithoutExtension(p))).ToArray(),
+        };
+        AssetBundleManifest manifest = BuildPipeline.BuildAssetBundles(output, new[] { bundle, ground },
             BuildAssetBundleOptions.ChunkBasedCompression | BuildAssetBundleOptions.StrictMode
                 | BuildAssetBundleOptions.ForceRebuildAssetBundle,
             BuildTarget.StandaloneWindows64);
@@ -105,7 +117,9 @@ public static class NatureBuilder
         {
             throw new System.Exception("Building " + BundleName + " failed; see the log above");
         }
-        Debug.Log("[NatureBuilder] Built " + Path.Combine(output, BundleName) + " with " + prefabs.Count + " plants");
+        Debug.Log("[NatureBuilder] Built " + Path.Combine(output, BundleName) + " with " + bundle.assetNames.Length + " plants ("
+            + new FileInfo(Path.Combine(output, BundleName)).Length / 1048576 + " MB) and " + Path.Combine(output, GroundBundleName)
+            + " with " + ground.assetNames.Length + " ground covers (" + new FileInfo(Path.Combine(output, GroundBundleName)).Length / 1048576 + " MB)");
 
         Previews(prefabs.Where(p => wanted == null || wanted.Contains(Path.GetFileNameWithoutExtension(p))).ToList(), prefabs,
             Path.Combine(output, "plants"));
@@ -178,7 +192,8 @@ public static class NatureBuilder
         Vector3 lo = new Vector3(Mathf.Max(b.min.x, -0.5f), -0.5f, Mathf.Max(b.min.z, -0.5f));
         Vector3 hi = new Vector3(Mathf.Min(b.max.x, 0.5f), Mathf.Min(b.max.y, height - 0.5f), Mathf.Min(b.max.z, 0.5f));
         collider.center = (lo + hi) / 2f;
-        collider.size = Vector3.Max(hi - lo, new Vector3(0.2f, 0.1f, 0.2f));
+        // A patch lying on the ground is a few centimetres high: give the tool a box it can hit
+        collider.size = Vector3.Max(hi - lo, new Vector3(0.2f, GroundCover(name) ? 0.14f : 0.1f, 0.2f));
         root.layer = 16;
         sizes.Add(name + " " + height + " " + b.size.x.ToString("F2") + " " + b.size.y.ToString("F2") + " " + b.size.z.ToString("F2"));
         Debug.Log("[NatureBuilder] " + name + " bounds " + b.center.ToString("F2") + " size " + b.size.ToString("F2") + ", "
@@ -255,7 +270,7 @@ public static class NatureBuilder
     /// 2048 atlas to under 2 texels a centimeter, so they keep the size they were baked at (up to 2048).</summary>
     private static int MaxTextureSize(string plant)
     {
-        return Solid(plant) ? 2048 : 512;
+        return Solid(plant) || GroundCover(plant) ? 2048 : 512;
     }
 
     private static void ConfigureTexture(string path, int maxSize)
@@ -339,11 +354,13 @@ public static class NatureBuilder
         m.SetColor("_TintColor", new Color(1f, 1f, 1f, 0f));
         m.SetColor("_SSSColor", new Color(0f, 0f, 0f, 0f));
         m.SetFloat("_Cutoff", 0.5f);
-        m.SetFloat("_Translucency", 2f);
+        // Leaves, needles, moss and thin stems let light through; stone, wood, ice, ash, mud and metal ground cover do not
+        bool opaque = GroundCover(src.name) && !Leafy(src.name);
+        m.SetFloat("_Translucency", opaque ? 0f : 2f);
         m.SetFloat("_TransNormalDistortion", 0.1f);
         m.SetFloat("_TransScattering", 2f);
-        m.SetFloat("_TransDirect", 1f);
-        m.SetFloat("_TransAmbient", 0.2f);
+        m.SetFloat("_TransDirect", opaque ? 0f : 1f);
+        m.SetFloat("_TransAmbient", opaque ? 0f : 0.2f);
         m.SetFloat("_TransShadow", 1f);
         // Two-sided meshes cull their back faces; solid ones draw both sides of their few thin bits
         m.SetFloat("_Cull", Solid(src.name) ? 0f : 2f);
@@ -366,10 +383,45 @@ public static class NatureBuilder
         }
     }
 
+    /// <summary>The ground cover (walk-through patches lying on the ground: leaf litter, stones, ash, ...), built into
+    /// their own bundle with their textures kept at the size they were baked at. Matches NatureShaderDEM.GroundCover.</summary>
+    public static bool GroundCover(string plant)
+    {
+        switch (plant)
+        {
+            case "PineNeedleMat": case "BirchLeafLitter": case "MapleLeafLitter": case "OakLeafLitter": case "MossPatch":
+            case "TwigPile": case "PineconeCluster": case "AcornScatter": case "LichenStone": case "PebblesA":
+            case "PebblesB": case "PebblesC": case "FlatStones": case "Driftwood": case "RiverStones": case "CrackedMud":
+            case "ShaleChips": case "BleachedBranch": case "IceCrust": case "FrostHeavedStones": case "AshPatch":
+            case "CharredSticks": case "GravelPatch": case "RustFlakes": case "DeadTumbleweed":
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    /// <summary>Ground cover made of leaves, needles, moss and thin stems (lets light through). Matches
+    /// NatureShaderDEM.Leafy.</summary>
+    public static bool Leafy(string plant)
+    {
+        switch (plant)
+        {
+            case "PineNeedleMat": case "BirchLeafLitter": case "MapleLeafLitter": case "OakLeafLitter": case "MossPatch":
+            case "AcornScatter": case "DeadTumbleweed":
+                return true;
+            default:
+                return false;
+        }
+    }
+
     /// <summary>How hard the wind sways a plant: woody and fleshy ones barely, mushrooms and logs not at all. Matches
     /// NatureShaderDEM.Wind.</summary>
     public static float Wind(string plant)
     {
+        if (GroundCover(plant))
+        {
+            return plant == "DeadTumbleweed" ? 0.25f : 0f;
+        }
         switch (plant)
         {
             case "MossyLog": case "FlyAgaric": case "Bolete": case "Morels": case "BarrelCactus": case "PricklyPear":
@@ -430,7 +482,7 @@ public static class NatureBuilder
                 float size = Mathf.Max(1f, b.size.y, b.size.x * 0.8f);
                 // Up close, with vanilla cotton beside it for scale
                 Spawn(prefab, Vector3.zero, 20f);
-                Object.Instantiate(cotton, new Vector3(-0.6f - size * 0.6f, 0f, 0.4f), Quaternion.identity);
+                Object.Instantiate(cotton, (GroundCover(name) ? new Vector3(-0.8f, 0f, 0.5f) : new Vector3(-0.6f - size * 0.6f, 0f, 0.4f)), Quaternion.identity);
                 // A drift behind: the plant on most blocks of a 7 x 5 patch, each turned at random
                 System.Random rnd = new System.Random(name.GetHashCode());
                 for (int x = -3; x <= 3; x++)
@@ -446,8 +498,10 @@ public static class NatureBuilder
                 }
                 const int width = 1100, height = 900;
                 Texture2D sheet = new Texture2D(width * 2, height, TextureFormat.RGB24, false);
-                Texture2D close = Shot(new Vector3(0.9f, 0.35f + size * 0.55f, -1.9f) * Mathf.Max(1f, size * 0.85f),
-                    new Vector3(0f, -0.5f + size * 0.4f, 0f), 38f, width, height);
+                Texture2D close = GroundCover(name)
+                    ? Shot(new Vector3(0.45f, 0.62f, -1.05f), new Vector3(-0.1f, -0.44f, 0f), 50f, width, height)
+                    : Shot(new Vector3(0.9f, 0.35f + size * 0.55f, -1.9f) * Mathf.Max(1f, size * 0.85f),
+                        new Vector3(0f, -0.5f + size * 0.4f, 0f), 38f, width, height);
                 Texture2D drift = Shot(new Vector3(2f, 2.6f, -6f) * Mathf.Max(1f, size * 0.6f), new Vector3(0f, -0.3f, 6f), 45f, width, height);
                 sheet.SetPixels(0, 0, width, height, close.GetPixels());
                 sheet.SetPixels(width, 0, width, height, drift.GetPixels());

@@ -1,0 +1,7 @@
+# colliders for FirewoodStack, Blender coordinates (see unity/Assets/Editor/NatureFeatureBuilder.cs)
+texture 2048
+box -0.105 0.000 -0.590 0.490 0.280 0.320
+box -0.105 0.000 -0.325 0.350 0.280 0.210
+box -0.140 0.000 -0.185 0.280 0.280 0.070
+box -0.175 0.000 -0.115 0.210 0.280 0.070
+box -0.210 0.000 -0.045 0.140 0.280 0.070

@@ -39,6 +39,19 @@ they cost no more.
 the pines and oaks and now and then alone in a meadow. They're drawn by the game's own SpeedTree shader, so they're lit,
 fade and sway in the wind like vanilla's trees, and they chop and fall like them.
 
+**Ground cover:** 25 walk-through patches lying on the forest floor and open ground, a few to a screen and never on
+slopes: pine needles, birch, maple and oak leaf litter, moss, twig piles, pinecones, acorns, lichen stones and pebbles
+(pine forest, thickest under the trees); ash drifts, charred sticks and shale (burnt forest); cracked mud, bleached
+branches and tumbleweeds (desert); broken ice and frost-heaved stones (snow); rubble gravel, rusted scrap and tumbleweeds
+(wasteland); river stones and driftwood along the water. Stones, sticks, pinecones and tumbleweeds, and rusted scrap
+pick up for a little stone, wood, plant fiber or scrap iron; leaves, moss, ash, mud and ice are just there.
+
+**Camps and lost things** (solid and walk-through set dressing, no loot, break them up for materials): four abandoned
+camps (a tent camp, a collapsed lean-to, a car camp of folding chairs, and a fisherman's camp by the water), and finds
+such as a trail marker, shed antlers, a lone boot, an old tire, a wheelbarrow, a lawn chair, a broken cooler, a shopping
+cart, a rusty bucket and cans, a firewood stack, an abandoned backpack and a rusted bicycle: each a few dozen to a
+map (the camps fewer), so a find is an event. See FEATURES.md.
+
 **Harvesting:** plants give plant fibers like grass (bushes a few more), porcini and morels give mushrooms, fly agaric
 is poisonous (a fiber, no food), and a mossy log chops into wood.
 
@@ -57,6 +70,11 @@ is poisonous (a fiber, no food), and a mossy log chops into wood.
   (`unity\Build\plants\<Name>.png`) and all of them in a row (`lineup.png`).
 - `Scripts\NatureExpanded\gen_nature.py`: writes `Config\blocks.xml`, `Config\biomes.xml` and `Config\Localization.csv`
   from its plant and biome tables (run it after the bundle, which records each plant's height).
+- Ground cover (`blender/groundcover/SPEC_*.md`, scripts `blender/<name>.py` on `blender/groundcover/gckit.py` and
+  `kit_ground.py`/`kit_stones.py`) goes through the same `src\build-bundle.bat`, but into its own bundle,
+  `Resources\natureexpanded-ground.unity3d` (87 MB, git-ignored; the plants bundle stays 62 MB): its textures keep the
+  sizes they were baked at (1024, or 2048 for the leaf litters, needle mat and moss) where plants drop to 512.
+  `gen_nature.py`'s `COVER` table sets the rates (`COVER_SCALE` scales them all).
 - `blender/grass/grass_tiles.py` renders each grass in `blender/grass/grasses.txt` from the side, and
   `src\build-grass.bat` turns the renders into tiles in the game's grass texture format, builds
   `Resources\natureexpanded-grass.unity3d`, and tries the copy on the game's own sheet (`unity\Build\grass\sheet.png`).

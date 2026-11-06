@@ -1,6 +1,7 @@
 @echo off
-rem Builds Resources\natureexpanded.unity3d from the plant models in unity\Assets\NatureExpanded\Models (made by the
-rem blender\*.py scripts) with Unity 2022.3.62f2 in batch mode, and renders unity\Build\plants\<Name>.png (each plant
+rem Builds Resources\natureexpanded.unity3d (the plants) and Resources\natureexpanded-ground.unity3d (the ground cover:
+rem leaf litter, stones, ash and the like; git-ignored, it keeps its textures' baked sizes and is too big for git) from
+rem the models in unity\Assets\NatureExpanded\Models (made by the blender\*.py scripts) with Unity 2022.3.62f2 in batch mode, and renders unity\Build\plants\<Name>.png (each plant
 rem in the game's plant shader, up close and as a drift) and lineup.png. Needs Unity 2022.3.62f2 (or UNITY set) with
 rem Unity Hub signed in. Pass plant names (Poppy,Lupine) to render only their previews; the bundle always has all.
 setlocal
@@ -26,4 +27,6 @@ if errorlevel 1 (
 if not exist "%MOD%\Resources" mkdir "%MOD%\Resources"
 copy /y "%PROJECT%\Build\natureexpanded.unity3d" "%MOD%\Resources\natureexpanded.unity3d" >nul
 if errorlevel 1 exit /b 1
-echo Built Resources\natureexpanded.unity3d.
+copy /y "%PROJECT%\Build\natureexpanded-ground.unity3d" "%MOD%\Resources\natureexpanded-ground.unity3d" >nul
+if errorlevel 1 exit /b 1
+echo Built Resources\natureexpanded.unity3d and Resources\natureexpanded-ground.unity3d.

@@ -1,0 +1,9 @@
+# colliders for NurseLog02, Blender coordinates (see unity/Assets/Editor/NatureFeatureBuilder.cs)
+texture 2048
+rect
+capsule -3.860 0.001 -0.190 -3.306 -0.007 -0.217 0.440
+capsule -2.449 -0.053 -0.246 -1.852 -0.111 -0.255 0.418
+capsule -1.040 -0.154 -0.253 -0.395 -0.158 -0.238 0.396
+capsule 0.372 -0.120 -0.218 1.059 -0.048 -0.198 0.372
+capsule 1.777 0.001 -0.187 2.518 0.023 -0.188 0.348
+capsule 3.184 0.034 -0.203 3.981 0.037 -0.238 0.319
