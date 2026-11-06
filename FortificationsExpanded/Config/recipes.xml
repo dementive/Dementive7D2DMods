@@ -37,5 +37,34 @@
 			<ingredient name="resourceForgedIron" count="10"/>
 			<ingredient name="resourceMechanicalParts" count="4"/>
 		</recipe>
+		<recipe name="DementiveFortPicketFence" count="1" tags="packMuleCrafting">
+			<ingredient name="resourceWood" count="10"/>
+			<ingredient name="resourceNail" count="2"/>
+		</recipe>
+		<recipe name="DementiveFortPicketFenceGate" count="1" tags="packMuleCrafting">
+			<ingredient name="resourceWood" count="20"/>
+			<ingredient name="resourceNail" count="6"/>
+		</recipe>
+		<recipe name="DementiveFortPostRail" count="1" tags="packMuleCrafting">
+			<ingredient name="resourceWood" count="8"/>
+			<ingredient name="resourceYuccaFibers" count="2"/>
+		</recipe>
+		<recipe name="DementiveFortPostRailGate" count="1" tags="packMuleCrafting">
+			<ingredient name="resourceWood" count="16"/>
+			<ingredient name="resourceYuccaFibers" count="4"/>
+		</recipe>
+		<recipe name="DementiveFortRazorWire" count="1" craft_area="workbench" tags="workbenchCrafting">
+			<ingredient name="resourceScrapIron" count="8"/>
+			<ingredient name="resourceYuccaFibers" count="2"/>
+		</recipe>
+		<recipe name="DementiveFortPalletWall" count="1" tags="packMuleCrafting">
+			<ingredient name="resourceWood" count="6"/>
+		</recipe>
+		<recipe name="DementiveFortHedgeRow" count="2" tags="packMuleCrafting">
+			<ingredient name="resourceYuccaFibers" count="4"/>
+		</recipe>
+		<recipe name="DementiveFortStoneWorks" count="1" craft_area="workbench" tags="workbenchCrafting">
+			<ingredient name="resourceCobblestones" count="30"/>
+		</recipe>
 	</append>
 </configs>

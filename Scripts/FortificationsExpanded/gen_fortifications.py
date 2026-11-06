@@ -20,6 +20,8 @@ MOD = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path
 BUNDLE = "#@modfolder:Resources/fortificationsexpanded.unity3d?"
 PREFIX = "DementiveFort"
 CLASS = "FortDEM, FortificationsExpanded"
+DAMAGE_CLASS = "FortDamageDEM, FortificationsExpanded"  # hurts what touches it (vanilla BlockDamage)
+PLANT_CLASS = "FortPlantDEM, FortificationsExpanded"  # a growing plant (vanilla BlockPlantGrowing)
 GATE_CLASS = "FortGateDEM, FortificationsExpanded"
 
 # Damage-stage thresholds as fractions of max health: DMG0 above 65%, DMG1 above 30%, DMG2 below
@@ -82,6 +84,46 @@ MATERIALS = """<configs>
 			<property name="explosionresistance" value="0.5"/>
 			<property name="Experience" value="4"/>
 		</material>
+		<!-- Razor wire: thin steel wire and studded posts. Its slow and its cuts are block properties of the coil. -->
+		<material id="MrazorWireDEM">
+			<property name="damage_category" value="metal"/>
+			<property name="surface_category" value="metal"/>
+			<property name="forge_category" value="iron"/>
+			<property name="Hardness" type="float" value="1"/>
+			<property name="stepsound" value="metal"/>
+			<property name="stability_glue" value="20"/>
+			<property name="Mass" type="int" value="5"/>
+			<property name="MaxDamage" value="300"/>
+			<property name="Experience" value="2"/>
+		</material>
+		<!-- Hedge: living wood, cut with an axe like a tree branch; plant hit sounds and leaf bursts, but not a "plant"
+		     material (those are one-hit decoration) -->
+		<material id="MhedgeDEM">
+			<property name="damage_category" value="wood"/>
+			<property name="surface_category" value="plant"/>
+			<property name="particle_category" value="plant"/>
+			<property name="forge_category" value="wood"/>
+			<property name="Hardness" type="float" value="1"/>
+			<property name="stepsound" value="fern"/>
+			<property name="stability_glue" value="5"/>
+			<property name="Mass" type="int" value="5"/>
+			<property name="MaxDamage" value="500"/>
+			<property name="Experience" value="2"/>
+		</material>
+		<!-- Stone Works: thick dressed masonry. Blast resistance 0.45, over twice reinforced concrete's 0.2 (plain
+		     concrete is 0.1, steel 0.5) -->
+		<material id="MstoneWorksDEM">
+			<property name="damage_category" value="stone"/>
+			<property name="surface_category" value="stone"/>
+			<property name="forge_category" value="stone"/>
+			<property name="Hardness" type="float" value="1"/>
+			<property name="stepsound" value="stone"/>
+			<property name="stability_glue" value="120"/>
+			<property name="Mass" type="int" value="10"/>
+			<property name="MaxDamage" value="3000"/>
+			<property name="explosionresistance" value="0.45"/>
+			<property name="Experience" value="4"/>
+		</material>
 	</append>
 </configs>
 """
@@ -95,18 +137,63 @@ def mesh_damage(health):
 
 def piece(name, model, health, material, dim=(1, 1, 1), dmg=False, solid=False, collide=None, upgrade=None,
           downgrade=None, repair=None, harvest=None, tint=None, gate=False, sounds=("", ""), upgrade_sound=None,
-          offset=None, support=False, door_sounds=None, stage=None):
+          offset=None, support=False, door_sounds=None, stage=None, cls=None, extra=None, plant=None):
     """One block. upgrade = (to, item, count); downgrade = the block this one breaks down to (leftover damage carries
     down the chain, and zombies count the whole chain's health when deciding whether to break through). support: other
     blocks can be built on it (filled walls). door_sounds: a gate's (open, close, locked) sounds. stage: the upgrade is
-    a fill or restore that runs along the wall, to the touching pieces of the family at the same stage."""
+    a fill or restore that runs along the wall, to the touching pieces of the family at the same stage. cls: a block
+    class other than the plain piece. extra: more (property, value) lines. plant: a growing hedge stage, written by
+    plant_block_xml instead (a dict of next, rate, player, drop)."""
     return dict(name=PREFIX + name, model=model, health=health, material=material, dim=dim, dmg=dmg, solid=solid,
                 collide=collide, upgrade=upgrade, downgrade=downgrade, repair=repair or {}, harvest=harvest or {},
                 tint=tint, gate=gate, sounds=sounds, upgrade_sound=upgrade_sound, offset=offset, support=support,
-                door_sounds=door_sounds, stage=stage)
+                door_sounds=door_sounds, stage=stage, cls=cls, extra=extra or [], plant=plant)
+
+
+def plant_block_xml(p, family):
+    """A stage of a hedge before it is full grown: vanilla's growing plant (it ticks along by itself, needs fertile
+    ground, and turns into the next block when its time is up) with our model. Walk-through (melee only), one hit
+    destroys it and gives the cutting back, like the vanilla seeds."""
+    g = p["plant"]
+    lines = ['\t\t<block name="%s">' % p["name"],
+             '\t\t\t<property name="Class" value="%s" />' % PLANT_CLASS,
+             '\t\t\t<property name="CreativeMode" value="%s" />' % ("Player" if g["player"] else "Dev"),
+             '\t\t\t<property name="CustomIcon" value="%s" />' % family["icon"],
+             '\t\t\t<property name="DescriptionKey" value="%s%sDesc" />' % (PREFIX, family["family"]),
+             '\t\t\t<property class="PlantGrowing">',
+             '\t\t\t\t<property name="Next" value="%s" />' % (PREFIX + g["next"]),
+             '\t\t\t\t<property name="GrowthRate" value="%d" />' % g["rate"],
+             '\t\t\t\t<property name="FertileLevel" value="1" />',
+             '\t\t\t\t<property name="IsRandom" value="false" />',
+             "\t\t\t</property>",
+             '\t\t\t<property name="Material" value="%s" />' % p["material"],
+             '\t\t\t<property name="Shape" value="ModelEntity" />',
+             '\t\t\t<property name="Model" value="%s%s" />' % (BUNDLE, p["model"]),
+             '\t\t\t<property name="PlaceAsRandomRotation" value="true" />',
+             '\t\t\t<property name="OnlySimpleRotations" value="true" />',
+             '\t\t\t<property name="Collide" value="melee" />',
+             '\t\t\t<property name="IsDecoration" value="true" />',
+             '\t\t\t<property name="IsTerrainDecoration" value="true" />',
+             '\t\t\t<property name="CanDecorateOnSlopes" value="true" />',
+             '\t\t\t<property name="HarvestOverdamage" value="false" />',
+             '\t\t\t<property name="StabilitySupport" value="false" />',
+             '\t\t\t<property name="ImposterDontBlock" value="true" />',
+             '\t\t\t<property name="LightOpacity" value="0" />',
+             '\t\t\t<property name="WaterFlow" value="permitted" />',
+             '\t\t\t<property name="EconomicValue" value="6" />',
+             '\t\t\t<property name="FortFamily" value="%s" />' % family["family"],
+             '\t\t\t<drop event="Destroy" name="%s" count="1" />' % (PREFIX + g["drop"]),
+             '\t\t\t<property name="SoundPickup" value="seeds_generic1_grab" />',
+             '\t\t\t<property name="SoundPlace" value="seeds_generic1_place" />',
+             '\t\t\t<property name="Group" value="Resources" />',
+             '\t\t\t<property name="FilterTags" value="MC_outdoor,SC_crops" />',
+             "\t\t</block>"]
+    return lines
 
 
 def block_xml(p, family):
+    if p["plant"]:
+        return plant_block_xml(p, family)
     lines = ['\t\t<block name="%s">' % p["name"]]
     if p["gate"]:
         door = ['\t\t\t\t<property class="TEFeatureDoor" />']
@@ -123,7 +210,7 @@ def block_xml(p, family):
                   "\t\t\t</property>",
                   '\t\t\t<property name="CreativeMode" value="Player" />']
     else:
-        lines += ['\t\t\t<property name="Class" value="%s" />' % CLASS,
+        lines += ['\t\t\t<property name="Class" value="%s" />' % (p["cls"] or CLASS),
                   '\t\t\t<property name="CreativeMode" value="Dev" />']
     lines += ['\t\t\t<property name="CustomIcon" value="%s" />' % family["icon"],
               '\t\t\t<property name="DescriptionKey" value="%s%sDesc" />' % (PREFIX, family["family"]),
@@ -132,6 +219,7 @@ def block_xml(p, family):
               '\t\t\t<property name="Model" value="%s%s" />' % (BUNDLE, p["model"])]
     if p["offset"]:
         lines.append('\t\t\t<property name="ModelOffset" value="%s" />' % p["offset"])
+    lines += ['\t\t\t<property name="%s" value="%s" />' % kv for kv in p["extra"]]
     if p["dim"] != (1, 1, 1):
         lines.append('\t\t\t<property name="MultiBlockDim" value="%d,%d,%d" />' % p["dim"])
         lines.append('\t\t\t<property name="DisplayType" value="blockMulti" />')
@@ -419,8 +507,175 @@ def container_family():
                      "colour from the radial menu.\n\nRepair with Forged Steel and Forged Iron.")
 
 
+# ------------------------------------------------------------------ Picket Fence: low wooden cover
+
+WOOD_SOUNDS = ("wood_misc_med_grab", "wood_misc_med_place")
+FENCE_GATE_SOUNDS = ("door_fence_wood_open", "door_fence_wood_close", "gate_wood_large_locked")
+
+
+def picket_fence_family():
+    wood = "Mwood_regular"
+    pieces = [
+        piece("PicketFenceSection", "PicketFenceSection", 250, wood, dmg=True, solid=True,
+              repair={"resourceWood": 4, "resourceNail": 1}, harvest={"resourceWood": 5}, sounds=WOOD_SOUNDS),
+        piece("PicketFenceCorner", "PicketFenceCorner", 250, wood, dmg=True, solid=True,
+              repair={"resourceWood": 4, "resourceNail": 1}, harvest={"resourceWood": 5}, sounds=WOOD_SOUNDS),
+    ]
+    gate = piece("PicketFenceGate", "PicketFenceGate", 300, wood, dim=(2, 1, 1), gate=True,
+                 repair={"resourceWood": 8, "resourceNail": 2}, harvest={"resourceWood": 10}, sounds=WOOD_SOUNDS,
+                 door_sounds=FENCE_GATE_SOUNDS)
+    return dict(family="PicketFence", icon=PREFIX + "PicketFence", pieces=pieces,
+                helper=["PicketFenceSection", "PicketFenceCorner"],
+                recipe=dict(items=[("resourceWood", 10), ("resourceNail", 2)], area=None),
+                gates=[(gate, dict(items=[("resourceWood", 20), ("resourceNail", 6)], area=None),
+                        "Picket Fence Gate",
+                        "A 2 wide gate of white-painted pickets, 1.1 m high. Open and close it like a door; it can be "
+                        "locked.\n\nRepair with Wood and Nails.")],
+                names={"": "Picket Fence", "PicketFenceSection": "Picket Fence", "PicketFenceCorner": "Picket Fence Corner"},
+                desc="A 1.1 m picket fence: cheap to knock together and quick to place, and it blocks sight and "
+                     "bullets. Zombies climb it, so it marks a boundary and funnels them more than it stops them. Pick "
+                     "a section or a corner from the radial menu.\n\nRepair with Wood and Nails.")
+
+
+# ------------------------------------------------------------------ Post-and-Rail Fence: low shoot-through fence
+
+def post_rail_family():
+    wood = "Mwood_regular"
+    pieces = [
+        piece("PostRailSection", "PostRailSection", 200, wood, dmg=True, solid=True, collide=SHOOT_THROUGH,
+              repair={"resourceWood": 4}, harvest={"resourceWood": 5}, sounds=WOOD_SOUNDS),
+        piece("PostRailCorner", "PostRailCorner", 200, wood, dmg=True, solid=True, collide=SHOOT_THROUGH,
+              repair={"resourceWood": 4}, harvest={"resourceWood": 5}, sounds=WOOD_SOUNDS),
+    ]
+    gate = piece("PostRailGate", "PostRailGate", 250, wood, dim=(2, 1, 1), gate=True, collide=SHOOT_THROUGH,
+                 repair={"resourceWood": 8}, harvest={"resourceWood": 10}, sounds=WOOD_SOUNDS,
+                 door_sounds=FENCE_GATE_SOUNDS)
+    return dict(family="PostRail", icon=PREFIX + "PostRail", pieces=pieces,
+                helper=["PostRailSection", "PostRailCorner"],
+                recipe=dict(items=[("resourceWood", 8), ("resourceYuccaFibers", 2)], area=None),
+                gates=[(gate, dict(items=[("resourceWood", 16), ("resourceYuccaFibers", 4)], area=None),
+                        "Post-and-Rail Gate",
+                        "A 2 wide rail gate, 1.2 m high. Bullets and arrows go through it, and it can be locked. Open "
+                        "and close it like a door.\n\nRepair with Wood.")],
+                names={"": "Post-and-Rail Fence", "PostRailSection": "Post-and-Rail Fence",
+                       "PostRailCorner": "Post-and-Rail Corner"},
+                desc="A 1.2 m split-rail fence. It stops zombies but not your bullets or arrows, and they can see you "
+                     "through it. They can climb it, so it works as a boundary rather than a wall. Pick a section or a "
+                     "corner from the radial menu.\n\nRepair with Wood.")
+
+
+# ------------------------------------------------------------------ Razor-Wire Coil: hurts what touches it
+
+# What touching the coil does (vanilla's BlockDamage, as the barbed wire): every living thing in contact takes DAMAGE
+# once every 1.5 seconds and is slowed to MOVEMENT, and the coil wears by WEAR each time
+RAZOR_DAMAGE = 8
+RAZOR_WEAR = 2
+RAZOR_SLOW = 0.4
+
+
+def razor_wire_family():
+    m = "MrazorWireDEM"
+    touch = [("Damage", RAZOR_DAMAGE), ("DamageType", "BarbedWire"), ("Damage_received", RAZOR_WEAR),
+             ("MovementFactor", RAZOR_SLOW), ("BlockTag", "Spike")]
+    pieces = [piece(name, name, 300, m, dmg=True, solid=True, collide=SHOOT_THROUGH, cls=DAMAGE_CLASS, extra=touch,
+                    repair={"resourceScrapIron": 4}, harvest={"resourceScrapIron": 4})
+              for name in ("RazorWireSection", "RazorWireCorner")]
+    return dict(family="RazorWire", icon=PREFIX + "RazorWire", pieces=pieces,
+                helper=["RazorWireSection", "RazorWireCorner"],
+                recipe=dict(items=[("resourceScrapIron", 8), ("resourceYuccaFibers", 2)], area="workbench"), gates=[],
+                names={"": "Razor Wire Coil", "RazorWireSection": "Razor Wire Coil", "RazorWireCorner": "Razor Wire Corner"},
+                desc="A 1 m coil of razor wire on steel posts. Anything that touches it is cut (%d damage every second "
+                     "and a half) and slowed, zombies and you alike, and the coil wears down a little each time. "
+                     "Bullets, arrows and sight pass through it. Zombies climb it, but not without a price. Pick a "
+                     "section or a corner from the radial menu.\n\nRepair with Scrap Iron." % RAZOR_DAMAGE)
+
+
+# ------------------------------------------------------------------ Pallet Wall: cheap tall wall
+
+def pallet_wall_family():
+    wood = "Mwood_regular"
+    sounds = ("wood_misc_hvy_grab", "wood_misc_hvy_place")
+    pieces = [piece(name, name, 400, wood, dim=(1, 2, 1), dmg=True, solid=True, support=True,
+                    repair={"resourceWood": 3}, harvest={"resourceWood": 4, "resourceNail": 2}, sounds=sounds)
+              for name in ("PalletWallSection", "PalletWallCorner")]
+    return dict(family="PalletWall", icon=PREFIX + "PalletWall", pieces=pieces,
+                helper=["PalletWallSection", "PalletWallCorner"],
+                recipe=dict(items=[("resourceWood", 6)], area=None), gates=[],
+                names={"": "Pallet Wall", "PalletWallSection": "Pallet Wall", "PalletWallCorner": "Pallet Wall Corner"},
+                desc="Scavenged pallets stacked and lashed to posts into a 2 m wall that zombies can't climb. Very "
+                     "cheap and weak: it falls quickly, but it buys time on day one. Pick a section or a corner from "
+                     "the radial menu.\n\nRepair with Wood.")
+
+
+# ------------------------------------------------------------------ Hedge Row: grown, not built
+
+# Real-time minutes per stage, as the vanilla crops and trees (63: about one game day at the default day length)
+HEDGE_GROWTH = 63
+
+
+def hedge_row_family():
+    m = "MhedgeDEM"
+    cutting = "HedgeRow"
+    pieces = [
+        # The cutting you craft and plant is the first sapling shape; the second is creative-only
+        piece("HedgeRow", "HedgeRowSaplingA", 0, "Mplants",
+              plant=dict(next="HedgeRowYoungRandom", rate=HEDGE_GROWTH, player=True, drop=cutting)),
+        piece("HedgeRowSaplingB", "HedgeRowSaplingB", 0, "Mplants",
+              plant=dict(next="HedgeRowYoungRandom", rate=HEDGE_GROWTH, player=False, drop=cutting)),
+        piece("HedgeRowYoungA", "HedgeRowYoungA", 0, "Mplants",
+              plant=dict(next="HedgeRowFullRandom", rate=HEDGE_GROWTH, player=False, drop=cutting)),
+        piece("HedgeRowYoungB", "HedgeRowYoungB", 0, "Mplants",
+              plant=dict(next="HedgeRowFullRandom", rate=HEDGE_GROWTH, player=False, drop=cutting)),
+    ]
+    for name, model in (("HedgeRowFull", "HedgeRowFull"), ("HedgeRowFullB", "HedgeRowFullB"),
+                        ("HedgeRowFullC", "HedgeRowFullC")):
+        pieces.append(piece(name, model, 500, m, dim=(1, 2, 1), dmg=True, solid=True,
+                            repair={"resourceYuccaFibers": 4},
+                            harvest={"resourceYuccaFibers": 6, "resourceWood": 2}, sounds=("seeds_generic1_grab", "seeds_generic1_place")))
+    return dict(family="HedgeRow", icon=PREFIX + "HedgeRow", pieces=pieces, helper=[], plant=True,
+                # Blocks the game picks from at random when a stage grows, so a row isn't one shape repeated
+                random=[("HedgeRowYoungRandom", "HedgeRowYoungA", ["HedgeRowYoungA", "HedgeRowYoungB"]),
+                        ("HedgeRowFullRandom", "HedgeRowFull", ["HedgeRowFull", "HedgeRowFullB", "HedgeRowFullC"])],
+                recipe=dict(items=[("resourceYuccaFibers", 4)], area=None, count=2), gates=[],
+                names={"": "Hedge Cutting", "HedgeRow": "Hedge Cutting", "HedgeRowSaplingB": "Hedge Cutting",
+                       "HedgeRowYoungA": "Young Hedge", "HedgeRowYoungB": "Young Hedge",
+                       "HedgeRowYoungRandom": "Young Hedge", "HedgeRowFull": "Hedge", "HedgeRowFullB": "Hedge",
+                       "HedgeRowFullC": "Hedge", "HedgeRowFullRandom": "Hedge"},
+                desc="A cutting from a hedge plant. Plant it in soil and it grows by itself, from a sapling through a "
+                     "young hedge to a full hedge about two game days later (at the default day length), in one of "
+                     "three shapes. A full hedge is a 1.5 m wall of branches that blocks sight and bullets, "
+                     "needs no upkeep and takes an axe to cut down. Zombies climb it. Saplings and young hedges "
+                     "don't block anything, and breaking one gives the cutting back.\n\nRepair a full hedge with "
+                     "Plant Fibers.")
+
+
+# ------------------------------------------------------------------ Stone Works: blast-proof masonry
+
+def stone_works_family():
+    m = "MstoneWorksDEM"
+    sounds = ("stoneblock_grab", "stoneblock_place")
+    pieces = []
+    for name, height, health, repair, harvest in [("ArrowSlitWall", 3, 3000, 6, 12), ("ArrowSlitCorner", 3, 3000, 6, 12),
+                                                  ("Battlement", 1, 1000, 3, 6), ("BattlementCorner", 1, 1000, 3, 6)]:
+        pieces.append(piece(name, name, health, m, dim=(1, height, 1), dmg=True, solid=True, support=True,
+                            repair={"resourceCobblestones": repair}, harvest={"resourceCobblestones": harvest},
+                            sounds=sounds))
+    return dict(family="StoneWorks", icon=PREFIX + "StoneWorks", pieces=pieces,
+                helper=["ArrowSlitWall", "ArrowSlitCorner", "Battlement", "BattlementCorner"],
+                recipe=dict(items=[("resourceCobblestones", 30)], area="workbench"), gates=[],
+                names={"": "Stone Works", "ArrowSlitWall": "Stone Wall with Arrow Slit",
+                       "ArrowSlitCorner": "Stone Wall Corner", "Battlement": "Battlement",
+                       "BattlementCorner": "Battlement Corner"},
+                desc="Thick dressed masonry, built to take blasts: its blast resistance is over twice that of "
+                     "reinforced concrete, so explosions barely scratch it. The 3 m wall can't be climbed and takes "
+                     "support blocks on top; the 1 m battlement sits on it or stands alone as low cover. The arrow "
+                     "slit is for looks only: bullets and arrows can't pass. Pick the wall, its corner, the "
+                     "battlement or its corner from the radial menu.\n\nRepair with Cobblestones.")
+
+
 FAMILIES = [sandbag_family(), palisade_family(), chainlink_family(), hesco_family(), tank_traps_family(),
-            container_family()]
+            container_family(), picket_fence_family(), post_rail_family(), razor_wire_family(), pallet_wall_family(),
+            hedge_row_family(), stone_works_family()]
 
 
 def blocks_xml():
@@ -436,6 +691,15 @@ def blocks_xml():
         for gate, _, _, _ in f["gates"]:
             # A gate has its own description but belongs to its family's runs
             out += block_xml(gate, dict(f, family=gate["name"][len(PREFIX):], run=f["family"]))
+        for name, base, _ in f.get("random", []):
+            # What a growing stage turns into: the game swaps it for one of the blocks listed for it in
+            # blockplaceholders.xml, and if it didn't, this is a full copy of the first
+            out += ['\t\t<block name="%s%s">' % (PREFIX, name),
+                    '\t\t\t<property name="Extends" value="%s%s" />' % (PREFIX, base),
+                    '\t\t\t<property name="CreativeMode" value="Dev" />',
+                    "\t\t</block>"]
+        if f.get("plant"):
+            continue
         first = PREFIX + f["helper"][0]
         out += ['\t\t<block name="%s%s">' % (PREFIX, f["family"]),
                 '\t\t\t<property name="Extends" value="%s" />' % first,
@@ -453,7 +717,7 @@ def blocks_xml():
 def recipe_lines(name, recipe):
     area = ' craft_area="%s"' % recipe["area"] if recipe["area"] else ""
     tags = "workbenchCrafting" if recipe["area"] else "packMuleCrafting"
-    lines = ['\t\t<recipe name="%s" count="1"%s tags="%s">' % (name, area, tags)]
+    lines = ['\t\t<recipe name="%s" count="%d"%s tags="%s">' % (name, recipe.get("count", 1), area, tags)]
     lines += ['\t\t\t<ingredient name="%s" count="%d"/>' % kv for kv in recipe["items"]]
     return lines + ["\t\t</recipe>"]
 
@@ -481,8 +745,11 @@ def localization():
         rows.append("%s,blocks,Block,,,,%s%s" % (key, csv_field(text), "," * 13))
 
     for f in FAMILIES:
-        row(PREFIX + f["family"], f["names"][""])
+        if not f.get("plant"):
+            row(PREFIX + f["family"], f["names"][""])
         row(PREFIX + f["family"] + "Desc", f["desc"])
+        for name, _, _ in f.get("random", []):
+            row(PREFIX + name, f["names"][name])
         for p in f["pieces"]:
             short = p["name"][len(PREFIX):]
             name = f["names"].get(short)
@@ -511,7 +778,21 @@ def staged_models():
     return "\n".join(sorted({p["model"] for f in FAMILIES for p in f["pieces"] if p["dmg"]})) + "\n"
 
 
+def placeholders_xml():
+    out = ["<configs>", '\t<append xpath="/blockplaceholders">',
+           "\t\t<!-- Generated by Scripts/FortificationsExpanded/gen_fortifications.py. A growing hedge stage turns into one of",
+           "\t\t     these at random (the game swaps the placeholder when the plant grows), so a row isn't one shape. -->"]
+    for f in FAMILIES:
+        for name, _, choices in f.get("random", []):
+            out.append('\t\t<placeholder name="%s%s">' % (PREFIX, name))
+            out += ['\t\t\t<block name="%s%s"/>' % (PREFIX, c) for c in choices]
+            out.append("\t\t</placeholder>")
+    out += ["\t</append>", "</configs>"]
+    return "\n".join(out) + "\n"
+
+
 write("materials.xml", MATERIALS)
+write("blockplaceholders.xml", placeholders_xml())
 write("blocks.xml", blocks_xml())
 write("recipes.xml", recipes_xml())
 write("Localization.csv", localization())

@@ -4,7 +4,8 @@ rem (FBX files sharing one baked material) into unity\Assets\FortificationsExpan
 rem unity\Build\previews) and the item icon; then Unity (batch mode with graphics) turns them into prefabs, builds
 rem Resources\fortificationsexpanded.unity3d and renders unity\Build\<Piece>-preview.png. Needs Blender on PATH (or
 rem BLENDER set) and Unity 2022.3.62f2 (or UNITY set), with Unity Hub signed in. Pass script:folder:icon entries
-rem (see MODELS below) to rebuild only those; Unity always rebuilds them all.
+rem (see MODELS below) to rebuild only those; Unity always rebuilds them all. Set SKIP_BLENDER=1 to skip Blender.
+rem Extra Unity arguments (UNITY_ARGS, e.g. "-fortPreview StoneWorks") limit the preview renders.
 setlocal
 set "SRC=%~dp0"
 set "MOD=%SRC%.."
@@ -21,7 +22,12 @@ rem script:folder:icon for every family
 set "MODELS=sandbags:Sandbags:DementiveFortSandbagWall palisade:Palisade:DementiveFortPalisade"
 set "MODELS=%MODELS% chainlink:ChainLink:DementiveFortChainLink tank_traps:TankTraps:DementiveFortTankTraps"
 set "MODELS=%MODELS% hesco:Hesco:DementiveFortHesco container:Container:DementiveFortContainer"
+set "MODELS=%MODELS% picket_fence:PicketFence:DementiveFortPicketFence post_rail:PostRail:DementiveFortPostRail"
+set "MODELS=%MODELS% razor_wire:RazorWire:DementiveFortRazorWire pallet_wall:PalletWall:DementiveFortPalletWall"
+set "MODELS=%MODELS% hedge_row:HedgeRow:DementiveFortHedgeRow stone_works:StoneWorks:DementiveFortStoneWorks"
 if not "%~1"=="" set "MODELS=%*"
+rem SKIP_BLENDER=1 reuses the FBX files already in unity\Assets and only runs Unity
+if defined SKIP_BLENDER set "MODELS="
 
 for %%T in (%MODELS%) do (
     for /f "tokens=1-3 delims=:" %%a in ("%%T") do (
@@ -36,7 +42,7 @@ for %%T in (%MODELS%) do (
 )
 
 echo Unity: prefabs, bundle and previews
-"%UNITY%" -batchmode -quit -projectPath "%PROJECT%" -executeMethod FortBuilder.BuildAndPreview -logFile "%PROJECT%\Build\unity.log"
+"%UNITY%" -batchmode -quit -projectPath "%PROJECT%" -executeMethod FortBuilder.BuildAndPreview %UNITY_ARGS% -logFile "%PROJECT%\Build\unity.log"
 if errorlevel 1 (
     echo Unity failed; see "%PROJECT%\Build\unity.log".
     exit /b 1

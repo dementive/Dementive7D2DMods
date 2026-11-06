@@ -54,5 +54,45 @@
 			<property name="explosionresistance" value="0.5"/>
 			<property name="Experience" value="4"/>
 		</material>
+		<!-- Razor wire: thin steel wire and studded posts. Its slow and its cuts are block properties of the coil. -->
+		<material id="MrazorWireDEM">
+			<property name="damage_category" value="metal"/>
+			<property name="surface_category" value="metal"/>
+			<property name="forge_category" value="iron"/>
+			<property name="Hardness" type="float" value="1"/>
+			<property name="stepsound" value="metal"/>
+			<property name="stability_glue" value="20"/>
+			<property name="Mass" type="int" value="5"/>
+			<property name="MaxDamage" value="300"/>
+			<property name="Experience" value="2"/>
+		</material>
+		<!-- Hedge: living wood, cut with an axe like a tree branch; plant hit sounds and leaf bursts, but not a "plant"
+		     material (those are one-hit decoration) -->
+		<material id="MhedgeDEM">
+			<property name="damage_category" value="wood"/>
+			<property name="surface_category" value="plant"/>
+			<property name="particle_category" value="plant"/>
+			<property name="forge_category" value="wood"/>
+			<property name="Hardness" type="float" value="1"/>
+			<property name="stepsound" value="fern"/>
+			<property name="stability_glue" value="5"/>
+			<property name="Mass" type="int" value="5"/>
+			<property name="MaxDamage" value="500"/>
+			<property name="Experience" value="2"/>
+		</material>
+		<!-- Stone Works: thick dressed masonry. Blast resistance 0.45, over twice reinforced concrete's 0.2 (plain
+		     concrete is 0.1, steel 0.5) -->
+		<material id="MstoneWorksDEM">
+			<property name="damage_category" value="stone"/>
+			<property name="surface_category" value="stone"/>
+			<property name="forge_category" value="stone"/>
+			<property name="Hardness" type="float" value="1"/>
+			<property name="stepsound" value="stone"/>
+			<property name="stability_glue" value="120"/>
+			<property name="Mass" type="int" value="10"/>
+			<property name="MaxDamage" value="3000"/>
+			<property name="explosionresistance" value="0.45"/>
+			<property name="Experience" value="4"/>
+		</material>
 	</append>
 </configs>

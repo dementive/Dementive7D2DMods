@@ -46,6 +46,12 @@ public static class FortBuilder
         ("Hesco", new Color(0.5f, 0.42f, 0.32f)),
         ("TankTraps", new Color(0.42f, 0.38f, 0.34f)),
         ("Container", new Color(0.45f, 0.4f, 0.36f)),
+        ("PicketFence", new Color(0.55f, 0.52f, 0.46f)),
+        ("PostRail", new Color(0.5f, 0.46f, 0.4f)),
+        ("RazorWire", new Color(0.42f, 0.38f, 0.34f)),
+        ("PalletWall", new Color(0.45f, 0.38f, 0.28f)),
+        ("HedgeRow", new Color(0.28f, 0.34f, 0.14f)),
+        ("StoneWorks", new Color(0.46f, 0.43f, 0.38f)),
     };
 
     /// <summary>Footprints in blocks (wide, deep) by piece name prefix, longest first; everything else is 1 by 1.</summary>
@@ -53,6 +59,7 @@ public static class FortBuilder
     {
         ("TankTrapHedgehog", 2f, 2f), ("TankTrapLine", 3f, 1f), ("HescoDouble", 2f, 1f), ("ContainerWall", 3f, 1f),
         ("ContainerGate", 3f, 1f), ("PalisadeGate", 3f, 1f), ("ChainLinkGate", 3f, 1f),
+        ("PicketFenceGate", 2f, 1f), ("PostRailGate", 2f, 1f),
     };
 
     /// <summary>How each gate leaf opens: degrees about the vertical hinge, or metres to slide along the gate's X
@@ -160,20 +167,46 @@ public static class FortBuilder
         Debug.Log("[FortBuilder] Built " + Path.Combine(output, BundleName) + " with " + prefabs.Count + " prefabs");
 
         // Previews: the finished stage of each piece, and every gate open and closed
+        // "-fortPreview A,B" renders previews only for those families (the bundle always holds them all)
+        int previewArg = System.Array.IndexOf(args, "-fortPreview");
+        HashSet<string> previewFamilies = previewArg >= 0 && previewArg + 1 < args.Length
+            ? new HashSet<string>(args[previewArg + 1].Split(',')) : null;
         foreach (string prefab in prefabs)
         {
             string stem = Path.GetFileNameWithoutExtension(prefab);
+            if (previewFamilies != null && !previewFamilies.Contains(Path.GetFileName(Path.GetDirectoryName(prefab))))
+            {
+                continue;
+            }
             bool finished = stem.EndsWith("Full") || stem.EndsWith("Taut") && stem.Contains("Light")
-                || new[] { "PalisadeSection", "PalisadeCorner", "TankTrapHedgehog", "TankTrapLine", "ContainerWall", "ContainerCorner" }.Contains(stem);
+                || new[]
+                {
+                    "PalisadeSection", "PalisadeCorner", "TankTrapHedgehog", "TankTrapLine", "ContainerWall", "ContainerCorner",
+                    "PicketFenceSection", "PicketFenceCorner", "PostRailSection", "PostRailCorner", "RazorWireSection",
+                    "RazorWireCorner", "PalletWallSection", "PalletWallCorner", "HedgeRowFullB", "HedgeRowFullC",
+                    "HedgeRowSaplingA", "HedgeRowSaplingB", "HedgeRowYoungA", "HedgeRowYoungB", "ArrowSlitWall",
+                    "ArrowSlitCorner", "Battlement", "BattlementCorner",
+                }.Contains(stem);
             if (finished || stem.EndsWith("Gate"))
             {
+                bool tall = stem.StartsWith("ArrowSlit") || stem.StartsWith("PalletWall");
                 VanillaCompare.Preview(prefab, Path.Combine(output, stem + "-preview.png"),
                     "sandbag_straight_01prefab.prefab", "sandbag_corner_01prefab.prefab", stem.EndsWith("Gate") ? 2.6f : 1.6f,
-                    stem.EndsWith("Gate") || stem.StartsWith("Container") || stem.StartsWith("TankTrap") ? 1.8f : 1.25f);
+                    stem.EndsWith("Gate") || stem.StartsWith("Container") || stem.StartsWith("TankTrap") ? 1.8f
+                        : stem.StartsWith("ArrowSlit") ? 2.1f : tall ? 1.5f : 1.25f);
             }
             if (stem.EndsWith("Gate"))
             {
                 PreviewOpen(prefab, Path.Combine(output, stem + "-open-preview.png"));
+            }
+            // The damaged stages of the new families, to check none are swapped
+            if (StagePreviews.Contains(stem))
+            {
+                foreach (string stage in new[] { "DMG1", "DMG2" })
+                {
+                    PreviewStage(prefab, stage, Path.Combine(output, stem + "-" + stage + "-preview.png"),
+                        stem.StartsWith("ArrowSlit") ? 2.1f : stem.StartsWith("PalletWall") ? 1.5f : 1.25f);
+                }
             }
         }
     }
@@ -427,6 +460,33 @@ public static class FortBuilder
     {
         AssetDatabase.DeleteAsset(path);
         AssetDatabase.CreateAsset(asset, path);
+    }
+
+    private static readonly HashSet<string> StagePreviews = new HashSet<string>
+    {
+        "PicketFenceSection", "PostRailSection", "RazorWireSection", "PalletWallSection", "HedgeRowFull", "HedgeRowFullB",
+        "HedgeRowFullC", "ArrowSlitWall", "ArrowSlitCorner", "Battlement", "BattlementCorner", "PicketFenceCorner",
+        "PostRailCorner", "RazorWireCorner", "PalletWallCorner",
+    };
+
+    /// <summary>One damage stage (DMG1 or DMG2) shown in place of the intact one, rendered like the other previews.</summary>
+    private static void PreviewStage(string prefabPath, string stage, string output, float distance)
+    {
+        string temp = prefabPath.Replace(".prefab", "_" + stage + "Preview.prefab");
+        GameObject go = (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath));
+        PrefabUtility.UnpackPrefabInstance(go, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
+        foreach (string s in new[] { "DMG0", "DMG1", "DMG2" })
+        {
+            Transform t = go.transform.Find(s);
+            if (t != null)
+            {
+                t.gameObject.SetActive(s == stage);
+            }
+        }
+        PrefabUtility.SaveAsPrefabAsset(go, temp);
+        Object.DestroyImmediate(go);
+        VanillaCompare.Preview(temp, output, "sandbag_straight_01prefab.prefab", "sandbag_corner_01prefab.prefab", 1.6f, distance);
+        AssetDatabase.DeleteAsset(temp);
     }
 
     /// <summary>The gate with its Open clip played to the end, rendered like the other previews.</summary>

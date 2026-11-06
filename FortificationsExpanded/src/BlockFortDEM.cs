@@ -86,6 +86,59 @@ public class BlockFortGateDEM : BlockCompositeTileEntity, IFortBlockDEM
     }
 }
 
+/// <summary>
+/// A piece that hurts what touches it (the razor-wire coil): vanilla's BlockDamage, which damages any living thing
+/// overlapping the block (Damage, at most once every 1.5 seconds for each of them; the damage type, Damage_received
+/// for the wear on the block, and MovementFactor for the slow all come from the XML, as for the vanilla barbed wire),
+/// with the same model fix-up and repair runs as the other pieces.
+/// </summary>
+public class BlockFortDamageDEM : BlockDamage, IFortBlockDEM
+{
+    public string FortFamily { get; private set; }
+    public string FortStage { get; private set; }
+
+    public override void Init()
+    {
+        base.Init();
+        FortFamily = Properties.GetString("FortFamily");
+        FortStage = Properties.GetString("FortStage");
+    }
+
+    public override void OnBlockEntityTransformBeforeActivated(WorldBase _world, Vector3i _blockPos,
+        BlockValue _blockValue, BlockEntityData _ebcd)
+    {
+        FortModelDEM.Prepare(_ebcd);
+        base.OnBlockEntityTransformBeforeActivated(_world, _blockPos, _blockValue, _ebcd);
+    }
+
+    public override int OnBlockDamaged(WorldBase _world, BlockValueRef _bvRef, BlockValue _blockValue,
+        int _damagePoints, int _entityIdThatDamaged, ItemActionAttack.AttackHitInfo _attackHitInfo,
+        bool _bUseHarvestTool, bool _bBypassMaxDamage, int _recDepth = 0)
+    {
+        if (_damagePoints < 0)
+        {
+            FortRunDEM.Hit(this, _bvRef, _blockValue, _damagePoints, _entityIdThatDamaged);
+        }
+        return base.OnBlockDamaged(_world, _bvRef, _blockValue, _damagePoints, _entityIdThatDamaged, _attackHitInfo,
+            _bUseHarvestTool, _bBypassMaxDamage, _recDepth);
+    }
+}
+
+/// <summary>
+/// The growing stages of a hedge (cutting, young hedge): vanilla's growing plant (it ticks on, checks the ground and
+/// light, and turns into the next stage), with the same model fix-up as the other pieces so the bundle's materials
+/// take the game's shader.
+/// </summary>
+public class BlockFortPlantDEM : BlockPlantGrowing
+{
+    public override void OnBlockEntityTransformBeforeActivated(WorldBase _world, Vector3i _blockPos,
+        BlockValue _blockValue, BlockEntityData _ebcd)
+    {
+        FortModelDEM.Prepare(_ebcd);
+        base.OnBlockEntityTransformBeforeActivated(_world, _blockPos, _blockValue, _ebcd);
+    }
+}
+
 public static class FortModelDEM
 {
     /// <summary>

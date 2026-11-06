@@ -74,6 +74,25 @@ resistance 0.2), steel 10000 (0.75). Vanilla sandbags are 200 per cell.
 | Tank Traps | forge | Funnels | Hedgehog (2 by 2 footprint, 1.8 m), hedgehog line (3 wide) | 6000; bent stage below it | Welded steel beams: zombies can't climb them and walk a long way around rather than break them, while bullets, arrows and sight pass. Lay out a maze across open ground fast | 12 forged iron |
 | Container Wall | crucible | Late-game wall in one placement | Wall (3 wide, 3 tall), container gate with swing doors, corner | Wall 25000, gate 15000 | Blast resistance 0.5, placed whole with no upgrade hits. Red, blue, green and rust tints. The catch: one pool, so a breach opens a 3 by 3 hole at once, and a blast counts once per cell it covers | 30 forged steel, 10 forged iron |
 
+### Second batch: six cheap, simple families (2026-11-06)
+
+Added at the user's request, built to the same rules (three damage stages, one job each, one item with a radial, vanilla
+repair and upgrade, co-op safe, standalone). Models from `blender/picket_fence.py`, `post_rail.py`, `razor_wire.py`,
+`pallet_wall.py`, `hedge_row.py` and `stone_works.py` (specs in `blender/SPEC_*.md`).
+
+| Family | When | Job | Pieces | Health | Special | Cost |
+|---|---|---|---|---|---|---|
+| Picket Fence | start | Cheap low cover | Section, corner (1.1 m), gate (2 wide) | 250, gate 300 | Blocks sight and bullets; zombies climb it | 10 wood, 2 nails; gate 20 wood, 6 nails |
+| Post-and-Rail Fence | start | See-through boundary | Section, corner (1.2 m), gate (2 wide) | 200, gate 250 | Shoot-through (`movement,melee,rocket`) | 8 wood, 2 fibers; gate 16 wood, 4 fibers |
+| Razor-Wire Coil | workbench | Hurts what touches it | Section, corner (1 m) | 300 | Vanilla barbed-wire contact damage (8 per 1.5 s, slow to 0.4); hurts the player too; shoot-through | 8 scrap iron, 2 fibers |
+| Pallet Wall | start | Tall wall for almost nothing | Section, corner (2 m) | 400 | Unclimbable, solid, takes support blocks | 6 wood |
+| Hedge Row | start | Grown wall, no upkeep | Cutting (sapling), young hedge, full hedge x3 shapes | 500 | Grows by vanilla plant growth, 63 min a stage, shape picked at random (block placeholders); walk-through until full | 4 fibers for 2 cuttings |
+| Stone Works | workbench | Blast resistance | Arrow-slit wall, corner (3 m); battlement, corner (1 m) | 3000 / 1000 | Material blast resistance 0.45; slit is visual only | 30 cobblestones |
+
+No unlock gating beyond the workbench, as the first six. Contact damage and the growing plant stages are the two things
+that needed C# (`BlockFortDamageDEM` over the vanilla damage block, `BlockFortPlantDEM` over the growing plant, both only
+to give the bundle's models the game shader like every other piece).
+
 Numbers are first passes, to tune in play like the traps were.
 
 ## Effects
