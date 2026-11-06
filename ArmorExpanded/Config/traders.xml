@@ -90,4 +90,66 @@
 		<item group="groupDementiveTraderArmorHeavy" prob="0.1104"/>
 	</append>
 
+	<!-- *** Named clothing (Scripts/ArmorExpanded/clothing.py) -->
+	<append xpath="/traders/traderstage_templates">
+		<!-- Named clothing: the vanilla clothing tiers' trader stages (1, 25 and 55), but for quality 1-6 (the vanilla ones
+		     only list quality 0, which no quality 1-6 trader item matches) -->
+		<traderstage_template name="dementiveClothingTier1">
+			<entry min="1" max="999999" quality="0"/>
+			<entry min="1" max="999999" quality="1"/>
+			<entry min="1" max="999999" quality="2"/>
+			<entry min="1" max="999999" quality="3"/>
+			<entry min="1" max="999999" quality="4"/>
+			<entry min="1" max="999999" quality="5"/>
+			<entry min="1" max="999999" quality="6"/>
+		</traderstage_template>
+		<traderstage_template name="dementiveClothingTier2">
+			<entry min="25" max="999999" quality="0"/>
+			<entry min="25" max="999999" quality="1"/>
+			<entry min="25" max="999999" quality="2"/>
+			<entry min="25" max="999999" quality="3"/>
+			<entry min="25" max="999999" quality="4"/>
+			<entry min="25" max="999999" quality="5"/>
+			<entry min="25" max="999999" quality="6"/>
+		</traderstage_template>
+		<traderstage_template name="dementiveClothingTier3">
+			<entry min="55" max="999999" quality="0"/>
+			<entry min="55" max="999999" quality="1"/>
+			<entry min="55" max="999999" quality="2"/>
+			<entry min="55" max="999999" quality="3"/>
+			<entry min="55" max="999999" quality="4"/>
+			<entry min="55" max="999999" quality="5"/>
+			<entry min="55" max="999999" quality="6"/>
+		</traderstage_template>
+	</append>
+
+	<insertBefore xpath="/traders/trader_item_groups/trader_item_group[@name='groupArmorLight']">
+		<trader_item_group name="groupDementiveTraderClothing" count="1">
+			<item name="DementiveClothingWatchCap" quality="1,6"/>
+			<item name="DementiveClothingSunHat" quality="1,6"/>
+			<item name="DementiveClothingWelderCap" quality="1,6"/>
+			<item name="DementiveClothingBoonie" quality="1,6"/>
+			<item name="DementiveClothingUshanka" quality="1,6"/>
+			<item name="DementiveClothingUnionSuit" quality="1,6"/>
+			<item name="DementiveClothingCoveralls" quality="1,6"/>
+			<item name="DementiveClothingSlicker" quality="1,6"/>
+			<item name="DementiveClothingHuntingJacket" quality="1,6"/>
+			<item name="DementiveClothingSheepskin" quality="1,6"/>
+			<item name="DementiveClothingMittens" quality="1,6"/>
+			<item name="DementiveClothingWorkGloves" quality="1,6"/>
+			<item name="DementiveClothingFingerless" quality="1,6"/>
+			<item name="DementiveClothingWelderGauntlets" quality="1,6"/>
+			<item name="DementiveClothingMountaineer" quality="1,6"/>
+			<item name="DementiveClothingWoolSocks" quality="1,6"/>
+			<item name="DementiveClothingGumBoots" quality="1,6"/>
+			<item name="DementiveClothingHiking" quality="1,6"/>
+			<item name="DementiveClothingDesert" quality="1,6"/>
+			<item name="DementiveClothingSnow" quality="1,6"/>
+		</trader_item_group>
+	</insertBefore>
+
+	<append xpath="/traders/trader_item_groups/trader_item_group[@name='groupArmorLight']">
+		<item group="groupDementiveTraderClothing" prob="0.1700"/>
+	</append>
+
 </Dementive>

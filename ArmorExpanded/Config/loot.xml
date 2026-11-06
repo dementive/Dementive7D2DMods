@@ -137,4 +137,90 @@
 		<item group="groupDementiveArmorAll" loot_prob_template="DementiveArmorQuestRewards"/>
 	</append>
 
+	<!-- *** Named clothing (Scripts/ArmorExpanded/clothing.py) -->
+	<append xpath="/lootcontainers/lootprobtemplates">
+		<!-- Chance per container opened that one named clothing piece drops: half the named armor's, since there are 20
+		     pieces instead of 64 and each is a weaker piece. A group is count="all" with 2.5 or more picks, so this stays
+		     far below 1% of what any group picks -->
+		<lootprobtemplate name="DementiveClothingRaresT1">
+			<loot level="1,999999" prob="0.0053"/>  <!-- 1 / 188 -->
+		</lootprobtemplate>
+		<lootprobtemplate name="DementiveClothingRaresT2">
+			<loot level="1,999999" prob="0.0107"/>  <!-- 1 / 94 -->
+		</lootprobtemplate>
+		<lootprobtemplate name="DementiveClothingRaresT3">
+			<loot level="1,999999" prob="0.0213"/>  <!-- 1 / 47 -->
+		</lootprobtemplate>
+		<lootprobtemplate name="DementiveClothingRaresT4">
+			<loot level="1,999999" prob="0.0427"/>  <!-- 1 / 23 -->
+		</lootprobtemplate>
+		<lootprobtemplate name="DementiveClothingRaresT5">
+			<loot level="1,999999" prob="0.0533"/>  <!-- 1 / 19 -->
+		</lootprobtemplate>
+
+		<!-- Which pieces a drop can be, by loot stage: tier 1 from the start, tier 2 from stage 30 and tier 3 from stage 88,
+		     the same thresholds as the vanilla clothing (ProbT0, ProbT1Cap, ProbT2Cap) -->
+		<lootprobtemplate name="DementiveClothingTier2">
+			<loot level="0,29" prob="0"/>
+			<loot level="30,999999" prob="1"/>
+		</lootprobtemplate>
+		<lootprobtemplate name="DementiveClothingTier3">
+			<loot level="0,87" prob="0"/>
+			<loot level="88,999999" prob="1"/>
+		</lootprobtemplate>
+	</append>
+
+	<insertBefore xpath="/lootcontainers/lootgroup[@name='groupScrapCommon']">
+		<lootgroup name="groupDementiveClothingAll" count="1" loot_quality_template="qualBaseTemplate">
+			<item name="DementiveClothingWatchCap"/>
+			<item name="DementiveClothingSunHat"/>
+			<item name="DementiveClothingWelderCap" loot_prob_template="DementiveClothingTier2"/>
+			<item name="DementiveClothingBoonie" loot_prob_template="DementiveClothingTier2"/>
+			<item name="DementiveClothingUshanka" loot_prob_template="DementiveClothingTier3"/>
+			<item name="DementiveClothingUnionSuit"/>
+			<item name="DementiveClothingCoveralls"/>
+			<item name="DementiveClothingSlicker" loot_prob_template="DementiveClothingTier2"/>
+			<item name="DementiveClothingHuntingJacket" loot_prob_template="DementiveClothingTier2"/>
+			<item name="DementiveClothingSheepskin" loot_prob_template="DementiveClothingTier3"/>
+			<item name="DementiveClothingMittens"/>
+			<item name="DementiveClothingWorkGloves"/>
+			<item name="DementiveClothingFingerless" loot_prob_template="DementiveClothingTier2"/>
+			<item name="DementiveClothingWelderGauntlets" loot_prob_template="DementiveClothingTier3"/>
+			<item name="DementiveClothingMountaineer" loot_prob_template="DementiveClothingTier3"/>
+			<item name="DementiveClothingWoolSocks"/>
+			<item name="DementiveClothingGumBoots" loot_prob_template="DementiveClothingTier2"/>
+			<item name="DementiveClothingHiking" loot_prob_template="DementiveClothingTier2"/>
+			<item name="DementiveClothingDesert" loot_prob_template="DementiveClothingTier2"/>
+			<item name="DementiveClothingSnow" loot_prob_template="DementiveClothingTier3"/>
+		</lootgroup>
+	</insertBefore>
+
+	<append xpath="//lootgroup[@name='groupSmallSafeLoot']">
+		<item group="groupDementiveClothingAll" loot_prob_template="DementiveClothingRaresT2" force_prob="true"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupReinforcedChestT3']">
+		<item group="groupDementiveClothingAll" loot_prob_template="DementiveClothingRaresT3" force_prob="true"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupHardenedChestT4']">
+		<item group="groupDementiveClothingAll" loot_prob_template="DementiveClothingRaresT4" force_prob="true"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupHardenedChestT5']">
+		<item group="groupDementiveClothingAll" loot_prob_template="DementiveClothingRaresT5" force_prob="true"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupZpackBoss']">
+		<item group="groupDementiveClothingAll" loot_prob_template="DementiveClothingRaresT3" force_prob="true"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupZpackStrong']">
+		<item group="groupDementiveClothingAll" loot_prob_template="DementiveClothingRaresT2" force_prob="true"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupZpackReg']">
+		<item group="groupDementiveClothingAll" loot_prob_template="DementiveClothingRaresT1" force_prob="true"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupHiddenStash']">
+		<item group="groupDementiveClothingAll" loot_prob_template="DementiveClothingRaresT2" force_prob="true"/>
+	</append>
+	<append xpath="//lootgroup[@name='groupBuriedTreasure']">
+		<item group="groupDementiveClothingAll" loot_prob_template="DementiveClothingRaresT3" force_prob="true"/>
+	</append>
+
 </Dementive>

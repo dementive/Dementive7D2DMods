@@ -4,6 +4,8 @@ Adds 64 rare named armor pieces in the same style as the base game: all four pie
 
 Every named piece counts toward its set's full set bonus, so you can mix named and vanilla pieces. Wearing all four named pieces of one set also gives that set's named-set bonus, on top of the vanilla one. Wearing named pieces from different sets means giving up set bonuses.
 
+Also adds 20 rare named clothing pieces (see Clothing below): the thin, regular and heavy clothes worn under armor, each with one small perk.
+
 They can only be looted or bought, not crafted. When worn they look like the vanilla piece; the icon is repainted.
 
 Adds new icons so has to be installed on server and client. `ArmorExpanded-SERVERSIDE` is the server-only version: it uses tinted vanilla icons, so players don't need to install anything.
@@ -100,9 +102,40 @@ Wear all four named pieces of a set:
 | Warlord | Raider | Melee kills have a 30% chance to knock down every zombie within 3 m |
 | Living Off the Land | Primitive | +25% from harvesting wood, stone and ore, plants and animals |
 
+## Clothing
+
+Vanilla clothing sits under your armor and only protects against heat and cold, in three tiers: thin (tattered), regular (patchwork) and heavy (ThermaCore). Each named piece is built on its vanilla piece of the same slot and tier: it keeps that tier's hot and cold resistance and storm survival bonus, adds one small perk, and some are a bit warmer or cooler (warm = +10% cold resistance, cool = +10% heat resistance, very warm = +20% cold resistance).
+
+| Name | Base | Ability |
+|---|---|---|
+| Wool Watch Cap | Thin cap liner (warm) | +2 backpack slots |
+| Straw Sun Hat | Thin cap liner (cool) | Water drains 15% slower |
+| Welder's Cap | Regular cap liner | Burning damage over time ticks 25% weaker |
+| Birdwatcher's Boonie | Regular cap liner (cool) | 15% less noise while walking or crouching |
+| Trapper's Ushanka | Heavy cap liner (very warm) | +10% max stamina |
+| Thermal Union Suit | Thin undergarments (warm) | +5% max health |
+| Mechanic's Coveralls | Thin undergarments | +4 backpack slots |
+| Fisherman's Slicker | Regular long underwear | Rain and swimming make you wet 50% slower |
+| Blind Hunter's Jacket | Regular long underwear (warm) | 10% less noise while crouched |
+| Sheepskin Coat | Heavy combat layer (very warm) | Take 10% less damage from zombie and animal attacks |
+| Knitted Mittens | Thin glove liners (warm) | Stamina regenerates 5% faster |
+| Work Gloves | Thin glove liners | Axes and pickaxes cost 10% less stamina per swing |
+| Fingerless Gloves | Regular glove liners (cool) | Guns reload 10% faster |
+| Welding Gauntlets | Heavy glove liners | Electrical damage taken is cut by 25%, including shocks from electric fences, stun batons and traps |
+| Mountaineer's Gloves | Heavy glove liners (very warm) | Falls hurt 15% less |
+| Wool Socks and Clogs | Thin socks (warm) | Your footsteps are 10% quieter |
+| Gum Boots | Regular socks (warm) | Swim 25% faster. Wetness builds 25% slower |
+| Hiking Boots | Regular socks | Sprinting uses 10% less stamina |
+| Desert Boots | Regular socks (cool) | Move 5% faster in the desert biome |
+| Snow Boots | Heavy socks (very warm) | Move 5% faster in the snow biome |
+
+Details: Water drain, noise, stamina and speed perks add to the other bonuses you have. The Wool Watch Cap and Mechanic's Coveralls add backpack slots like the storage pocket armor mod. The Welder's Cap weakens the burn from torches, fire, flaming arrows and molotovs by 25%. The Fisherman's Slicker and Gum Boots stack (75% slower wetness). The Welding Gauntlets cut electrical damage that armor resists, and the shock damage from the stun baton, electric fence posts and the like. The Sheepskin Coat doesn't help against fire, falls, explosions or traps. The Birdwatcher's Boonie cuts noise while you walk or crouch (not while sprinting), the Blind Hunter's Jacket only while crouched, and Wool Socks and Clogs while you walk or sprint (not while standing still or in the air).
+
 ## Where to find them
 
-Chance per container opened that it holds one of the pieces:
+Named clothing drops from the same containers as the armor, at half the armor's chance (each container's chance below, halved), and only the pieces of tiers your loot stage has reached: thin pieces from the start, regular pieces from loot stage 30 and heavy pieces from loot stage 88, like the vanilla clothing. Traders can stock them too (about a 5% chance per restock, Joel too), with the same trader stage requirements as the vanilla clothing tiers: stage 1, 25 and 55. They are not quest rewards.
+
+Chance per container opened that it holds one of the armor pieces:
 
 | Container | Chance |
 |---|---|
@@ -114,11 +147,11 @@ Chance per container opened that it holds one of the pieces:
 
 Traders can stock them from trader stage 50: a typical trader has about a 10% chance per restock to have one (Joel, who sells armor, about 14%). Tier 4-6 trader quests have about a 1 in 20 chance to offer one as a reward choice. Named armor is never more than 3% of what any loot or trader group picks.
 
-The chances are set by the `DementiveArmorRares` templates at the top of `Config/loot.xml` and `TRADER_PIECE_PROB` in the generator.
+The chances are set by the `DementiveArmorRares` and `DementiveClothingRares` templates at the top of `Config/loot.xml`, `TRADER_PIECE_PROB` in the generator and `TRADER_CLOTHING_PROB` in `Scripts/ArmorExpanded/clothing.py`.
 
 ## Multiplayer
 
-Everything works in co-op and on dedicated servers. Sunday Best heals party members (and allies) within 15 meters of the wearer. Abilities that depend on your own movement or health (Varsity Jacket, Kinetic Sneakers, Divine Intervention, Second Wind) are worked out on your own machine and shared with the server through buffs.
+Everything works in co-op and on dedicated servers. Sunday Best heals party members (and allies) within 15 meters of the wearer. Abilities that depend on your own movement or health (Varsity Jacket, Kinetic Sneakers, Divine Intervention, Second Wind) are worked out on your own machine and shared with the server through buffs. So are the Birdwatcher's Boonie and Wool Socks and Clogs, whose noise cut depends on whether you are walking.
 
 ## Changes to vanilla
 
@@ -126,6 +159,9 @@ Everything works in co-op and on dedicated servers. Sunday Best heals party memb
 - The frag grenade, contact grenade and pipe bomb get the `DementiveArmorGrenade` tag (Blast Helmet).
 - The ore blocks' ore drops get the `DementiveArmorOre` tag (Mother Lode).
 - The player class notes the food and water still to come before you eat or drink (Sunday Overalls).
+- The burning buffs (torch and fire burns, flaming arrows, molotovs, fire hazards) get a second, weaker damage entry that only applies while the Welder's Cap is worn (Welder's Cap).
+- The shocked buff (electric fence posts, stun batons, traps) scales its damage while the Welding Gauntlets are worn, and the wet buff (rain and swimming) and the fall damage buff are adjusted while the Fisherman's Slicker, Gum Boots or Mountaineer's Gloves are worn.
+- The 20 clothing pieces use a few hidden buffs (`buffDementiveClothing...`) that mark which of them you wear.
 
 ## Generating the mod
 

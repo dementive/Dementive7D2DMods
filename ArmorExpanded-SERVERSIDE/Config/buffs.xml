@@ -562,4 +562,161 @@
 		</effect_group>
 	</append>
 
+	<!-- *** Named clothing (Scripts/ArmorExpanded/clothing.py) -->
+	<append xpath="/buffs">
+		<!-- Named clothing: worn markers. The perks that live in vanilla buffs (the burning, shock, wetness and fall
+		     buffs, patched below) check these. Added on equip, removed on unequip -->
+		<buff name="buffDementiveClothingWelderCap" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+		</buff>
+		<buff name="buffDementiveClothingSlicker" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+		</buff>
+		<buff name="buffDementiveClothingGumBoots" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+		</buff>
+		<buff name="buffDementiveClothingGauntlets" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+		</buff>
+		<buff name="buffDementiveClothingMountaineer" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+		</buff>
+
+		<!-- Birdwatcher's Boonie and Wool Socks: noise is worked out on the server, which can't tell a remote player is
+		     walking, so the owner keeps a flag buff (synced) up to date. A flag's own marker runs while the piece is worn -->
+		<buff name="buffDementiveClothingBoonie" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<update_rate value=".25"/>
+			<effect_group>
+				<requirement name="IsLocalPlayer"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveClothingWalking">
+					<requirement name="EntityHasMovementTag" tags="walking"/>
+					<requirement name="!HasBuff" buff="buffDementiveClothingWalking"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveClothingWalking">
+					<requirement name="!EntityHasMovementTag" tags="walking"/>
+					<requirement name="HasBuff" buff="buffDementiveClothingWalking"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		<buff name="buffDementiveClothingWalking" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+		</buff>
+		<buff name="buffDementiveClothingSocks" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<update_rate value=".25"/>
+			<effect_group>
+				<requirement name="IsLocalPlayer"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffDementiveClothingMoving">
+					<requirement name="EntityHasMovementTag" tags="walking,running"/>
+					<requirement name="!HasBuff" buff="buffDementiveClothingMoving"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffDementiveClothingMoving">
+					<requirement name="!EntityHasMovementTag" tags="walking,running"/>
+					<requirement name="HasBuff" buff="buffDementiveClothingMoving"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		<buff name="buffDementiveClothingMoving" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+		</buff>
+	</append>
+
+	<!-- Welder's Cap: burning damage over time ticks 25% weaker (see the note on BURNING in clothing.py) -->
+	<append xpath="/buffs/buff[@name='buffBurningElement']/effect_group[3]/passive_effect[@name='HealthChangeOT'][1]">
+		<requirement name="!HasBuff" buff="buffDementiveClothingWelderCap"/>
+	</append>
+	<insertAfter xpath="/buffs/buff[@name='buffBurningElement']/effect_group[3]/passive_effect[@name='HealthChangeOT'][1]">
+		<passive_effect name="HealthChangeOT" operation="base_subtract" value="1.125">
+			<requirement name="HasBuff" buff="buffDementiveClothingWelderCap"/>
+		</passive_effect>
+	</insertAfter>
+	<append xpath="/buffs/buff[@name='buffBurningEnvironment']/effect_group[2]/passive_effect[@name='HealthChangeOT'][1]">
+		<requirement name="!HasBuff" buff="buffDementiveClothingWelderCap"/>
+	</append>
+	<insertAfter xpath="/buffs/buff[@name='buffBurningEnvironment']/effect_group[2]/passive_effect[@name='HealthChangeOT'][1]">
+		<passive_effect name="HealthChangeOT" operation="base_subtract" value="0.75">
+			<requirement name="HasBuff" buff="buffDementiveClothingWelderCap"/>
+		</passive_effect>
+	</insertAfter>
+	<append xpath="/buffs/buff[@name='buffBurningFlamingArrow']/effect_group[4]/passive_effect[@name='HealthChangeOT'][1]">
+		<requirement name="!HasBuff" buff="buffDementiveClothingWelderCap"/>
+	</append>
+	<insertAfter xpath="/buffs/buff[@name='buffBurningFlamingArrow']/effect_group[4]/passive_effect[@name='HealthChangeOT'][1]">
+		<passive_effect name="HealthChangeOT" operation="base_subtract" duration="0,12,16" value="3,9.225,11.25">
+			<requirement name="EntityTagCompare" tags="player" />
+			<requirement name="HasBuff" buff="buffDementiveClothingWelderCap"/>
+		</passive_effect>
+	</insertAfter>
+	<append xpath="/buffs/buff[@name='buffBurningMolotov']/effect_group[4]/passive_effect[@name='HealthChangeOT'][1]">
+		<requirement name="!HasBuff" buff="buffDementiveClothingWelderCap"/>
+	</append>
+	<insertAfter xpath="/buffs/buff[@name='buffBurningMolotov']/effect_group[4]/passive_effect[@name='HealthChangeOT'][1]">
+		<passive_effect name="HealthChangeOT" operation="base_subtract" duration="0,8,14,18" value="0.75,3.75,8.25,9.75">
+			<requirement name="EntityTagCompare" tags="player" />
+			<requirement name="HasBuff" buff="buffDementiveClothingWelderCap"/>
+		</passive_effect>
+	</insertAfter>
+	<append xpath="/buffs/buff[@name='buffHazardBurningElement']/effect_group[3]/passive_effect[@name='HealthChangeOT'][1]">
+		<requirement name="!HasBuff" buff="buffDementiveClothingWelderCap"/>
+	</append>
+	<insertAfter xpath="/buffs/buff[@name='buffHazardBurningElement']/effect_group[3]/passive_effect[@name='HealthChangeOT'][1]">
+		<passive_effect name="HealthChangeOT" operation="base_subtract" value="7.5">
+			<requirement name="HasBuff" buff="buffDementiveClothingWelderCap"/>
+		</passive_effect>
+	</insertAfter>
+
+	<!-- Welding Gauntlets: a shock's damage is its $buffShockedDamage a second (set when the buff starts, after which this
+	     group runs), so 75% of it is 25% less. Fence posts, stun batons and traps all use buffShocked -->
+	<append xpath="/buffs/buff[@name='buffShocked']">
+		<effect_group>
+			<requirement name="HasBuff" buff="buffDementiveClothingGauntlets"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$buffShockedDamage" operation="multiply" value=".75"/>
+		</effect_group>
+	</append>
+
+	<!-- Fisherman's Slicker (50%) and Gum Boots (25%): buffElementWet adds _wetnessrate (rain, swimming) to $WetTempRate every
+	     update; this takes that share of it back first, so the net gain is what's left. Nothing is taken away when
+	     the rate is too low for the buff to count it -->
+	<insertBefore xpath="/buffs/buff[@name='buffElementWet']/effect_group[1]">
+		<effect_group>
+			<requirement name="CVarCompare" cvar="_wetnessrate" operation="GT" value=".005"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveWetCut" operation="set" value="0"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveWetTmp" operation="set" value="@_wetnessrate"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveWetTmp" operation="multiply" value=".5"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveWetCut" operation="add" value="@.DementiveWetTmp">
+				<requirement name="HasBuff" buff="buffDementiveClothingSlicker"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveWetTmp" operation="set" value="@_wetnessrate"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveWetTmp" operation="multiply" value=".25"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DementiveWetCut" operation="add" value="@.DementiveWetTmp">
+				<requirement name="HasBuff" buff="buffDementiveClothingGumBoots"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$WetTempRate" operation="subtract" value="@.DementiveWetCut">
+				<requirement name="CVarCompare" cvar=".DementiveWetCut" operation="GT" value="0"/>
+			</triggered_effect>
+		</effect_group>
+	</insertBefore>
+
+	<!-- Mountaineer's Gloves: falls hurt 15% less. Fall damage is (impact speed - .189) x 300, so 85% of it is
+	     .85 x impact speed + .15 x .189. A fall too soft to hurt stays too soft. After Marathon Runners' part above, in the
+	     same group (where the vanilla boots cut the impact speed) -->
+	<append xpath="/buffs/buff[@name='buffPlayerFallingDamage']/effect_group[triggered_effect[@value='@$rogueBootFallDMG']]">
+		<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".impactSpeed" operation="multiply" value=".85">
+			<requirement name="HasBuff" buff="buffDementiveClothingMountaineer"/>
+		</triggered_effect>
+		<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".impactSpeed" operation="add" value=".02835">
+			<requirement name="HasBuff" buff="buffDementiveClothingMountaineer"/>
+		</triggered_effect>
+	</append>
+
 </Dementive>

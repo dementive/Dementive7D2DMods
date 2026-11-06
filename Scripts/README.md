@@ -49,7 +49,7 @@ Other checks:
 
 ## ArmorExpanded
 
-- `ArmorExpanded\gen_armor.py <game> ArmorExpanded ArmorExpanded-SERVERSIDE`: writes the whole mod from the `PIECES` table: each named piece copies its vanilla piece's effect groups (they aren't inherited through `Extends`) with the armor and durability boost and its signature effect group, plus buffs, loot, traders, localization, the recolored icons and the server-side copy (tinted vanilla icons).
+- `ArmorExpanded\gen_armor.py <game> ArmorExpanded ArmorExpanded-SERVERSIDE`: writes the whole mod from the `PIECES` table: each named piece copies its vanilla piece's effect groups (they aren't inherited through `Extends`) with the armor and durability boost and its signature effect group, plus buffs, loot, traders, localization, the recolored icons and the server-side copy (tinted vanilla icons). The 20 named clothing pieces are in `ArmorExpanded\clothing.py` (imported by the generator): each extends its vanilla clothing item and adds its perk, hidden worn-marker buffs, patches to the vanilla burning, shock, wet and fall buffs, loot, trader entries, localization and painted icons (`ICONS` in that file).
 
 ## ConsumablesExpanded
 
